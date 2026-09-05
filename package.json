@@ -1,0 +1,44 @@
+{
+  "name": "quoc-chien",
+  "version": "0.0.0",
+  "description": "Game chien thuat offline, choi tren web, cai len iPhone dang PWA.",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:base": "node scripts/check_base_path.mjs",
+    "check:credits": "node scripts/check_credits.mjs",
+    "chup:man": "node scripts/chup_man.mjs",
+    "do": "bash scripts/do.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gc1001vn-svg/quoc-chien.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gc1001vn-svg/quoc-chien/issues"
+  },
+  "homepage": "https://github.com/gc1001vn-svg/quoc-chien#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.4.1",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.69.0",
+    "vite": "^8.2.2",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^5.0.0"
+  },
+  "private": true,
+  "type": "module"
+}

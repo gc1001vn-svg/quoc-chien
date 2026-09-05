@@ -1,0 +1,16 @@
+# File phai hoi chu du an truoc khi sua. Dong ket thuc bang "/" la khoa ca thu muc.
+# Luat nay o CLAUDE.md muc "Hoi chu du an truoc khi dung vao".
+
+CLAUDE.md
+vite.config.ts
+vercel.json
+.claude/settings.json
+.claude/file_khoa.txt
+.github/workflows/
+scripts/check_base_path.mjs
+
+docs/GAME_SPEC.md
+docs/TECH_SPEC.md
+docs/KE_HOACH.md
+docs/THAM_KHAO.md
+docs/ASSET_CREDITS.md

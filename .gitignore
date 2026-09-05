@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+.DS_Store
+
+# Kho goi tai ve nguyen ven - khong len may chu, khong len git.
+assets_source/
+
+# Rac phien lam viec.
+.claude/so_lenh.log
+anh_chup/

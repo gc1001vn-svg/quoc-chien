@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  kiem-tra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Duong dan goc
+        run: npm run check:base
+
+      - name: Ban quyen asset
+        run: npm run check:credits
+
+      # Tran ban build 95 MB - TECH_SPEC muc 2. Vuot la loi, khong phai "toi uu sau".
+      - name: Tran kich thuoc ban build
+        run: |
+          mb=$(du -sm dist | cut -f1)
+          echo "Ban build: ${mb} MB (tran 95 MB)"
+          if [ "$mb" -gt 95 ]; then
+            echo "::error::Ban build ${mb} MB vuot tran 95 MB"
+            exit 1
+          fi

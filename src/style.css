@@ -1,0 +1,105 @@
+/*
+ * Man hinh tham chieu: 874x402 CSS px nam ngang (iPhone 16 Pro).
+ * Vung an toan: tren 62 px, duoi 34 px - dung `env(safe-area-inset-*)`, khong so cung.
+ */
+:root {
+  color-scheme: dark;
+  --nen: #12100e;
+  --chu: #e8e0d2;
+  --nhan: #c9a227;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--nen);
+  color: var(--chu);
+  font: 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+#app.trang-do { padding: 0; }
+#app.trang-do canvas { display: block; position: absolute; inset: 0; }
+
+.man-cho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 12px;
+}
+.man-cho h1 { margin: 0; font-size: 34px; letter-spacing: 2px; color: var(--nhan); }
+.man-cho p { margin: 0; opacity: 0.8; }
+.ghi-chu { font-size: 13px; opacity: 0.55 !important; }
+
+.nut-lon {
+  margin-top: 8px;
+  padding: 14px 24px;
+  border: 1px solid var(--nhan);
+  border-radius: 10px;
+  color: var(--nhan);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.perf-nhan {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 6px);
+  left: calc(env(safe-area-inset-left) + 10px);
+  z-index: 3;
+  font: 13px ui-monospace, monospace;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.perf-nut {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 6px);
+  right: calc(env(safe-area-inset-right) + 10px);
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+}
+.perf-nut button {
+  font-size: 12px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--chu);
+}
+.perf-nut button[data-bat='khong'] { opacity: 0.35; }
+
+.do-bang {
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 16px);
+  transform: translateX(-50%);
+  z-index: 3;
+  max-width: 92%;
+  text-align: center;
+  background: rgba(8, 7, 6, 0.92);
+  border: 1px solid #3a352f;
+  padding: 12px 20px;
+  border-radius: 12px;
+}
+.do-bang p { margin: 4px 0; }
+.do-so { font-size: 46px; font-weight: 700; color: var(--nhan); line-height: 1; }
+.do-phu { font-size: 13px; opacity: 0.7; }
