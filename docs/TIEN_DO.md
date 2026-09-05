@@ -25,6 +25,10 @@ phần mềm → **số sprite tối đa vẫn chưa biết**, phải đo trên 
 
 ## 3. Việc của chủ dự án
 
+Chưa nối Vercel nên chưa có đường công khai. Tạm thời trang đo được đóng gói thành một
+trang chạy trên claude.ai, không cần Vercel:
+https://claude.ai/code/artifact/49ca6873-a5d2-4cf2-b0d3-1a4187933eb0
+
 Mở trang đo trên iPhone, đợi nó chạy xong (khoảng một phút), nhắn về **một con số**:
 số sprite tối đa còn giữ 60 fps. Con số đó chốt toàn bộ ngân sách đồ hoạ cho các phase sau.
 
@@ -40,7 +44,10 @@ Nếu số **trên 1.500**: đúng như trần đã đặt ở TECH_SPEC, đi ti
   xả lô khi đổi atlas). Phase 2 **mở rộng** file này, không viết lại.
 - `src/sim/` còn rỗng — Phase 3 mới có file đầu tiên. Test hàng rào đang xanh nhờ một
   phép thử mẫu, không phải nhờ quét file thật.
-- Chưa nối Vercel. `vercel.json` đã có sẵn, còn thiếu bước bấm nối repo trên trang Vercel.
+- Chưa nối Vercel. `vercel.json` đã có sẵn, còn thiếu bước bấm nối repo trên trang Vercel —
+  chỉ chủ dự án làm được, cần đăng nhập, và máy ảo chặn `vercel.app` (403).
+  Chưa nối thì **chưa kiểm được PWA cài lên màn hình chính**; bản đóng gói trên claude.ai
+  chỉ đo được sprite, không thay được việc đó.
 
 ## 5. Phase kế tiếp
 
