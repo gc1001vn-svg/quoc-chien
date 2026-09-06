@@ -1,0 +1,2529 @@
+{
+ "ghi_chu": "Me sprite trung co. Moi sprite la mot danh sach manh model ghep lai. Goi Kenney la bo lap ghep (tuong, mai rieng tung manh) nen nha phai ghep tu day, khong co san. Toa do tinh bang O LUOI: x sang phai, z xuong duoi, y len tren. ry xoay quanh truc dung, don vi do. mau la mau NHAN cua manh - doi mau mai ngoi khong can nuong them model. Kit dat anh: false la kit khong co anh, mau nam trong file .mtl.",
+ "kit": {
+  "ft": {
+   "duong": "assets_source/fantasy-town-kit/Models/OBJ format"
+  },
+  "td": {
+   "duong": "assets_source/tower-defense-kit/Models/OBJ format"
+  },
+  "na": {
+   "duong": "assets_source/nature-kit/Models/OBJ format",
+   "anh": false
+  },
+  "ca": {
+   "duong": "assets_source/castle-kit/Models/OBJ format"
+  },
+  "cb": {
+   "duong": "assets_source/castle-kit/Models/OBJ format",
+   "anh": "../Textures/variation-c.png"
+  },
+  "kk": {
+   "duong": "assets_source/kaykit-medieval-builder-pack/Models/objects/obj",
+   "anh": false,
+   "gamma": true
+  }
+ },
+ "sprite": {
+  "o_co": [
+   {
+    "m": "td:tile"
+   }
+  ],
+  "o_dat": [
+   {
+    "m": "td:tile-dirt"
+   }
+  ],
+  "o_da": [
+   {
+    "m": "td:tile-rock"
+   }
+  ],
+  "o_doi": [
+   {
+    "m": "td:tile-hill"
+   }
+  ],
+  "o_doc": [
+   {
+    "m": "td:tile-slope"
+   }
+  ],
+  "o_duong": [
+   {
+    "m": "td:tile-straight"
+   }
+  ],
+  "o_duong_cong": [
+   {
+    "m": "td:tile-corner-round"
+   }
+  ],
+  "o_duong_nga_tu": [
+   {
+    "m": "td:tile-crossing"
+   }
+  ],
+  "o_duong_re": [
+   {
+    "m": "td:tile-split"
+   }
+  ],
+  "o_duong_cut": [
+   {
+    "m": "td:tile-end-round"
+   }
+  ],
+  "o_song": [
+   {
+    "m": "td:tile-river-straight"
+   }
+  ],
+  "o_song_cong": [
+   {
+    "m": "td:tile-river-corner"
+   }
+  ],
+  "o_song_re": [
+   {
+    "m": "td:tile-river-transition"
+   }
+  ],
+  "o_cau": [
+   {
+    "m": "td:tile-river-bridge"
+   }
+  ],
+  "o_thac": [
+   {
+    "m": "td:tile-river-waterfall"
+   }
+  ],
+  "o_cay": [
+   {
+    "m": "td:tile-tree"
+   }
+  ],
+  "o_cay_doi": [
+   {
+    "m": "td:tile-tree-double"
+   }
+  ],
+  "o_cay_bon": [
+   {
+    "m": "td:tile-tree-quad"
+   }
+  ],
+  "cay_thong": [
+   {
+    "m": "na:tree_pineTallA_detailed",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_thong_tron": [
+   {
+    "m": "na:tree_pineRoundC",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_thong_nho": [
+   {
+    "m": "na:tree_pineSmallB",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_non": [
+   {
+    "m": "na:tree_cone",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_soi": [
+   {
+    "m": "na:tree_oak",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_thuong": [
+   {
+    "m": "na:tree_default",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_ram": [
+   {
+    "m": "na:tree_detailed",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_beo": [
+   {
+    "m": "na:tree_fat",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_khoi": [
+   {
+    "m": "na:tree_blocks",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_soi_thu": [
+   {
+    "m": "na:tree_oak_fall",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_thuong_thu": [
+   {
+    "m": "na:tree_default_fall",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_ram_thu": [
+   {
+    "m": "na:tree_detailed_fall",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_non_thu": [
+   {
+    "m": "na:tree_cone_fall",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_soi_sam": [
+   {
+    "m": "na:tree_oak_dark",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cay_thuong_sam": [
+   {
+    "m": "na:tree_default_dark",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "goc_cay": [
+   {
+    "m": "na:stump_round",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "goc_cay_vuong": [
+   {
+    "m": "na:stump_squareDetailed",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "khuc_go": [
+   {
+    "m": "na:log",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "dong_go": [
+   {
+    "m": "na:log_stack",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "bui_nho": [
+   {
+    "m": "na:plant_bushSmall",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "bui_lon": [
+   {
+    "m": "na:plant_bushLarge",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "bui_ram": [
+   {
+    "m": "na:plant_bushDetailed",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "co_dam": [
+   {
+    "m": "na:grass_large",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "co_la": [
+   {
+    "m": "na:grass_leafsLarge",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "hoa_do": [
+   {
+    "m": "na:flower_redB",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "hoa_vang": [
+   {
+    "m": "na:flower_yellowB",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "hoa_tim": [
+   {
+    "m": "na:flower_purpleB",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "nam_do": [
+   {
+    "m": "na:mushroom_redGroup",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "nam_nau": [
+   {
+    "m": "na:mushroom_tanGroup",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "da_lon": [
+   {
+    "m": "na:rock_largeA",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "da_lon_b": [
+   {
+    "m": "na:rock_largeD",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "da_cao": [
+   {
+    "m": "na:rock_tallC",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "da_nho": [
+   {
+    "m": "na:rock_smallA",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "da_bet": [
+   {
+    "m": "na:rock_smallFlatB",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "vach_da": [
+   {
+    "m": "na:cliff_block_rock",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "vach_da_doc": [
+   {
+    "m": "na:cliff_blockSlope_rock",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "vach_da_thac": [
+   {
+    "m": "na:cliff_waterfall_rock",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "luong_dat": [
+   {
+    "m": "na:crops_dirtRow",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "luong_dat_goc": [
+   {
+    "m": "na:crops_dirtRowCorner",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "lua_non": [
+   {
+    "m": "na:crops_wheatStageA",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "lua_chin": [
+   {
+    "m": "na:crops_wheatStageB",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "ngo_non": [
+   {
+    "m": "na:crops_cornStageB",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "ngo_chin": [
+   {
+    "m": "na:crops_cornStageD",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "bi_ngo": [
+   {
+    "m": "na:crop_pumpkin",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "ca_rot": [
+   {
+    "m": "na:crop_carrot",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "dua": [
+   {
+    "m": "na:crop_melon",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "tre": [
+   {
+    "m": "na:crops_bambooStageB",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "nha_ngoi_do": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-window-small",
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 1,
+    "mau": [
+     0.72,
+     0.26,
+     0.2
+    ],
+    "thay_mau": true
+   }
+  ],
+  "nha_ngoi_lam": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-window-small",
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 1,
+    "mau": [
+     0.29,
+     0.42,
+     0.6
+    ],
+    "thay_mau": true
+   }
+  ],
+  "nha_ngoi_nau": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-window-small",
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 1,
+    "mau": [
+     0.55,
+     0.38,
+     0.24
+    ],
+    "thay_mau": true
+   }
+  ],
+  "nha_ngoi_xam": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-window-small",
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 1,
+    "mau": [
+     0.42,
+     0.45,
+     0.5
+    ],
+    "thay_mau": true
+   }
+  ],
+  "nha_go": [
+   {
+    "m": "ft:wall-wood-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-wood-window-shutters",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall-wood",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-wood-window-small",
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 1,
+    "mau": [
+     0.55,
+     0.38,
+     0.24
+    ],
+    "thay_mau": true
+   }
+  ],
+  "nha_hai_tang": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall",
+    "ry": 270
+   },
+   {
+    "m": "ft:wall-wood-window-shutters",
+    "y": 1,
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-wood-window-shutters",
+    "y": 1,
+    "ry": 90
+   },
+   {
+    "m": "ft:wall-wood",
+    "y": 1,
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-wood-window-small",
+    "y": 1,
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 2,
+    "mau": [
+     0.72,
+     0.26,
+     0.2
+    ],
+    "thay_mau": true
+   },
+   {
+    "m": "ft:chimney",
+    "y": 1,
+    "x": -0.3,
+    "z": 0.3
+   }
+  ],
+  "nha_hai_tang_lam": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall",
+    "ry": 270
+   },
+   {
+    "m": "ft:wall-wood-window-shutters",
+    "y": 1,
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-wood-window-shutters",
+    "y": 1,
+    "ry": 90
+   },
+   {
+    "m": "ft:wall-wood",
+    "y": 1,
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-wood-window-small",
+    "y": 1,
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 2,
+    "mau": [
+     0.29,
+     0.42,
+     0.6
+    ],
+    "thay_mau": true
+   },
+   {
+    "m": "ft:chimney",
+    "y": 1,
+    "x": -0.3,
+    "z": 0.3
+   }
+  ],
+  "nha_dai": [
+   {
+    "m": "ft:wall-door",
+    "ry": 0,
+    "x": 1
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 90,
+    "x": 1
+   },
+   {
+    "m": "ft:wall-window-small",
+    "ry": 270,
+    "x": 1
+   },
+   {
+    "m": "ft:wall",
+    "ry": 90,
+    "x": 0
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180,
+    "x": 0
+   },
+   {
+    "m": "ft:wall-window-glass",
+    "ry": 270,
+    "x": 0
+   },
+   {
+    "m": "ft:roof-gable",
+    "y": 1,
+    "x": 0,
+    "ry": 90,
+    "mau": [
+     0.72,
+     0.26,
+     0.2
+    ],
+    "thay_mau": true
+   },
+   {
+    "m": "ft:roof-gable-end",
+    "y": 1,
+    "x": 1,
+    "ry": 90,
+    "mau": [
+     0.72,
+     0.26,
+     0.2
+    ],
+    "thay_mau": true
+   }
+  ],
+  "coi_xay_gio": [
+   {
+    "m": "ft:wall",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-door",
+    "ry": 270
+   },
+   {
+    "m": "ft:wall",
+    "y": 1,
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-window-small",
+    "y": 1,
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "y": 1,
+    "ry": 180
+   },
+   {
+    "m": "ft:wall-window-small",
+    "y": 1,
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 2,
+    "mau": [
+     0.55,
+     0.38,
+     0.24
+    ],
+    "thay_mau": true
+   },
+   {
+    "m": "ft:windmill",
+    "y": 1.6,
+    "x": -0.6,
+    "ry": 270
+   }
+  ],
+  "coi_xay_nuoc": [
+   {
+    "m": "ft:wall",
+    "ry": 0
+   },
+   {
+    "m": "ft:wall-door",
+    "ry": 90
+   },
+   {
+    "m": "ft:wall",
+    "ry": 180
+   },
+   {
+    "m": "ft:wall",
+    "ry": 270
+   },
+   {
+    "m": "ft:roof-point",
+    "y": 1,
+    "mau": [
+     0.55,
+     0.38,
+     0.24
+    ],
+    "thay_mau": true
+   },
+   {
+    "m": "ft:watermill",
+    "y": 0.6,
+    "x": -0.7,
+    "ry": 270
+   }
+  ],
+  "gieng": [
+   {
+    "m": "ft:fountain-round"
+   }
+  ],
+  "be_nuoc": [
+   {
+    "m": "ft:fountain-square"
+   }
+  ],
+  "quay_hang": [
+   {
+    "m": "ft:stall"
+   }
+  ],
+  "quay_hang_do": [
+   {
+    "m": "ft:stall-red"
+   }
+  ],
+  "quay_hang_xanh": [
+   {
+    "m": "ft:stall-green"
+   }
+  ],
+  "ghe_bang": [
+   {
+    "m": "ft:stall-bench"
+   }
+  ],
+  "xe_keo": [
+   {
+    "m": "ft:cart"
+   }
+  ],
+  "xe_thung": [
+   {
+    "m": "ft:cart-high"
+   }
+  ],
+  "den_duong": [
+   {
+    "m": "ft:lantern"
+   }
+  ],
+  "hang_rao": [
+   {
+    "m": "ft:fence"
+   }
+  ],
+  "cong_rao": [
+   {
+    "m": "ft:fence-gate"
+   }
+  ],
+  "bui_xen": [
+   {
+    "m": "ft:hedge"
+   }
+  ],
+  "co_do": [
+   {
+    "m": "ft:banner-red"
+   }
+  ],
+  "co_xanh": [
+   {
+    "m": "ft:banner-green"
+   }
+  ],
+  "lu_lon": [
+   {
+    "m": "na:pot_large",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "lu_nho": [
+   {
+    "m": "na:pot_small",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "bien_bao": [
+   {
+    "m": "na:sign",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "lua_trai": [
+   {
+    "m": "na:campfire_logs",
+    "mau_vl": {
+     "woodInner": [
+      1.0,
+      0.8,
+      0.42
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ],
+     "leafsFall": [
+      1.0,
+      0.95,
+      0.8
+     ]
+    }
+   }
+  ],
+  "leu_nho": [
+   {
+    "m": "na:tent_smallOpen",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "leu_lon": [
+   {
+    "m": "na:tent_detailedOpen",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "hang_rao_go": [
+   {
+    "m": "na:fence_planks",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "tuong_da": [
+   {
+    "m": "na:statue_block",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "cot_da": [
+   {
+    "m": "na:statue_column",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "bia_da": [
+   {
+    "m": "na:statue_obelisk",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "duong_da": [
+   {
+    "m": "na:path_stone",
+    "mau_vl": {
+     "leafsGreen": [
+      1.45,
+      1.0,
+      0.58
+     ],
+     "leafsDark": [
+      1.35,
+      1.0,
+      0.62
+     ],
+     "grass": [
+      1.3,
+      1.0,
+      0.7
+     ]
+    }
+   }
+  ],
+  "thap_vuong": [
+   {
+    "m": "ca:tower-square-base"
+   },
+   {
+    "m": "ca:tower-square-mid",
+    "y": 1
+   },
+   {
+    "m": "ca:tower-square-top-roof",
+    "y": 2
+   }
+  ],
+  "thap_vuong_cao": [
+   {
+    "m": "ca:tower-square-base"
+   },
+   {
+    "m": "ca:tower-square-mid",
+    "y": 1
+   },
+   {
+    "m": "ca:tower-square-mid-windows",
+    "y": 2
+   },
+   {
+    "m": "ca:tower-square-top-roof-high",
+    "y": 3
+   }
+  ],
+  "thap_luc_giac": [
+   {
+    "m": "ca:tower-hexagon-base"
+   },
+   {
+    "m": "ca:tower-hexagon-mid",
+    "y": 1.31
+   },
+   {
+    "m": "ca:tower-hexagon-roof",
+    "y": 1.77
+   }
+  ],
+  "tuong_thanh": [
+   {
+    "m": "ca:wall"
+   }
+  ],
+  "tuong_thanh_goc": [
+   {
+    "m": "ca:wall-corner"
+   }
+  ],
+  "tuong_thanh_cua": [
+   {
+    "m": "ca:wall-doorway"
+   }
+  ],
+  "tuong_hep": [
+   {
+    "m": "ca:wall-narrow"
+   }
+  ],
+  "cong_thanh": [
+   {
+    "m": "ca:wall-doorway"
+   },
+   {
+    "m": "ca:gate",
+    "x": 0.02
+   },
+   {
+    "m": "ca:tower-square-base",
+    "z": -1
+   },
+   {
+    "m": "ca:tower-square-mid",
+    "z": -1,
+    "y": 1.01
+   },
+   {
+    "m": "ca:tower-square-top-roof",
+    "z": -1,
+    "y": 2.02
+   },
+   {
+    "m": "ca:tower-square-base",
+    "z": 1
+   },
+   {
+    "m": "ca:tower-square-mid",
+    "z": 1,
+    "y": 1.01
+   },
+   {
+    "m": "ca:tower-square-top-roof",
+    "z": 1,
+    "y": 2.02
+   }
+  ],
+  "cau_treo": [
+   {
+    "m": "ca:bridge-draw"
+   }
+  ],
+  "cau_da": [
+   {
+    "m": "ca:bridge-straight"
+   }
+  ],
+  "bac_thang": [
+   {
+    "m": "ca:stairs-stone"
+   }
+  ],
+  "co_thanh": [
+   {
+    "m": "ca:flag-banner-long"
+   }
+  ],
+  "may_ban_da": [
+   {
+    "m": "ca:siege-catapult"
+   }
+  ],
+  "may_nem_da": [
+   {
+    "m": "ca:siege-trebuchet"
+   }
+  ],
+  "no_lon": [
+   {
+    "m": "ca:siege-ballista"
+   }
+  ],
+  "thap_cong_thanh": [
+   {
+    "m": "ca:siege-tower"
+   }
+  ],
+  "bua_pha_cong": [
+   {
+    "m": "ca:siege-ram"
+   }
+  ],
+  "may_ban_da_hong": [
+   {
+    "m": "ca:siege-catapult-demolished"
+   }
+  ],
+  "nha_lon": [
+   {
+    "m": "kk:house",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cho": [
+   {
+    "m": "kk:market",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "trai_linh": [
+   {
+    "m": "kk:barracks",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "truong_ban": [
+   {
+    "m": "kk:archeryrange",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "xuong_go": [
+   {
+    "m": "kk:lumbermill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "mo_da": [
+   {
+    "m": "kk:mine",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "lau_dai": [
+   {
+    "m": "kk:castle",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "thap_gac": [
+   {
+    "m": "kk:watchtower",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "gieng_lang": [
+   {
+    "m": "kk:well",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "coi_xay_lon": [
+   {
+    "m": "kk:mill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   },
+   {
+    "m": "kk:mill_blades",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "coi_xay_nuoc_lon": [
+   {
+    "m": "kk:watermill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   },
+   {
+    "m": "kk:watermill_wheel",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "ruong_lua_lon": [
+   {
+    "m": "kk:farm_plot",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   },
+   {
+    "m": "kk:farm_wheat",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "rung_cay": [
+   {
+    "m": "kk:forest",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "nui_da": [
+   {
+    "m": "kk:mountain",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "doi_co": [
+   {
+    "m": "kk:detail_hill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cau_go": [
+   {
+    "m": "kk:bridge",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cau_mai": [
+   {
+    "m": "kk:bridge_roofed",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "tuong_lang": [
+   {
+    "m": "kk:wall_straight",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "tuong_lang_goc": [
+   {
+    "m": "kk:wall_corner",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cong_lang": [
+   {
+    "m": "kk:wall_gate",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cong_lang_dong": [
+   {
+    "m": "kk:wall_gate_closed",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cay_lonA": [
+   {
+    "m": "kk:detail_treeA",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cay_lonB": [
+   {
+    "m": "kk:detail_treeB",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cay_lonC": [
+   {
+    "m": "kk:detail_treeC",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "lum_cayA": [
+   {
+    "m": "kk:detail_forestA",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "lum_cayB": [
+   {
+    "m": "kk:detail_forestB",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "da_tang": [
+   {
+    "m": "kk:detail_rocks",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "thap_vuong_dich": [
+   {
+    "m": "cb:tower-square-base"
+   },
+   {
+    "m": "cb:tower-square-mid-windows",
+    "y": 1.01
+   },
+   {
+    "m": "cb:tower-square-top-roof",
+    "y": 2.02
+   }
+  ],
+  "tuong_thanh_dich": [
+   {
+    "m": "cb:wall"
+   }
+  ]
+ }
+}

@@ -77,18 +77,90 @@ họ dựng model 3D rồi chụp từ góc chéo cố định. Ta làm y hệt 
 
 1. Mở Chromium sẵn có (`/opt/pw-browsers/chromium`) qua `tools/lib/cdp.mjs` —
    **chép từ Tây Vực, không cần thư viện nào**
-2. Trang tạm dựng model bằng three.js, camera **trực giao**, góc chéo cố định
-3. Chụp mỗi model ở **8 hướng xoay** × N khung chuyển động
-4. Cắt nền trong suốt, xếp vào atlas, xuất PNG + `.json` toạ độ
-5. In bảng: model nào, bao nhiêu khung, atlas chiếm bao nhiêu phần trăm
+2. Trang tạm dựng model bằng **WebGL tự viết** (`tools/lib/trang_nuong.js`), camera
+   **trực giao**, góc chéo cố định. **Không three.js** — chốt 06/09, xem dưới
+3. Chụp mỗi model ở góc cố định (lính 8 hướng × N khung là việc của Phase 10)
+4. Xếp vào atlas theo kệ (`tools/lib/xep.mjs`), xuất PNG + `.json` toạ độ
+5. In bảng: bao nhiêu sprite, mỗi atlas lấp bao nhiêu phần trăm, tốn bao nhiêu bộ nhớ GPU
 
-Chạy **một lần lúc chuẩn bị asset**, không chạy lúc chơi.
+### Vì sao không dùng three.js — chốt 06/09
+
+Model Kenney chỉ có **một** material trỏ tới **một** ảnh `Textures/colormap.png`, file OBJ
+chỉ có `v` `vt` `vn` `f` `usemtl`. Đọc và vẽ bằng tay hết chưa tới 300 dòng, giữ đúng luật
+"thư viện đồ hoạ ngoài = 0" ở mục 2, và đúng tiền lệ `tools/lib/cdp.mjs` (tự viết thay
+Playwright). Đánh đổi: OBJ **không mang chuyển động** — nướng lính có xương ở Phase 10 thì
+xin cài three.js lúc đó, không xin trước.
+
+### Số thật của mẻ trung cổ — đo 06/09
+
+**147 sprite**, nướng từ bốn gói CC0 của Kenney và một gói của KayKit. Công thức ghép ở `tools/me/trung_co.json`.
+
+| Gói | Dùng vào | Ghi chú |
+|---|---|---|
+| Fantasy Town Kit 2.0 | Nhà ở, chợ, giếng, cối xay | **Bộ lắp ghép** — tường, mái là mảnh rời, không có sẵn cái nhà nào |
+| Tower Defense Kit | Ô nền, đường, sông, cầu | Ô nền có bề dày, đọc hình tốt ở góc chéo |
+| Castle Kit | Tháp, tường thành, cổng, **máy công thành** | Có 7 bảng màu `variation-*.png` → cùng model, khác màu, dùng cho nước khác |
+| Nature Kit | Cây, hoa, đá, vách, **ruộng đồng**, lều, tượng | Không có ảnh, màu nằm thẳng trong `.mtl` |
+| KayKit Medieval Builder | **Công trình nguyên khối 2×2**: lâu đài, chợ, trại lính, trường bắn, xưởng gỗ, mỏ, cối xay | Ô lưới của KayKit rộng **2 đơn vị**, Kenney rộng 1 → phải `ti_le` |
+
+Ba nước cờ để **không đơn điệu**, đều không phải nướng thêm model:
+
+1. **Màu nhân và sơn đè theo mảnh** (`mau`, `thay_mau` trong mẻ). Bốn màu mái ngói từ
+   cùng một mảnh `roof-point`. Màu nhân không kéo được xanh sang đỏ, nên mái dùng
+   `thay_mau` — bỏ hoạ tiết, sơn một màu phẳng.
+2. **Màu nhân theo tên material** (`mau_vl`). Lá của Nature Kit là xanh ngọc, lệch hẳn
+   với ba gói kia; kéo riêng `leafsGreen`/`grass` về xanh lá mà **không** đụng `woodBark`,
+   nếu không thân cây đỏ quạch theo.
+3. **Đổi bảng màu cả gói**: khai thêm một kit trỏ cùng thư mục nhưng khác `anh`.
+   `thap_vuong` và `thap_vuong_dich` là cùng model, khác bảng màu.
+
+Hai cái bẫy khi trộn gói của hai tác giả, đã sập rồi mới biết:
+
+- **Thước đo khác nhau.** Ô lưới Kenney rộng 1 đơn vị, KayKit rộng 2. Không có `ti_le`
+  thì nhà KayKit to gấp đôi cả thành phố.
+- **Không gian màu khác nhau.** KayKit xuất từ Blender nên `Kd` là màu **tuyến tính**;
+  Kenney ghi màu sRGB. Để nguyên thì đá xám của KayKit ra xanh đen như than. Kit khai
+  `"gamma": true` thì bộ đọc đổi `Kd` sang sRGB bằng `v ** (1/2.2)`.
+
+Đèn: đèn chính ấm chéo trên-trái + đèn nền nửa cầu (mặt ngửa ăn sáng trời lạnh, mặt cúi
+ăn sáng đất ấm) + viền lạnh mỏng ở rìa, rồi kéo bão hoà lên 1,30. Đèn nền phải để **tối**;
+sáng quá thì mọi thứ bạc ra xám xịt như nhau.
+
+Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối cảnh 2:1):
+
+- **Bóng đổ nướng sẵn** — một hình elip mềm trên mặt đất, lệch theo hướng đèn, to dần
+  theo chiều cao vật. Không dùng hình chiếu thật của model: các tam giác chiếu xuống đè
+  nhau, chỗ đè ra đậm hơn, thành vệt loang lổ.
+- **Tối chân** — càng gần mặt đất càng tối (`0.62 + 0.38 * smoothstep(0, 0.55, y)`).
+  Thiếu cái này thì khối nhìn như dán lên nền chứ không đứng trên đất.
+- **Nâng tông** — vùng sáng ngả ấm, vùng tối ngả lạnh. Cùng một màu mà tách hai đầu ra
+  thì hình khối nổi hẳn, không cần thêm đa giác nào.
+
+### Luật vẽ cho Phase 2: nền vẽ hết trước, vật vẽ sau
+
+Bóng nướng trong sprite thò ra khỏi ô của nó. Nếu trộn hai lớp lại rồi sắp theo độ sâu
+`x + z`, ô nền phía sau sẽ **đè lên bóng** của nhà phía trước và bóng biến mất.
+Nên `CityScene` phải vẽ **toàn bộ lớp nền trước**, rồi mới tới lớp vật thể.
+Đã sập đúng bẫy này khi dựng `tools/xem_canh.mjs`.
+
+| | 1× | 2× |
+|---|---:|---:|
+| Trang atlas 2048² | 1 | 2 |
+| Lấp đầy | 29,7% | 82,8% + 32,9% |
+
+Tổng 3 trang / trần 4. Bóng đổ nới hộp bao của từng sprite nên ăn thêm chỗ; muốn hạ
+xuống thì cắt sát theo kênh alpha thay vì theo hộp bao hình học — chưa làm.
+
+Tổng 2 trang / trần 4. Còn chỗ cho các mẻ sau.
 
 ### Góc camera
 
 Isometric chuẩn 2:1 — ô nền `64×32` px ở cỡ 1×. Camera trực giao, xoay 45° quanh trục
-đứng, nghiêng 30° (`atan(0.5)` ≈ 26,57° cho 2:1 chính xác; dùng 30° cho dễ nhìn, chốt
-bằng mắt ở Phase 1).
+đứng, nghiêng **30°**.
+
+Sửa lại chỗ ghi nhầm (06/09): bản đầu ghi "`atan(0.5)` ≈ 26,57° cho 2:1 chính xác". Sai.
+Chiều cao chiếu xuống = chiều ngang × `sin(nghiêng)`, nên 2:1 cần `sin = 0,5` → **đúng 30°**.
+Đo lại trên atlas đã nướng: ô nền ra `64×32` px, khớp.
 
 ### Cỡ sprite
 
