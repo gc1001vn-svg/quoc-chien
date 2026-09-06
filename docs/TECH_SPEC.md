@@ -228,9 +228,26 @@ Canvas 2D cho lớp sprite**.
 `render/Gl.ts` (~300 dòng):
 
 - Một buffer đỉnh động, mỗi sprite là 2 tam giác
-- Gom toàn bộ sprite cùng atlas → **một lệnh `drawArrays`**
+- **Nạp mọi trang của atlas lên GPU cùng lúc**, mỗi đỉnh mang thêm số hiệu trang
+  (`a_trang`), shader chọn ảnh theo số đó → **một lệnh `drawArrays` cho cả một lớp vẽ,
+  dù atlas có mấy trang**
 - Sắp xếp theo trục sâu isometric (`y + x`) trước khi nạp buffer
 - Không depth buffer, dùng thứ tự vẽ (painter's algorithm)
+
+**Sửa 06/09 sau khi gắn atlas thật vào (Phase 2).** Bản đầu ghi "gom toàn bộ sprite
+**cùng atlas** → một lệnh `drawArrays`", ngầm hiểu một atlas là một tấm ảnh. Không đúng:
+mẻ trung cổ cỡ 2× cần **hai** trang 2048², và lớp vật thể trải cả hai. Thứ tự vẽ phải
+theo trục sâu, không được xếp lại theo trang, nên xả lô mỗi lần đổi trang là hàng chục
+lệnh vẽ — vỡ trần 4 ở mục 2.
+
+Cách gỡ: `src/render/Shader.ts` **sinh** mã shader đúng bằng số trang thật của atlas, trải
+thành chuỗi `if` (GLSL ES 1.0 cấm tra mảng sampler bằng chỉ số thay đổi được). Một trang
+thì mã sinh ra y hệt bản một texture cũ, không tốn thêm gì. Nhiều trang thì mỗi điểm ảnh
+có thể phải đọc nhiều ảnh — đó là cái giá, đo trên iPhone mới biết đắt hay rẻ. Rớt fps thì
+lùi về bộ 1× (một trang), sửa đúng một dòng trong `Atlas.ts`.
+
+Số đo Phase 2 trong máy ảo: cả thành phố — nền và vật thể — vẽ hết trong **1 lệnh vẽ**,
+vì hai lớp gom chung một lô 4.096 sprite và không còn gì bắt phải cắt lô giữa chừng.
 
 Phương án lùi nếu trang đo Phase 0 cho thấy không đạt: **PixiJS** (MIT).
 Theo luật, phải **hỏi chủ dự án trước khi cài**, không tự quyết.
