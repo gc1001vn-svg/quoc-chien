@@ -7,23 +7,28 @@ Cập nhật: 06/09/2026.
 
 ## 1. Đang ở đâu
 
-**Phase 2 — XONG phần máy ảo kiểm được. Chờ anh đo fps trên iPhone.**
+**Phase 2 XONG và đã gộp vào `main`** — thành phố isometric chạy trên
+https://gc1001vn-svg.github.io/quoc-chien/ , đó là thứ đang có trên iPhone chủ dự án.
 
-Atlas thật đã gắn vào game. Mở trang là thấy **thành phố isometric**: bản đồ 64×64 ô,
-314 công trình, đường kẻ ô bàn cờ, nhà bám hai bên đường. Kéo một ngón để đi, chụm hai
-ngón để thu phóng. Nhãn fps góc trái, bốn nút tắt lớp góc phải.
+**Phase 2B — đổi hẳn đồ hoạ sang Quaternius. Đang làm dở, chưa vào game.**
+Mẻ mới `tools/me/trung_co_2.json` có **22 sprite**: 6 ô nền (mặt phẳng liền, cỏ đồng
+màu), 5 công trình (nhà lớn vữa/gạch, nhà dài, tháp canh, nhà nhỏ), 11 cây cối và đá.
+Nhìn đẹp hơn hẳn mẻ Kenney — mái ngói thấy từng viên, tường đá có vân, hồi khung gỗ.
 
-File mới: `src/render/Shader.ts` · `Atlas.ts` · `IsoMath.ts` · `Camera.ts` ·
-`BanDoDemo.ts` · `CityScene.ts` · `src/core/Rng.ts` · `data/thanh_pho_demo.json`.
-`src/render/Gl.ts` mở rộng sang đa trang. `src/bench/AtlasTam.ts` **đã xoá** —
-trang đo `?do=sprite` giờ dùng atlas thật.
+Máy nướng đã đổi sang **ảnh theo từng đỉnh** (`e57a97d`), thêm mảnh `phang` để tự sinh
+ô nền, thêm `tools/tai_hoa_tiet.mjs` tải hoạ tiết CC0 của Poly Haven.
+
+Chi tiết cả phiên: `docs/NHAT_KY/PHASE_2B.md`.
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 41 test · build ·
+`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 49 test · build ·
 check:base · check:credits).
 
-Đo trong máy ảo, màn 874×402 @2×:
+Mẻ mới `trung_co_2`: 22 sprite, **1 trang atlas** mỗi cỡ, 16,8 MB GPU (trần 4 trang
+≈ 67 MB). Còn rất nhiều chỗ cho phần công trình còn thiếu.
+
+Số của game **đang chạy** (mẻ Kenney cũ, không đổi trong phiên này):
 
 | Mức thu phóng | Sprite mỗi khung | Lệnh vẽ | Trần |
 |---|---:|---:|---|
@@ -31,26 +36,22 @@ check:base · check:credits).
 | 1,00× | 469 | 1 | |
 | 0,60× (nhỏ nhất) | 1.186 | 1 | |
 
-`tests/NganSachSprite.test.ts` quét khắp bản đồ tìm chỗ đông nhất ở mức 0,60×:
-**1.196 sprite**. Đó là lý do `zoomMin` chốt ở 0,6, không phải chọn cho đẹp.
-
-Bộ nhớ GPU: 2 trang 2048² ≈ 33,5 MB (trần 4 trang ≈ 67 MB).
-
-**fps: chưa có số thật.** Máy ảo vẽ bằng phần mềm nên luôn 12 fps, vô nghĩa.
-Số 18.089 sprite của Phase 0 **bỏ đi** — nó đo bằng atlas giả 256×256.
+**fps trên iPhone: 18.089 sprite ở trang `?do=sprite`** — nhưng đó là **bậc áp chót của
+dãy đo**, bậc sau là 24.000 = đúng sức chứa bộ đệm. Con số **chạm trần công cụ đo, không
+phải trần máy**. Trần dự án 1.500, chỗ đông nhất thật 1.186 → **dư hơn 15 lần**.
+Đã chốt **ship cỡ 2×**, bỏ phương án lùi 1×.
 
 ## 3. Việc của chủ dự án
 
-1. **Xem ba ảnh thành phố** đã gửi trong phiên. Ưng chưa? Không ưng thì nói **ĐỔI …**
-   (đổi bố cục đường, thêm/bớt loại nhà, đổi mật độ, đổi màu ô nền) — toàn đổi rẻ,
-   chỉ sửa `data/thanh_pho_demo.json`.
-2. **Mở PWA trên iPhone và nhắn về 4 con số** — đây là việc quan trọng nhất của phase này:
-   - Mở https://gc1001vn-svg.github.io/quoc-chien/ , bấm nút **Chia sẻ** → **Thêm vào MH chính**
-   - Mở từ màn hình chính, xoay ngang, chờ 5 giây rồi đọc nhãn góc trái: **fps** và **ms**
-   - Chụm hai ngón thu nhỏ hết cỡ, chờ 5 giây, đọc lại **fps** lúc đó
-   - Bấm nút **Nền** để tắt lớp nền, đọc **fps** lần nữa
-   Nhắn 4 số đó về. Nếu ở mức thu nhỏ nhất mà **dưới 50 fps** thì phải lùi về atlas 1×.
-3. Duyệt sang **Phase 3** nếu ưng.
+1. **Duyệt tiếp Phase 2B** — phiên sau làm: nhà nhiều màu mái và kiểu tường (giờ 5 nhà
+   đều mái đỏ tường xám), bịt trần nhà nhỏ (đang nhìn xuyên vào thấy rỗng), thêm cối xay
+   / giếng / chợ / ruộng, và thử gói `Ultimate Modular Ruins` làm lâu đài với tường thành.
+2. **Quyết lúc nào ráp mẻ mới vào game.** Đổi vài hằng số `ME` trong
+   `src/render/CityScene.ts` và `src/bench/DoSprite.ts`, cộng `data/thanh_pho_demo.json`
+   đổi sang tên sprite mới. Nhưng cần sửa `docs/TECH_SPEC.md` mục 3 và
+   `docs/ASSET_CREDITS.md` — **hai file khoá, phải anh cho phép**.
+3. Ba việc còn treo ở mục 4 dưới: `CLAUDE.md` ghi nhầm Vercel · 9 dòng thừa trong
+   `.claude/settings.json` · công trình 2×2 ô cần khái niệm "chiếm nhiều ô" trong bản đồ.
 
 ## 4. Nợ kỹ thuật
 
@@ -80,8 +81,17 @@ Số 18.089 sprite của Phase 0 **bỏ đi** — nó đo bằng atlas giả 256
 - `src/render/BanDoDemo.ts` là bản đồ giả, Phase 3 thay bằng `src/sim/` thật.
 - **KayKit City Builder Bits** đã tải về `assets_source/` nhưng **chưa nướng** — đồ hiện
   đại (ô tô, nhà cao tầng, đèn giao thông), để dành Phase 8.
-- Mẻ trung cổ 147 sprite còn thiếu nhà thờ, quảng trường, kho. Thêm là sửa
-  `tools/me/trung_co.json` rồi `npm run nuong`.
+- **Mẻ Quaternius mới còn thiếu nhiều**: lâu đài, tường thành, cối xay, giếng, chợ,
+  ruộng đồng, cầu, vách núi. Mẻ Kenney cũ có 147 sprite, mẻ mới mới 22.
+- **Nhà Quaternius chiếm 2×2 ô** nhưng `data/thanh_pho_demo.json` đặt mỗi vật một ô.
+  Ráp vào game thì nhà sẽ chồng lên nhau — cần thêm khái niệm "công trình chiếm nhiều ô"
+  vào bản đồ. Đây là việc BẮT BUỘC trước khi ráp, không phải việc tinh chỉnh.
+- **Nhà nhỏ nhìn xuyên vào thấy rỗng** — chỉ có 4 mặt tường, không có trần.
+- **Năm nhà đều mái đỏ tường xám** — cần thêm màu mái và kiểu tường cho đỡ đơn điệu.
+- `assets_source/` **mất theo container** mỗi phiên (đúng luật, không lên git). Phiên sau
+  phải tải lại ~500 MB: `npm run tai:asset`, `npm run tai:itch`,
+  `node tools/tai_itch.mjs quaternius/medieval-village-megakit quaternius/stylized-nature-megakit`,
+  `node tools/tai_hoa_tiet.mjs sparse_grass leafy_grass brown_mud_dry cobblestone_01 dry_river_pebbles coast_sand_01 aerial_rocks_02 clay_plaster clay_roof_tiles_02`.
 - Chưa tìm được kho **gigalomania** (SourceForge, `api.github.com/search` bị khoá theo
   phiên). Game đáng đọc nhất về một ván đi suốt nhiều thời kỳ — tìm lại phiên sau.
 - `src/sim/` còn rỗng — Phase 3 mới có file đầu tiên.
@@ -97,12 +107,21 @@ Số 18.089 sprite của Phase 0 **bỏ đi** — nó đo bằng atlas giả 256
 
 ## 5. Phase kế tiếp
 
-**Phase 3 — thành phố sống bằng số, chưa vẽ**: `src/sim/city/` với `Wares.ts`,
+**Phase 2B tiếp — cho xong mẻ Quaternius.** Chủ dự án đã duyệt (`TIẾP`, 06/09):
+
+1. Nhà nhiều màu mái và kiểu tường; bịt trần nhà nhỏ.
+2. Thêm cối xay · giếng · chợ · quầy hàng · ruộng đồng · hàng rào.
+3. Tải thử `Ultimate Modular Ruins` (90 model, CC0, có texture) làm lâu đài và tường
+   thành. **Khác dòng MegaKit nên phải nhìn ảnh mới biết có khớp phong cách không** —
+   không khớp thì ghép tháp vuông từ mảnh tường của Medieval Village.
+4. Thêm khái niệm **công trình chiếm nhiều ô** vào `data/thanh_pho_demo.json` và
+   `src/render/BanDoDemo.ts` — bắt buộc, xem mục 4.
+5. Ráp vào game: đổi hằng `ME`, đổi tên sprite trong `data/`. Đụng hai file khoá.
+
+**Rồi mới tới Phase 3 — thành phố sống bằng số, chưa vẽ**: `src/sim/city/` với `Wares.ts`,
 `Buildings.ts`, `Chains.ts`, cộng `Clock.ts` nhịp 10 Hz. TypeScript thuần, ESLint đã dựng
-sẵn hàng rào cấm import trình duyệt.
-
-Xong Phase 3 thì `npm run sim:thu` chạy **10 giờ game trong Node** trong vài giây, in bảng
-tài nguyên. Điều kiện đạt: không có hàng âm, không chuỗi sản xuất nào kẹt vĩnh viễn.
-Chưa nhìn thấy gì mới trên màn hình — đó là chủ ý, Luật 1 của `TECH_SPEC` mục 1.
-
-Số cân bằng đi vào `data/`: `wares.json` · `buildings.json` · `chains.json`.
+sẵn hàng rào cấm import trình duyệt. Xong thì `npm run sim:thu` chạy **10 giờ game trong
+Node** trong vài giây, in bảng tài nguyên. Điều kiện đạt: không có hàng âm, không chuỗi
+sản xuất nào kẹt vĩnh viễn. Chưa nhìn thấy gì mới trên màn hình — chủ ý, Luật 1 của
+`TECH_SPEC` mục 1. Số cân bằng đi vào `data/`: `wares.json` · `buildings.json` ·
+`chains.json`.
