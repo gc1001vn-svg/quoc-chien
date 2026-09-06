@@ -99,7 +99,12 @@ bằng mắt ở Phase 1).
 | Nhà lớn | 256×256 | 512×512 |
 | Người / lính | 48×64 | 96×128 |
 
-Nướng cả hai cỡ. **Ship 1× mặc định**; 2× chỉ bật nếu trang đo Phase 0 cho phép.
+Nướng cả hai cỡ. **Ship cả 2×** — chốt 06/09 sau khi trang đo Phase 0 cho số thật trên
+iPhone: **18.089 sprite ở 60 fps**, dư 12 lần so với trần 1.500. Sprite 2× tốn gấp 4 lần
+diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn gấp 3 lần trần.
+
+Cảnh báo: số đó đo với atlas giả 256×256; atlas thật 2048×2048 nặng băng thông hơn nhiều.
+**Đo lại sau Phase 1.** Rớt dưới 1.500 ở cỡ 2× thì lùi về ship 1×.
 
 ### Ngân sách atlas cho lính
 

@@ -64,6 +64,6 @@ https://gc1001vn-svg.github.io/quoc-chien/?do=sprite
 **Phase 1 — nướng sprite**: `tools/nuong_sprite.mjs` biến model 3D CC0 thành atlas, nướng
 mẻ trung cổ trước (nhà cửa, cây cối, ô nền).
 
-Con số 18.089 mở khoá quyết định treo ở TECH_SPEC mục 3: **nướng và ship cả cỡ 2×**.
+Nướng và **ship cả cỡ 2×** — chốt 06/09, đã sửa vào `TECH_SPEC.md` mục 3.
 Sprite 2× tốn gấp 4 lần diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn gấp 3 lần trần 1.500.
-`TECH_SPEC.md` là file khoá, chưa sửa — cần chủ dự án đồng ý.
+Đo lại sau khi có atlas thật; rớt dưới 1.500 thì lùi về ship 1×.
