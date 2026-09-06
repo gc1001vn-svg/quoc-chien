@@ -20,19 +20,19 @@
   "sprite": {
     "o_co": [
       {
-        "phang": 1.015,
-        "texture": "assets_source/hoa_tiet/aerial_grass_rock.jpg",
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
         "lap": 1,
         "mau": [
-          0.88,
-          1.85,
-          0.95
+          0.78,
+          1.55,
+          0.86
         ]
       }
     ],
     "o_dat": [
       {
-        "phang": 1.015,
+        "phang": 1.05,
         "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
         "lap": 1,
         "mau": [
@@ -44,7 +44,7 @@
     ],
     "o_duong": [
       {
-        "phang": 1.015,
+        "phang": 1.05,
         "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
         "lap": 1,
         "mau": [
@@ -56,7 +56,7 @@
     ],
     "o_duong_lat": [
       {
-        "phang": 1.015,
+        "phang": 1.05,
         "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
         "lap": 1,
         "mau": [
@@ -68,7 +68,7 @@
     ],
     "o_cat": [
       {
-        "phang": 1.015,
+        "phang": 1.05,
         "texture": "assets_source/hoa_tiet/coast_sand_01.jpg",
         "lap": 1,
         "mau": [
@@ -80,7 +80,7 @@
     ],
     "o_da": [
       {
-        "phang": 1.015,
+        "phang": 1.05,
         "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg",
         "lap": 1,
         "mau": [
