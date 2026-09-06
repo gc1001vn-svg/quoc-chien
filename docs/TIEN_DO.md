@@ -25,11 +25,7 @@ phần mềm → **số sprite tối đa vẫn chưa biết**, phải đo trên 
 
 ## 3. Việc của chủ dự án
 
-Đường công khai (sau khi repo thành công khai, deploy tự chạy):
 https://gc1001vn-svg.github.io/quoc-chien/?do=sprite
-
-Bản đóng gói tạm trên claude.ai, dùng khi đường trên chưa lên:
-https://claude.ai/code/artifact/49ca6873-a5d2-4cf2-b0d3-1a4187933eb0
 
 Mở trang đo trên iPhone, đợi nó chạy xong (khoảng một phút), nhắn về **một con số**:
 số sprite tối đa còn giữ 60 fps. Con số đó chốt toàn bộ ngân sách đồ hoạ cho các phase sau.
@@ -52,6 +48,11 @@ Nếu số **trên 1.500**: đúng như trần đã đặt ở TECH_SPEC, đi ti
   được. Deploy giao cho máy CI của GitHub — nó có mạng đầy đủ và chỉ cần `GITHUB_TOKEN`
   sẵn có, không cần chìa khoá ngoài nào. `BASE` đổi thành `/quoc-chien/`.
 - Hệ quả: repo phải **công khai** (GitHub Pages cho repo riêng tư cần gói trả tiền).
+- Ba chốt chặn phải mở bằng tay, không tự động được (làm xong 06/09): repo công khai ·
+  `Settings > Pages > Source: GitHub Actions` (`GITHUB_TOKEN` không tạo được Pages site:
+  `Resource not accessible by integration`) · `Settings > Environments > github-pages >
+  Deployment branches` phải có `main` — luật này ghi cứng tên nhánh mặc định lúc bật Pages,
+  đổi nhánh mặc định KHÔNG viết lại nó, job `dua-len` chết trong 1 giây không chạy bước nào.
 - `vercel.json` giữ lại, chưa dùng. Muốn quay về Vercel thì sửa `BASE` về `'/'`, không
   đụng gì khác.
 - `CLAUDE.md` và `TECH_SPEC.md` vẫn ghi "deploy Vercel" — **chưa sửa**, cả hai là file
