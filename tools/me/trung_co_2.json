@@ -1,0 +1,384 @@
+{
+  "ghi_chu": "Me trung co ban 2 - Quaternius. De CANH me cu `trung_co.json`, khong xoa no: duong lui luon mo. Khac ban 1 o ba cho: (1) model Quaternius co toa do anh trai phang that nen KHONG dung hoa_tiet chieu ba phuong nua, (2) o nen TU SINH bang manh `phang` + hoa tiet Poly Haven vi Quaternius khong co o nen, (3) moi material lay anh rieng theo map_Kd.",
+  "kit": {
+    "qv": {
+      "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
+      "anh": "mtl",
+      "thu_muc_anh": "../Textures",
+      "gamma": true
+    },
+    "qn": {
+      "duong": "assets_source/stylized-nature-megakit/OBJ",
+      "anh": "mtl",
+      "thu_muc_anh": "../Textures",
+      "gamma": true
+    }
+  },
+  "sprite": {
+    "o_co": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/sparse_grass.jpg",
+        "lap": 1,
+        "mau": [
+          1.75,
+          1.75,
+          1.75
+        ]
+      }
+    ],
+    "o_co_ram": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          1.6,
+          1.6,
+          1.6
+        ]
+      }
+    ],
+    "o_dat": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ]
+      }
+    ],
+    "o_duong": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ]
+      }
+    ],
+    "o_duong_lat": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.55,
+          1.55,
+          1.55
+        ]
+      }
+    ],
+    "o_cat": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/coast_sand_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.55,
+          1.55,
+          1.55
+        ]
+      }
+    ],
+    "o_da": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ]
+      }
+    ],
+    "thu_a_khong_hoi": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": -0.5,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": -0.5,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.5,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.5,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Door_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": -0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": 0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": -0.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Thin_Round",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": 0.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -1.0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Roof_RoundTiles_4x4",
+        "ti_le": 0.5,
+        "y": 1.5
+      }
+    ],
+    "thu_b_hoi_thap": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": -0.5,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": -0.5,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.5,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.5,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Door_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": -0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": 0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": -0.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Thin_Round",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": 0.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -1.0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Roof_Front_Brick4",
+        "ti_le": 0.5,
+        "y": 1.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Roof_Front_Brick4",
+        "ti_le": 0.5,
+        "ry": 180,
+        "y": 1.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Roof_RoundTiles_4x4",
+        "ti_le": 0.5,
+        "y": 1.5
+      }
+    ],
+    "thu_c_mai_modul": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": -0.5,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": -0.5,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.5,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.5,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Door_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": -0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": 0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": -0.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Thin_Round",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": 0.5,
+        "z": -1.0
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -1.0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Roof_Modular_RoundTiles",
+        "ti_le": 0.5,
+        "y": 1.5
+      }
+    ],
+    "thu_d_chi_mai": [
+      {
+        "m": "qv:Roof_RoundTiles_4x4",
+        "ti_le": 0.5
+      }
+    ]
+  },
+  "_mau": "Manh `phang` nam ngang nen an it den chinh, lai bi 'toi chan' cua shader nhan 0.62. `mau` keo sang lai. Chinh tung o rieng vi hoa tiet moi anh mot do sang khac nhau."
+}

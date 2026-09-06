@@ -354,18 +354,21 @@ async function chay() {
       gl.clear(gl.DEPTH_BUFFER_BIT);
 
       // Bong truoc, vat sau. Bong khong ghi vao dem sau nen vat luon de len tren.
-      gl.useProgram(ctBong);
-      gl.enable(gl.BLEND);
-      gl.depthMask(false);
-      const elip = veElip(s.bong);
-      gl.bindBuffer(gl.ARRAY_BUFFER, demBong);
-      gl.bufferData(gl.ARRAY_BUFFER, elip, gl.STREAM_DRAW);
-      gl.enableVertexAttribArray(viTriBong.pos);
-      gl.vertexAttribPointer(viTriBong.pos, 3, gl.FLOAT, false, 16, 0);
-      gl.vertexAttribPointer(viTriBong.mo, 1, gl.FLOAT, false, 16, 12);
-      gl.uniformMatrix4fv(viTriBong.mvp, false, mt);
-      gl.uniform1f(viTriBong.dam, 0.46);
-      gl.drawArrays(gl.TRIANGLES, 0, elip.length / 4);
+      // `s.bong` null la o nen: khong ve bong. Mot o nen do bong xuong chinh no thi vo nghia.
+      if (s.bong !== null && s.bong !== undefined) {
+        gl.useProgram(ctBong);
+        gl.enable(gl.BLEND);
+        gl.depthMask(false);
+        const elip = veElip(s.bong);
+        gl.bindBuffer(gl.ARRAY_BUFFER, demBong);
+        gl.bufferData(gl.ARRAY_BUFFER, elip, gl.STREAM_DRAW);
+        gl.enableVertexAttribArray(viTriBong.pos);
+        gl.vertexAttribPointer(viTriBong.pos, 3, gl.FLOAT, false, 16, 0);
+        gl.vertexAttribPointer(viTriBong.mo, 1, gl.FLOAT, false, 16, 12);
+        gl.uniformMatrix4fv(viTriBong.mvp, false, mt);
+        gl.uniform1f(viTriBong.dam, 0.46);
+        gl.drawArrays(gl.TRIANGLES, 0, elip.length / 4);
+      }
       gl.disableVertexAttribArray(viTriBong.mo);
       gl.depthMask(true);
       gl.disable(gl.BLEND);

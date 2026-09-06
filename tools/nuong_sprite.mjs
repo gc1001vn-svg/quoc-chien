@@ -84,10 +84,46 @@ function taoSoAnh() {
   };
 }
 
+/**
+ * Sinh mot TAM PHANG nam ngang, dan mot anh len.
+ *
+ * VI SAO PHAI TU SINH: Quaternius khong co o nen co / dat / song. Ma lay o nen cua goi
+ * khac thi thuoc luoi lai lech - dung cai bay da sap voi KayKit o Phase 1 (o cua Kenney
+ * rong 1 don vi, cua KayKit rong 2, khong `ti_le` thi nha to gap doi ca thanh pho).
+ * Tu sinh thi o nen luon ra dung `64x32` diem anh chuan 2:1, khong phu thuoc ai.
+ *
+ * Khai trong me:  { "phang": 1, "texture": "assets_source/hoa_tiet/co.jpg", "lap": 2 }
+ *   `phang`   canh tam, tinh bang don vi o luoi
+ *   `texture` anh dan len; bo trong thi tam mang mau phang cua `mau`
+ *   `lap`     anh lap lai bao nhieu lan tren mot canh; 1 la vua khit
+ */
+function tamPhang(p, soAnh) {
+  const c = (p.phang ?? 1) / 2;
+  const y = p.y ?? 0;
+  const x0 = p.x ?? 0;
+  const z0 = p.z ?? 0;
+  const u = p.lap ?? 1;
+  const t = p.mau ?? [1, 1, 1];
+  const khe = p.texture === undefined ? 0 : soAnh.them(p.texture) + 1;
+  // Hai tam giac, phap tuyen huong thang len.
+  const dinh = [];
+  const them = (dx, dz, uu, vv) => {
+    dinh.push(x0 + dx, y, z0 + dz, uu, vv, 0, 1, 0, t[0], t[1], t[2], khe);
+  };
+  them(-c, -c, 0, 0); them(c, -c, u, 0); them(c, c, u, u);
+  them(-c, -c, 0, 0); them(c, c, u, u); them(-c, c, 0, u);
+  return dinh;
+}
+
 /** Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich. */
 function ghep(phan, kit, soAnh) {
   const ra = [];
   for (const p of phan) {
+    // Manh `phang`: khong doc file model nao ca, sinh thang mot tam vuong bang so.
+    if (p.phang !== undefined) {
+      ra.push(...tamPhang(p, soAnh));
+      continue;
+    }
     const [ma, ten] = p.m.split(':');
     const k = kit[ma];
     // Kit dung chung mot anh -> moi material co anh deu tro ve dung anh do.
@@ -175,7 +211,8 @@ function doO(dinh, ppu, bong) {
     }
   }
   // Bong nam ngoai hop bao cua vat -> phai tinh vao, khong thi bi cat cut.
-  for (const [bx, bz] of [
+  // `bong` la null voi o nen (sprite toan manh phang): khong bong, khong noi hop bao.
+  for (const [bx, bz] of bong === null ? [] : [
     [bong.cx - bong.rx, bong.cz - bong.rz], [bong.cx + bong.rx, bong.cz - bong.rz],
     [bong.cx - bong.rx, bong.cz + bong.rz], [bong.cx + bong.rx, bong.cz + bong.rz],
   ]) {
@@ -225,7 +262,11 @@ async function nuong(tenMe, heSo) {
   const phu = new Map();
   for (const [ten, phan] of Object.entries(me.sprite)) {
     const dinh = ghep(phan, kit, soAnh);
-    const bong = doBong(dinh);
+    // Sprite toan manh `phang` la o nen: KHONG co bong. Bong lam hai viec sai cung luc -
+    // no nong hop bao them 15% (o nen ra 150 px thay vi dung 128), va mot o nen do bong
+    // xuong chinh no thi vo nghia. Vat the dat tren tam phang van co bong nhu thuong.
+    const chiPhang = phan.every((x) => x.phang !== undefined);
+    const bong = chiPhang ? null : doBong(dinh);
     const o = doO(dinh, ppu, bong);
     dinhTheoTen.set(ten, Buffer.from(dinh.buffer));
     oCanXep.push({ ten, w: o.w, h: o.h });
