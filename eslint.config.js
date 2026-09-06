@@ -77,4 +77,21 @@ export default tseslint.config(
     files: ['scripts/**/*.mjs', 'tools/**/*.mjs'],
     ...tseslint.configs.disableTypeChecked,
   },
+
+  // Phan cua cong cu nuong sprite chay TRONG trinh duyet, khong phai trong Node.
+  // Tach lam hai khoi: gop chung mot khoi thi `languageOptions` cua khoi sau de mat
+  // `parserOptions` ma disableTypeChecked vua tat, ESLint doi file phai nam trong tsconfig.
+  {
+    files: ['tools/lib/trang_nuong.js'],
+    ...tseslint.configs.disableTypeChecked,
+  },
+  {
+    files: ['tools/lib/trang_nuong.js'],
+    languageOptions: { globals: globals.browser },
+    rules: {
+      // File .js chay trong trinh duyet, khai kieu bang JSDoc nhu cac cong cu Node khac.
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+    },
+  },
 );

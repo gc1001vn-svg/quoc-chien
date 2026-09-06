@@ -3,67 +3,82 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase nằm ở `docs/NHAT_KY/PHASE_*.md`.
 
-Cập nhật: 05/09/2026.
+Cập nhật: 06/09/2026.
 
 ## 1. Đang ở đâu
 
-**Phase 0 — XONG.** Chủ dự án đã mở thử trên iPhone 06/09 và gửi số đo.
+**Phase 1 — XONG phần máy ảo kiểm được.** Đã có atlas sprite thật đầu tiên.
 
-Khung repo đã dựng và chạy: Vite + TypeScript strict + ESLint + vitest + PWA + CI +
-Vercel, `src/core/AssetPath.ts`, `src/core/Perf.ts`, bộ vẽ WebGL tối thiểu
-`src/render/Gl.ts`, và trang đo trần sprite `?do=sprite`.
+Công cụ nướng chạy được đầu-cuối: tải model CC0 → đọc OBJ → ghép mảnh thành nhà →
+vẽ bằng WebGL tự viết trong Chromium → xuất atlas PNG + JSON toạ độ.
+`tools/tai_asset.mjs` · `tools/lib/obj.mjs` · `tools/lib/xep.mjs` ·
+`tools/lib/trang_nuong.js` · `tools/nuong_sprite.mjs` · `tools/xem_atlas.mjs`.
 
-Chưa có game. Trang chính chỉ là màn hình khởi động có một nút dẫn sang trang đo.
+Atlas nằm ở `public/assets/atlas/`. **Chưa gắn vào game** — trang chính và trang đo vẫn
+như Phase 0, vẫn dùng atlas giả. Gắn vào là việc của Phase 2.
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 7 test · build ·
+`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 15 test · build ·
 check:base · check:credits).
 
-**Trần sprite trên iPhone thật, đo 06/09: 18.089 sprite ở 60 fps.**
-Trần TECH_SPEC là 1.500 → dư **12 lần**. Số lệnh vẽ cao nhất **1** (trần 4).
-Ở 30 fps chạm đỉnh thang đo 24.000 nên con số đó là trần của thang, không phải của máy.
+Mẻ trung cổ: **43 sprite** nướng từ 327 model CC0 của Kenney.
+
+| | 1× | 2× |
+|---|---:|---:|
+| Trang atlas 2048² | 1 | 1 |
+| Lấp đầy | 4,9% | 19,1% |
+| File PNG | 270 KB | 575 KB |
+
+Tổng 2 trang / trần 4 của TECH_SPEC mục 2. Bản build 920 KB / trần 95 MB.
+
+Trần sprite iPhone (đo 06/09, Phase 0, **atlas giả**): 18.089 sprite ở 60 fps.
+Chưa đo lại với atlas thật — xem mục 3.
 
 ## 3. Việc của chủ dự án
 
-Duyệt sang Phase 1. Không còn gì chờ.
+1. **Xem ảnh 43 sprite** đã gửi trong phiên. Ưng nét vẽ chưa? Không ưng thì nói **ĐỔI …**
+   (đổi góc camera, đổi đèn, đổi cỡ, bỏ/thêm sprite) — đổi rẻ, chỉ nướng lại một mẻ.
+2. Duyệt sang **Phase 2** nếu ưng.
 
-Trang đo giữ lại, đo lại sau Phase 1 khi có atlas thật:
-https://gc1001vn-svg.github.io/quoc-chien/?do=sprite
+Chưa cần mở iPhone lần này: atlas chưa gắn vào game nên chưa có gì mới để đo.
+Đo lại trần sprite là việc cuối Phase 2, khi thành phố vẽ bằng atlas thật.
 
 ## 4. Nợ kỹ thuật
 
-- Trang đo dùng **atlas giả** vẽ bằng Canvas 2D lúc chạy, vì Phase 1 mới nướng atlas thật.
-  Số đo ra sẽ hơi lạc quan: atlas thật 2048×2048 tốn bộ nhớ GPU hơn tấm 256×256 này.
-  Đo lại một lần nữa sau Phase 1.
-- `src/render/Gl.ts` mới là bản tối thiểu đủ cho trang đo (một buffer, gom theo atlas,
-  xả lô khi đổi atlas). Phase 2 **mở rộng** file này, không viết lại.
-- `src/sim/` còn rỗng — Phase 3 mới có file đầu tiên. Test hàng rào đang xanh nhờ một
-  phép thử mẫu, không phải nhờ quét file thật.
-- **Đổi nơi phục vụ: Vercel → GitHub Pages** (chốt 06/09). Lý do: máy ảo chặn hết nhà
-  cung cấp hosting (`vercel.com`, `api.vercel.com`, `github.io`, `api.netlify.com`,
-  `api.cloudflare.com` đều trả `000`), chỉ `api.github.com` và `registry.npmjs.org` ra
-  được. Deploy giao cho máy CI của GitHub — nó có mạng đầy đủ và chỉ cần `GITHUB_TOKEN`
-  sẵn có, không cần chìa khoá ngoài nào. `BASE` đổi thành `/quoc-chien/`.
-- Hệ quả: repo phải **công khai** (GitHub Pages cho repo riêng tư cần gói trả tiền).
-- Ba chốt chặn phải mở bằng tay, không tự động được (làm xong 06/09): repo công khai ·
-  `Settings > Pages > Source: GitHub Actions` (`GITHUB_TOKEN` không tạo được Pages site:
-  `Resource not accessible by integration`) · `Settings > Environments > github-pages >
-  Deployment branches` phải có `main` — luật này ghi cứng tên nhánh mặc định lúc bật Pages,
-  đổi nhánh mặc định KHÔNG viết lại nó, job `dua-len` chết trong 1 giây không chạy bước nào.
-- `vercel.json` giữ lại, chưa dùng. Muốn quay về Vercel thì sửa `BASE` về `'/'`, không
-  đụng gì khác.
-- `CLAUDE.md` và `TECH_SPEC.md` vẫn ghi "deploy Vercel" — **chưa sửa**, cả hai là file
-  khoá, phải hỏi chủ dự án.
-- Máy ảo vẫn **không tự mở được trang thật** dù đổi sang Pages. Bù lại: bước cuối của
-  `deploy.yml` chạy trên máy CI, gọi thử 4 đường và in mã HTTP ra nhật ký — Claude đọc
-  nhật ký qua `api.github.com` là tự kiểm được.
+- **`.claude/settings.json` chưa sửa được.** Định tắt thêm 9 skill sẵn có không dùng ở
+  repo này (`dataviz` · `design` · `artifact-design` · `artifact-diagramming` ·
+  `artifact-capabilities` · `claude-api` · `keybindings-help` · `session-start-hook` ·
+  `init`), ước tiết kiệm ~1.285 token mỗi phiên. Chủ dự án đã duyệt, nhưng **hai lớp
+  chốt chặn của máy đều chặn**: hook `chan_file_khoa.mjs` chặn Edit/Write, và bộ lọc
+  quyền của Claude Code chặn cả việc ghi file cấu hình qua dòng lệnh. Phiên sau chủ dự án
+  cho phép thẳng thì làm được. Chưa rõ `skillOverrides` có ăn với skill sẵn có không.
+- Atlas **chưa gắn vào game**. `src/bench/AtlasTam.ts` vẫn là atlas giả vẽ bằng Canvas 2D.
+- Số 18.089 sprite đo bằng atlas giả 256×256. Atlas thật 2048×2048 nặng băng thông hơn
+  nhiều → **phải đo lại cuối Phase 2**. Rớt dưới 1.500 ở cỡ 2× thì lùi về ship 1×.
+- Mẻ trung cổ mới có 43 sprite, đủ nhìn chứ chưa đủ xây thành phố. Thiếu: nhà 2×2 và 3×2,
+  nhà xưởng, kho, chợ, nhà thờ, tường thành góc. Thêm là sửa `tools/me/trung_co.json`
+  rồi `npm run nuong` — không đụng code.
+- `src/render/Gl.ts` vẫn là bản tối thiểu của Phase 0. Phase 2 **mở rộng**, không viết lại.
+- `src/sim/` còn rỗng — Phase 3 mới có file đầu tiên.
+- **Deploy: GitHub Pages tự động từ `main`** (chốt 06/09), `BASE = '/quoc-chien/'`.
+  Máy ảo bị chặn hết nhà cung cấp hosting, chỉ `api.github.com` và `registry.npmjs.org`
+  ra được → deploy giao cho máy CI. Repo phải **công khai**.
+  Ba chốt chặn phải mở bằng tay (làm xong 06/09): repo công khai ·
+  `Settings > Pages > Source: GitHub Actions` · `Settings > Environments > github-pages >
+  Deployment branches` phải có `main`.
+- `vercel.json` giữ lại, chưa dùng. Muốn quay về Vercel thì sửa `BASE` về `'/'`.
+- `CLAUDE.md` vẫn ghi "deploy Vercel" — **chưa sửa**, là file khoá, phải hỏi chủ dự án.
+  (`TECH_SPEC.md` đã sửa xong trong phiên này.)
+- Máy ảo **không tự mở được trang thật**. Bù lại: bước cuối của `deploy.yml` chạy trên
+  máy CI, gọi thử 4 đường và in mã HTTP ra nhật ký — Claude đọc nhật ký qua
+  `api.github.com` là tự kiểm được.
 
 ## 5. Phase kế tiếp
 
-**Phase 1 — nướng sprite**: `tools/nuong_sprite.mjs` biến model 3D CC0 thành atlas, nướng
-mẻ trung cổ trước (nhà cửa, cây cối, ô nền).
+**Phase 2 — nhìn thấy thành phố**: mở rộng `src/render/Gl.ts`, thêm `IsoMath.ts`
+(lưới ô ↔ toạ độ màn hình), `Atlas.ts` (nạp/nhả atlas), `CityScene.ts`.
+Bản đồ 64×64 ô, ~300 toà nhà tĩnh vẽ bằng atlas trung cổ vừa nướng.
 
-Nướng và **ship cả cỡ 2×** — chốt 06/09, đã sửa vào `TECH_SPEC.md` mục 3.
-Sprite 2× tốn gấp 4 lần diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn gấp 3 lần trần 1.500.
-Đo lại sau khi có atlas thật; rớt dưới 1.500 thì lùi về ship 1×.
+Xong Phase 2 thì chủ dự án mở PWA trên iPhone, đọc nhãn fps, chạm nút tắt từng lớp,
+nhắn về 4 con số. Đó là lần đo thật đầu tiên với atlas thật.

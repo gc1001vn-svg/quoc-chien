@@ -77,18 +77,43 @@ họ dựng model 3D rồi chụp từ góc chéo cố định. Ta làm y hệt 
 
 1. Mở Chromium sẵn có (`/opt/pw-browsers/chromium`) qua `tools/lib/cdp.mjs` —
    **chép từ Tây Vực, không cần thư viện nào**
-2. Trang tạm dựng model bằng three.js, camera **trực giao**, góc chéo cố định
-3. Chụp mỗi model ở **8 hướng xoay** × N khung chuyển động
-4. Cắt nền trong suốt, xếp vào atlas, xuất PNG + `.json` toạ độ
-5. In bảng: model nào, bao nhiêu khung, atlas chiếm bao nhiêu phần trăm
+2. Trang tạm dựng model bằng **WebGL tự viết** (`tools/lib/trang_nuong.js`), camera
+   **trực giao**, góc chéo cố định. **Không three.js** — chốt 06/09, xem dưới
+3. Chụp mỗi model ở góc cố định (lính 8 hướng × N khung là việc của Phase 10)
+4. Xếp vào atlas theo kệ (`tools/lib/xep.mjs`), xuất PNG + `.json` toạ độ
+5. In bảng: bao nhiêu sprite, mỗi atlas lấp bao nhiêu phần trăm, tốn bao nhiêu bộ nhớ GPU
+
+### Vì sao không dùng three.js — chốt 06/09
+
+Model Kenney chỉ có **một** material trỏ tới **một** ảnh `Textures/colormap.png`, file OBJ
+chỉ có `v` `vt` `vn` `f` `usemtl`. Đọc và vẽ bằng tay hết chưa tới 300 dòng, giữ đúng luật
+"thư viện đồ hoạ ngoài = 0" ở mục 2, và đúng tiền lệ `tools/lib/cdp.mjs` (tự viết thay
+Playwright). Đánh đổi: OBJ **không mang chuyển động** — nướng lính có xương ở Phase 10 thì
+xin cài three.js lúc đó, không xin trước.
+
+### Số thật của mẻ trung cổ — đo 06/09
+
+43 sprite, nướng từ 328 model của **Kenney Fantasy Town Kit 2.0** (bộ lắp ghép: tường, mái
+rời từng mảnh — nhà phải ghép từ đó, không có sẵn) và **Tower Defense Kit** (ô nền, cây,
+đá). Công thức ghép nằm ở `tools/me/trung_co.json`.
+
+| | 1× | 2× |
+|---|---:|---:|
+| Trang atlas 2048² | 1 | 1 |
+| Lấp đầy | 4,9% | 19,1% |
+
+Tổng 2 trang / trần 4. Còn rất nhiều chỗ cho các mẻ sau.
 
 Chạy **một lần lúc chuẩn bị asset**, không chạy lúc chơi.
 
 ### Góc camera
 
 Isometric chuẩn 2:1 — ô nền `64×32` px ở cỡ 1×. Camera trực giao, xoay 45° quanh trục
-đứng, nghiêng 30° (`atan(0.5)` ≈ 26,57° cho 2:1 chính xác; dùng 30° cho dễ nhìn, chốt
-bằng mắt ở Phase 1).
+đứng, nghiêng **30°**.
+
+Sửa lại chỗ ghi nhầm (06/09): bản đầu ghi "`atan(0.5)` ≈ 26,57° cho 2:1 chính xác". Sai.
+Chiều cao chiếu xuống = chiều ngang × `sin(nghiêng)`, nên 2:1 cần `sin = 0,5` → **đúng 30°**.
+Đo lại trên atlas đã nướng: ô nền ra `64×32` px, khớp.
 
 ### Cỡ sprite
 
