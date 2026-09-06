@@ -16,6 +16,7 @@
     "test:watch": "vitest",
     "nuong": "node tools/nuong_sprite.mjs trung_co",
     "xem:atlas": "node tools/xem_atlas.mjs",
+    "xem:canh": "node tools/xem_canh.mjs",
     "tai:asset": "node tools/tai_asset.mjs fantasy-town-kit tower-defense-kit",
     "tai:itch": "node tools/tai_itch.mjs kaylousberg/kaykit-medieval-builder-pack kaylousberg/city-builder-bits",
     "check:base": "node scripts/check_base_path.mjs",

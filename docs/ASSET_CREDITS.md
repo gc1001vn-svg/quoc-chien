@@ -10,6 +10,7 @@ sang cả dự án.
 |---|---|---|---|---|
 | `atlas/trung_co_1x_0.png` | Kenney (4 gói) + KayKit Medieval Builder Pack, <https://kenney.nl> · <https://kaylousberg.itch.io> | Kenney | CC0 1.0 | 06/09/2026 |
 | `atlas/trung_co_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 06/09/2026 |
+| `atlas/trung_co_2x_1.png` | Kenney (4 gói) + KayKit Medieval Builder Pack, <https://kenney.nl> · <https://kaylousberg.itch.io> | Kenney · Kay Lousberg | CC0 1.0 | 06/09/2026 |
 | `atlas/trung_co_2x_0.png` | Kenney (4 gói) + KayKit Medieval Builder Pack, <https://kenney.nl> · <https://kaylousberg.itch.io> | Kenney | CC0 1.0 | 06/09/2026 |
 | `atlas/trung_co_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 06/09/2026 |
 

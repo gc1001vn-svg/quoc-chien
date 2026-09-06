@@ -123,13 +123,33 @@ Hai cái bẫy khi trộn gói của hai tác giả, đã sập rồi mới bi�
   `"gamma": true` thì bộ đọc đổi `Kd` sang sRGB bằng `v ** (1/2.2)`.
 
 Đèn: đèn chính ấm chéo trên-trái + đèn nền nửa cầu (mặt ngửa ăn sáng trời lạnh, mặt cúi
-ăn sáng đất ấm) + viền lạnh mỏng ở rìa, rồi kéo bão hoà lên 1,25. Đèn nền phải để **tối**;
+ăn sáng đất ấm) + viền lạnh mỏng ở rìa, rồi kéo bão hoà lên 1,30. Đèn nền phải để **tối**;
 sáng quá thì mọi thứ bạc ra xám xịt như nhau.
+
+Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối cảnh 2:1):
+
+- **Bóng đổ nướng sẵn** — một hình elip mềm trên mặt đất, lệch theo hướng đèn, to dần
+  theo chiều cao vật. Không dùng hình chiếu thật của model: các tam giác chiếu xuống đè
+  nhau, chỗ đè ra đậm hơn, thành vệt loang lổ.
+- **Tối chân** — càng gần mặt đất càng tối (`0.62 + 0.38 * smoothstep(0, 0.55, y)`).
+  Thiếu cái này thì khối nhìn như dán lên nền chứ không đứng trên đất.
+- **Nâng tông** — vùng sáng ngả ấm, vùng tối ngả lạnh. Cùng một màu mà tách hai đầu ra
+  thì hình khối nổi hẳn, không cần thêm đa giác nào.
+
+### Luật vẽ cho Phase 2: nền vẽ hết trước, vật vẽ sau
+
+Bóng nướng trong sprite thò ra khỏi ô của nó. Nếu trộn hai lớp lại rồi sắp theo độ sâu
+`x + z`, ô nền phía sau sẽ **đè lên bóng** của nhà phía trước và bóng biến mất.
+Nên `CityScene` phải vẽ **toàn bộ lớp nền trước**, rồi mới tới lớp vật thể.
+Đã sập đúng bẫy này khi dựng `tools/xem_canh.mjs`.
 
 | | 1× | 2× |
 |---|---:|---:|
-| Trang atlas 2048² | 1 | 1 |
-| Lấp đầy | 12,8% | 49,5% |
+| Trang atlas 2048² | 1 | 2 |
+| Lấp đầy | 29,7% | 82,8% + 32,9% |
+
+Tổng 3 trang / trần 4. Bóng đổ nới hộp bao của từng sprite nên ăn thêm chỗ; muốn hạ
+xuống thì cắt sát theo kênh alpha thay vì theo hộp bao hình học — chưa làm.
 
 Tổng 2 trang / trần 4. Còn chỗ cho các mẻ sau.
 

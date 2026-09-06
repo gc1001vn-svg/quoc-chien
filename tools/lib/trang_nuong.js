@@ -19,7 +19,9 @@ varying vec2 vUv;
 varying vec3 vNor;
 varying vec3 vMau;
 varying float vCoAnh;
+varying float vCao;
 void main() {
+  vCao = aPos.y;
   vUv = aUv;
   vNor = aNor;
   vMau = aMau;
@@ -35,6 +37,7 @@ varying vec2 vUv;
 varying vec3 vNor;
 varying vec3 vMau;
 varying float vCoAnh;
+varying float vCao;
 void main() {
   vec3 n = normalize(vNor);
 
@@ -51,12 +54,55 @@ void main() {
   float vien = pow(1.0 - abs(dot(n, uNhin)), 4.0) * 0.10;
 
   // vMau vua la mau phang cua material khong anh, vua la mau nhan cua manh trong me.
+  // Bong ben trong: cang gan mat dat cang toi. Day la thu lam khoi dung tren dat chu
+  // khong lo lung - game 2D cheo nao cung ve, khong ve thi hinh nhu dan len nen.
+  float chan = 0.62 + 0.38 * smoothstep(0.0, 0.55, vCao);
+
   vec3 c = vMau * mix(vec3(1.0), texture2D(uAnh, vUv).rgb, vCoAnh);
-  vec3 ra = c * (denChinh + denNen) + vien * vec3(0.75, 0.85, 1.0);
-  // Keo bao hoa len mot chut: den nen lam nhat mau, buoc nay tra lai do tuoi cua kit.
+  vec3 ra = c * (denChinh + denNen) * chan + vien * vec3(0.75, 0.85, 1.0);
+  // Nang tong: vung sang nga am, vung toi nga lanh. Cung mot mau ma tach hai dau ra thi
+  // hinh khoi noi han len, khong can them da giac nao.
+  ra = mix(ra * vec3(0.92, 0.96, 1.10), ra * vec3(1.08, 1.02, 0.90), smoothstep(0.15, 0.75, dot(ra, vec3(0.299, 0.587, 0.114))));
   float xam = dot(ra, vec3(0.299, 0.587, 0.114));
-  gl_FragColor = vec4(mix(vec3(xam), ra, 1.25), 1.0);
+  gl_FragColor = vec4(clamp(mix(vec3(xam), ra, 1.30), 0.0, 1.0), 1.0);
 }`;
+
+// Bong do: mot hinh elip mem tren mat dat, ve TRUOC vat. Khong dung hinh chieu that cua
+// model vi cac tam giac chieu xuong de len nhau, cho de nhau ra dam den lo cho. Elip theo
+// hop bao chan vat thi mem san, khong can lam mo.
+const VS_BONG = `
+attribute vec3 aPos;
+attribute float aMo;
+uniform mat4 uMvp;
+varying float vMo;
+void main() {
+  vMo = aMo;
+  gl_Position = uMvp * vec4(aPos, 1.0);
+}`;
+
+const FS_BONG = `
+precision mediump float;
+uniform float uDam;
+varying float vMo;
+void main() {
+  // Mo dan ra ria, nhung giu long dam: bong mem qua thi nhin nhu vet ban.
+  gl_FragColor = vec4(0.05, 0.04, 0.09, smoothstep(0.0, 0.65, vMo) * uDam);
+}`;
+
+/** Quat tam giac hinh elip: dinh giua duc, ria trong suot. */
+function veElip(b, canh = 28) {
+  const d = [b.cx, 0.01, b.cz, 1];
+  for (let i = 0; i <= canh; i += 1) {
+    const g = (i / canh) * Math.PI * 2;
+    d.push(b.cx + Math.cos(g) * b.rx, 0.01, b.cz + Math.sin(g) * b.rz, 0);
+  }
+  // Quat -> tam giac roi rac, khong doi thu tu ve.
+  const ra = [];
+  for (let i = 1; i <= canh; i += 1) {
+    ra.push(...d.slice(0, 4), ...d.slice(i * 4, i * 4 + 4), ...d.slice((i + 1) * 4, i * 4 + 8));
+  }
+  return new Float32Array(ra);
+}
 
 /** @returns {WebGLShader} */
 function dich(gl, loai, ma) {
@@ -119,13 +165,24 @@ async function chay() {
   });
   if (gl === null) throw new Error('May nay khong mo duoc WebGL');
 
-  const ct = gl.createProgram();
-  gl.attachShader(ct, dich(gl, gl.VERTEX_SHADER, VS));
-  gl.attachShader(ct, dich(gl, gl.FRAGMENT_SHADER, FS));
-  gl.linkProgram(ct);
-  if (!gl.getProgramParameter(ct, gl.LINK_STATUS)) {
-    throw new Error('Noi shader hong: ' + gl.getProgramInfoLog(ct));
-  }
+  const noi = (vs, fs) => {
+    const ct = gl.createProgram();
+    gl.attachShader(ct, dich(gl, gl.VERTEX_SHADER, vs));
+    gl.attachShader(ct, dich(gl, gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(ct);
+    if (!gl.getProgramParameter(ct, gl.LINK_STATUS)) {
+      throw new Error('Noi shader hong: ' + gl.getProgramInfoLog(ct));
+    }
+    return ct;
+  };
+  const ct = noi(VS, FS);
+  const ctBong = noi(VS_BONG, FS_BONG);
+  const viTriBong = {
+    pos: gl.getAttribLocation(ctBong, 'aPos'),
+    mo: gl.getAttribLocation(ctBong, 'aMo'),
+    mvp: gl.getUniformLocation(ctBong, 'uMvp'),
+    dam: gl.getUniformLocation(ctBong, 'uDam'),
+  };
   gl.useProgram(ct);
 
   const viTri = {
@@ -164,8 +221,15 @@ async function chay() {
   );
 
   const dem = gl.createBuffer();
+  const demBong = gl.createBuffer();
   gl.enable(gl.DEPTH_TEST);
   gl.enable(gl.SCISSOR_TEST);
+  gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+  const dat = (vt, so, lech) => {
+    gl.enableVertexAttribArray(vt);
+    gl.vertexAttribPointer(vt, so, gl.FLOAT, false, 12 * 4, lech);
+  };
 
   const kq = [];
   for (let trang = 0; trang < bo.soTrang; trang += 1) {
@@ -176,27 +240,40 @@ async function chay() {
     for (const s of bo.sprite) {
       if (s.trang !== trang) continue;
       const dinh = new Float32Array(await (await nap(`/bin/${s.ten}`)).arrayBuffer());
-      gl.bindBuffer(gl.ARRAY_BUFFER, dem);
-      gl.bufferData(gl.ARRAY_BUFFER, dinh, gl.STREAM_DRAW);
-      const buoc = 12 * 4;
-      const dat = (vt, so, lech) => {
-        gl.enableVertexAttribArray(vt);
-        gl.vertexAttribPointer(vt, so, gl.FLOAT, false, buoc, lech);
-      };
-      dat(viTri.pos, 3, 0);
-      dat(viTri.uv, 2, 12);
-      dat(viTri.nor, 3, 20);
-      dat(viTri.mau, 3, 32);
-      dat(viTri.coAnh, 1, 44);
-
+      const mt = maTran({ ...s, yaw: bo.yaw, pitch: bo.pitch });
       // Toa do y cua WebGL dem tu duoi len, cua atlas dem tu tren xuong.
       const duoi = bo.canh - s.y - s.h;
       gl.viewport(s.x, duoi, s.w, s.h);
       gl.scissor(s.x, duoi, s.w, s.h);
       gl.clear(gl.DEPTH_BUFFER_BIT);
 
+      // Bong truoc, vat sau. Bong khong ghi vao dem sau nen vat luon de len tren.
+      gl.useProgram(ctBong);
+      gl.enable(gl.BLEND);
+      gl.depthMask(false);
+      const elip = veElip(s.bong);
+      gl.bindBuffer(gl.ARRAY_BUFFER, demBong);
+      gl.bufferData(gl.ARRAY_BUFFER, elip, gl.STREAM_DRAW);
+      gl.enableVertexAttribArray(viTriBong.pos);
+      gl.vertexAttribPointer(viTriBong.pos, 3, gl.FLOAT, false, 16, 0);
+      gl.vertexAttribPointer(viTriBong.mo, 1, gl.FLOAT, false, 16, 12);
+      gl.uniformMatrix4fv(viTriBong.mvp, false, mt);
+      gl.uniform1f(viTriBong.dam, 0.46);
+      gl.drawArrays(gl.TRIANGLES, 0, elip.length / 4);
+      gl.disableVertexAttribArray(viTriBong.mo);
+      gl.depthMask(true);
+      gl.disable(gl.BLEND);
+
+      gl.useProgram(ct);
+      gl.bindBuffer(gl.ARRAY_BUFFER, dem);
+      gl.bufferData(gl.ARRAY_BUFFER, dinh, gl.STREAM_DRAW);
+      dat(viTri.pos, 3, 0);
+      dat(viTri.uv, 2, 12);
+      dat(viTri.nor, 3, 20);
+      dat(viTri.mau, 3, 32);
+      dat(viTri.coAnh, 1, 44);
       gl.bindTexture(gl.TEXTURE_2D, anh[s.anh]);
-      gl.uniformMatrix4fv(viTri.mvp, false, maTran({ ...s, yaw: bo.yaw, pitch: bo.pitch }));
+      gl.uniformMatrix4fv(viTri.mvp, false, mt);
       gl.drawArrays(gl.TRIANGLES, 0, dinh.length / 12);
     }
     kq.push(canvas.toDataURL('image/png'));

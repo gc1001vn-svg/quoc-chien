@@ -93,8 +93,43 @@ function ghep(phan, kit) {
   return new Float32Array(ra);
 }
 
+/**
+ * Huong den chinh, phai khop y het voi shader trong `trang_nuong.js`.
+ * Bong do la hinh chieu cua vat len mat dat theo huong nay.
+ */
+const DEN = (() => {
+  const v = [-0.55, 0.80, 0.35];
+  const d = Math.hypot(...v);
+  return v.map((x) => x / d);
+})();
+
+/** Tam va ban kinh cua vet bong tren mat dat, do tu hop bao chan cua model. */
+function doBong(dinh) {
+  const lo = [Infinity, Infinity];
+  const hi = [-Infinity, -Infinity];
+  for (let i = 0; i < dinh.length; i += BUOC) {
+    for (const [k, j] of [[0, 0], [1, 2]]) {
+      const v = dinh[i + j];
+      if (v < lo[k]) lo[k] = v;
+      if (v > hi[k]) hi[k] = v;
+    }
+  }
+  // Bong nga theo huong den, xa dan theo do cao cua vat.
+  const cao = Math.max(...[...Array(dinh.length / BUOC)].map((_, i) => dinh[i * BUOC + 1]));
+  const nga = (cao * 0.55) / DEN[1];
+  // Vat cang cao bong cang loang ra - dung the that nhung o day chu yeu de bong tho ra
+  // khoi bong dang vat, khong thi no nam gon duoi chan va coi nhu khong co.
+  const no = cao * 0.20 + 0.10;
+  return {
+    cx: (lo[0] + hi[0]) / 2 - DEN[0] * nga,
+    cz: (lo[1] + hi[1]) / 2 - DEN[2] * nga,
+    rx: ((hi[0] - lo[0]) / 2) * 0.95 + no,
+    rz: ((hi[1] - lo[1]) / 2) * 0.95 + no,
+  };
+}
+
 /** Hop bao cua sprite trong khong gian may anh + co o atlas can dung. */
-function doO(dinh, ppu) {
+function doO(dinh, ppu, bong) {
   const lo = [Infinity, Infinity, Infinity];
   const hi = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < dinh.length; i += BUOC) {
@@ -104,6 +139,18 @@ function doO(dinh, ppu) {
       if (v[k] > hi[k]) hi[k] = v[k];
     }
   }
+  // Bong nam ngoai hop bao cua vat -> phai tinh vao, khong thi bi cat cut.
+  for (const [bx, bz] of [
+    [bong.cx - bong.rx, bong.cz - bong.rz], [bong.cx + bong.rx, bong.cz - bong.rz],
+    [bong.cx - bong.rx, bong.cz + bong.rz], [bong.cx + bong.rx, bong.cz + bong.rz],
+  ]) {
+    const v = chieu(bx, 0, bz);
+    for (let k = 0; k < 3; k += 1) {
+      if (v[k] < lo[k]) lo[k] = v[k];
+      if (v[k] > hi[k]) hi[k] = v[k];
+    }
+  }
+
   const w = Math.ceil((hi[0] - lo[0]) * ppu) + 2 * LE;
   const h = Math.ceil((hi[1] - lo[1]) * ppu) + 2 * LE;
   // Noi rong hop bao dung bang phan le da them, de hinh khong bi keo gian.
@@ -144,10 +191,11 @@ async function nuong(tenMe, heSo) {
   const phu = new Map();
   for (const [ten, phan] of Object.entries(me.sprite)) {
     const dinh = ghep(phan, kit);
-    const o = doO(dinh, ppu);
+    const bong = doBong(dinh);
+    const o = doO(dinh, ppu, bong);
     dinhTheoTen.set(ten, Buffer.from(dinh.buffer));
     oCanXep.push({ ten, w: o.w, h: o.h });
-    phu.set(ten, { ...o, anh: chiSoAnh(phan[0].m.split(':')[0]) });
+    phu.set(ten, { ...o, bong, anh: chiSoAnh(phan[0].m.split(':')[0]) });
   }
 
   const xong = xep(oCanXep, CANH, 2);

@@ -27,10 +27,11 @@ Mẻ trung cổ: **147 sprite** nướng từ 4 gói CC0 của Kenney + KayKit M
 
 | | 1× | 2× |
 |---|---:|---:|
-| Trang atlas 2048² | 1 | 1 |
-| Lấp đầy | 12,8% | 49,5% |
+| Trang atlas 2048² | 1 | 2 |
+| Lấp đầy | 29,7% | 82,8% + 32,9% |
 
-Tổng 2 trang / trần 4 của TECH_SPEC mục 2. Bản build 920 KB / trần 95 MB.
+Tổng **3 trang / trần 4** của TECH_SPEC mục 2. Bóng đổ nới hộp bao từng sprite nên ăn
+thêm chỗ — thêm mẻ nữa là vượt trần, xem nợ kỹ thuật.
 
 Trần sprite iPhone (đo 06/09, Phase 0, **atlas giả**): 18.089 sprite ở 60 fps.
 Chưa đo lại với atlas thật — xem mục 3.
@@ -58,6 +59,11 @@ Chưa cần mở iPhone lần này: atlas chưa gắn vào game nên chưa có g
   quảng trường, kho. Thêm là sửa `tools/me/trung_co.json` rồi `npm run nuong`.
 - **KayKit City Builder Bits** đã tải về `assets_source/` nhưng **chưa nướng** — là đồ
   hiện đại (ô tô, nhà cao tầng, đèn giao thông), để dành Phase 8.
+- **Atlas đã dùng 3/4 trang.** Bóng đổ nới hộp bao mỗi sprite. Muốn hạ xuống thì cắt sát
+  theo kênh alpha thay vì theo hộp bao hình học — chưa làm, làm khi nào chạm trần.
+- `tools/xem_canh.mjs` mới dựng cảnh bằng CSS. Nó đã kiểm đúng phần toán `ox`/`oy` mà
+  Phase 2 sẽ dùng, nhưng **chưa phải** `IsoMath.ts` — Phase 2 vẫn phải viết bản TypeScript
+  có test.
 - Chưa tìm được kho **gigalomania** (SourceForge, `api.github.com/search` bị khoá theo
   phiên). Đó là game đáng đọc nhất về một ván đi suốt nhiều thời kỳ — tìm lại phiên sau.
 - Nature Kit dùng bảng màu khác ba gói kia (lá xanh ngọc), đang chỉnh bằng `mau_vl`.
@@ -82,6 +88,11 @@ Chưa cần mở iPhone lần này: atlas chưa gắn vào game nên chưa có g
 **Phase 2 — nhìn thấy thành phố**: mở rộng `src/render/Gl.ts`, thêm `IsoMath.ts`
 (lưới ô ↔ toạ độ màn hình), `Atlas.ts` (nạp/nhả atlas), `CityScene.ts`.
 Bản đồ 64×64 ô, ~300 toà nhà tĩnh vẽ bằng atlas trung cổ vừa nướng.
+
+Hai luật đã chốt sẵn cho Phase 2, xem `TECH_SPEC.md` mục 3:
+1. **Vẽ hết lớp nền trước, rồi mới tới lớp vật thể.** Trộn hai lớp theo độ sâu thì ô nền
+   phía sau đè lên bóng đổ của nhà phía trước.
+2. Vị trí sprite: `x = (a − b) · o_px/2 − ox`, `y = (a + b) · o_px/4 − oy`.
 
 Xong Phase 2 thì chủ dự án mở PWA trên iPhone, đọc nhãn fps, chạm nút tắt từng lớp,
 nhắn về 4 con số. Đó là lần đo thật đầu tiên với atlas thật.
