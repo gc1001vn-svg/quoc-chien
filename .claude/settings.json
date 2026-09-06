@@ -34,5 +34,18 @@
         ]
       }
     ]
+  },
+  "skillOverrides": {
+    "pptx": "off",
+    "docx": "off",
+    "xlsx": "off",
+    "pdf": "off",
+    "vsp-safety-expert": "off",
+    "vsp-van-ban": "off",
+    "ponytail-audit": "user-invocable-only",
+    "ponytail-debt": "user-invocable-only",
+    "ponytail-gain": "user-invocable-only",
+    "ponytail-help": "user-invocable-only",
+    "ponytail-review": "user-invocable-only"
   }
 }
