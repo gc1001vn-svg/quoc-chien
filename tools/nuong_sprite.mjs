@@ -104,6 +104,9 @@ function taoSoAnh() {
  *   `phang`   canh tam, tinh bang don vi o luoi
  *   `texture` anh dan len; bo trong thi tam mang mau phang cua `mau`
  *   `lap`     anh lap lai bao nhieu lan tren mot canh; 1 la vua khit
+ *   `lech`    dich toa do anh [u, v]. Cung mot anh ma moi o lay mot vung khac nhau thi
+ *             mat khong con thay hoa tiet lap theo chu ky o - do la thu lam mat dat trong
+ *             lien mach chu khong ra ban co.
  *   `day`     be day cua o. Bo trong hay 0 = tam phang tuyet doi, cac o xep khit nhau
  *             lien mach. Co `day` = o thanh khoi hop mong, thay canh ben nen luoi o hien
  *             ro nhu ban co - kieu cua Kenney va cua Age of Empires.
@@ -115,11 +118,12 @@ function tamPhang(p, soAnh) {
   const x0 = p.x ?? 0;
   const z0 = p.z ?? 0;
   const u = p.lap ?? 1;
+  const [lu, lv] = p.lech ?? [0, 0];
   const t = p.mau ?? [1, 1, 1];
   const khe = p.texture === undefined ? 0 : soAnh.them(p.texture) + 1;
   const dinh = [];
   const them = (dx, dy, dz, uu, vv, n) => {
-    dinh.push(x0 + dx, dy, z0 + dz, uu, vv, n[0], n[1], n[2], t[0], t[1], t[2], khe);
+    dinh.push(x0 + dx, dy, z0 + dz, uu + lu, vv + lv, n[0], n[1], n[2], t[0], t[1], t[2], khe);
   };
   // Mat tren, phap tuyen huong thang len.
   const tren = [0, 1, 0];
