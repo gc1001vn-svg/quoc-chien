@@ -37,10 +37,10 @@ jobs:
 
       - run: npm ci
 
-      - name: Bat GitHub Pages neu chua bat
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      # Khong dat `enablement: true`: GITHUB_TOKEN khong co quyen TAO Pages site
+      # ("Resource not accessible by integration", do 06/09). Phai bat tay mot lan o
+      # Settings > Pages > Source: GitHub Actions. Bat roi thi buoc nay chi doc cau hinh.
+      - uses: actions/configure-pages@v5
 
       - run: npm run build
 
