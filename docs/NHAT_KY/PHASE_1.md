@@ -3,8 +3,8 @@
 Làm ra atlas thật đầu tiên: model 3D CC0 → ảnh phẳng isometric → atlas PNG + JSON toạ độ.
 
 - `tools/tai_asset.mjs` moi link zip giấu trong HTML của kenney.nl rồi tải về
-  `assets_source/`. Lấy **Fantasy Town Kit 2.0** (167 model) + **Tower Defense Kit**
-  (160 model), cả hai CC0.
+  `assets_source/`. Lấy 4 gói CC0: **Fantasy Town Kit 2.0** (167 model) ·
+  **Tower Defense Kit** (160) · **Castle Kit** (76) · **Nature Kit** (329).
 - `tools/lib/obj.mjs` đọc OBJ + MTL. `tools/lib/xep.mjs` xếp atlas kiểu kệ.
   `tools/nuong_sprite.mjs` tính hết ở Node rồi mở Chromium vẽ bằng **WebGL tự viết**
   (`tools/lib/trang_nuong.js`) — **không three.js**, chốt với chủ dự án đầu phiên.
@@ -16,8 +16,14 @@ Làm ra atlas thật đầu tiên: model 3D CC0 → ảnh phẳng isometric → 
   xanh, làm sàn tháp canh trông sai → đổi sang `planks`.
 - Sửa `TECH_SPEC.md` mục 3 chỗ ghi nhầm: 2:1 cần nghiêng **30°**, không phải 26,57°
   (chiều cao chiếu = chiều ngang × sin(nghiêng)). Đo lại trên atlas: ô nền ra đúng 64×32.
-- Kết quả: **43 sprite**, 1 trang atlas 2048² cho mỗi cỡ (1× lấp 4,9%, 2× lấp 19,1%).
-  Tổng 2 trang / trần 4 của TECH_SPEC mục 2.
+- Vòng ĐỔI (chủ dự án chê đơn điệu): thêm Castle Kit + Nature Kit, và ba nước cờ tạo
+  biến thể mà không nướng thêm model — màu nhân/sơn đè theo mảnh (`mau`, `thay_mau`),
+  màu nhân theo tên material (`mau_vl`, để kéo lá xanh ngọc về xanh lá mà không làm
+  thân cây đỏ quạch), và đổi bảng màu cả gói (Castle Kit có 7 bảng → tháp của nước khác).
+  Đèn cũng làm lại: đèn chính ấm + đèn nền nửa cầu + viền lạnh + kéo bão hoà.
+- Kết quả: **120 sprite**, 1 trang atlas 2048² cho mỗi cỡ (1× lấp 9,1%, 2× lấp 35,1%).
+  Tổng 2 trang / trần 4 của TECH_SPEC mục 2. Có cả máy công thành và ruộng đồng,
+  để dành cho Phase 8-10.
 - `tests/Atlas.test.ts` bắt đỏ nếu ô đè nhau, tràn cạnh, thiếu file trang, hay 2× không
   gấp đôi 1×. `npm run do` → 6/6.
 

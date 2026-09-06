@@ -93,18 +93,36 @@ xin cài three.js lúc đó, không xin trước.
 
 ### Số thật của mẻ trung cổ — đo 06/09
 
-43 sprite, nướng từ 328 model của **Kenney Fantasy Town Kit 2.0** (bộ lắp ghép: tường, mái
-rời từng mảnh — nhà phải ghép từ đó, không có sẵn) và **Tower Defense Kit** (ô nền, cây,
-đá). Công thức ghép nằm ở `tools/me/trung_co.json`.
+**120 sprite**, nướng từ bốn gói CC0 của Kenney. Công thức ghép ở `tools/me/trung_co.json`.
+
+| Gói | Dùng vào | Ghi chú |
+|---|---|---|
+| Fantasy Town Kit 2.0 | Nhà ở, chợ, giếng, cối xay | **Bộ lắp ghép** — tường, mái là mảnh rời, không có sẵn cái nhà nào |
+| Tower Defense Kit | Ô nền, đường, sông, cầu | Ô nền có bề dày, đọc hình tốt ở góc chéo |
+| Castle Kit | Tháp, tường thành, cổng, **máy công thành** | Có 7 bảng màu `variation-*.png` → cùng model, khác màu, dùng cho nước khác |
+| Nature Kit | Cây, hoa, đá, vách, **ruộng đồng**, lều, tượng | Không có ảnh, màu nằm thẳng trong `.mtl` |
+
+Ba nước cờ để **không đơn điệu**, đều không phải nướng thêm model:
+
+1. **Màu nhân và sơn đè theo mảnh** (`mau`, `thay_mau` trong mẻ). Bốn màu mái ngói từ
+   cùng một mảnh `roof-point`. Màu nhân không kéo được xanh sang đỏ, nên mái dùng
+   `thay_mau` — bỏ hoạ tiết, sơn một màu phẳng.
+2. **Màu nhân theo tên material** (`mau_vl`). Lá của Nature Kit là xanh ngọc, lệch hẳn
+   với ba gói kia; kéo riêng `leafsGreen`/`grass` về xanh lá mà **không** đụng `woodBark`,
+   nếu không thân cây đỏ quạch theo.
+3. **Đổi bảng màu cả gói**: khai thêm một kit trỏ cùng thư mục nhưng khác `anh`.
+   `thap_vuong` và `thap_vuong_dich` là cùng model, khác bảng màu.
+
+Đèn: đèn chính ấm chéo trên-trái + đèn nền nửa cầu (mặt ngửa ăn sáng trời lạnh, mặt cúi
+ăn sáng đất ấm) + viền lạnh mỏng ở rìa, rồi kéo bão hoà lên 1,25. Đèn nền phải để **tối**;
+sáng quá thì mọi thứ bạc ra xám xịt như nhau.
 
 | | 1× | 2× |
 |---|---:|---:|
 | Trang atlas 2048² | 1 | 1 |
-| Lấp đầy | 4,9% | 19,1% |
+| Lấp đầy | 9,1% | 35,1% |
 
-Tổng 2 trang / trần 4. Còn rất nhiều chỗ cho các mẻ sau.
-
-Chạy **một lần lúc chuẩn bị asset**, không chạy lúc chơi.
+Tổng 2 trang / trần 4. Còn chỗ cho các mẻ sau.
 
 ### Góc camera
 

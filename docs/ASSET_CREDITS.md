@@ -8,9 +8,9 @@ sang cả dự án.
 
 | File trong `public/assets/` | Nguồn | Tác giả | License | Ngày thêm |
 |---|---|---|---|---|
-| `atlas/trung_co_1x_0.png` | Fantasy Town Kit 2.0 + Tower Defense Kit, <https://kenney.nl> | Kenney | CC0 1.0 | 06/09/2026 |
+| `atlas/trung_co_1x_0.png` | Fantasy Town Kit 2.0 · Tower Defense Kit · Castle Kit · Nature Kit, <https://kenney.nl> | Kenney | CC0 1.0 | 06/09/2026 |
 | `atlas/trung_co_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 06/09/2026 |
-| `atlas/trung_co_2x_0.png` | Fantasy Town Kit 2.0 + Tower Defense Kit, <https://kenney.nl> | Kenney | CC0 1.0 | 06/09/2026 |
+| `atlas/trung_co_2x_0.png` | Fantasy Town Kit 2.0 · Tower Defense Kit · Castle Kit · Nature Kit, <https://kenney.nl> | Kenney | CC0 1.0 | 06/09/2026 |
 | `atlas/trung_co_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 06/09/2026 |
 
 Atlas là ảnh **nướng lại** từ model 3D CC0 của Kenney bằng `tools/nuong_sprite.mjs`, không

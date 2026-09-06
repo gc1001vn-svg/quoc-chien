@@ -30,18 +30,32 @@ void main() {
 const FS = `
 precision mediump float;
 uniform sampler2D uAnh;
+uniform vec3 uNhin;
 varying vec2 vUv;
 varying vec3 vNor;
 varying vec3 vMau;
 varying float vCoAnh;
 void main() {
-  vec3 den = normalize(vec3(-0.55, 0.80, 0.30));
-  float d = max(dot(normalize(vNor), den), 0.0);
-  // Nen sang mot chut de mat khuat khong den kit; do tuong phan nuong san vao anh.
-  float t = 0.55 + 0.45 * d;
-  // Vai model co material khong anh (nuoc), chi co mau phang - lay mau do thay vi anh.
-  vec3 c = mix(vMau, texture2D(uAnh, vUv).rgb, vCoAnh);
-  gl_FragColor = vec4(c * t, 1.0);
+  vec3 n = normalize(vNor);
+
+  // Den chinh am, cheo tu tren trai - phia truoc, dung huong voi goc may anh isometric.
+  vec3 huongDen = normalize(vec3(-0.55, 0.80, 0.35));
+  vec3 denChinh = vec3(1.05, 0.99, 0.88) * max(dot(n, huongDen), 0.0) * 0.72;
+
+  // Den nen nua cau: mat ngua len an sang troi lanh, mat cui xuong an sang dat am.
+  // Giu TOI de mau khong bac ra - nen sang qua thi moi thu xam xit nhu nhau.
+  float bau = n.y * 0.5 + 0.5;
+  vec3 denNen = mix(vec3(0.22, 0.20, 0.26), vec3(0.40, 0.44, 0.52), bau);
+
+  // Vien lanh o ria, chi vua du tach hinh khoi nen sam. Manh tay la ra suong mu.
+  float vien = pow(1.0 - abs(dot(n, uNhin)), 4.0) * 0.10;
+
+  // vMau vua la mau phang cua material khong anh, vua la mau nhan cua manh trong me.
+  vec3 c = vMau * mix(vec3(1.0), texture2D(uAnh, vUv).rgb, vCoAnh);
+  vec3 ra = c * (denChinh + denNen) + vien * vec3(0.75, 0.85, 1.0);
+  // Keo bao hoa len mot chut: den nen lam nhat mau, buoc nay tra lai do tuoi cua kit.
+  float xam = dot(ra, vec3(0.299, 0.587, 0.114));
+  gl_FragColor = vec4(mix(vec3(xam), ra, 1.25), 1.0);
 }`;
 
 /** @returns {WebGLShader} */
@@ -121,6 +135,7 @@ async function chay() {
     mau: gl.getAttribLocation(ct, 'aMau'),
     coAnh: gl.getAttribLocation(ct, 'aCoAnh'),
     mvp: gl.getUniformLocation(ct, 'uMvp'),
+    nhin: gl.getUniformLocation(ct, 'uNhin'),
   };
 
   // Moi kit mot anh mau rieng - hai goi Kenney KHONG dung chung colormap.png.
@@ -139,6 +154,14 @@ async function chay() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     anh.push(t);
   }
+
+  // Huong tu vat the ve phia may anh, suy thang tu goc xoay - dung cho phep tinh vien.
+  gl.uniform3f(
+    viTri.nhin,
+    Math.sin(bo.yaw) * Math.cos(bo.pitch),
+    Math.sin(bo.pitch),
+    Math.cos(bo.yaw) * Math.cos(bo.pitch),
+  );
 
   const dem = gl.createBuffer();
   gl.enable(gl.DEPTH_TEST);

@@ -46,6 +46,15 @@
     "ponytail-debt": "user-invocable-only",
     "ponytail-gain": "user-invocable-only",
     "ponytail-help": "user-invocable-only",
-    "ponytail-review": "user-invocable-only"
+    "ponytail-review": "user-invocable-only",
+    "dataviz": "off",
+    "design": "off",
+    "artifact-design": "off",
+    "artifact-diagramming": "off",
+    "artifact-capabilities": "off",
+    "claude-api": "off",
+    "keybindings-help": "off",
+    "session-start-hook": "off",
+    "init": "off"
   }
 }

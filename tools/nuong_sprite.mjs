@@ -37,12 +37,34 @@ function chieu(x, y, z) {
   return [x1, y * Math.cos(PITCH) - z1 * Math.sin(PITCH), y * Math.sin(PITCH) + z1 * Math.cos(PITCH)];
 }
 
+/**
+ * Doi khai bao kit ve mot dang duy nhat: { duong, anh }.
+ * `anh` bo trong thi lay `Textures/colormap.png`; dat `false` la kit khong co anh, mau
+ * nam ngay trong file .mtl (Nature Kit lam vay).
+ */
+function doiKit(khai) {
+  const ra = {};
+  for (const [ma, v] of Object.entries(khai)) {
+    const o = typeof v === 'string' ? { duong: v } : v;
+    ra[ma] = {
+      duong: o.duong,
+      anh: o.anh === false ? null : join(o.duong, o.anh ?? 'Textures/colormap.png'),
+    };
+  }
+  return ra;
+}
+
 /** Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich. */
 function ghep(phan, kit) {
   const ra = [];
   for (const p of phan) {
     const [ma, ten] = p.m.split(':');
-    const { dinh } = docObj(join(kit[ma], `${ten}.obj`));
+    const { dinh } = docObj(join(kit[ma].duong, `${ten}.obj`), p.mau_vl ?? {});
+    // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
+    // di, son de mot mau phang - can the moi doi duoc mai ngoi xanh thanh mai ngoi do,
+    // vi mau nhan khong bao gio keo mot mau xanh sang mau do duoc.
+    const t = p.mau ?? [1, 1, 1];
+    const son = p.thay_mau === true;
     const goc = ((p.ry ?? 0) * Math.PI) / 180;
     const c = Math.cos(goc);
     const s = Math.sin(goc);
@@ -57,7 +79,10 @@ function ghep(phan, kit) {
         -x * s + z * c + (p.z ?? 0),
         dinh[i + 3], dinh[i + 4],
         nx * c + nz * s, dinh[i + 6], -nx * s + nz * c,
-        dinh[i + 8], dinh[i + 9], dinh[i + 10], dinh[i + 11],
+        son ? t[0] : dinh[i + 8] * t[0],
+        son ? t[1] : dinh[i + 9] * t[1],
+        son ? t[2] : dinh[i + 10] * t[2],
+        son ? 0 : dinh[i + 11],
       );
     }
   }
@@ -103,9 +128,11 @@ async function docDai(td, bieuThuc, khuc = 1_000_000) {
 
 async function nuong(tenMe, heSo) {
   const me = JSON.parse(readFileSync(`tools/me/${tenMe}.json`, 'utf8'));
-  const kit = me.kit;
-  const maKit = Object.keys(kit);
-  const anh = maKit.map((k) => join(kit[k], 'Textures/colormap.png'));
+  const kit = doiKit(me.kit);
+  // Moi anh chi nap mot lan du nhieu kit dung chung; kit khong co anh tro tam vao anh 0
+  // (shader khong lay mau tu anh cho nhung dinh do nen tro vao dau cung duoc).
+  const anh = [...new Set(Object.values(kit).map((k) => k.anh).filter((a) => a !== null))];
+  const chiSoAnh = (ma) => Math.max(anh.indexOf(kit[ma].anh), 0);
   const ppu = PPU_1X * heSo;
 
   const dinhTheoTen = new Map();
@@ -116,7 +143,7 @@ async function nuong(tenMe, heSo) {
     const o = doO(dinh, ppu);
     dinhTheoTen.set(ten, Buffer.from(dinh.buffer));
     oCanXep.push({ ten, w: o.w, h: o.h });
-    phu.set(ten, { ...o, anh: maKit.indexOf(phan[0].m.split(':')[0]) });
+    phu.set(ten, { ...o, anh: chiSoAnh(phan[0].m.split(':')[0]) });
   }
 
   const xong = xep(oCanXep, CANH, 2);

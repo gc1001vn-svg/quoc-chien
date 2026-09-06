@@ -16,7 +16,7 @@ import { TrinhDuyet } from './lib/cdp.mjs';
 
 const CHROMIUM = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium';
 const KHO = 'public/assets/atlas';
-const COT = 8;
+const COT = Number(process.env.COT ?? 8);
 
 const ten = process.argv[2] ?? 'trung_co_1x';
 const phong = Number(process.argv[3] ?? 2);

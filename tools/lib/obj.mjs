@@ -42,9 +42,12 @@ function docMtl(duong) {
 
 /**
  * @param {string} duong Duong dan file .obj
+ * @param {Record<string, number[]>} [sonVl] Mau nhan theo TEN MATERIAL, vi du
+ *   `{ leafsGreen: [1.5, 1, 0.55] }`. Can the nay vi mot cay co ca la lan than: nhan mau
+ *   ca model thi la xanh len ma than cung do quach theo.
  * @returns {{dinh: Float32Array, min: number[], max: number[], soTamGiac: number}}
  */
-export function docObj(duong) {
+export function docObj(duong, sonVl = {}) {
   const mtl = docMtl(join(dirname(duong), `${duong.split('/').pop().replace(/\.obj$/, '')}.mtl`));
   let vatLieu = { kd: [1, 1, 1], anh: 1 };
   const v = [];
@@ -72,7 +75,11 @@ export function docObj(duong) {
     } else if (p[0] === 'vn') {
       vn.push([Number(p[1]), Number(p[2]), Number(p[3])]);
     } else if (p[0] === 'usemtl') {
-      vatLieu = mtl.get(p[1]) ?? { kd: [1, 1, 1], anh: 1 };
+      const goc = mtl.get(p[1]) ?? { kd: [1, 1, 1], anh: 1 };
+      const son = sonVl[p[1]];
+      vatLieu = son === undefined
+        ? goc
+        : { anh: goc.anh, kd: goc.kd.map((v, k) => v * son[k]) };
     } else if (p[0] === 'f') {
       // Mat co the 3, 4 hay nhieu canh -> chia thanh quat tam giac.
       const goc = p.slice(1);
