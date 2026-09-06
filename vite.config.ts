@@ -8,8 +8,11 @@ import { VitePWA } from 'vite-plugin-pwa';
  * Doi noi phuc vu trang thi CHI sua dong nay. No quyet dinh:
  * `base` cua Vite, `start_url`, `scope` va duong dan icon trong manifest PWA.
  * Sai cho nay la PWA mo ra trang trang. `npm run check:base` doi chieu lai sau khi build.
+ *
+ * Hien phuc vu o GitHub Pages duoi duong dan con /quoc-chien/, khong phai goc ten mien.
+ * Doi sang Vercel (phuc vu o goc) thi sua dong duoi thanh '/' va khong dung gi khac.
  */
-const BASE = '/';
+const BASE = '/quoc-chien/';
 
 export default defineConfig({
   base: BASE,

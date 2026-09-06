@@ -1,0 +1,76 @@
+name: Deploy
+
+# Dua ban build len GitHub Pages moi lan `main` doi.
+#
+# VI SAO KHONG DEPLOY TU MAY AO: may ao cua Claude chan het nha cung cap hosting
+# (vercel.com, github.io, netlify, cloudflare deu tra 000). Chi `api.github.com` va
+# `registry.npmjs.org` ra duoc. May chay CI cua GitHub thi co mang day du, nen viec
+# deploy giao cho no.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Chi can quyen cua chinh GITHUB_TOKEN, khong dung chia khoa ben ngoai nao.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Mot luot deploy tai mot thoi diem. Luot moi day cho luot dang xep hang, nhung
+# khong cat ngang luot dang chay do.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  dung:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Bat GitHub Pages neu chua bat
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - run: npm run build
+
+      - name: Duong dan goc
+        run: npm run check:base
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  dua-len:
+    needs: dung
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+      # May ao cua Claude khong mo duoc trang that. Buoc nay chay tren may CI (co mang)
+      # va IN KET QUA RA NHAT KY - do la duong duy nhat Claude tu kiem duoc ban da len.
+      - name: Kiem trang da len
+        run: |
+          goc="${{ steps.deploy.outputs.page_url }}"
+          echo "Dia chi: $goc"
+          for duong in "" "?do=sprite" "manifest.webmanifest" "icons/icon-192.png"; do
+            ma=$(curl -s -o /tmp/tra -w '%{http_code}' --retry 5 --retry-delay 4 --retry-all-errors "${goc}${duong}")
+            echo "  ${duong:-/} -> HTTP $ma ($(wc -c </tmp/tra) byte)"
+            [ "$ma" = "200" ] || { echo "::error::${duong:-/} tra ve $ma"; exit 1; }
+          done
+          echo "--- the <title> cua trang chinh ---"
+          curl -s "$goc" | grep -o '<title>[^<]*</title>'
