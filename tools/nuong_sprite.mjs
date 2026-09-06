@@ -200,7 +200,16 @@ async function nuong(tenMe, heSo) {
 
   const xong = xep(oCanXep, CANH, 2);
   const sprite = xong.o.map((o) => ({ ...o, ...phu.get(o.ten) }));
-  const bo = { canh: CANH, soTrang: xong.soTrang, yaw: YAW, pitch: PITCH, anh: anh.map((_, i) => `/anh/${i}`), sprite };
+  // Hoa tiet CC0 cho phep chieu ba phuong. Khai o `me.hoa_tiet`; khong khai thi khong
+  // chieu gi ca va sprite ra y het truoc - de lui ve ban cu chi bang mot dong trong me.
+  const hoaTiet = me.hoa_tiet ?? [];
+  const bo = {
+    canh: CANH, soTrang: xong.soTrang, yaw: YAW, pitch: PITCH,
+    anh: anh.map((_, i) => `/anh/${i}`), sprite,
+    hoaTiet: hoaTiet.map((_, i) => `/hoatiet/${i}`),
+    damHoaTiet: me.dam_hoa_tiet ?? 0,
+    tiLeHoaTiet: me.ti_le_hoa_tiet ?? 4,
+  };
 
   const may = createServer((req, res) => {
     const d = decodeURIComponent(req.url ?? '/');
@@ -215,6 +224,9 @@ async function nuong(tenMe, heSo) {
     } else if (d.startsWith('/anh/')) {
       res.setHeader('content-type', 'image/png');
       res.end(readFileSync(anh[Number(d.slice(5))]));
+    } else if (d.startsWith('/hoatiet/')) {
+      res.setHeader('content-type', 'image/jpeg');
+      res.end(readFileSync(hoaTiet[Number(d.slice(9))]));
     } else if (d.startsWith('/bin/')) {
       res.setHeader('content-type', 'application/octet-stream');
       res.end(dinhTheoTen.get(d.slice(5)) ?? Buffer.alloc(0));
