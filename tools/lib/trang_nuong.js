@@ -20,8 +20,10 @@ varying vec3 vNor;
 varying vec3 vMau;
 varying float vCoAnh;
 varying float vCao;
+varying vec3 vViTri;
 void main() {
   vCao = aPos.y;
+  vViTri = aPos;
   vUv = aUv;
   vNor = aNor;
   vMau = aMau;
@@ -32,14 +34,62 @@ void main() {
 const FS = `
 precision mediump float;
 uniform sampler2D uAnh;
+uniform sampler2D uVua;
+uniform sampler2D uNgoi;
 uniform vec3 uNhin;
+uniform float uDam;
+uniform float uTiLe;
 varying vec2 vUv;
 varying vec3 vNor;
 varying vec3 vMau;
 varying float vCoAnh;
 varying float vCao;
+varying vec3 vViTri;
+
+// PHEP CHIEU BA PHUONG (triplanar).
+//
+// VI SAO PHAI LAM THE: model Kenney KHONG co toa do anh trai phang. File roof-point.obj
+// chi co 5 toa do vt, ca 5 deu u = 0.21875 - moi dinh tro vao DUNG MOT COT diem anh trong
+// colormap.png. Khong co cho nao de dan hoa tiet vao. Nen phai tu sinh toa do: chieu
+// hoa tiet theo ca ba truc X, Y, Z roi tron theo huong mat. Mat nao ngua theo truc nao
+// thi an anh chieu theo truc do.
+//
+// Tra ve do sang cua hoa tiet tai mot diem. Chay LUC NUONG, khong chay trong game, nen
+// goi bao nhieu lan cung duoc - hoa tiet nam san trong anh, trong game ton 0 fps.
+float doSang(vec3 p, vec3 tron, float ngoi) {
+  vec3 q = p * uTiLe;
+  vec3 x = mix(texture2D(uVua, q.zy).rgb, texture2D(uNgoi, q.zy).rgb, ngoi);
+  vec3 y = mix(texture2D(uVua, q.xz).rgb, texture2D(uNgoi, q.xz).rgb, ngoi);
+  vec3 z = mix(texture2D(uVua, q.xy).rgb, texture2D(uNgoi, q.xy).rgb, ngoi);
+  vec3 c = x * tron.x + y * tron.y + z * tron.z;
+  return dot(c, vec3(0.299, 0.587, 0.114));
+}
+
 void main() {
   vec3 n = normalize(vNor);
+
+  // Hoa tiet chi lam NHAP NHO, khong doi mau. Doi mau thi hong bang mau da chot o Phase 1;
+  // nhap nho thi di qua den, tu sinh sang toi - dung cach khoi that noi len.
+  if (uDam > 0.0) {
+    vec3 tron = abs(n);
+    tron /= (tron.x + tron.y + tron.z + 1e-5);
+    // Mat ngua len an hoa tiet ngoi (mai doc), mat dung an hoa tiet vua (tuong).
+    float ngoi = smoothstep(0.35, 0.75, abs(n.y));
+    float e = 0.030;
+    float h = doSang(vViTri, tron, ngoi);
+    vec3 doc = vec3(
+      doSang(vViTri + vec3(e, 0.0, 0.0), tron, ngoi) - h,
+      doSang(vViTri + vec3(0.0, e, 0.0), tron, ngoi) - h,
+      doSang(vViTri + vec3(0.0, 0.0, e), tron, ngoi) - h
+    );
+    // Chi giu phan doc nam TIEP TUYEN voi mat - phan theo phuong phap tuyen khong co nghia.
+    doc -= n * dot(doc, n);
+    // CHAN TREN bat buoc. Lan dau chia doc cho e (tuc nhan 100) roi nhan tiep uDam:
+    // phap tuyen bi de bep, den tinh ra gan nhu ngau nhien, ca thanh pho ra hat nhieu va
+    // am xanh. Chuan hoa lai thi uDam moi dung nghia la BIEN DO, khong bao gio no.
+    float manh = length(doc);
+    if (manh > 1e-5) n = normalize(n - (doc / manh) * min(manh * 20.0, 1.0) * uDam);
+  }
 
   // Den chinh am, cheo tu tren trai - phia truoc, dung huong voi goc may anh isometric.
   vec3 huongDen = normalize(vec3(-0.55, 0.80, 0.35));
@@ -193,6 +243,8 @@ async function chay() {
     coAnh: gl.getAttribLocation(ct, 'aCoAnh'),
     mvp: gl.getUniformLocation(ct, 'uMvp'),
     nhin: gl.getUniformLocation(ct, 'uNhin'),
+    dam: gl.getUniformLocation(ct, 'uDam'),
+    tiLe: gl.getUniformLocation(ct, 'uTiLe'),
   };
 
   // Moi kit mot anh mau rieng - hai goi Kenney KHONG dung chung colormap.png.
@@ -211,6 +263,33 @@ async function chay() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     anh.push(t);
   }
+
+  // Hai anh hoa tiet CC0 cua Poly Haven, dung cho phep chieu ba phuong. Phai de LAP
+  // (`REPEAT`) chu khong `CLAMP_TO_EDGE` - chieu ba phuong keo toa do ra ngoai 0..1 lien
+  // tuc, kep bien lai thi ca mat nha thanh mot vet mau keo dai.
+  for (let i = 0; i < (bo.hoaTiet ?? []).length; i += 1) {
+    const img = new Image();
+    img.src = bo.hoaTiet[i];
+    await img.decode();
+    gl.activeTexture(gl.TEXTURE1 + i);
+    const t = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+    // MIPMAP bat buoc. Anh hoa tiet 1024 diem anh bi nen xuong vai chuc diem tren sprite;
+    // khong co mipmap thi GPU lay dung mot diem anh moi lan -> ca thanh pho lam tam nhu
+    // nhieu tivi. Anh 1024 la luy thua 2 nen mipmap dung duoc voi che do lap.
+    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+  }
+  gl.activeTexture(gl.TEXTURE0);
+  gl.uniform1i(gl.getUniformLocation(ct, 'uAnh'), 0);
+  gl.uniform1i(gl.getUniformLocation(ct, 'uVua'), 1);
+  gl.uniform1i(gl.getUniformLocation(ct, 'uNgoi'), 2);
+  gl.uniform1f(viTri.dam, bo.damHoaTiet ?? 0);
+  gl.uniform1f(viTri.tiLe, bo.tiLeHoaTiet ?? 4);
 
   // Huong tu vat the ve phia may anh, suy thang tu goc xoay - dung cho phep tinh vien.
   gl.uniform3f(
