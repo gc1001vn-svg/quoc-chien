@@ -38,29 +38,64 @@ function chieu(x, y, z) {
 }
 
 /**
- * Doi khai bao kit ve mot dang duy nhat: { duong, anh }.
- * `anh` bo trong thi lay `Textures/colormap.png`; dat `false` la kit khong co anh, mau
- * nam ngay trong file .mtl (Nature Kit lam vay).
+ * Doi khai bao kit ve mot dang duy nhat.
+ *
+ * `anh` co ba the:
+ *   - bo trong  -> `Textures/colormap.png`, ca kit dung chung mot anh (cac goi Kenney)
+ *   - `false`   -> kit khong co anh, mau nam ngay trong file .mtl (Nature Kit lam vay)
+ *   - `"mtl"`   -> MOI MATERIAL MOT ANH RIENG, doc ten tu `map_Kd` trong file .mtl roi
+ *                  tim trong `thu_muc_anh`. Quaternius lam vay: 27 anh PBR 2048x2048,
+ *                  moi vat lieu mot bo, chu khong phai mot bang mau phang.
  */
 function doiKit(khai) {
   const ra = {};
   for (const [ma, v] of Object.entries(khai)) {
     const o = typeof v === 'string' ? { duong: v } : v;
+    const theoMtl = o.anh === 'mtl';
     ra[ma] = {
       duong: o.duong,
-      anh: o.anh === false ? null : join(o.duong, o.anh ?? 'Textures/colormap.png'),
+      theoMtl,
+      thuMucAnh: theoMtl ? join(o.duong, o.thu_muc_anh ?? '../Textures') : null,
+      anh: theoMtl || o.anh === false ? null : join(o.duong, o.anh ?? 'Textures/colormap.png'),
       gamma: o.gamma === true,
     };
   }
   return ra;
 }
 
+/**
+ * So anh dung chung cho ca me: ten file -> chi so. Xay dan trong luc ghep sprite.
+ *
+ * Phai la mot so duy nhat cho ca me chu khong phai moi kit mot so: chi so nay di thang
+ * vao tung dinh, va trang nuong ve theo nhom chi so.
+ */
+function taoSoAnh() {
+  const bang = new Map();
+  return {
+    /** Them mot anh neu chua co, tra ve chi so. */
+    them(duong) {
+      if (!bang.has(duong)) bang.set(duong, bang.size);
+      return bang.get(duong);
+    },
+    /** Danh sach duong dan theo dung thu tu chi so. */
+    danhSach() {
+      return [...bang.keys()];
+    },
+  };
+}
+
 /** Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich. */
-function ghep(phan, kit) {
+function ghep(phan, kit, soAnh) {
   const ra = [];
   for (const p of phan) {
     const [ma, ten] = p.m.split(':');
-    const { dinh } = docObj(join(kit[ma].duong, `${ten}.obj`), p.mau_vl ?? {}, kit[ma].gamma);
+    const k = kit[ma];
+    // Kit dung chung mot anh -> moi material co anh deu tro ve dung anh do.
+    // Kit khai `"anh": "mtl"` -> tra ten file ghi trong .mtl, tim trong thu muc anh.
+    const traAnh = k.theoMtl
+      ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(join(k.thuMucAnh, tenAnh)))
+      : () => (k.anh === null ? -1 : soAnh.them(k.anh));
+    const { dinh } = docObj(join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh);
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
     // di, son de mot mau phang - can the moi doi duoc mai ngoi xanh thanh mai ngoi do,
     // vi mau nhan khong bao gio keo mot mau xanh sang mau do duoc.
@@ -68,7 +103,7 @@ function ghep(phan, kit) {
     const son = p.thay_mau === true;
     // Moi goi do bang mot thuoc khac nhau: o luoi cua Kenney rong 1 don vi, cua KayKit
     // rong 2. `ti_le` keo ve cung mot thuoc.
-    const k = p.ti_le ?? 1;
+    const tiLe = p.ti_le ?? 1;
     const goc = ((p.ry ?? 0) * Math.PI) / 180;
     const c = Math.cos(goc);
     const s = Math.sin(goc);
@@ -78,9 +113,9 @@ function ghep(phan, kit) {
       const nx = dinh[i + 5];
       const nz = dinh[i + 7];
       ra.push(
-        (x * c + z * s) * k + (p.x ?? 0),
-        dinh[i + 1] * k + (p.y ?? 0),
-        (-x * s + z * c) * k + (p.z ?? 0),
+        (x * c + z * s) * tiLe + (p.x ?? 0),
+        dinh[i + 1] * tiLe + (p.y ?? 0),
+        (-x * s + z * c) * tiLe + (p.z ?? 0),
         dinh[i + 3], dinh[i + 4],
         nx * c + nz * s, dinh[i + 6], -nx * s + nz * c,
         son ? t[0] : dinh[i + 8] * t[0],
@@ -180,22 +215,22 @@ async function docDai(td, bieuThuc, khuc = 1_000_000) {
 async function nuong(tenMe, heSo) {
   const me = JSON.parse(readFileSync(`tools/me/${tenMe}.json`, 'utf8'));
   const kit = doiKit(me.kit);
-  // Moi anh chi nap mot lan du nhieu kit dung chung; kit khong co anh tro tam vao anh 0
-  // (shader khong lay mau tu anh cho nhung dinh do nen tro vao dau cung duoc).
-  const anh = [...new Set(Object.values(kit).map((k) => k.anh).filter((a) => a !== null))];
-  const chiSoAnh = (ma) => Math.max(anh.indexOf(kit[ma].anh), 0);
+  // So anh xay DAN trong luc ghep: chi anh nao that su duoc dung moi vao so. Quaternius
+  // co 27 anh 2048x2048 nhung mot me chi cham toi vai cai - nap het la phi bo nho.
+  const soAnh = taoSoAnh();
   const ppu = PPU_1X * heSo;
 
   const dinhTheoTen = new Map();
   const oCanXep = [];
   const phu = new Map();
   for (const [ten, phan] of Object.entries(me.sprite)) {
-    const dinh = ghep(phan, kit);
+    const dinh = ghep(phan, kit, soAnh);
     const bong = doBong(dinh);
     const o = doO(dinh, ppu, bong);
     dinhTheoTen.set(ten, Buffer.from(dinh.buffer));
     oCanXep.push({ ten, w: o.w, h: o.h });
-    phu.set(ten, { ...o, bong, anh: chiSoAnh(phan[0].m.split(':')[0]) });
+    // Khong con `anh` theo sprite: chi so anh nam trong tung DINH, trang nuong ve theo nhom.
+    phu.set(ten, { ...o, bong });
   }
 
   const xong = xep(oCanXep, CANH, 2);
@@ -203,6 +238,7 @@ async function nuong(tenMe, heSo) {
   // Hoa tiet CC0 cho phep chieu ba phuong. Khai o `me.hoa_tiet`; khong khai thi khong
   // chieu gi ca va sprite ra y het truoc - de lui ve ban cu chi bang mot dong trong me.
   const hoaTiet = me.hoa_tiet ?? [];
+  const anh = soAnh.danhSach();
   const bo = {
     canh: CANH, soTrang: xong.soTrang, yaw: YAW, pitch: PITCH,
     anh: anh.map((_, i) => `/anh/${i}`), sprite,

@@ -108,7 +108,9 @@ void main() {
   // khong lo lung - game 2D cheo nao cung ve, khong ve thi hinh nhu dan len nen.
   float chan = 0.62 + 0.38 * smoothstep(0.0, 0.55, vCao);
 
-  vec3 c = vMau * mix(vec3(1.0), texture2D(uAnh, vUv).rgb, vCoAnh);
+  // vCoAnh gio la CHI SO ANH + 1 (0 = khong anh), nen phai lay nguong chu khong nhan thang.
+  // Trang nuong ve tung nhom mot chi so, nen o day chi can biet CO hay KHONG.
+  vec3 c = vMau * mix(vec3(1.0), texture2D(uAnh, vUv).rgb, step(0.5, vCoAnh));
   vec3 ra = c * (denChinh + denNen) * chan + vien * vec3(0.75, 0.85, 1.0);
   // Nang tong: vung sang nga am, vung toi nga lanh. Cung mot mau ma tach hai dau ra thi
   // hinh khoi noi han len, khong can them da giac nao.
@@ -152,6 +154,31 @@ function veElip(b, canh = 28) {
     ra.push(...d.slice(0, 4), ...d.slice(i * 4, i * 4 + 4), ...d.slice((i + 1) * 4, i * 4 + 8));
   }
   return new Float32Array(ra);
+}
+
+/**
+ * Chia mang dinh thanh cac doan lien tiep cung chi so anh.
+ *
+ * Tra ve `[chiSo, dinhDau, soDinh]`. Cac manh trong mot sprite duoc ghep theo dung thu tu
+ * khai trong me nen phan lon truong hop chi ra vai doan, khong phai hang tram.
+ */
+function nhomTheoAnh(dinh) {
+  const BUOC = 12;
+  const KHE_ANH = 11;
+  const ra = [];
+  const soDinh = dinh.length / BUOC;
+  let dau = 0;
+  let hienTai = soDinh === 0 ? 0 : Math.round(dinh[KHE_ANH]);
+  for (let i = 1; i < soDinh; i += 1) {
+    const c = Math.round(dinh[i * BUOC + KHE_ANH]);
+    if (c !== hienTai) {
+      ra.push([hienTai, dau, i - dau]);
+      dau = i;
+      hienTai = c;
+    }
+  }
+  if (soDinh > dau) ra.push([hienTai, dau, soDinh - dau]);
+  return ra;
 }
 
 /** @returns {WebGLShader} */
@@ -351,9 +378,17 @@ async function chay() {
       dat(viTri.nor, 3, 20);
       dat(viTri.mau, 3, 32);
       dat(viTri.coAnh, 1, 44);
-      gl.bindTexture(gl.TEXTURE_2D, anh[s.anh]);
       gl.uniformMatrix4fv(viTri.mvp, false, mt);
-      gl.drawArrays(gl.TRIANGLES, 0, dinh.length / 12);
+      gl.activeTexture(gl.TEXTURE0);
+
+      // VE THEO NHOM CHI SO ANH. Mot model Quaternius dung nhieu material, moi material
+      // mot anh rieng - khong the bind mot anh cho ca sprite nhu hoi chi co Kenney. Doi
+      // bind giua cac nhom la viec cua may NUONG, chay mot lan ngoai game, nen khong tiec.
+      // Co bat depth test nen ve nhieu luot van ra dung hinh.
+      for (const [chiSo, dau, so] of nhomTheoAnh(dinh)) {
+        if (chiSo > 0) gl.bindTexture(gl.TEXTURE_2D, anh[chiSo - 1]);
+        gl.drawArrays(gl.TRIANGLES, dau, so);
+      }
     }
     kq.push(canvas.toDataURL('image/png'));
   }

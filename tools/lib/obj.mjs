@@ -11,6 +11,10 @@
  * Nen moi dinh mang theo ca mau va co `anh` (1 = lay mau tu anh, 0 = lay mau phang).
  *
  * Tra ve mang dinh phang [x,y,z, u,v, nx,ny,nz, r,g,b, anh] * 3 dinh moi tam giac.
+ *
+ * O cuoi (`anh`) la CHI SO ANH + 1, hay 0 neu material khong dung anh. Cong them 1 de so 0
+ * van co nghia "khong anh" - Kenney chi co mot anh moi goi nen truoc day o nay chi can
+ * 0/1, nhung Quaternius co 27 anh rieng theo tung material nen phai mang chi so that.
  */
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -18,7 +22,14 @@ import { dirname, join } from 'node:path';
 /** So so thuc moi dinh. */
 export const BUOC = 12;
 
-/** Doc file .mtl nam canh file .obj: ten material -> mau phang va co dung anh khong. */
+/**
+ * Doc file .mtl nam canh file .obj: ten material -> mau phang, co dung anh khong, va TEN
+ * FILE anh.
+ *
+ * `map_Kd` cua Quaternius la duong dan tuyet doi tren may tac gia
+ * (`C:/Users/Usuario/Desktop/...`), khong the mo thang. Chi lay TEN FILE cuoi cung, ben
+ * goi tu tim no trong thu muc anh cua kit.
+ */
 function docMtl(duong) {
   const bang = new Map();
   let ten = '';
@@ -27,11 +38,14 @@ function docMtl(duong) {
       const p = dong.trim().split(/\s+/);
       if (p[0] === 'newmtl') {
         ten = p[1];
-        bang.set(ten, { kd: [1, 1, 1], anh: 0 });
+        bang.set(ten, { kd: [1, 1, 1], anh: 0, tenAnh: '' });
       } else if (p[0] === 'Kd' && bang.has(ten)) {
         bang.get(ten).kd = [Number(p[1]), Number(p[2]), Number(p[3])];
       } else if (p[0] === 'map_Kd' && bang.has(ten)) {
-        bang.get(ten).anh = 1;
+        const m = bang.get(ten);
+        m.anh = 1;
+        // Duong dan co the dung `/` hay `\\`; chi giu ten file.
+        m.tenAnh = (p[p.length - 1] ?? '').split(/[/\\]/).pop() ?? '';
       }
     }
   } catch {
@@ -47,9 +61,12 @@ function docMtl(duong) {
  *   ca model thi la xanh len ma than cung do quach theo.
  * @param {boolean} [gamma] Doi mau `Kd` tu khong gian tuyen tinh sang sRGB. Goi xuat tu
  *   Blender (KayKit) ghi mau tuyen tinh; de nguyen thi da xam ra den xanh xit.
+ * @param {(tenAnh: string) => number} [traAnh] Doi TEN FILE anh cua material thanh chi so
+ *   anh toan cuc (>= 0), hay -1 neu khong tim ra. Bo trong thi moi material co anh deu
+ *   dung anh so 0 - dung cho cac goi Kenney chi co mot `colormap.png`.
  * @returns {{dinh: Float32Array, min: number[], max: number[], soTamGiac: number}}
  */
-export function docObj(duong, sonVl = {}, gamma = false) {
+export function docObj(duong, sonVl = {}, gamma = false, traAnh = null) {
   const mtl = docMtl(join(dirname(duong), `${duong.split('/').pop().replace(/\.obj$/, '')}.mtl`));
   let vatLieu = { kd: [1, 1, 1], anh: 1 };
   const v = [];
@@ -77,12 +94,18 @@ export function docObj(duong, sonVl = {}, gamma = false) {
     } else if (p[0] === 'vn') {
       vn.push([Number(p[1]), Number(p[2]), Number(p[3])]);
     } else if (p[0] === 'usemtl') {
-      const goc = mtl.get(p[1]) ?? { kd: [1, 1, 1], anh: 1 };
+      const goc = mtl.get(p[1]) ?? { kd: [1, 1, 1], anh: 1, tenAnh: '' };
       const son = sonVl[p[1]];
       const kd = gamma ? goc.kd.map((v) => v ** (1 / 2.2)) : goc.kd;
+      // O cuoi mang CHI SO + 1: 0 nghia la khong anh.
+      let khe = goc.anh === 1 ? 1 : 0;
+      if (goc.anh === 1 && traAnh !== null) {
+        const i = traAnh(goc.tenAnh);
+        khe = i < 0 ? 0 : i + 1;
+      }
       vatLieu = son === undefined
-        ? { anh: goc.anh, kd }
-        : { anh: goc.anh, kd: kd.map((v, k) => v * son[k]) };
+        ? { anh: khe, kd }
+        : { anh: khe, kd: kd.map((v, k) => v * son[k]) };
     } else if (p[0] === 'f') {
       // Mat co the 3, 4 hay nhieu canh -> chia thanh quat tam giac.
       const goc = p.slice(1);
