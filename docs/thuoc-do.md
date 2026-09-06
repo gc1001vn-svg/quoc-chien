@@ -13,7 +13,7 @@ Một lệnh đo duy nhất: `npm run do` (tức `bash scripts/do.sh`).
 | Build | `npm run build` | chạy xong, `dist/` ≤ 95 MB | máy ảo được |
 | Đường dẫn gốc | `npm run check:base` | khớp `BASE` trong `vite.config.ts` | máy ảo được |
 | Bản quyền asset | `npm run check:credits` | mọi file `public/assets/` có trong `ASSET_CREDITS.md` | máy ảo được |
-| **Trần sprite** | mở `?do=sprite` | báo về **N sprite tối đa còn 60 fps** | **iPhone thật** — máy ảo vẽ bằng phần mềm, ra 30 fps giả |
+| **Trần sprite** | mở `?do=sprite` | ≥ 1.500 · **đo 06/09: 18.089** | **iPhone thật** — máy ảo vẽ bằng phần mềm, ra 30 fps giả |
 | Lệnh vẽ mỗi khung | nhãn trên `?do=sprite` | ≤ 4 | máy ảo được |
 
 ## Chưa đo được

@@ -7,7 +7,7 @@ Cập nhật: 05/09/2026.
 
 ## 1. Đang ở đâu
 
-**Phase 0 — xong phần máy ảo kiểm được, chờ xác nhận trên iPhone.**
+**Phase 0 — XONG.** Chủ dự án đã mở thử trên iPhone 06/09 và gửi số đo.
 
 Khung repo đã dựng và chạy: Vite + TypeScript strict + ESLint + vitest + PWA + CI +
 Vercel, `src/core/AssetPath.ts`, `src/core/Perf.ts`, bộ vẽ WebGL tối thiểu
@@ -20,18 +20,16 @@ Chưa có game. Trang chính chỉ là màn hình khởi động có một nút 
 `bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 7 test · build ·
 check:base · check:credits).
 
-Trang đo sprite chạy trong máy ảo: **1 lệnh vẽ** (trần 4), fps kẹt 30 vì máy ảo vẽ bằng
-phần mềm → **số sprite tối đa vẫn chưa biết**, phải đo trên iPhone thật.
+**Trần sprite trên iPhone thật, đo 06/09: 18.089 sprite ở 60 fps.**
+Trần TECH_SPEC là 1.500 → dư **12 lần**. Số lệnh vẽ cao nhất **1** (trần 4).
+Ở 30 fps chạm đỉnh thang đo 24.000 nên con số đó là trần của thang, không phải của máy.
 
 ## 3. Việc của chủ dự án
 
+Duyệt sang Phase 1. Không còn gì chờ.
+
+Trang đo giữ lại, đo lại sau Phase 1 khi có atlas thật:
 https://gc1001vn-svg.github.io/quoc-chien/?do=sprite
-
-Mở trang đo trên iPhone, đợi nó chạy xong (khoảng một phút), nhắn về **một con số**:
-số sprite tối đa còn giữ 60 fps. Con số đó chốt toàn bộ ngân sách đồ hoạ cho các phase sau.
-
-Nếu số **dưới 800**: phải bàn lại, có thể phải giảm sprite động hoặc bỏ cỡ 2×.
-Nếu số **trên 1.500**: đúng như trần đã đặt ở TECH_SPEC, đi tiếp bình thường.
 
 ## 4. Nợ kỹ thuật
 
@@ -64,4 +62,8 @@ Nếu số **trên 1.500**: đúng như trần đã đặt ở TECH_SPEC, đi ti
 ## 5. Phase kế tiếp
 
 **Phase 1 — nướng sprite**: `tools/nuong_sprite.mjs` biến model 3D CC0 thành atlas, nướng
-mẻ trung cổ trước (nhà cửa, cây cối, ô nền). Chỉ bắt đầu sau khi có con số ở mục 3.
+mẻ trung cổ trước (nhà cửa, cây cối, ô nền).
+
+Con số 18.089 mở khoá quyết định treo ở TECH_SPEC mục 3: **nướng và ship cả cỡ 2×**.
+Sprite 2× tốn gấp 4 lần diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn gấp 3 lần trần 1.500.
+`TECH_SPEC.md` là file khoá, chưa sửa — cần chủ dự án đồng ý.

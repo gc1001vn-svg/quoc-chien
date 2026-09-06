@@ -25,6 +25,12 @@ Ngày: 05/09/2026.
   thật của canvas. Thêm `Gl.tiLeDiemAnh()` để đổi đơn vị ở đúng một chỗ.
 - Trang đo in ra "0 sprite" trên máy ảo. Thêm ngưỡng thứ hai 30 fps và câu giải thích.
 
+## Số đo cuối phase
+
+Trần sprite trên iPhone thật, 06/09: **18.089 sprite ở 60 fps**, 1 lệnh vẽ.
+Trần TECH_SPEC 1.500 → dư 12 lần. Đủ để bật cỡ 2×.
+Đo với atlas giả 256×256 nên hơi lạc quan — đo lại sau Phase 1.
+
 ## Nợ lại
 
 Atlas giả · `src/sim/` còn rỗng · chưa nối Vercel. Chi tiết ở `docs/TIEN_DO.md` mục 4.
