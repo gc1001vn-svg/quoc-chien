@@ -17,6 +17,11 @@
   "cb": {
    "duong": "assets_source/castle-kit/Models/OBJ format",
    "anh": "../Textures/variation-c.png"
+  },
+  "kk": {
+   "duong": "assets_source/kaykit-medieval-builder-pack/Models/objects/obj",
+   "anh": false,
+   "gamma": true
   }
  },
  "sprite": {
@@ -1996,6 +2001,510 @@
   "may_ban_da_hong": [
    {
     "m": "ca:siege-catapult-demolished"
+   }
+  ],
+  "nha_lon": [
+   {
+    "m": "kk:house",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cho": [
+   {
+    "m": "kk:market",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "trai_linh": [
+   {
+    "m": "kk:barracks",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "truong_ban": [
+   {
+    "m": "kk:archeryrange",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "xuong_go": [
+   {
+    "m": "kk:lumbermill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "mo_da": [
+   {
+    "m": "kk:mine",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "lau_dai": [
+   {
+    "m": "kk:castle",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "thap_gac": [
+   {
+    "m": "kk:watchtower",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "gieng_lang": [
+   {
+    "m": "kk:well",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "coi_xay_lon": [
+   {
+    "m": "kk:mill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   },
+   {
+    "m": "kk:mill_blades",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "coi_xay_nuoc_lon": [
+   {
+    "m": "kk:watermill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   },
+   {
+    "m": "kk:watermill_wheel",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "ruong_lua_lon": [
+   {
+    "m": "kk:farm_plot",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   },
+   {
+    "m": "kk:farm_wheat",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "rung_cay": [
+   {
+    "m": "kk:forest",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "nui_da": [
+   {
+    "m": "kk:mountain",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "doi_co": [
+   {
+    "m": "kk:detail_hill",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cau_go": [
+   {
+    "m": "kk:bridge",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cau_mai": [
+   {
+    "m": "kk:bridge_roofed",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "tuong_lang": [
+   {
+    "m": "kk:wall_straight",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "tuong_lang_goc": [
+   {
+    "m": "kk:wall_corner",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cong_lang": [
+   {
+    "m": "kk:wall_gate",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cong_lang_dong": [
+   {
+    "m": "kk:wall_gate_closed",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cay_lonA": [
+   {
+    "m": "kk:detail_treeA",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cay_lonB": [
+   {
+    "m": "kk:detail_treeB",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "cay_lonC": [
+   {
+    "m": "kk:detail_treeC",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "lum_cayA": [
+   {
+    "m": "kk:detail_forestA",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "lum_cayB": [
+   {
+    "m": "kk:detail_forestB",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
+   }
+  ],
+  "da_tang": [
+   {
+    "m": "kk:detail_rocks",
+    "mau_vl": {
+     "GreenDark": [
+      1.6,
+      1.05,
+      0.55
+     ],
+     "Green": [
+      1.45,
+      1.05,
+      0.6
+     ]
+    }
    }
   ],
   "thap_vuong_dich": [

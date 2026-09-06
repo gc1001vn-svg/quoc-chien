@@ -93,7 +93,7 @@ xin cài three.js lúc đó, không xin trước.
 
 ### Số thật của mẻ trung cổ — đo 06/09
 
-**120 sprite**, nướng từ bốn gói CC0 của Kenney. Công thức ghép ở `tools/me/trung_co.json`.
+**147 sprite**, nướng từ bốn gói CC0 của Kenney và một gói của KayKit. Công thức ghép ở `tools/me/trung_co.json`.
 
 | Gói | Dùng vào | Ghi chú |
 |---|---|---|
@@ -101,6 +101,7 @@ xin cài three.js lúc đó, không xin trước.
 | Tower Defense Kit | Ô nền, đường, sông, cầu | Ô nền có bề dày, đọc hình tốt ở góc chéo |
 | Castle Kit | Tháp, tường thành, cổng, **máy công thành** | Có 7 bảng màu `variation-*.png` → cùng model, khác màu, dùng cho nước khác |
 | Nature Kit | Cây, hoa, đá, vách, **ruộng đồng**, lều, tượng | Không có ảnh, màu nằm thẳng trong `.mtl` |
+| KayKit Medieval Builder | **Công trình nguyên khối 2×2**: lâu đài, chợ, trại lính, trường bắn, xưởng gỗ, mỏ, cối xay | Ô lưới của KayKit rộng **2 đơn vị**, Kenney rộng 1 → phải `ti_le` |
 
 Ba nước cờ để **không đơn điệu**, đều không phải nướng thêm model:
 
@@ -113,6 +114,14 @@ Ba nước cờ để **không đơn điệu**, đều không phải nướng th
 3. **Đổi bảng màu cả gói**: khai thêm một kit trỏ cùng thư mục nhưng khác `anh`.
    `thap_vuong` và `thap_vuong_dich` là cùng model, khác bảng màu.
 
+Hai cái bẫy khi trộn gói của hai tác giả, đã sập rồi mới biết:
+
+- **Thước đo khác nhau.** Ô lưới Kenney rộng 1 đơn vị, KayKit rộng 2. Không có `ti_le`
+  thì nhà KayKit to gấp đôi cả thành phố.
+- **Không gian màu khác nhau.** KayKit xuất từ Blender nên `Kd` là màu **tuyến tính**;
+  Kenney ghi màu sRGB. Để nguyên thì đá xám của KayKit ra xanh đen như than. Kit khai
+  `"gamma": true` thì bộ đọc đổi `Kd` sang sRGB bằng `v ** (1/2.2)`.
+
 Đèn: đèn chính ấm chéo trên-trái + đèn nền nửa cầu (mặt ngửa ăn sáng trời lạnh, mặt cúi
 ăn sáng đất ấm) + viền lạnh mỏng ở rìa, rồi kéo bão hoà lên 1,25. Đèn nền phải để **tối**;
 sáng quá thì mọi thứ bạc ra xám xịt như nhau.
@@ -120,7 +129,7 @@ sáng quá thì mọi thứ bạc ra xám xịt như nhau.
 | | 1× | 2× |
 |---|---:|---:|
 | Trang atlas 2048² | 1 | 1 |
-| Lấp đầy | 9,1% | 35,1% |
+| Lấp đầy | 12,8% | 49,5% |
 
 Tổng 2 trang / trần 4. Còn chỗ cho các mẻ sau.
 

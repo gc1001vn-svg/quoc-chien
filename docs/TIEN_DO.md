@@ -11,8 +11,9 @@ Cập nhật: 06/09/2026.
 
 Công cụ nướng chạy được đầu-cuối: tải model CC0 → đọc OBJ → ghép mảnh thành nhà →
 vẽ bằng WebGL tự viết trong Chromium → xuất atlas PNG + JSON toạ độ.
-`tools/tai_asset.mjs` · `tools/lib/obj.mjs` · `tools/lib/xep.mjs` ·
-`tools/lib/trang_nuong.js` · `tools/nuong_sprite.mjs` · `tools/xem_atlas.mjs`.
+`tools/tai_asset.mjs` (Kenney) · `tools/tai_itch.mjs` (itch.io) · `tools/lib/obj.mjs` ·
+`tools/lib/xep.mjs` · `tools/lib/trang_nuong.js` · `tools/nuong_sprite.mjs` ·
+`tools/xem_atlas.mjs`.
 
 Atlas nằm ở `public/assets/atlas/`. **Chưa gắn vào game** — trang chính và trang đo vẫn
 như Phase 0, vẫn dùng atlas giả. Gắn vào là việc của Phase 2.
@@ -22,12 +23,12 @@ như Phase 0, vẫn dùng atlas giả. Gắn vào là việc của Phase 2.
 `bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 15 test · build ·
 check:base · check:credits).
 
-Mẻ trung cổ: **120 sprite** nướng từ 4 gói CC0 của Kenney (732 model).
+Mẻ trung cổ: **147 sprite** nướng từ 4 gói CC0 của Kenney + KayKit Medieval Builder Pack.
 
 | | 1× | 2× |
 |---|---:|---:|
 | Trang atlas 2048² | 1 | 1 |
-| Lấp đầy | 9,1% | 35,1% |
+| Lấp đầy | 12,8% | 49,5% |
 
 Tổng 2 trang / trần 4 của TECH_SPEC mục 2. Bản build 920 KB / trần 95 MB.
 
@@ -36,7 +37,7 @@ Chưa đo lại với atlas thật — xem mục 3.
 
 ## 3. Việc của chủ dự án
 
-1. **Xem ảnh 120 sprite** đã gửi trong phiên. Ưng nét vẽ chưa? Không ưng thì nói **ĐỔI …**
+1. **Xem ảnh 147 sprite** đã gửi trong phiên. Ưng nét vẽ chưa? Không ưng thì nói **ĐỔI …**
    (đổi góc camera, đổi đèn, đổi cỡ, bỏ/thêm sprite) — đổi rẻ, chỉ nướng lại một mẻ.
 2. Duyệt sang **Phase 2** nếu ưng.
 
@@ -53,9 +54,12 @@ Chưa cần mở iPhone lần này: atlas chưa gắn vào game nên chưa có g
 - Atlas **chưa gắn vào game**. `src/bench/AtlasTam.ts` vẫn là atlas giả vẽ bằng Canvas 2D.
 - Số 18.089 sprite đo bằng atlas giả 256×256. Atlas thật 2048×2048 nặng băng thông hơn
   nhiều → **phải đo lại cuối Phase 2**. Rớt dưới 1.500 ở cỡ 2× thì lùi về ship 1×.
-- Mẻ trung cổ có 120 sprite. Còn thiếu để xây thành phố thật: nhà 2×2 và 3×2, nhà xưởng,
-  kho, nhà thờ, quảng trường. Thêm là sửa `tools/me/trung_co.json` rồi `npm run nuong` —
-  không đụng code.
+- Mẻ trung cổ có 147 sprite, đã có công trình 2×2 của KayKit. Còn thiếu: nhà thờ,
+  quảng trường, kho. Thêm là sửa `tools/me/trung_co.json` rồi `npm run nuong`.
+- **KayKit City Builder Bits** đã tải về `assets_source/` nhưng **chưa nướng** — là đồ
+  hiện đại (ô tô, nhà cao tầng, đèn giao thông), để dành Phase 8.
+- Chưa tìm được kho **gigalomania** (SourceForge, `api.github.com/search` bị khoá theo
+  phiên). Đó là game đáng đọc nhất về một ván đi suốt nhiều thời kỳ — tìm lại phiên sau.
 - Nature Kit dùng bảng màu khác ba gói kia (lá xanh ngọc), đang chỉnh bằng `mau_vl`.
   Nếu Phase 2 đặt cạnh nhau thấy vẫn lệch thì chỉnh tiếp hệ số, không phải đổi gói.
 - `src/render/Gl.ts` vẫn là bản tối thiểu của Phase 0. Phase 2 **mở rộng**, không viết lại.

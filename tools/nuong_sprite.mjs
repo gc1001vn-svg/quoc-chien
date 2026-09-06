@@ -49,6 +49,7 @@ function doiKit(khai) {
     ra[ma] = {
       duong: o.duong,
       anh: o.anh === false ? null : join(o.duong, o.anh ?? 'Textures/colormap.png'),
+      gamma: o.gamma === true,
     };
   }
   return ra;
@@ -59,12 +60,15 @@ function ghep(phan, kit) {
   const ra = [];
   for (const p of phan) {
     const [ma, ten] = p.m.split(':');
-    const { dinh } = docObj(join(kit[ma].duong, `${ten}.obj`), p.mau_vl ?? {});
+    const { dinh } = docObj(join(kit[ma].duong, `${ten}.obj`), p.mau_vl ?? {}, kit[ma].gamma);
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
     // di, son de mot mau phang - can the moi doi duoc mai ngoi xanh thanh mai ngoi do,
     // vi mau nhan khong bao gio keo mot mau xanh sang mau do duoc.
     const t = p.mau ?? [1, 1, 1];
     const son = p.thay_mau === true;
+    // Moi goi do bang mot thuoc khac nhau: o luoi cua Kenney rong 1 don vi, cua KayKit
+    // rong 2. `ti_le` keo ve cung mot thuoc.
+    const k = p.ti_le ?? 1;
     const goc = ((p.ry ?? 0) * Math.PI) / 180;
     const c = Math.cos(goc);
     const s = Math.sin(goc);
@@ -74,9 +78,9 @@ function ghep(phan, kit) {
       const nx = dinh[i + 5];
       const nz = dinh[i + 7];
       ra.push(
-        x * c + z * s + (p.x ?? 0),
-        dinh[i + 1] + (p.y ?? 0),
-        -x * s + z * c + (p.z ?? 0),
+        (x * c + z * s) * k + (p.x ?? 0),
+        dinh[i + 1] * k + (p.y ?? 0),
+        (-x * s + z * c) * k + (p.z ?? 0),
         dinh[i + 3], dinh[i + 4],
         nx * c + nz * s, dinh[i + 6], -nx * s + nz * c,
         son ? t[0] : dinh[i + 8] * t[0],

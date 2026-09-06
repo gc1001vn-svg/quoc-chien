@@ -24,6 +24,21 @@ Làm ra atlas thật đầu tiên: model 3D CC0 → ảnh phẳng isometric → 
 - Kết quả: **120 sprite**, 1 trang atlas 2048² cho mỗi cỡ (1× lấp 9,1%, 2× lấp 35,1%).
   Tổng 2 trang / trần 4 của TECH_SPEC mục 2. Có cả máy công thành và ruộng đồng,
   để dành cho Phase 8-10.
+- Vòng ĐỔI thứ hai: viết `tools/tai_itch.mjs` để tải gói CC0 từ itch.io. itch giấu đường
+  dẫn file sau bốn bước có `csrf_token` và cookie; bước cuối phải gọi vào đường **không**
+  mang khoá, gọi vào đường có khoá thì itch trả 404. Lấy **KayKit Medieval Builder Pack**
+  (30 công trình nguyên khối: lâu đài, chợ, trại lính, trường bắn, xưởng gỗ, mỏ) và
+  **City Builder Bits** (để dành thời hiện đại).
+- Hai cái bẫy khi trộn gói của hai tác giả: thước đo khác nhau (ô lưới KayKit rộng 2 đơn
+  vị, Kenney rộng 1 → thêm `ti_le`), và không gian màu khác nhau (KayKit xuất từ Blender
+  ghi `Kd` tuyến tính → đá xám ra xanh đen; thêm `"gamma": true` đổi sang sRGB).
+- Cũng sửa `tools/lib/cdp.mjs`: Chromium chưa hề khai proxy của phiên nên **không mở được
+  trang nào ngoài localhost**. Từ trước tới giờ không ai để ý vì chỉ dùng để chụp
+  `localhost`. Nay khai `--proxy-server`, giữ nguyên kiểm tra chứng chỉ.
+- Đọc mã nguồn mở lấy ý tưởng, ghi ở `docs/HOC_MA_NGUON_MO.md`: Widelands (chuỗi sản xuất
+  viết bằng dữ liệu, có cả `return=skipped unless economy needs X`) và Unciv (hiệu ứng
+  viết thành câu có tham số, một máy đọc tất). Cả hai chỉ đọc cách nghĩ, không chép code.
+- Tổng cuối: **147 sprite**, 1 trang atlas mỗi cỡ (1× lấp 12,8%, 2× lấp 49,5%).
 - `tests/Atlas.test.ts` bắt đỏ nếu ô đè nhau, tràn cạnh, thiếu file trang, hay 2× không
   gấp đôi 1×. `npm run do` → 6/6.
 

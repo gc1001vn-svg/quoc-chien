@@ -45,9 +45,11 @@ function docMtl(duong) {
  * @param {Record<string, number[]>} [sonVl] Mau nhan theo TEN MATERIAL, vi du
  *   `{ leafsGreen: [1.5, 1, 0.55] }`. Can the nay vi mot cay co ca la lan than: nhan mau
  *   ca model thi la xanh len ma than cung do quach theo.
+ * @param {boolean} [gamma] Doi mau `Kd` tu khong gian tuyen tinh sang sRGB. Goi xuat tu
+ *   Blender (KayKit) ghi mau tuyen tinh; de nguyen thi da xam ra den xanh xit.
  * @returns {{dinh: Float32Array, min: number[], max: number[], soTamGiac: number}}
  */
-export function docObj(duong, sonVl = {}) {
+export function docObj(duong, sonVl = {}, gamma = false) {
   const mtl = docMtl(join(dirname(duong), `${duong.split('/').pop().replace(/\.obj$/, '')}.mtl`));
   let vatLieu = { kd: [1, 1, 1], anh: 1 };
   const v = [];
@@ -77,9 +79,10 @@ export function docObj(duong, sonVl = {}) {
     } else if (p[0] === 'usemtl') {
       const goc = mtl.get(p[1]) ?? { kd: [1, 1, 1], anh: 1 };
       const son = sonVl[p[1]];
+      const kd = gamma ? goc.kd.map((v) => v ** (1 / 2.2)) : goc.kd;
       vatLieu = son === undefined
-        ? goc
-        : { anh: goc.anh, kd: goc.kd.map((v, k) => v * son[k]) };
+        ? { anh: goc.anh, kd }
+        : { anh: goc.anh, kd: kd.map((v, k) => v * son[k]) };
     } else if (p[0] === 'f') {
       // Mat co the 3, 4 hay nhieu canh -> chia thanh quat tam giac.
       const goc = p.slice(1);

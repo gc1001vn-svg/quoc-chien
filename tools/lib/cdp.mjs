@@ -46,6 +46,12 @@ export class TrinhDuyet {
       // Cat het duong ra Internet cua trinh duyet: may ao bi chan, de nguyen thi no
       // goi google.com hang chuc lan roi bao loi day man hinh.
       '--disable-background-networking',
+      // May ao chi ra ngoai qua proxy cua phien. Khong khai thi Chromium khong mo duoc
+      // trang nao ngoai localhost - ra thang trang loi "Reload". CA cua proxy da nam san
+      // trong kho NSS (~/.pki/nssdb) nen KHONG duoc tat kiem tra chung chi.
+      ...(process.env.HTTPS_PROXY
+        ? [`--proxy-server=${process.env.HTTPS_PROXY}`, '--proxy-bypass-list=127.0.0.1;localhost']
+        : []),
       '--disable-component-update',
       '--no-first-run',
       '--no-default-browser-check',
