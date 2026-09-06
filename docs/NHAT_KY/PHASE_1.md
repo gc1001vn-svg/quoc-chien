@@ -38,7 +38,22 @@ Làm ra atlas thật đầu tiên: model 3D CC0 → ảnh phẳng isometric → 
 - Đọc mã nguồn mở lấy ý tưởng, ghi ở `docs/HOC_MA_NGUON_MO.md`: Widelands (chuỗi sản xuất
   viết bằng dữ liệu, có cả `return=skipped unless economy needs X`) và Unciv (hiệu ứng
   viết thành câu có tham số, một máy đọc tất). Cả hai chỉ đọc cách nghĩ, không chép code.
-- Tổng cuối: **147 sprite**, 1 trang atlas mỗi cỡ (1× lấp 12,8%, 2× lấp 49,5%).
+- Vòng ĐỔI thứ ba: chủ dự án gửi hai game thương mại. **Heroes of History** dùng máy ảnh
+  phối cảnh 3D thật — không cùng kỹ thuật, đuổi theo là quay lại 3D. **Million Lords**
+  dùng đúng iso 2:1 sprite nướng sẵn — đó mới là đích so được. Tách ra ba thứ nó hơn,
+  đều làm được trong máy nướng: **bóng đổ** (elip mềm trên mặt đất, lệch theo hướng đèn,
+  to dần theo chiều cao — thử hình chiếu thật của model trước, các tam giác đè nhau ra
+  vệt loang lổ), **tối chân** (`0.62 + 0.38 * smoothstep(0, 0.55, y)` — thiếu nó thì khối
+  như dán lên nền), **nâng tông** (sáng ngả ấm, tối ngả lạnh).
+- Thêm `tools/xem_canh.mjs` dựng một mảnh làng để nhìn thật. Nó cũng kiểm sớm phần toán
+  `ox`/`oy` mà Phase 2 sẽ dùng.
+- Bẫy đã sập: trộn lớp nền với lớp vật thể rồi sắp theo độ sâu thì ô nền phía sau **đè
+  lên bóng** của nhà phía trước, bóng biến mất sạch. Nền phải vẽ hết trước. Ghi thành
+  luật cho Phase 2 ở `TECH_SPEC.md` mục 3.
+- Không đuổi kịp chỗ nào: **nét vẽ model**. Kenney và KayKit là CC0 cho không, Million
+  Lords có hoạ sĩ ăn lương. Ánh sáng và tông màu thì bắt kịp; hình khối thì không.
+- Tổng cuối: **147 sprite**. Bóng đổ nới hộp bao nên atlas 2× cần 2 trang —
+  1× lấp 29,7%, 2× lấp 82,8% + 32,9%. Tổng **3 trang / trần 4**.
 - `tests/Atlas.test.ts` bắt đỏ nếu ô đè nhau, tràn cạnh, thiếu file trang, hay 2× không
   gấp đôi 1×. `npm run do` → 6/6.
 
