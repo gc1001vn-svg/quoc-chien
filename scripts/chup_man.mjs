@@ -32,7 +32,7 @@ try {
   await td.mo();
   await td.datManHinh(RONG, CAO, DPR);
   await td.moTrang(GOC + duongThem);
-  const san = await td.choDen("document.querySelector('#app')?.children.length > 0", 20000);
+  const san = await td.choDen("document.querySelector('#app canvas') !== null", 20000);
   if (!san) console.warn('Canh bao: #app van rong sau 20 giay, van chup.');
   // Cho them vai khung hinh de canvas ve xong.
   await new Promise((r) => setTimeout(r, 2500));
