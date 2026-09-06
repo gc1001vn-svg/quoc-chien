@@ -32,30 +32,37 @@ html, body {
            env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-#app.trang-do { padding: 0; }
-#app.trang-do canvas { display: block; position: absolute; inset: 0; }
+#app.trang-do, #app.trang-canh { padding: 0; }
+#app canvas { display: block; position: absolute; inset: 0; }
+/* Canh thanh pho: cam trinh duyet tu keo trang khi cham va vuot. */
+#app.trang-canh canvas { touch-action: none; }
 
-.man-cho {
+.dang-nap, .nap-hong {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  margin: 0;
   text-align: center;
-  gap: 12px;
+  padding: 0 24px;
 }
-.man-cho h1 { margin: 0; font-size: 34px; letter-spacing: 2px; color: var(--nhan); }
-.man-cho p { margin: 0; opacity: 0.8; }
-.ghi-chu { font-size: 13px; opacity: 0.55 !important; }
+.nap-hong { color: #e08a70; }
 
-.nut-lon {
-  margin-top: 8px;
-  padding: 14px 24px;
-  border: 1px solid var(--nhan);
-  border-radius: 10px;
-  color: var(--nhan);
+/* Duong sang trang do tran sprite. Chu du an bam tu dien thoai, khong phai go dia chi. */
+.nut-do {
+  position: absolute;
+  right: calc(env(safe-area-inset-right) + 10px);
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  z-index: 3;
+  font-size: 12px;
+  padding: 6px 11px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--chu);
   text-decoration: none;
-  font-size: 18px;
 }
 
 .perf-nhan {
