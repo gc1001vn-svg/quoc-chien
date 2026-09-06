@@ -96,22 +96,46 @@ function taoSoAnh() {
  *   `phang`   canh tam, tinh bang don vi o luoi
  *   `texture` anh dan len; bo trong thi tam mang mau phang cua `mau`
  *   `lap`     anh lap lai bao nhieu lan tren mot canh; 1 la vua khit
+ *   `day`     be day cua o. Bo trong hay 0 = tam phang tuyet doi, cac o xep khit nhau
+ *             lien mach. Co `day` = o thanh khoi hop mong, thay canh ben nen luoi o hien
+ *             ro nhu ban co - kieu cua Kenney va cua Age of Empires.
  */
 function tamPhang(p, soAnh) {
   const c = (p.phang ?? 1) / 2;
-  const y = p.y ?? 0;
+  const d = p.day ?? 0;
+  const y = (p.y ?? 0) + d;
   const x0 = p.x ?? 0;
   const z0 = p.z ?? 0;
   const u = p.lap ?? 1;
   const t = p.mau ?? [1, 1, 1];
   const khe = p.texture === undefined ? 0 : soAnh.them(p.texture) + 1;
-  // Hai tam giac, phap tuyen huong thang len.
   const dinh = [];
-  const them = (dx, dz, uu, vv) => {
-    dinh.push(x0 + dx, y, z0 + dz, uu, vv, 0, 1, 0, t[0], t[1], t[2], khe);
+  const them = (dx, dy, dz, uu, vv, n) => {
+    dinh.push(x0 + dx, dy, z0 + dz, uu, vv, n[0], n[1], n[2], t[0], t[1], t[2], khe);
   };
-  them(-c, -c, 0, 0); them(c, -c, u, 0); them(c, c, u, u);
-  them(-c, -c, 0, 0); them(c, c, u, u); them(-c, c, 0, u);
+  // Mat tren, phap tuyen huong thang len.
+  const tren = [0, 1, 0];
+  them(-c, y, -c, 0, 0, tren); them(c, y, -c, u, 0, tren); them(c, y, c, u, u, tren);
+  them(-c, y, -c, 0, 0, tren); them(c, y, c, u, u, tren); them(-c, y, c, 0, u, tren);
+  if (d <= 0) return dinh;
+
+  // Bon canh ben. Phap tuyen huong ra ngoai nen shader tu lam chung toi hon mat tren -
+  // do la thu lam o nen trong nhu khoi co be day chu khong phai mieng giay dan xuong.
+  const vd = (u * d) / (p.phang ?? 1);
+  const canh = [
+    { n: [0, 0, 1], a: [-c, c], b: [c, c] },
+    { n: [0, 0, -1], a: [c, -c], b: [-c, -c] },
+    { n: [1, 0, 0], a: [c, c], b: [c, -c] },
+    { n: [-1, 0, 0], a: [-c, -c], b: [-c, c] },
+  ];
+  for (const e of canh) {
+    them(e.a[0], y, e.a[1], 0, 0, e.n);
+    them(e.b[0], y, e.b[1], u, 0, e.n);
+    them(e.b[0], y - d, e.b[1], u, vd, e.n);
+    them(e.a[0], y, e.a[1], 0, 0, e.n);
+    them(e.b[0], y - d, e.b[1], u, vd, e.n);
+    them(e.a[0], y - d, e.a[1], 0, vd, e.n);
+  }
   return dinh;
 }
 

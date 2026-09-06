@@ -378,6 +378,110 @@
         "m": "qv:Roof_RoundTiles_4x4",
         "ti_le": 0.5
       }
+    ],
+    "o_co_ram_day": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          1.6,
+          1.6,
+          1.6
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_duong_lat_day": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.55,
+          1.55,
+          1.55
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_dat_day": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_duong_day": [
+      {
+        "phang": 1,
+        "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_co_ram_khe": [
+      {
+        "phang": 0.9,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          1.6,
+          1.6,
+          1.6
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_duong_lat_khe": [
+      {
+        "phang": 0.9,
+        "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.55,
+          1.55,
+          1.55
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_dat_khe": [
+      {
+        "phang": 0.9,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ],
+        "day": 0.18
+      }
+    ],
+    "o_duong_khe": [
+      {
+        "phang": 0.9,
+        "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
+        "lap": 1,
+        "mau": [
+          1.7,
+          1.7,
+          1.7
+        ],
+        "day": 0.18
+      }
     ]
   },
   "_mau": "Manh `phang` nam ngang nen an it den chinh, lai bi 'toi chan' cua shader nhan 0.62. `mau` keo sang lai. Chinh tung o rieng vi hoa tiet moi anh mot do sang khac nhau."
