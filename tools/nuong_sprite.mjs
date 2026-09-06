@@ -13,7 +13,7 @@
  * cho o luoi 2:1 vi chieu cao chieu xuong = chieu ngang * sin(30) = mot nua. (TECH_SPEC
  * muc 3 co ghi "atan(0.5) ~ 26,57 do cho 2:1 chinh xac" - cho do ghi nham.)
  */
-import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { join } from 'node:path';
 import { docObj, BUOC } from './lib/obj.mjs';
@@ -46,16 +46,23 @@ function chieu(x, y, z) {
  *   - `"mtl"`   -> MOI MATERIAL MOT ANH RIENG, doc ten tu `map_Kd` trong file .mtl roi
  *                  tim trong `thu_muc_anh`. Quaternius lam vay: 27 anh PBR 2048x2048,
  *                  moi vat lieu mot bo, chu khong phai mot bang mau phang.
+ *
+ * `thu_muc_anh` nhan MOT hay NHIEU duong dan, tim lan luot. Goi cua nguoi khac hay xuat
+ * thieu: Medieval Village khai `T_MetalOrnaments_BaseColor.png` nhung chi de no o thu muc
+ * `glTF/`, khong co trong `Textures/`.
  */
 function doiKit(khai) {
   const ra = {};
   for (const [ma, v] of Object.entries(khai)) {
     const o = typeof v === 'string' ? { duong: v } : v;
     const theoMtl = o.anh === 'mtl';
+    const thuMuc = o.thu_muc_anh ?? '../Textures';
     ra[ma] = {
       duong: o.duong,
       theoMtl,
-      thuMucAnh: theoMtl ? join(o.duong, o.thu_muc_anh ?? '../Textures') : null,
+      thuMucAnh: theoMtl
+        ? (Array.isArray(thuMuc) ? thuMuc : [thuMuc]).map((t) => join(o.duong, t))
+        : null,
       anh: theoMtl || o.anh === false ? null : join(o.duong, o.anh ?? 'Textures/colormap.png'),
       gamma: o.gamma === true,
     };
@@ -74,6 +81,7 @@ function taoSoAnh() {
   return {
     /** Them mot anh neu chua co, tra ve chi so. */
     them(duong) {
+      if (duong === null) return -1;
       if (!bang.has(duong)) bang.set(duong, bang.size);
       return bang.get(duong);
     },
@@ -139,6 +147,28 @@ function tamPhang(p, soAnh) {
   return dinh;
 }
 
+/** Da bao thieu anh nao roi - moi anh chi keu mot lan cho do rac man hinh. */
+const daKeuThieu = new Set();
+
+/**
+ * Tim mot file anh trong cac thu muc da khai.
+ *
+ * Khong thay thi tra ve `null` va keu mot cau, KHONG lam vo ca me: goi cua nguoi khac
+ * hay xuat thieu vai anh, mat mot vat lieu thi sprite do dung mau phang, van nuong tiep
+ * duoc. Vo ca me vi mot anh thieu la dat qua.
+ */
+function timAnh(thuMuc, tenAnh) {
+  for (const t of thuMuc) {
+    const duong = join(t, tenAnh);
+    if (existsSync(duong)) return duong;
+  }
+  if (!daKeuThieu.has(tenAnh)) {
+    daKeuThieu.add(tenAnh);
+    console.warn(`  canh bao: khong tim thay anh "${tenAnh}", vat lieu do dung mau phang`);
+  }
+  return null;
+}
+
 /** Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich. */
 function ghep(phan, kit, soAnh) {
   const ra = [];
@@ -153,7 +183,7 @@ function ghep(phan, kit, soAnh) {
     // Kit dung chung mot anh -> moi material co anh deu tro ve dung anh do.
     // Kit khai `"anh": "mtl"` -> tra ten file ghi trong .mtl, tim trong thu muc anh.
     const traAnh = k.theoMtl
-      ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(join(k.thuMucAnh, tenAnh)))
+      ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(timAnh(k.thuMucAnh, tenAnh)))
       : () => (k.anh === null ? -1 : soAnh.them(k.anh));
     const { dinh } = docObj(join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh);
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
