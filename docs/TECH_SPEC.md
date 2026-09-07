@@ -136,6 +136,64 @@ Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối
 - **Nâng tông** — vùng sáng ngả ấm, vùng tối ngả lạnh. Cùng một màu mà tách hai đầu ra
   thì hình khối nổi hẳn, không cần thêm đa giác nào.
 
+### Mẻ đang chạy — `trung_co_2`, Quaternius, đo 07/09
+
+**Từ 07/09 game chạy mẻ này**, mẻ Kenney/KayKit 147 sprite ở trên **không còn trong
+`public/`** (dựng lại được bất cứ lúc nào từ `tools/me/trung_co.json`).
+
+**38 sprite**, ba gói CC0 của Quaternius. Công thức ở `tools/me/trung_co_2.json`.
+
+| Số đo | Bản 1× | Bản 2× | Trần |
+|---|---:|---:|---|
+| Sprite | 38 | 38 | — |
+| Trang atlas 2048² | 1 (lấp 22,0 %) | 2 (76,1 % + 10,7 %) | 4 trang |
+| Bộ nhớ GPU | 16,8 MB | 33,6 MB | 67,1 MB |
+| Sprite một khung, chỗ đông nhất ở 0,60× | 1.181 | 1.181 | 1.500 |
+| Lệnh vẽ | 1 | 2 | 4 |
+
+Bản 2× tràn sang trang thứ hai một phần vì **cách xếp kệ bỏ phí**: tổng diện tích sprite
+là **0,867 trang**, xếp khít thì vừa. Nợ này ghi ở `docs/TIEN_DO.md`; chưa đáng đổi thuật
+toán vì còn cách trần 4 trang khá xa, và mẻ Kenney trước cũng đã chạy 2 trang ở 2×.
+
+**Cắt theo kênh alpha — sửa 07/09.** Trước đó `gl_FragColor` đặt cứng `alpha = 1.0`, tức
+kênh trong suốt của ảnh bị bỏ hoàn toàn. Cây Quaternius làm bằng **tấm lá có alpha**, nên
+mỗi tấm vẽ ra nguyên hình chữ nhật và phần lẽ ra phải thủng thì hiện màu nền tối của
+chính ảnh đó — cây sun thành cục đen lởm chởm, và đó mới là lý do thật của "cây ra khối
+đen" ghi ở `docs/NHAT_KY/PHASE_2B.md`, không phải do màu. Nay `discard` khi `alpha < 0.5`.
+Cắt cứng chứ **không trộn**: trộn thì rìa nửa trong suốt vẫn nhân màu tối của ảnh, ra
+đúng cái viền đen cũ.
+
+**Thước:** 2 đơn vị model Quaternius = **1 ô lưới** (`ti_le` 0,5); Stylized Nature dùng
+`ti_le` 0,2–0,34 tuỳ vật. Đỉnh tường ở **y = 1,56 ô** (3,12 đơn vị × 0,5) — mọi mảnh mái
+neo đúng số này, đặt thấp hơn thì tường chọc lên khỏi mái.
+
+**Công trình chiếm nhiều ô.** Nhà Quaternius rộng **2×2 ô**. Trong mẻ, các mảnh của nó
+dịch **+0,5** trên cả `x` và `z` để khối trải đúng ô `(a,b)` → `(a+1,b+1)` chứ không lệch
+nửa ô quanh tâm ô. Trong `data/thanh_pho_demo.json` khai `"o": 2`; `src/render/BanDoDemo.ts`
+đòi **cả khối** trống và không chạm đường mới đặt, và xếp theo **góc trước**
+`sau(a+o-1, b+o-1)` — lấy ô neo mà xếp thì nhà to vẽ trước cả thứ đứng cạnh nó và bị đè.
+
+**Nhân bản sprite** (`nhu` trong mẻ): năm ngôi nhà chỉ khác màu mái mà mỗi cái 17 mảnh.
+Khai `{"nhu": "nha_ngoi_do", "mau_vl": {...}, "xoay": 90}` thì biến thể còn ba dòng.
+`xoay` quay cả sprite quanh trục dứng — đổi hướng nóc nhà, nhìn từ trên xuống là khác hẳn.
+
+**Bẫy màu nhân, đã sập ba lần, ghi cho khỏi sập lần thứ tư.** Màu nhân **không thêm được
+gì vào kênh bằng 0**. Đo thật ảnh gốc:
+
+| Ảnh | RGB trung bình | Nhân được sang |
+|---|---|---|
+| `T_RoundTiles_BaseColor` (ngói) | 178, 84, 48 | nâu · lam sẫm · ô liu — kênh lam 48/255 đủ cao |
+| `Leaves_NormalTree_C` (lá sồi) | 56, 78, 0 | **chỉ vàng-lục**; kênh lam bằng 0 |
+| `Leaf_Pine_C` (lá thông) | 28, 48, 0 | **chỉ vàng-lục**; kênh lam bằng 0 |
+| `Leaves_TwistedTree_C` (cây vặn) | 95, 13, 13 | **chỉ đỏ** — bỏ, không cứu được |
+
+Nên **lá phải giảm chứ không tăng** (`[0,95 · 1,10 · 1,00]`): kéo sáng lên thì ra vàng
+chanh bệt, đúng lỗi đã ghi ở `docs/NHAT_KY/PHASE_2B.md`. Muốn lá xanh thật thì máy nướng
+phải có phép **cộng** chứ không chỉ phép nhân — chưa làm, ghi ở mục nợ.
+
+Cũng vì lý do đó, mái "xám" nướng ra **lam sẫm** chứ không ra xám: muốn xám phải khử bão
+hoà, mà nhân không khử được. Trong mẻ nó tên đúng là `nha_ngoi_lam`.
+
 ### Luật vẽ cho Phase 2: nền vẽ hết trước, vật vẽ sau
 
 Bóng nướng trong sprite thò ra khỏi ô của nó. Nếu trộn hai lớp lại rồi sắp theo độ sâu

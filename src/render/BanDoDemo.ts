@@ -15,6 +15,8 @@ export interface OVat {
   readonly a: number;
   readonly b: number;
   readonly ten: string;
+  /** Canh khoi o ma vat the chiem, tinh tu (a,b) di ra. 1 la mot o. */
+  readonly o: number;
 }
 
 /** Ban do da sinh xong. */
@@ -28,6 +30,8 @@ export interface BanDo {
 
 /** Khuon cua `data/thanh_pho_demo.json`. */
 export interface CauHinhBanDo {
+  /** Ten me atlas, vi du `trung_co_2`. */
+  readonly me: string;
   readonly canh: number;
   readonly hatGiong: number;
   readonly duongCach: number;
@@ -37,8 +41,13 @@ export interface CauHinhBanDo {
     readonly thuong: readonly { readonly ten: string; readonly trong: number }[];
   };
   readonly leDuong: number;
-  /** `bam` la so o toi da cach duong. Khong khai thi rai tu do khap ban do. */
-  readonly vat: readonly { readonly ten: string; readonly so: number; readonly bam?: number }[];
+  /**
+   * `bam` la so o toi da cach duong. Khong khai thi rai tu do khap ban do.
+   * `o` la canh khoi o vat the chiem (nha Quaternius rong 2 o). Khong khai thi 1.
+   */
+  readonly vat: readonly {
+    readonly ten: string; readonly so: number; readonly bam?: number; readonly o?: number;
+  }[];
   readonly zoomMin: number;
   readonly zoomMax: number;
   readonly zoomDau: number;
@@ -68,14 +77,21 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   const vat: OVat[] = [];
   const daChiem: Set<number> = new Set<number>();
   for (const loai of ch.vat) {
+    const canhKhoi: number = loai.o ?? 1;
     for (let i = 0; i < loai.so; i += 1) {
-      const o: number | null = bocODat(rng, ch, daChiem, loai.bam);
+      const o: number | null = bocODat(rng, ch, daChiem, canhKhoi, loai.bam);
       if (o === null) continue;
-      daChiem.add(o);
-      vat.push({ a: Math.floor(o / canh), b: o % canh, ten: loai.ten });
+      const a: number = Math.floor(o / canh);
+      const b: number = o % canh;
+      for (let da = 0; da < canhKhoi; da += 1) {
+        for (let db = 0; db < canhKhoi; db += 1) daChiem.add((a + da) * canh + (b + db));
+      }
+      vat.push({ a, b, ten: loai.ten, o: canhKhoi });
     }
   }
-  vat.sort((m, n) => sau(m.a, m.b) - sau(n.a, n.b));
+  // Xep theo GOC TRUOC cua khoi, khong theo o neo: cong trinh 2x2 phai ve sau moi thu
+  // nam sau no, ma o neo cua no lai la o sau nhat trong bon o.
+  vat.sort((m, n) => sau(m.a + m.o - 1, m.b + m.o - 1) - sau(n.a + n.o - 1, n.b + n.o - 1));
 
   return { canh, nen, vat };
 }
@@ -83,27 +99,39 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
 /**
  * Boc mot o dat duoc vat the: khong phai duong, chua ai chiem, va cach mep du xa.
  *
+ * @param canhKhoi Canh khoi o vat the chiem. CA khoi phai trong va khong cham duong.
  * @param bam Neu co, o phai cach duong khong qua ngan nay. Nha bam duong moi ra thanh pho;
  *   rai deu khap ban do thi ra mot canh rung co nha moc rai rac.
- * @returns Chi so o `a * canh + b`, hay `null` neu boc mai khong ra.
+ * @returns Chi so o neo `a * canh + b`, hay `null` neu boc mai khong ra.
  */
 function bocODat(
-  rng: Rng, ch: CauHinhBanDo, daChiem: ReadonlySet<number>, bam?: number,
+  rng: Rng, ch: CauHinhBanDo, daChiem: ReadonlySet<number>, canhKhoi: number, bam?: number,
 ): number | null {
   const canh: number = ch.canh;
   const le: number = ch.leDuong;
   for (let lan = 0; lan < BOC_TOI_DA; lan += 1) {
     const a: number = rng.nguyen(canh);
     const b: number = rng.nguyen(canh);
-    if (a % ch.duongCach === 0 || b % ch.duongCach === 0) continue;
     // Chua mep ban do: vat the neo o chan nen phan tren cua no tran ra ngoai luoi.
-    if (a < le || b < le || a >= canh - le || b >= canh - le) continue;
+    if (a < le || b < le || a + canhKhoi > canh - le || b + canhKhoi > canh - le) continue;
     if (bam !== undefined && xaDuong(a, b, ch.duongCach) > bam) continue;
-    const o: number = a * canh + b;
-    if (daChiem.has(o)) continue;
-    return o;
+    if (!khoiTrong(a, b, canhKhoi, ch, daChiem)) continue;
+    return a * canh + b;
   }
   return null;
+}
+
+/** Ca khoi `canhKhoi x canhKhoi` neo o (a,b) deu trong, va khong o nao dam vao duong. */
+function khoiTrong(
+  a: number, b: number, canhKhoi: number, ch: CauHinhBanDo, daChiem: ReadonlySet<number>,
+): boolean {
+  for (let da = 0; da < canhKhoi; da += 1) {
+    for (let db = 0; db < canhKhoi; db += 1) {
+      if ((a + da) % ch.duongCach === 0 || (b + db) % ch.duongCach === 0) return false;
+      if (daChiem.has((a + da) * ch.canh + (b + db))) return false;
+    }
+  }
+  return true;
 }
 
 /** Cach con duong gan nhat bao nhieu o. Duong nam o moi hang/cot chia het cho `cach`. */

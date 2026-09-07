@@ -173,6 +173,44 @@ function timAnh(thuMuc, tenAnh) {
   return null;
 }
 
+/**
+ * Nhan ban sprite: `{ "nhu": "<ten goc>", "mau_vl": {...}, "xoay": 90 }`.
+ *
+ * VI SAO CAN: nam cai nha chi khac nhau mau mai va mau tuong, ma moi cai 16 manh. Chep
+ * tay ra 80 dong giong het nhau, sua mot cho thi phai sua nam cho. Khai `nhu` thi bien
+ * the chi ba dong.
+ *
+ *   `mau_vl` tron VAO tung manh, khoa trung thi ban sao thang.
+ *   `xoay`   quay ca sprite quanh truc dung; manh tu quay theo va vi tri x/z quay theo.
+ *
+ * Goc phai la sprite thuong (mang manh) - khong nhan ban chong nhau, de doc me.
+ */
+function noiBanSao(sprite) {
+  const ra = {};
+  for (const [ten, v] of Object.entries(sprite)) {
+    if (Array.isArray(v)) { ra[ten] = v; continue; }
+    const goc = sprite[v.nhu];
+    if (goc === undefined) throw new Error(`sprite "${ten}": khong co goc "${v.nhu}"`);
+    if (!Array.isArray(goc)) throw new Error(`sprite "${ten}": goc "${v.nhu}" cung la ban sao`);
+    const cung = ((v.xoay ?? 0) * Math.PI) / 180;
+    const c = Math.cos(cung);
+    const s = Math.sin(cung);
+    ra[ten] = goc.map((p) => {
+      if (p.phang !== undefined) return p;
+      const x = p.x ?? 0;
+      const z = p.z ?? 0;
+      return {
+        ...p,
+        x: x * c + z * s,
+        z: -x * s + z * c,
+        ry: (p.ry ?? 0) + (v.xoay ?? 0),
+        mau_vl: { ...(p.mau_vl ?? {}), ...(v.mau_vl ?? {}) },
+      };
+    });
+  }
+  return ra;
+}
+
 /** Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich. */
 function ghep(phan, kit, soAnh) {
   const ra = [];
@@ -318,7 +356,7 @@ async function nuong(tenMe, heSo) {
   const dinhTheoTen = new Map();
   const oCanXep = [];
   const phu = new Map();
-  for (const [ten, phan] of Object.entries(me.sprite)) {
+  for (const [ten, phan] of Object.entries(noiBanSao(me.sprite))) {
     const dinh = ghep(phan, kit, soAnh);
     // Sprite toan manh `phang` la o nen: KHONG co bong. Bong lam hai viec sai cung luc -
     // no nong hop bao them 15% (o nen ra 150 px thay vi dung 128), va mot o nen do bong
