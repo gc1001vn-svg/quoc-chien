@@ -24,6 +24,7 @@ import { Gl } from './Gl';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import type { BanDo, CauHinhBanDo } from '../sim/city/BanDo';
 import { ThanhPho } from '../sim/city/City';
+import type { Walker } from '../sim/city/Walkers';
 import { DongHo } from '../sim/Clock';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
@@ -96,8 +97,11 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
 
     gl.batDauKhung();
     if (perf.dangBat('nen')) veLopNen(ve, banDo, vung);
-    if (perf.dangBat('nha')) veLopVat(ve, banDo);
-    if (perf.dangBat('nguoi') && cam.zoom() >= ZOOM_HIEN_WALKER) veLopNguoi(ve, thanhPho);
+    veLopVat(
+      ve, banDo,
+      perf.dangBat('nha'),
+      perf.dangBat('nguoi') && cam.zoom() >= ZOOM_HIEN_WALKER ? thanhPho : undefined,
+    );
     const lenhVe: number = gl.ketThucKhung();
 
     const canhBao: string = ve.dem > CAU_HINH.tranSprite ? ' ⚠ VƯỢT TRẦN' : '';
@@ -144,14 +148,36 @@ function veLopNen(ve: Ve, banDo: BanDo, vung: VungO): void {
   }
 }
 
-/** Ve nguoi vac hang. Ve sau cung: ho di tren duong nen luon dung truoc moi thu. */
-function veLopNguoi(ve: Ve, tp: ThanhPho): void {
-  for (const w of tp.doiWalker.danhSach) datSprite(ve, w.a, w.b, SPRITE_WALKER);
-}
+/**
+ * Ve lop vat the VA nguoi vac hang, tron chung mot dong xep theo truc sau.
+ *
+ * Ve nguoi thanh mot lop rieng sau nha thi ho **di xuyen nha**: nguoi dung sau mai nha van
+ * hien len tren mai. Da bi mot lan, chu du an nhin ra ngay. Nha da xep san luc sinh ban do;
+ * nguoi doi cho moi nhip nen phai xep lai moi khung - vai tram phan tu, khong dang ke.
+ *
+ * Do sau cua khoi nha lay o GOC TRUOC (`a + b + 2*(o-1)`), giong luc sinh ban do.
+ */
+function veLopVat(ve: Ve, banDo: BanDo, veNha: boolean, tp: ThanhPho | undefined): void {
+  const nguoi: readonly Walker[] = tp === undefined
+    ? []
+    : [...tp.doiWalker.danhSach].sort((m, n) => m.a + m.b - (n.a + n.b));
 
-/** Ve lop vat the. Danh sach da xep san theo truc sau luc sinh ban do. */
-function veLopVat(ve: Ve, banDo: BanDo): void {
-  for (const v of banDo.vat) datSprite(ve, v.a, v.b, v.ten);
+  let i = 0;
+  if (veNha) {
+    for (const v of banDo.vat) {
+      const sau: number = v.a + v.b + 2 * (v.o - 1);
+      while (i < nguoi.length && (nguoi[i] as Walker).a + (nguoi[i] as Walker).b <= sau) {
+        const w = nguoi[i] as Walker;
+        datSprite(ve, w.a, w.b, SPRITE_WALKER);
+        i += 1;
+      }
+      datSprite(ve, v.a, v.b, v.ten);
+    }
+  }
+  for (; i < nguoi.length; i += 1) {
+    const w = nguoi[i] as Walker;
+    datSprite(ve, w.a, w.b, SPRITE_WALKER);
+  }
 }
 
 /**

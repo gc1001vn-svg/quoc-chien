@@ -37,7 +37,8 @@ check:base · check:credits).
 | Lệnh vẽ | **1** | 4 |
 | Bộ nhớ GPU (bản 1×) | 16,8 MB | 67,1 MB |
 
-**Chủ dự án đã mở iPhone 07/09: MƯỢT.** Trần 5.000 giữ nguyên, không phải lùi.
+**iPhone thật, 07/09: 59 fps · 2.551 sprite · 1 lệnh vẽ · 0,41×.** Trần 5.000 giữ nguyên,
+không phải lùi.
 Máy ảo vẽ bằng phần mềm nên con số fps trong ảnh máy ảo (12–15) **không có nghĩa gì**.
 
 Ở mức 0,60×: **1.157 sprite là nền và nhà**, tổng dao động **1.315–1.335** ⇒ khoảng

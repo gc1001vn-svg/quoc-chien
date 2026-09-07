@@ -62,3 +62,15 @@ Cả hai đều không làm test nào đỏ: `sim:thu` gọi `chay()` thẳng n�
 **Lỗi chỉ có trên màn hình thật.** Đây đúng là loại lỗi mà `TECH_SPEC` mục 1 luật 2 nói tới.
 
 `City.ts` chạm trần 300 dòng nên tách phần đọc kết quả sang `src/sim/city/Cham.ts`.
+
+## Lỗi thứ ba: người đi xuyên nhà (07/09)
+
+iPhone thật: **59 fps · 2.551 sprite · 1 lệnh vẽ · 0,41×**. Trần 5.000 giữ được, không phải
+lùi. Nhưng chủ dự án nhìn ra ngay: **người đi xuyên nhà**.
+
+Vì `veLopNguoi` là **một lớp riêng vẽ sau tất cả nhà**, nên người đứng sau mái vẫn hiện lên
+trên mái. Sửa: trộn người vào cùng dòng với vật thể rồi xếp chung theo trục sâu. Nhà đã xếp
+sẵn lúc sinh bản đồ; người đổi chỗ mỗi nhịp nên phải xếp lại mỗi khung — vài trăm phần tử,
+không đáng kể. Độ sâu của khối nhà lấy ở **góc trước** (`a + b + 2*(o-1)`), giống lúc sinh.
+
+Đây là cái bẫy `TECH_SPEC` mục 3 đã cảnh báo cho lớp nền, nay lặp lại ở lớp người.
