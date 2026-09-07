@@ -8,9 +8,9 @@ sang cả dự án.
 
 | File trong `public/assets/` | Nguồn | Tác giả | License | Ngày thêm |
 |---|---|---|---|---|
-| `atlas/trung_co_2_1x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
-| `atlas/trung_co_2_2x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
-| `atlas/trung_co_2_2x_1.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
+| `atlas/trung_co_2_1x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
+| `atlas/trung_co_2_2x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
+| `atlas/trung_co_2_2x_1.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
 | `atlas/trung_co_2_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 07/09/2026 |
 | `atlas/trung_co_2_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 07/09/2026 |
 
@@ -26,6 +26,8 @@ Gói nguồn đang dùng, **tất cả CC0 1.0**, license đọc thẳng trong `
 | **Medieval Village MegaKit** — đang dùng cho toàn bộ công trình | Quaternius | `node tools/tai_itch.mjs quaternius/medieval-village-megakit` |
 | **Stylized Nature MegaKit** — đang dùng cho cây cỏ đá | Quaternius | `node tools/tai_itch.mjs quaternius/stylized-nature-megakit` |
 | **Fantasy Props MegaKit** — quầy chợ, thùng, ghế, nồi (thêm 07/09) | Quaternius | `node tools/tai_itch.mjs quaternius/fantasy-props-megakit` |
+| **Modular Character Outfits – Fantasy** — thân người nông dân nam/nữ (thêm 07/09) | Quaternius | `node tools/tai_itch.mjs quaternius/modular-character-outfits-fantasy` |
+| **Universal Base Characters** — cái đầu ghép vào thân nông dân (thêm 07/09) | Quaternius | `node tools/tai_itch.mjs quaternius/universal-base-characters` |
 | Fantasy Town Kit 2.0 · Tower Defense Kit · Castle Kit · Nature Kit | Kenney | `npm run tai:asset` |
 | KayKit Medieval Builder Pack 1.0 | Kay Lousberg | `npm run tai:itch` |
 | KayKit City Builder Bits 1.0 (để dành thời hiện đại, Phase 8) | Kay Lousberg | `npm run tai:itch` |
