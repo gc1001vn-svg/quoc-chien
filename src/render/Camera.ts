@@ -72,6 +72,13 @@ export class Camera {
     this.keoVeTrong();
   }
 
+  /** Dat tam khung nhin, toa do the gioi. Tu kep lai cho khoi loi ra ngoai ban do. */
+  public datTam(x: number, y: number): void {
+    this.tamX = x;
+    this.tamY = y;
+    this.keoVeTrong();
+  }
+
   /** Khung nhin hien tai, tinh bang toa do the gioi. */
   public khung(): Khung {
     const nuaX: number = this.rongCss / 2 / this.cssTrenWorld();
@@ -148,9 +155,36 @@ export class Camera {
     this.keoVeTrong();
   }
 
-  /** Khong cho camera troi ra ngoai ban do. */
+  /**
+   * Khong cho khung nhin troi ra ngoai ban do.
+   *
+   * Ban do o goc cheo la mot HINH THOI, khong phai hinh chu nhat: tam (0, cao/2), ban truc
+   * `nuaRongWorld` va `cao/2`. Kep tam theo hop bao chu nhat - cach cu - van de lo nen den
+   * o hai mui thoi, va cang thu nho cang lo to. Nen kep theo chinh phuong trinh hinh thoi:
+   *
+   *     |x| / W + |y - cy| / cy <= 1
+   *
+   * Dieu kien la GOC XA NHAT cua khung nhin phai nam trong, tuc thay |x| bang |tamX| + nua
+   * be ngang khung. Rut gon lai thanh: do lech cua tam phai nam trong mot hinh thoi nho
+   * hon, thu vao dung nua khung nhin. Qua thu nho den muc khung to hon ca ban do thi `du`
+   * am - luc do chi con mot cho dat duoc, la giua ban do.
+   */
   private keoVeTrong(): void {
-    this.tamX = Math.min(Math.max(this.tamX, -this.nuaRongWorld), this.nuaRongWorld);
-    this.tamY = Math.min(Math.max(this.tamY, 0), this.caoWorld);
+    const cy: number = this.caoWorld / 2;
+    const sau: number = this.cssTrenWorld();
+    const nuaX: number = this.rongCss / 2 / sau;
+    const nuaY: number = this.caoCss / 2 / sau;
+    const du: number = 1 - nuaX / this.nuaRongWorld - nuaY / cy;
+    if (du <= 0) {
+      this.tamX = 0;
+      this.tamY = cy;
+      return;
+    }
+    const lechY: number = this.tamY - cy;
+    const xa: number = Math.abs(this.tamX) / this.nuaRongWorld + Math.abs(lechY) / cy;
+    if (xa <= du) return;
+    const co: number = du / xa;
+    this.tamX *= co;
+    this.tamY = cy + lechY * co;
   }
 }

@@ -12,7 +12,11 @@ chạy đồ hoạ mới: nhà tường vữa và tường gạch có hồi khun
 bốn màu mái (đỏ · nâu · lam · rêu), cây cối sạch nét, quầy chợ · xe kéo · thùng rượu ·
 hàng rào rải dọc đường. Mẻ Kenney cũ **đã xoá khỏi `public/`** — bớt 5,0 MB máy phải tải.
 
-**Chưa ai xem trên iPhone thật.** Mới chỉ xem bằng ảnh chụp trong máy ảo.
+**Thu nhỏ được tới 0,35×** (trước là 0,60×): nhìn ~39 ô ngang thay vì 23. Trần sprite nâng
+1.500 → 3.500, bản đồ nới 64×64 → **96×96** vì bản đồ cũ hẹp hơn khung nhìn ở 0,35× nên
+lòi nền đen ra hai mũi hình thoi. Camera nay kẹp theo **hình thoi** chứ không theo hộp bao.
+
+**Chưa ai đo fps trên iPhone thật.** Mới chỉ xem bằng ảnh chụp trong máy ảo.
 
 Ba việc lớn của phiên: nhà Quaternius **chiếm 2×2 ô** (trước đó ghép vào là chồng lên
 nhau), **cắt sprite theo kênh alpha** (máy nướng bỏ hẳn kênh trong suốt nên cây ra cục
@@ -21,7 +25,7 @@ Chi tiết cả phiên: `docs/NHAT_KY/PHASE_2B_2.md`.
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 42 test · build ·
+`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 51 test · build ·
 check:base · check:credits).
 
 Mẻ `trung_co_2` đang chạy, **38 sprite**:
@@ -30,7 +34,7 @@ Mẻ `trung_co_2` đang chạy, **38 sprite**:
 |---|---:|---:|---|
 | Trang atlas 2048² | 1 (lấp 22,0 %) | 2 (76,1 % + 10,7 %) | 4 trang |
 | Bộ nhớ GPU | 16,8 MB | 33,6 MB | 67,1 MB |
-| Sprite chỗ đông nhất, mức 0,60× | 1.181 | 1.181 | 1.500 |
+| Sprite chỗ đông nhất, mức 0,35× | 3.316 | 3.236 | 3.500 |
 | Lệnh vẽ | 1 | 2 | 4 |
 
 **Chưa đo fps trên iPhone với mẻ mới.** Số cũ (18.089 sprite ở `?do=sprite`) đo bằng mẻ
