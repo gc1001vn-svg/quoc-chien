@@ -8,6 +8,7 @@
     { "ten": "bot", "hien": "Bot", "tran": 300, "dau": 30 },
     { "ten": "banh_mi", "hien": "Banh mi", "tran": 300, "dau": 30 },
     { "ten": "ca", "hien": "Ca", "tran": 300, "dau": 30 },
+    { "ten": "ca_muoi", "hien": "Ca muoi", "tran": 300, "dau": 30 },
     { "ten": "lon", "hien": "Lon", "tran": 200, "dau": 20 },
     { "ten": "xuc_xich", "hien": "Xuc xich", "tran": 300, "dau": 30 },
     { "ten": "gia_cam", "hien": "Gia cam", "tran": 300, "dau": 30 },
@@ -24,9 +25,12 @@
     { "ten": "go_tho", "hien": "Go tho", "tran": 200, "dau": 20 },
     { "ten": "van", "hien": "Van", "tran": 200, "dau": 20 },
     { "ten": "da_xay", "hien": "Da xay", "tran": 150, "dau": 20 },
+    { "ten": "da_voi", "hien": "Da voi", "tran": 300, "dau": 30 },
+    { "ten": "voi", "hien": "Voi song", "tran": 200, "dau": 20 },
     { "ten": "quang", "hien": "Quang sat", "tran": 300, "dau": 30 },
     { "ten": "than", "hien": "Than", "tran": 200, "dau": 20 },
     { "ten": "sat", "hien": "Sat", "tran": 200, "dau": 20 },
+    { "ten": "thep", "hien": "Thep", "tran": 150, "dau": 20 },
     { "ten": "giap", "hien": "Giap", "tran": 100, "dau": 10 },
     { "ten": "vu_khi", "hien": "Vu khi", "tran": 100, "dau": 10 }
   ]

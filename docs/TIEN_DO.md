@@ -7,9 +7,12 @@ Cập nhật: 07/09/2026 (phiên 2 trong ngày — Phase 3).
 
 ## 1. Đang ở đâu
 
-**Phase 3 xong: thành phố sống bằng số.** `src/sim/` hết rỗng. **26 mặt hàng · 28 loại nhà
-(86 cái) · 12 chuỗi sản xuất**: bánh mì · xúc xích · gia cầm · cá · nước · rượu bia · muối ·
-len-vải · gốm · đồ da · sắt-giáp-vũ khí · gỗ-đá. Dân bậc 1 ăn mặc dùng **chín món**.
+**Phase 3 xong: thành phố sống bằng số.** `src/sim/` hết rỗng. **30 mặt hàng · 32 loại nhà
+(94 cái) · 14 chuỗi sản xuất**: bánh mì · xúc xích · gia cầm · cá · cá muối · nước · rượu bia ·
+muối · len-vải · gốm · đồ da · sắt-thép-giáp-vũ khí · gỗ-đá · vôi. Dân bậc 1 dùng **mười món**.
+
+Ý tưởng chuỗi chủ dự án gửi mà chưa lắp được (thuốc súng, kỵ binh, lụa gấm, đồng thau…):
+**`docs/Y_TUONG_CHUOI.md`** — kèm lý do hoãn và phase sẽ làm.
 
 `npm run sim:thu` chạy **10 giờ game (360.000 nhịp) trong 0,5 giây**, in bảng tài nguyên
 rồi tự chấm ĐẠT/HỎNG.
@@ -55,7 +58,7 @@ pull request. Chủ dự án không phải bấm gì để code lên trang.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **28 toà nhà của kinh tế chưa có sprite** — kinh tế có mà nhìn không thấy. Gói Quaternius
+- **32 toà nhà của kinh tế chưa có sprite** — kinh tế có mà nhìn không thấy. Gói Quaternius
   **không có cối xay và giếng**, phải tự ghép từ mảnh tường và mái.
 - **`src/sim/` và `src/render/` chưa nối với nhau chút nào.** `BanDoDemo.ts` vẫn là bản đồ
   giả của Phase 2. Phase 4 phải nối, và đó là chỗ dễ vỡ hiệu năng nhất.
@@ -72,7 +75,7 @@ theo chu kỳ, đi theo đường, tới đâu phục vụ tới đó trong bán
 **không phải đổi một số cân bằng nào**. `KE_HOACH.md` gọi đây là **chỗ nặng nhất của cả dự
 án** — mỗi walker là một sprite động, trần là 3.500 sprite. Phải đo kỹ.
 
-**B. Nướng mẻ sprite cho 28 toà nhà mới.** Để nhìn thấy kinh tế trên màn hình.
+**B. Nướng mẻ sprite cho 32 toà nhà mới.** Để nhìn thấy kinh tế trên màn hình.
 
 **C. Chỉnh bốn chỗ đồ hoạ còn yếu** (`docs/NO_KY_THUAT.md`).
 

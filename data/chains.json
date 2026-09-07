@@ -16,6 +16,9 @@
     { "ten": "ca", "hien": "Ca",
       "qua": ["nha_chai", "nha_dan"] },
 
+    { "ten": "ca_muoi", "hien": "Ca muoi",
+      "qua": ["nha_chai", "mo_muoi", "lo_uop", "nha_dan"] },
+
     { "ten": "nuoc", "hien": "Nuoc",
       "qua": ["gieng", "nha_dan"] },
 
@@ -34,10 +37,13 @@
     { "ten": "do_da", "hien": "Do da",
       "qua": ["lo_mo", "xuong_thuoc", "nha_dan", "trai_linh"] },
 
-    { "ten": "sat", "hien": "Sat, giap va vu khi",
-      "qua": ["mo_quang", "mo_than", "lo_nung", "lo_ren", "xuong_vu_khi", "trai_linh"] },
+    { "ten": "thep", "hien": "Sat, thep, giap va vu khi",
+      "qua": ["mo_quang", "mo_than", "lo_nung", "lo_thep", "lo_ren", "xuong_vu_khi", "trai_linh"] },
 
     { "ten": "go_da", "hien": "Go va da xay",
-      "qua": ["rung", "xuong_cua", "mo_da", "cong_truong"] }
+      "qua": ["rung", "xuong_cua", "mo_da", "cong_truong"] },
+
+    { "ten": "voi", "hien": "Voi song",
+      "qua": ["mo_da_voi", "lo_voi", "cong_truong"] }
   ]
 }

@@ -60,3 +60,20 @@ Chủ dự án báo phiên này chạy tốn. Ba chỗ ngốn nhất, theo số 
 
 `CLAUDE.md` 698 token (khuyến nghị ≤500) và `.claude/settings.json` ≈1.400 token/phiên đều
 là **file khoá**, chờ chủ dự án đồng ý.
+
+## Bổ sung lần hai (07/09) — danh sách chuỗi của chủ dự án
+
+Chủ dự án gửi một danh sách chuỗi dài. **Phần lớn là thiết kế RTS** — buff "+15 % tốc độ
+công nhân", giảm đào ngũ, tranh chấp mỏ giữa người chơi. Quốc Chiến không phải RTS: người
+chơi chỉ bấm thẻ quyết định, chơi một mình offline, trận đánh là kịch bản tính sẵn. Đã nói
+rõ và **không lắp** những thứ đó.
+
+Lấy năm cái: **nước + củi vào lò bánh** (mỗi lò phải đốt cái gì đó — đúng gợi ý hay nhất
+về cơ chế) · **cá muối** · **thép** chen giữa sắt và rèn · **vôi sống** · công trường ăn vôi.
+Thành **30 hàng · 32 nhà (94 cái) · 14 chuỗi**, vẫn ĐẠT, 0,61 giây.
+
+Thêm củi cho lò bánh làm rừng hụt ngay (600 → cần 1.300 gỗ/giờ): phải gấp đôi trại đốn gỗ.
+Đây chính là điều gợi ý đó nhắm tới — buộc phải giữ rừng thay vì chặt hết đầu ván.
+Mỏ than giờ nuôi **bốn lò** (nung · gốm · thép · vôi), nhịp 120 → 45.
+
+Phần hoãn và phần loại, kèm lý do và phase: `docs/Y_TUONG_CHUOI.md`.
