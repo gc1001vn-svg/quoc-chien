@@ -13,4 +13,27 @@ trong vài giây, và toàn bộ logic test tự động được. Tây Vực tr
 Hai hàng rào giữ luật này: ESLint (`eslint.config.js`) và
 `tests/SimKhongDungTrinhDuyet.test.ts`.
 
-Phase 0 chưa có file nào ở đây. Phase 3 mở màn với `Clock.ts`, `State.ts`, `city/`.
+## Đang có gì (từ Phase 3)
+
+| File | Việc |
+|---|---|
+| `Clock.ts` | Nhịp 10 Hz, tốc độ 0/1×/2×/4×/8×, giữ phần lẻ nên không trôi nhịp |
+| `city/DocJson.ts` | Đọc số và chữ từ JSON có kiểm tra, sai thì báo kèm đường dẫn tới chỗ sai |
+| `city/Wares.ts` | Kho chung: không bao giờ âm, không bao giờ vượt trần |
+| `city/Buildings.ts` | Toà nhà. `san_xuat` ăn hết `vao` cùng lúc; `tieu_thu` ăn từng món độc lập |
+| `city/Chains.ts` | Kiểm ba file `data/*.json` khớp nhau trước khi chạy nhịp nào |
+| `city/City.ts` | Gom lại, đếm, chấm điểm một giờ game |
+
+**Mọi số cân bằng nằm ở `data/wares.json` · `buildings.json` · `chains.json`**, không nằm
+trong `.ts` (CLAUDE.md luật 2).
+
+## Hai điều phải nhớ khi viết thêm
+
+1. **Import phải ghi đủ đuôi `.ts`** và **cấm `constructor(readonly x: T)`** — Node bóc kiểu
+   TypeScript (`--experimental-strip-types`) không nuốt được lối viết tắt đó. Sai là
+   `npm run sim:thu` chết ngay, `npm test` thì vẫn xanh nên dễ lọt.
+2. **Đọc file là việc của người gọi.** `scripts/sim_thu.ts` đọc JSON bằng `fs` rồi truyền
+   object vào; trong trình duyệt thì Vite `import` thẳng JSON. `src/sim/` không biết file
+   nằm ở đâu.
+
+Phase 4 thêm `city/Walkers.ts` — người vác hàng thật thay cho kho chung chuyển tức thì.
