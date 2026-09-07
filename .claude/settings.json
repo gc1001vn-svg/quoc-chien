@@ -1,4 +1,10 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho:*)",
+      "Bash(git -C /home/user/ghi-nho:*)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
