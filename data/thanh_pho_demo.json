@@ -191,5 +191,5 @@
   "zoomMin": 0.35,
   "zoomMax": 2.0,
   "zoomDau": 1.0,
-  "tranSprite": 3500
+  "tranSprite": 5000
 }

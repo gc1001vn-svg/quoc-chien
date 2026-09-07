@@ -39,6 +39,16 @@
 
 ## Code
 
+- **Walker chưa có sprite người** (07/09, Phase 4). Đang mượn `thung_ruou`. Phân biệt được
+  vì đồ trang trí không bao giờ đặt lên đường, nhưng nhìn vẫn sai. Gói Quaternius đang dùng
+  không có model người; nướng người 8 hướng × 4 dáng là Phase 10.
+- **Chưa đo fps trên iPhone với walker** (07/09). Trần sprite đã nâng 3.500 → 5.000 theo ý
+  chủ dự án mà chưa có số nền. Đường lùi: `ZOOM_HIEN_WALKER` trong `src/render/CityScene.ts`
+  đổi 0 → 0,6 là walker biến mất khi thu nhỏ.
+- **Nhà kinh tế và vật thể trang trí là hai danh sách riêng** (07/09). 94 nhà kinh tế của
+  `src/sim/` đặt độc lập với vật thể trang trí của bản đồ, nên trên màn hình chưa nhìn ra
+  nhà nào là lò bánh, nhà nào là mỏ than. Nối hai cái làm một khi có sprite thật.
+
 - **Node bóc kiểu TypeScript có hai điều cấm.** `src/sim/` phải ghi đủ đuôi `.ts` trong
   import, và **cấm `constructor(readonly x: T)`** (`ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX`).
   Sai là `npm run sim:thu` chết trong khi `npm test` vẫn xanh — dễ lọt. Đường lùi nếu về

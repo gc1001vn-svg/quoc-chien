@@ -13,16 +13,28 @@
  * Ket qua: ca thanh pho ton dung HAI lenh ve, tran la 4.
  */
 import cauHinhTho from '../../data/thanh_pho_demo.json';
+import hangTho from '../../data/wares.json';
+import nhaTho from '../../data/buildings.json';
+import chuoiTho from '../../data/chains.json';
+import walkerTho from '../../data/walkers.json';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
 import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
-import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../sim/city/BanDo';
+import type { BanDo, CauHinhBanDo } from '../sim/city/BanDo';
+import { ThanhPho } from '../sim/city/City';
+import { NHIP_MOI_GIAY } from '../sim/Clock';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
-/** Suc chua buffer. Rong hon tran 3.500 mot chut de con dem duoc luc vuot. */
-const SUC_CHUA = 4096;
+
+/** Sprite tam thoi cho nguoi vac hang. Chua nuong nguoi - `docs/NO_KY_THUAT.md`. */
+const SPRITE_WALKER = 'thung_ruou';
+
+/** Duoi muc thu nho nay thi khong ve nguoi nua. Duong lui khi iPhone rot fps. */
+const ZOOM_HIEN_WALKER = 0;
+/** Suc chua buffer. Rong hon tran 5.000 mot chut de con dem duoc luc vuot. */
+const SUC_CHUA = 6144;
 
 /** Mo canh thanh pho trong `goc`. */
 export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
@@ -36,7 +48,12 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   const atlas: Atlas = new Atlas(bo, await napTrangLenGpu(bo, gl));
   gl.datTrang(atlas.cacTrang());
 
-  const banDo: BanDo = sinhBanDo(CAU_HINH);
+  // Mo phong that chay ngay trong trinh duyet. Cung mot `src/sim/` ma `npm run sim:thu`
+  // chay 10 gio game trong Node - khong co ban sao thu hai cua luat kinh te.
+  const thanhPho: ThanhPho = new ThanhPho({
+    hang: hangTho, nha: nhaTho, chuoi: chuoiTho, banDo: cauHinhTho, walker: walkerTho,
+  });
+  const banDo: BanDo = thanhPho.banDo;
   const cam: Camera = new Camera(
     atlas.heSo(), CAU_HINH.canh, atlas.oPx(),
     CAU_HINH.zoomMin, CAU_HINH.zoomMax, zoomBanDau(),
@@ -54,8 +71,16 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   doKichThuoc();
   window.addEventListener('resize', doKichThuoc);
 
+  let truoc = 0;
   const veMotKhung = (now: number): void => {
     perf.danhDau(now);
+
+    // Sim chay 10 Hz, doc lap voi vong ve 60 fps (TECH_SPEC muc 2). Kep 4 nhip mot khung
+    // de tab bi treo lau roi quay lai khong lam dung hinh ca giay.
+    const giay: number = truoc === 0 ? 0 : Math.min((now - truoc) / 1000, 0.4);
+    truoc = now;
+    thanhPho.chay(Math.min(Math.round(giay * NHIP_MOI_GIAY), 4));
+
     const ve: Ve = {
       gl, atlas, rongDev, caoDev,
       tiLe: gl.tiLeDiemAnh() * cam.cssTrenWorld(),
@@ -69,6 +94,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
     gl.batDauKhung();
     if (perf.dangBat('nen')) veLopNen(ve, banDo, vung);
     if (perf.dangBat('nha')) veLopVat(ve, banDo);
+    if (perf.dangBat('nguoi') && cam.zoom() >= ZOOM_HIEN_WALKER) veLopNguoi(ve, thanhPho);
     const lenhVe: number = gl.ketThucKhung();
 
     const canhBao: string = ve.dem > CAU_HINH.tranSprite ? ' ⚠ VƯỢT TRẦN' : '';
@@ -113,6 +139,11 @@ function veLopNen(ve: Ve, banDo: BanDo, vung: VungO): void {
       if (ten !== undefined) datSprite(ve, a, s - a, ten);
     }
   }
+}
+
+/** Ve nguoi vac hang. Ve sau cung: ho di tren duong nen luon dung truoc moi thu. */
+function veLopNguoi(ve: Ve, tp: ThanhPho): void {
+  for (const w of tp.doiWalker.danhSach) datSprite(ve, w.a, w.b, SPRITE_WALKER);
 }
 
 /** Ve lop vat the. Danh sach da xep san theo truc sau luc sinh ban do. */

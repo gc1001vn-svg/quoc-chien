@@ -46,7 +46,7 @@ Xem mục 2. Vượt trần là lỗi, không phải "tối ưu sau".
 | Hạng mục | Trần | Vì sao |
 |---|---:|---|
 | Lệnh vẽ mỗi khung hình | **≤ 4** | 1 lệnh cho mỗi atlas, gom hết sprite |
-| Sprite động mỗi khung hình | **≤ 3.500** | Nâng từ 1.500 ngày 07/09 — xem "Vì sao nâng trần" dưới |
+| Sprite động mỗi khung hình | **≤ 5.000** | Nâng 1.500 → 3.500 → 5.000 trong ngày 07/09 — xem hai mục "Vì sao nâng trần" dưới |
 | Atlas trong bộ nhớ cùng lúc | **≤ 4 × (2048×2048)** | ≈ 67 MB bộ nhớ GPU (4 × 2048² × 4 byte). Tây Vực chết một phần vì 322 tấm ảnh rác |
 | `setPixelRatio` | `min(dpr, 2)` | Giống Tây Vực — dpr 3 trên iPhone là gấp 2,25 lần công vẽ |
 | Nhịp mô phỏng | **10 Hz**, tách khỏi vòng vẽ | Vẽ 60 fps, sim 10 Hz, nội suy vị trí giữa hai nhịp |
@@ -84,6 +84,19 @@ số đó **chạm trần công cụ đo, không phải trần máy** (xem `docs
 
 **Vẫn chưa đo lại trên iPhone với mẻ mới.** Rớt fps thì đường lùi là nâng `zoomMin` trong
 `data/thanh_pho_demo.json` về 0,45 — một dòng, không đụng mã.
+
+### Vì sao nâng tiếp 3.500 → 5.000 (07/09, Phase 4)
+
+Walker của Phase 4 là **sprite động thật đầu tiên** của dự án. `npm run sim:thu` đo được
+chỗ đông nhất là **324 người cùng lúc** trên cả bản đồ — nhưng đó là toàn bản đồ, màn hình
+chỉ thấy một phần. Ở 0,35× nền đã ăn 3.316 sprite, trần 3.500 chỉ còn dư 184 chỗ, không đủ.
+
+Hai đường: **ẩn walker khi thu nhỏ dưới 0,6×** (cách của Caesar III và Zeus, không đổi trần),
+hay **nâng trần**. Chủ dự án chọn nâng trần ngày 07/09 sau khi đã được nêu rõ rủi ro.
+
+> **Rủi ro chưa đóng:** nâng trần khi **chưa ai đo fps trên iPhone** với mẻ đồ hoạ hiện tại
+> là đúng cách Tây Vực chết (mục 1). Đường lùi đã dựng sẵn: `ZOOM_HIEN_WALKER` trong
+> `src/render/CityScene.ts` — đổi từ 0 lên 0,6 là walker biến mất khi thu nhỏ, một dòng.
 
 **Bản đồ phải đủ to cho mức thu nhỏ.** `o_px` là **64** ở bộ 1× và **128** ở bộ 2×, nên
 bản đồ 64×64 chỉ rộng `63 × 128 / 2 = 4.032` đơn vị — ở 0,35× màn hình nhìn được 2.497
@@ -196,7 +209,7 @@ Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối
 | Sprite | 38 | 38 | — |
 | Trang atlas 2048² | 1 (lấp 22,0 %) | 2 (76,1 % + 10,7 %) | 4 trang |
 | Bộ nhớ GPU | 16,8 MB | 33,6 MB | 67,1 MB |
-| Sprite một khung, chỗ đông nhất ở 0,35× | 3.316 | 3.236 | 3.500 |
+| Sprite một khung, chỗ đông nhất ở 0,35× | 3.316 | 3.236 | 5.000 |
 | Lệnh vẽ | 1 | 2 | 4 |
 
 Bản 2× tràn sang trang thứ hai một phần vì **cách xếp kệ bỏ phí**: tổng diện tích sprite
