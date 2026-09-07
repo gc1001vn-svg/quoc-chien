@@ -6,22 +6,30 @@
  * trong vai giay, va toan bo luat kinh te test tu dong duoc.
  */
 import { DongHo, NHIP_MOI_GIO } from '../Clock.ts';
-import type { BoDem, DinhNghiaNha } from './Buildings.ts';
+import type { BanDo, O } from './BanDo.ts';
+import { congRaDuong, datNhaKinhTe, sinhBanDo } from './BanDo.ts';
+import type { BoDem, DinhNghiaNha, Giao } from './Buildings.ts';
 import { docNha, ThuNha } from './Buildings.ts';
 import type { DinhNghiaChuoi } from './Chains.ts';
 import { docChuoi, kiemTra } from './Chains.ts';
 import { LoiDuLieu } from './DocJson.ts';
 import type { DinhNghiaHang } from './Wares.ts';
 import { docHang, Kho } from './Wares.ts';
+import type { CauHinhWalker, SoWalker, Walker } from './Walkers.ts';
+import { docWalker, DoiWalker } from './Walkers.ts';
 
 /** Bao lau kiem hang hong mot lan. 60 nhip = 6 giay game - du min, khong ton. */
 const NHIP_HONG = 60;
 
-/** Ba file JSON con nguyen, chua doc. */
+/** Nam file JSON con nguyen, chua doc. */
 export interface DuLieuTho {
   readonly hang: unknown;
   readonly nha: unknown;
   readonly chuoi: unknown;
+  /** `data/thanh_pho_demo.json` - de sinh ban do va biet duong nam o dau. */
+  readonly banDo: unknown;
+  /** `data/walkers.json`. */
+  readonly walker: unknown;
 }
 
 /** So cua mot loai nha trong mot gio game. */
@@ -55,11 +63,14 @@ export interface ThongKe {
   readonly gio: number;
   readonly nha: readonly SoNha[];
   readonly hang: readonly SoHang[];
+  readonly walker: SoWalker;
 }
 
-/** Thanh pho song bang so. Chua ve gi len man hinh - Phase 4 moi ve. */
-export class ThanhPho implements BoDem {
+/** Thanh pho song bang so, hang di bang nguoi vac. */
+export class ThanhPho implements BoDem, Giao {
   readonly kho: Kho;
+  readonly banDo: BanDo;
+  readonly doiWalker: DoiWalker;
   readonly dongHo = new DongHo();
   readonly dsHang: readonly DinhNghiaHang[];
   readonly dsNha: readonly DinhNghiaNha[];
@@ -77,23 +88,86 @@ export class ThanhPho implements BoDem {
   /** Phan le chua du mot mon de vut di. Giu lai de hong 2 %/gio khong bi lam tron thanh 0. */
   private readonly duHong = new Map<string, number>();
   private gioTruoc: ThongKe | undefined;
+  private readonly cauHinh: CauHinhWalker;
 
   constructor(tho: DuLieuTho) {
     this.dsHang = docHang(tho.hang);
     this.dsNha = docNha(tho.nha);
     this.dsChuoi = docChuoi(tho.chuoi);
+    this.cauHinh = docWalker(tho.walker);
 
     const loi = kiemTra(this.dsHang, this.dsNha, this.dsChuoi);
     if (loi.length > 0) throw new LoiDuLieu('data/', `\n  - ${loi.join('\n  - ')}`);
 
     this.kho = new Kho(this.dsHang);
+    this.banDo = sinhBanDo(tho.banDo as Parameters<typeof sinhBanDo>[0]);
+
+    const tongNha: number = this.dsNha.reduce((t, n) => t + n.so, 0);
+    const cho: O[] = datNhaKinhTe(this.banDo, tongNha, this.cauHinh.hatGiongDatNha);
+    if (cho.length < tongNha) {
+      throw new LoiDuLieu('ban do', `chi dat duoc ${String(cho.length)}/${String(tongNha)} nha`);
+    }
+
+    let k = 0;
     for (const def of this.dsNha) {
       for (let i = 0; i < def.so; i++) {
+        const o: O = cho[k] as O;
         // Lech pha deu nhau tren ca chu ky, de 30 nha dan khong cung an vao mot nhip.
-        this.nhaThat.push(new ThuNha(def, Math.floor((i * def.nhip) / def.so)));
+        const nha = new ThuNha(
+          def, k, Math.floor((i * def.nhip) / def.so),
+          o, congRaDuong(o, this.banDo.duongCach), this.cauHinh.tranRieng,
+        );
+        // Mo van voi mot chuyen hang san trong nha, khong thi ca thanh pho dung im cho
+        // nguoi dau tien di bo tu kho ve.
+        for (const m of def.vao) nha.nhan(m.hang, this.cauHinh.moiChuyen);
+        this.nhaThat.push(nha);
+        k += 1;
       }
     }
+
+    // Kho chung dat o nga tu gan giua ban do nhat: moi nha deu di toi duoc.
+    const c: number = this.banDo.duongCach;
+    const giua: number = Math.round(this.banDo.canh / 2 / c) * c;
+    this.doiWalker = new DoiWalker(
+      { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa,
+    );
   }
+
+  // --- Giao: `ThuNha` goi len xin nguoi vac hang. ---
+
+  xinLay(nha: ThuNha, hang: string): boolean {
+    // Kho khong co mon do thi dung cu nguoi di - da bi ket cung mot lan vi cho nay:
+    // 400 nguoi di lay hang tu cai kho rong, khong con cho cho nguoi CHO HANG TOI kho,
+    // nen kho mai mai rong. Nguoi giao hang phai luon duoc uu tien hon nguoi di lay.
+    if (this.kho.co(hang) === 0) return false;
+    if (this.doiWalker.soViec('lay') >= this.cauHinh.tranLay) return false;
+    this.doiWalker.phat(nha.chiSo, nha.cong, 'lay', hang, 0);
+    return true;
+  }
+
+  xinGiao(nha: ThuNha, hang: string, so: number): boolean {
+    if (this.doiWalker.soViec('giao') >= this.cauHinh.tranGiao) return false;
+    // Hang len vai nguoi NGAY luc phat, khong de lai trong nha: de lai thi no vua nam
+    // trong kho rieng vua nam tren duong, dem hai lan.
+    const mang: number = nha.bot(hang, Math.min(so, this.cauHinh.moiChuyen));
+    if (mang === 0) return false;
+    this.doiWalker.phat(nha.chiSo, nha.cong, 'giao', hang, mang);
+    return true;
+  }
+
+  /** Nguoi toi kho chung: tra hang xuong hoac nhan hang len. */
+  private oKho = (w: Walker): void => {
+    if (w.viec === 'giao') w.so -= this.kho.them(w.hang, w.so);
+    else w.so = this.kho.bot(w.hang, this.cauHinh.moiChuyen);
+  };
+
+  /** Nguoi ve toi nha: trut het nhung gi con tren vai. */
+  private veNha = (w: Walker): void => {
+    const nha: ThuNha | undefined = this.nhaThat[w.nha];
+    if (nha === undefined) return;
+    if (w.so > 0) nha.nhan(w.hang, w.so);
+    nha.dangLay.delete(w.hang);
+  };
 
   /** Tong so nha co that trong thanh pho. */
   get soNha(): number {
@@ -102,7 +176,8 @@ export class ThanhPho implements BoDem {
 
   /** Chay mot nhip 10 Hz. */
   nhip(): void {
-    for (const nha of this.nhaThat) nha.nhip(this.kho, this);
+    for (const nha of this.nhaThat) nha.nhip(this, this);
+    this.doiWalker.nhip(this.oKho, this.veNha);
     this.dongHo.chayThang(1);
     if (this.dongHo.soNhip % NHIP_HONG === 0) this.hong();
     if (this.dongHo.soNhip % NHIP_MOI_GIO === 0) this.chotGio();
@@ -187,6 +262,7 @@ export class ThanhPho implements BoDem {
         day: this.demDay.get(h.ten) ?? 0,
         hong: this.demHong.get(h.ten) ?? 0,
       })),
+      walker: this.doiWalker.chotGio(),
     };
     const bo = [this.demMe, this.demDoi, this.demTac, this.demLamRa, this.demDungHet];
     for (const dem of [...bo, this.demCho, this.demDay, this.demHong]) dem.clear();

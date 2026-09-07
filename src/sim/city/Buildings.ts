@@ -9,8 +9,8 @@
  *   dan an theo kieu `san_xuat` thi mot mat hang het la ca thanh pho nhin doi - loi day
  *   chuyen gia, khong phai loi kinh te.
  */
+import type { O } from './BanDo.ts';
 import { layChuoi, layMang, layObject, laySoNguyen, LoiDuLieu } from './DocJson.ts';
-import type { Kho } from './Wares.ts';
 
 /** Mot mon hang kem so luong. */
 export interface Muc {
@@ -44,6 +44,20 @@ export interface BoDem {
   lamRa(hang: string, so: number): void;
   /** Hang vua bi dung het. */
   dungHet(hang: string, so: number): void;
+}
+
+/**
+ * Noi goi nguoi vac hang. `ThanhPho` cai dat, `ThuNha` goi len.
+ *
+ * Tu Phase 4, nha **khong cham vao kho chung** nua - moi mon hang deu phai co mot nguoi
+ * di bo tren duong cho qua. Nha nao xa duong hay bi vay kin thi hang toi cham, va do
+ * chinh la chieu sau ma bo tri nha cua mang lai.
+ */
+export interface Giao {
+  /** Xin mot nguoi di kho lay `hang` ve. Tra ve co phat duoc nguoi khong. */
+  xinLay(nha: ThuNha, hang: string): boolean;
+  /** Xin mot nguoi cho `so` mon `hang` ra kho chung. */
+  xinGiao(nha: ThuNha, hang: string, so: number): boolean;
 }
 
 function docMuc(tho: unknown, duong: string): Muc[] {
@@ -108,41 +122,91 @@ export function docNha(tho: unknown): DinhNghiaNha[] {
  * cuc, nhin vao bang so tuong chuoi dang kep. Lech pha cho giong thanh pho that.
  */
 export class ThuNha {
+  readonly def: DinhNghiaNha;
+  readonly chiSo: number;
+  readonly oNha: O;
+  /** O duong sat nha. Walker xuat phat va ve toi day, khong buoc vao trong nha. */
+  readonly cong: O;
+  /** Hang dang co nguoi di kho lay ve - dung phat them nguoi nua cho cung mot mon. */
+  readonly dangLay = new Set<string>();
+
+  /** Kho rieng cua nha. Tu Phase 4, day la cho DUY NHAT nha cham vao duoc. */
+  private readonly rieng = new Map<string, number>();
+  private readonly tranRieng: number;
   private conLai = 0;
   private dangLam = false;
   private dem: number;
 
-  readonly def: DinhNghiaNha;
-
   // Khai kieu roi gan trong than ham, khong dung `constructor(readonly def: ...)`:
   // Node boc kieu TypeScript khong nuot duoc loi viet tat do (ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX).
-  constructor(def: DinhNghiaNha, lechPha: number) {
+  constructor(def: DinhNghiaNha, chiSo: number, lechPha: number, oNha: O, cong: O, tranRieng: number) {
     this.def = def;
+    this.chiSo = chiSo;
+    this.oNha = oNha;
+    this.cong = cong;
+    this.tranRieng = tranRieng;
     this.dem = lechPha % def.nhip;
   }
 
-  /** Chay mot nhip. */
-  nhip(kho: Kho, bd: BoDem): void {
-    if (this.def.kieu === 'tieu_thu') this.nhipTieuThu(kho, bd);
-    else this.nhipSanXuat(kho, bd);
+  /** Ton kho rieng cua mot mon. */
+  co(hang: string): number {
+    return this.rieng.get(hang) ?? 0;
   }
 
-  /** Nha tieu thu: den ky thi an tung mon mot cach doc lap. */
-  private nhipTieuThu(kho: Kho, bd: BoDem): void {
+  /** Bo hang vao kho rieng, kep theo tran. Tra ve so thuc su vao duoc. */
+  them(hang: string, so: number): number {
+    const dat: number = Math.min(so, this.tranRieng - this.co(hang));
+    if (dat <= 0) return 0;
+    this.rieng.set(hang, this.co(hang) + dat);
+    return dat;
+  }
+
+  /**
+   * Nhan hang tu mot nguoi vac ve, **khong kep theo tran**.
+   *
+   * Kep o day thi hang tren vai nguoi do se bien mat - bang so noi doi. Tha de kho rieng
+   * phinh qua tran mot luc: cho de hang RA moi kiem tran, nen no van ghim san xuat lai.
+   */
+  nhan(hang: string, so: number): void {
+    this.rieng.set(hang, this.co(hang) + so);
+  }
+
+  /** Lay hang ra khoi kho rieng. Tra ve so thuc su lay duoc. */
+  bot(hang: string, so: number): number {
+    const dat: number = Math.min(so, this.co(hang));
+    this.rieng.set(hang, this.co(hang) - dat);
+    return dat;
+  }
+
+  /** Chay mot nhip. */
+  nhip(giao: Giao, bd: BoDem): void {
+    if (this.def.kieu === 'tieu_thu') this.nhipTieuThu(giao, bd);
+    else this.nhipSanXuat(giao, bd);
+  }
+
+  /** Xin nguoi di lay mon con thieu, neu chua co ai dang di lay mon do. */
+  private xinThieu(giao: Giao, hang: string): void {
+    if (this.dangLay.has(hang)) return;
+    if (giao.xinLay(this, hang)) this.dangLay.add(hang);
+  }
+
+  /** Nha tieu thu: den ky thi an tung mon mot cach doc lap, lay tu kho rieng. */
+  private nhipTieuThu(giao: Giao, bd: BoDem): void {
     this.dem += 1;
     if (this.dem < this.def.nhip) return;
     this.dem = 0;
 
     for (const m of this.def.vao) {
-      const duoc = kho.bot(m.hang, m.so);
+      const duoc: number = this.bot(m.hang, m.so);
       if (duoc > 0) bd.dungHet(m.hang, duoc);
       if (duoc < m.so) bd.doi(this.def.ten, m.hang);
+      if (this.co(m.hang) < m.so) this.xinThieu(giao, m.hang);
     }
     bd.meXong(this.def.ten);
   }
 
-  /** Nha san xuat: an het hang vao, cho du nhip, roi de ra hang. */
-  private nhipSanXuat(kho: Kho, bd: BoDem): void {
+  /** Nha san xuat: an het hang vao tu kho rieng, cho du nhip, roi de ra kho rieng. */
+  private nhipSanXuat(giao: Giao, bd: BoDem): void {
     if (this.dem > 0) {
       // Con dang lech pha luc bat dau van, chua chay me nao.
       this.dem -= 1;
@@ -150,14 +214,13 @@ export class ThuNha {
     }
 
     if (!this.dangLam) {
-      const thieu = this.def.vao.find((m) => !kho.du(m.hang, m.so));
+      const thieu = this.def.vao.find((m) => this.co(m.hang) < m.so);
       if (thieu !== undefined) {
         bd.doi(this.def.ten, thieu.hang);
+        this.xinThieu(giao, thieu.hang);
         return;
       }
-      for (const m of this.def.vao) {
-        bd.dungHet(m.hang, kho.bot(m.hang, m.so));
-      }
+      for (const m of this.def.vao) bd.dungHet(m.hang, this.bot(m.hang, m.so));
       this.dangLam = true;
       this.conLai = this.def.nhip;
       return;
@@ -166,17 +229,25 @@ export class ThuNha {
     this.conLai -= 1;
     if (this.conLai > 0) return;
 
-    // Me xong. Chi giao hang khi kho con cho cho **tat ca** dau ra - giao mot nua roi
-    // ket lai se lam mat hang, va lam bang so noi doi.
-    const day = this.def.ra.find((m) => !kho.duCho(m.hang, m.so));
+    // Me xong. Chi de hang xuong khi kho rieng con cho cho **tat ca** dau ra - de mot nua
+    // roi ket lai se lam mat hang, va lam bang so noi doi.
+    const day = this.def.ra.find((m) => this.co(m.hang) + m.so > this.tranRieng);
     if (day !== undefined) {
       bd.tac(this.def.ten, day.hang);
+      this.guiDi(giao);
       return;
     }
-    for (const m of this.def.ra) {
-      bd.lamRa(m.hang, kho.them(m.hang, m.so));
-    }
+    for (const m of this.def.ra) bd.lamRa(m.hang, this.them(m.hang, m.so));
     this.dangLam = false;
     bd.meXong(this.def.ten);
+    this.guiDi(giao);
+  }
+
+  /** Kho rieng day thi goi nguoi cho bot ra kho chung. */
+  private guiDi(giao: Giao): void {
+    for (const m of this.def.ra) {
+      const co: number = this.co(m.hang);
+      if (co > 0) giao.xinGiao(this, m.hang, co);
+    }
   }
 }

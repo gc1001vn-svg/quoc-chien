@@ -11,9 +11,11 @@ import { NHIP_MOI_GIO } from '../src/sim/Clock.ts';
 import hang from '../data/wares.json';
 import nha from '../data/buildings.json';
 import chuoi from '../data/chains.json';
+import banDo from '../data/thanh_pho_demo.json';
+import walker from '../data/walkers.json';
 
 function taoThanhPho(): ThanhPho {
-  return new ThanhPho({ hang, nha, chuoi });
+  return new ThanhPho({ hang, nha, chuoi, banDo, walker });
 }
 
 describe('ThanhPho chay 10 gio game', () => {
@@ -44,13 +46,27 @@ describe('ThanhPho chay 10 gio game', () => {
     for (const h of tp.dsHang) expect(tp.kho.co(h.ten)).toBeLessThanOrEqual(h.tran);
   });
 
-  it('dan an duoc ca bay mon, khong mon nao bi doi ca gio', () => {
+  it('dan van an duoc, doi khong qua mot phan bay so luot lay hang', () => {
     const tp = taoThanhPho();
-    tp.chay(NHIP_MOI_GIO * 3);
+    tp.chay(NHIP_MOI_GIO * 10);
     const tk = tp.gioVuaXong();
     const dan = tk?.nha.find((n) => n.ten === 'nha_dan');
     expect(dan?.me).toBeGreaterThan(0);
-    expect(dan?.doi).toBe(0);
+
+    // Tu Phase 4 hang phai co nguoi vac toi nen doi vai luot la binh thuong - truoc do
+    // hang chuyen tuc thi nen doi = 0. Nhung doi qua nhieu la doi walker khong ganh noi.
+    const dinhNghia = nha.nha.find((n) => n.ten === 'nha_dan');
+    const luot: number = (dan?.me ?? 0) * (dinhNghia?.vao.length ?? 1);
+    expect(dan?.doi ?? 0).toBeLessThan(luot / 7);
+  });
+
+  it('walker giao xong hang, khong ai bo cuoc giua duong', () => {
+    const tp = taoThanhPho();
+    tp.chay(NHIP_MOI_GIO * 3);
+    const tk = tp.gioVuaXong();
+    expect(tk?.walker.chuyen).toBeGreaterThan(1000);
+    // Bo cuoc nghia la nha bi vay kin hoac tran buoc dat qua thap - ca hai deu la loi.
+    expect(tk?.walker.boCuoc).toBe(0);
   });
 
   it('hang co hao thi hong that, va hong khong bi tinh nham la "dung het"', () => {
@@ -67,6 +83,6 @@ describe('ThanhPho chay 10 gio game', () => {
   it('doi mot so trong data/ la doi ket qua - bo bat loi that su bat duoc', () => {
     // Bo gieng nuoc di thi nuoc khong ai lam ra nua: `kiemTra` phai chan ngay luc tao.
     const thieuGieng = { nha: nha.nha.filter((n) => n.ten !== 'gieng') };
-    expect(() => new ThanhPho({ hang, nha: thieuGieng, chuoi })).toThrow(/nuoc/);
+    expect(() => new ThanhPho({ hang, nha: thieuGieng, chuoi, banDo, walker })).toThrow(/nuoc/);
   });
 });

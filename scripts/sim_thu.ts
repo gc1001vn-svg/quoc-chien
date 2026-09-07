@@ -56,6 +56,8 @@ const tp = new ThanhPho({
   hang: doc('wares.json'),
   nha: doc('buildings.json'),
   chuoi: doc('chains.json'),
+  banDo: doc('thanh_pho_demo.json'),
+  walker: doc('walkers.json'),
 });
 
 console.log(
@@ -79,7 +81,12 @@ if (cuoi === undefined) throw new Error('chua chay du mot gio game');
 inBangHang(cuoi);
 inBangNha(cuoi);
 console.log(
-  `\nDa chay ${chuoiGio(tp.dongHo.soNhip)} gio game trong ${giay.toFixed(2)}s that.`,
+  `\nWALKER - gio thu ${String(cuoi.gio)}: ${String(cuoi.walker.chuyen)} chuyen xong · ` +
+    `dong nhat ${String(cuoi.walker.dinh)} nguoi cung luc · ` +
+    `${String(cuoi.walker.boCuoc)} luot bo cuoc.`,
+);
+console.log(
+  `Da chay ${chuoiGio(tp.dongHo.soNhip)} gio game trong ${giay.toFixed(2)}s that.`,
 );
 if (loi.length === 0) {
   console.log('KET QUA: DAT - khong hang am, khong chuoi nao ket vinh vien.');

@@ -18,13 +18,61 @@ export interface OVat {
   readonly o: number;
 }
 
+/** Mot o tren luoi. */
+export interface O {
+  readonly a: number;
+  readonly b: number;
+}
+
 /** Ban do da sinh xong. */
 export interface BanDo {
   readonly canh: number;
+  /** Duong nam o moi hang va moi cot chia het cho so nay. Walker chi di tren duong. */
+  readonly duongCach: number;
   /** Ten sprite cua tung o nen, tra theo `a * canh + b`. */
   readonly nen: readonly string[];
   /** Vat the, DA XEP theo truc sau - ve theo dung thu tu nay la dung. */
   readonly vat: readonly OVat[];
+}
+
+/** O nay co phai duong khong. */
+export function laDuong(o: O, duongCach: number): boolean {
+  return o.a % duongCach === 0 || o.b % duongCach === 0;
+}
+
+/** O duong gan nhat de mot toa nha o (a,b) buoc ra. Walker gap nhau o day, khong vao trong nha. */
+export function congRaDuong(o: O, duongCach: number): O {
+  const gan = (x: number): number => Math.round(x / duongCach) * duongCach;
+  const da: number = Math.abs(gan(o.a) - o.a);
+  const db: number = Math.abs(gan(o.b) - o.b);
+  return da <= db ? { a: gan(o.a), b: o.b } : { a: o.a, b: gan(o.b) };
+}
+
+/**
+ * Chia `so` cho dat cho nha kinh te, tat ca deu **sat duong** de walker toi duoc.
+ *
+ * Khong dung chung cho voi vat the trang tri cua ban do: hai ben deu la "nha" nhung mot
+ * ben de nhin, mot ben de chay kinh te. Phase sau noi hai cai lam mot.
+ */
+export function datNhaKinhTe(banDo: BanDo, so: number, hatGiong: number): O[] {
+  const rng: Rng = new Rng(hatGiong);
+  const c: number = banDo.duongCach;
+  const daChiem: Set<number> = new Set<number>();
+  const ra: O[] = [];
+  for (let i = 0; i < so; i += 1) {
+    for (let lan = 0; lan < BOC_TOI_DA; lan += 1) {
+      const a: number = rng.nguyen(banDo.canh);
+      const b: number = rng.nguyen(banDo.canh);
+      // Sat duong nghia la ke duong nhung khong nam tren duong.
+      if (laDuong({ a, b }, c)) continue;
+      if (a % c !== 1 && b % c !== 1 && a % c !== c - 1 && b % c !== c - 1) continue;
+      if (daChiem.has(a * banDo.canh + b)) continue;
+      daChiem.add(a * banDo.canh + b);
+      ra.push({ a, b });
+      break;
+    }
+  }
+  return ra;
 }
 
 /** Khuon cua `data/thanh_pho_demo.json`. */
@@ -94,7 +142,7 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   // ra day vi `src/sim/` khong duoc import phan ve).
   vat.sort((m, n) => m.a + m.b - (n.a + n.b) + 2 * (m.o - n.o));
 
-  return { canh, nen, vat };
+  return { canh, duongCach: ch.duongCach, nen, vat };
 }
 
 /**
