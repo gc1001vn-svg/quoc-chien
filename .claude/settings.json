@@ -61,6 +61,10 @@
     "claude-api": "off",
     "keybindings-help": "off",
     "session-start-hook": "off",
-    "init": "off"
+    "init": "off",
+    "update-config": "off",
+    "fewer-permission-prompts": "off",
+    "security-review": "off",
+    "loop": "user-invocable-only"
   }
 }

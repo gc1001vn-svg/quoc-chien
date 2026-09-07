@@ -52,15 +52,21 @@
 
 ## Môi trường và cấu hình
 
-- **`CLAUDE.md` vẫn ghi "deploy Vercel"** trong khi đã chuyển GitHub Pages từ 06/09.
-  File khoá, nợ từ ba phiên trước.
-- **`CLAUDE.md` nặng 698 token**, nạp mỗi phiên, trên mức khuyến nghị 500. File khoá.
-- **9 dòng thừa trong `.claude/settings.json`.** Tám tên skill (`dataviz` `design`
-  `artifact-design` `artifact-diagramming` `artifact-capabilities` `claude-api`
-  `keybindings-help` `init`) **không tồn tại** trong Claude Code, tiết kiệm **0 token**;
-  `session-start-hook` khai sai tên bên trong (`startup-hook-skill`) nên nhiều khả năng
-  không khớp. Phần thật sự có ăn: 6 skill `off` ≈ 945 token + 5 skill `ponytail-*` để
-  `user-invocable-only` ≈ 452 token, tổng ≈ **1.400 token/phiên**. File khoá.
+- **ĐÃ TRẢ 07/09 — `CLAUDE.md` ghi "deploy Vercel".** Nợ này đã hết từ trước: file hiện
+  ghi đúng GitHub Pages. Dòng nợ cũ sai, giữ lại đây cho khỏi tưởng là còn.
+- **ĐÃ TRẢ MỘT PHẦN 07/09 — `CLAUDE.md` 698 → 621 token.** Vẫn trên mức khuyến nghị 500.
+  Cắt tiếp thì phải bỏ nghi thức đầu/cuối phiên hoặc ba luật — **không đáng**, để nguyên.
+  Cùng lúc thêm hai luật mới: tự gộp `main`, và sửa file bằng công cụ Edit.
+- **SỬA LẠI NHẬN ĐỊNH SAI 07/09 — "9 dòng thừa trong `.claude/settings.json`".** Nhận định
+  cũ sai hai chỗ. Một: `settings.json` là **cấu hình của máy, không nạp vào ngữ cảnh**, nên
+  dòng thừa tốn **0 token**, xoá đi cũng chẳng lãi gì. Hai: `artifact-design`
+  `artifact-diagramming` `artifact-capabilities` **có thật** (công cụ Artifact gọi tên
+  chúng) — xoá khỏi danh sách `off` là **mất thêm** token chứ không tiết kiệm.
+  Chỗ thật sự có ăn là **tắt thêm skill dự án không dùng**: `update-config`
+  `fewer-permission-prompts` `security-review` `off`, `loop` `user-invocable-only`
+  ≈ **300 token/phiên** (ước lượng theo độ dài mô tả, không đo trực tiếp được). Đã làm 07/09.
+- `session-start-hook` trong `settings.json` khai sai tên bên trong (`startup-hook-skill`)
+  nên nhiều khả năng không khớp với skill nào. Vô hại, chưa sửa.
 - **Không kéo được kho `ghi-nho` từ máy ảo (07/09).** `git clone` hỏi mật khẩu, gọi
   `add_repo` thì máy chặn. Đã làm theo bốn dòng cốt lõi thuộc lòng trong skill. Nếu phiên
   sau vẫn chặn thì phải sửa cách cấp quyền, đừng để mất kho ghi nhớ chung.
