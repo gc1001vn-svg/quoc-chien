@@ -10,12 +10,19 @@
  */
 import { layChuoi, layMang, layObject, laySoNguyen, LoiDuLieu } from './DocJson.ts';
 
-/** Mot mat hang: ten may doc, ten nguoi doc, suc chua, ton kho luc bat dau. */
+/** Mot mat hang: ten may doc, ten nguoi doc, suc chua, ton kho luc bat dau, do hong. */
 export interface DinhNghiaHang {
   readonly ten: string;
   readonly hien: string;
   readonly tran: number;
   readonly dau: number;
+  /**
+   * Bao nhieu phan tram ton kho hong di moi gio game. 0 la khong bao gio hong.
+   *
+   * Nho co so nay ma muoi va ca muoi moi co nghia: ca tuoi hong 40 %/gio, ca muoi 2 %.
+   * Cung vi no ma kho khong con dung im o tran nua - hang du bi an dan.
+   */
+  readonly hao: number;
 }
 
 /** Doc `data/wares.json`. Nem `LoiDuLieu` neu sai. */
@@ -37,7 +44,11 @@ export function docHang(tho: unknown): DinhNghiaHang[] {
     const dau = laySoNguyen(o['dau'], `${duong}.dau`, 0);
     if (dau > tran) throw new LoiDuLieu(`${duong}.dau`, 'ton kho ban dau vuot tran');
 
-    ra.push({ ten, hien: layChuoi(o['hien'], `${duong}.hien`), tran, dau });
+    // Khong khai `hao` thi coi nhu khong hong - sat va da lam gi co chuyen thoi rua.
+    const hao = o['hao'] === undefined ? 0 : laySoNguyen(o['hao'], `${duong}.hao`, 0);
+    if (hao > 100) throw new LoiDuLieu(`${duong}.hao`, 'khong the hong qua 100 %/gio');
+
+    ra.push({ ten, hien: layChuoi(o['hien'], `${duong}.hien`), tran, dau, hao });
   }
   return ra;
 }

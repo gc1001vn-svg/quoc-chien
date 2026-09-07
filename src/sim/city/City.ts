@@ -14,6 +14,9 @@ import { LoiDuLieu } from './DocJson.ts';
 import type { DinhNghiaHang } from './Wares.ts';
 import { docHang, Kho } from './Wares.ts';
 
+/** Bao lau kiem hang hong mot lan. 60 nhip = 6 giay game - du min, khong ton. */
+const NHIP_HONG = 60;
+
 /** Ba file JSON con nguyen, chua doc. */
 export interface DuLieuTho {
   readonly hang: unknown;
@@ -43,6 +46,8 @@ export interface SoHang {
   readonly cho: number;
   /** So nhip co nha phai dung vi kho mat hang nay da day. */
   readonly day: number;
+  /** So mon hong di trong gio - khong tinh la "dung het", vi khong ai duoc huong. */
+  readonly hong: number;
 }
 
 /** Bang so cua mot gio game. */
@@ -68,6 +73,9 @@ export class ThanhPho implements BoDem {
   private readonly demDungHet = new Map<string, number>();
   private readonly demCho = new Map<string, number>();
   private readonly demDay = new Map<string, number>();
+  private readonly demHong = new Map<string, number>();
+  /** Phan le chua du mot mon de vut di. Giu lai de hong 2 %/gio khong bi lam tron thanh 0. */
+  private readonly duHong = new Map<string, number>();
   private gioTruoc: ThongKe | undefined;
 
   constructor(tho: DuLieuTho) {
@@ -96,7 +104,26 @@ export class ThanhPho implements BoDem {
   nhip(): void {
     for (const nha of this.nhaThat) nha.nhip(this.kho, this);
     this.dongHo.chayThang(1);
+    if (this.dongHo.soNhip % NHIP_HONG === 0) this.hong();
     if (this.dongHo.soNhip % NHIP_MOI_GIO === 0) this.chotGio();
+  }
+
+  /**
+   * Hang de lau thi hong. Chay moi `NHIP_HONG` nhip cho re, khong chay tung nhip.
+   *
+   * Tinh tren ton kho hien tai nen cang tru nhieu cang hao nhieu - do la ly do de xay kho
+   * vua du chu khong chat cang. Phan le duoc giu lai (`duHong`) de mon hong cham nhu ca
+   * muoi 2 %/gio khong bi lam tron xuong 0 mai mai.
+   */
+  private hong(): void {
+    for (const h of this.dsHang) {
+      if (h.hao === 0) continue;
+      const phan = (this.kho.co(h.ten) * h.hao) / 100 / (NHIP_MOI_GIO / NHIP_HONG);
+      const du = (this.duHong.get(h.ten) ?? 0) + phan;
+      const vut = Math.floor(du);
+      this.duHong.set(h.ten, du - vut);
+      if (vut > 0) this.cong(this.demHong, h.ten, this.kho.bot(h.ten, vut));
+    }
   }
 
   /** Chay `so` nhip lien tiep. */
@@ -158,10 +185,11 @@ export class ThanhPho implements BoDem {
         dungHet: this.demDungHet.get(h.ten) ?? 0,
         cho: this.demCho.get(h.ten) ?? 0,
         day: this.demDay.get(h.ten) ?? 0,
+        hong: this.demHong.get(h.ten) ?? 0,
       })),
     };
     const bo = [this.demMe, this.demDoi, this.demTac, this.demLamRa, this.demDungHet];
-    for (const dem of [...bo, this.demCho, this.demDay]) dem.clear();
+    for (const dem of [...bo, this.demCho, this.demDay, this.demHong]) dem.clear();
   }
 }
 

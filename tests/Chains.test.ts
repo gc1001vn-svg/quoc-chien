@@ -39,7 +39,7 @@ describe('du lieu that trong data/', () => {
 });
 
 describe('kiemTra bat duoc loi', () => {
-  const hang = [{ ten: 'go', hien: 'Go', tran: 10, dau: 0 }];
+  const hang = [{ ten: 'go', hien: 'Go', tran: 10, dau: 0, hao: 0 }];
 
   it('hang khong ai lam ra', () => {
     const nha = docNha({

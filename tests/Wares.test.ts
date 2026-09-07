@@ -10,8 +10,8 @@ import { LoiDuLieu } from '../src/sim/city/DocJson.ts';
 import hangTho from '../data/wares.json';
 
 const mau = [
-  { ten: 'bot', hien: 'Bot', tran: 10, dau: 4 },
-  { ten: 'nuoc', hien: 'Nuoc', tran: 5, dau: 0 },
+  { ten: 'bot', hien: 'Bot', tran: 10, dau: 4, hao: 0 },
+  { ten: 'nuoc', hien: 'Nuoc', tran: 5, dau: 0, hao: 0 },
 ];
 
 describe('Kho', () => {
@@ -73,5 +73,23 @@ describe('docHang', () => {
     expect(() => docHang({ hang: [{ ten: 'a', hien: 'A', tran: 1.5, dau: 0 }] })).toThrow(
       /so nguyen/,
     );
+  });
+
+  it('khong khai `hao` thi coi nhu khong hong', () => {
+    const [h] = docHang({ hang: [{ ten: 'a', hien: 'A', tran: 2, dau: 0 }] });
+    expect(h?.hao).toBe(0);
+  });
+
+  it('bat hao qua 100 phan tram mot gio', () => {
+    expect(() =>
+      docHang({ hang: [{ ten: 'a', hien: 'A', tran: 2, dau: 0, hao: 101 }] }),
+    ).toThrow(/100/);
+  });
+
+  it('ca tuoi phai hong nhanh hon ca muoi - ly do ton tai cua lo uop', () => {
+    const ds = docHang(hangTho);
+    const tuoi = ds.find((h) => h.ten === 'ca');
+    const muoi = ds.find((h) => h.ten === 'ca_muoi');
+    expect(tuoi?.hao).toBeGreaterThan(muoi?.hao ?? 0);
   });
 });

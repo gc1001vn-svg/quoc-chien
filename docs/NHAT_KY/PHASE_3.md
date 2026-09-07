@@ -77,3 +77,21 @@ Thêm củi cho lò bánh làm rừng hụt ngay (600 → cần 1.300 gỗ/giờ
 Mỏ than giờ nuôi **bốn lò** (nung · gốm · thép · vôi), nhịp 120 → 45.
 
 Phần hoãn và phần loại, kèm lý do và phase: `docs/Y_TUONG_CHUOI.md`.
+
+## ĐỔI (07/09) — hàng để lâu thì hỏng
+
+Chủ dự án gõ **ĐỔI** cho ý "hao hụt thức ăn". Đây là **cơ chế trong `src/sim/`**, không
+phải dữ liệu — nên phải sửa code, khác với ba lần bổ sung chuỗi trước đó.
+
+`data/wares.json` thêm trường `hao`: **phần trăm tồn kho hỏng mỗi giờ game**. Cá tươi 40 %,
+cá muối 2 %, bánh mì 20 %, nước 10 % (bay hơi), sắt · đá · gốm 0 %. Nhờ vậy **muối và lò
+ướp mới có lý do tồn tại** — trước đó cá muối chỉ là một món nữa trong danh sách.
+
+`City.hong()` chạy mỗi **60 nhịp** (6 giây game), không chạy từng nhịp cho rẻ. Giữ **phần
+lẻ** trong `duHong`: món hỏng chậm như cá muối 2 %/giờ mà làm tròn xuống thì mãi mãi bằng 0.
+
+Hỏng **không tính là "dùng hết"** — cột riêng `Hong` trong bảng. Nếu gộp chung thì một mặt
+hàng không ai dùng vẫn trông như đang được tiêu thụ, và phép chấm "chuỗi kẹt" mất tác dụng.
+
+Số đo sau khi đổi: **6/6 thước, 87 test**, `sim:thu` **ĐẠT**, 10 giờ game trong 0,47 giây.
+Cá hỏng 119 con/giờ trên tồn kho ~300 — đúng 40 %. Sắt hỏng 0.

@@ -26,12 +26,14 @@ function inBangHang(tk: ThongKe): void {
   console.log(`\nHANG HOA - gio thu ${String(tk.gio)}`);
   console.log(
     `  ${cot('Mat hang', 14, true)}${cot('Ton', 7)}${cot('Tran', 7)}` +
-      `${cot('Lam ra', 9)}${cot('Dung het', 10)}${cot('Nhip cho', 10)}${cot('Nhip day', 10)}`,
+      `${cot('Lam ra', 9)}${cot('Dung het', 10)}${cot('Hong', 8)}` +
+      `${cot('Nhip cho', 10)}${cot('Nhip day', 10)}`,
   );
   for (const h of tk.hang) {
     console.log(
       `  ${cot(h.hien, 14, true)}${cot(h.ton, 7)}${cot(h.tran, 7)}` +
-        `${cot(h.lamRa, 9)}${cot(h.dungHet, 10)}${cot(h.cho, 10)}${cot(h.day, 10)}`,
+        `${cot(h.lamRa, 9)}${cot(h.dungHet, 10)}${cot(h.hong, 8)}` +
+        `${cot(h.cho, 10)}${cot(h.day, 10)}`,
     );
   }
 }

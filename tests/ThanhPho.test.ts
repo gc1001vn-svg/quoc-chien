@@ -53,6 +53,17 @@ describe('ThanhPho chay 10 gio game', () => {
     expect(dan?.doi).toBe(0);
   });
 
+  it('hang co hao thi hong that, va hong khong bi tinh nham la "dung het"', () => {
+    const tp = taoThanhPho();
+    tp.chay(NHIP_MOI_GIO * 2);
+    const tk = tp.gioVuaXong();
+    const ca = tk?.hang.find((h) => h.ten === 'ca');
+    const sat = tk?.hang.find((h) => h.ten === 'sat');
+    expect(ca?.hong).toBeGreaterThan(0);
+    // Sat khai hao 0 - khong duoc hong mot mon nao.
+    expect(sat?.hong).toBe(0);
+  });
+
   it('doi mot so trong data/ la doi ket qua - bo bat loi that su bat duoc', () => {
     // Bo gieng nuoc di thi nuoc khong ai lam ra nua: `kiemTra` phai chan ngay luc tao.
     const thieuGieng = { nha: nha.nha.filter((n) => n.ten !== 'gieng') };
