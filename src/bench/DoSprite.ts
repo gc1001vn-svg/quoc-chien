@@ -11,6 +11,7 @@
  * May ao Claude ve bang phan mem, luon 1-5 fps -> so do o day VO NGHIA. Phai mo tren
  * iPhone that. Xong trang in ra mot cau ngan de chu du an nhan lai.
  */
+import cauHinhTho from '../../data/thanh_pho_demo.json';
 import { Gl } from '../render/Gl';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from '../render/Atlas';
@@ -34,7 +35,8 @@ const NGUONG_60 = 58;
  */
 const NGUONG_30 = 29;
 
-const ME = 'trung_co';
+/** Ten me atlas: doc tu cung mot cho voi game, khoi do mot me ma game chay me khac. */
+const ME: string = cauHinhTho.me;
 
 /**
  * Tron ba co sprite theo dung ti le mot khung hinh thanh pho that co (TECH_SPEC muc 3):

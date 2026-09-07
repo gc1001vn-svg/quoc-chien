@@ -21,8 +21,6 @@ import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { sinhBanDo, type BanDo, type CauHinhBanDo } from './BanDoDemo';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
-/** Ten me atlas dang dung. Phase 8 se them me hien dai. */
-const ME = 'trung_co';
 /** Suc chua buffer. Rong hon tran 1.500 mot chut de con dem duoc luc vuot. */
 const SUC_CHUA = 4096;
 
@@ -33,7 +31,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   const perf: Perf = new Perf(goc);
 
   // Nap JSON atlas TRUOC: so trang quyet dinh shader, phai biet roi moi dung duoc `Gl`.
-  const bo: BoAtlas = await taiBoAtlas(ME, coTheoDpr(window.devicePixelRatio));
+  const bo: BoAtlas = await taiBoAtlas(CAU_HINH.me, coTheoDpr(window.devicePixelRatio));
   const gl: Gl = new Gl(canvas, SUC_CHUA, bo.trang.length);
   const atlas: Atlas = new Atlas(bo, await napTrangLenGpu(bo, gl));
   gl.datTrang(atlas.cacTrang());

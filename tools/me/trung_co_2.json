@@ -1,5 +1,5 @@
 {
-  "ghi_chu": "Me trung co ban 2 - Quaternius. Chot 06/09: mai CACH B (mai ngoi + hai tam bit hoi), o nen CACH 3 (be day 0.18 + o thu nho 0.90 de ho khe -> luoi o hien ro), co dung aerial_grass_rock keo xanh. Hai goi dung THUOC KHAC NHAU: Medieval Village 2 don vi = 1 o luoi (ti_le 0.5), Stylized Nature 5 don vi = 1 o luoi (ti_le 0.2). KHONG dung hoa_tiet chieu ba phuong nua - model Quaternius co toa do anh trai phang that.",
+  "ghi_chu": "Me trung co ban 2 - Quaternius. Thuoc: 2 don vi model = 1 o luoi (ti_le 0.5). Dinh tuong o y=1.56 o luoi (3.12 don vi * 0.5) - MOI mai neo o do. Nha 2x2 dich +0.5 tren ca x va z de trai dung o (a,b)..(a+1,b+1), khong lech nua o. Bien the mai/tuong khai bang `nhu` cho khoi chep 16 manh. Ngoi goc 178,84,48.",
   "kit": {
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
@@ -24,9 +24,9 @@
         "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
         "lap": 1,
         "mau": [
-          0.78,
-          1.55,
-          0.86
+          0.86,
+          1.0,
+          0.8
         ]
       }
     ],
@@ -36,9 +36,9 @@
         "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
         "lap": 1,
         "mau": [
-          1.7,
-          1.7,
-          1.7
+          1.35,
+          1.35,
+          1.35
         ]
       }
     ],
@@ -48,9 +48,9 @@
         "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
         "lap": 1,
         "mau": [
-          1.7,
-          1.7,
-          1.7
+          1.35,
+          1.35,
+          1.35
         ]
       }
     ],
@@ -60,9 +60,9 @@
         "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
         "lap": 1,
         "mau": [
-          1.55,
-          1.55,
-          1.55
+          1.25,
+          1.25,
+          1.25
         ]
       }
     ],
@@ -72,9 +72,9 @@
         "texture": "assets_source/hoa_tiet/coast_sand_01.jpg",
         "lap": 1,
         "mau": [
-          1.6,
-          1.6,
-          1.6
+          1.3,
+          1.3,
+          1.3
         ]
       }
     ],
@@ -84,414 +84,291 @@
         "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg",
         "lap": 1,
         "mau": [
-          1.7,
-          1.7,
-          1.7
+          1.35,
+          1.35,
+          1.35
         ]
       }
     ],
-    "nha_lon": [
+    "nha_ngoi_do": [
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": -0.5,
-        "z": -0.5
+        "x": 0.0,
+        "z": 0.0
       },
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": -0.5,
-        "z": 0.5
+        "x": 0.0,
+        "z": 1.0
       },
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": 0.5,
-        "z": -0.5
+        "x": 1.0,
+        "z": 0.0
       },
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": 0.5,
-        "z": 0.5
+        "x": 1.0,
+        "z": 1.0
       },
       {
         "m": "qv:Wall_Plaster_Door_Round",
         "ti_le": 0.5,
         "ry": 0,
-        "x": -0.5,
-        "z": 1.0
+        "x": 0.0,
+        "z": 1.5
       },
       {
         "m": "qv:Wall_Plaster_Straight",
         "ti_le": 0.5,
         "ry": 180,
-        "x": -0.5,
-        "z": -1.0
+        "x": 0.0,
+        "z": -0.5
       },
       {
         "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
         "ti_le": 0.5,
         "ry": 90,
-        "x": -1.0,
-        "z": -0.5
+        "x": -0.5,
+        "z": 0.0
       },
       {
         "m": "qv:Wall_UnevenBrick_Straight",
         "ti_le": 0.5,
         "ry": 270,
-        "x": 1.0,
-        "z": -0.5
+        "x": 1.5,
+        "z": 0.0
       },
       {
         "m": "qv:Wall_Plaster_Window_Wide_Round",
         "ti_le": 0.5,
         "ry": 0,
-        "x": 0.5,
-        "z": 1.0
+        "x": 1.0,
+        "z": 1.5
       },
       {
         "m": "qv:Wall_Plaster_Window_Thin_Round",
         "ti_le": 0.5,
         "ry": 180,
-        "x": 0.5,
-        "z": -1.0
+        "x": 1.0,
+        "z": -0.5
       },
       {
         "m": "qv:Wall_UnevenBrick_Straight",
         "ti_le": 0.5,
         "ry": 90,
-        "x": -1.0,
-        "z": 0.5
+        "x": -0.5,
+        "z": 1.0
       },
       {
         "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
         "ti_le": 0.5,
         "ry": 270,
-        "x": 1.0,
-        "z": 0.5
+        "x": 1.5,
+        "z": 1.0
       },
       {
-        "m": "qv:Roof_Front_Brick4",
+        "m": "qv:Floor_Brick",
         "ti_le": 0.5,
+        "x": 0.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.0,
+        "y": 1.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
         "y": 1.5,
         "z": 1.0
       },
       {
         "m": "qv:Roof_Front_Brick4",
         "ti_le": 0.5,
+        "y": 1.56,
+        "x": 0.5,
+        "z": 1.5
+      },
+      {
+        "m": "qv:Roof_Front_Brick4",
+        "ti_le": 0.5,
         "ry": 180,
-        "y": 1.5,
-        "z": -1.0
+        "y": 1.56,
+        "x": 0.5,
+        "z": -0.5
       },
       {
         "m": "qv:Roof_RoundTiles_4x4",
         "ti_le": 0.5,
-        "y": 1.5
+        "y": 1.56,
+        "x": 0.5,
+        "z": 0.5
       },
       {
         "m": "qv:Prop_Chimney",
         "ti_le": 0.5,
-        "x": 0.6,
-        "z": -0.4,
-        "y": 2.0
+        "x": 1.1,
+        "z": 0.1,
+        "y": 2.1
       }
     ],
-    "nha_lon_gach": [
+    "nha_gach_do": [
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": -0.5,
-        "z": -0.5
+        "x": 0.0,
+        "z": 0.0
       },
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": -0.5,
-        "z": 0.5
+        "x": 0.0,
+        "z": 1.0
       },
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": 0.5,
-        "z": -0.5
+        "x": 1.0,
+        "z": 0.0
       },
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "x": 0.5,
-        "z": 0.5
+        "x": 1.0,
+        "z": 1.0
       },
       {
         "m": "qv:Wall_UnevenBrick_Door_Round",
         "ti_le": 0.5,
         "ry": 0,
-        "x": -0.5,
-        "z": 1.0
+        "x": 0.0,
+        "z": 1.5
       },
       {
         "m": "qv:Wall_UnevenBrick_Straight",
         "ti_le": 0.5,
         "ry": 180,
-        "x": -0.5,
-        "z": -1.0
+        "x": 0.0,
+        "z": -0.5
       },
       {
         "m": "qv:Wall_Plaster_Window_Wide_Flat",
         "ti_le": 0.5,
         "ry": 90,
-        "x": -1.0,
-        "z": -0.5
+        "x": -0.5,
+        "z": 0.0
       },
       {
         "m": "qv:Wall_Plaster_Straight",
         "ti_le": 0.5,
         "ry": 270,
-        "x": 1.0,
-        "z": -0.5
+        "x": 1.5,
+        "z": 0.0
       },
       {
         "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
         "ti_le": 0.5,
         "ry": 0,
-        "x": 0.5,
-        "z": 1.0
+        "x": 1.0,
+        "z": 1.5
       },
       {
         "m": "qv:Wall_UnevenBrick_Window_Thin_Round",
         "ti_le": 0.5,
         "ry": 180,
-        "x": 0.5,
-        "z": -1.0
+        "x": 1.0,
+        "z": -0.5
       },
       {
         "m": "qv:Wall_Plaster_Straight",
         "ti_le": 0.5,
         "ry": 90,
-        "x": -1.0,
-        "z": 0.5
+        "x": -0.5,
+        "z": 1.0
       },
       {
         "m": "qv:Wall_Plaster_WoodGrid",
         "ti_le": 0.5,
         "ry": 270,
-        "x": 1.0,
-        "z": 0.5
+        "x": 1.5,
+        "z": 1.0
       },
       {
-        "m": "qv:Roof_Front_Brick4",
+        "m": "qv:Floor_Brick",
         "ti_le": 0.5,
+        "x": 0.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.0,
+        "y": 1.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
         "y": 1.5,
         "z": 1.0
       },
       {
         "m": "qv:Roof_Front_Brick4",
         "ti_le": 0.5,
+        "y": 1.56,
+        "x": 0.5,
+        "z": 1.5
+      },
+      {
+        "m": "qv:Roof_Front_Brick4",
+        "ti_le": 0.5,
         "ry": 180,
-        "y": 1.5,
-        "z": -1.0
+        "y": 1.56,
+        "x": 0.5,
+        "z": -0.5
       },
       {
         "m": "qv:Roof_RoundTiles_4x4",
         "ti_le": 0.5,
-        "y": 1.5
+        "y": 1.56,
+        "x": 0.5,
+        "z": 0.5
       },
       {
         "m": "qv:Prop_Chimney",
         "ti_le": 0.5,
-        "x": 0.6,
-        "z": -0.4,
-        "y": 2.0
+        "x": 0.1,
+        "z": 1.1,
+        "y": 2.1
       }
     ],
-    "nha_dai": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": -0.5,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": -0.5,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.5,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.5,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Door_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": -0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": -0.5,
-        "z": -1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Thin_Round",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 0.5,
-        "z": -1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -1.0,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.0,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Roof_Front_Brick4",
-        "ti_le": 0.5,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Roof_Front_Brick4",
-        "ti_le": 0.5,
-        "ry": 180,
-        "y": 1.5,
-        "z": -1.0
-      },
-      {
-        "m": "qv:Roof_RoundTiles_4x6",
-        "ti_le": 0.5,
-        "y": 1.5
-      }
-    ],
-    "thap_canh": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": -0.5,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": -0.5,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.5,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.5,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Door_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": -0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": -0.5,
-        "z": -1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Wide_Flat",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Thin_Round",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 0.5,
-        "z": -1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -1.0,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_WoodGrid",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.0,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Roof_Tower_RoundTiles",
-        "ti_le": 0.5,
-        "y": 1.5
-      }
-    ],
-    "nha_nho": [
+    "nha_nho_do": [
       {
         "m": "qv:Floor_Brick",
         "ti_le": 0.5
@@ -521,38 +398,212 @@
         "x": 0.5
       },
       {
-        "m": "qv:Roof_Front_Brick2",
+        "m": "qv:Floor_Brick",
         "ti_le": 0.5,
-        "y": 1.5,
-        "z": 0.5
+        "y": 1.5
       },
       {
-        "m": "qv:Roof_Front_Brick2",
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.5,
+        "ry": 90,
+        "y": 1.56
+      }
+    ],
+    "thap_canh": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.0,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.0,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": 0.0,
+        "z": 1.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
         "ti_le": 0.5,
         "ry": 180,
-        "y": 1.5,
+        "x": 0.0,
         "z": -0.5
       },
       {
-        "m": "qv:Roof_RoundTile_2x1",
+        "m": "qv:Wall_Plaster_Window_Wide_Flat",
         "ti_le": 0.5,
-        "y": 1.5
+        "ry": 90,
+        "x": -0.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "x": 1.0,
+        "z": 1.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Thin_Round",
+        "ti_le": 0.5,
+        "ry": 180,
+        "x": 1.0,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Wall_Plaster_WoodGrid",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 1.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 0.0,
+        "y": 1.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
+        "y": 1.5,
+        "z": 0.0
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "x": 1.0,
+        "y": 1.5,
+        "z": 1.0
+      },
+      {
+        "m": "qv:Roof_Tower_RoundTiles",
+        "ti_le": 0.5,
+        "y": 1.56,
+        "x": 0.5,
+        "z": 0.5
       }
     ],
+    "nha_ngoi_nau": {
+      "nhu": "nha_ngoi_do",
+      "mau_vl": {
+        "MI_RoundTiles": [
+          0.72,
+          0.8,
+          0.78
+        ]
+      }
+    },
+    "nha_ngoi_lam": {
+      "nhu": "nha_ngoi_do",
+      "mau_vl": {
+        "MI_RoundTiles": [
+          0.58,
+          1.02,
+          1.5
+        ]
+      }
+    },
+    "nha_ngang_do": {
+      "nhu": "nha_ngoi_do",
+      "xoay": 90
+    },
+    "nha_gach_nau": {
+      "nhu": "nha_gach_do",
+      "mau_vl": {
+        "MI_RoundTiles": [
+          0.72,
+          0.8,
+          0.78
+        ]
+      }
+    },
+    "nha_gach_reu": {
+      "nhu": "nha_gach_do",
+      "mau_vl": {
+        "MI_RoundTiles": [
+          0.5,
+          1.05,
+          0.85
+        ]
+      }
+    },
+    "nha_nho_nau": {
+      "nhu": "nha_nho_do",
+      "mau_vl": {
+        "MI_RoundTiles": [
+          0.72,
+          0.8,
+          0.78
+        ]
+      }
+    },
+    "nha_nho_lam": {
+      "nhu": "nha_nho_do",
+      "mau_vl": {
+        "MI_RoundTiles": [
+          0.58,
+          1.02,
+          1.5
+        ]
+      }
+    },
     "cay_soi": [
       {
         "m": "qn:CommonTree_1",
-        "ti_le": 0.2,
+        "ti_le": 0.32,
         "mau_vl": {
           "Leaves_NormalTree": [
-            1.3,
-            1.4,
-            1.1
+            0.95,
+            1.1,
+            1.0
           ],
           "Bark_NormalTree": [
-            1.35,
-            1.35,
-            1.35
+            1.28,
+            1.28,
+            1.28
           ]
         }
       }
@@ -560,17 +611,17 @@
     "cay_soi_2": [
       {
         "m": "qn:CommonTree_4",
-        "ti_le": 0.2,
+        "ti_le": 0.32,
         "mau_vl": {
           "Leaves_NormalTree": [
-            1.3,
-            1.4,
-            1.1
+            0.95,
+            1.1,
+            1.0
           ],
           "Bark_NormalTree": [
-            1.35,
-            1.35,
-            1.35
+            1.28,
+            1.28,
+            1.28
           ]
         }
       }
@@ -578,17 +629,17 @@
     "cay_thong": [
       {
         "m": "qn:Pine_1",
-        "ti_le": 0.2,
+        "ti_le": 0.34,
         "mau_vl": {
           "Leaves_Pine": [
-            1.35,
-            1.45,
-            1.1
+            1.05,
+            1.25,
+            1.05
           ],
           "Bark_NormalTree": [
-            1.35,
-            1.35,
-            1.35
+            1.28,
+            1.28,
+            1.28
           ]
         }
       }
@@ -596,12 +647,12 @@
     "cay_kho": [
       {
         "m": "qn:DeadTree_2",
-        "ti_le": 0.2,
+        "ti_le": 0.3,
         "mau_vl": {
           "Bark_DeadTree": [
-            1.5,
-            1.5,
-            1.5
+            1.15,
+            1.08,
+            0.98
           ]
         }
       }
@@ -609,12 +660,12 @@
     "bui": [
       {
         "m": "qn:Bush_Common_Flowers",
-        "ti_le": 0.2,
+        "ti_le": 0.24,
         "mau_vl": {
           "Leaves_NormalTree": [
-            1.3,
-            1.45,
-            1.1
+            0.95,
+            1.1,
+            1.0
           ],
           "Flowers": [
             1.15,
@@ -627,12 +678,12 @@
     "bui_hoa": [
       {
         "m": "qn:Bush_Common_Flowers",
-        "ti_le": 0.2,
+        "ti_le": 0.24,
         "mau_vl": {
           "Leaves_NormalTree": [
-            1.3,
-            1.4,
-            1.1
+            0.95,
+            1.1,
+            1.0
           ],
           "Flowers": [
             1.9,
@@ -645,12 +696,12 @@
     "da_lon": [
       {
         "m": "qn:Rock_Medium_1",
-        "ti_le": 0.2,
+        "ti_le": 0.26,
         "mau_vl": {
           "Rocks": [
-            1.55,
-            1.55,
-            1.55
+            1.45,
+            1.45,
+            1.45
           ]
         }
       }
@@ -658,12 +709,12 @@
     "da_nho": [
       {
         "m": "qn:Pebble_Round_3",
-        "ti_le": 0.2,
+        "ti_le": 0.22,
         "mau_vl": {
           "PathRocks": [
-            1.55,
-            1.55,
-            1.55
+            1.45,
+            1.45,
+            1.45
           ]
         }
       }
@@ -671,12 +722,12 @@
     "co_cao": [
       {
         "m": "qn:Grass_Common_Tall",
-        "ti_le": 0.2,
+        "ti_le": 0.22,
         "mau_vl": {
           "Grass": [
-            1.35,
-            1.6,
-            1.15
+            1.1,
+            1.28,
+            1.05
           ]
         }
       }
@@ -684,7 +735,7 @@
     "hoa": [
       {
         "m": "qn:Flower_3_Group",
-        "ti_le": 0.2,
+        "ti_le": 0.22,
         "mau_vl": {
           "Flowers": [
             1.6,
@@ -692,9 +743,9 @@
             1.6
           ],
           "Leaves": [
-            1.3,
-            1.4,
-            1.1
+            1.05,
+            1.18,
+            1.02
           ]
         }
       }

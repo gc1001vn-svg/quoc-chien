@@ -46,11 +46,30 @@ describe('sinh ban do trung bay', () => {
   });
 
   it('vat the da xep san theo truc sau, ve theo thu tu nay la dung', () => {
+    // Xep theo GOC TRUOC cua khoi. Cong trinh 2x2 neo o o sau nhat cua no, lay o neo ma
+    // xep thi no ve truoc ca thu dung ben canh no va bi de len.
+    const truocNhat = (v: { a: number; b: number; o: number }): number => v.a + v.b + 2 * (v.o - 1);
     for (let i = 1; i < banDo.vat.length; i += 1) {
       const truoc = banDo.vat[i - 1];
       const nay = banDo.vat[i];
       if (truoc === undefined || nay === undefined) continue;
-      expect(truoc.a + truoc.b).toBeLessThanOrEqual(nay.a + nay.b);
+      expect(truocNhat(truoc)).toBeLessThanOrEqual(truocNhat(nay));
+    }
+  });
+
+  it('cong trinh nhieu o khong bao gio chong o len nhau', () => {
+    const cho = new Set<number>();
+    for (const v of banDo.vat) {
+      for (let da = 0; da < v.o; da += 1) {
+        for (let db = 0; db < v.o; db += 1) {
+          const o: number = (v.a + da) * CAU_HINH.canh + (v.b + db);
+          expect(cho.has(o)).toBe(false);
+          cho.add(o);
+          // Ca khoi phai tranh duong, khong chi rieng o neo.
+          expect((v.a + da) % CAU_HINH.duongCach).not.toBe(0);
+          expect((v.b + db) % CAU_HINH.duongCach).not.toBe(0);
+        }
+      }
     }
   });
 
@@ -74,7 +93,7 @@ describe('sinh ban do trung bay', () => {
 describe('ten sprite khai trong JSON phai co that trong atlas', () => {
   for (const co of ['1x', '2x']) {
     it(`du ten cho bo ${co}`, () => {
-      const bo = doc(`trung_co_${co}`);
+      const bo = doc(`${CAU_HINH.me}_${co}`);
       const thieu: string[] = [];
       const kiem = (ten: string): void => {
         if (bo.sprite[ten] === undefined) thieu.push(ten);
