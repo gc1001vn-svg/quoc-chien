@@ -29,8 +29,16 @@ import { DongHo } from '../sim/Clock';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
 
-/** Sprite tam thoi cho nguoi vac hang. Chua nuong nguoi - `docs/NO_KY_THUAT.md`. */
-const SPRITE_WALKER = 'thung_ruou';
+/**
+ * Ten sprite cua mot nguoi vac hang: `nguoi_<kieu>_<huong>_<dang>`.
+ *
+ * Hai dang thay phien nhau theo so buoc da di, nen chan doi ben moi lan sang o moi -
+ * khong the thi nguoi truot tren duong nhu keo mot mieng bia.
+ */
+function spriteWalker(w: Walker): string {
+  const kieu: string = w.kieu === 0 ? 'nam' : 'nu';
+  return `nguoi_${kieu}_${String(w.huong)}_${String(w.buoc % 2)}`;
+}
 
 /** Duoi muc thu nho nay thi khong ve nguoi nua. Duong lui khi iPhone rot fps. */
 const ZOOM_HIEN_WALKER = 0;
@@ -168,7 +176,7 @@ function veLopVat(ve: Ve, banDo: BanDo, veNha: boolean, tp: ThanhPho | undefined
       const sau: number = v.a + v.b + 2 * (v.o - 1);
       while (i < nguoi.length && (nguoi[i] as Walker).a + (nguoi[i] as Walker).b <= sau) {
         const w = nguoi[i] as Walker;
-        datSprite(ve, w.a, w.b, SPRITE_WALKER);
+        datSprite(ve, w.a, w.b, spriteWalker(w));
         i += 1;
       }
       datSprite(ve, v.a, v.b, v.ten);
@@ -176,7 +184,7 @@ function veLopVat(ve: Ve, banDo: BanDo, veNha: boolean, tp: ThanhPho | undefined
   }
   for (; i < nguoi.length; i += 1) {
     const w = nguoi[i] as Walker;
-    datSprite(ve, w.a, w.b, SPRITE_WALKER);
+    datSprite(ve, w.a, w.b, spriteWalker(w));
   }
 }
 

@@ -68,6 +68,16 @@ export interface Walker {
   buoc: number;
   /** Con bao nhieu nhip nua moi duoc buoc tiep. */
   cho: number;
+  /**
+   * Huong dang di: 0 = `a` tang, 1 = `b` tang, 2 = `a` giam, 3 = `b` giam.
+   *
+   * Sim giu chu khong de ben ve tu tinh, vi ben ve chi thay vi tri MOI khung - muon biet
+   * huong thi phai nho vi tri khung truoc, tuc la ben ve phai giu trang thai rieng. Sim
+   * biet san huong ngay luc buoc, khong ton them gi.
+   */
+  huong: number;
+  /** 0 = nam, 1 = nu. Chi de chon sprite; khong dinh gi toi kinh te. */
+  readonly kieu: number;
 }
 
 /** So do cua doi walker trong mot gio game. */
@@ -101,6 +111,18 @@ export function buocKeTiep(tu: O, toi: O, c: number): O {
   return { a, b: b + Math.sign(ganC(b) - b) };
 }
 
+/**
+ * Huong cua mot buoc: 0 = `a` tang, 1 = `b` tang, 2 = `a` giam, 3 = `b` giam.
+ *
+ * Moi buoc chi doi mot truc (`buocKeTiep` khong bao gio di cheo), nen bon huong la du.
+ * Buoc dung yen thi giu nguyen huong cu, khong thi nguoi se quay dau moi luc dung cho.
+ */
+export function doHuong(tu: O, toi: O, cu = 1): number {
+  if (toi.a !== tu.a) return toi.a > tu.a ? 0 : 2;
+  if (toi.b !== tu.b) return toi.b > tu.b ? 1 : 3;
+  return cu;
+}
+
 /** Doi walker cua ca thanh pho. */
 export class DoiWalker {
   private ds: Walker[] = [];
@@ -110,6 +132,8 @@ export class DoiWalker {
   private demChuyen = 0;
   private demBoCuoc = 0;
   private demDinh = 0;
+  /** Da phat bao nhieu nguoi tu dau van. Chi dung de chia nam nu xen ke. */
+  private daPhat = 0;
 
   private readonly kho: O;
   private readonly duongCach: number;
@@ -156,7 +180,13 @@ export class DoiWalker {
       so: viec === 'giao' ? so : 0,
       a: tuCong.a, b: tuCong.b,
       daToiKho: false, buoc: 0, cho: 0,
+      // Huong dau: chua buoc nen chua biet, cu de nhin xuong duoi man hinh.
+      huong: 1,
+      // Nam nu xen ke theo so nguoi da phat. Khong bat dong xu, chi de thanh pho do don
+      // dieu - moi nguoi mot kieu thi nhin ra dam dong chu khong ra mot anh nhan ban.
+      kieu: this.daPhat % 2,
     });
+    this.daPhat += 1;
     if (viec === 'lay') this.soLay += 1;
     else this.soGiao += 1;
     if (this.ds.length > this.demDinh) this.demDinh = this.ds.length;
@@ -203,6 +233,7 @@ export class DoiWalker {
         this.demBoCuoc += 1;
         continue;
       }
+      w.huong = doHuong(w, buoc, w.huong);
       w.a = buoc.a;
       w.b = buoc.b;
       w.buoc += 1;
