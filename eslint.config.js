@@ -65,7 +65,7 @@ export default tseslint.config(
 
   // Test va cong cu chay trong Node.
   {
-    files: ['tests/**/*.ts', 'scripts/**/*.mjs', 'tools/**/*.mjs'],
+    files: ['tests/**/*.ts', 'scripts/**/*.ts', 'scripts/**/*.mjs', 'tools/**/*.mjs'],
     languageOptions: { globals: globals.node },
     rules: {
       // Cong cu Node viet bang .mjs, kieu khai qua JSDoc - khong ep khai kieu TypeScript.

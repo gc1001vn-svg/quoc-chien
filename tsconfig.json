@@ -20,8 +20,12 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
+    // Node boc kieu TypeScript (`--experimental-strip-types`) doi import phai ghi du duoi
+    // `.ts`. Nho vay `npm run sim:thu` chay thang file .ts trong Node, khong can them
+    // thu vien nao. Chi bat duoc khi `noEmit` - dung nhu du an dang dat.
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["src", "tests", "vite.config.ts"]
+  "include": ["src", "tests", "scripts", "vite.config.ts"]
 }

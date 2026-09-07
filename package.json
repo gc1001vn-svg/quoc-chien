@@ -22,6 +22,7 @@
     "check:base": "node scripts/check_base_path.mjs",
     "check:credits": "node scripts/check_credits.mjs",
     "chup:man": "node scripts/chup_man.mjs",
+    "sim:thu": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_thu.ts",
     "do": "bash scripts/do.sh"
   },
   "repository": {
