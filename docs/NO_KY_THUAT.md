@@ -44,14 +44,13 @@
   còn đường rìa vắng tanh. Caesar III có nhiều kho rải khắp. Sửa khi có thống đốc biết
   chọn chỗ xây (Phase 5).
 
-- **Walker chưa có sprite người** (07/09, Phase 4). Đang mượn `thung_ruou`. Vì thế đã phải
-  **bỏ `dong_thung` và `thung_ruou` khỏi trang trí bản đồ** (bù 29 `noi_lo`) — để cả hai thì
-  thùng đứng yên bên đường nhìn y hệt người đang dừng lại, chủ dự án đã báo nhầm một lần.
-  Nướng được sprite người thật thì **trả hai dòng đó về** `data/thanh_pho_demo.json`.
-  Gói Quaternius đang dùng không có model người; nướng người 8 hướng × 4 dáng là Phase 10.
-- **Chưa đo fps trên iPhone với walker** (07/09). Trần sprite đã nâng 3.500 → 5.000 theo ý
-  chủ dự án mà chưa có số nền. Đường lùi: `ZOOM_HIEN_WALKER` trong `src/render/CityScene.ts`
-  đổi 0 → 0,6 là walker biến mất khi thu nhỏ.
+- ~~**Walker chưa có sprite người**~~ — **ĐÃ TRẢ 07/09 (phiên nướng người).** 16 sprite:
+  nông dân nam và nữ × 4 hướng × 2 dáng. `dong_thung` và `thung_ruou` đã **trở lại** làm
+  đồ trang trí. Còn nợ lại: 8 hướng × 4 dáng vẫn để Phase 10, và bộ đồ **Ranger** trong gói
+  chưa nướng (mới chỉ dùng Peasant).
+- **Chưa đo fps trên iPhone với sprite người** (07/09). Máy ảo vẽ bằng phần mềm nên số fps
+  của nó vô nghĩa. Đường lùi nếu iPhone tụt: `ZOOM_HIEN_WALKER` trong
+  `src/render/CityScene.ts` đổi 0 → 0,6 là người biến mất khi thu nhỏ.
 - **Nhà kinh tế và vật thể trang trí là hai danh sách riêng** (07/09). 94 nhà kinh tế của
   `src/sim/` đặt độc lập với vật thể trang trí của bản đồ, nên trên màn hình chưa nhìn ra
   nhà nào là lò bánh, nhà nào là mỏ than. Nối hai cái làm một khi có sprite thật.
@@ -84,12 +83,12 @@
   ≈ **300 token/phiên** (ước lượng theo độ dài mô tả, không đo trực tiếp được). Đã làm 07/09.
 - `session-start-hook` trong `settings.json` khai sai tên bên trong (`startup-hook-skill`)
   nên nhiều khả năng không khớp với skill nào. Vô hại, chưa sửa.
-- **Không kéo được kho `ghi-nho` từ máy ảo (07/09).** `git clone` hỏi mật khẩu, gọi
-  `add_repo` thì máy chặn. Đã làm theo bốn dòng cốt lõi thuộc lòng trong skill. Nếu phiên
-  sau vẫn chặn thì phải sửa cách cấp quyền, đừng để mất kho ghi nhớ chung.
+- ~~**Không kéo được kho `ghi-nho` từ máy ảo**~~ — **ĐÃ TRẢ 07/09.** `git clone` thẳng vẫn
+  hỏi mật khẩu, nhưng gọi `add_repo` (owner `gc1001vn-svg`, repo `ghi-nho`, access `push`)
+  rồi clone lại thì được. Đúng cách skill `ghi-nho` mô tả — phiên trước gọi hụt.
 - `assets_source/` **mất theo container** mỗi phiên (đúng luật, không lên git). Phiên sau
-  tải lại ~440 MB, mất khoảng một phút:
-  `node tools/tai_itch.mjs quaternius/medieval-village-megakit quaternius/stylized-nature-megakit quaternius/fantasy-props-megakit`
+  tải lại ~860 MB, mất vài phút:
+  `node tools/tai_itch.mjs quaternius/medieval-village-megakit quaternius/stylized-nature-megakit quaternius/fantasy-props-megakit quaternius/modular-character-outfits-fantasy quaternius/universal-base-characters`
   rồi `node tools/tai_hoa_tiet.mjs sparse_grass leafy_grass brown_mud_dry cobblestone_01 dry_river_pebbles coast_sand_01 aerial_rocks_02 clay_plaster clay_roof_tiles_02`.
   (`npm run tai:asset` và `npm run tai:itch` chỉ cần khi muốn dựng lại mẻ Kenney cũ.)
 - Chưa tìm được kho **gigalomania** (SourceForge, `api.github.com/search` bị khoá theo
