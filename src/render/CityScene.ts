@@ -24,7 +24,7 @@ import { Gl } from './Gl';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import type { BanDo, CauHinhBanDo } from '../sim/city/BanDo';
 import { ThanhPho } from '../sim/city/City';
-import { NHIP_MOI_GIAY } from '../sim/Clock';
+import { DongHo } from '../sim/Clock';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
 
@@ -53,6 +53,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   const thanhPho: ThanhPho = new ThanhPho({
     hang: hangTho, nha: nhaTho, chuoi: chuoiTho, banDo: cauHinhTho, walker: walkerTho,
   });
+  thanhPho.moDau();
   const banDo: BanDo = thanhPho.banDo;
   const cam: Camera = new Camera(
     atlas.heSo(), CAU_HINH.canh, atlas.oPx(),
@@ -71,15 +72,17 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   doKichThuoc();
   window.addEventListener('resize', doKichThuoc);
 
+  // Sim chay 10 Hz, doc lap voi vong ve 60 fps (TECH_SPEC muc 2). PHAI di qua `DongHo`:
+  // no giu phan le. Tu lam tron `giay * 10` thi o 60 fps moi khung ra 0,167 -> lam tron
+  // thanh 0, va mo phong dung im MAI MAI trong khi ban ve van chay muot. Da bi mot lan.
+  const nhipKe: DongHo = new DongHo();
   let truoc = 0;
   const veMotKhung = (now: number): void => {
     perf.danhDau(now);
 
-    // Sim chay 10 Hz, doc lap voi vong ve 60 fps (TECH_SPEC muc 2). Kep 4 nhip mot khung
-    // de tab bi treo lau roi quay lai khong lam dung hinh ca giay.
-    const giay: number = truoc === 0 ? 0 : Math.min((now - truoc) / 1000, 0.4);
+    const giay: number = truoc === 0 ? 0 : (now - truoc) / 1000;
     truoc = now;
-    thanhPho.chay(Math.min(Math.round(giay * NHIP_MOI_GIAY), 4));
+    thanhPho.chay(nhipKe.tien(giay));
 
     const ve: Ve = {
       gl, atlas, rongDev, caoDev,

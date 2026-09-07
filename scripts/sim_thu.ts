@@ -7,8 +7,9 @@
  * Chay bang Node tu boc kieu TypeScript: khong can them thu vien nao.
  */
 import { readFileSync } from 'node:fs';
-import { chamDiem, ThanhPho } from '../src/sim/city/City.ts';
-import type { ThongKe } from '../src/sim/city/City.ts';
+import { ThanhPho } from '../src/sim/city/City.ts';
+import { chamDiem } from '../src/sim/city/Cham.ts';
+import type { ThongKe } from '../src/sim/city/Cham.ts';
 import { chuoiGio, NHIP_MOI_GIO } from '../src/sim/Clock.ts';
 
 const SO_GIO = 10;

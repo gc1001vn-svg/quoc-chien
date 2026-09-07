@@ -39,6 +39,11 @@
 
 ## Code
 
+- **Người vác hàng dồn thành một dãy nối đuôi** (07/09, Phase 4). Cả thành phố chỉ có
+  **một kho ở giữa bản đồ** nên mọi tuyến đều đổ về đó; các trục dẫn vào tâm đông nghịt
+  còn đường rìa vắng tanh. Caesar III có nhiều kho rải khắp. Sửa khi có thống đốc biết
+  chọn chỗ xây (Phase 5).
+
 - **Walker chưa có sprite người** (07/09, Phase 4). Đang mượn `thung_ruou`. Phân biệt được
   vì đồ trang trí không bao giờ đặt lên đường, nhưng nhìn vẫn sai. Gói Quaternius đang dùng
   không có model người; nướng người 8 hướng × 4 dáng là Phase 10.

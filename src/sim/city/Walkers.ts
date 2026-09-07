@@ -25,6 +25,8 @@ export interface CauHinhWalker {
   readonly tranLay: number;
   /** Tran rieng cho nguoi DI GIAO hang. */
   readonly tranGiao: number;
+  /** Chay san bao nhieu nhip truoc khung hinh dau tien. */
+  readonly nhipMoDau: number;
   readonly hatGiongDatNha: number;
 }
 
@@ -40,6 +42,7 @@ export function docWalker(tho: unknown): CauHinhWalker {
     tranWalker: lay('tranWalker'),
     tranLay: lay('tranLay'),
     tranGiao: lay('tranGiao'),
+    nhipMoDau: lay('nhipMoDau'),
     hatGiongDatNha: lay('hatGiongDatNha'),
   };
 }

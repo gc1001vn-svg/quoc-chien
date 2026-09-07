@@ -4,6 +4,7 @@
   "_moiChuyen": "Mot nguoi vac duoc bao nhieu mon mot chuyen.",
   "_tranRieng": "Suc chua kho rieng cua tung nha. Day thi nha ngung san xuat cho nguoi den cho bot di - do la ly do phai co nguoi giao hang deu.",
   "_buocToiDa": "Di qua ngan nay buoc ma chua toi thi bo cuoc, tra hang ve nha. Chan hang bien mat khi nha bi vay kin. Dem CA chuyen di lan chuyen ve: ban do 96x96 co the toi 384 buoc, de 400 la ca doi bo cuoc truoc khi toi noi - da bi mot lan.",
+  "_nhipMoDau": "Chay san bao nhieu nhip TRUOC khung hinh dau tien. 36.000 = mot gio game. Khong co no thi mo van ra kho nha nao cung day, gan nhu khong ai phai di, va phai cho hang gio that moi thay thanh pho song. Ton khoang mot phan tu giay luc mo.",
   "_tranWalker": "Tran so nguoi cung luc tren ca ban do. Cham tran thi nha phai cho - va cot `Bo cuoc` trong sim:thu se noi cho biet.",
   "_tranGiao": "Tran rieng cho nguoi DI GIAO. Hai ben phai co tran RIENG: chung mot tran thi ben giao chiem het 600 cho, ben lay khong bao gio duoc di, kho day u ma nha van doi - da bi ket cung lan thu hai vi cho nay.",
   "_tranLay": "Tran rieng cho nguoi DI LAY hang. Phai thap hon tranWalker: khong thi ca doi di lay het, khong con ai CHO HANG TOI kho, kho mai mai rong - da bi ket cung mot lan vi cho nay.",
@@ -15,5 +16,6 @@
   "tranWalker": 600,
   "tranLay": 300,
   "tranGiao": 300,
+  "nhipMoDau": 36000,
   "hatGiongDatNha": 20260907
 }

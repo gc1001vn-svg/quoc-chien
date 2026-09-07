@@ -43,3 +43,22 @@ không bao giờ đặt lên đường, nhưng nhìn vẫn sai. Nướng ngườ
 **Chưa ai đo fps trên iPhone** với walker — chờ xác nhận.
 `src/render/BanDoDemo.ts` đã chuyển thành `src/sim/city/BanDo.ts`; render giờ đọc bản đồ và
 danh sách walker thẳng từ `src/sim/`, đúng chiều cho phép.
+
+## Hai lỗi nữa, lộ ra khi chủ dự án mở iPhone (07/09)
+
+Anh báo **"mượt nhưng không thấy cái gì di chuyển cả"**. Hai nguyên nhân chồng lên nhau:
+
+**1. Mô phỏng đứng im trong trình duyệt, mãi mãi.** `Math.round(giay * NHIP_MOI_GIAY)` — ở
+60 fps mỗi khung là 0,0167 giây, nhân 10 ra 0,167, làm tròn thành **0**. Không nhịp nào
+chạy. `DongHo` đã viết sẵn để giữ phần lẻ đúng cho việc này mà lại không dùng tới. Sửa:
+`thanhPho.chay(nhipKe.tien(giay))`. Bài học: **có sẵn thì dùng**, đừng tự làm tròn lại.
+
+**2. Mở ván ra kho nhà nào cũng đầy** nên gần như không ai phải đi. 324 người là trạng thái
+sau vài giờ game; ở tốc độ 1× phải chờ hàng **giờ thật** mới thấy. Sửa: `ThanhPho.moDau()`
+chạy sẵn **36.000 nhịp (một giờ game)** trước khung hình đầu tiên, tốn khoảng một phần tư
+giây lúc mở. Sau đó màn hình có ngay 160–180 người.
+
+Cả hai đều không làm test nào đỏ: `sim:thu` gọi `chay()` thẳng nên không đi qua chỗ hỏng.
+**Lỗi chỉ có trên màn hình thật.** Đây đúng là loại lỗi mà `TECH_SPEC` mục 1 luật 2 nói tới.
+
+`City.ts` chạm trần 300 dòng nên tách phần đọc kết quả sang `src/sim/city/Cham.ts`.

@@ -6,7 +6,8 @@
  * khong hang am, moi nha chay duoc it nhat mot me, moi hang vua duoc lam ra vua bi dung den.
  */
 import { describe, expect, it } from 'vitest';
-import { chamDiem, ThanhPho } from '../src/sim/city/City.ts';
+import { ThanhPho } from '../src/sim/city/City.ts';
+import { chamDiem } from '../src/sim/city/Cham.ts';
 import { NHIP_MOI_GIO } from '../src/sim/Clock.ts';
 import hang from '../data/wares.json';
 import nha from '../data/buildings.json';
