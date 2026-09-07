@@ -124,10 +124,19 @@
       "bam": 1
     },
     {
-      "_": "Da bo `dong_thung` (18) va `thung_ruou` (16) khoi trang tri ngay 07/09: walker dang muon sprite `thung_ruou`, de ca hai thi thung dung yen ben duong nhin y het nguoi dang dung lai. Bu vao day cho khoi trong. Nuong duoc sprite nguoi that thi tra hai dong kia ve.",
       "ten": "noi_lo",
       "so": 29,
       "bam": 2
+    },
+    {
+      "ten": "dong_thung",
+      "so": 18,
+      "bam": 1
+    },
+    {
+      "ten": "thung_ruou",
+      "so": 16,
+      "bam": 1
     },
     {
       "ten": "hang_rao",
