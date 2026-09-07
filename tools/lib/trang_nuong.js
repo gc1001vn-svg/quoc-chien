@@ -110,7 +110,16 @@ void main() {
 
   // vCoAnh gio la CHI SO ANH + 1 (0 = khong anh), nen phai lay nguong chu khong nhan thang.
   // Trang nuong ve tung nhom mot chi so, nen o day chi can biet CO hay KHONG.
-  vec3 c = vMau * mix(vec3(1.0), texture2D(uAnh, vUv).rgb, step(0.5, vCoAnh));
+  float coAnh = step(0.5, vCoAnh);
+  vec4 t = texture2D(uAnh, vUv);
+  // CAT THEO ALPHA. Truoc day gl_FragColor luon dat alpha = 1.0, tuc kenh trong suot cua
+  // anh bi bo hoan toan: tam la cua cay ve ra nguyen hinh chu nhat, phan le ra phai thung
+  // thi hien mau nen toi cua anh -> cay sun thanh cuc den lom chom. Cay Quaternius lam
+  // bang tam la co alpha nen khong cat thi khong the ra hinh cay.
+  // Cat cung (discard) chu khong tron: tron thi ria nua trong bi nhan mau toi cua chinh
+  // anh do, van ra vien den - dung benh cu.
+  if (coAnh > 0.5 && t.a < 0.5) discard;
+  vec3 c = vMau * mix(vec3(1.0), t.rgb, coAnh);
   vec3 ra = c * (denChinh + denNen) * chan + vien * vec3(0.75, 0.85, 1.0);
   // Nang tong: vung sang nga am, vung toi nga lanh. Cung mot mau ma tach hai dau ra thi
   // hinh khoi noi han len, khong can them da giac nao.

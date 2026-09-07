@@ -15,6 +15,14 @@
       "anh": "mtl",
       "thu_muc_anh": "../Textures",
       "gamma": true
+    },
+    "qp": {
+      "duong": "assets_source/fantasy-props-megakit/Exports/OBJ",
+      "anh": "mtl",
+      "thu_muc_anh": [
+        "../../Textures"
+      ],
+      "gamma": true
     }
   },
   "sprite": {
@@ -87,6 +95,18 @@
           1.35,
           1.35,
           1.35
+        ]
+      }
+    ],
+    "o_ruong": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          1.05,
+          0.92,
+          0.72
         ]
       }
     ],
@@ -761,6 +781,233 @@
             1.5
           ]
         }
+      }
+    ],
+    "quay_hang": [
+      {
+        "m": "qp:Stall_Empty",
+        "ti_le": 0.5,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Barrel",
+        "ti_le": 0.5,
+        "x": 0.34,
+        "z": 0.22,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Crate_Wooden",
+        "ti_le": 0.5,
+        "x": -0.36,
+        "z": 0.26,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "quay_xe": [
+      {
+        "m": "qp:Stall_Cart_Empty",
+        "ti_le": 0.5,
+        "x": 0.3,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Barrel",
+        "ti_le": 0.5,
+        "x": 0.42,
+        "z": 0.3,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "dong_thung": [
+      {
+        "m": "qp:Crate_Wooden",
+        "ti_le": 0.5,
+        "x": -0.19,
+        "z": -0.14,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Crate_Wooden",
+        "ti_le": 0.5,
+        "x": 0.19,
+        "z": -0.09,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Crate_Wooden",
+        "ti_le": 0.5,
+        "x": 0.02,
+        "z": 0.2,
+        "y": 0.465,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "thung_ruou": [
+      {
+        "m": "qp:Barrel",
+        "ti_le": 0.5,
+        "x": -0.16,
+        "z": -0.06,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Barrel_Apples",
+        "ti_le": 0.5,
+        "x": 0.16,
+        "z": 0.1,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Barrel",
+        "ti_le": 0.5,
+        "x": -0.14,
+        "z": -0.04,
+        "y": 0.45,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "ghe_bang": [
+      {
+        "m": "qp:Bench",
+        "ti_le": 0.5,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "noi_lo": [
+      {
+        "m": "qp:Cauldron",
+        "ti_le": 0.5,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Crate_Wooden",
+        "ti_le": 0.5,
+        "x": 0.34,
+        "z": 0.22,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "xe_keo": [
+      {
+        "m": "qv:Prop_Wagon",
+        "ti_le": 0.5,
+        "z": 0.57,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "hang_rao": [
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "z": -0.48,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.48,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
+    ],
+    "cong_lang": [
+      {
+        "m": "qv:Wall_Arch",
+        "ti_le": 0.5,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney2",
+        "ti_le": 0.5,
+        "x": -0.56,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney2",
+        "ti_le": 0.5,
+        "x": 0.56,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
       }
     ]
   }

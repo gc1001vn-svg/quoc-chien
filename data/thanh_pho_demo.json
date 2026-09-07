@@ -9,38 +9,184 @@
     "duong": "o_duong",
     "ngaTu": "o_duong_lat",
     "thuong": [
-      { "ten": "o_co", "trong": 86 },
-      { "ten": "o_dat", "trong": 6 },
-      { "ten": "o_da", "trong": 4 },
-      { "ten": "o_cat", "trong": 4 }
+      {
+        "ten": "o_co",
+        "trong": 82
+      },
+      {
+        "ten": "o_dat",
+        "trong": 6
+      },
+      {
+        "ten": "o_ruong",
+        "trong": 5
+      },
+      {
+        "ten": "o_da",
+        "trong": 4
+      },
+      {
+        "ten": "o_cat",
+        "trong": 3
+      }
     ]
   },
   "leDuong": 1,
   "_bam": "So o toi da cach duong. Co `bam` thi vat the chi dat gan duong - nha bam duong moi ra thanh pho, rai deu ra thi ra rung co nha. Khong co `bam` thi rai tu do.",
   "_o": "Canh khoi o cong trinh chiem, neo o (a,b) di ra. Nha lon Quaternius rong 2 o; khong khai thi 1. Ca khoi phai trong va khong cham duong moi dat duoc.",
   "vat": [
-    { "ten": "thap_canh", "so": 5, "bam": 3, "o": 2 },
-    { "ten": "nha_ngoi_do", "so": 14, "bam": 3, "o": 2 },
-    { "ten": "nha_ngoi_nau", "so": 12, "bam": 3, "o": 2 },
-    { "ten": "nha_ngoi_lam", "so": 10, "bam": 3, "o": 2 },
-    { "ten": "nha_ngang_do", "so": 10, "bam": 3, "o": 2 },
-    { "ten": "nha_gach_do", "so": 12, "bam": 3, "o": 2 },
-    { "ten": "nha_gach_nau", "so": 10, "bam": 3, "o": 2 },
-    { "ten": "nha_gach_reu", "so": 8, "bam": 3, "o": 2 },
-    { "ten": "nha_nho_do", "so": 22, "bam": 2 },
-    { "ten": "nha_nho_nau", "so": 18, "bam": 2 },
-    { "ten": "nha_nho_lam", "so": 14, "bam": 2 },
-    { "ten": "cay_thong", "so": 20 },
-    { "ten": "cay_soi", "so": 16 },
-    { "ten": "cay_soi_2", "so": 14 },
-    { "ten": "cay_kho", "so": 8 },
-    { "ten": "bui", "so": 14 },
-    { "ten": "bui_hoa", "so": 10 },
-    { "ten": "co_cao", "so": 16 },
-    { "ten": "hoa", "so": 12 },
-    { "ten": "nam", "so": 8 },
-    { "ten": "da_lon", "so": 6 },
-    { "ten": "da_nho", "so": 8 }
+    {
+      "ten": "thap_canh",
+      "so": 5,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_ngoi_do",
+      "so": 14,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_ngoi_nau",
+      "so": 12,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_ngoi_lam",
+      "so": 10,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_ngang_do",
+      "so": 10,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_gach_do",
+      "so": 12,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_gach_nau",
+      "so": 10,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_gach_reu",
+      "so": 8,
+      "bam": 3,
+      "o": 2
+    },
+    {
+      "ten": "nha_nho_do",
+      "so": 22,
+      "bam": 2
+    },
+    {
+      "ten": "nha_nho_nau",
+      "so": 18,
+      "bam": 2
+    },
+    {
+      "ten": "nha_nho_lam",
+      "so": 14,
+      "bam": 2
+    },
+    {
+      "ten": "cong_lang",
+      "so": 4,
+      "bam": 1
+    },
+    {
+      "ten": "quay_hang",
+      "so": 7,
+      "bam": 1
+    },
+    {
+      "ten": "quay_xe",
+      "so": 5,
+      "bam": 1
+    },
+    {
+      "ten": "xe_keo",
+      "so": 6,
+      "bam": 1
+    },
+    {
+      "ten": "dong_thung",
+      "so": 8,
+      "bam": 2
+    },
+    {
+      "ten": "thung_ruou",
+      "so": 7,
+      "bam": 2
+    },
+    {
+      "ten": "ghe_bang",
+      "so": 6,
+      "bam": 1
+    },
+    {
+      "ten": "noi_lo",
+      "so": 5,
+      "bam": 2
+    },
+    {
+      "ten": "hang_rao",
+      "so": 14,
+      "bam": 2
+    },
+    {
+      "ten": "cay_thong",
+      "so": 20
+    },
+    {
+      "ten": "cay_soi",
+      "so": 16
+    },
+    {
+      "ten": "cay_soi_2",
+      "so": 14
+    },
+    {
+      "ten": "cay_kho",
+      "so": 8
+    },
+    {
+      "ten": "bui",
+      "so": 14
+    },
+    {
+      "ten": "bui_hoa",
+      "so": 10
+    },
+    {
+      "ten": "co_cao",
+      "so": 16
+    },
+    {
+      "ten": "hoa",
+      "so": 12
+    },
+    {
+      "ten": "nam",
+      "so": 8
+    },
+    {
+      "ten": "da_lon",
+      "so": 6
+    },
+    {
+      "ten": "da_nho",
+      "so": 8
+    }
   ],
   "zoomMin": 0.6,
   "zoomMax": 2.0,
