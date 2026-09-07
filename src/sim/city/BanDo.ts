@@ -1,14 +1,13 @@
 /**
- * Sinh mot ban do trung bay 64x64 tu `data/thanh_pho_demo.json`.
+ * Sinh ban do thanh pho tu `data/thanh_pho_demo.json`: o nen, duong, va cho dat vat the.
  *
- * TAM THOI. Phase 3 se co `src/sim/` sinh ra thanh pho that; file nay chi de Phase 2 co
- * cai ma ve va co cai ma do fps. Nhung no da tuan hai luat: MOI so nam trong JSON
- * (CLAUDE.md luat 2), va no la TypeScript thuan nen test duoc bang so, khong can trinh duyet.
+ * Phase 2 viet file nay trong `src/render/`. Phase 4 chuyen han vao `src/sim/` vi
+ * **walker phai biet duong nam o dau** ma `src/sim/` thi khong duoc import phan ve.
+ * Chieu nguoc lai hop le: `src/render/CityScene.ts` import tu day.
  *
  * Cung mot hat giong thi ra dung mot ban do - TECH_SPEC muc 8 bat buoc.
  */
-import { Rng } from '../core/Rng';
-import { sau } from './IsoMath';
+import { Rng } from '../../core/Rng.ts';
 
 /** Mot vat the dat tren luoi. */
 export interface OVat {
@@ -91,7 +90,9 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   }
   // Xep theo GOC TRUOC cua khoi, khong theo o neo: cong trinh 2x2 phai ve sau moi thu
   // nam sau no, ma o neo cua no lai la o sau nhat trong bon o.
-  vat.sort((m, n) => sau(m.a + m.o - 1, m.b + m.o - 1) - sau(n.a + n.o - 1, n.b + n.o - 1));
+  // Do sau cua o goc chieu la `a + b` (bang `sau()` cua `render/IsoMath.ts`, viet thang
+  // ra day vi `src/sim/` khong duoc import phan ve).
+  vat.sort((m, n) => m.a + m.b - (n.a + n.b) + 2 * (m.o - n.o));
 
   return { canh, nen, vat };
 }

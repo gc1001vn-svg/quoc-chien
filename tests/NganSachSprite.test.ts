@@ -14,7 +14,7 @@ import { describe, expect, it } from 'vitest';
 import cauHinhTho from '../data/thanh_pho_demo.json';
 import { Atlas, docBoAtlas } from '../src/render/Atlas';
 import { neoX, neoY, vungONhinThay } from '../src/render/IsoMath';
-import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/render/BanDoDemo';
+import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/sim/city/BanDo.ts';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
 /** Man hinh tham chieu cua du an: iPhone 16 Pro nam ngang, TECH_SPEC muc 6. */

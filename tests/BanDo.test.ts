@@ -1,5 +1,5 @@
 /**
- * Hang rao cho ban do trung bay va cho `data/thanh_pho_demo.json`.
+ * Hang rao cho sinh ban do va cho `data/thanh_pho_demo.json`.
  *
  * Test dat nhat o day la cai cuoi: MOI ten sprite khai trong JSON phai co that trong
  * atlas da nuong. Go sai mot chu thi cai nha do bien mat khong bao loi gi - dung loai loi
@@ -8,7 +8,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import cauHinhTho from '../data/thanh_pho_demo.json';
-import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/render/BanDoDemo';
+import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/sim/city/BanDo.ts';
 import { docBoAtlas } from '../src/render/Atlas';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;

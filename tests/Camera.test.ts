@@ -13,7 +13,7 @@ import { describe, expect, it } from 'vitest';
 import cauHinhTho from '../data/thanh_pho_demo.json';
 import { Camera } from '../src/render/Camera';
 import { neoX, neoY } from '../src/render/IsoMath';
-import type { CauHinhBanDo } from '../src/render/BanDoDemo';
+import type { CauHinhBanDo } from '../src/sim/city/BanDo.ts';
 
 const CH: CauHinhBanDo = cauHinhTho;
 /** Man hinh tham chieu: iPhone 16 Pro nam ngang, TECH_SPEC muc 6. */

@@ -18,7 +18,7 @@ import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './At
 import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
-import { sinhBanDo, type BanDo, type CauHinhBanDo } from './BanDoDemo';
+import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../sim/city/BanDo';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
 /** Suc chua buffer. Rong hon tran 3.500 mot chut de con dem duoc luc vuot. */
