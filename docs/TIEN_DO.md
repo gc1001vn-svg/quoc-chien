@@ -46,9 +46,8 @@ Máy ảo vẽ bằng phần mềm nên con số fps trong ảnh máy ảo (12�
 
 ## 3. Việc của chủ dự án
 
-1. **Xem lại trang trên iPhone** — giờ phải thấy dòng người đi trên đường. Lần trước đứng
-   im vì hai lỗi đã sửa.
-2. **Quyết phiên sau**: xem mục 5. Gõ **TIẾP** là chọn phương án A.
+**Không có việc gì đang chờ.** Phase 4 đã xem trên iPhone và duyệt: 59 fps, người đi đúng
+sau nhà, không ai đứng yên.
 
 **Quy ước đã chốt, khỏi hỏi lại:** đẩy xong là **tự gộp vào `main`**, không hỏi, không mở
 pull request. Chủ dự án không phải bấm gì để code lên trang.
@@ -65,18 +64,23 @@ pull request. Chủ dự án không phải bấm gì để code lên trang.
 
 Toàn bộ nợ còn lại (đồ hoạ, code, môi trường, deploy): **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase kế tiếp
+## 5. Phase kế tiếp — ĐÃ CHỐT: nướng sprite người
 
-**A. Phase 5 — thống đốc tự xây (đề xuất).** `src/sim/autoplay/Governor.ts` + `Policy.ts`:
-thành phố tự lớn theo chính sách người chơi đặt, không cần ai bấm. Đây là thứ biến đống số
-hiện tại thành một thành phố **sống**: thấy thiếu bánh mì thì xây thêm lò bánh, thấy walker
-quá tải thì xây thêm kho. `KE_HOACH.md` mục 2 giao đúng việc này cho Phase 5.
+Chủ dự án chốt cuối phiên 07/09: **phiên sau nướng sprite người**, không làm thống đốc.
+Lý do anh ấy đưa ra: *"vì không phải người nên chưa đánh giá cử động có mượt không"*.
 
-**B. Nướng sprite cho 32 toà nhà kinh tế + người vác hàng.** Để nhìn ra nhà nào là lò bánh,
-và để walker thôi là cái thùng rượu biết đi. Vướng: gói Quaternius không có cối xay, giếng,
-lẫn model người — phải tự ghép hoặc tìm gói khác.
+**Việc của phiên sau:**
 
-**C. Nối nhà kinh tế với vật thể trang trí làm một.** Hiện là hai danh sách riêng.
+1. Tải lại `assets_source/` (mất theo container — lệnh trong `docs/NO_KY_THUAT.md`).
+2. **Tìm gói có model người CC0.** Quaternius có **Ultimate Animated Character Pack** —
+   *chưa tải bao giờ, chưa chắc có, chưa chắc hợp phong cách trung cổ*. Không có thì phải
+   tìm gói khác; **đừng nướng bừa một model hiện đại vào mẻ trung cổ**.
+3. Nướng **4 hướng** (đủ để nhìn ra người đi hướng nào; 8 hướng × 4 dáng để Phase 10).
+4. Thay `SPRITE_WALKER` trong `src/render/CityScene.ts`, chọn sprite theo hướng đi.
+5. **Trả `dong_thung` và `thung_ruou` về** `data/thanh_pho_demo.json` — đã phải bỏ chúng
+   khỏi trang trí vì trùng sprite với người.
+6. Kiểm lại trần sprite: thêm hướng là thêm sprite trong atlas, không thêm sprite mỗi khung.
 
-**Tôi đề xuất A** nếu anh báo iPhone chạy mượt. **Nếu iPhone giật thì B và C đều phải chờ**
-— thêm sprite lúc đang quá tải là làm nặng thêm. Lúc đó việc đầu tiên là hạ tải, một dòng.
+**Sau đó mới tới Phase 5 — thống đốc tự xây** (`src/sim/autoplay/Governor.ts` + `Policy.ts`):
+thành phố tự lớn, thiếu bánh mì thì xây thêm lò bánh, đường kẹt thì xây thêm kho. Việc thêm
+kho sẽ chữa luôn cảnh người dồn thành một dãy đổ về cái kho duy nhất ở giữa.
