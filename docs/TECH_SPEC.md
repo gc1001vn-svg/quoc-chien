@@ -46,13 +46,51 @@ Xem mục 2. Vượt trần là lỗi, không phải "tối ưu sau".
 | Hạng mục | Trần | Vì sao |
 |---|---:|---|
 | Lệnh vẽ mỗi khung hình | **≤ 4** | 1 lệnh cho mỗi atlas, gom hết sprite |
-| Sprite động mỗi khung hình | **≤ 1.500** | Ước tính từ màn hình 874×402, dpr chặn ở 2 |
+| Sprite động mỗi khung hình | **≤ 3.500** | Nâng từ 1.500 ngày 07/09 — xem "Vì sao nâng trần" dưới |
 | Atlas trong bộ nhớ cùng lúc | **≤ 4 × (2048×2048)** | ≈ 67 MB bộ nhớ GPU (4 × 2048² × 4 byte). Tây Vực chết một phần vì 322 tấm ảnh rác |
 | `setPixelRatio` | `min(dpr, 2)` | Giống Tây Vực — dpr 3 trên iPhone là gấp 2,25 lần công vẽ |
 | Nhịp mô phỏng | **10 Hz**, tách khỏi vòng vẽ | Vẽ 60 fps, sim 10 Hz, nội suy vị trí giữa hai nhịp |
 | Kích thước bản build | ≤ 95 MB | CI chặn |
 | Mỗi file `.ts` | ≤ 300 dòng | Vượt thì tách module |
 | Thư viện đồ hoạ ngoài | **0** | Xem mục 4 |
+
+### Vì sao nâng trần sprite 1.500 → 3.500 (07/09)
+
+Nhà Quaternius chiếm **2×2 ô** nên to gấp bốn nhà cũ; ở mức thu nhỏ cũ 0,60× màn hình
+chỉ còn **23 ô ngang** — chủ dự án báo "nhìn được khoảng nhỏ quá". Muốn nhìn toàn cảnh
+phải hạ `zoomMin`, mà hạ thì số sprite tăng theo bình phương. Đo thật trên bản đồ đang
+chạy (quét mọi vị trí camera, màn hình 874×402):
+
+| Thu phóng | Sprite chỗ đông nhất | Trong đó là ô nền | Ô ngang màn hình |
+|---:|---:|---:|---:|
+| 0,60× | 1.184 | 1.057 (89 %) | 23 |
+| 0,55× | 1.344 | 1.199 | 25 |
+| 0,50× | 1.673 | 1.510 | 27 |
+| 0,45× | 2.042 | 1.858 | 30 |
+| **0,35×** | **3.100** | **2.841 (92 %)** | **39** |
+| 0,30× | 3.662 | 3.369 | 46 |
+
+(Đo trên bản đồ 64×64. Bản đồ nay nới lên 96×96 nên chỗ đông nhất là **3.316** — vẫn dưới
+trần 3.500, còn dư 5 %.)
+
+**Chín phần mười là ô nền.** Bỏ bớt cây cỏ vặt không cứu được gì — đã đo, ở 0,35× chúng
+chỉ chiếm 57 sprite. Nên cách duy nhất để nhìn rộng hơn là chấp nhận vẽ nhiều ô nền hơn.
+
+Ô nền là sprite **rẻ nhất có thể**: cùng một atlas, một hình chữ nhật, không chồng lấn,
+không trong suốt. Trần 1.500 cũ là ước tính từ kích thước màn hình chứ không phải đo máy
+thật; số đo máy thật duy nhất đang có là **18.089 sprite ở 60 fps** trên iPhone — và con
+số đó **chạm trần công cụ đo, không phải trần máy** (xem `docs/NHAT_KY/PHASE_2B.md`).
+3.500 vẫn còn thấp hơn năm lần số đó.
+
+**Vẫn chưa đo lại trên iPhone với mẻ mới.** Rớt fps thì đường lùi là nâng `zoomMin` trong
+`data/thanh_pho_demo.json` về 0,45 — một dòng, không đụng mã.
+
+**Bản đồ phải đủ to cho mức thu nhỏ.** `o_px` là **64** ở bộ 1× và **128** ở bộ 2×, nên
+bản đồ 64×64 chỉ rộng `63 × 128 / 2 = 4.032` đơn vị — ở 0,35× màn hình nhìn được 2.497
+đơn vị ngang và 1.149 dọc, tức **rộng hơn hình thoi của bản đồ**, kẹp kiểu gì cũng lòi nền
+đen ra hai mũi thoi. Nới bản đồ lên **96×96** mới đủ chỗ (dư 0,21 sau khi trừ khung nhìn).
+Điều kiện: `nuaX / W + nuaY / (W/2) < 1` với `W = (canh − 1) × o_px / 2`.
+Số vật thể nhân theo diện tích (×2,25) để mật độ không loãng ra.
 
 **Đổi thời đại thì nhả atlas cũ** (`gl.deleteTexture`), không giữ lại "phòng khi cần".
 
@@ -148,7 +186,7 @@ Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối
 | Sprite | 38 | 38 | — |
 | Trang atlas 2048² | 1 (lấp 22,0 %) | 2 (76,1 % + 10,7 %) | 4 trang |
 | Bộ nhớ GPU | 16,8 MB | 33,6 MB | 67,1 MB |
-| Sprite một khung, chỗ đông nhất ở 0,60× | 1.181 | 1.181 | 1.500 |
+| Sprite một khung, chỗ đông nhất ở 0,35× | 3.316 | 3.236 | 3.500 |
 | Lệnh vẽ | 1 | 2 | 4 |
 
 Bản 2× tràn sang trang thứ hai một phần vì **cách xếp kệ bỏ phí**: tổng diện tích sprite
@@ -230,11 +268,12 @@ Chiều cao chiếu xuống = chiều ngang × `sin(nghiêng)`, nên 2:1 cần `
 | Người / lính | 48×64 | 96×128 |
 
 Nướng cả hai cỡ. **Ship cả 2×** — chốt 06/09 sau khi trang đo Phase 0 cho số thật trên
-iPhone: **18.089 sprite ở 60 fps**, dư 12 lần so với trần 1.500. Sprite 2× tốn gấp 4 lần
-diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn gấp 3 lần trần.
+iPhone: **18.089 sprite ở 60 fps**, dư 5 lần so với trần 3.500. Sprite 2× tốn gấp 4 lần
+diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn trên trần.
 
-Cảnh báo: số đó đo với atlas giả 256×256; atlas thật 2048×2048 nặng băng thông hơn nhiều.
-**Đo lại sau Phase 1.** Rớt dưới 1.500 ở cỡ 2× thì lùi về ship 1×.
+Cảnh báo: số đó đo với atlas giả 256×256 và **chạm trần công cụ đo, không phải trần máy**;
+atlas thật 2048×2048 nặng băng thông hơn nhiều. **Vẫn chưa đo lại.** Rớt dưới 3.500 ở cỡ
+2× thì lùi về ship 1×, hoặc nâng `zoomMin` về 0,45.
 
 ### Ngân sách atlas cho lính
 

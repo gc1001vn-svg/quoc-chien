@@ -2,7 +2,7 @@
   "_": "Ban do trung bay cua Phase 2. MOI so cua thanh pho nam o day, khong nam trong .ts (CLAUDE.md luat 2). Phase 3 se thay bang src/sim/ that.",
   "me": "trung_co_2",
   "_me": "Ten me atlas dang dung. Doi mot cho nay la ca game va trang do fps deu doi theo.",
-  "canh": 64,
+  "canh": 96,
   "hatGiong": 20260906,
   "duongCach": 8,
   "nen": {
@@ -37,159 +37,159 @@
   "vat": [
     {
       "ten": "thap_canh",
-      "so": 5,
+      "so": 11,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngoi_do",
-      "so": 14,
+      "so": 32,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngoi_nau",
-      "so": 12,
+      "so": 27,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngoi_lam",
-      "so": 10,
+      "so": 22,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngang_do",
-      "so": 10,
+      "so": 22,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_gach_do",
-      "so": 12,
+      "so": 27,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_gach_nau",
-      "so": 10,
+      "so": 22,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_gach_reu",
-      "so": 8,
+      "so": 18,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_nho_do",
-      "so": 22,
+      "so": 50,
       "bam": 2
     },
     {
       "ten": "nha_nho_nau",
-      "so": 18,
+      "so": 40,
       "bam": 2
     },
     {
       "ten": "nha_nho_lam",
-      "so": 14,
+      "so": 32,
       "bam": 2
     },
     {
       "ten": "cong_lang",
-      "so": 4,
+      "so": 9,
       "bam": 1
     },
     {
       "ten": "quay_hang",
-      "so": 7,
+      "so": 16,
       "bam": 1
     },
     {
       "ten": "quay_xe",
-      "so": 5,
+      "so": 11,
       "bam": 1
     },
     {
       "ten": "xe_keo",
-      "so": 6,
+      "so": 14,
       "bam": 1
     },
     {
       "ten": "dong_thung",
-      "so": 8,
+      "so": 18,
       "bam": 2
     },
     {
       "ten": "thung_ruou",
-      "so": 7,
+      "so": 16,
       "bam": 2
     },
     {
       "ten": "ghe_bang",
-      "so": 6,
+      "so": 14,
       "bam": 1
     },
     {
       "ten": "noi_lo",
-      "so": 5,
+      "so": 11,
       "bam": 2
     },
     {
       "ten": "hang_rao",
-      "so": 14,
+      "so": 32,
       "bam": 2
     },
     {
       "ten": "cay_thong",
-      "so": 20
+      "so": 45
     },
     {
       "ten": "cay_soi",
-      "so": 16
+      "so": 36
     },
     {
       "ten": "cay_soi_2",
-      "so": 14
+      "so": 32
     },
     {
       "ten": "cay_kho",
-      "so": 8
+      "so": 18
     },
     {
       "ten": "bui",
-      "so": 14
+      "so": 32
     },
     {
       "ten": "bui_hoa",
-      "so": 10
+      "so": 22
     },
     {
       "ten": "co_cao",
-      "so": 16
+      "so": 36
     },
     {
       "ten": "hoa",
-      "so": 12
+      "so": 27
     },
     {
       "ten": "nam",
-      "so": 8
+      "so": 18
     },
     {
       "ten": "da_lon",
-      "so": 6
+      "so": 14
     },
     {
       "ten": "da_nho",
-      "so": 8
+      "so": 18
     }
   ],
-  "zoomMin": 0.6,
+  "zoomMin": 0.35,
   "zoomMax": 2.0,
   "zoomDau": 1.0,
-  "tranSprite": 1500
+  "tranSprite": 3500
 }

@@ -34,7 +34,7 @@ export class Gl {
 
   /**
    * @param canvas The canvas se ve len.
-   * @param sucChua So sprite toi da trong mot lenh ve. Tran cua game la 1.500
+   * @param sucChua So sprite toi da trong mot lenh ve. Tran cua game la 3.500
    *   (TECH_SPEC muc 2); trang do sprite dat cao hon de tim ra tran that cua may.
    * @param soTrang So trang atlas se nap cung luc. PHAI biet truoc khi dung shader, nen
    *   ben goi nap file JSON cua atlas xong roi moi dung `Gl`.

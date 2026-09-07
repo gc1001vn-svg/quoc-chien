@@ -21,7 +21,7 @@ import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { sinhBanDo, type BanDo, type CauHinhBanDo } from './BanDoDemo';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
-/** Suc chua buffer. Rong hon tran 1.500 mot chut de con dem duoc luc vuot. */
+/** Suc chua buffer. Rong hon tran 3.500 mot chut de con dem duoc luc vuot. */
 const SUC_CHUA = 4096;
 
 /** Mo canh thanh pho trong `goc`. */
