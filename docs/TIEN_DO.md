@@ -14,6 +14,9 @@ muối · len-vải · gốm · đồ da · sắt-thép-giáp-vũ khí · gỗ-�
 Ý tưởng chuỗi chủ dự án gửi mà chưa lắp được (thuốc súng, kỵ binh, lụa gấm, đồng thau…):
 **`docs/Y_TUONG_CHUOI.md`** — kèm lý do hoãn và phase sẽ làm.
 
+**Hàng để lâu thì hỏng.** `data/wares.json` có trường `hao` — phần trăm tồn kho hỏng mỗi
+giờ game. Cá tươi 40 %, cá muối 2 %, sắt 0 %. Nhờ vậy muối và lò ướp mới có lý do tồn tại.
+
 `npm run sim:thu` chạy **10 giờ game (360.000 nhịp) trong 0,5 giây**, in bảng tài nguyên
 rồi tự chấm ĐẠT/HỎNG.
 
@@ -25,7 +28,7 @@ Chi tiết: `docs/NHAT_KY/PHASE_3.md`. Kế hoạch đã duyệt: `docs/ke-hoach
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test **83 test** · build ·
+`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test **87 test** · build ·
 check:base · check:credits).
 
 `npm run sim:thu` → **ĐẠT**. Chấm từng giờ game (bỏ giờ đầu vì chuỗi còn mở máy), ba điều:
@@ -47,11 +50,9 @@ trước khi trích con số đó.
 
 ## 3. Việc của chủ dự án
 
-1. **Xem 12 chuỗi ở mục 1 đã đủ chưa.** Thiếu món nào thì nhắn tên — thêm hai dòng vào
+1. **Xem 14 chuỗi ở mục 1 đã đủ chưa.** Thiếu món nào thì nhắn tên — thêm hai dòng vào
    `data/`, không phải sửa code.
 2. **Quyết phiên sau**: xem mục 5. Gõ **TIẾP** là chọn phương án A.
-3. **Hai file khoá cần anh đồng ý mới sửa được**, cả hai đều để giảm token mỗi phiên —
-   xem mục "Môi trường và cấu hình" trong `docs/NO_KY_THUAT.md`.
 
 **Quy ước đã chốt, khỏi hỏi lại:** đẩy xong là **tự gộp vào `main`**, không hỏi, không mở
 pull request. Chủ dự án không phải bấm gì để code lên trang.

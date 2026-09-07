@@ -32,7 +32,7 @@
 | Bò → thịt bò + sữa | Trùng chức năng xúc xích và gia cầm; lò mổ đã có hai đầu ra, thêm nữa là thêm ràng buộc tỉ lệ | 8 (bậc nhà dân cao) |
 | Mật ong → rượu mật ong, đường → mứt | Dân đã có bia và rượu nho; thêm chỉ để dài danh sách | — |
 | Mỡ lợn → xà phòng / mỡ bôi trơn | Cần cơ chế **dịch bệnh** và **tốc độ xưởng** chưa có. Và lò mổ sẽ thành **ba đầu ra** — tỉ lệ phải khớp cả ba, dễ vỡ (đã vỡ một lần với hai đầu ra) | 6+ |
-| Thức ăn **hao hụt / thối rữa** theo thời gian | Cơ chế mới trong `src/sim/`, không phải dữ liệu. Đáng làm — nó làm muối và cá muối có nghĩa thật | 4–5 |
+| ~~Thức ăn **hao hụt / thối rữa** theo thời gian~~ | **ĐÃ LÀM 07/09, Phase 3.** Trường `hao` trong `wares.json`, `City.hong()` chạy mỗi 60 nhịp | — |
 
 ## Không làm — trái thiết kế, không phải trái ý
 
