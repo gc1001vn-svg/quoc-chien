@@ -23,6 +23,29 @@
         "../../Textures"
       ],
       "gamma": true
+    },
+    "nd": {
+      "duong": "assets_source/modular-character-outfits-fantasy/Modular Character Outfits - Fantasy[Standard]/Exports/glTF (Godot-Unreal)/Outfits",
+      "loai": "gltf"
+    },
+    "nb": {
+      "duong": "assets_source/universal-base-characters/Universal Base Characters[Standard]/Base Characters/Godot - UE",
+      "loai": "gltf"
+    }
+  },
+  "ghi_chu_dang": "Bang dang cho model co xuong. Ten xuong -> ba goc xoay (do) quanh truc rieng cua xuong do. Model goc nam o tu the chu T, khong kem cu dong nao, nen dang di bo phai tu dat: ha hai tay xuong (xoay quanh z), buoc mot chan ra truoc (xoay quanh x). Dang thu hai chi la ban guong cua dang nay - xem `guong` trong tung manh.",
+  "dang": {
+    "di": {
+      "upperarm_l": [-18, 0, -74],
+      "upperarm_r": [18, 0, 74],
+      "lowerarm_l": [0, 0, -25],
+      "lowerarm_r": [0, 0, 25],
+      "thigh_l": [22, 0, 0],
+      "thigh_r": [-20, 0, 0],
+      "calf_l": [-18, 0, 0],
+      "calf_r": [10, 0, 0],
+      "foot_l": [-8, 0, 0],
+      "foot_r": [14, 0, 0]
     }
   },
   "sprite": {
@@ -1009,6 +1032,86 @@
           1.22
         ]
       }
-    ]
+    ],
+    "nguoi_nam_1_0": [
+      {
+        "m": "nd:Male_Peasant",
+        "dang": "di",
+        "ti_le": 0.5
+      },
+      {
+        "m": "nb:Superhero_Male_FullBody",
+        "xuong": [
+          "Head",
+          "neck_01"
+        ],
+        "dang": "di",
+        "ti_le": 0.5
+      }
+    ],
+    "nguoi_nam_1_1": [
+      {
+        "m": "nd:Male_Peasant",
+        "dang": "di",
+        "guong": true,
+        "ti_le": 0.5
+      },
+      {
+        "m": "nb:Superhero_Male_FullBody",
+        "xuong": [
+          "Head",
+          "neck_01"
+        ],
+        "dang": "di",
+        "guong": true,
+        "ti_le": 0.5
+      }
+    ],
+    "nguoi_nu_1_0": [
+      {
+        "m": "nd:Female_Peasant",
+        "dang": "di",
+        "ti_le": 0.5
+      },
+      {
+        "m": "nb:Superhero_Female_FullBody",
+        "xuong": [
+          "Head",
+          "neck_01"
+        ],
+        "dang": "di",
+        "ti_le": 0.5
+      }
+    ],
+    "nguoi_nu_1_1": [
+      {
+        "m": "nd:Female_Peasant",
+        "dang": "di",
+        "guong": true,
+        "ti_le": 0.5
+      },
+      {
+        "m": "nb:Superhero_Female_FullBody",
+        "xuong": [
+          "Head",
+          "neck_01"
+        ],
+        "dang": "di",
+        "guong": true,
+        "ti_le": 0.5
+      }
+    ],
+    "nguoi_nam_0_0": { "nhu": "nguoi_nam_1_0", "xoay": 90 },
+    "nguoi_nam_0_1": { "nhu": "nguoi_nam_1_1", "xoay": 90 },
+    "nguoi_nam_2_0": { "nhu": "nguoi_nam_1_0", "xoay": 270 },
+    "nguoi_nam_2_1": { "nhu": "nguoi_nam_1_1", "xoay": 270 },
+    "nguoi_nam_3_0": { "nhu": "nguoi_nam_1_0", "xoay": 180 },
+    "nguoi_nam_3_1": { "nhu": "nguoi_nam_1_1", "xoay": 180 },
+    "nguoi_nu_0_0": { "nhu": "nguoi_nu_1_0", "xoay": 90 },
+    "nguoi_nu_0_1": { "nhu": "nguoi_nu_1_1", "xoay": 90 },
+    "nguoi_nu_2_0": { "nhu": "nguoi_nu_1_0", "xoay": 270 },
+    "nguoi_nu_2_1": { "nhu": "nguoi_nu_1_1", "xoay": 270 },
+    "nguoi_nu_3_0": { "nhu": "nguoi_nu_1_0", "xoay": 180 },
+    "nguoi_nu_3_1": { "nhu": "nguoi_nu_1_1", "xoay": 180 }
   }
 }
