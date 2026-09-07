@@ -34,5 +34,29 @@ cài `tsx` (MIT), phải hỏi chủ dự án trước.
 ## Chưa làm
 
 Walker (Phase 4) — hàng vẫn chuyển tức thì qua kho chung, đổi sang walker không phải đụng
-số cân bằng nào. Bậc nhà dân 2-3-4, thuế, bất ổn, thống đốc (Phase 5-6). **Sprite cho 23
+số cân bằng nào. Bậc nhà dân 2-3-4, thuế, bất ổn, thống đốc (Phase 5-6). **Sprite cho 28
 toà nhà mới chưa nướng** — chưa nhìn thấy gì trên màn hình, đúng chủ ý.
+
+## Bổ sung cuối phiên (07/09)
+
+Chủ dự án giao tự tìm món còn thiếu. Thêm **ba chuỗi, năm mặt hàng** lấy từ chuỗi có thật
+của Knights and Merchants · Caesar III · Anno 1404 (không tự bịa): **len → vải** (quần áo
+cho bậc 3 của `GAME_SPEC`, trước chỉ có áo da) · **đất sét → gốm** (nồi niêu) · **muối**
+(ướp xúc xích — nối sâu chuỗi có sẵn thay vì đẻ chuỗi mới). Bỏ qua ngựa, mật ong, nến,
+thảo dược: chưa ai dùng đến. Thành **26 hàng · 28 nhà · 12 chuỗi**, vẫn ĐẠT, vẫn 0,5 giây.
+
+Thêm lò gốm là mỏ than phải hạ nhịp 120 → 80: một mỏ nuôi hai lò. Đúng kiểu lỗi mà bảng
+"Nhịp chờ" bắt được ngay.
+
+## Token — đo thật, cuối phiên
+
+Chủ dự án báo phiên này chạy tốn. Ba chỗ ngốn nhất, theo số đo:
+
+| Chỗ | Tốn | Sửa |
+|---|---:|---|
+| Sửa file bằng `python`/`sed` trong Bash | ~12.000 | Máy in lại **toàn bộ** file mỗi lần đổi ngoài công cụ Edit. `buildings.json` (2.105) và `City.ts` (2.049) bị in lại 2 lần mỗi cái. **Dùng công cụ Edit.** |
+| Bản kế hoạch 210 dòng | ~12.000 | Viết 2 lần rồi in lại lúc duyệt ≈ 3 × 4.011. Kế hoạch nên gọn, khuôn của skill `lap-ke-hoach` là **20 dòng** |
+| `docs/TIEN_DO.md` phình 141 dòng | 3.549/phiên | Tách nợ ra `docs/NO_KY_THUAT.md`, còn 80 dòng ~1.551 |
+
+`CLAUDE.md` 698 token (khuyến nghị ≤500) và `.claude/settings.json` ≈1.400 token/phiên đều
+là **file khoá**, chờ chủ dự án đồng ý.

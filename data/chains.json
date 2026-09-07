@@ -22,6 +22,15 @@
     { "ten": "ruou_bia", "hien": "Ruou va bia",
       "qua": ["vuon_nho", "xuong_ruou", "nha_bia", "nha_dan"] },
 
+    { "ten": "muoi", "hien": "Muoi",
+      "qua": ["mo_muoi", "lo_mo", "nha_dan"] },
+
+    { "ten": "vai", "hien": "Len va vai",
+      "qua": ["trai_cuu", "xuong_det", "nha_dan"] },
+
+    { "ten": "gom", "hien": "Do gom",
+      "qua": ["mo_dat_set", "lo_gom", "nha_dan"] },
+
     { "ten": "do_da", "hien": "Do da",
       "qua": ["lo_mo", "xuong_thuoc", "nha_dan", "trai_linh"] },
 

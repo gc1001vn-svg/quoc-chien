@@ -27,8 +27,11 @@
     { "ten": "lo_mo", "hien": "Lo mo", "kieu": "san_xuat", "so": 2, "nhip": 175,
       "_": "Cho duy nhat co HAI dau ra, va la cho de dat so sai nhat.",
       "_ti_le": "5 xuc xich : 4 da thu phai khop dung ti le nhu cau (1.800 : 1.440 mot gio). Lech ti le thi mon nao du se lam day kho, chan ca me, keo mon con lai xuong theo - da bi mot lan: de 2:2 thi dan doi xuc xich trong khi da thu van day kho.",
-      "vao": [{ "hang": "lon", "so": 1 }],
+      "vao": [{ "hang": "lon", "so": 1 }, { "hang": "muoi", "so": 1 }],
       "ra": [{ "hang": "xuc_xich", "so": 5 }, { "hang": "da_thu", "so": 4 }] },
+
+    { "ten": "mo_muoi", "hien": "Mo muoi", "kieu": "san_xuat", "so": 1, "nhip": 150,
+      "vao": [], "ra": [{ "hang": "muoi", "so": 2 }] },
 
     { "ten": "trai_ga", "hien": "Trai ga", "kieu": "san_xuat", "so": 2, "nhip": 70,
       "vao": [{ "hang": "lua_mi", "so": 1 }], "ra": [{ "hang": "gia_cam", "so": 2 }] },
@@ -47,6 +50,19 @@
     { "ten": "xuong_thuoc", "hien": "Xuong thuoc da", "kieu": "san_xuat", "so": 2, "nhip": 90,
       "vao": [{ "hang": "da_thu", "so": 2 }], "ra": [{ "hang": "ao_da", "so": 1 }] },
 
+    { "ten": "trai_cuu", "hien": "Trai cuu", "kieu": "san_xuat", "so": 2, "nhip": 100,
+      "vao": [{ "hang": "lua_mi", "so": 1 }], "ra": [{ "hang": "len", "so": 2 }] },
+
+    { "ten": "xuong_det", "hien": "Xuong det", "kieu": "san_xuat", "so": 1, "nhip": 50,
+      "vao": [{ "hang": "len", "so": 2 }], "ra": [{ "hang": "vai", "so": 1 }] },
+
+    { "ten": "mo_dat_set", "hien": "Mo dat set", "kieu": "san_xuat", "so": 1, "nhip": 120,
+      "vao": [], "ra": [{ "hang": "dat_set", "so": 3 }] },
+
+    { "ten": "lo_gom", "hien": "Lo gom", "kieu": "san_xuat", "so": 1, "nhip": 100,
+      "vao": [{ "hang": "dat_set", "so": 2 }, { "hang": "than", "so": 1 }],
+      "ra": [{ "hang": "gom", "so": 2 }] },
+
     { "ten": "rung", "hien": "Trai don go", "kieu": "san_xuat", "so": 1, "nhip": 120,
       "vao": [], "ra": [{ "hang": "go_tho", "so": 2 }] },
 
@@ -59,7 +75,8 @@
     { "ten": "mo_quang", "hien": "Mo quang", "kieu": "san_xuat", "so": 1, "nhip": 60,
       "vao": [], "ra": [{ "hang": "quang", "so": 2 }] },
 
-    { "ten": "mo_than", "hien": "Mo than", "kieu": "san_xuat", "so": 1, "nhip": 120,
+    { "ten": "mo_than", "hien": "Mo than", "kieu": "san_xuat", "so": 1, "nhip": 80,
+      "_": "Nuoi ca lo nung va lo gom - them lo gom la phai ha nhip tu 120 xuong 80.",
       "vao": [], "ra": [{ "hang": "than", "so": 2 }] },
 
     { "ten": "lo_nung", "hien": "Lo nung", "kieu": "san_xuat", "so": 2, "nhip": 150,
@@ -83,7 +100,9 @@
         { "hang": "ca", "so": 3 },
         { "hang": "bia", "so": 3 },
         { "hang": "ruou", "so": 3 },
-        { "hang": "ao_da", "so": 1 }
+        { "hang": "ao_da", "so": 1 },
+        { "hang": "vai", "so": 1 },
+        { "hang": "gom", "so": 1 }
       ],
       "ra": [] },
 
