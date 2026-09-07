@@ -37,14 +37,16 @@ check:base · check:credits).
 | Lệnh vẽ | **1** | 4 |
 | Bộ nhớ GPU (bản 1×) | 16,8 MB | 67,1 MB |
 
-**Chưa ai đo fps trên iPhone với walker.** Máy ảo vẽ bằng phần mềm nên con số fps trong ảnh
-(12–15) **không có nghĩa gì**.
+**Chủ dự án đã mở iPhone 07/09: MƯỢT.** Trần 5.000 giữ nguyên, không phải lùi.
+Máy ảo vẽ bằng phần mềm nên con số fps trong ảnh máy ảo (12–15) **không có nghĩa gì**.
+
+Ở mức 0,60×: **1.157 sprite là nền và nhà**, tổng dao động **1.315–1.335** ⇒ khoảng
+**160–180 người trên màn hình**, con số nhảy liên tục.
 
 ## 3. Việc của chủ dự án
 
-1. **Mở https://gc1001vn-svg.github.io/quoc-chien/ trên iPhone, xem có tụt fps không.**
-   Đây là việc quan trọng nhất: trần sprite vừa nâng 3.500 → 5.000 mà chưa có số nền nào.
-   Nếu giật thì nhắn "GIAT" — đường lùi đã dựng sẵn, sửa một dòng là xong.
+1. **Xem lại trang trên iPhone** — giờ phải thấy dòng người đi trên đường. Lần trước đứng
+   im vì hai lỗi đã sửa.
 2. **Quyết phiên sau**: xem mục 5. Gõ **TIẾP** là chọn phương án A.
 
 **Quy ước đã chốt, khỏi hỏi lại:** đẩy xong là **tự gộp vào `main`**, không hỏi, không mở
@@ -52,8 +54,9 @@ pull request. Chủ dự án không phải bấm gì để code lên trang.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Chưa đo fps trên iPhone với walker.** Trần vừa nâng lên 5.000 mà chưa có số nền. Không
-  có nó thì mọi quyết định hiệu năng sau này đều là đoán mò.
+- **ĐÃ TRẢ 07/09 — fps trên iPhone.** Chủ dự án báo **mượt** với walker ở trần 5.000.
+- **Người vác hàng dồn thành một dãy nối đuôi** vì cả thành phố chỉ có **một kho ở giữa**.
+  Trục vào tâm đông nghịt, đường rìa vắng tanh. Caesar III rải nhiều kho — sửa ở Phase 5.
 - **Walker chưa có sprite người**, đang mượn `thung_ruou`. Nhìn ra được vì đồ trang trí
   không bao giờ nằm trên đường, nhưng vẫn sai.
 - **32 toà nhà của kinh tế chưa có sprite**, và nhà kinh tế đặt độc lập với vật thể trang
