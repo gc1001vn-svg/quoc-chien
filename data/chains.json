@@ -1,0 +1,34 @@
+{
+  "_": "Chuoi san xuat: hang di qua nhung nha nao, theo thu tu. GAME_SPEC muc 4.",
+  "_dung_de": "Kiem tra (moi nha phai nam trong it nhat mot chuoi, moi ten phai co that trong buildings.json) va sau nay de hien len man hinh cho nguoi choi doc.",
+  "_khong_dung_de": "Chay mo phong. May chay theo `vao`/`ra` cua buildings.json, khong chay theo thu tu o day - nen sua o day khong doi can bang.",
+
+  "chuoi": [
+    { "ten": "banh_mi", "hien": "Banh mi",
+      "qua": ["ruong_lua", "coi_xay", "lo_banh", "nha_dan"] },
+
+    { "ten": "xuc_xich", "hien": "Xuc xich va da thu",
+      "qua": ["ruong_lua", "trai_lon", "lo_mo", "nha_dan"] },
+
+    { "ten": "gia_cam", "hien": "Gia cam",
+      "qua": ["ruong_lua", "trai_ga", "nha_dan"] },
+
+    { "ten": "ca", "hien": "Ca",
+      "qua": ["nha_chai", "nha_dan"] },
+
+    { "ten": "nuoc", "hien": "Nuoc",
+      "qua": ["gieng", "nha_dan"] },
+
+    { "ten": "ruou_bia", "hien": "Ruou va bia",
+      "qua": ["vuon_nho", "xuong_ruou", "nha_bia", "nha_dan"] },
+
+    { "ten": "do_da", "hien": "Do da",
+      "qua": ["lo_mo", "xuong_thuoc", "nha_dan", "trai_linh"] },
+
+    { "ten": "sat", "hien": "Sat, giap va vu khi",
+      "qua": ["mo_quang", "mo_than", "lo_nung", "lo_ren", "xuong_vu_khi", "trai_linh"] },
+
+    { "ten": "go_da", "hien": "Go va da xay",
+      "qua": ["rung", "xuong_cua", "mo_da", "cong_truong"] }
+  ]
+}

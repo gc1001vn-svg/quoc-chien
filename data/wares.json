@@ -1,0 +1,28 @@
+{
+  "_": "Hang hoa cua thanh pho. MOI so nam o day, khong nam trong .ts (CLAUDE.md luat 2).",
+  "_tran": "Suc chua toi da cua kho chung. Day tran thi nha san xuat phai ngung - dung y, do la cach kinh te tu ghim lai thay vi phinh vo han.",
+  "_dau": "Ton kho luc bat dau van. Co it hang moi de chuoi khoi dung im o nhip dau.",
+  "hang": [
+    { "ten": "nuoc", "hien": "Nuoc", "tran": 600, "dau": 60 },
+    { "ten": "lua_mi", "hien": "Lua mi", "tran": 800, "dau": 80 },
+    { "ten": "bot", "hien": "Bot", "tran": 300, "dau": 30 },
+    { "ten": "banh_mi", "hien": "Banh mi", "tran": 300, "dau": 30 },
+    { "ten": "ca", "hien": "Ca", "tran": 300, "dau": 30 },
+    { "ten": "lon", "hien": "Lon", "tran": 200, "dau": 20 },
+    { "ten": "xuc_xich", "hien": "Xuc xich", "tran": 300, "dau": 30 },
+    { "ten": "gia_cam", "hien": "Gia cam", "tran": 300, "dau": 30 },
+    { "ten": "nho", "hien": "Nho", "tran": 300, "dau": 30 },
+    { "ten": "ruou", "hien": "Ruou", "tran": 300, "dau": 30 },
+    { "ten": "bia", "hien": "Bia", "tran": 300, "dau": 30 },
+    { "ten": "da_thu", "hien": "Da thu", "tran": 200, "dau": 20 },
+    { "ten": "ao_da", "hien": "Ao da", "tran": 200, "dau": 20 },
+    { "ten": "go_tho", "hien": "Go tho", "tran": 200, "dau": 20 },
+    { "ten": "van", "hien": "Van", "tran": 200, "dau": 20 },
+    { "ten": "da_xay", "hien": "Da xay", "tran": 150, "dau": 20 },
+    { "ten": "quang", "hien": "Quang sat", "tran": 300, "dau": 30 },
+    { "ten": "than", "hien": "Than", "tran": 200, "dau": 20 },
+    { "ten": "sat", "hien": "Sat", "tran": 200, "dau": 20 },
+    { "ten": "giap", "hien": "Giap", "tran": 100, "dau": 10 },
+    { "ten": "vu_khi", "hien": "Vu khi", "tran": 100, "dau": 10 }
+  ]
+}
