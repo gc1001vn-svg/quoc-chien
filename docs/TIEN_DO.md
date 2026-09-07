@@ -14,7 +14,7 @@ hàng rào rải dọc đường. Mẻ Kenney cũ **đã xoá khỏi `public/`**
 
 **Thu nhỏ được tới 0,35×** (trước là 0,60×): nhìn ~39 ô ngang thay vì 23. Trần sprite nâng
 1.500 → 3.500, bản đồ nới 64×64 → **96×96** vì bản đồ cũ hẹp hơn khung nhìn ở 0,35× nên
-lòi nền đen ra hai mũi hình thoi. Camera nay kẹp theo **hình thoi** chứ không theo hộp bao.
+lòi nền đen ra hai mũi hình thoi. Camera nay kẹp **tâm** theo hình thoi chứ không theo hộp bao chữ nhật.
 
 **Chưa ai đo fps trên iPhone thật.** Mới chỉ xem bằng ảnh chụp trong máy ảo.
 
@@ -25,7 +25,7 @@ Chi tiết cả phiên: `docs/NHAT_KY/PHASE_2B_2.md`.
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 51 test · build ·
+`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test 58 test · build ·
 check:base · check:credits).
 
 Mẻ `trung_co_2` đang chạy, **38 sprite**:
