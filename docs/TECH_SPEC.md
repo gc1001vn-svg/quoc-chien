@@ -141,19 +141,27 @@ Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối
 **Từ 07/09 game chạy mẻ này**, mẻ Kenney/KayKit 147 sprite ở trên **không còn trong
 `public/`** (dựng lại được bất cứ lúc nào từ `tools/me/trung_co.json`).
 
-**28 sprite**, hai gói CC0 của Quaternius. Công thức ở `tools/me/trung_co_2.json`.
+**38 sprite**, ba gói CC0 của Quaternius. Công thức ở `tools/me/trung_co_2.json`.
 
 | Số đo | Bản 1× | Bản 2× | Trần |
 |---|---:|---:|---|
-| Sprite | 28 | 28 | — |
-| Trang atlas 2048² | 1 (lấp 20,4 %) | 2 (76,1 % + 4,4 %) | 4 trang |
+| Sprite | 38 | 38 | — |
+| Trang atlas 2048² | 1 (lấp 22,0 %) | 2 (76,1 % + 10,7 %) | 4 trang |
 | Bộ nhớ GPU | 16,8 MB | 33,6 MB | 67,1 MB |
-| Sprite một khung, mức 0,60× | 1.160 | 1.160 | 1.500 |
+| Sprite một khung, chỗ đông nhất ở 0,60× | 1.181 | 1.181 | 1.500 |
 | Lệnh vẽ | 1 | 2 | 4 |
 
-Bản 2× tràn sang trang thứ hai chỉ vì **cách xếp kệ bỏ phí 24 %**: tổng diện tích sprite
-là **0,805 trang**, đủ chỗ nếu xếp khít. Nợ này ghi ở `docs/TIEN_DO.md`; chưa đáng đổi
-thuật toán vì còn cách trần 4 trang khá xa, và mẻ Kenney trước cũng đã chạy 2 trang ở 2×.
+Bản 2× tràn sang trang thứ hai một phần vì **cách xếp kệ bỏ phí**: tổng diện tích sprite
+là **0,867 trang**, xếp khít thì vừa. Nợ này ghi ở `docs/TIEN_DO.md`; chưa đáng đổi thuật
+toán vì còn cách trần 4 trang khá xa, và mẻ Kenney trước cũng đã chạy 2 trang ở 2×.
+
+**Cắt theo kênh alpha — sửa 07/09.** Trước đó `gl_FragColor` đặt cứng `alpha = 1.0`, tức
+kênh trong suốt của ảnh bị bỏ hoàn toàn. Cây Quaternius làm bằng **tấm lá có alpha**, nên
+mỗi tấm vẽ ra nguyên hình chữ nhật và phần lẽ ra phải thủng thì hiện màu nền tối của
+chính ảnh đó — cây sun thành cục đen lởm chởm, và đó mới là lý do thật của "cây ra khối
+đen" ghi ở `docs/NHAT_KY/PHASE_2B.md`, không phải do màu. Nay `discard` khi `alpha < 0.5`.
+Cắt cứng chứ **không trộn**: trộn thì rìa nửa trong suốt vẫn nhân màu tối của ảnh, ra
+đúng cái viền đen cũ.
 
 **Thước:** 2 đơn vị model Quaternius = **1 ô lưới** (`ti_le` 0,5); Stylized Nature dùng
 `ti_le` 0,2–0,34 tuỳ vật. Đỉnh tường ở **y = 1,56 ô** (3,12 đơn vị × 0,5) — mọi mảnh mái
