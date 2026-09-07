@@ -87,10 +87,20 @@ số đó **chạm trần công cụ đo, không phải trần máy** (xem `docs
 
 **Bản đồ phải đủ to cho mức thu nhỏ.** `o_px` là **64** ở bộ 1× và **128** ở bộ 2×, nên
 bản đồ 64×64 chỉ rộng `63 × 128 / 2 = 4.032` đơn vị — ở 0,35× màn hình nhìn được 2.497
-đơn vị ngang và 1.149 dọc, tức **rộng hơn hình thoi của bản đồ**, kẹp kiểu gì cũng lòi nền
-đen ra hai mũi thoi. Nới bản đồ lên **96×96** mới đủ chỗ (dư 0,21 sau khi trừ khung nhìn).
-Điều kiện: `nuaX / W + nuaY / (W/2) < 1` với `W = (canh − 1) × o_px / 2`.
-Số vật thể nhân theo diện tích (×2,25) để mật độ không loãng ra.
+đơn vị ngang và 1.149 dọc, tức rộng hơn nửa hình thoi. Nới lên **96×96**; số vật thể nhân
+theo diện tích (×2,25) để mật độ không loãng ra.
+
+**Camera kẹp TÂM, không kẹp khung nhìn — sai một lần rồi mới rõ.** Bản đồ ở góc chéo là
+hình thoi, nên kẹp theo `|x| / W + |y − cy| / cy ≤ 1`. Câu hỏi là **áp lên cái gì**:
+
+- Áp lên **cả bốn góc khung nhìn** thì màn hình không bao giờ thấy nền — nhưng tâm chỉ đi
+  được trong một hình thoi nhỏ hơn đúng nửa khung nhìn. Ở 0,35× còn **21 %** bề ngang bản
+  đồ. Đã làm thế ngày 07/09 và chủ dự án báo ngay "kéo không hết các nơi, nó bị kẹt".
+- Áp lên **tâm** thì mọi ô đều kéo tới được, đổi lại gần mép thấy một ít nền — đúng như
+  mọi game ở góc chéo khác. **Đây là cách đúng.**
+
+`tests/Camera.test.ts` giữ cả hai điều: kéo thật xa vẫn bị kéo về trong, **và** bốn góc
+cùng giữa bản đồ đều tới nơi được, ở bốn mức thu phóng, cả hai bộ atlas.
 
 **Đổi thời đại thì nhả atlas cũ** (`gl.deleteTexture`), không giữ lại "phòng khi cần".
 

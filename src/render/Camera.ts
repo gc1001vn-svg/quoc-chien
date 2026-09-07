@@ -156,34 +156,26 @@ export class Camera {
   }
 
   /**
-   * Khong cho khung nhin troi ra ngoai ban do.
+   * Khong cho camera troi ra ngoai ban do.
    *
    * Ban do o goc cheo la mot HINH THOI, khong phai hinh chu nhat: tam (0, cao/2), ban truc
-   * `nuaRongWorld` va `cao/2`. Kep tam theo hop bao chu nhat - cach cu - van de lo nen den
-   * o hai mui thoi, va cang thu nho cang lo to. Nen kep theo chinh phuong trinh hinh thoi:
+   * `nuaRongWorld` va `cao/2`. Kep TAM camera vao dung hinh thoi do:
    *
    *     |x| / W + |y - cy| / cy <= 1
    *
-   * Dieu kien la GOC XA NHAT cua khung nhin phai nam trong, tuc thay |x| bang |tamX| + nua
-   * be ngang khung. Rut gon lai thanh: do lech cua tam phai nam trong mot hinh thoi nho
-   * hon, thu vao dung nua khung nhin. Qua thu nho den muc khung to hon ca ban do thi `du`
-   * am - luc do chi con mot cho dat duoc, la giua ban do.
+   * KEP CAI GI MOI DUNG - da sai mot lan 07/09. Ban dau kep sao cho CA BON GOC khung nhin
+   * nam trong hinh thoi, cot cho khong bao gio thay nen den. Nhung nhu the tam chi di duoc
+   * trong mot hinh thoi nho hon dung nua khung nhin: o muc 0,35x chi con 21% be ngang ban
+   * do, keo mot ti la kep - chu du an bao "keo khong het cac noi, no bi ket". Doi lai thanh
+   * kep TAM: moi o cua ban do deu keo toi duoc, doi lai gan mep thi thay mot it nen - dung
+   * nhu moi game o goc cheo khac.
    */
   private keoVeTrong(): void {
     const cy: number = this.caoWorld / 2;
-    const sau: number = this.cssTrenWorld();
-    const nuaX: number = this.rongCss / 2 / sau;
-    const nuaY: number = this.caoCss / 2 / sau;
-    const du: number = 1 - nuaX / this.nuaRongWorld - nuaY / cy;
-    if (du <= 0) {
-      this.tamX = 0;
-      this.tamY = cy;
-      return;
-    }
     const lechY: number = this.tamY - cy;
     const xa: number = Math.abs(this.tamX) / this.nuaRongWorld + Math.abs(lechY) / cy;
-    if (xa <= du) return;
-    const co: number = du / xa;
+    if (xa <= 1) return;
+    const co: number = 1 / xa;
     this.tamX *= co;
     this.tamY = cy + lechY * co;
   }
