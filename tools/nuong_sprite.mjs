@@ -17,6 +17,7 @@ import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { join } from 'node:path';
 import { docObj, BUOC } from './lib/obj.mjs';
+import { docGltf } from './lib/gltf.mjs';
 import { xep } from './lib/xep.mjs';
 import { TrinhDuyet } from './lib/cdp.mjs';
 
@@ -55,10 +56,13 @@ function doiKit(khai) {
   const ra = {};
   for (const [ma, v] of Object.entries(khai)) {
     const o = typeof v === 'string' ? { duong: v } : v;
-    const theoMtl = o.anh === 'mtl';
-    const thuMuc = o.thu_muc_anh ?? '../Textures';
+    // Kit glTF mang san ten anh trong chinh file model, va anh nam ngay canh model.
+    const laGltf = o.loai === 'gltf';
+    const theoMtl = o.anh === 'mtl' || laGltf;
+    const thuMuc = o.thu_muc_anh ?? (laGltf ? '.' : '../Textures');
     ra[ma] = {
       duong: o.duong,
+      laGltf,
       theoMtl,
       thuMucAnh: theoMtl
         ? (Array.isArray(thuMuc) ? thuMuc : [thuMuc]).map((t) => join(o.duong, t))
@@ -211,8 +215,13 @@ function noiBanSao(sprite) {
   return ra;
 }
 
-/** Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich. */
-function ghep(phan, kit, soAnh) {
+/**
+ * Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich.
+ *
+ * `bangDang` la bang dang dung chung ca me (`me.dang`): ten dang -> ten xuong -> ba goc
+ * xoay. Chi kit glTF dung toi; model OBJ khong co xuong.
+ */
+function ghep(phan, kit, soAnh, bangDang = {}) {
   const ra = [];
   for (const p of phan) {
     // Manh `phang`: khong doc file model nao ca, sinh thang mot tam vuong bang so.
@@ -227,7 +236,15 @@ function ghep(phan, kit, soAnh) {
     const traAnh = k.theoMtl
       ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(timAnh(k.thuMucAnh, tenAnh)))
       : () => (k.anh === null ? -1 : soAnh.them(k.anh));
-    const { dinh } = docObj(join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh);
+    const { dinh } = k.laGltf
+      ? docGltf(join(k.duong, `${ten}.gltf`), {
+        dang: bangDang[p.dang] ?? {},
+        guong: p.guong === true,
+        xuong: p.xuong ?? null,
+        traAnh,
+        mau_vl: p.mau_vl ?? {},
+      })
+      : docObj(join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh);
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
     // di, son de mot mau phang - can the moi doi duoc mai ngoi xanh thanh mai ngoi do,
     // vi mau nhan khong bao gio keo mot mau xanh sang mau do duoc.
@@ -357,7 +374,7 @@ async function nuong(tenMe, heSo) {
   const oCanXep = [];
   const phu = new Map();
   for (const [ten, phan] of Object.entries(noiBanSao(me.sprite))) {
-    const dinh = ghep(phan, kit, soAnh);
+    const dinh = ghep(phan, kit, soAnh, me.dang ?? {});
     // Sprite toan manh `phang` la o nen: KHONG co bong. Bong lam hai viec sai cung luc -
     // no nong hop bao them 15% (o nen ra 150 px thay vi dung 128), va mot o nen do bong
     // xuong chinh no thi vo nghia. Vat the dat tren tam phang van co bong nhu thuong.
