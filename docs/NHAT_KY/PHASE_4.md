@@ -74,3 +74,16 @@ sẵn lúc sinh bản đồ; người đổi chỗ mỗi nhịp nên phải xế
 không đáng kể. Độ sâu của khối nhà lấy ở **góc trước** (`a + b + 2*(o-1)`), giống lúc sinh.
 
 Đây là cái bẫy `TECH_SPEC` mục 3 đã cảnh báo cho lớp nền, nay lặp lại ở lớp người.
+
+## "Có 1-2 con bị đứng yên" — hoá ra không phải người (07/09)
+
+Đo thay vì đoán: chạy 2 giờ game rồi theo dõi 300 nhịp tiếp —
+**304 người đang đi, 0 người đứng yên**. Vậy cái đứng yên là **thùng rượu trang trí của
+bản đồ**: `dong_thung` và `thung_ruou` dùng chung đúng một sprite với walker.
+
+Sửa rẻ nhất, không đụng code: bỏ hai loại đó khỏi `data/thanh_pho_demo.json`, bù 29 `noi_lo`
+cho khỏi trống. Giờ **mọi cái thùng trên màn hình đều là người đang đi**. Nướng được sprite
+người thật thì trả hai dòng kia về.
+
+Bài học lặp lại: **đo trước, đừng đoán**. Nếu tin lời "có con đứng yên" mà đi sửa
+`buocKeTiep` thì đã sửa nhầm chỗ hoàn toàn.

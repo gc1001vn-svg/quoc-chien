@@ -44,9 +44,11 @@
   còn đường rìa vắng tanh. Caesar III có nhiều kho rải khắp. Sửa khi có thống đốc biết
   chọn chỗ xây (Phase 5).
 
-- **Walker chưa có sprite người** (07/09, Phase 4). Đang mượn `thung_ruou`. Phân biệt được
-  vì đồ trang trí không bao giờ đặt lên đường, nhưng nhìn vẫn sai. Gói Quaternius đang dùng
-  không có model người; nướng người 8 hướng × 4 dáng là Phase 10.
+- **Walker chưa có sprite người** (07/09, Phase 4). Đang mượn `thung_ruou`. Vì thế đã phải
+  **bỏ `dong_thung` và `thung_ruou` khỏi trang trí bản đồ** (bù 29 `noi_lo`) — để cả hai thì
+  thùng đứng yên bên đường nhìn y hệt người đang dừng lại, chủ dự án đã báo nhầm một lần.
+  Nướng được sprite người thật thì **trả hai dòng đó về** `data/thanh_pho_demo.json`.
+  Gói Quaternius đang dùng không có model người; nướng người 8 hướng × 4 dáng là Phase 10.
 - **Chưa đo fps trên iPhone với walker** (07/09). Trần sprite đã nâng 3.500 → 5.000 theo ý
   chủ dự án mà chưa có số nền. Đường lùi: `ZOOM_HIEN_WALKER` trong `src/render/CityScene.ts`
   đổi 0 → 0,6 là walker biến mất khi thu nhỏ.
