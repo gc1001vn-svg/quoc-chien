@@ -40,16 +40,14 @@ check:base · check:credits).
 Tấm chắn và nút tốc độ là HTML, không đụng gì tới phần vẽ. Con số fps trong ảnh máy ảo
 không có nghĩa gì — máy ảo vẽ bằng phần mềm.
 
-**Chưa xác nhận trên iPhone thật sau Phase 6.** Lần duyệt gần nhất là Phase 5.
+**iPhone thật, 08/09: chủ dự án đã chơi và duyệt — "đã test ok".** Không có số fps mới;
+số fps thật gần nhất vẫn là 59 fps · 3.441 sprite · 0,35× (đo trước Phase 5).
 
 ## 3. Việc của chủ dự án
 
-**Thước của Phase 6 là chơi thật, không phải xem ảnh** (`KE_HOACH.md` mục 3).
-
-1. Mở https://gc1001vn-svg.github.io/quoc-chien/ trên iPhone, **tải lại trang**.
-2. Ngay lúc mở đã có một thẻ hỏi — đọc rồi bấm một nút.
-3. Bấm **8×** ở góc phải dưới cho thời gian chạy nhanh, chơi khoảng **20 phút**.
-4. Nhắn lại ba điều: thẻ có **thú vị** không · có thẻ nào **vô nghĩa** không · fps bao nhiêu.
+**Không có việc gì đang chờ.** Đã chơi thật trên iPhone 08/09 và duyệt — "đã test ok".
+Không nhắn số fps, nên Phase 6 chưa có fps đo trên máy thật; lần sau liếc góc trái trên
+rồi nhắn con số là đủ.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -62,10 +60,13 @@ không có nghĩa gì — máy ảo vẽ bằng phần mềm.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase kế tiếp — Phase 7: bản đồ tỉnh
+## 5. Phase kế tiếp — Phase 7: bản đồ tỉnh (PHIÊN MỚI)
 
 `sim/campaign/` + `render/MapScene.ts`: bản đồ tỉnh giấy da, ô xây dựng, các nước khác.
 Nhìn thấy thế giới ngoài thành phố.
+
+**Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase. Phiên 08/09 đã phá
+luật này (làm liền Phase 5 và Phase 6 trong một phiên), đừng lặp lại.
 
 **Cân nhắc chen trước Phase 7:** nướng sprite cho 32 nhà kinh tế. Xong Phase 6 thì đây là
 việc trả về nhiều nhất — thấy nhà mọc lên đúng chỗ mình vừa quyết. Chủ dự án chốt.

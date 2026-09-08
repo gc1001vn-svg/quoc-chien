@@ -41,3 +41,13 @@ tự chọn lựa chọn đầu tiên: **5 thẻ đã hỏi · 94 → 105 nhà �
 
 `Cham.ts` khai `interface ThongKe` **hai lần y hệt nhau** — TypeScript gộp lại nên không
 ai thấy. Đã xoá bản thừa.
+
+## Xác nhận
+
+**08/09: chủ dự án đã chơi thật trên iPhone và duyệt — "đã test ok".** Không nhắn con số
+fps và không nêu thẻ nào vô nghĩa, nên Phase 6 chưa có số fps đo trên máy thật.
+
+## Luật đã phá, ghi lại
+
+Phase 5 và Phase 6 làm **chung một phiên**. CLAUDE.md ghi rõ **"Mỗi phiên một phase"**.
+Đúng ra xong Phase 5 phải dừng, chờ chủ dự án mở phiên mới. Lần sau: xong phase là đóng.
