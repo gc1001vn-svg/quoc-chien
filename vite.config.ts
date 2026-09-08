@@ -28,6 +28,12 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,json,webp,ogg,mp3}'],
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
+        // Ban moi chiem quyen NGAY, khong doi dong het tab. Khong co hai dong nay thi
+        // iOS giu service worker cu, va chu du an thay atlas cu voi code moi: code hoi
+        // sprite `nguoi_nam_1_0`, atlas cu khong co, `datSprite` bo qua im lang -> khong
+        // ai hien tren duong. Da mat mot buoi sang 08/09 vi cho nay.
+        skipWaiting: true,
+        clientsClaim: true,
       },
       manifest: {
         name: 'Quốc Chiến',
