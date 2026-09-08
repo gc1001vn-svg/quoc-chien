@@ -36,3 +36,8 @@ kho không rơi vào ô đông nhất. Ảnh chụp máy ảo: **1 lệnh vẽ**
 Ngưỡng `nguongDinh` để 540 (90 % trần walker 600) thì **không bao giờ chạm** — đỉnh thật
 chỉ 324 người, và kho thứ hai không bao giờ được xây. Hạ xuống 300 mới ra kết quả trên.
 Đặt ngưỡng theo con số **đã đo**, đừng đặt theo trần lý thuyết.
+
+## Xác nhận
+
+**08/09: chủ dự án đã xem trên iPhone thật sau Phase 5 và duyệt — "ok".** Không nhắn con số
+fps, nên Phase 5 chưa có số fps đo trên máy thật.

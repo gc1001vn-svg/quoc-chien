@@ -42,18 +42,15 @@ check:base · check:credits).
 Ngân sách sprite **không đổi** so với trước Phase 5: sprite đánh dấu kho không rơi vào ô
 đông nhất. Con số fps trong ảnh máy ảo không có nghĩa gì — máy ảo vẽ bằng phần mềm.
 
-**Chưa xác nhận trên iPhone thật.** Lần đo cuối trên iPhone là 08/09 trước Phase 5:
-59 fps · 3.441 sprite · 1 lệnh vẽ · 0,35×.
+**iPhone thật, 08/09: chủ dự án đã xem sau Phase 5 và duyệt — "ok".** Không nhắn con số
+fps, nên số fps mới nhất có thật vẫn là lần đo trước Phase 5: **59 fps · 3.441 sprite ·
+1 lệnh vẽ · 0,35×**. Đừng chép con số đó thành số của Phase 5.
 
 ## 3. Việc của chủ dự án
 
-1. Mở https://gc1001vn-svg.github.io/quoc-chien/ trên iPhone, **tải lại trang**, xem còn
-   mượt không và nhắn lại con số fps.
-2. Nhìn xem có thấy **đống thùng gỗ thứ hai** ở một ngã tư khác không — đó là kho mới do
-   thống đốc xây.
+**Không có việc gì đang chờ.** Đã xem trên iPhone 08/09 sau Phase 5 và duyệt.
 
-Một việc nữa cần chủ dự án gật: sửa `.claude/settings.json` (file khoá) để tắt hai skill
-`run` và `simplify` khỏi danh sách nạp mỗi phiên. Xem mục 5.
+Đã gật xong trong phiên: tắt hai skill trùng `run` và `simplify` trong `.claude/settings.json`.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -73,9 +70,13 @@ Phase 6 là game **chơi được**, không chỉ nhìn.
 Việc nhỏ có thể làm kèm: nướng nốt bộ đồ **Ranger** (đã tải sẵn) để thành phố có ba kiểu
 người thay vì hai.
 
-**Việc token đang chờ chủ dự án gật:** đo được `CLAUDE.md` **621 token** (31 dòng) — trên
-mức khuyến nghị 500 nhưng **không cắt**, vì mỗi dòng là một luật đã cứu một lỗi. Chỗ đáng
-sửa duy nhất nằm trong `.claude/settings.json` (file khoá): đặt hai skill `run` và
-`simplify` thành `user-invocable-only` (vẫn gọi tay được), **ước** tiết kiệm ~120 token mỗi
-phiên; và xoá 8 dòng `skillOverrides` trỏ tới skill **không tồn tại** — xoá cho gọn file,
-**không** tiết kiệm token nào.
+**Việc token đã làm xong 08/09:** `CLAUDE.md` đo được **621 token** (31 dòng) — trên mức
+khuyến nghị 500 nhưng **không cắt**, mỗi dòng là một luật đã cứu một lỗi. Đã tắt hai skill
+trùng trong `.claude/settings.json`: `run` (trùng `npm run chup:man` + `npm run preview`)
+và `simplify` (trùng `ponytail`) — ước ~120 token mỗi phiên.
+
+Một chỗ ghi chép cũ **sai, đã sửa**: 8 dòng `skillOverrides` (`dataviz` `design`
+`artifact-design` `artifact-diagramming` `artifact-capabilities` `claude-api`
+`keybindings-help` `init`) **không phải tên chết**. Xoá thử thì cả 8 skill hiện ngay ra
+danh sách, mô tả dài. Đã trả lại đủ. Muốn kiểm một tên có thật không thì tắt/bật rồi nhìn
+danh sách skill, đừng đối chiếu file trên đĩa — skill dựng sẵn không nằm trên đĩa.
