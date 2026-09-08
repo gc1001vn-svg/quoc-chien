@@ -4,138 +4,655 @@
   "_so": "Bao nhieu cai nha loai nay trong thanh pho. Moi cai chay me rieng, lech pha nhau.",
   "_nhip": "Bao nhieu nhip cho mot me. 10 nhip = 1 giay game, 36.000 nhip = 1 gio game.",
   "_can_bang": "Moi mat hang duoc dat du 1,1 - 1,25 lan nhu cau. Doi mot so o day la doi ca can bang - xem lai bang trong docs/NHAT_KY/PHASE_3.md truoc khi sua.",
-
   "nha": [
-    { "ten": "gieng", "hien": "Gieng nuoc", "kieu": "san_xuat", "so": 6, "nhip": 100,
-      "vao": [], "ra": [{ "hang": "nuoc", "so": 5 }] },
-
-    { "ten": "ruong_lua", "hien": "Ruong lua", "kieu": "san_xuat", "so": 5, "nhip": 70,
-      "vao": [], "ra": [{ "hang": "lua_mi", "so": 4 }] },
-
-    { "ten": "coi_xay", "hien": "Coi xay", "kieu": "san_xuat", "so": 3, "nhip": 90,
-      "vao": [{ "hang": "lua_mi", "so": 3 }], "ra": [{ "hang": "bot", "so": 2 }] },
-
-    { "ten": "lo_banh", "hien": "Lo banh", "kieu": "san_xuat", "so": 3, "nhip": 100,
+    {
+      "ten": "gieng",
+      "hien": "Giếng nước",
+      "kieu": "san_xuat",
+      "so": 6,
+      "nhip": 100,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "nuoc",
+          "so": 5
+        }
+      ]
+    },
+    {
+      "ten": "ruong_lua",
+      "hien": "Ruộng lúa",
+      "kieu": "san_xuat",
+      "so": 5,
+      "nhip": 70,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "lua_mi",
+          "so": 4
+        }
+      ]
+    },
+    {
+      "ten": "coi_xay",
+      "hien": "Cối xay",
+      "kieu": "san_xuat",
+      "so": 3,
+      "nhip": 90,
+      "vao": [
+        {
+          "hang": "lua_mi",
+          "so": 3
+        }
+      ],
+      "ra": [
+        {
+          "hang": "bot",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "lo_banh",
+      "hien": "Lò bánh",
+      "kieu": "san_xuat",
+      "so": 3,
+      "nhip": 100,
       "_": "Lo nao cung phai dot cai gi do. Cui (`go_tho`) buoc nguoi choi giu rung, khong chat het tu dau van.",
-      "vao": [{ "hang": "bot", "so": 2 }, { "hang": "nuoc", "so": 1 }, { "hang": "go_tho", "so": 1 }],
-      "ra": [{ "hang": "banh_mi", "so": 2 }] },
-
-    { "ten": "nha_chai", "hien": "Nha chai", "kieu": "san_xuat", "so": 3, "nhip": 80,
-      "vao": [], "ra": [{ "hang": "ca", "so": 2 }] },
-
-    { "ten": "lo_uop", "hien": "Lo uop ca", "kieu": "san_xuat", "so": 1, "nhip": 100,
-      "vao": [{ "hang": "ca", "so": 2 }, { "hang": "muoi", "so": 1 }],
-      "ra": [{ "hang": "ca_muoi", "so": 2 }] },
-
-    { "ten": "trai_lon", "hien": "Trai lon", "kieu": "san_xuat", "so": 1, "nhip": 80,
-      "vao": [{ "hang": "lua_mi", "so": 2 }], "ra": [{ "hang": "lon", "so": 1 }] },
-
-    { "ten": "lo_mo", "hien": "Lo mo", "kieu": "san_xuat", "so": 2, "nhip": 175,
+      "vao": [
+        {
+          "hang": "bot",
+          "so": 2
+        },
+        {
+          "hang": "nuoc",
+          "so": 1
+        },
+        {
+          "hang": "go_tho",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "banh_mi",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "nha_chai",
+      "hien": "Nhà chài",
+      "kieu": "san_xuat",
+      "so": 3,
+      "nhip": 80,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "ca",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "lo_uop",
+      "hien": "Lò ướp cá",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 100,
+      "vao": [
+        {
+          "hang": "ca",
+          "so": 2
+        },
+        {
+          "hang": "muoi",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "ca_muoi",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "trai_lon",
+      "hien": "Trại lợn",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 80,
+      "vao": [
+        {
+          "hang": "lua_mi",
+          "so": 2
+        }
+      ],
+      "ra": [
+        {
+          "hang": "lon",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "lo_mo",
+      "hien": "Lò mổ",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 175,
       "_": "Cho duy nhat co HAI dau ra, va la cho de dat so sai nhat.",
       "_ti_le": "5 xuc xich : 4 da thu phai khop dung ti le nhu cau (1.800 : 1.440 mot gio). Lech ti le thi mon nao du se lam day kho, chan ca me, keo mon con lai xuong theo - da bi mot lan: de 2:2 thi dan doi xuc xich trong khi da thu van day kho.",
-      "vao": [{ "hang": "lon", "so": 1 }, { "hang": "muoi", "so": 1 }],
-      "ra": [{ "hang": "xuc_xich", "so": 5 }, { "hang": "da_thu", "so": 4 }] },
-
-    { "ten": "mo_muoi", "hien": "Mo muoi", "kieu": "san_xuat", "so": 1, "nhip": 100,
-      "vao": [], "ra": [{ "hang": "muoi", "so": 2 }] },
-
-    { "ten": "trai_ga", "hien": "Trai ga", "kieu": "san_xuat", "so": 2, "nhip": 70,
-      "vao": [{ "hang": "lua_mi", "so": 1 }], "ra": [{ "hang": "gia_cam", "so": 2 }] },
-
-    { "ten": "vuon_nho", "hien": "Vuon nho", "kieu": "san_xuat", "so": 2, "nhip": 90,
-      "vao": [], "ra": [{ "hang": "nho", "so": 3 }] },
-
-    { "ten": "xuong_ruou", "hien": "Xuong ruou", "kieu": "san_xuat", "so": 2, "nhip": 70,
-      "vao": [{ "hang": "nho", "so": 2 }, { "hang": "nuoc", "so": 1 }],
-      "ra": [{ "hang": "ruou", "so": 2 }] },
-
-    { "ten": "nha_bia", "hien": "Nha bia", "kieu": "san_xuat", "so": 2, "nhip": 100,
-      "vao": [{ "hang": "lua_mi", "so": 2 }, { "hang": "nuoc", "so": 2 }],
-      "ra": [{ "hang": "bia", "so": 3 }] },
-
-    { "ten": "xuong_thuoc", "hien": "Xuong thuoc da", "kieu": "san_xuat", "so": 2, "nhip": 90,
-      "vao": [{ "hang": "da_thu", "so": 2 }], "ra": [{ "hang": "ao_da", "so": 1 }] },
-
-    { "ten": "trai_cuu", "hien": "Trai cuu", "kieu": "san_xuat", "so": 2, "nhip": 100,
-      "vao": [{ "hang": "lua_mi", "so": 1 }], "ra": [{ "hang": "len", "so": 2 }] },
-
-    { "ten": "xuong_det", "hien": "Xuong det", "kieu": "san_xuat", "so": 1, "nhip": 50,
-      "vao": [{ "hang": "len", "so": 2 }], "ra": [{ "hang": "vai", "so": 1 }] },
-
-    { "ten": "mo_dat_set", "hien": "Mo dat set", "kieu": "san_xuat", "so": 1, "nhip": 120,
-      "vao": [], "ra": [{ "hang": "dat_set", "so": 3 }] },
-
-    { "ten": "lo_gom", "hien": "Lo gom", "kieu": "san_xuat", "so": 1, "nhip": 100,
-      "vao": [{ "hang": "dat_set", "so": 2 }, { "hang": "than", "so": 1 }],
-      "ra": [{ "hang": "gom", "so": 2 }] },
-
-    { "ten": "rung", "hien": "Trai don go", "kieu": "san_xuat", "so": 2, "nhip": 60,
+      "vao": [
+        {
+          "hang": "lon",
+          "so": 1
+        },
+        {
+          "hang": "muoi",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "xuc_xich",
+          "so": 5
+        },
+        {
+          "hang": "da_thu",
+          "so": 4
+        }
+      ]
+    },
+    {
+      "ten": "mo_muoi",
+      "hien": "Mỏ muối",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 100,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "muoi",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "trai_ga",
+      "hien": "Trại gà",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 70,
+      "vao": [
+        {
+          "hang": "lua_mi",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "gia_cam",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "vuon_nho",
+      "hien": "Vườn nho",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 90,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "nho",
+          "so": 3
+        }
+      ]
+    },
+    {
+      "ten": "xuong_ruou",
+      "hien": "Xưởng rượu",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 70,
+      "vao": [
+        {
+          "hang": "nho",
+          "so": 2
+        },
+        {
+          "hang": "nuoc",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "ruou",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "nha_bia",
+      "hien": "Nhà bia",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 100,
+      "vao": [
+        {
+          "hang": "lua_mi",
+          "so": 2
+        },
+        {
+          "hang": "nuoc",
+          "so": 2
+        }
+      ],
+      "ra": [
+        {
+          "hang": "bia",
+          "so": 3
+        }
+      ]
+    },
+    {
+      "ten": "xuong_thuoc",
+      "hien": "Xưởng thuộc da",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 90,
+      "vao": [
+        {
+          "hang": "da_thu",
+          "so": 2
+        }
+      ],
+      "ra": [
+        {
+          "hang": "ao_da",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "trai_cuu",
+      "hien": "Trại cừu",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 100,
+      "vao": [
+        {
+          "hang": "lua_mi",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "len",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "xuong_det",
+      "hien": "Xưởng dệt",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 50,
+      "vao": [
+        {
+          "hang": "len",
+          "so": 2
+        }
+      ],
+      "ra": [
+        {
+          "hang": "vai",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "mo_dat_set",
+      "hien": "Mỏ đất sét",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 120,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "dat_set",
+          "so": 3
+        }
+      ]
+    },
+    {
+      "ten": "lo_gom",
+      "hien": "Lò gốm",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 100,
+      "vao": [
+        {
+          "hang": "dat_set",
+          "so": 2
+        },
+        {
+          "hang": "than",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "gom",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "rung",
+      "hien": "Trại đốn gỗ",
+      "kieu": "san_xuat",
+      "so": 2,
+      "nhip": 60,
       "_": "Nuoi ca xuong cua va lo banh - them cui cho lo banh la phai gap doi so trai.",
-      "vao": [], "ra": [{ "hang": "go_tho", "so": 2 }] },
-
-    { "ten": "mo_da_voi", "hien": "Mo da voi", "kieu": "san_xuat", "so": 1, "nhip": 300,
-      "vao": [], "ra": [{ "hang": "da_voi", "so": 3 }] },
-
-    { "ten": "lo_voi", "hien": "Lo voi", "kieu": "san_xuat", "so": 1, "nhip": 200,
-      "vao": [{ "hang": "da_voi", "so": 2 }, { "hang": "than", "so": 1 }],
-      "ra": [{ "hang": "voi", "so": 2 }] },
-
-    { "ten": "xuong_cua", "hien": "Xuong cua", "kieu": "san_xuat", "so": 1, "nhip": 150,
-      "vao": [{ "hang": "go_tho", "so": 2 }], "ra": [{ "hang": "van", "so": 3 }] },
-
-    { "ten": "mo_da", "hien": "Mo da", "kieu": "san_xuat", "so": 1, "nhip": 250,
-      "vao": [], "ra": [{ "hang": "da_xay", "so": 2 }] },
-
-    { "ten": "mo_quang", "hien": "Mo quang", "kieu": "san_xuat", "so": 1, "nhip": 50,
-      "vao": [], "ra": [{ "hang": "quang", "so": 2 }] },
-
-    { "ten": "mo_than", "hien": "Mo than", "kieu": "san_xuat", "so": 1, "nhip": 45,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "go_tho",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "mo_da_voi",
+      "hien": "Mỏ đá vôi",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 300,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "da_voi",
+          "so": 3
+        }
+      ]
+    },
+    {
+      "ten": "lo_voi",
+      "hien": "Lò vôi",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 200,
+      "vao": [
+        {
+          "hang": "da_voi",
+          "so": 2
+        },
+        {
+          "hang": "than",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "voi",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "xuong_cua",
+      "hien": "Xưởng cưa",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 150,
+      "vao": [
+        {
+          "hang": "go_tho",
+          "so": 2
+        }
+      ],
+      "ra": [
+        {
+          "hang": "van",
+          "so": 3
+        }
+      ]
+    },
+    {
+      "ten": "mo_da",
+      "hien": "Mỏ đá",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 250,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "da_xay",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "mo_quang",
+      "hien": "Mỏ quặng",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 50,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "quang",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "mo_than",
+      "hien": "Mỏ than",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 45,
       "_": "Nuoi bon lo: lo nung, lo gom, lo thep, lo voi. Them lo nao cung phai ha nhip o day.",
-      "vao": [], "ra": [{ "hang": "than", "so": 2 }] },
-
-    { "ten": "lo_nung", "hien": "Lo nung", "kieu": "san_xuat", "so": 3, "nhip": 150,
-      "vao": [{ "hang": "quang", "so": 2 }, { "hang": "than", "so": 1 }],
-      "ra": [{ "hang": "sat", "so": 1 }] },
-
-    { "ten": "lo_thep", "hien": "Lo thep", "kieu": "san_xuat", "so": 1, "nhip": 120,
+      "vao": [],
+      "ra": [
+        {
+          "hang": "than",
+          "so": 2
+        }
+      ]
+    },
+    {
+      "ten": "lo_nung",
+      "hien": "Lò nung",
+      "kieu": "san_xuat",
+      "so": 3,
+      "nhip": 150,
+      "vao": [
+        {
+          "hang": "quang",
+          "so": 2
+        },
+        {
+          "hang": "than",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "sat",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "lo_thep",
+      "hien": "Lò thép",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 120,
       "_": "Bac moi giua sat va vu khi: sat tho phai luyen lai voi than moi ra thep ren duoc.",
-      "vao": [{ "hang": "sat", "so": 2 }, { "hang": "than", "so": 1 }],
-      "ra": [{ "hang": "thep", "so": 1 }] },
-
-    { "ten": "lo_ren", "hien": "Lo ren", "kieu": "san_xuat", "so": 1, "nhip": 250,
-      "vao": [{ "hang": "thep", "so": 1 }], "ra": [{ "hang": "giap", "so": 1 }] },
-
-    { "ten": "xuong_vu_khi", "hien": "Xuong vu khi", "kieu": "san_xuat", "so": 1, "nhip": 250,
-      "vao": [{ "hang": "thep", "so": 1 }, { "hang": "van", "so": 1 }],
-      "ra": [{ "hang": "vu_khi", "so": 1 }] },
-
-    { "ten": "nha_dan", "hien": "Nha dan", "kieu": "tieu_thu", "so": 30, "nhip": 1800,
+      "vao": [
+        {
+          "hang": "sat",
+          "so": 2
+        },
+        {
+          "hang": "than",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "thep",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "lo_ren",
+      "hien": "Lò rèn",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 250,
+      "vao": [
+        {
+          "hang": "thep",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "giap",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "xuong_vu_khi",
+      "hien": "Xưởng vũ khí",
+      "kieu": "san_xuat",
+      "so": 1,
+      "nhip": 250,
+      "vao": [
+        {
+          "hang": "thep",
+          "so": 1
+        },
+        {
+          "hang": "van",
+          "so": 1
+        }
+      ],
+      "ra": [
+        {
+          "hang": "vu_khi",
+          "so": 1
+        }
+      ]
+    },
+    {
+      "ten": "nha_dan",
+      "hien": "Nhà dân",
+      "kieu": "tieu_thu",
+      "so": 30,
+      "nhip": 1800,
       "_": "Dan bac 1. An tung mon doc lap: het bia thi van an banh mi. Bac 2-3-4 de Phase sau.",
       "vao": [
-        { "hang": "nuoc", "so": 9 },
-        { "hang": "banh_mi", "so": 3 },
-        { "hang": "xuc_xich", "so": 3 },
-        { "hang": "gia_cam", "so": 3 },
-        { "hang": "ca", "so": 3 },
-        { "hang": "ca_muoi", "so": 1 },
-        { "hang": "bia", "so": 3 },
-        { "hang": "ruou", "so": 3 },
-        { "hang": "ao_da", "so": 1 },
-        { "hang": "vai", "so": 1 },
-        { "hang": "gom", "so": 1 }
+        {
+          "hang": "nuoc",
+          "so": 9
+        },
+        {
+          "hang": "banh_mi",
+          "so": 3
+        },
+        {
+          "hang": "xuc_xich",
+          "so": 3
+        },
+        {
+          "hang": "gia_cam",
+          "so": 3
+        },
+        {
+          "hang": "ca",
+          "so": 3
+        },
+        {
+          "hang": "ca_muoi",
+          "so": 1
+        },
+        {
+          "hang": "bia",
+          "so": 3
+        },
+        {
+          "hang": "ruou",
+          "so": 3
+        },
+        {
+          "hang": "ao_da",
+          "so": 1
+        },
+        {
+          "hang": "vai",
+          "so": 1
+        },
+        {
+          "hang": "gom",
+          "so": 1
+        }
       ],
-      "ra": [] },
-
-    { "ten": "trai_linh", "hien": "Trai linh", "kieu": "tieu_thu", "so": 4, "nhip": 1200,
+      "ra": []
+    },
+    {
+      "ten": "trai_linh",
+      "hien": "Trại lính",
+      "kieu": "tieu_thu",
+      "so": 4,
+      "nhip": 1200,
       "vao": [
-        { "hang": "giap", "so": 1 },
-        { "hang": "vu_khi", "so": 1 },
-        { "hang": "ao_da", "so": 1 }
+        {
+          "hang": "giap",
+          "so": 1
+        },
+        {
+          "hang": "vu_khi",
+          "so": 1
+        },
+        {
+          "hang": "ao_da",
+          "so": 1
+        }
       ],
-      "ra": [] },
-
-    { "ten": "cong_truong", "hien": "Cong truong", "kieu": "tieu_thu", "so": 6, "nhip": 900,
-      "vao": [{ "hang": "van", "so": 2 }, { "hang": "da_xay", "so": 1 }, { "hang": "voi", "so": 1 }],
-      "ra": [] }
+      "ra": []
+    },
+    {
+      "ten": "cong_truong",
+      "hien": "Công trường",
+      "kieu": "tieu_thu",
+      "so": 6,
+      "nhip": 900,
+      "vao": [
+        {
+          "hang": "van",
+          "so": 2
+        },
+        {
+          "hang": "da_xay",
+          "so": 1
+        },
+        {
+          "hang": "voi",
+          "so": 1
+        }
+      ],
+      "ra": []
+    }
   ]
 }

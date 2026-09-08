@@ -4,35 +4,215 @@
   "_dau": "Ton kho luc bat dau van. Co it hang moi de chuoi khoi dung im o nhip dau.",
   "_hao": "Phan tram ton kho hong di moi gio game. 0 = khong bao gio hong (sat, da, gom). Ca tuoi 40 %, ca muoi 2 % - do la ly do ton tai cua muoi va lo uop. Tru cang nhieu hong cang nhieu, nen xay kho vua du chu dung chat cang.",
   "hang": [
-    { "ten": "nuoc", "hien": "Nuoc", "tran": 600, "dau": 60, "hao": 10 },
-    { "ten": "lua_mi", "hien": "Lua mi", "tran": 800, "dau": 80, "hao": 2 },
-    { "ten": "bot", "hien": "Bot", "tran": 300, "dau": 30, "hao": 5 },
-    { "ten": "banh_mi", "hien": "Banh mi", "tran": 300, "dau": 30, "hao": 20 },
-    { "ten": "ca", "hien": "Ca", "tran": 300, "dau": 30, "hao": 40 },
-    { "ten": "ca_muoi", "hien": "Ca muoi", "tran": 300, "dau": 30, "hao": 2 },
-    { "ten": "lon", "hien": "Lon", "tran": 200, "dau": 20, "hao": 15 },
-    { "ten": "xuc_xich", "hien": "Xuc xich", "tran": 300, "dau": 30, "hao": 5 },
-    { "ten": "gia_cam", "hien": "Gia cam", "tran": 300, "dau": 30, "hao": 20 },
-    { "ten": "nho", "hien": "Nho", "tran": 300, "dau": 30, "hao": 15 },
-    { "ten": "ruou", "hien": "Ruou", "tran": 300, "dau": 30, "hao": 0 },
-    { "ten": "bia", "hien": "Bia", "tran": 300, "dau": 30, "hao": 3 },
-    { "ten": "muoi", "hien": "Muoi", "tran": 200, "dau": 20, "hao": 0 },
-    { "ten": "da_thu", "hien": "Da thu", "tran": 200, "dau": 20, "hao": 10 },
-    { "ten": "ao_da", "hien": "Ao da", "tran": 200, "dau": 20, "hao": 1 },
-    { "ten": "len", "hien": "Len", "tran": 300, "dau": 30, "hao": 1 },
-    { "ten": "vai", "hien": "Vai", "tran": 200, "dau": 20, "hao": 0 },
-    { "ten": "dat_set", "hien": "Dat set", "tran": 300, "dau": 30, "hao": 0 },
-    { "ten": "gom", "hien": "Do gom", "tran": 200, "dau": 20, "hao": 0 },
-    { "ten": "go_tho", "hien": "Go tho", "tran": 200, "dau": 20, "hao": 1 },
-    { "ten": "van", "hien": "Van", "tran": 200, "dau": 20, "hao": 0 },
-    { "ten": "da_xay", "hien": "Da xay", "tran": 150, "dau": 20, "hao": 0 },
-    { "ten": "da_voi", "hien": "Da voi", "tran": 300, "dau": 30, "hao": 0 },
-    { "ten": "voi", "hien": "Voi song", "tran": 200, "dau": 20, "hao": 3 },
-    { "ten": "quang", "hien": "Quang sat", "tran": 300, "dau": 30, "hao": 0 },
-    { "ten": "than", "hien": "Than", "tran": 200, "dau": 20, "hao": 2 },
-    { "ten": "sat", "hien": "Sat", "tran": 200, "dau": 20, "hao": 0 },
-    { "ten": "thep", "hien": "Thep", "tran": 150, "dau": 20, "hao": 0 },
-    { "ten": "giap", "hien": "Giap", "tran": 100, "dau": 10, "hao": 0 },
-    { "ten": "vu_khi", "hien": "Vu khi", "tran": 100, "dau": 10, "hao": 0 }
+    {
+      "ten": "nuoc",
+      "hien": "Nước",
+      "tran": 600,
+      "dau": 60,
+      "hao": 10
+    },
+    {
+      "ten": "lua_mi",
+      "hien": "Lúa mì",
+      "tran": 800,
+      "dau": 80,
+      "hao": 2
+    },
+    {
+      "ten": "bot",
+      "hien": "Bột",
+      "tran": 300,
+      "dau": 30,
+      "hao": 5
+    },
+    {
+      "ten": "banh_mi",
+      "hien": "Bánh mì",
+      "tran": 300,
+      "dau": 30,
+      "hao": 20
+    },
+    {
+      "ten": "ca",
+      "hien": "Cá",
+      "tran": 300,
+      "dau": 30,
+      "hao": 40
+    },
+    {
+      "ten": "ca_muoi",
+      "hien": "Cá muối",
+      "tran": 300,
+      "dau": 30,
+      "hao": 2
+    },
+    {
+      "ten": "lon",
+      "hien": "Lợn",
+      "tran": 200,
+      "dau": 20,
+      "hao": 15
+    },
+    {
+      "ten": "xuc_xich",
+      "hien": "Xúc xích",
+      "tran": 300,
+      "dau": 30,
+      "hao": 5
+    },
+    {
+      "ten": "gia_cam",
+      "hien": "Gia cầm",
+      "tran": 300,
+      "dau": 30,
+      "hao": 20
+    },
+    {
+      "ten": "nho",
+      "hien": "Nho",
+      "tran": 300,
+      "dau": 30,
+      "hao": 15
+    },
+    {
+      "ten": "ruou",
+      "hien": "Rượu",
+      "tran": 300,
+      "dau": 30,
+      "hao": 0
+    },
+    {
+      "ten": "bia",
+      "hien": "Bia",
+      "tran": 300,
+      "dau": 30,
+      "hao": 3
+    },
+    {
+      "ten": "muoi",
+      "hien": "Muối",
+      "tran": 200,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "da_thu",
+      "hien": "Da thú",
+      "tran": 200,
+      "dau": 20,
+      "hao": 10
+    },
+    {
+      "ten": "ao_da",
+      "hien": "Áo da",
+      "tran": 200,
+      "dau": 20,
+      "hao": 1
+    },
+    {
+      "ten": "len",
+      "hien": "Len",
+      "tran": 300,
+      "dau": 30,
+      "hao": 1
+    },
+    {
+      "ten": "vai",
+      "hien": "Vải",
+      "tran": 200,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "dat_set",
+      "hien": "Đất sét",
+      "tran": 300,
+      "dau": 30,
+      "hao": 0
+    },
+    {
+      "ten": "gom",
+      "hien": "Đồ gốm",
+      "tran": 200,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "go_tho",
+      "hien": "Gỗ thô",
+      "tran": 200,
+      "dau": 20,
+      "hao": 1
+    },
+    {
+      "ten": "van",
+      "hien": "Ván",
+      "tran": 200,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "da_xay",
+      "hien": "Đá xây",
+      "tran": 150,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "da_voi",
+      "hien": "Đá vôi",
+      "tran": 300,
+      "dau": 30,
+      "hao": 0
+    },
+    {
+      "ten": "voi",
+      "hien": "Vôi sống",
+      "tran": 200,
+      "dau": 20,
+      "hao": 3
+    },
+    {
+      "ten": "quang",
+      "hien": "Quặng sắt",
+      "tran": 300,
+      "dau": 30,
+      "hao": 0
+    },
+    {
+      "ten": "than",
+      "hien": "Than",
+      "tran": 200,
+      "dau": 20,
+      "hao": 2
+    },
+    {
+      "ten": "sat",
+      "hien": "Sắt",
+      "tran": 200,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "thep",
+      "hien": "Thép",
+      "tran": 150,
+      "dau": 20,
+      "hao": 0
+    },
+    {
+      "ten": "giap",
+      "hien": "Giáp",
+      "tran": 100,
+      "dau": 10,
+      "hao": 0
+    },
+    {
+      "ten": "vu_khi",
+      "hien": "Vũ khí",
+      "tran": 100,
+      "dau": 10,
+      "hao": 0
+    }
   ]
 }
