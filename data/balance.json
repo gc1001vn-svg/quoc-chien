@@ -1,0 +1,12 @@
+{
+  "_": "Nhip do hoi the quyet dinh (GAME_SPEC muc 7). MOI so nam o day, khong nam trong .ts (CLAUDE.md luat 2).",
+  "_gioQuet": "Bao nhieu gio game moi quet dieu kien mot lan. Bang so chi chot moi gio nen quet day hon la vo ich.",
+  "_gioGianCach": "Toi thieu ngan nay gio game giua hai the. The `khan` duoc pha luat nay - thanh pho dang chay mau thi khong the bat cho.",
+  "_gioLapLai": "Cung mot the khong duoc hoi lai trong ngan nay gio game.",
+  "_toiDaMotVan": "Tran so the trong mot van, chan truong hop dieu kien cu dung mai va game thanh bam nut lien tuc.",
+
+  "gioQuet": 1,
+  "gioGianCach": 2,
+  "gioLapLai": 6,
+  "toiDaMotVan": 40
+}

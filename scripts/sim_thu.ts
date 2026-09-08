@@ -13,6 +13,9 @@ import type { ThongKe } from '../src/sim/city/Cham.ts';
 import { chuoiGio, NHIP_MOI_GIO } from '../src/sim/Clock.ts';
 import { Governor } from '../src/sim/autoplay/Governor.ts';
 import { docChinhSach } from '../src/sim/autoplay/Policy.ts';
+import { DongCo, docNhipDo, docThe, type LuaChon } from '../src/sim/decision/Engine.ts';
+import { NhatKy } from '../src/sim/decision/NhatKy.ts';
+import { Van } from '../src/sim/decision/Van.ts';
 
 const SO_GIO = 10;
 
@@ -64,7 +67,10 @@ const tp = new ThanhPho({
 });
 
 const thongDoc = new Governor(tp, docChinhSach(doc('policy.json')));
-tp.datThongDoc(thongDoc);
+const dongCo = new DongCo(docThe(doc('decisions.json')), docNhipDo(doc('balance.json')));
+const nhatKy = new NhatKy();
+const van = new Van(tp, thongDoc, dongCo, nhatKy);
+tp.datThongDoc(van);
 
 const nhaDau: number = tp.soNha;
 console.log(
@@ -77,6 +83,10 @@ const loi: string[] = [];
 let cuoi: ThongKe | undefined;
 for (let gio = 1; gio <= SO_GIO; gio++) {
   tp.chay(NHIP_MOI_GIO);
+  // Chay khong nguoi: gap the thi chon LUA CHON DAU TIEN. Du de biet the co hien ra khong
+  // va hau qua co ap duoc khong; "the co thu vi khong" thi chi nguoi choi tra loi duoc.
+  const the = van.the;
+  if (the !== undefined) van.traLoi(the.chon[0] as LuaChon);
   cuoi = tp.gioVuaXong();
   if (cuoi === undefined) throw new Error('chua chot duoc gio nao');
   // Bo qua gio dau: luc do chuoi con dang mo may, chua chay deu.
@@ -96,8 +106,10 @@ console.log(
   `\nTHONG DOC - cap ${thongDoc.cap.ten}: ${String(nhaDau)} -> ${String(tp.soNha)} nha, ` +
     `${String(tp.doiWalker.soKho)} kho.`,
 );
-for (const v of thongDoc.daLam) {
-  console.log(`  gio ${String(v.gio)}: xay ${v.viec} (cap ${v.cap})`);
+console.log(`THE QUYET DINH: da hoi ${String(dongCo.so)} the, tu chon lua chon dau tien.`);
+console.log('\nNHAT KY SU KIEN');
+for (const s of nhatKy.danhSach) {
+  console.log(`  gio ${cot(s.gio, 3)} [${cot(s.loai, 10, true)}] ${s.van}`);
 }
 console.log(
   `Da chay ${chuoiGio(tp.dongHo.soNhip)} gio game trong ${giay.toFixed(2)}s that.`,

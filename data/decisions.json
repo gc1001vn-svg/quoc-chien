@@ -1,0 +1,261 @@
+{
+  "_": "The quyet dinh (GAME_SPEC muc 7). MOI so nam o day, khong nam trong .ts (CLAUDE.md luat 2).",
+  "_nguong": "Moi nguong duoi day lay tu so DA DO cua `npm run sim:thu` 10 gio game (08/09), khong lay tu tran ly thuyet. Dat theo tran thi dieu kien khong bao gio dung va khong the nao hien - da bi mot lan o Phase 5 voi `nguongDinh` 540 trong khi dinh that chi 324.",
+  "_dieuKien": "`do` la con so nhin vao: `ton` `cho` `day` `hong` `lamRa` `dungHet` doc theo `hang`; `dinh` `boCuoc` `chuyen` la cua doi walker; `soNha` `soKho` la cua thanh pho. Moi dieu kien deu phai dung thi the moi duoc hoi.",
+  "_hauQua": "`xay`: danh sach { ten, so } nha xay them. `xayKho`: xay them mot kho. `doiNguong`: doi nguong cua thong doc luc dang chay (am la de tay hon, duong la chat tay hon). `noiTran`: noi tran nha / tran kho cua cap hien tai.",
+  "_diem": "The nao dung dieu kien cung luc thi the diem cao duoc hoi truoc.",
+  "_khan": "The khan duoc pha luat gian cach - thanh pho dang chay mau thi khong the bat cho.",
+  "the": [
+    {
+      "ten": "duong_dong",
+      "diem": 90,
+      "khan": true,
+      "van": "Đường đông nghịt người vác hàng, mỗi chuyến đi mãi mới tới. Làm gì?",
+      "dieuKien": [
+        {
+          "do": "dinh",
+          "phep": ">=",
+          "gia": 300
+        }
+      ],
+      "chon": [
+        {
+          "van": "Xây thêm một kho nữa — đường ngắn lại",
+          "loi": "Mỗi chuyến ít bước hơn. Nhưng kho mới chiếm một ngã tư, và thành phố thêm một chỗ phải giữ hàng.",
+          "hauQua": {
+            "xayKho": true
+          }
+        },
+        {
+          "van": "Bắt thống đốc xây chặt tay lại",
+          "loi": "Ít nhà mới thì ít người trên đường. Nhưng cảnh thiếu hàng sẽ kéo dài hơn trước khi có nhà mới.",
+          "hauQua": {
+            "doiNguong": {
+              "nguongCho": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "ten": "lua_mi_u",
+      "diem": 70,
+      "khan": false,
+      "van": "Kho lúa mì đầy ứ, ruộng phải dừng tay vì không còn chỗ đổ. Làm gì?",
+      "dieuKien": [
+        {
+          "do": "ton",
+          "hang": "lua_mi",
+          "phep": ">=",
+          "gia": 760
+        },
+        {
+          "do": "day",
+          "hang": "lua_mi",
+          "phep": ">=",
+          "gia": 20000
+        }
+      ],
+      "chon": [
+        {
+          "van": "Xây hai cối xay — xay lúa thành bột",
+          "loi": "Lúa mì chảy đi, lò bánh đỡ đói. Nhưng thêm hai nhà là thêm người trên đường.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "coi_xay",
+                "so": 2
+              }
+            ]
+          }
+        },
+        {
+          "van": "Xây hai trại lợn — vỗ béo cho mùa đông",
+          "loi": "Lợn ăn lúa mì, rồi ra xúc xích và da thú. Chuỗi dài hơn nên lâu mới thấy kết quả.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "trai_lon",
+                "so": 2
+              }
+            ]
+          }
+        },
+        {
+          "van": "Xây thêm một kho",
+          "loi": "Có chỗ đổ ngay. Nhưng lúa mì vẫn chỉ nằm đó, không ai biến nó thành cái gì.",
+          "hauQua": {
+            "xayKho": true
+          }
+        }
+      ]
+    },
+    {
+      "ten": "thieu_bot",
+      "diem": 80,
+      "khan": false,
+      "van": "Lò bánh đứng chờ bột cả ngày. Cối xay không theo kịp. Làm gì?",
+      "dieuKien": [
+        {
+          "do": "ton",
+          "hang": "bot",
+          "phep": "<=",
+          "gia": 60
+        },
+        {
+          "do": "cho",
+          "hang": "bot",
+          "phep": ">=",
+          "gia": 5000
+        }
+      ],
+      "chon": [
+        {
+          "van": "Xây hai cối xay ngay",
+          "loi": "Hết thiếu bột trong vài giờ. Nhưng thành phố tiến gần trần nhà của cấp này hơn.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "coi_xay",
+                "so": 2
+              }
+            ]
+          }
+        },
+        {
+          "van": "Bắt thống đốc xây dễ tay hơn, tự nó lo",
+          "loi": "Từ giờ hễ thiếu là thống đốc xây, không phải hỏi anh. Nhưng nó cũng sẽ xây nhiều thứ anh không định xây.",
+          "hauQua": {
+            "doiNguong": {
+              "nguongCho": -10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "ten": "ca_uon",
+      "diem": 60,
+      "khan": false,
+      "van": "Cá chất đống ở kho, ươn thối trước khi kịp ướp muối. Làm gì?",
+      "dieuKien": [
+        {
+          "do": "hong",
+          "hang": "ca",
+          "phep": ">=",
+          "gia": 40
+        }
+      ],
+      "chon": [
+        {
+          "van": "Xây một lò ướp và một mỏ muối",
+          "loi": "Cá thành cá muối, để được lâu. Hai nhà một lúc — đông người trên đường ngay.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "lo_uop",
+                "so": 1
+              },
+              {
+                "ten": "mo_muoi",
+                "so": 1
+              }
+            ]
+          }
+        },
+        {
+          "van": "Chỉ xây một mỏ muối cho rẻ",
+          "loi": "Ít người trên đường hơn. Nhưng lò ướp cũ vẫn không ướp kịp, cá còn ươn thêm một thời gian.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "mo_muoi",
+                "so": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ten": "van_u",
+      "diem": 50,
+      "khan": false,
+      "van": "Ván xếp đầy kho, công trường không dùng kịp. Làm gì với chỗ gỗ đó?",
+      "dieuKien": [
+        {
+          "do": "ton",
+          "hang": "van",
+          "phep": ">=",
+          "gia": 190
+        },
+        {
+          "do": "day",
+          "hang": "van",
+          "phep": ">=",
+          "gia": 20000
+        }
+      ],
+      "chon": [
+        {
+          "van": "Xây hai công trường — dùng ván, đá xây và vôi",
+          "loi": "Ván chảy đi ngay. Nhưng công trường ăn cả đá xây và vôi sống, hai món đó sẽ căng.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "cong_truong",
+                "so": 2
+              }
+            ]
+          }
+        },
+        {
+          "van": "Xây một xưởng vũ khí — ván thành vũ khí",
+          "loi": "Vừa dọn ván vừa có vũ khí cho trại lính. Nhưng xưởng ăn thêm thép, mà thép đang vừa đủ.",
+          "hauQua": {
+            "xay": [
+              {
+                "ten": "xuong_vu_khi",
+                "so": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "ten": "cham_tran_cap",
+      "diem": 40,
+      "khan": false,
+      "van": "Thành phố sắp kín trần của cấp này. Thống đốc sắp hết chỗ xây. Làm gì?",
+      "dieuKien": [
+        {
+          "do": "soNha",
+          "phep": ">=",
+          "gia": 100
+        }
+      ],
+      "chon": [
+        {
+          "van": "Nới trần nhà thêm 20 cái",
+          "loi": "Thành phố lớn tiếp. Nhưng người trên đường đông lên, mà trần walker thì không nới.",
+          "hauQua": {
+            "noiTran": {
+              "nha": 20
+            }
+          }
+        },
+        {
+          "van": "Không nới trần nhà, nới trần kho thêm một",
+          "loi": "Đường thông hơn với số nhà đang có. Nhưng thành phố ngừng lớn cho tới khi lên cấp.",
+          "hauQua": {
+            "noiTran": {
+              "kho": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "_van": "Van cua the va cua tung lua chon la chu NGUOI CHOI DOC tren man hinh, nen viet tieng Viet CO DAU. Chi ghi chu va commit moi khong dau."
+}

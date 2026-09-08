@@ -27,10 +27,42 @@ export class Governor {
   private readonly tp: ThanhPho;
   private readonly cs: ChinhSach;
   private readonly nhatKy: ViecDaLam[] = [];
+  /**
+   * Nguong dang chay. Chep tu `ChinhSach` chu khong doc thang: tu Phase 6, the quyet dinh
+   * doi duoc nguong luc dang choi ("bat thong doc xay chat tay lai"), ma `data/policy.json`
+   * thi khong duoc sua.
+   */
+  private readonly nguong: Map<string, number>;
+  /** The quyet dinh da noi tran them bao nhieu, cong vao tran cua cap hien tai. */
+  private themTranNha = 0;
+  private themTranKho = 0;
 
   constructor(tp: ThanhPho, cs: ChinhSach) {
     this.tp = tp;
     this.cs = cs;
+    this.nguong = new Map([
+      ['nguongBoCuoc', cs.nguongBoCuoc],
+      ['nguongDinh', cs.nguongDinh],
+      ['nguongCho', cs.nguongCho],
+    ]);
+  }
+
+  /** Nguong dang chay. Ten khong biet thi nem loi, khong im lang bo qua. */
+  layNguong(ten: string): number {
+    const so: number | undefined = this.nguong.get(ten);
+    if (so === undefined) throw new Error(`khong co nguong "${ten}"`);
+    return so;
+  }
+
+  /** Cong `delta` vao mot nguong. Am la de tay hon, duong la chat tay hon. Khong xuong duoi 0. */
+  doiNguong(ten: string, delta: number): void {
+    this.nguong.set(ten, Math.max(0, this.layNguong(ten) + delta));
+  }
+
+  /** Noi tran cua cap hien tai. Cong don, giu nguyen ca khi len cap. */
+  noiTran(nha: number, kho: number): void {
+    this.themTranNha += nha;
+    this.themTranKho += kho;
   }
 
   /** Nhung viec da lam, moi nhat o cuoi. */
@@ -38,9 +70,15 @@ export class Governor {
     return this.nhatKy;
   }
 
-  /** Cap thong doc ngay luc nay. */
+  /** Cap thong doc ngay luc nay, da cong phan the quyet dinh noi them. */
   get cap(): Cap {
-    return capHienTai(this.cs, this.tp.soNha);
+    const c: Cap = capHienTai(this.cs, this.tp.soNha);
+    if (this.themTranNha === 0 && this.themTranKho === 0) return c;
+    return {
+      ten: c.ten, tuNha: c.tuNha,
+      tranNha: c.tranNha + this.themTranNha,
+      tranKho: c.tranKho + this.themTranKho,
+    };
   }
 
   /** `ThanhPho` goi khi chot xong mot gio game. */
@@ -61,7 +99,8 @@ export class Governor {
 
   /** Duong da qua tai chua: co nguoi bo cuoc, hoac so nguoi cung luc sat tran. */
   private canThemKho(tk: ThongKe): boolean {
-    return tk.walker.boCuoc >= this.cs.nguongBoCuoc || tk.walker.dinh >= this.cs.nguongDinh;
+    return tk.walker.boCuoc >= this.layNguong('nguongBoCuoc')
+      || tk.walker.dinh >= this.layNguong('nguongDinh');
   }
 
   /**
@@ -74,7 +113,7 @@ export class Governor {
   private nhaCanXay(tk: ThongKe): string | undefined {
     let thieu: SoHang | undefined;
     for (const h of tk.hang) {
-      if (h.ton > 0 || h.cho < this.cs.nguongCho) continue;
+      if (h.ton > 0 || h.cho < this.layNguong('nguongCho')) continue;
       if (thieu === undefined || h.cho > thieu.cho) thieu = h;
     }
     if (thieu === undefined) return undefined;
