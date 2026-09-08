@@ -46,14 +46,19 @@ thêm hướng và kiểu vào `Walker`.
 Atlas 2× lên **2 trang** (54 sprite) nhưng vẫn **một lệnh vẽ** — cơ chế atlas nhiều trang
 chốt 06/09 chạy đúng.
 
+**iPhone thật, 08/09: 59 fps · 3.441 sprite · 1 lệnh vẽ · 0,35×.** Chủ dự án đã xem và duyệt.
+
 Số sprite tăng so với 07/09 (3.217 → 3.488) vì `dong_thung` và `thung_ruou` đã trở lại làm
 đồ trang trí. Máy ảo vẽ bằng phần mềm nên con số fps trong ảnh máy ảo (12) **không có nghĩa gì**.
 
 ## 3. Việc của chủ dự án
 
-**Xem trang trên iPhone và cho biết có mượt không** — https://gc1001vn-svg.github.io/quoc-chien/
-Nhìn hai thứ: (1) fps ở góc trái còn 55–60 không, (2) người trên đường có ra người không,
-có quay đúng hướng đi không.
+**Không có việc gì đang chờ.** Đã xem trên iPhone 08/09 và duyệt: 59 fps, người ra người,
+quay đúng hướng đi.
+
+Gặp một cái bẫy: service worker PWA giữ atlas cũ, phải xoá dữ liệu trang 2-3 lần mới thấy
+người. Đã sửa bằng `skipWaiting` + `clientsClaim` trong `vite.config.ts` — từ nay chỉ cần
+tải lại trang.
 
 **Quy ước đã chốt, khỏi hỏi lại:** đẩy xong là **tự gộp vào `main`**, không hỏi, không mở
 pull request. Chủ dự án không phải bấm gì để code lên trang.
