@@ -3,80 +3,79 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 08/09/2026 (phiên nướng sprite người, chen giữa Phase 4 và Phase 5).
+Cập nhật: 08/09/2026 (Phase 5 — thống đốc tự xây).
 
 ## 1. Đang ở đâu
 
-**Người vác hàng giờ là người thật.** Nông dân trung cổ, nam và nữ, quay mặt đúng hướng
-đang đi, chân đổi bên mỗi bước. Trước đó họ mượn sprite `thung_ruou` — cái thùng biết đi.
+**Thành phố tự lớn, không cần ai bấm.** Mỗi giờ game, thống đốc nhìn bảng số của giờ vừa
+xong rồi xây thêm **đúng một** thứ: kho nếu đường tắc, nhà nếu kho rỗng mà vẫn có nhà phải
+chờ hàng. Trong 10 giờ game: **94 → 102 nhà, 1 → 2 kho**.
 
-Ba điều kế hoạch cũ đoán sai, phát hiện ngay trong phiên: gói *"Ultimate Animated Character
-Pack"* **không tồn tại**; gói đúng (**Modular Character Outfits – Fantasy**, CC0) **không có
-file OBJ**; và model nằm ở **tư thế chữ T, không kèm cử động**, lại **không có đầu** (đầu ở
-gói *Universal Base Characters* riêng, cùng bộ xương 65 khớp). Nên phải viết
-`tools/lib/gltf.mjs`: đọc glTF, trộn da theo xương, tự đặt dáng, và cắt mesh theo xương để
-lấy cái đầu ghép sang.
+Kho thứ hai chữa luôn cái nợ nặng nhất của Phase 4 — người vác hàng dồn thành một dãy nối
+đuôi về cái kho duy nhất ở giữa. Người vác hàng giờ đi tới kho **gần nhất**, và số chuyến
+một giờ **tăng 10,9 %** dù thành phố đông nhà hơn.
 
-Bảng góc xoay xương nằm trong `tools/me/trung_co_2.json`, không nằm trong code (luật 2).
-Dáng thứ hai chỉ là bản gương của dáng thứ nhất.
+Kho dùng **chung một túi hàng** (nhiều điểm bốc dỡ, một sổ hàng) — chủ dự án chốt 08/09 để
+khỏi viết lại toàn bộ kinh tế Phase 3–4. Mặt trái: hàng coi như dịch chuyển tức thì giữa
+các kho, chưa thật như Caesar III.
 
-Kinh tế giữ nguyên Phase 3–4: **30 mặt hàng · 32 loại nhà (94 cái) · 14 chuỗi**, mỗi nhà một
-kho riêng, hàng chỉ đi được khi có người vác trên đường.
+Cấp thống đốc lên theo số nhà (lý trưởng → tri huyện → tri phủ), mỗi cấp nới trần nhà và
+trần kho. Mọi ngưỡng và trần nằm trong `data/policy.json`, không nằm trong code.
 
-Chi tiết: `docs/NHAT_KY/PHASE_4C.md`.
+Chi tiết: `docs/NHAT_KY/PHASE_5.md`.
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test **96 test** · build ·
+`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test **108 test** · build ·
 check:base · check:credits).
 
-`npm run sim:thu` → **ĐẠT**, 10 giờ game trong 3,3 giây:
-**64.184 chuyến một giờ · đông nhất 324 người cùng lúc · 0 lượt bỏ cuộc** — y hệt trước khi
-thêm hướng và kiểu vào `Walker`.
-
-Ảnh chụp trong máy ảo:
+`npm run sim:thu` → **ĐẠT**, 10 giờ game trong 2,3 giây:
+**94 → 102 nhà · 1 → 2 kho · 71.156 chuyến một giờ · đông nhất 324 người cùng lúc ·
+0 lượt bỏ cuộc.** (Phase 4C: 64.184 chuyến một giờ.)
 
 | Số đo | Đo được | Trần |
 |---|---:|---:|
-| Sprite một khung (0,35×) | **3.488** | 5.000 |
-| Sprite một khung (0,41×) | 2.597 | 5.000 |
-| Lệnh vẽ | **1** | 4 |
-| Bộ nhớ GPU (bản 1×) | 16,8 MB | 67,1 MB |
+| Sprite một khung, bản 1× | **3.326** | 5.000 |
+| Sprite một khung, bản 2× | 3.247 | 5.000 |
+| Lệnh vẽ (ảnh máy ảo) | **1** | 4 |
 
-Atlas 2× lên **2 trang** (54 sprite) nhưng vẫn **một lệnh vẽ** — cơ chế atlas nhiều trang
-chốt 06/09 chạy đúng.
+Ngân sách sprite **không đổi** so với trước Phase 5: sprite đánh dấu kho không rơi vào ô
+đông nhất. Con số fps trong ảnh máy ảo không có nghĩa gì — máy ảo vẽ bằng phần mềm.
 
-**iPhone thật, 08/09: 59 fps · 3.441 sprite · 1 lệnh vẽ · 0,35×.** Chủ dự án đã xem và duyệt.
-
-Số sprite tăng so với 07/09 (3.217 → 3.488) vì `dong_thung` và `thung_ruou` đã trở lại làm
-đồ trang trí. Máy ảo vẽ bằng phần mềm nên con số fps trong ảnh máy ảo (12) **không có nghĩa gì**.
+**Chưa xác nhận trên iPhone thật.** Lần đo cuối trên iPhone là 08/09 trước Phase 5:
+59 fps · 3.441 sprite · 1 lệnh vẽ · 0,35×.
 
 ## 3. Việc của chủ dự án
 
-**Không có việc gì đang chờ.** Đã xem trên iPhone 08/09 và duyệt: 59 fps, người ra người,
-quay đúng hướng đi.
+1. Mở https://gc1001vn-svg.github.io/quoc-chien/ trên iPhone, **tải lại trang**, xem còn
+   mượt không và nhắn lại con số fps.
+2. Nhìn xem có thấy **đống thùng gỗ thứ hai** ở một ngã tư khác không — đó là kho mới do
+   thống đốc xây.
 
-Gặp một cái bẫy: service worker PWA giữ atlas cũ, phải xoá dữ liệu trang 2-3 lần mới thấy
-người. Đã sửa bằng `skipWaiting` + `clientsClaim` trong `vite.config.ts` — từ nay chỉ cần
-tải lại trang.
-
-**Quy ước đã chốt, khỏi hỏi lại:** đẩy xong là **tự gộp vào `main`**, không hỏi, không mở
-pull request. Chủ dự án không phải bấm gì để code lên trang.
+Một việc nữa cần chủ dự án gật: sửa `.claude/settings.json` (file khoá) để tắt hai skill
+`run` và `simplify` khỏi danh sách nạp mỗi phiên. Xem mục 5.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Người vác hàng dồn thành một dãy nối đuôi** vì cả thành phố chỉ có **một kho ở giữa**.
-  Trục vào tâm đông nghịt, đường rìa vắng tanh. Caesar III rải nhiều kho — sửa ở Phase 5.
-- **32 toà nhà của kinh tế chưa có sprite**, và nhà kinh tế đặt độc lập với vật thể trang
-  trí nên nhìn không ra nhà nào là lò bánh. Gói Quaternius **không có cối xay và giếng**.
+- **32 toà nhà của kinh tế vẫn chưa có sprite.** Nhà kinh tế đặt độc lập với vật thể trang
+  trí nên nhìn không ra nhà nào là lò bánh — thống đốc xây thêm nhà mà trên màn hình không
+  thấy gì mọc lên, chỉ thấy đông người hơn. Gói Quaternius không có cối xay và giếng.
+- **Mỗi kho chưa có túi hàng riêng.** Chốt tạm 08/09; làm thật thì phải viết lại cách nhà
+  tìm hàng và thêm người vác kho-sang-kho.
 
-Toàn bộ nợ còn lại (đồ hoạ, code, môi trường, deploy): **`docs/NO_KY_THUAT.md`**.
+Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase kế tiếp — Phase 5: thống đốc tự xây
+## 5. Phase kế tiếp — Phase 6: quyết định, game chơi được
 
-`src/sim/autoplay/Governor.ts` + `Policy.ts`: thành phố tự lớn, thiếu bánh mì thì xây thêm
-lò bánh, đường kẹt thì xây thêm kho. Việc thêm kho sẽ chữa luôn cảnh người dồn thành một
-dãy đổ về cái kho duy nhất ở giữa.
+`decision/Engine.ts` + `ui/DecisionCard.ts` + nhật ký sự kiện. Đây là **mốc lớn**: xong
+Phase 6 là game **chơi được**, không chỉ nhìn.
 
-Việc nhỏ có thể làm kèm: nướng nốt bộ đồ **Ranger** trong gói (đã tải sẵn) để thành phố có
-ba kiểu người thay vì hai.
+Việc nhỏ có thể làm kèm: nướng nốt bộ đồ **Ranger** (đã tải sẵn) để thành phố có ba kiểu
+người thay vì hai.
+
+**Việc token đang chờ chủ dự án gật:** đo được `CLAUDE.md` **621 token** (31 dòng) — trên
+mức khuyến nghị 500 nhưng **không cắt**, vì mỗi dòng là một luật đã cứu một lỗi. Chỗ đáng
+sửa duy nhất nằm trong `.claude/settings.json` (file khoá): đặt hai skill `run` và
+`simplify` thành `user-invocable-only` (vẫn gọi tay được), **ước** tiết kiệm ~120 token mỗi
+phiên; và xoá 8 dòng `skillOverrides` trỏ tới skill **không tồn tại** — xoá cho gọn file,
+**không** tiết kiệm token nào.

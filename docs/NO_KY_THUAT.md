@@ -39,10 +39,12 @@
 
 ## Code
 
-- **Người vác hàng dồn thành một dãy nối đuôi** (07/09, Phase 4). Cả thành phố chỉ có
-  **một kho ở giữa bản đồ** nên mọi tuyến đều đổ về đó; các trục dẫn vào tâm đông nghịt
-  còn đường rìa vắng tanh. Caesar III có nhiều kho rải khắp. Sửa khi có thống đốc biết
-  chọn chỗ xây (Phase 5).
+- ~~**Người vác hàng dồn thành một dãy nối đuôi**~~ — **ĐÃ TRẢ 08/09 (Phase 5).** Thống
+  đốc xây kho thứ hai ở ngã tư xa kho cũ nhất, người vác hàng đi tới kho **gần nhất**:
+  71.156 chuyến một giờ, tăng 10,9 % so với 64.184 khi còn một kho. Còn nợ lại: mỗi kho
+  vẫn dùng **chung một túi hàng**, chưa phải kho riêng như Caesar III — hàng coi như dịch
+  chuyển tức thì giữa các kho. Chủ dự án đã chốt cách này 08/09 để khỏi phải viết lại
+  toàn bộ kinh tế Phase 3–4.
 
 - ~~**Walker chưa có sprite người**~~ — **ĐÃ TRẢ 07/09 (phiên nướng người).** 16 sprite:
   nông dân nam và nữ × 4 hướng × 2 dáng. `dong_thung` và `thung_ruou` đã **trở lại** làm
