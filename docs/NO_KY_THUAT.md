@@ -11,6 +11,9 @@
 - **28 toà nhà của kinh tế chưa có sprite.** Giếng · cối xay · lò mổ · vườn nho · nhà bia ·
   xưởng thuộc da · trại cừu · xưởng dệt · mỏ than · mỏ đá · mỏ muối · mỏ đất sét · lò gốm.
   Hiện chỉ là số trong `data/`.
+  **Nặng thêm từ 08/09 (Phase 6):** người chơi bấm "xây hai cối xay" mà trên màn không có
+  gì mọc lên — nợ này giờ làm hỏng chính vòng phản hồi của thẻ quyết định, không còn là
+  chuyện đẹp xấu nữa.
 - **Không có cối xay và giếng đúng phong cách.** Đã tìm hết: Medieval Village (176 model)
   và Stylized Nature (68 model) đều không có. Farm Buildings có đủ `Windmill` `Well`
   `Barn` `Silo` nhưng là **nông trại Mỹ thế kỷ 19**, đã nướng thử rồi bỏ (lý do ở

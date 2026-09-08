@@ -40,14 +40,6 @@ export interface ThongKe {
   readonly walker: SoWalker;
 }
 
-/** Bang so cua mot gio game. */
-export interface ThongKe {
-  readonly gio: number;
-  readonly nha: readonly SoNha[];
-  readonly hang: readonly SoHang[];
-  readonly walker: SoWalker;
-}
-
 /**
  * Cham diem mot gio game. Tra ve danh sach loi bang chu; rong la dat.
  *
