@@ -17,6 +17,9 @@ import hangTho from '../../data/wares.json';
 import nhaTho from '../../data/buildings.json';
 import chuoiTho from '../../data/chains.json';
 import walkerTho from '../../data/walkers.json';
+import chinhSachTho from '../../data/policy.json';
+import { Governor } from '../sim/autoplay/Governor';
+import { docChinhSach } from '../sim/autoplay/Policy';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
 import { Camera } from './Camera';
@@ -62,6 +65,9 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   const thanhPho: ThanhPho = new ThanhPho({
     hang: hangTho, nha: nhaTho, chuoi: chuoiTho, banDo: cauHinhTho, walker: walkerTho,
   });
+  // Thong doc chay NGAY TU `moDau`: mo van ra la thanh pho da co kho thu hai va vai nha
+  // moi, dung nhu bang so cua `npm run sim:thu`.
+  thanhPho.datThongDoc(new Governor(thanhPho, docChinhSach(chinhSachTho)));
   thanhPho.moDau();
   const banDo: BanDo = thanhPho.banDo;
   const cam: Camera = new Camera(

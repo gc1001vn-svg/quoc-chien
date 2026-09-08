@@ -11,6 +11,8 @@ import { ThanhPho } from '../src/sim/city/City.ts';
 import { chamDiem } from '../src/sim/city/Cham.ts';
 import type { ThongKe } from '../src/sim/city/Cham.ts';
 import { chuoiGio, NHIP_MOI_GIO } from '../src/sim/Clock.ts';
+import { Governor } from '../src/sim/autoplay/Governor.ts';
+import { docChinhSach } from '../src/sim/autoplay/Policy.ts';
 
 const SO_GIO = 10;
 
@@ -61,9 +63,13 @@ const tp = new ThanhPho({
   walker: doc('walkers.json'),
 });
 
+const thongDoc = new Governor(tp, docChinhSach(doc('policy.json')));
+tp.datThongDoc(thongDoc);
+
+const nhaDau: number = tp.soNha;
 console.log(
   `Thanh pho: ${String(tp.dsHang.length)} mat hang, ${String(tp.dsNha.length)} loai nha ` +
-    `(${String(tp.soNha)} cai), ${String(tp.dsChuoi.length)} chuoi san xuat.`,
+    `(${String(nhaDau)} cai), ${String(tp.dsChuoi.length)} chuoi san xuat.`,
 );
 
 const batDau = Date.now();
@@ -86,6 +92,13 @@ console.log(
     `dong nhat ${String(cuoi.walker.dinh)} nguoi cung luc · ` +
     `${String(cuoi.walker.boCuoc)} luot bo cuoc.`,
 );
+console.log(
+  `\nTHONG DOC - cap ${thongDoc.cap.ten}: ${String(nhaDau)} -> ${String(tp.soNha)} nha, ` +
+    `${String(tp.doiWalker.soKho)} kho.`,
+);
+for (const v of thongDoc.daLam) {
+  console.log(`  gio ${String(v.gio)}: xay ${v.viec} (cap ${v.cap})`);
+}
 console.log(
   `Da chay ${chuoiGio(tp.dongHo.soNhip)} gio game trong ${giay.toFixed(2)}s that.`,
 );

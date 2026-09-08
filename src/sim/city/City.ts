@@ -16,7 +16,7 @@ import type { DinhNghiaChuoi } from './Chains.ts';
 import { docChuoi, kiemTra } from './Chains.ts';
 import { LoiDuLieu } from './DocJson.ts';
 import type { DinhNghiaHang } from './Wares.ts';
-import { docHang, Kho } from './Wares.ts';
+import { docHang, hangHong, Kho } from './Wares.ts';
 import type { CauHinhWalker, Walker } from './Walkers.ts';
 import { docWalker, DoiWalker } from './Walkers.ts';
 
@@ -35,6 +35,14 @@ export interface DuLieuTho {
 }
 
 import type { ThongKe } from './Cham.ts';
+
+/**
+ * Duoc goi moi khi chot xong mot gio game - Phase 5 la thong doc. Khai o day chu khong
+ * import `Governor`: `city/` khong duoc biet gi ve `autoplay/`, nguoc lai thi duoc.
+ */
+export interface ThongDoc {
+  moiGio(): void;
+}
 
 /** Thanh pho song bang so, hang di bang nguoi vac. */
 export class ThanhPho implements BoDem, Giao {
@@ -64,6 +72,7 @@ export class ThanhPho implements BoDem, Giao {
   /** Phan le chua du mot mon de vut di. Giu lai de hong 2 %/gio khong bi lam tron thanh 0. */
   private readonly duHong = new Map<string, number>();
   private gioTruoc: ThongKe | undefined;
+  private thongDoc: ThongDoc | undefined;
   private readonly cauHinh: CauHinhWalker;
 
   constructor(tho: DuLieuTho) {
@@ -78,9 +87,8 @@ export class ThanhPho implements BoDem, Giao {
     this.kho = new Kho(this.dsHang);
     this.banDo = sinhBanDo(tho.banDo as Parameters<typeof sinhBanDo>[0]);
 
-    // Boc cho bang `datMotNha` chu khong `datNhaKinhTe`: thong doc con xay them nha luc
-    // dang chay, nen `daChiem` va day so cua `rngDat` phai song tiep sau constructor.
-    // Cung hat giong thi day o boc ra y het truoc Phase 5.
+    // `datMotNha` chu khong `datNhaKinhTe`: thong doc con xay tiep luc dang chay, nen
+    // `daChiem` va day so `rngDat` phai song sau constructor. Cung hat giong, cung ban do.
     this.rngDat = new Rng(this.cauHinh.hatGiongDatNha);
     const tongNha: number = this.dsNha.reduce((t, n) => t + n.so, 0);
     const cho: O[] = [];
@@ -147,11 +155,12 @@ export class ThanhPho implements BoDem, Giao {
     return this.demXay.get(ten) ?? 0;
   }
 
+  /** Giao thanh pho cho mot thong doc. Khong goi thi thanh pho dung yen nhu Phase 4. */
+  datThongDoc(td: ThongDoc): void { this.thongDoc = td; }
+
   /**
-   * Chay san mot doan truoc khi ai nhin thay, de mo van ra la thanh pho da song.
-   *
-   * Khong co no thi kho nha nao cung day, gan nhu khong ai phai di bo, va phai cho hang
-   * gio THAT o toc do 1x moi thay dong nguoi tren duong.
+   * Chay san mot doan truoc khi ai nhin thay. Khong co no thi kho nha nao cung day, gan
+   * nhu khong ai phai di bo, va phai cho hang gio THAT moi thay nguoi tren duong.
    */
   moDau(): void {
     this.chay(this.cauHinh.nhipMoDau);
@@ -204,24 +213,18 @@ export class ThanhPho implements BoDem, Giao {
     this.doiWalker.nhip(this.oKho, this.veNha);
     this.dongHo.chayThang(1);
     if (this.dongHo.soNhip % NHIP_HONG === 0) this.hong();
-    if (this.dongHo.soNhip % NHIP_MOI_GIO === 0) this.chotGio();
+    if (this.dongHo.soNhip % NHIP_MOI_GIO === 0) {
+      this.chotGio();
+      // Sau `chotGio` chu khong truoc: thong doc phai nhin bang so cua gio VUA xong.
+      this.thongDoc?.moiGio();
+    }
   }
 
-  /**
-   * Hang de lau thi hong. Chay moi `NHIP_HONG` nhip cho re, khong chay tung nhip.
-   *
-   * Tinh tren ton kho hien tai nen cang tru nhieu cang hao nhieu - do la ly do de xay kho
-   * vua du chu khong chat cang. Phan le duoc giu lai (`duHong`) de mon hong cham nhu ca
-   * muoi 2 %/gio khong bi lam tron xuong 0 mai mai.
-   */
+  /** Hang de lau thi hong. Luat nam trong `Wares.ts`; o day chi ghi so vut di. */
   private hong(): void {
-    for (const h of this.dsHang) {
-      if (h.hao === 0) continue;
-      const phan = (this.kho.co(h.ten) * h.hao) / 100 / (NHIP_MOI_GIO / NHIP_HONG);
-      const du = (this.duHong.get(h.ten) ?? 0) + phan;
-      const vut = Math.floor(du);
-      this.duHong.set(h.ten, du - vut);
-      if (vut > 0) this.cong(this.demHong, h.ten, this.kho.bot(h.ten, vut));
+    const lan: number = NHIP_MOI_GIO / NHIP_HONG;
+    for (const [ten, so] of hangHong(this.kho, this.dsHang, this.duHong, lan)) {
+      this.cong(this.demHong, ten, so);
     }
   }
 
@@ -270,7 +273,8 @@ export class ThanhPho implements BoDem, Giao {
       nha: this.dsNha.map((n) => ({
         ten: n.ten,
         hien: n.hien,
-        so: n.so,
+        // So THAT: thong doc xay them thi cot nay phai noi len dieu do.
+        so: n.so + this.soDaXay(n.ten),
         me: this.demMe.get(n.ten) ?? 0,
         doi: this.demDoi.get(n.ten) ?? 0,
         tac: this.demTac.get(n.ten) ?? 0,

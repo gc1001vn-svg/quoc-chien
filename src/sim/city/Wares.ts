@@ -121,3 +121,27 @@ export class Kho {
     return new Map(this.so);
   }
 }
+
+/**
+ * Hang de lau thi hong. Vut mot phan `hao` %/gio, chia deu cho `lanMoiGio` lan goi.
+ *
+ * Tinh tren ton kho hien tai nen cang tru nhieu cang hao nhieu - do la ly do de xay kho
+ * vua du chu khong chat cang. Phan le duoc giu lai trong `du` de mon hong cham nhu ca
+ * muoi 2 %/gio khong bi lam tron xuong 0 mai mai.
+ *
+ * @returns So thuc su vut di tung mon. Mon khong hong thi khong co trong bang.
+ */
+export function hangHong(
+  kho: Kho, ds: readonly DinhNghiaHang[], du: Map<string, number>, lanMoiGio: number,
+): Map<string, number> {
+  const ra = new Map<string, number>();
+  for (const h of ds) {
+    if (h.hao === 0) continue;
+    const phan: number = (kho.co(h.ten) * h.hao) / 100 / lanMoiGio;
+    const con: number = (du.get(h.ten) ?? 0) + phan;
+    const vut: number = Math.floor(con);
+    du.set(h.ten, con - vut);
+    if (vut > 0) ra.set(h.ten, kho.bot(h.ten, vut));
+  }
+  return ra;
+}
