@@ -48,8 +48,8 @@
   nông dân nam và nữ × 4 hướng × 2 dáng. `dong_thung` và `thung_ruou` đã **trở lại** làm
   đồ trang trí. Còn nợ lại: 8 hướng × 4 dáng vẫn để Phase 10, và bộ đồ **Ranger** trong gói
   chưa nướng (mới chỉ dùng Peasant).
-- **Chưa đo fps trên iPhone với sprite người** (07/09). Máy ảo vẽ bằng phần mềm nên số fps
-  của nó vô nghĩa. Đường lùi nếu iPhone tụt: `ZOOM_HIEN_WALKER` trong
+- ~~**Chưa đo fps trên iPhone với sprite người**~~ — **ĐÃ TRẢ 08/09: 59 fps · 3.441 sprite ·
+  1 lệnh vẽ · 0,35×.** Đường lùi nếu về sau tụt: `ZOOM_HIEN_WALKER` trong
   `src/render/CityScene.ts` đổi 0 → 0,6 là người biến mất khi thu nhỏ.
 - **Nhà kinh tế và vật thể trang trí là hai danh sách riêng** (07/09). 94 nhà kinh tế của
   `src/sim/` đặt độc lập với vật thể trang trí của bản đồ, nên trên màn hình chưa nhìn ra
@@ -81,6 +81,10 @@
   Chỗ thật sự có ăn là **tắt thêm skill dự án không dùng**: `update-config`
   `fewer-permission-prompts` `security-review` `off`, `loop` `user-invocable-only`
   ≈ **300 token/phiên** (ước lượng theo độ dài mô tả, không đo trực tiếp được). Đã làm 07/09.
+- **PWA giữ atlas cũ** — **ĐÃ TRẢ 08/09.** `skipWaiting` + `clientsClaim` trong
+  `vite.config.ts`. Trước đó service worker cũ phục vụ atlas cũ với code mới: sprite người
+  không có trong atlas, `datSprite` bỏ qua im lặng, không ai hiện trên đường. Chủ dự án
+  phải xoá dữ liệu trang 2-3 lần mới thấy.
 - `session-start-hook` trong `settings.json` khai sai tên bên trong (`startup-hook-skill`)
   nên nhiều khả năng không khớp với skill nào. Vô hại, chưa sửa.
 - ~~**Không kéo được kho `ghi-nho` từ máy ảo**~~ — **ĐÃ TRẢ 07/09.** `git clone` thẳng vẫn

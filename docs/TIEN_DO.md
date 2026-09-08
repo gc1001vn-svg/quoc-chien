@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 07/09/2026 (phiên nướng sprite người, chen giữa Phase 4 và Phase 5).
+Cập nhật: 08/09/2026 (phiên nướng sprite người, chen giữa Phase 4 và Phase 5).
 
 ## 1. Đang ở đâu
 
@@ -69,8 +69,6 @@ pull request. Chủ dự án không phải bấm gì để code lên trang.
   Trục vào tâm đông nghịt, đường rìa vắng tanh. Caesar III rải nhiều kho — sửa ở Phase 5.
 - **32 toà nhà của kinh tế chưa có sprite**, và nhà kinh tế đặt độc lập với vật thể trang
   trí nên nhìn không ra nhà nào là lò bánh. Gói Quaternius **không có cối xay và giếng**.
-- **Chưa đo fps trên iPhone với sprite người.** Đường lùi nếu tụt: `ZOOM_HIEN_WALKER` trong
-  `src/render/CityScene.ts` đổi 0 → 0,6.
 
 Toàn bộ nợ còn lại (đồ hoạ, code, môi trường, deploy): **`docs/NO_KY_THUAT.md`**.
 
