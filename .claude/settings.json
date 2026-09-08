@@ -53,6 +53,13 @@
     "ponytail-gain": "user-invocable-only",
     "ponytail-help": "user-invocable-only",
     "ponytail-review": "user-invocable-only",
+    "session-start-hook": "off",
+    "update-config": "off",
+    "fewer-permission-prompts": "off",
+    "security-review": "off",
+    "loop": "user-invocable-only",
+    "run": "off",
+    "simplify": "off",
     "dataviz": "off",
     "design": "off",
     "artifact-design": "off",
@@ -60,11 +67,6 @@
     "artifact-capabilities": "off",
     "claude-api": "off",
     "keybindings-help": "off",
-    "session-start-hook": "off",
-    "init": "off",
-    "update-config": "off",
-    "fewer-permission-prompts": "off",
-    "security-review": "off",
-    "loop": "user-invocable-only"
+    "init": "off"
   }
 }
