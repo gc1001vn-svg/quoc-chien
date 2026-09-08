@@ -32,7 +32,27 @@ export interface BanDo {
   /** Ten sprite cua tung o nen, tra theo `a * canh + b`. */
   readonly nen: readonly string[];
   /** Vat the, DA XEP theo truc sau - ve theo dung thu tu nay la dung. */
-  readonly vat: readonly OVat[];
+  readonly vat: OVat[];
+  /** Sprite danh dau kho hang, lay tu cau hinh. Rong thi kho khong hien ra. */
+  readonly spriteKho: string;
+}
+
+/** Do sau khi ve: vat the nao so nho hon thi nam xa hon, phai ve truoc. */
+function sau(v: OVat): number {
+  return v.a + v.b + 2 * v.o;
+}
+
+/**
+ * Chen mot vat the vao ban do, GIU nguyen thu tu ve.
+ *
+ * Day them vao cuoi mang la nguoi di xuyen nha: `CityScene` tin rang `banDo.vat` da xep
+ * san theo truc sau va tron nguoi vac hang vao theo thu tu do.
+ */
+export function chenVat(banDo: BanDo, v: OVat): void {
+  const s: number = sau(v);
+  let i = 0;
+  while (i < banDo.vat.length && sau(banDo.vat[i] as OVat) <= s) i += 1;
+  banDo.vat.splice(i, 0, v);
 }
 
 /** O nay co phai duong khong. */
@@ -56,23 +76,38 @@ export function congRaDuong(o: O, duongCach: number): O {
  */
 export function datNhaKinhTe(banDo: BanDo, so: number, hatGiong: number): O[] {
   const rng: Rng = new Rng(hatGiong);
-  const c: number = banDo.duongCach;
   const daChiem: Set<number> = new Set<number>();
   const ra: O[] = [];
   for (let i = 0; i < so; i += 1) {
-    for (let lan = 0; lan < BOC_TOI_DA; lan += 1) {
-      const a: number = rng.nguyen(banDo.canh);
-      const b: number = rng.nguyen(banDo.canh);
-      // Sat duong nghia la ke duong nhung khong nam tren duong.
-      if (laDuong({ a, b }, c)) continue;
-      if (a % c !== 1 && b % c !== 1 && a % c !== c - 1 && b % c !== c - 1) continue;
-      if (daChiem.has(a * banDo.canh + b)) continue;
-      daChiem.add(a * banDo.canh + b);
-      ra.push({ a, b });
-      break;
-    }
+    const o: O | undefined = datMotNha(banDo, daChiem, rng);
+    if (o === undefined) break;
+    ra.push(o);
   }
   return ra;
+}
+
+/**
+ * Boc mot o trong sat duong cho MOT nha, va danh dau da chiem.
+ *
+ * Tach rieng vi Phase 5: thong doc xay them nha luc dang chay, phai dat duoc nha moi
+ * bang dung luat luc mo van - o trong, sat duong, khong de len nha cu. `daChiem` do
+ * nguoi goi giu, nen goi lai nhieu lan van khong dat trung cho.
+ *
+ * Tra ve `undefined` khi boc `BOC_TOI_DA` lan lien tiep khong ra o nao: ban do da chat.
+ */
+export function datMotNha(banDo: BanDo, daChiem: Set<number>, rng: Rng): O | undefined {
+  const c: number = banDo.duongCach;
+  for (let lan = 0; lan < BOC_TOI_DA; lan += 1) {
+    const a: number = rng.nguyen(banDo.canh);
+    const b: number = rng.nguyen(banDo.canh);
+    // Sat duong nghia la ke duong nhung khong nam tren duong.
+    if (laDuong({ a, b }, c)) continue;
+    if (a % c !== 1 && b % c !== 1 && a % c !== c - 1 && b % c !== c - 1) continue;
+    if (daChiem.has(a * banDo.canh + b)) continue;
+    daChiem.add(a * banDo.canh + b);
+    return { a, b };
+  }
+  return undefined;
 }
 
 /** Khuon cua `data/thanh_pho_demo.json`. */
@@ -99,6 +134,8 @@ export interface CauHinhBanDo {
   readonly zoomMax: number;
   readonly zoomDau: number;
   readonly tranSprite: number;
+  /** Sprite danh dau cho kho hang. Khong khai thi kho khong hien ra man hinh. */
+  readonly spriteKho?: string;
 }
 
 /** So lan boc o that bai lien tiep thi bo mot vat the. Chan vong lap vo tan khi ban do chat. */
@@ -142,7 +179,7 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   // ra day vi `src/sim/` khong duoc import phan ve).
   vat.sort((m, n) => m.a + m.b - (n.a + n.b) + 2 * (m.o - n.o));
 
-  return { canh, duongCach: ch.duongCach, nen, vat };
+  return { canh, duongCach: ch.duongCach, nen, vat, spriteKho: ch.spriteKho ?? '' };
 }
 
 /**

@@ -6,8 +6,10 @@
  * trong vai giay, va toan bo luat kinh te test tu dong duoc.
  */
 import { DongHo, NHIP_MOI_GIO } from '../Clock.ts';
+import { Rng } from '../../core/Rng.ts';
 import type { BanDo, O } from './BanDo.ts';
-import { congRaDuong, datNhaKinhTe, sinhBanDo } from './BanDo.ts';
+import { congRaDuong, datMotNha, sinhBanDo } from './BanDo.ts';
+import { choKhoMoi, dungNha, veKho } from './XayThem.ts';
 import type { BoDem, DinhNghiaNha, Giao } from './Buildings.ts';
 import { docNha, ThuNha } from './Buildings.ts';
 import type { DinhNghiaChuoi } from './Chains.ts';
@@ -45,6 +47,12 @@ export class ThanhPho implements BoDem, Giao {
   readonly dsChuoi: readonly DinhNghiaChuoi[];
 
   private readonly nhaThat: ThuNha[] = [];
+  /** O da co nha kinh te dung tren, tra theo `a * canh + b`. Chan xay de len nhau. */
+  private readonly daChiem = new Set<number>();
+  /** Day so boc cho dat nha. Song suot van de thong doc xay tiep tu day so do. */
+  private readonly rngDat: Rng;
+  /** Thong doc da xay them bao nhieu nha moi loai. */
+  private readonly demXay = new Map<string, number>();
   private readonly demMe = new Map<string, number>();
   private readonly demDoi = new Map<string, number>();
   private readonly demTac = new Map<string, number>();
@@ -70,8 +78,17 @@ export class ThanhPho implements BoDem, Giao {
     this.kho = new Kho(this.dsHang);
     this.banDo = sinhBanDo(tho.banDo as Parameters<typeof sinhBanDo>[0]);
 
+    // Boc cho bang `datMotNha` chu khong `datNhaKinhTe`: thong doc con xay them nha luc
+    // dang chay, nen `daChiem` va day so cua `rngDat` phai song tiep sau constructor.
+    // Cung hat giong thi day o boc ra y het truoc Phase 5.
+    this.rngDat = new Rng(this.cauHinh.hatGiongDatNha);
     const tongNha: number = this.dsNha.reduce((t, n) => t + n.so, 0);
-    const cho: O[] = datNhaKinhTe(this.banDo, tongNha, this.cauHinh.hatGiongDatNha);
+    const cho: O[] = [];
+    for (let i = 0; i < tongNha; i += 1) {
+      const o: O | undefined = datMotNha(this.banDo, this.daChiem, this.rngDat);
+      if (o === undefined) break;
+      cho.push(o);
+    }
     if (cho.length < tongNha) {
       throw new LoiDuLieu('ban do', `chi dat duoc ${String(cho.length)}/${String(tongNha)} nha`);
     }
@@ -99,6 +116,35 @@ export class ThanhPho implements BoDem, Giao {
     this.doiWalker = new DoiWalker(
       { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa,
     );
+    veKho(this.banDo, { a: giua, b: giua });
+  }
+
+  /** Thong doc xay them mot nha loai `ten`. Tra ve co xay duoc khong. */
+  xayNha(ten: string): boolean {
+    const def: DinhNghiaNha | undefined = this.dsNha.find((n) => n.ten === ten);
+    if (def === undefined) return false;
+    const nha: ThuNha | undefined = dungNha(
+      def, this.nhaThat.length, this.banDo, this.daChiem, this.rngDat,
+      this.cauHinh.tranRieng, this.cauHinh.moiChuyen,
+    );
+    if (nha === undefined) return false;
+    this.nhaThat.push(nha);
+    this.demXay.set(ten, (this.demXay.get(ten) ?? 0) + 1);
+    return true;
+  }
+
+  /** Thong doc xay them mot kho o nga tu xa cac kho cu nhat. */
+  xayKho(): boolean {
+    const tot: O | undefined = choKhoMoi(this.banDo, this.doiWalker.danhSachKho);
+    if (tot === undefined) return false;
+    this.doiWalker.themKho(tot);
+    veKho(this.banDo, tot);
+    return true;
+  }
+
+  /** Da xay them bao nhieu nha loai `ten` tu dau van. */
+  soDaXay(ten: string): number {
+    return this.demXay.get(ten) ?? 0;
   }
 
   /**

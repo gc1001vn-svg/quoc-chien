@@ -191,5 +191,7 @@
   "zoomMin": 0.35,
   "zoomMax": 2.0,
   "zoomDau": 1.0,
-  "tranSprite": 5000
+  "tranSprite": 5000,
+  "_spriteKho": "Sprite danh dau kho hang, dat canh nga tu co kho. Bo trong thi kho vo hinh nhu truoc Phase 5.",
+  "spriteKho": "dong_thung"
 }

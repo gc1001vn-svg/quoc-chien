@@ -58,6 +58,8 @@ export interface Walker {
   readonly hang: string;
   /** Cong cua nha da phat - noi phai quay ve. */
   readonly nhaVe: O;
+  /** Kho ma nguoi nay di toi. Chon luc phat, giu nguyen ca chuyen. */
+  readonly kho: O;
   /** So mon dang vac. Di lay thi bang 0 cho toi luc lay duoc. */
   so: number;
   a: number;
@@ -135,7 +137,14 @@ export class DoiWalker {
   /** Da phat bao nhieu nguoi tu dau van. Chi dung de chia nam nu xen ke. */
   private daPhat = 0;
 
-  private readonly kho: O;
+  /**
+   * Cac kho hang. Mot kho duy nhat o giua ban do thi ca thanh pho do ve mot truc,
+   * duong rìa vang tanh - do la ly do Phase 5 cho thong doc xay them kho.
+   *
+   * Moi kho chi la mot DIEM BOC DO. So hang van nam chung mot so (`Kho` cua `ThanhPho`),
+   * khong chia tui rieng tung kho.
+   */
+  private readonly khoDs: O[];
   private readonly duongCach: number;
   private readonly nhipMoiBuoc: number;
   private readonly buocToiDa: number;
@@ -143,10 +152,43 @@ export class DoiWalker {
   // Gan trong than ham chu khong `constructor(private readonly kho: O)`: Node boc kieu
   // TypeScript khong nuot duoc loi viet tat do (CLAUDE.md luat 1).
   constructor(kho: O, duongCach: number, nhipMoiBuoc: number, buocToiDa: number) {
-    this.kho = kho;
+    this.khoDs = [kho];
     this.duongCach = duongCach;
     this.nhipMoiBuoc = nhipMoiBuoc;
     this.buocToiDa = buocToiDa;
+  }
+
+  /** Bao nhieu kho dang co. */
+  get soKho(): number {
+    return this.khoDs.length;
+  }
+
+  /** Danh sach kho. Chi doc - them kho phai goi `themKho`. */
+  get danhSachKho(): readonly O[] {
+    return this.khoDs;
+  }
+
+  /** Thong doc xay them mot kho. */
+  themKho(o: O): void {
+    this.khoDs.push(o);
+  }
+
+  /**
+   * Kho gan `tu` nhat, do bang duong di tren luoi (Manhattan) chu khong bang duong chim bay:
+   * walker chi di doc duong, nen khoang cach that la tong hai truc.
+   */
+  private khoGan(tu: O): O {
+    let gan: O = this.khoDs[0] as O;
+    let ngan: number = Math.abs(gan.a - tu.a) + Math.abs(gan.b - tu.b);
+    for (let i = 1; i < this.khoDs.length; i += 1) {
+      const k: O = this.khoDs[i] as O;
+      const d: number = Math.abs(k.a - tu.a) + Math.abs(k.b - tu.b);
+      if (d < ngan) {
+        gan = k;
+        ngan = d;
+      }
+    }
+    return gan;
   }
 
   /** Bao nhieu nguoi dang tren duong ngay luc nay. */
@@ -176,7 +218,7 @@ export class DoiWalker {
   /** Phat mot nguoi tu cong `tuCong` cua nha thu `nha`. */
   phat(nha: number, tuCong: O, viec: Viec, hang: string, so: number): void {
     this.ds.push({
-      nha, viec, hang, nhaVe: tuCong,
+      nha, viec, hang, nhaVe: tuCong, kho: this.khoGan(tuCong),
       so: viec === 'giao' ? so : 0,
       a: tuCong.a, b: tuCong.b,
       daToiKho: false, buoc: 0, cho: 0,
@@ -211,7 +253,7 @@ export class DoiWalker {
         con.push(w);
         continue;
       }
-      const dich: O = w.daToiKho ? w.nhaVe : this.kho;
+      const dich: O = w.daToiKho ? w.nhaVe : w.kho;
       if (w.a === dich.a && w.b === dich.b) {
         if (w.daToiKho) {
           veNha(w);
