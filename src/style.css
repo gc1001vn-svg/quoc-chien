@@ -110,3 +110,75 @@ html, body {
 .do-bang p { margin: 4px 0; }
 .do-so { font-size: 46px; font-weight: 700; color: var(--nhan); line-height: 1; }
 .do-phu { font-size: 13px; opacity: 0.7; }
+
+/* The quyet dinh: tam chan truot len tu day, chua toi mot nua man - phai con nhin thay
+   thanh pho thi moi quyet duoc. Nut cao 44px tro len cho ngon cai bam tren dien thoai. */
+.the-quyet-dinh {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  max-height: 46%;
+  overflow-y: auto;
+  padding: 14px 16px calc(env(safe-area-inset-bottom) + 14px);
+  background: rgba(8, 7, 6, 0.95);
+  border-top: 1px solid #55504a;
+}
+.the-van {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--nhan);
+}
+.the-nut { display: flex; flex-direction: column; gap: 8px; }
+.the-nut button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--chu);
+}
+.the-nut-van { display: block; font-size: 14px; font-weight: 700; }
+.the-nut-loi { display: block; font-size: 12px; opacity: 0.72; margin-top: 3px; }
+
+.su-kien {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 10px);
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  z-index: 3;
+  max-width: 62%;
+  font: 12px ui-monospace, monospace;
+  pointer-events: none;
+}
+.su-kien p {
+  margin: 2px 0;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.55);
+}
+.su-kien p[data-loai='the'] { color: var(--nhan); }
+.su-kien p[data-loai='hong'] { color: #e0857a; }
+
+.toc-do {
+  position: absolute;
+  right: calc(env(safe-area-inset-right) + 10px);
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  z-index: 4;
+  display: flex;
+  gap: 6px;
+}
+.toc-do button {
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--chu);
+}
+.toc-do button[data-bat='co'] { color: var(--nhan); border-color: var(--nhan); }

@@ -18,8 +18,16 @@ import nhaTho from '../../data/buildings.json';
 import chuoiTho from '../../data/chains.json';
 import walkerTho from '../../data/walkers.json';
 import chinhSachTho from '../../data/policy.json';
+import theTho from '../../data/decisions.json';
+import canBangTho from '../../data/balance.json';
 import { Governor } from '../sim/autoplay/Governor';
 import { docChinhSach } from '../sim/autoplay/Policy';
+import { DongCo, docNhipDo, docThe } from '../sim/decision/Engine';
+import { NhatKy } from '../sim/decision/NhatKy';
+import { Van } from '../sim/decision/Van';
+import { TheQuyetDinh } from '../ui/DecisionCard';
+import { BangSuKien } from '../ui/NhatKySuKien';
+import { HangTocDo } from '../ui/TocDo';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
 import { Camera } from './Camera';
@@ -66,9 +74,19 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
     hang: hangTho, nha: nhaTho, chuoi: chuoiTho, banDo: cauHinhTho, walker: walkerTho,
   });
   // Thong doc chay NGAY TU `moDau`: mo van ra la thanh pho da co kho thu hai va vai nha
-  // moi, dung nhu bang so cua `npm run sim:thu`.
-  thanhPho.datThongDoc(new Governor(thanhPho, docChinhSach(chinhSachTho)));
+  // moi, dung nhu bang so cua `npm run sim:thu`. Nhung KHONG hoi the trong `moDau` -
+  // hoi luc do la the hien ra truoc ca thanh pho, va dung sim khi chua co gi de nhin.
+  const nhatKy: NhatKy = new NhatKy();
+  const van: Van = new Van(
+    thanhPho,
+    new Governor(thanhPho, docChinhSach(chinhSachTho)),
+    new DongCo(docThe(theTho), docNhipDo(canBangTho)),
+    nhatKy,
+    false,
+  );
+  thanhPho.datThongDoc(van);
   thanhPho.moDau();
+  van.batDau();
   const banDo: BanDo = thanhPho.banDo;
   const cam: Camera = new Camera(
     atlas.heSo(), CAU_HINH.canh, atlas.oPx(),
@@ -91,6 +109,9 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   // no giu phan le. Tu lam tron `giay * 10` thi o 60 fps moi khung ra 0,167 -> lam tron
   // thanh 0, va mo phong dung im MAI MAI trong khi ban ve van chay muot. Da bi mot lan.
   const nhipKe: DongHo = new DongHo();
+  const theUi: TheQuyetDinh = new TheQuyetDinh(goc, nhipKe);
+  const bangSuKien: BangSuKien = new BangSuKien(goc, nhatKy);
+  const hangTocDo: HangTocDo = new HangTocDo(goc, nhipKe);
   let truoc = 0;
   const veMotKhung = (now: number): void => {
     perf.danhDau(now);
@@ -98,6 +119,13 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
     const giay: number = truoc === 0 ? 0 : (now - truoc) / 1000;
     truoc = now;
     thanhPho.chay(nhipKe.tien(giay));
+
+    const the = van.the;
+    if (the !== undefined && !theUi.hien) {
+      theUi.hienThe(the, (lc) => { van.traLoi(lc); });
+    }
+    bangSuKien.capNhat();
+    hangTocDo.capNhat();
 
     const ve: Ve = {
       gl, atlas, rongDev, caoDev,
