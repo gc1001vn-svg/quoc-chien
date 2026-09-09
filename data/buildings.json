@@ -8,6 +8,7 @@
     {
       "ten": "gieng",
       "hien": "Giếng nước",
+      "sprite": "gieng",
       "kieu": "san_xuat",
       "so": 6,
       "nhip": 100,
@@ -22,6 +23,7 @@
     {
       "ten": "ruong_lua",
       "hien": "Ruộng lúa",
+      "sprite": "ruong",
       "kieu": "san_xuat",
       "so": 5,
       "nhip": 70,
@@ -36,6 +38,7 @@
     {
       "ten": "coi_xay",
       "hien": "Cối xay",
+      "sprite": "coi_xay",
       "kieu": "san_xuat",
       "so": 3,
       "nhip": 90,
@@ -55,6 +58,7 @@
     {
       "ten": "lo_banh",
       "hien": "Lò bánh",
+      "sprite": "lo_nho",
       "kieu": "san_xuat",
       "so": 3,
       "nhip": 100,
@@ -83,6 +87,7 @@
     {
       "ten": "nha_chai",
       "hien": "Nhà chài",
+      "sprite": "nha_chai",
       "kieu": "san_xuat",
       "so": 3,
       "nhip": 80,
@@ -97,6 +102,7 @@
     {
       "ten": "lo_uop",
       "hien": "Lò ướp cá",
+      "sprite": "lo_nho",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 100,
@@ -120,6 +126,7 @@
     {
       "ten": "trai_lon",
       "hien": "Trại lợn",
+      "sprite": "trai_thu",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 80,
@@ -139,6 +146,7 @@
     {
       "ten": "lo_mo",
       "hien": "Lò mổ",
+      "sprite": "lo_lon",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 175,
@@ -168,6 +176,7 @@
     {
       "ten": "mo_muoi",
       "hien": "Mỏ muối",
+      "sprite": "mo",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 100,
@@ -182,6 +191,7 @@
     {
       "ten": "trai_ga",
       "hien": "Trại gà",
+      "sprite": "trai_thu",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 70,
@@ -201,6 +211,7 @@
     {
       "ten": "vuon_nho",
       "hien": "Vườn nho",
+      "sprite": "vuon_nho",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 90,
@@ -215,6 +226,7 @@
     {
       "ten": "xuong_ruou",
       "hien": "Xưởng rượu",
+      "sprite": "xuong",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 70,
@@ -238,6 +250,7 @@
     {
       "ten": "nha_bia",
       "hien": "Nhà bia",
+      "sprite": "xuong",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 100,
@@ -261,6 +274,7 @@
     {
       "ten": "xuong_thuoc",
       "hien": "Xưởng thuộc da",
+      "sprite": "xuong",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 90,
@@ -280,6 +294,7 @@
     {
       "ten": "trai_cuu",
       "hien": "Trại cừu",
+      "sprite": "trai_thu",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 100,
@@ -299,6 +314,7 @@
     {
       "ten": "xuong_det",
       "hien": "Xưởng dệt",
+      "sprite": "xuong",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 50,
@@ -318,6 +334,7 @@
     {
       "ten": "mo_dat_set",
       "hien": "Mỏ đất sét",
+      "sprite": "mo",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 120,
@@ -332,6 +349,7 @@
     {
       "ten": "lo_gom",
       "hien": "Lò gốm",
+      "sprite": "lo_nho",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 100,
@@ -355,6 +373,7 @@
     {
       "ten": "rung",
       "hien": "Trại đốn gỗ",
+      "sprite": "trai_go",
       "kieu": "san_xuat",
       "so": 2,
       "nhip": 60,
@@ -370,6 +389,7 @@
     {
       "ten": "mo_da_voi",
       "hien": "Mỏ đá vôi",
+      "sprite": "mo",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 300,
@@ -384,6 +404,7 @@
     {
       "ten": "lo_voi",
       "hien": "Lò vôi",
+      "sprite": "lo_nho",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 200,
@@ -407,6 +428,7 @@
     {
       "ten": "xuong_cua",
       "hien": "Xưởng cưa",
+      "sprite": "xuong",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 150,
@@ -426,6 +448,7 @@
     {
       "ten": "mo_da",
       "hien": "Mỏ đá",
+      "sprite": "mo",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 250,
@@ -440,6 +463,7 @@
     {
       "ten": "mo_quang",
       "hien": "Mỏ quặng",
+      "sprite": "mo",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 50,
@@ -454,6 +478,7 @@
     {
       "ten": "mo_than",
       "hien": "Mỏ than",
+      "sprite": "mo",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 45,
@@ -469,6 +494,7 @@
     {
       "ten": "lo_nung",
       "hien": "Lò nung",
+      "sprite": "lo_lon",
       "kieu": "san_xuat",
       "so": 3,
       "nhip": 150,
@@ -492,6 +518,7 @@
     {
       "ten": "lo_thep",
       "hien": "Lò thép",
+      "sprite": "lo_lon",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 120,
@@ -516,6 +543,7 @@
     {
       "ten": "lo_ren",
       "hien": "Lò rèn",
+      "sprite": "lo_lon",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 250,
@@ -535,6 +563,7 @@
     {
       "ten": "xuong_vu_khi",
       "hien": "Xưởng vũ khí",
+      "sprite": "xuong",
       "kieu": "san_xuat",
       "so": 1,
       "nhip": 250,
@@ -558,6 +587,7 @@
     {
       "ten": "nha_dan",
       "hien": "Nhà dân",
+      "sprite": "nha_nho_do",
       "kieu": "tieu_thu",
       "so": 30,
       "nhip": 1800,
@@ -613,6 +643,7 @@
     {
       "ten": "trai_linh",
       "hien": "Trại lính",
+      "sprite": "thap_canh",
       "kieu": "tieu_thu",
       "so": 4,
       "nhip": 1200,
@@ -635,6 +666,7 @@
     {
       "ten": "cong_truong",
       "hien": "Công trường",
+      "sprite": "cong_truong",
       "kieu": "tieu_thu",
       "so": 6,
       "nhip": 900,
@@ -654,5 +686,6 @@
       ],
       "ra": []
     }
-  ]
+  ],
+  "_sprite": "Ten sprite trong atlas. Nhieu loai nha dung chung mot hinh (moi lo, moi mo) - 12 hinh phu 32 loai."
 }

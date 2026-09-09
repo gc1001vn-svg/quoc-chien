@@ -33,6 +33,11 @@ export interface BanDo {
   readonly nen: readonly string[];
   /** Vat the, DA XEP theo truc sau - ve theo dung thu tu nay la dung. */
   readonly vat: OVat[];
+  /**
+   * O da co chu, tinh theo `a * canh + b`. Vat the trang tri VA nha kinh te dung CHUNG
+   * mot tap nay: hai tap rieng thi nha kinh te dat de len cay va nha trang tri.
+   */
+  readonly daChiem: Set<number>;
   /** Sprite danh dau kho hang, lay tu cau hinh. Rong thi kho khong hien ra. */
   readonly spriteKho: string;
 }
@@ -66,24 +71,6 @@ export function congRaDuong(o: O, duongCach: number): O {
   const da: number = Math.abs(gan(o.a) - o.a);
   const db: number = Math.abs(gan(o.b) - o.b);
   return da <= db ? { a: gan(o.a), b: o.b } : { a: o.a, b: gan(o.b) };
-}
-
-/**
- * Chia `so` cho dat cho nha kinh te, tat ca deu **sat duong** de walker toi duoc.
- *
- * Khong dung chung cho voi vat the trang tri cua ban do: hai ben deu la "nha" nhung mot
- * ben de nhin, mot ben de chay kinh te. Phase sau noi hai cai lam mot.
- */
-export function datNhaKinhTe(banDo: BanDo, so: number, hatGiong: number): O[] {
-  const rng: Rng = new Rng(hatGiong);
-  const daChiem: Set<number> = new Set<number>();
-  const ra: O[] = [];
-  for (let i = 0; i < so; i += 1) {
-    const o: O | undefined = datMotNha(banDo, daChiem, rng);
-    if (o === undefined) break;
-    ra.push(o);
-  }
-  return ra;
 }
 
 /**
@@ -179,7 +166,7 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   // ra day vi `src/sim/` khong duoc import phan ve).
   vat.sort((m, n) => m.a + m.b - (n.a + n.b) + 2 * (m.o - n.o));
 
-  return { canh, duongCach: ch.duongCach, nen, vat, spriteKho: ch.spriteKho ?? '' };
+  return { canh, duongCach: ch.duongCach, nen, vat, daChiem, spriteKho: ch.spriteKho ?? '' };
 }
 
 /**

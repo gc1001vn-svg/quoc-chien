@@ -50,12 +50,17 @@ describe('thong doc tu xay', () => {
   });
 
   it('bang so bao dung so nha THAT sau khi xay them', () => {
-    const { tp } = taoCoThongDoc();
-    tp.chay(NHIP_MOI_GIO * 10);
+    const { tp, td } = taoCoThongDoc();
+    const gio = 10;
+    tp.chay(NHIP_MOI_GIO * gio);
     const tk = tp.gioVuaXong();
     expect(tk).toBeDefined();
     const tong: number = (tk?.nha ?? []).reduce((t, n) => t + n.so, 0);
-    expect(tong).toBe(tp.soNha);
+    // Bang so chot TRUOC khi thong doc lam viec cua gio do (`City.nhip`), nen nha xay
+    // trong chinh gio cuoi chua kip vao bang. Tru ra roi hay so - khong thi phep so nay
+    // dung hay sai tuy vao viec gio cuoi thong doc co xay nha hay khong.
+    const xayGioCuoi: number = td.daLam.filter((v) => v.gio === gio && v.viec !== 'kho').length;
+    expect(tong).toBe(tp.soNha - xayGioCuoi);
   });
 
   it('khong dat thong doc thi thanh pho dung yen nhu Phase 4', () => {

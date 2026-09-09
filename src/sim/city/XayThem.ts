@@ -15,9 +15,13 @@ import { ThuNha } from './Buildings.ts';
  *
  * Khong dat DUNG o nga tu vi o do la duong: de sprite len duong thi nguoi vac hang di
  * xuyen qua no. O cheo (a+1, b+1) chac chan khong phai duong khi `duongCach > 2`.
+ *
+ * Ghi o vao `daChiem` luon: tu Phase 6B nha kinh te cung hien ra man hinh, khong danh dau
+ * thi mot cai nha se moc dung len chong thung hang cua kho.
  */
 export function veKho(banDo: BanDo, o: O): void {
   if (banDo.spriteKho === '') return;
+  banDo.daChiem.add((o.a + 1) * banDo.canh + (o.b + 1));
   chenVat(banDo, { a: o.a + 1, b: o.b + 1, ten: banDo.spriteKho, o: 1 });
 }
 
@@ -52,16 +56,21 @@ export function choKhoMoi(banDo: BanDo, cu: readonly O[]): O | undefined {
  *
  * Nha moi vao van SAN mot chuyen hang giong luc mo van: khong thi no dung im ca chuc phut
  * game cho nguoi dau tien di bo tu kho ve, va bang so nhin nhu thong doc xay hong.
+ *
+ * Dat sprite ngay tai day chu khong de nguoi goi lam: day la nha thong doc xay luc dang
+ * chay, tuc dung cai nguoi choi vua bam tren the quyet dinh. Quen chen thi bam "xay hai
+ * coi xay" xong tren man khong co gi moc len - dung cai loi ma Phase 6B di chua.
  */
 export function dungNha(
-  def: DinhNghiaNha, chiSo: number, banDo: BanDo, daChiem: Set<number>, rng: Rng,
+  def: DinhNghiaNha, chiSo: number, banDo: BanDo, rng: Rng,
   tranRieng: number, moiChuyen: number,
 ): ThuNha | undefined {
-  const o: O | undefined = datMotNha(banDo, daChiem, rng);
+  const o: O | undefined = datMotNha(banDo, banDo.daChiem, rng);
   if (o === undefined) return undefined;
   const nha = new ThuNha(
     def, chiSo, chiSo % def.nhip, o, congRaDuong(o, banDo.duongCach), tranRieng,
   );
   for (const m of def.vao) nha.nhan(m.hang, moiChuyen);
+  chenVat(banDo, { a: o.a, b: o.b, ten: def.sprite, o: 1 });
   return nha;
 }

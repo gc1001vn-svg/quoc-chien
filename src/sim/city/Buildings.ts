@@ -25,6 +25,8 @@ export type KieuNha = 'san_xuat' | 'tieu_thu';
 export interface DinhNghiaNha {
   readonly ten: string;
   readonly hien: string;
+  /** Ten sprite trong atlas. Nhieu loai nha dung chung mot hinh - xem `data/buildings.json`. */
+  readonly sprite: string;
   readonly kieu: KieuNha;
   readonly so: number;
   readonly nhip: number;
@@ -105,6 +107,7 @@ export function docNha(tho: unknown): DinhNghiaNha[] {
     ra.push({
       ten,
       hien: layChuoi(o['hien'], `${duong}.hien`),
+      sprite: layChuoi(o['sprite'], `${duong}.sprite`),
       kieu,
       so: laySoNguyen(o['so'], `${duong}.so`),
       nhip: laySoNguyen(o['nhip'], `${duong}.nhip`),
