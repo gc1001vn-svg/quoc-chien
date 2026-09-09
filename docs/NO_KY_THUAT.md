@@ -8,12 +8,13 @@
 
 ## Đồ hoạ
 
-- **28 toà nhà của kinh tế chưa có sprite.** Giếng · cối xay · lò mổ · vườn nho · nhà bia ·
-  xưởng thuộc da · trại cừu · xưởng dệt · mỏ than · mỏ đá · mỏ muối · mỏ đất sét · lò gốm.
-  Hiện chỉ là số trong `data/`.
-  **Nặng thêm từ 08/09 (Phase 6):** người chơi bấm "xây hai cối xay" mà trên màn không có
-  gì mọc lên — nợ này giờ làm hỏng chính vòng phản hồi của thẻ quyết định, không còn là
-  chuyện đẹp xấu nữa.
+- ~~**28 toà nhà của kinh tế chưa có sprite.**~~ — **ĐÃ TRẢ 09/09 (Phase 6B).** 12 sprite
+  mới phủ cả 32 loại nhà: giếng · cối xay · ruộng · vườn nho · nhà chài · trại thú · lò
+  nhỏ · lò lớn · mỏ · xưởng · trại gỗ · công trường (nhà dân và trại lính dùng sprite cũ).
+  Còn nợ lại: **giếng và cối xay chỉ là hình gần đúng tự ghép** — kit không có hai model
+  này, và cối xay **không có cánh quạt** vì công thức nướng chỉ quay được quanh trục đứng
+  (`ry`), không dựng nổi cánh đứng. Muốn có cánh thì phải thêm `rx`/`rz` cho từng mảnh
+  trong `ghep()` của `tools/nuong_sprite.mjs`.
 - **Không có cối xay và giếng đúng phong cách.** Đã tìm hết: Medieval Village (176 model)
   và Stylized Nature (68 model) đều không có. Farm Buildings có đủ `Windmill` `Well`
   `Barn` `Silo` nhưng là **nông trại Mỹ thế kỷ 19**, đã nướng thử rồi bỏ (lý do ở
@@ -56,9 +57,11 @@
 - ~~**Chưa đo fps trên iPhone với sprite người**~~ — **ĐÃ TRẢ 08/09: 59 fps · 3.441 sprite ·
   1 lệnh vẽ · 0,35×.** Đường lùi nếu về sau tụt: `ZOOM_HIEN_WALKER` trong
   `src/render/CityScene.ts` đổi 0 → 0,6 là người biến mất khi thu nhỏ.
-- **Nhà kinh tế và vật thể trang trí là hai danh sách riêng** (07/09). 94 nhà kinh tế của
-  `src/sim/` đặt độc lập với vật thể trang trí của bản đồ, nên trên màn hình chưa nhìn ra
-  nhà nào là lò bánh, nhà nào là mỏ than. Nối hai cái làm một khi có sprite thật.
+- ~~**Nhà kinh tế và vật thể trang trí là hai danh sách riêng**~~ (07/09) — **ĐÃ TRẢ 09/09
+  (Phase 6B).** Mỗi `ThuNha` chèn một `OVat` vào bản đồ, và hai bên dùng **chung một
+  `daChiem`**. Hoá ra nợ này còn giấu một lỗi: hai tập ô đã chiếm riêng nghĩa là nhà kinh
+  tế vẫn đang đặt **đè lên** cây và nhà trang trí — không ai thấy chỉ vì nhà kinh tế vô
+  hình. `tests/NhaKinhTeHien.test.ts` canh chỗ này.
 
 - **Node bóc kiểu TypeScript có hai điều cấm.** `src/sim/` phải ghi đủ đuôi `.ts` trong
   import, và **cấm `constructor(readonly x: T)`** (`ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX`).
