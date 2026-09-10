@@ -16,12 +16,12 @@ export class BangCongTrinh {
   private readonly goc: HTMLDivElement;
   private readonly nut: HTMLButtonElement;
   private readonly tp: ThanhPho;
-  private readonly bay: (o: O) => void;
+  private readonly bay: (o: O, hien: string) => void;
   /** Loai nha -> da xem toi cai thu may. Nho de bam lai thi sang cai ke tiep. */
   private readonly daXem = new Map<string, number>();
   private hien = false;
 
-  constructor(chaMe: HTMLElement, tp: ThanhPho, bay: (o: O) => void) {
+  constructor(chaMe: HTMLElement, tp: ThanhPho, bay: (o: O, hien: string) => void) {
     this.tp = tp;
     this.bay = bay;
 
@@ -58,17 +58,17 @@ export class BangCongTrinh {
       const dong: HTMLButtonElement = document.createElement('button');
       dong.type = 'button';
       dong.innerHTML = `<b>${def.hien}</b><span>${String(cho.length)}</span>`;
-      dong.addEventListener('click', () => { this.toiCaiKeTiep(def.ten); });
+      dong.addEventListener('click', () => { this.toiCaiKeTiep(def.ten, def.hien); });
       this.goc.appendChild(dong);
     }
   }
 
   /** Bay toi cai ke tiep cua loai `ten`, xoay vong khi het. */
-  private toiCaiKeTiep(ten: string): void {
+  private toiCaiKeTiep(ten: string, hien: string): void {
     const cho: readonly O[] = this.tp.viTriNha(ten);
     if (cho.length === 0) return;
     const i: number = (this.daXem.get(ten) ?? -1) + 1;
     this.daXem.set(ten, i % cho.length);
-    this.bay(cho[i % cho.length] as O);
+    this.bay(cho[i % cho.length] as O, hien);
   }
 }
