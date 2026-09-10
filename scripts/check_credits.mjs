@@ -32,9 +32,33 @@ function quet(duong) {
 }
 quet(KHO);
 
-if (thieu.length > 0) {
-  console.error(`check:credits HONG - ${thieu.length} file khong co trong ${SO}:`);
-  for (const t of thieu) console.error(`  - ${t}`);
+// Ten file atlas khong doi khi them goi model moi vao me, nen kiem rieng GOI NGUON:
+// moi `kit[].duong` trong tools/me/*.json tro toi mot goi duoi assets_source/, ten goi do
+// phai co trong so ghi cong. Thieu buoc nay thi them goi CC-BY vao atlas ma khong ai biet.
+const ME = 'tools/me';
+/** So ghi cong viet ten dep ("Tower Defense Kit"), thu muc viet gach noi. Bo het dau va hoa. */
+const gon = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+const soGon = gon(so);
+const goiThieu = new Set();
+if (existsSync(ME)) {
+  for (const f of readdirSync(ME).filter((t) => t.endsWith('.json'))) {
+    const me = JSON.parse(readFileSync(join(ME, f), 'utf8'));
+    for (const kit of Object.values(me.kit ?? {})) {
+      const goi = String(kit.duong ?? '').split('/')[1];
+      if (goi && !soGon.includes(gon(goi))) goiThieu.add(goi);
+    }
+  }
+}
+
+if (thieu.length > 0 || goiThieu.size > 0) {
+  if (thieu.length > 0) {
+    console.error(`check:credits HONG - ${thieu.length} file khong co trong ${SO}:`);
+    for (const t of thieu) console.error(`  - ${t}`);
+  }
+  if (goiThieu.size > 0) {
+    console.error(`check:credits HONG - ${goiThieu.size} goi nguon khong co trong ${SO}:`);
+    for (const g of goiThieu) console.error(`  - ${g}  (khai trong tools/me/*.json)`);
+  }
   process.exit(1);
 }
-console.log('check:credits OK - moi asset deu ghi nguon.');
+console.log('check:credits OK - moi asset va moi goi nguon deu ghi nguon.');
