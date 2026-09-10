@@ -47,6 +47,33 @@ describe('nha kinh te hien ra ban do', () => {
     }
   });
 
+  it('atlas DA NUONG co du moi ten sprite man hinh se hoi, ca 1x lan 2x', () => {
+    // Doc atlas THAT trong `public/atlas/`, khong doc me. Me dung ma atlas nuong lai chua
+    // kip commit thi tren may nguoi choi cong trinh bien mat im lang - da mat mot phien
+    // vi dung canh do (10/09: workbox giu atlas cu vi no nam trong `dist/assets/`).
+    const can = new Set<string>();
+    for (const def of docNha(nha)) can.add(def.sprite);
+    for (const v of cauHinh.vat) can.add(v.ten);
+    can.add(cauHinh.spriteKho);
+    for (const n of Object.values(cauHinh.nen)) {
+      if (typeof n === 'string') can.add(n);
+      else for (const t of n) can.add(t.ten);
+    }
+    // Bon huong, hai dang - dung nhu `sim/city/Walkers.ts`.
+    for (const kieu of ['nam', 'nu']) {
+      for (let h = 0; h < 4; h += 1) for (let d = 0; d < 2; d += 1) {
+        can.add(`nguoi_${kieu}_${String(h)}_${String(d)}`);
+      }
+    }
+    for (const co of ['1x', '2x']) {
+      const at = JSON.parse(
+        readFileSync(`public/atlas/${cauHinh.me}_${co}.json`, 'utf8'),
+      ) as { sprite: Record<string, unknown> };
+      const thieu: string[] = [...can].filter((t) => !Object.hasOwn(at.sprite, t));
+      expect(thieu, `atlas ${co} thieu: ${thieu.join(' ')}`).toEqual([]);
+    }
+  });
+
   it('mo van xong thi so vat the tang dung bang so nha kinh te', () => {
     const truoc: number = sinhBanDo(cauHinh).vat.length;
     const tp: ThanhPho = taoThanhPho();

@@ -20,6 +20,7 @@ import { TheQuyetDinh } from '../ui/DecisionCard';
 import { BangSuKien } from '../ui/NhatKySuKien';
 import { BangCongTrinh } from '../ui/BangCongTrinh';
 import { Ghim } from '../ui/Ghim';
+import { baoThieuHinh } from '../ui/BaoThieuHinh';
 import { HangTocDo } from '../ui/TocDo';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
@@ -85,6 +86,8 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   );
   cam.noiVao(canvas);
   const ghim: Ghim = new Ghim(goc);
+  // Atlas lech ban voi code thi bao ngay bang chu do, khong de `datSprite` nuot im lang.
+  baoThieuHinh(goc, atlas.thieu(tenSpriteCanCo(banDo)));
 
   let rongCss = 1;
   let caoCss = 1;
@@ -206,4 +209,24 @@ function zoomBanDau(): number {
   const tho: string | null = new URLSearchParams(window.location.search).get('zoom');
   const z: number = tho === null ? Number.NaN : Number(tho);
   return Number.isFinite(z) && z > 0 ? z : CAU_HINH.zoomDau;
+}
+
+/**
+ * Moi ten sprite man hinh se hoi atlas: nen, vat the, va nguoi vac hang.
+ *
+ * Lay tu ban do THAT chu khong tu mot danh sach viet tay - danh sach viet tay se lac hau
+ * dung luc can no nhat.
+ */
+function tenSpriteCanCo(banDo: BanDo): Set<string> {
+  const can = new Set<string>();
+  for (const ten of banDo.nen) if (ten !== undefined) can.add(ten);
+  for (const v of banDo.vat) can.add(v.ten);
+  // Bon huong, hai dang - dung nhu `sim/city/Walkers.ts`: moi buoc chi doi mot truc nen
+  // khong bao gio co huong cheo.
+  for (const kieu of ['nam', 'nu']) {
+    for (let h = 0; h < 4; h += 1) for (let d = 0; d < 2; d += 1) {
+      can.add(`nguoi_${kieu}_${String(h)}_${String(d)}`);
+    }
+  }
+  return can;
 }
