@@ -50,6 +50,10 @@ export interface Vanh {
   readonly vienNen: string;
   /** Vat thap rai tren vien. Rong thi vien chi la nen. */
   readonly vienVat: readonly string[];
+  /** Vat thap rai trong RUOT khoi pho de ban do do trong. Rong thi khong lap gi. */
+  readonly vatRuot: readonly string[];
+  /** Rai bao nhieu vat ruot trong vanh nay. */
+  readonly soLap: number;
 }
 
 export interface QuyHoach {
@@ -89,6 +93,9 @@ export function docQuyHoach(tho: unknown, canh: number, duongCach: number): QuyH
       vienNen: layChuoi(o['vienNen'], `${duong}.vienNen`),
       vienVat: layMang(o['vienVat'] ?? [], `${duong}.vienVat`)
         .map((v, j) => layChuoi(v, `${duong}.vienVat[${String(j)}]`)),
+      vatRuot: layMang(o['vatRuot'] ?? [], `${duong}.vatRuot`)
+        .map((v, j) => layChuoi(v, `${duong}.vatRuot[${String(j)}]`)),
+      soLap: o['soLap'] === undefined ? 0 : laySoNguyen(o['soLap'], `${duong}.soLap`, 0),
     };
   });
   return { canh, duongCach, vanh };

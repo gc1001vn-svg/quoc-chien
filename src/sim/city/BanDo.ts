@@ -8,7 +8,7 @@
  * Cung mot hat giong thi ra dung mot ban do - TECH_SPEC muc 8 bat buoc.
  */
 import { Rng } from '../../core/Rng.ts';
-import { sinhNen, vatVien } from './Nen.ts';
+import { sinhNen, vatLap, vatVien } from './Nen.ts';
 import { docQuyHoach, type QuyHoach } from './QuyHoach.ts';
 
 /** Mot vat the dat tren luoi. */
@@ -144,6 +144,8 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   const daChiem: Set<number> = new Set<number>();
   // Vat danh dau tren vien dat TRUOC vat trang tri, de vien luon lien tuc.
   vat.push(...vatVien(qh, rng, daChiem));
+  // Rai vat thap vao ruot khoi pho - cho ma cong trinh khong bao gio dung toi.
+  vat.push(...vatLap(qh, rng, daChiem));
   for (const loai of ch.vat) {
     const canhKhoi: number = loai.o ?? 1;
     for (let i = 0; i < loai.so; i += 1) {

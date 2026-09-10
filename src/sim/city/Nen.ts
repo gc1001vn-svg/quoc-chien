@@ -133,3 +133,43 @@ export function xaVien(qh: QuyHoach, a: number, b: number): number {
   }
   return gan;
 }
+
+/**
+ * Rai vat THAP vao RUOT khoi pho, cho ban do khoi trong hoac.
+ *
+ * Ngay 10/09 bo 157 nha trang tri vi chung cao 7-9 hang o va che mat gieng, mo. Thanh pho
+ * do ra trong hoac. Bu lai bang vat thap - bui, da, hang rao, thung - deu duoi 2 hang o
+ * nen khong che duoc gi.
+ *
+ * CHI DAT VAO RUOT KHOI PHO, tuc nhung o KHONG sat duong. Do dung la nhung o ma `datNha`
+ * khong bao gio dung toi (nha phai bam duong de nguoi vac hang di toi), nen lap bao nhieu
+ * cung khong tranh cho voi cong trinh - khong lo tai canh "vanh chat, khong dat noi nha".
+ *
+ * Moi vanh mot bo vat rieng: long thanh co ghe va hoa, cong nghiep co da va thung, nong
+ * nghiep co co cao va hang rao. Day van la "thematic continuity" cua Lynch - nhin chat vat
+ * la doan ra dang o khu nao.
+ */
+export function vatLap(qh: QuyHoach, rng: Rng, daChiem: Set<number>): OVat[] {
+  const c: number = qh.duongCach;
+  const ra: OVat[] = [];
+  for (const v of qh.vanh) {
+    if (v.vatRuot.length === 0 || v.soLap === 0) continue;
+    let dat = 0;
+    // Tran boc de khong quay vo tan khi vanh da day.
+    for (let lan = 0; lan < v.soLap * 40 && dat < v.soLap; lan += 1) {
+      const a: number = rng.nguyen(qh.canh);
+      const b: number = rng.nguyen(qh.canh);
+      if (a < 1 || b < 1 || a >= qh.canh - 1 || b >= qh.canh - 1) continue;
+      if (vanhCuaO(qh, a, b) !== v) continue;
+      if (a % c === 0 || b % c === 0) continue;
+      // Chi ruot khoi pho: bo moi o sat duong, de danh cho cong trinh.
+      if (a % c === 1 || b % c === 1 || a % c === c - 1 || b % c === c - 1) continue;
+      if (laVien(qh, a, b)) continue;
+      if (daChiem.has(a * qh.canh + b)) continue;
+      daChiem.add(a * qh.canh + b);
+      ra.push({ a, b, ten: v.vatRuot[rng.nguyen(v.vatRuot.length)] as string, o: 1 });
+      dat += 1;
+    }
+  }
+  return ra;
+}

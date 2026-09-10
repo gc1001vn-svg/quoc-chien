@@ -474,3 +474,37 @@ Bỏ hẳn `ZOOM_SOI`. Bấm một dòng thì màn **trượt tới, ghim tên l
 phóng**. Vẫn đặt công trình ở 38 % chiều cao màn và vẫn giấu vật che nó.
 
 Chụp kiểm ở 0,35×: ghim "đây" chỉ đúng cái giếng, mức thu phóng không nhúc nhích.
+
+
+## Vòng mười — lấp chỗ trống bằng vật thấp
+
+Nợ cuối trong kế hoạch, chủ dự án đã duyệt từ đầu: sáng 10/09 bỏ 157 nhà trang trí (chúng
+cao 7–9 hàng ô và che mất giếng, mỏ), thành phố trống hoác.
+
+**Chỗ lấp: đúng phần RUỘT khối phố** — những ô *không sát đường*. Đó chính là những ô mà
+`datNha` không bao giờ dùng tới, vì nhà phải bám đường cho người vác hàng đi tới. Nên lấp
+bao nhiêu cũng **không tranh chỗ xây**, không lo tái cảnh "vành chật, không đặt nổi nhà".
+
+Mỗi vành một bộ vật riêng — vẫn là "thematic continuity" của Lynch:
+
+| Vành | Vật lấp | Số |
+|---|---|---:|
+| Lõi thành | ghế băng, hoa, bụi hoa, đá lớn, thùng | 110 |
+| Thủ công | thùng rượu, thùng, hàng rào, bụi, nồi lò | 100 |
+| Công nghiệp | đá lớn, đá nhỏ, thùng, bụi, nồi lò | 130 |
+| Nông nghiệp | cỏ cao, bụi, hàng rào, nấm, hoa | 150 |
+| Quân sự | đá lớn, hàng rào, thùng, đá nhỏ | 40 |
+
+Tất cả đều **dưới 2 hàng ô** nên không che nổi công trình nào.
+
+Số đo: vật thể trên bản đồ 550 → **1.081**, nhưng sprite ở 0,35× chỉ 3.371 → **3.464**
+(trần 5.000) vì vật lấp rải khắp bản đồ, một khung chỉ thấy một phần nhỏ.
+
+**Và sản lượng lên cao nhất từ trước tới nay: 87.658 mòn một giờ, hơn cả trước khi quy
+hoạch (86.148).** Vật lấp làm lệch dòng ngẫu nhiên nên chỗ đặt nhà đổi theo, và tình cờ ra
+bố cục tốt hơn. Số chuyến thì xuống 254k — lần thứ hai trong ngày xác nhận **số chuyến là
+phương tiện, sản lượng mới là kết quả**.
+
+Sửa nốt một test giòn: chặn trên của `banDo.vat.length` đang là một hệ số đoán (`khai * 2`).
+Nay tính thẳng từ cấu hình — `khai + tổng soLap + số ô viền` — nên thêm vật không phải sửa
+test, mà test vẫn bắt được phình.

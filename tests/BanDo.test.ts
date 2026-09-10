@@ -80,10 +80,17 @@ describe('sinh ban do trung bay', () => {
     // NHA trang tri: chung khong co chuc nang gi ma sprite cao 7-9 hang o, che mat gieng va
     // mo dung sau. Con lai cay, bui, da, thung - toan thu thap.
     expect(khai).toBeGreaterThan(200);
-    // Tu 10/09 `sinhBanDo` con rai them vat danh dau doc duong VIEN giua cac vanh, nen
-    // tong lon hon so khai. Chan tren de vien khong phinh thanh mot bien vat the.
+    // Tu 10/09 `sinhBanDo` con rai them hai thu: vat danh dau doc duong VIEN, va vat thap
+    // lap vao RUOT khoi pho. Chan tren tinh thang tu cau hinh chu khong doan mot he so -
+    // he so doan thi moi lan them vat lai phai sua test, va no khong con bat duoc gi.
+    const qh = docQuyHoach(CAU_HINH.vanh, CAU_HINH.canh, CAU_HINH.duongCach);
+    let oVien = 0;
+    for (let a = 0; a < CAU_HINH.canh; a += 1) {
+      for (let b = 0; b < CAU_HINH.canh; b += 1) if (laVien(qh, a, b)) oVien += 1;
+    }
+    const lap: number = qh.vanh.reduce((t, v) => t + v.soLap, 0);
     expect(banDo.vat.length).toBeGreaterThan(khai * 0.97);
-    expect(banDo.vat.length).toBeLessThan(khai * 2);
+    expect(banDo.vat.length).toBeLessThanOrEqual(khai + lap + oVien);
   });
 
   it('duong vien co that: co vat danh dau, va duong van di xuyen qua', () => {

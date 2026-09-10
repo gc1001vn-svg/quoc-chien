@@ -152,7 +152,14 @@
       "vienVat": [
         "hang_rao",
         "da_lon"
-      ]
+      ],
+      "vatRuot": [
+        "da_lon",
+        "hang_rao",
+        "dong_thung",
+        "da_nho"
+      ],
+      "soLap": 40
     },
     {
       "khu": "do_thi",
@@ -177,7 +184,16 @@
         "da_lon",
         "bui_hoa",
         "ghe_bang"
-      ]
+      ],
+      "vatRuot": [
+        "ghe_bang",
+        "hoa",
+        "bui_hoa",
+        "da_lon",
+        "dong_thung",
+        "bui"
+      ],
+      "soLap": 110
     },
     {
       "khu": "san_xuat",
@@ -202,7 +218,15 @@
         "hang_rao",
         "bui",
         "thung_ruou"
-      ]
+      ],
+      "vatRuot": [
+        "thung_ruou",
+        "dong_thung",
+        "hang_rao",
+        "bui",
+        "noi_lo"
+      ],
+      "soLap": 100
     },
     {
       "khu": "cong_nghiep",
@@ -227,7 +251,15 @@
         "da_lon",
         "da_nho",
         "dong_thung"
-      ]
+      ],
+      "vatRuot": [
+        "da_lon",
+        "da_nho",
+        "dong_thung",
+        "bui",
+        "noi_lo"
+      ],
+      "soLap": 130
     },
     {
       "khu": "nong_nghiep",
@@ -252,7 +284,17 @@
         "hang_rao",
         "bui",
         "co_cao"
-      ]
+      ],
+      "vatRuot": [
+        "co_cao",
+        "bui",
+        "hang_rao",
+        "nam",
+        "hoa",
+        "bui_hoa"
+      ],
+      "soLap": 150
     }
-  ]
+  ],
+  "_vatRuot": "Vat THAP rai vao RUOT khoi pho cho ban do khoi trong hoac - tat ca deu duoi 2 hang o nen khong che duoc cong trinh. Chi dat vao o KHONG sat duong, tuc cho ma nha khong bao gio dung toi, nen lap bao nhieu cung khong tranh cho xay. Moi vanh mot bo rieng: long thanh co ghe va hoa, cong nghiep co da va thung, nong nghiep co co cao va hang rao."
 }

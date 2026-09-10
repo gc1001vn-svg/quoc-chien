@@ -36,9 +36,9 @@ Chi tiết: `docs/NHAT_KY/PHASE_6B.md` · kế hoạch: `docs/ke-hoach/2026-09-1
 | Thước | Trước | Sau |
 |---|---:|---:|
 | Cặp giếng cách nhau ≤4 ô | 10/21 | **0/66** (gần nhất 9 ô) |
-| Sản lượng một giờ | 86.148 | **85.616** (−0,6%) |
-| Chuyến một giờ | 321.009 | 276.053 (−14%) |
-| Sprite ở 0,35× | 3.343 | 3.402 (trần 5.000) |
+| Sản lượng một giờ | 86.148 | **87.658** (+1,8% — cao nhất từ trước tới nay) |
+| Chuyến một giờ | 321.009 | 253.984 (−21%) |
+| Sprite ở 0,35× | 3.343 | 3.464 (trần 5.000) |
 | Trang atlas | 2 | 2 (trần 4) |
 
 `npm run do` → **6/6 thước** · **133 test** · `sim:thu` ĐẠT, 0 lượt bỏ cuộc.
@@ -55,9 +55,10 @@ sản lượng mới là kết quả** — lần sau đặt ngưỡng vào cái 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
 1. **Đóng hẳn tab cũ** rồi mở link, mở **hai lần**.
-2. Góc trái trên phải thấy **`11/09 00:16`** hoặc mới hơn (ngày giờ bản build).
-3. Thu nhỏ hết cỡ rồi **kéo từ giữa ra rìa**. Phải đi qua bốn vùng khác nhau:
-   nhà dân dày ở giữa → xưởng và lò → mỏ và lò nung → ruộng và trại thú.
+2. Góc trái trên phải thấy **`11/09 00:38`** hoặc mới hơn (ngày giờ bản build).
+3. Thu nhỏ hết cỡ rồi **kéo từ giữa ra rìa**. Phải đi qua bốn vùng khác nhau, và **chất
+   đất, cây cỏ, đồ đạc mỗi vùng một kiểu**: nhà dân dày + ghế + hoa ở giữa → xưởng và lò +
+   thùng rượu → mỏ và lò nung + đá sỏi → ruộng và trại thú + cỏ cao, hàng rào gỗ.
 4. Giữa hai vùng có một **dải viền**: đổi màu nền, có hàng rào và bụi cây chạy dọc.
    Đường vẫn cắt qua viền — người vác hàng đi bình thường.
 5. Bấm **`⌂`** → **Giếng nước**, bấm liên tiếp 12 lần. **Không hai cái nào sát nhau nữa.**
@@ -70,8 +71,8 @@ sản lượng mới là kết quả** — lần sau đặt ngưỡng vào cái 
 - **Người vác hàng đi tay không.** Chủ dự án nhận ra 09/09: người đi qua đi lại mà trên
   tay không có gì. Kit có sẵn thùng, bao, sọt để gắn vào tay. **Chốt: để Phase 10**, nướng
   một lần cùng bộ 8 hướng × 4 dáng.
-- **Bản đồ thưa hơn trước** — bỏ 157 vật trang trí thì thành phố trống ra. Cần bù bằng vật
-  **thấp** (bụi, đá, hàng rào, thùng, luống rau), không bằng nhà. Chưa làm.
+- ~~Bản đồ thưa hơn trước~~ — **ĐÃ TRẢ 11/09**: lấp 530 vật thấp vào **ruột khối phố**,
+  chỗ mà nhà không bao giờ dùng tới nên không tranh chỗ xây. Mỗi vành một bộ vật riêng.
 - **Mỗi kho chưa có túi hàng riêng** (chốt tạm 08/09).
 - Mới có **6 thẻ**, đều là thẻ kinh tế. Thẻ chính sách kiểu Civ, công nghệ, quân sự, ngoại
   giao thuộc Phase 8/9/11.
