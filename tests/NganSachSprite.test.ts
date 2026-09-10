@@ -23,7 +23,7 @@ const CAO_CSS = 402;
 
 /** Atlas that, khong co texture - phan toan cua `Atlas` khong can GPU. */
 function atlasThat(co: string): Atlas {
-  const bo = docBoAtlas(JSON.parse(readFileSync(`public/assets/atlas/${CAU_HINH.me}_${co}.json`, 'utf8')));
+  const bo = docBoAtlas(JSON.parse(readFileSync(`public/atlas/${CAU_HINH.me}_${co}.json`, 'utf8')));
   return new Atlas(bo, []);
 }
 

@@ -17,7 +17,7 @@ import { join } from 'node:path';
 import { TrinhDuyet } from './lib/cdp.mjs';
 
 const CHROMIUM = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium';
-const KHO = 'public/assets/atlas';
+const KHO = 'public/atlas';
 const O = 14;
 
 const ten = process.argv[2] ?? 'trung_co_1x';

@@ -30,7 +30,7 @@ interface Atlas {
   sprite: Record<string, O>;
 }
 
-const KHO = 'public/assets/atlas';
+const KHO = 'public/atlas';
 const ten: string[] = existsSync(KHO)
   ? readdirSync(KHO).filter((f) => f.endsWith('.json'))
   : [];

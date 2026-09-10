@@ -50,7 +50,7 @@ export function coTheoDpr(dpr: number): '1x' | '2x' {
 
 /** Tai file JSON cua mot bo atlas, vi du `trung_co` co `2x`. */
 export async function taiBoAtlas(me: string, co: '1x' | '2x'): Promise<BoAtlas> {
-  const duong: string = assetUrl(`assets/atlas/${me}_${co}.json`);
+  const duong: string = assetUrl(`atlas/${me}_${co}.json`);
   const traLoi: Response = await fetch(duong);
   if (!traLoi.ok) throw new Error(`Khong tai duoc ${duong}: ${String(traLoi.status)}`);
   return docBoAtlas(await traLoi.json());
@@ -122,6 +122,19 @@ export class Atlas {
     return this.bo.sprite[ten] !== undefined;
   }
 
+  /**
+   * Nhung ten trong `can` ma atlas khong co.
+   *
+   * Goi mot lan luc mo man. Atlas lech ban voi code la loi da tai dien hai lan va ca hai
+   * lan deu cam nhu hen - `datSprite` bo qua ten la khong ke gi. Doi chieu truoc cho no
+   * thanh mot dong chu do tren man.
+   */
+  public thieu(can: Iterable<string>): string[] {
+    const ra: string[] = [];
+    for (const ten of can) if (!this.co(ten)) ra.push(ten);
+    return ra;
+  }
+
   /** Tra o sprite theo ten. Khong co thi bao loi - ten sai la loi lap trinh, khong am tham. */
   public o(ten: string): OSprite {
     const s: OSprite | undefined = this.bo.sprite[ten];
@@ -144,7 +157,7 @@ export class Atlas {
 /** Tai cac trang PNG cua mot bo atlas roi nap len GPU. */
 export async function napTrangLenGpu(bo: BoAtlas, gl: Gl): Promise<WebGLTexture[]> {
   const anh: HTMLImageElement[] = await Promise.all(
-    bo.trang.map(async (ten) => taiAnh(assetUrl(`assets/atlas/${ten}`))),
+    bo.trang.map(async (ten) => taiAnh(assetUrl(`atlas/${ten}`))),
   );
   return anh.map((a) => gl.napAtlas(a));
 }

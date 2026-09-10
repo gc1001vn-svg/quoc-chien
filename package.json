@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "vite build && node scripts/check_sw_atlas.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -24,7 +24,8 @@
     "check:credits": "node scripts/check_credits.mjs",
     "chup:man": "node scripts/chup_man.mjs",
     "sim:thu": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_thu.ts",
-    "do": "bash scripts/do.sh"
+    "do": "bash scripts/do.sh",
+    "check:sw": "node scripts/check_sw_atlas.mjs"
   },
   "repository": {
     "type": "git",

@@ -460,7 +460,7 @@ async function nuong(tenMe, heSo) {
     may.close();
   }
 
-  const thuMuc = 'public/assets/atlas';
+  const thuMuc = 'public/atlas';
   mkdirSync(thuMuc, { recursive: true });
   const dau = `${tenMe}_${heSo}x`;
   raPng.forEach((p, i) => writeFileSync(join(thuMuc, `${dau}_${i}.png`), p));

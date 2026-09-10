@@ -14,7 +14,7 @@ import { docBoAtlas } from '../src/render/Atlas';
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
 
 function doc(ten: string): ReturnType<typeof docBoAtlas> {
-  return docBoAtlas(JSON.parse(readFileSync(`public/assets/atlas/${ten}.json`, 'utf8')));
+  return docBoAtlas(JSON.parse(readFileSync(`public/atlas/${ten}.json`, 'utf8')));
 }
 
 describe('sinh ban do trung bay', () => {
