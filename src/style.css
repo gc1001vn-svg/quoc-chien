@@ -13,6 +13,10 @@
 
 html, body {
   margin: 0;
+  /* Safari tren iPhone tu phong chu trong mot so bo cuc - bang su kien phinh to che het
+     man hinh (chu du an bao 10/09). Ghim 100 % thi chu dung bang so px da dat. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   height: 100%;
   overflow: hidden;
   background: var(--nen);
@@ -51,10 +55,12 @@ html, body {
 .nap-hong { color: #e08a70; }
 
 /* Duong sang trang do tran sprite. Chu du an bam tu dien thoai, khong phai go dia chi. */
+/* Nam TREN hang toc do (cao 40 px + 10 px le): hai cai cung neo goc phai duoi thi nut do
+   nam lot duoi hang nut toc do, doc khong ra - da bi 10/09. */
 .nut-do {
   position: absolute;
   right: calc(env(safe-area-inset-right) + 10px);
-  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  bottom: calc(env(safe-area-inset-bottom) + 60px);
   z-index: 3;
   font-size: 12px;
   padding: 6px 11px;
@@ -151,15 +157,23 @@ html, body {
   left: calc(env(safe-area-inset-left) + 10px);
   bottom: calc(env(safe-area-inset-bottom) + 10px);
   z-index: 3;
-  max-width: 62%;
-  font: 12px ui-monospace, monospace;
+  /* 42 % chu khong 62 %: cho ba dong nay du doc ma van con nhin duoc thanh pho.
+     Rong hon, hay de su kien tu xuong dong, la bang lan het nua duoi man - da bi 10/09. */
+  max-width: 42%;
+  font: 11px/1.35 ui-monospace, monospace;
   pointer-events: none;
+  opacity: 0.9;
 }
 .su-kien p {
   margin: 2px 0;
   padding: 2px 7px;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.55);
+  /* MOT dong moi su kien. Dong "Xay hai coi xay - xay lua thanh bot -> Xay Coi xay 2/2"
+     dai gap doi cac dong khac; de no cuon xuong thi bang cao gap ruoi. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .su-kien p[data-loai='the'] { color: var(--nhan); }
 .su-kien p[data-loai='hong'] { color: #e0857a; }

@@ -1,5 +1,8 @@
 /**
- * Vai dong su kien gan nhat, goc man hinh.
+ * BA dong su kien gan nhat, goc trai duoi.
+ *
+ * Bon dong o 62 % chieu rong lan het nua duoi man hinh iPhone - chu du an bao "che het
+ * man hinh" ngay 10/09. Ba dong, moi dong mot hang, 42 % chieu rong (xem `style.css`).
  *
  * Ve lai chi khi nhat ky DAI RA, khong ve moi khung: 60 lan mot giay dung `textContent`
  * cho vai chuc dong la tu tay lam rot fps.
@@ -12,7 +15,7 @@ export class BangSuKien {
   private readonly soDong: number;
   private daVe = -1;
 
-  constructor(chaMe: HTMLElement, nhatKy: NhatKy, soDong = 4) {
+  constructor(chaMe: HTMLElement, nhatKy: NhatKy, soDong = 3) {
     this.nhatKy = nhatKy;
     this.soDong = soDong;
     this.goc = document.createElement('div');
