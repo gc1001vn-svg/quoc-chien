@@ -41,20 +41,20 @@ describe('DongHo', () => {
     expect(dh.soNhip).toBe(tong);
   });
 
-  it('toc do 0 la dung han, toc do 8 nhanh gap tam', () => {
+  it('toc do 0 la dung han, toc do 10 nhanh gap muoi', () => {
     const dung = new DongHo();
     dung.tocDo = 0;
     expect(dung.tien(5)).toBe(0);
     expect(dung.soNhip).toBe(0);
 
     const nhanh = new DongHo();
-    nhanh.tocDo = 8;
-    expect(nhanh.tien(1)).toBe(80);
+    nhanh.tocDo = 10;
+    expect(nhanh.tien(1)).toBe(100);
   });
 
   it('chay lai sau khi may treo thi bo bot, khong chay bu ca ngan nhip', () => {
     const dh = new DongHo();
-    // 30 giay that o 8x la 2.400 nhip - chay het trong mot khung hinh se giat hinh.
+    // 30 giay that o 10x la 3.000 nhip - chay het trong mot khung hinh se giat hinh.
     expect(dh.tien(30)).toBeLessThanOrEqual(200);
   });
 
