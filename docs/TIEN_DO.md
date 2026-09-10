@@ -3,35 +3,31 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — 23 loại nhà thôi dùng chung năm cái hình).
+Cập nhật: 10/09/2026 (Phase 6B — mỗi loại nhà một DÁNG riêng, và số phiên bản).
 
 ## 1. Đang ở đâu
 
-**MỖI LOẠI NHÀ MỘT HÌNH RIÊNG.** Phase 6/13 xong, cộng một phiên trả nợ.
+**MỖI LOẠI NHÀ MỘT DÁNG RIÊNG — và giờ có SỐ PHIÊN BẢN để khỏi đoán.**
 
-Trước phiên này **23 loại nhà dùng chung 5 hình** — sáu loại mỏ y hệt nhau, sáu loại xưởng
-y hệt nhau, tám cái lò y hệt nhau. Lý do: kho chỉ có 15 công trình nguyên khối.
+Vòng trước tôi phân biệt 23 loại nhà bằng **màu**. Chủ dự án xem thật rồi bảo vẫn giống
+nhau — và anh đúng: xem ở **đúng cỡ 1×** thì sáu cái lò cộng nhà chài là **bảy cái nhà
+tường gạch một khuôn**, chỉ khác màu mái. Màu không đủ, **phải khác dáng**.
 
-Dò đủ ba bước rồi tìm được **KayKit Medieval Hexagon Pack** (CC0, **cùng hoạ sĩ** với gói
-đang dùng): 135 công trình + 68 vật trang trí. Kho 1.855 → **2.781 model**.
+Nướng thử toàn bộ 36 model nguyên khối chưa dùng rồi nhìn tận mắt, thay vì đoán. Kết quả:
 
-**25 sprite mới, không tự vẽ một nét nào:**
-
-| Nhóm | Cách phân biệt |
+| Trước | Sau |
 |---|---|
-| Lò rèn · xưởng cưa · xưởng rượu · nhà bia · xưởng vũ khí · xưởng dệt · trại lính · nhà dân | **Model riêng hẳn** |
-| 6 hầm mỏ | Cùng model, khác **màu quặng** + khác **đồ chất quanh** |
-| 8 lò | Khác **cỡ** (lò lớn 224 px, lò nhỏ 173 px) + khác **màu mái** + khác đồ nghề |
-| 3 trại thú | Thêm **lán**, khác màu nền và màu lán |
+| 8 lò = 2 khuôn nhà gạch | vòm tròn · tháp đá tối · tháp tròn mái nón · tháp bát giác trắng · nhà gạch lớn · nhà gạch nhỏ · nhà mái hiên · giàn gỗ phơi |
+| 6 mỏ = cùng một khối đá | mỗi mỏ một khối núi khác |
+| xưởng rượu trùng nhà bia | **cối nước có bánh xe** ép nho |
+| trại đốn gỗ trùng xưởng cưa | **rừng cây** + đống gỗ + lều |
+| công trường, nhà chài trùng lò | **giàn giáo thật** · **nhà gỗ nâu** |
 
-Dọn luôn 11 sprite nhà trang trí không ai dùng. Kho không có model lợn, gà, cừu — ghi vào
-`NGUON_MO.md` mục 8.
+**Số phiên bản in ngay đầu thanh đo fps:** `b83 · 10/09`. Chụp màn gửi là biết ngay đang
+xem bản nào — hết cảnh "không biết có phải chưa cập nhật không".
 
-Cũng tải sẵn **Kenney Fantasy Town Kit 2.0** (167 model CC0) để dành, theo yêu cầu.
-
-**Bắt được một lỗi tự gây ra sáng nay:** `check:credits` **chạy rỗng** — nó quét
-`public/assets/`, mà sáng nay atlas đã dời về `public/atlas/`, script thấy thư mục không có
-thì báo ĐẠT. Sửa: thư mục biến mất là **HỎNG**.
+**Bắt thêm một lỗi:** bỏ bớt sprite làm bản 2× gọn còn **một trang**, nhưng file trang cũ
+**1,8 MB vẫn nằm lại** và vẫn được tải về máy người chơi. Máy nướng giờ tự xoá trang thừa.
 
 Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 
@@ -43,23 +39,28 @@ Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 |---|---:|---:|
 | Sprite một khung ở 0,35× | 3.343 | 5.000 |
 | Lệnh vẽ | **1** | 4 |
-| Trang atlas (1× và 2× cộng lại) | 3 | 4 |
-| Loại nhà dùng chung hình với loại khác | **0** | 0 |
+| Trang atlas (1× và 2× cộng lại) | **2** | 4 |
+| Loại nhà trùng dáng với loại khác | **0** | 0 |
 
 ## 3. Việc của chủ dự án
 
-**Xem 32 loại nhà giờ có khác nhau không.**
+**Nhìn số phiên bản trước, rồi mới xem nhà.**
 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
 1. **Đóng hẳn tab cũ** rồi mở link. Mở **hai lần**.
-2. Đầu màn có dải đỏ "ATLAS CŨ" thì chụp gửi lại — không có thì đi tiếp.
-3. Bấm **`⌂`** → bấm lần lượt **Mỏ than · Mỏ muối · Mỏ đá · Mỏ quặng**. Bốn cái phải
-   **khác màu nhau** và có đồ chất quanh khác nhau.
-4. Bấm **Lò rèn** rồi **Lò thép** — hai cái lò tròn có ống khói, mái đỏ và mái xanh.
-5. Bấm **Xưởng cưa** (có lưỡi cưa) · **Xưởng rượu** (thùng rượu khổng lồ) · **Xưởng vũ khí**
-   (bia bắn) · **Trại lính** (như một cái pháo đài nhỏ).
-6. Cái nào vẫn thấy giống nhau thì chụp gửi, ghi rõ hai cái nào.
+2. **Nhìn góc trái trên**, dòng chữ đầu tiên phải là **`b87`** (hoặc lớn hơn).
+   - Số nhỏ hơn `b87` → **máy còn bản cũ**, đóng hẳn trang rồi mở lại. Đừng xem tiếp,
+     nhìn nhà lúc này là nhìn bản cũ.
+   - Có dải đỏ "ATLAS CŨ" → chụp gửi lại.
+3. Đúng `b87` rồi mới bấm **`⌂`** và xem tám cái lò:
+   **Lò rèn** vòm tròn · **Lò thép** tháp đá tối · **Lò nung** tháp tròn mái nón ·
+   **Lò vôi** tháp bát giác trắng · **Lò mổ** nhà gạch lớn · **Lò gốm** nhà gạch nhỏ ·
+   **Lò bánh** nhà mái hiên · **Lò ướp cá** giàn gỗ.
+4. Sáu mỏ: mỗi cái một khối núi khác nhau, khác cả màu.
+5. **Xưởng rượu** giờ là cối nước có bánh xe · **Trại đốn gỗ** là rừng cây · **Công trường**
+   là giàn giáo.
+6. Cái nào vẫn giống nhau thì chụp gửi, ghi rõ hai cái nào **và số phiên bản trên màn**.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

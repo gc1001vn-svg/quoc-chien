@@ -352,3 +352,38 @@ Cũng tải sẵn **Kenney Fantasy Town Kit 2.0** (167 model CC0) theo yêu cầ
 nướng, để dành.
 
 Số đo: 6/6 thước · `sim:thu` ĐẠT · **3.343 sprite · 1 lệnh vẽ ở 0,35×** · atlas 3 trang/4.
+
+
+## Vòng sáu — số phiên bản, và dò lại thì đúng là vẫn giống nhau
+
+Chủ dự án: *"Vẫn thấy nhiều cái giống nhau ko khác gì. Ko biết có phải chưa cập nhật ko.
+Gắn số phiên bản vào để dễ xác nhận."*
+
+**Số phiên bản** (`scripts/ghi_phien_ban.mjs` → `src/PhienBan.ts`, sinh lúc build): in ngay
+đầu thanh đo fps — `b83 · 10/09`. Dùng số đếm commit chứ không phải mã băm, để chủ dự án
+đọc được và so được với con số tôi nói. CI build lại sau khi checkout nên số trên máy chủ
+luôn đúng, kể cả khi bản trong git chậm một commit.
+
+**Rồi dò lại — và anh đúng.** Xem sprite ở **đúng cỡ 1×** thay vì phóng to ba lần:
+sáu cái lò + nhà chài là **bảy cái nhà tường gạch một khuôn**, chỉ khác màu mái. `lo_uop`
+mái xanh và `nha_chai` mái xanh gần như không phân biệt được. Sáu mỏ cùng một khối đá.
+Vòng năm đổi màu là chưa đủ — **phải khác DÁNG.**
+
+Nướng thử toàn bộ model nguyên khối chưa dùng (36 cái) rồi nhìn, thay vì đoán. Tìm ra:
+tháp canh đá tối, tháp tròn mái nón, tháp bát giác, giàn giáo, cối nước có bánh xe, rừng
+cây, ba khối núi. Đủ để mỗi loại một dáng:
+
+| Trước | Sau |
+|---|---|
+| 8 lò = 2 khuôn nhà gạch, khác màu mái | vòm tròn · tháp đá tối · tháp tròn mái nón · tháp bát giác trắng · nhà gạch lớn · nhà gạch nhỏ · nhà có mái hiên · giàn gỗ phơi |
+| 6 mỏ = cùng một khối đá | mỗi mỏ một khối núi khác (`mountain_A/B/C` · `kk:mountain` · `rock_single_D` · vách trơn) |
+| xưởng rượu = thùng rượu (trùng nhà bia) | **cối nước có bánh xe** ép nho |
+| trại đốn gỗ = xưởng cưa | **rừng cây** + đống gỗ + lều |
+| công trường = tường gạch xây dở | **giàn giáo thật** |
+| nhà chài = nhà gạch mái xanh | **nhà gỗ nâu** + thùng + lưới |
+
+**Bắt thêm một lỗi:** bỏ bớt sprite làm bản 2× gọn lại còn **một trang**, nhưng
+`trung_co_2_2x_1.png` cũ vẫn nằm lại — **1,8 MB rác** vẫn được PWA tải về máy người chơi.
+`nuong_sprite.mjs` giờ tự xoá trang thừa. Atlas 3 trang → **2 trang**.
+
+Số đo: 6/6 thước · `sim:thu` ĐẠT · atlas 2 trang/4 · **0 loại nhà nào còn trùng dáng**.
