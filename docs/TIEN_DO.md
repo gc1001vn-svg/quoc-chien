@@ -82,11 +82,22 @@ Nhìn thấy thế giới ngoài thành phố.
 (xanh dương · xanh lá · đỏ · vàng · trung lập) — bốn phe cộng bên trung lập, đúng thứ
 Phase 7 cần. Không phải tải thêm.
 
-**Ba điều chủ dự án chốt trước khi lập kế hoạch:**
+**Ba điều đã chốt 11/09 — phiên sau khỏi hỏi lại:**
 
-1. Bản đồ tỉnh dùng **ô lục giác** (theo gói có sẵn) hay **ô vuông isometric** như thành phố?
-2. Bao nhiêu **nước**, bao nhiêu **tỉnh** cho bản đầu?
-3. Phase 7 chỉ **nhìn được** bản đồ, hay bấm vào tỉnh **xây được luôn**?
+1. **Ô lục giác.** Chủ dự án chốt.
+2. **4 nước · 28 tỉnh · mỗi tỉnh 7 hex.** Chủ dự án giao Claude quyết; căn cứ:
+   - 4 nước = người chơi + 3 đối thủ. `GAME_SPEC` mục 10 nêu đúng 3 nước ví dụ; điều kiện
+     thắng **Ngoại giao** ("đa số nước bầu") cần ≥3 nước khác mới có nghĩa; gói
+     `kaykit-medieval-hexagon` có nhà **5 màu** = 4 phe + trung lập, không phải tô màu giả.
+   - 28 tỉnh = 4 nước × 5 tỉnh khởi đầu + **8 tỉnh trung lập** để bành trướng mà chưa phải
+     tuyên chiến.
+   - Mỗi tỉnh = **1 hex thủ phủ ở giữa + vành 6 hex**, trong đó **4–6 hex là ô xây dựng**
+     (`GAME_SPEC` mục 122–125). Hình lục giác cho đúng 6 ô vành — khớp sẵn, không ép.
+3. **Bấm vào tỉnh xây được luôn.** Chủ dự án chốt.
+
+**Rủi ro phải đo trước khi hứa:** 28 × 7 = 196 hex + biển/viền + cờ hiệu + công trình
+≈ 360 sprite — nhẹ so với trần 5.000. Nhưng **nướng mẻ hex mới sẽ thêm trang atlas**:
+đang 2 trang, trần 4. Đo số trang trước khi nướng cả bộ, đừng nướng xong mới biết vượt.
 
 **Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G, không bỏ bước nào.
