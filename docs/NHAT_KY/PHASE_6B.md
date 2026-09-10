@@ -410,3 +410,52 @@ Kiểm bằng cách **tự clone nông một commit** đúng như CI làm: `git 
 Bài học lặp lại lần thứ ba trong ngày: **đo trên máy mình không phải là đo.** Máy tôi có
 đủ lịch sử git, máy chủ thì không; máy tôi có atlas mới, máy chủ thì giữ bản cũ; máy tôi
 xem sprite phóng to ba lần, chủ dự án xem cỡ thật.
+
+
+## Vòng tám — quy hoạch lại theo vành, và một ngưỡng đo sai thứ
+
+Chủ dự án: *"quy hoạch vẫn quá lộn xộn. Như hình tôi đưa 1 đống giếng nước ở cùng với
+nhau... Mỗi khu vực nên có 1 rìa bao quanh để phân biệt."*
+
+Đo trước: **6 trong 12 giếng nằm chung một phường**, 10/21 cặp cách nhau dưới 4 ô. Nguyên
+nhân là **tôi hiểu sai Perry** — một đơn vị lân cận có MỘT trung tâm, nên 12 giếng nghĩa là
+12 đơn vị lân cận chứ không phải 4. Kéo cả ba giếng của một phường về cùng một lõi thì
+chúng chồng lên nhau.
+
+Ba nguồn, mỗi nguồn chữa một bệnh:
+
+- **Kevin Lynch, *The Image of the City* (1960)** — *Districts*: mỗi khu một chất nền riêng
+  ("thematic continuity"). *Edges*: ranh giới **không cần là tường chắn**, chỉ cần liên tục
+  và nhìn thấy được, nên đường vẫn cắt qua viền và người vác hàng đi bình thường.
+- **Ped shed (5 phút đi bộ)** — tiện ích đặt ở tâm vùng nó phục vụ. Ở đây một vùng là một
+  **khối phố 8×8**, mỗi khối một tiện ích.
+- **Poisson-disk sampling** — mỗi loại khai `cachNhau` riêng; bốc mãi không ra thì **tự
+  nới**, không báo "khu chật" rồi chết như lỗi sáng nay.
+
+Bố cục bốn vành đồng tâm: lõi thành → thủ công → công nghiệp nặng → nông nghiệp, quân sự
+bốn góc. Bảng bố cục nằm trong `data/thanh_pho_demo.json`.
+
+**Công cụ mới `tools/xem_quy_hoach.mjs`** vẽ bản quy hoạch cả thành phố ra một tấm ảnh.
+Trong game ở mức thu nhỏ nhất chỉ thấy 39 ô trên 96 — cả ngày hôm nay tôi sửa quy hoạch rồi
+chụp một góc màn và đoán, ba lần chữa nhầm chỗ vì thế. Tấm ảnh này chỉ ra lỗi **kho dồn ba
+góc bản đồ** trong vòng một phút, và chủ dự án nhìn phát thấy ngay.
+
+Vá: kho ra **cửa thành** — chỗ trục đường chính cắt qua viền, đúng cách thành trấn trung cổ
+đặt cổng và chợ. Luật cũ "ngã tư xa các kho cũ nhất" trên bản đồ vuông thì chỗ xa nhất luôn
+là bốn góc.
+
+### Một ngưỡng tôi tự đặt, và nó đo sai thứ
+
+| Thước | Trước | Sau |
+|---|---:|---:|
+| Cặp giếng cách nhau ≤4 ô | 10/21 | **0/66** |
+| Sản lượng một giờ | 86.148 | **85.616** (−0,6%) |
+| Chuyến một giờ | 321.009 | 276.053 (−14%, ngưỡng 300.000 — **không đạt**) |
+
+Dò tới cùng: 4 kho 243k · 6 kho 276k · 8 kho 277k · 10 kho 287k. Ngay cả 10 kho cũng không
+về 321k. Quy hoạch theo vành làm quãng đi **dài hơn về bản chất**, vì mỗi loại hàng chỉ làm
+ra ở một vành. Nhưng sản lượng chỉ giảm 0,6% — nhà chờ lâu hơn nên dồn được nhiều hàng rồi
+mới gọi người, mỗi chuyến chở nhiều hơn 31%.
+
+**Số chuyến là phương tiện, sản lượng mới là kết quả.** Lần sau đặt ngưỡng vào cái thành
+phố làm ra được, đừng đặt vào số lần người ta đi lại.

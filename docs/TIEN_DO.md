@@ -3,66 +3,65 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — mỗi loại nhà một DÁNG riêng, và số phiên bản).
+Cập nhật: 10/09/2026 (Phase 6B — quy hoạch bốn vành đồng tâm, viền giữa các khu).
 
 ## 1. Đang ở đâu
 
-**MỖI LOẠI NHÀ MỘT DÁNG RIÊNG — và giờ có SỐ PHIÊN BẢN để khỏi đoán.**
+**THÀNH PHỐ CÓ QUY HOẠCH THẬT.** Phase 6/13 xong, cộng một phiên trả nợ.
 
-Vòng trước tôi phân biệt 23 loại nhà bằng **màu**. Chủ dự án xem thật rồi bảo vẫn giống
-nhau — và anh đúng: xem ở **đúng cỡ 1×** thì sáu cái lò cộng nhà chài là **bảy cái nhà
-tường gạch một khuôn**, chỉ khác màu mái. Màu không đủ, **phải khác dáng**.
+Trước phiên này **6 trong 12 giếng nằm chung một phường** — chủ dự án gọi đúng tên là "một
+đống giếng nước ở cùng với nhau". Tôi hiểu sai Perry: một đơn vị lân cận có MỘT trung tâm,
+nên 12 giếng nghĩa là 12 đơn vị lân cận chứ không phải 4.
 
-Nướng thử toàn bộ 36 model nguyên khối chưa dùng rồi nhìn tận mắt, thay vì đoán. Kết quả:
+Dựng lại theo ba nguồn:
 
-| Trước | Sau |
-|---|---|
-| 8 lò = 2 khuôn nhà gạch | vòm tròn · tháp đá tối · tháp tròn mái nón · tháp bát giác trắng · nhà gạch lớn · nhà gạch nhỏ · nhà mái hiên · giàn gỗ phơi |
-| 6 mỏ = cùng một khối đá | mỗi mỏ một khối núi khác |
-| xưởng rượu trùng nhà bia | **cối nước có bánh xe** ép nho |
-| trại đốn gỗ trùng xưởng cưa | **rừng cây** + đống gỗ + lều |
-| công trường, nhà chài trùng lò | **giàn giáo thật** · **nhà gỗ nâu** |
+- **Kevin Lynch, *The Image of the City*** — mỗi khu một chất nền riêng, và **viền** giữa
+  các khu: liên tục, nhìn thấy được, **nhưng đường vẫn cắt qua** nên người vác hàng đi
+  bình thường.
+- **Ped shed** — mỗi **khối phố 8×8 chỉ một giếng**, đặt gần giữa khối.
+- **Poisson-disk** — mỗi loại nhà giữ khoảng cách tối thiểu với chính nó.
 
-**Số phiên bản in ngay đầu thanh đo fps:** `10/09 21:23` — **ngày giờ của bản build**.
-Chụp màn gửi là biết ngay đang xem bản nào; chỉ cần đối chiếu "bằng hay mới hơn giờ tôi nói".
-(Bản đầu dùng số đếm commit, trên máy tôi ra `b87` rất đẹp nhưng trên máy chủ ra **`b1`** —
-`actions/checkout` mặc định chỉ tải một commit. Ngày giờ thì đọc được cả trong bản tải nông.)
+Bốn vành đồng tâm: **lõi thành** (nhà dân, giếng, công trường) → **thủ công** → **công
+nghiệp nặng** → **nông nghiệp**, quân sự bốn góc. Kho đặt ở **cửa thành** — chỗ trục đường
+chính cắt qua viền, đúng cách thành trấn trung cổ đặt cổng và chợ.
 
-**Bắt thêm một lỗi:** bỏ bớt sprite làm bản 2× gọn còn **một trang**, nhưng file trang cũ
-**1,8 MB vẫn nằm lại** và vẫn được tải về máy người chơi. Máy nướng giờ tự xoá trang thừa.
+**Công cụ mới `npm run xem:quyhoach`** vẽ bản quy hoạch cả thành phố ra một tấm ảnh. Trong
+game ở mức thu nhỏ nhất chỉ thấy 39 ô trên 96 — cả ngày hôm nay tôi sửa quy hoạch rồi chụp
+một góc màn và đoán, ba lần chữa nhầm chỗ vì thế.
 
-Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
+Chi tiết: `docs/NHAT_KY/PHASE_6B.md` · kế hoạch: `docs/ke-hoach/2026-09-10-quy-hoach-lai.md`.
 
 ## 2. Số đo mới nhất
 
-`npm run do` → **6/6 thước đạt** · `npm run sim:thu` → **ĐẠT**, 321.009 chuyến · 0 bỏ cuộc.
-
-| Số đo | Đo được | Trần |
+| Thước | Trước | Sau |
 |---|---:|---:|
-| Sprite một khung ở 0,35× | 3.343 | 5.000 |
-| Lệnh vẽ | **1** | 4 |
-| Trang atlas (1× và 2× cộng lại) | **2** | 4 |
-| Loại nhà trùng dáng với loại khác | **0** | 0 |
+| Cặp giếng cách nhau ≤4 ô | 10/21 | **0/66** (gần nhất 9 ô) |
+| Sản lượng một giờ | 86.148 | **85.616** (−0,6%) |
+| Chuyến một giờ | 321.009 | 276.053 (−14%) |
+| Sprite ở 0,35× | 3.343 | 3.402 (trần 5.000) |
+| Trang atlas | 2 | 2 (trần 4) |
+
+`npm run do` → **6/6 thước** · **133 test** · `sim:thu` ĐẠT, 0 lượt bỏ cuộc.
+
+**Một ngưỡng tôi tự đặt đã không đạt:** "≥300.000 chuyến". Dò tới cùng — 4 kho 243k, 6 kho
+276k, 8 kho 277k, 10 kho 287k — quy hoạch theo vành làm quãng đi dài hơn **về bản chất**.
+Nhưng sản lượng chỉ giảm 0,6%: mỗi chuyến chở nhiều hơn 31%. **Số chuyến là phương tiện,
+sản lượng mới là kết quả** — lần sau đặt ngưỡng vào cái thành phố làm ra được.
 
 ## 3. Việc của chủ dự án
 
-**Nhìn số phiên bản trước, rồi mới xem nhà.**
+**Xem quy hoạch có ra hình hài chưa.**
 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
-1. **Đóng hẳn tab cũ** rồi mở link. Mở **hai lần**.
-2. **Nhìn góc trái trên**, phải thấy **`10/09 21:23`** (hoặc mới hơn).
-   - Ngày giờ cũ hơn → **máy còn bản cũ**, đóng hẳn trang rồi mở lại. Đừng xem tiếp,
-     nhìn nhà lúc này là nhìn bản cũ.
-   - Có dải đỏ "ATLAS CŨ" → chụp gửi lại.
-3. Đúng ngày giờ rồi mới bấm **`⌂`** và xem tám cái lò:
-   **Lò rèn** vòm tròn · **Lò thép** tháp đá tối · **Lò nung** tháp tròn mái nón ·
-   **Lò vôi** tháp bát giác trắng · **Lò mổ** nhà gạch lớn · **Lò gốm** nhà gạch nhỏ ·
-   **Lò bánh** nhà mái hiên · **Lò ướp cá** giàn gỗ.
-4. Sáu mỏ: mỗi cái một khối núi khác nhau, khác cả màu.
-5. **Xưởng rượu** giờ là cối nước có bánh xe · **Trại đốn gỗ** là rừng cây · **Công trường**
-   là giàn giáo.
-6. Cái nào vẫn giống nhau thì chụp gửi, ghi rõ hai cái nào **và ngày giờ phiên bản trên màn**.
+1. **Đóng hẳn tab cũ** rồi mở link, mở **hai lần**.
+2. Góc trái trên phải thấy **`10/09 23:41`** hoặc mới hơn (ngày giờ bản build).
+3. Thu nhỏ hết cỡ rồi **kéo từ giữa ra rìa**. Phải đi qua bốn vùng khác nhau:
+   nhà dân dày ở giữa → xưởng và lò → mỏ và lò nung → ruộng và trại thú.
+4. Giữa hai vùng có một **dải viền**: đổi màu nền, có hàng rào và bụi cây chạy dọc.
+   Đường vẫn cắt qua viền — người vác hàng đi bình thường.
+5. Bấm **`⌂`** → **Giếng nước**, bấm liên tiếp 12 lần. **Không hai cái nào sát nhau nữa.**
+6. Chỗ nào còn thấy dồn cục thì chụp gửi, ghi rõ ngày giờ trên màn.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

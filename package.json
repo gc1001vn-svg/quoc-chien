@@ -26,7 +26,8 @@
     "sim:thu": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_thu.ts",
     "do": "bash scripts/do.sh",
     "check:sw": "node scripts/check_sw_atlas.mjs",
-    "phien:ban": "node scripts/ghi_phien_ban.mjs"
+    "phien:ban": "node scripts/ghi_phien_ban.mjs",
+    "xem:quyhoach": "node tools/xem_quy_hoach.mjs"
   },
   "repository": {
     "type": "git",
