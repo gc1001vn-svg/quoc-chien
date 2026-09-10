@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "kho": "node scripts/kho_asset.mjs",
     "nuong": "node tools/nuong_sprite.mjs trung_co_2",
     "xem:atlas": "node tools/xem_atlas.mjs",
     "xem:canh": "node tools/xem_canh.mjs",

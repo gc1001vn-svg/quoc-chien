@@ -337,6 +337,12 @@ Nên nướng **trung cổ trước**, rồi hiện đại, tương lai, cuối 
 - `assets_source/` — gói tải về nguyên vẹn, **không lên máy chủ**
 - `public/assets/` — chỉ atlas đã nướng mà game thật sự dùng
 
+**Danh mục kho: `docs/KHO_ASSET.md`** — tên thật của cả 1.855 model, sinh bằng `npm run kho`.
+**Dò ở đó trước khi ghép bất cứ sprite nào.** Bảng gói ngay trên đây ghi "KayKit Medieval
+Builder: … xưởng gỗ, mỏ, cối xay" từ 06/09, nhưng ghi chung chung nên không grep được —
+ngày 10/09 vẫn ngồi ghép cối xay gió bằng tay năm lượt trong khi `mill` + `mill_blades`
+nằm sẵn trong kho. Danh mục sinh tự động là để chuyện đó không xảy ra lần nữa.
+
 ---
 
 ## 4. Bộ vẽ — WebGL tự viết, không thư viện

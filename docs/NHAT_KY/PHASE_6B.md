@@ -72,9 +72,21 @@ lúa có hàng rào), `lumbermill` (xưởng cưa có đống gỗ), `market` (q
 Đánh đổi chủ dự án đã chốt sau khi xem ảnh: KayKit màu bệt, Quaternius có hoạ tiết — hai
 phong cách không khớp tuyệt đối.
 
-**Bài học ghi vào `NO_KY_THUAT`:** nợ này từng ghi "đã tìm hết, không gói nào có cối xay
-và giếng đúng phong cách". Sai — gói vẫn ở đó, trong chính file credits của dự án. Rà lại
-gói CŨ trước khi kết luận không có.
+**Chủ dự án phê bình, đúng:** anh đã dặn từ đầu — tự tìm nguồn mở, tải về, tách kho lưu
+trữ với kho vào game, và **dò kho trước rồi mới làm**. `TECH_SPEC` mục 3 thậm chí đã có
+bảng gói tự tay ghi từ 06/09, dòng "KayKit Medieval Builder: … xưởng gỗ, mỏ, cối xay".
+Không đọc, ngồi ghép tay năm lượt nướng.
+
+Vá bằng cơ chế chứ không bằng lời hứa:
+
+- `scripts/kho_asset.mjs` + `npm run kho` sinh **`docs/KHO_ASSET.md`**: tên thật của cả
+  **1.855 model** trong `assets_source/`, grep một lệnh là ra. Bảng cũ trong `TECH_SPEC`
+  ghi chung chung ("công trình nguyên khối 2×2") nên không grep được — đó là lỗ hổng.
+- `CLAUDE.md` mục Quy ước thêm một dòng: **dò `KHO_ASSET.md` trước, cấm ghép tay khi kho
+  có model sẵn**. CLAUDE.md đọc đầu mọi phiên nên không bỏ sót được như `TECH_SPEC` mục 3.
+- Dò lại ngay bằng danh mục mới: `trai_linh` đổi từ `thap_canh` sang model `barracks` thật.
+  Sáu sprite còn tự ghép (vườn nho, trại thú, lò nhỏ, lò lớn, nhà chài, công trường) đã
+  grep — kho **không có** model tương ứng, nên ghép tay là đúng.
 
 ## Còn nợ
 

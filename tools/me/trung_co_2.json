@@ -1108,6 +1108,9 @@
     "trai_go": [
       { "m": "kk:lumbermill", "ti_le": 1.15 }
     ],
+    "trai_linh": [
+      { "m": "kk:barracks", "ti_le": 1.05 }
+    ],
     "cong_truong": [
       { "phang": 1.02, "texture": "assets_source/hoa_tiet/cobblestone_01.jpg", "lap": 1, "mau": [1.02, 1.0, 0.96] },
       { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 180, "z": -0.44 },
