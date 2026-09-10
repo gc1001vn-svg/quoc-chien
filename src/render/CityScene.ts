@@ -39,8 +39,6 @@ const CAU_HINH: CauHinhBanDo = cauHinhTho;
 const ZOOM_HIEN_WALKER = 0;
 /** Suc chua buffer. Rong hon tran 5.000 mot chut de con dem duoc luc vuot. */
 const SUC_CHUA = 6144;
-/** Muc thu phong khi bay toi mot cong trinh: du gan de doc ra hinh dang cua no. */
-const ZOOM_SOI = 1.6;
 /**
  * Cong trinh vua bay toi nam o day nhieu phan chieu cao man, tinh tu tren xuong.
  *
@@ -102,20 +100,24 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   window.addEventListener('resize', doKichThuoc);
 
   /**
-   * Bay toi mot cong trinh: phong to, dat no o khoang 72 % chieu cao man, ghim ten len.
+   * Truot toi mot cong trinh va ghim ten len no. **KHONG doi muc thu phong.**
    *
-   * De cong trinh o CHINH GIUA man la cho de bi che nhat - moi thu dung truoc no deu vuon
-   * len tu duoi len. Day xuong thap thi nhung cai che no nam ngoai khung.
+   * Ban dau ham nay tu keo len 1,6x cho "du gan de doc ra hinh dang". Chu du an bao bo:
+   * 11/09, khi quy hoach da ro thi anh muon dung o muc dang xem de con thay ca bo cuc -
+   * "khong cần bấm vào sát vào, chỉ cần bấm vào hiện cái tên chỉ vào đấy là được". Bi keo
+   * phong to moi lan bam la mat cho dang nhin.
+   *
+   * Van dat cong trinh o khoang 38 % chieu cao man chu khong chinh giua: cai dung truoc -
+   * tuc THAP hon tren man - vuon len nuot cai dung sau, ma the quyet dinh thi an 46 % man
+   * tu duoi len.
    */
-  const bayToi = (o: O, hien: string, phong = true): void => {
-    if (phong) cam.datZoom(Math.max(cam.zoom(), ZOOM_SOI));
+  const bayToi = (o: O, hien: string): void => {
     const lech: number = ((CHO_SOI - 0.5) * caoCss) / cam.cssTrenWorld();
     cam.datTam(neoX(o.a, o.b, atlas.oPx()), neoY(o.a, o.b, atlas.oPx()) - lech);
     ghim.dat(o, hien);
   };
-  // `?o=` giu nguyen `?zoom=` de may ao chup duoc dung muc thu phong muon kiem.
   const oDau = oBanDau();
-  if (oDau !== undefined) bayToi(oDau, 'đây', false);
+  if (oDau !== undefined) bayToi(oDau, 'đây');
 
   // Sim chay 10 Hz, doc lap voi vong ve 60 fps (TECH_SPEC muc 2). PHAI di qua `DongHo`:
   // no giu phan le. Tu lam tron `giay * 10` thi o 60 fps moi khung ra 0,167 -> lam tron

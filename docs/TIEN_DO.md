@@ -55,12 +55,14 @@ sản lượng mới là kết quả** — lần sau đặt ngưỡng vào cái 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
 1. **Đóng hẳn tab cũ** rồi mở link, mở **hai lần**.
-2. Góc trái trên phải thấy **`10/09 23:41`** hoặc mới hơn (ngày giờ bản build).
+2. Góc trái trên phải thấy **`11/09 00:16`** hoặc mới hơn (ngày giờ bản build).
 3. Thu nhỏ hết cỡ rồi **kéo từ giữa ra rìa**. Phải đi qua bốn vùng khác nhau:
    nhà dân dày ở giữa → xưởng và lò → mỏ và lò nung → ruộng và trại thú.
 4. Giữa hai vùng có một **dải viền**: đổi màu nền, có hàng rào và bụi cây chạy dọc.
    Đường vẫn cắt qua viền — người vác hàng đi bình thường.
 5. Bấm **`⌂`** → **Giếng nước**, bấm liên tiếp 12 lần. **Không hai cái nào sát nhau nữa.**
+   Bấm **không còn phóng to** nữa — màn chỉ trượt tới và hiện tên chỉ vào công trình, anh
+   giữ nguyên mức thu phóng đang xem.
 6. Chỗ nào còn thấy dồn cục thì chụp gửi, ghi rõ ngày giờ trên màn.
 
 ## 4. Nợ đang chặn phase kế tiếp

@@ -459,3 +459,18 @@ mới gọi người, mỗi chuyến chở nhiều hơn 31%.
 
 **Số chuyến là phương tiện, sản lượng mới là kết quả.** Lần sau đặt ngưỡng vào cái thành
 phố làm ra được, đừng đặt vào số lần người ta đi lại.
+
+
+## Vòng chín — bấm bảng công trình thôi phóng to
+
+Chủ dự án duyệt quy hoạch ("tạm thời được, giữ để sau này thay đổi") và chỉ ra một chỗ:
+*"Không cần bấm vào sát vào. Quy hoạch đang tốt nhìn rất rõ. Chỉ cần bấm vào hiện cái tên
+chỉ vào đấy là được."*
+
+Đúng. `bayToi` tự kéo lên 1,6× từ hôm qua, hồi đó cần vì công trình bị nhà che và phải soi
+gần mới đọc ra. Giờ quy hoạch rõ, bị kéo phóng to mỗi lần bấm là **mất chỗ đang nhìn**.
+
+Bỏ hẳn `ZOOM_SOI`. Bấm một dòng thì màn **trượt tới, ghim tên lên, giữ nguyên mức thu
+phóng**. Vẫn đặt công trình ở 38 % chiều cao màn và vẫn giấu vật che nó.
+
+Chụp kiểm ở 0,35×: ghim "đây" chỉ đúng cái giếng, mức thu phóng không nhúc nhích.
