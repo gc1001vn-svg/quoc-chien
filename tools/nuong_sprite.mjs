@@ -13,7 +13,7 @@
  * cho o luoi 2:1 vi chieu cao chieu xuong = chieu ngang * sin(30) = mot nua. (TECH_SPEC
  * muc 3 co ghi "atan(0.5) ~ 26,57 do cho 2:1 chinh xac" - cho do ghi nham.)
  */
-import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { join } from 'node:path';
 import { docObj, BUOC } from './lib/obj.mjs';
@@ -464,6 +464,16 @@ async function nuong(tenMe, heSo) {
   mkdirSync(thuMuc, { recursive: true });
   const dau = `${tenMe}_${heSo}x`;
   raPng.forEach((p, i) => writeFileSync(join(thuMuc, `${dau}_${i}.png`), p));
+  // Xoa trang atlas THUA con sot lai tu lan nuong truoc. 10/09: bo bot sprite lam ban 2x
+  // gon lai con MOT trang, nhung `trung_co_2_2x_1.png` cu van nam do - 1,8 MB rac van
+  // duoc PWA tai ve may nguoi choi, va van phai ghi trong ASSET_CREDITS.
+  for (const ten of readdirSync(thuMuc)) {
+    const khop = ten.match(new RegExp(`^${dau}_(\\d+)\\.png$`));
+    if (khop !== null && Number(khop[1]) >= raPng.length) {
+      rmSync(join(thuMuc, ten));
+      console.log(`   xoa trang thua: ${ten}`);
+    }
+  }
 
   const json = {
     canh: CANH,
