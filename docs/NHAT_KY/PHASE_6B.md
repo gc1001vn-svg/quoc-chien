@@ -308,3 +308,47 @@ Vá ba lớp:
 
 Bài học: `datSprite` bỏ qua im lặng đã ăn mất **năm vòng đoán mò và gần trọn một phiên**.
 Lỗi câm phải biến thành lỗi nói được, trước khi đi chữa cái gì khác.
+
+
+## Vòng năm — 23 loại nhà thôi dùng chung năm cái hình
+
+Chủ dự án xem xong bản vá và hỏi thẳng: *"sao các loại lò nhìn giống nhau thế. Các cái
+loại trại, các loại xưởng các loại mỏ giống nhau hết hả."* Đúng — Phase 6B gộp 23 loại vào
+5 hình vì kho chỉ có 15 công trình nguyên khối.
+
+Dò lại đủ ba bước, lần này không bỏ bước nào:
+
+1. `KHO_ASSET.md` — Builder Pack 15 công trình; Village MegaKit là kit **lắp ghép**;
+   `tiles/hex` và `tiles/square` chỉ là ô đất. **Không đủ.**
+2. `NGUON_MO.md` mục 2 chỉ sang KayKit và Kenney. Tra tiếp trên mạng.
+3. **KayKit Medieval Hexagon Pack** — CC0, `License.txt` đọc thẳng, **cùng một hoạ sĩ** với
+   gói đang dùng nên cùng phong cách. 135 công trình + 68 vật trang trí, mỗi công trình bốn
+   màu. Đo trước khi tin: đứng rời trên `y = 0`, **không dính đế lục giác**, nướng thẳng
+   được. Kho 1.855 → **2.781 model**.
+
+**25 sprite mới**, không tự vẽ một nét nào:
+
+- **Model riêng** — `blacksmith` (lò rèn) · `lumbermill` + lưỡi cưa (xưởng cưa) · `tavern`
+  (xưởng rượu, nhà bia) · `archeryrange` + giá vũ khí (xưởng vũ khí) · `market` (xưởng dệt)
+  · `barracks` (trại lính) · `home_B` (nhà dân).
+- **Sáu hầm mỏ** — cùng model `mine`, khác **màu quặng** và khác **đồ chất quanh**: than
+  đen + xe cút kít, muối trắng + bao, đất sét cam + vại, đá vôi kem + pallet, quặng xanh
+  thép + cuốc, đá xám + đống đá.
+- **Tám lò** — hai khuôn tường gạch cũ nhưng khác **cỡ** và khác **màu mái**. Lò lớn 224 px,
+  lò nhỏ thu còn 173 px: ban đầu 219 so với 224, nhìn không ra khác nhau.
+- **Ba trại thú** — thêm một cái **lán** vào mỗi trại. Bản đầu chỉ có bãi cỏ và hàng rào,
+  nướng ra cao 58 px = 1,8 hàng ô, bé hơn một cái thùng rượu.
+
+Dọn luôn **11 sprite nhà trang trí không ai dùng nữa** — atlas 2× vẫn 2 trang, trần 4.
+
+Kho không có model lợn, gà, cừu — ghi vào `NGUON_MO.md` mục 8, chờ nguồn mới.
+
+**Bắt được một lỗi tự gây ra sáng nay:** `check:credits` đang **chạy rỗng**. Nó quét
+`public/assets/`, mà sáng nay chính tôi dời atlas về `public/atlas/` — script thấy thư mục
+không tồn tại thì in "không có gì để kiểm" rồi **báo ĐẠT**. Sửa: thư mục biến mất thì báo
+HỎNG, không báo ĐẠT.
+
+Cũng tải sẵn **Kenney Fantasy Town Kit 2.0** (167 model CC0) theo yêu cầu chủ dự án — chưa
+nướng, để dành.
+
+Số đo: 6/6 thước · `sim:thu` ĐẠT · **3.343 sprite · 1 lệnh vẽ ở 0,35×** · atlas 3 trang/4.

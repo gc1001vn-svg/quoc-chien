@@ -3,73 +3,63 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — bỏ nhà trang trí che tầm, mở lộ công trình, ghim vàng).
+Cập nhật: 10/09/2026 (Phase 6B — 23 loại nhà thôi dùng chung năm cái hình).
 
 ## 1. Đang ở đâu
 
-**TÌM RA NGUYÊN NHÂN THẬT.** Phase 6/13 xong, cộng một phiên trả nợ.
+**MỖI LOẠI NHÀ MỘT HÌNH RIÊNG.** Phase 6/13 xong, cộng một phiên trả nợ.
 
-Suốt phiên chủ dự án báo: bấm gì cũng **không thấy giếng, mỏ, xưởng, cối xay**. Bốn vòng
-đầu chữa nhầm chỗ (nướng lại sprite · quy hoạch · bảng công trình · bỏ nhà che tầm). Vòng
-năm chụp máy ảo **cùng khung iPhone cầm dọc, cùng góc bản đồ, cùng mức thu phóng** với ảnh
-của anh — cây khô, xe kéo, thùng trùng khít từng cái, chỉ thiếu đúng các công trình. Rồi
-mở `dist/sw.js` ra đọc:
+Trước phiên này **23 loại nhà dùng chung 5 hình** — sáu loại mỏ y hệt nhau, sáu loại xưởng
+y hệt nhau, tám cái lò y hệt nhau. Lý do: kho chỉ có 15 công trình nguyên khối.
 
-```
-{url:"assets/atlas/trung_co_2_2x.json", revision: null}
-```
+Dò đủ ba bước rồi tìm được **KayKit Medieval Hexagon Pack** (CC0, **cùng hoạ sĩ** với gói
+đang dùng): 135 công trình + 68 vật trang trí. Kho 1.855 → **2.781 model**.
 
-**`revision: null`** — workbox coi mọi file trong `dist/assets/` là đã có băm nội dung
-trong tên nên **không bao giờ tải lại**. Tên file atlas thì **cố định**. Máy anh chạy
-**mã mới + dữ liệu mới + atlas cũ, vĩnh viễn**. Atlas cũ không có 12 hình nướng ở Phase 6B,
-`datSprite` bỏ qua im lặng → giếng, cối xay, mỏ, xưởng biến mất, còn nhà, cây, người vẫn
-hiện. Không một dòng báo lỗi.
+**25 sprite mới, không tự vẽ một nét nào:**
 
-Vá ba lớp:
+| Nhóm | Cách phân biệt |
+|---|---|
+| Lò rèn · xưởng cưa · xưởng rượu · nhà bia · xưởng vũ khí · xưởng dệt · trại lính · nhà dân | **Model riêng hẳn** |
+| 6 hầm mỏ | Cùng model, khác **màu quặng** + khác **đồ chất quanh** |
+| 8 lò | Khác **cỡ** (lò lớn 224 px, lò nhỏ 173 px) + khác **màu mái** + khác đồ nghề |
+| 3 trại thú | Thêm **lán**, khác màu nền và màu lán |
 
-1. **`public/assets/atlas/` → `public/atlas/`** — ra khỏi `assets/` thì workbox băm nội
-   dung thật. Đổi đường dẫn cũng làm mục nhớ cũ trên máy anh thành vô dụng, nên máy đang
-   kẹt tự thoát.
-2. **`npm run check:sw`** chạy ngay trong `npm run build`: atlas nào còn `revision: null`
-   là **build hỏng**, CI chặn.
-3. **Dải đỏ báo "ATLAS CŨ — thiếu N hình"** trên đầu màn, liệt kê tên. Lỗi câm thành lỗi
-   nói được.
+Dọn luôn 11 sprite nhà trang trí không ai dùng. Kho không có model lợn, gà, cừu — ghi vào
+`NGUON_MO.md` mục 8.
+
+Cũng tải sẵn **Kenney Fantasy Town Kit 2.0** (167 model CC0) để dành, theo yêu cầu.
+
+**Bắt được một lỗi tự gây ra sáng nay:** `check:credits` **chạy rỗng** — nó quét
+`public/assets/`, mà sáng nay atlas đã dời về `public/atlas/`, script thấy thư mục không có
+thì báo ĐẠT. Sửa: thư mục biến mất là **HỎNG**.
 
 Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 
 ## 2. Số đo mới nhất
 
-`npm run do` → **6/6 thước đạt** (lint · typecheck · test **132 test** · build ·
-check:base · check:credits · check:sw nằm trong build).
-
-`npm run sim:thu` → **ĐẠT**, 10 giờ game không người bấm:
-**188 → 196 nhà · 8 kho · 321.009 chuyến · đông nhất 659 người · 0 lượt bỏ cuộc.**
+`npm run do` → **6/6 thước đạt** · `npm run sim:thu` → **ĐẠT**, 321.009 chuyến · 0 bỏ cuộc.
 
 | Số đo | Đo được | Trần |
 |---|---:|---:|
-| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.343 | 5.000 |
+| Sprite một khung ở 0,35× | 3.343 | 5.000 |
 | Lệnh vẽ | **1** | 4 |
-| Trang atlas, bản 2× | 2 | 4 |
-| File atlas có `revision: null` trong `sw.js` | **0** | 0 |
+| Trang atlas (1× và 2× cộng lại) | 3 | 4 |
+| Loại nhà dùng chung hình với loại khác | **0** | 0 |
 
 ## 3. Việc của chủ dự án
 
-**Mở lại và xem có còn dải đỏ không.**
+**Xem 32 loại nhà giờ có khác nhau không.**
 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
-1. **Đóng hẳn tab cũ** (vuốt bỏ), rồi mở link. Mở **hai lần**.
-2. Nhìn **đầu màn hình**:
-   - **Có dải đỏ "ATLAS CŨ — thiếu N hình"** → chụp ảnh gửi lại. Dải đỏ ghi rõ thiếu hình
-     nào, tôi sẽ biết ngay phải làm gì — không phải đoán nữa.
-   - **Không có dải đỏ** → atlas đã đúng. Đi tiếp bước 3.
-3. Bấm nút **`⌂`** góc trái dưới → danh sách công trình → bấm dòng **Giếng**. Màn hình bay
-   tới, tự phóng to, **ghim vàng "đây"** chỉ thẳng vào nó; cái gì đứng trước che nó thì tự
-   biến mất trong lúc soi.
-4. Bấm lại dòng đó → sang cái giếng kế tiếp. Làm y vậy với **Cối xay · Mỏ · Xưởng · Ruộng**.
-5. Vẫn không thấy → chụp màn gửi lại, ghi rõ bấm dòng nào.
-
-Chưa có xác nhận trên iPhone thật thì phiên này **chưa xong** — mới là "chờ xác nhận".
+1. **Đóng hẳn tab cũ** rồi mở link. Mở **hai lần**.
+2. Đầu màn có dải đỏ "ATLAS CŨ" thì chụp gửi lại — không có thì đi tiếp.
+3. Bấm **`⌂`** → bấm lần lượt **Mỏ than · Mỏ muối · Mỏ đá · Mỏ quặng**. Bốn cái phải
+   **khác màu nhau** và có đồ chất quanh khác nhau.
+4. Bấm **Lò rèn** rồi **Lò thép** — hai cái lò tròn có ống khói, mái đỏ và mái xanh.
+5. Bấm **Xưởng cưa** (có lưỡi cưa) · **Xưởng rượu** (thùng rượu khổng lồ) · **Xưởng vũ khí**
+   (bia bắn) · **Trại lính** (như một cái pháo đài nhỏ).
+6. Cái nào vẫn thấy giống nhau thì chụp gửi, ghi rõ hai cái nào.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
