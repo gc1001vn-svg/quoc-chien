@@ -23,8 +23,10 @@ Nướng thử toàn bộ 36 model nguyên khối chưa dùng rồi nhìn tận 
 | trại đốn gỗ trùng xưởng cưa | **rừng cây** + đống gỗ + lều |
 | công trường, nhà chài trùng lò | **giàn giáo thật** · **nhà gỗ nâu** |
 
-**Số phiên bản in ngay đầu thanh đo fps:** `b83 · 10/09`. Chụp màn gửi là biết ngay đang
-xem bản nào — hết cảnh "không biết có phải chưa cập nhật không".
+**Số phiên bản in ngay đầu thanh đo fps:** `10/09 21:23` — **ngày giờ của bản build**.
+Chụp màn gửi là biết ngay đang xem bản nào; chỉ cần đối chiếu "bằng hay mới hơn giờ tôi nói".
+(Bản đầu dùng số đếm commit, trên máy tôi ra `b87` rất đẹp nhưng trên máy chủ ra **`b1`** —
+`actions/checkout` mặc định chỉ tải một commit. Ngày giờ thì đọc được cả trong bản tải nông.)
 
 **Bắt thêm một lỗi:** bỏ bớt sprite làm bản 2× gọn còn **một trang**, nhưng file trang cũ
 **1,8 MB vẫn nằm lại** và vẫn được tải về máy người chơi. Máy nướng giờ tự xoá trang thừa.
@@ -49,18 +51,18 @@ Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
 1. **Đóng hẳn tab cũ** rồi mở link. Mở **hai lần**.
-2. **Nhìn góc trái trên**, dòng chữ đầu tiên phải là **`b87`** (hoặc lớn hơn).
-   - Số nhỏ hơn `b87` → **máy còn bản cũ**, đóng hẳn trang rồi mở lại. Đừng xem tiếp,
+2. **Nhìn góc trái trên**, phải thấy **`10/09 21:23`** (hoặc mới hơn).
+   - Ngày giờ cũ hơn → **máy còn bản cũ**, đóng hẳn trang rồi mở lại. Đừng xem tiếp,
      nhìn nhà lúc này là nhìn bản cũ.
    - Có dải đỏ "ATLAS CŨ" → chụp gửi lại.
-3. Đúng `b87` rồi mới bấm **`⌂`** và xem tám cái lò:
+3. Đúng ngày giờ rồi mới bấm **`⌂`** và xem tám cái lò:
    **Lò rèn** vòm tròn · **Lò thép** tháp đá tối · **Lò nung** tháp tròn mái nón ·
    **Lò vôi** tháp bát giác trắng · **Lò mổ** nhà gạch lớn · **Lò gốm** nhà gạch nhỏ ·
    **Lò bánh** nhà mái hiên · **Lò ướp cá** giàn gỗ.
 4. Sáu mỏ: mỗi cái một khối núi khác nhau, khác cả màu.
 5. **Xưởng rượu** giờ là cối nước có bánh xe · **Trại đốn gỗ** là rừng cây · **Công trường**
    là giàn giáo.
-6. Cái nào vẫn giống nhau thì chụp gửi, ghi rõ hai cái nào **và số phiên bản trên màn**.
+6. Cái nào vẫn giống nhau thì chụp gửi, ghi rõ hai cái nào **và ngày giờ phiên bản trên màn**.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

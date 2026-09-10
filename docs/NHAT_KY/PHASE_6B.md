@@ -387,3 +387,26 @@ cây, ba khối núi. Đủ để mỗi loại một dáng:
 `nuong_sprite.mjs` giờ tự xoá trang thừa. Atlas 3 trang → **2 trang**.
 
 Số đo: 6/6 thước · `sim:thu` ĐẠT · atlas 2 trang/4 · **0 loại nhà nào còn trùng dáng**.
+
+
+## Vòng bảy — số phiên bản sai, không phải bản sai
+
+Chủ dự án chụp màn: **`b1`**, nhưng trên màn là cối nước có bánh xe, thùng bia khổng lồ,
+tháp mái nón, các mỏ khác dáng — **đúng bản mới**. Vậy con số sai chứ không phải bản sai.
+
+Nguyên nhân: `.github/workflows/deploy.yml` dùng `actions/checkout@v5` **không khai
+`fetch-depth`**, mà mặc định của nó là **tải đúng một commit** (shallow clone). Nên
+`git rev-list --count HEAD` trên máy chủ trả về đúng **1**. Trên máy tôi có đủ lịch sử nên
+ra `b87` — con số đẹp mà chỉ đúng ở một chỗ.
+
+Vá bằng `fetch-depth: 0` thì phải sửa `.github/workflows/` — **file khoá**. Nên đổi cách
+đánh số: **dùng NGÀY GIỜ của commit** (`git log -1 --format=%cI`), đọc được cả trong bản
+tải nông, và vẫn so sánh được bằng mắt. Giờ lấy theo múi giờ Việt Nam cho khớp đồng hồ
+trên iPhone.
+
+Kiểm bằng cách **tự clone nông một commit** đúng như CI làm: `git clone --depth 1` →
+`rev-list --count` = 1, nhưng ngày giờ vẫn ra đúng.
+
+Bài học lặp lại lần thứ ba trong ngày: **đo trên máy mình không phải là đo.** Máy tôi có
+đủ lịch sử git, máy chủ thì không; máy tôi có atlas mới, máy chủ thì giữ bản cũ; máy tôi
+xem sprite phóng to ba lần, chủ dự án xem cỡ thật.
