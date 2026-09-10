@@ -105,8 +105,22 @@ Ghi vào đây mỗi khi dò không ra, **trước khi tự vẽ**:
 
 | Cần gì | Phase | Đã dò | Kết quả |
 |---|---|---|---|
-| Vườn nho, chuồng thú, lò nung, nhà chài, công trường | P6B | Kenney · Quaternius · KayKit | Không có → **đã tự ghép 10/09, chủ dự án biết** |
+| Vườn nho, chuồng thú, lò nung, nhà chài, công trường | P6B | Kenney · Quaternius · KayKit | Không có → **ghép tay, chủ dự án biết** |
 | Cối xay gió, giếng | P6B | — | **Có, ở KayKit** — 10/09 tự ghép nhầm rồi thay lại bằng model thật |
+| Nhà ở · tháp canh · cổng làng (290 công trình) | P2 | `kk:house` `kk:watchtower` `kk:wall_gate` | **Có model nguyên khối, nhưng CỐ Ý không dùng** — xem dưới |
+
+### Nhà ở: ghép tay là cố ý, đừng "sửa" lại
+
+Rà soát 10/09 (`grep` toàn bộ 67 sprite): 20 model nguyên khối · 21 ghép nhiều mảnh ·
+7 tấm nền tự sinh · 19 bản sao đổi màu. **Không sprite nào vẽ từ số không.**
+
+Nhà ở, tháp canh, cổng làng ghép tay từ mảnh Quaternius tuy KayKit có model nguyên khối,
+vì đã nướng thử và so ảnh: nhà Quaternius **299×236 px** có hoạ tiết tường đá, ngói vân,
+khung gỗ; nhà KayKit chỉ **165×100 px** màu bệt. Thêm nữa hai công thức Quaternius đẻ ra
+**bảy biến thể màu** bằng khoá `nhu`, model nguyên khối thì không.
+
+Bảy ô nền là tấm phẳng tự sinh + hoạ tiết Poly Haven, lý do ở `TECH_SPEC` mục 3: Quaternius
+không có ô nền, mượn ô nền gói khác thì lệch thước lưới.
 
 ---
 
