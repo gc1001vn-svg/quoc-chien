@@ -18,7 +18,8 @@
 import type { Rng } from '../../core/Rng.ts';
 import type { OVat } from './BanDo.ts';
 import type { QuyHoach, Vanh } from './QuyHoach.ts';
-import { laVien, vanhCuaO } from './QuyHoach.ts';
+import { laVien, vanhCuaO, xaTam } from './QuyHoach.ts';
+import type { O } from './BanDo.ts';
 
 /** Cu bao nhieu o vien thi dat mot vat danh dau. Thua thi rac, thieu thi khong thay vien. */
 const VIEN_CU = 3;
@@ -81,4 +82,54 @@ export function vatVien(qh: QuyHoach, rng: Rng, daChiem: Set<number>): OVat[] {
     }
   }
   return ra;
+}
+
+/**
+ * Cac CUA THANH: cho truc duong chinh cat qua duong vien.
+ *
+ * Kho hang dat o day. Ly do lay tu chinh cach thanh tran trung co hoat dong: cho va nha
+ * can nam ngay cua thanh, tren con duong chinh, dung cho hang doi vanh - nong san tu ngoai
+ * dong vao, do nghe tu trong pho ra.
+ *
+ * Truoc do `choKhoMoi` chi lay "nga tu xa cac kho cu nhat", va tren mot ban do vuong thi
+ * cho xa nhat luon la BON GOC. Ban ve quy hoach 10/09 cho thay ba kho nam ba goc, con nua
+ * phia nam va phia dong khong co kho nao. Chu du an nhin ra ngay.
+ *
+ * Tra ve danh sach da xep tu vanh trong ra vanh ngoai, moi vanh bon huong.
+ */
+export function cuaThanh(qh: QuyHoach): O[] {
+  const c: number = qh.duongCach;
+  const giua: number = Math.round((qh.canh - 1) / 2 / c) * c;
+  const cuoi: number = (qh.vanh[qh.vanh.length - 1] as Vanh).den;
+  const ra: O[] = [];
+  const daCo = new Set<number>();
+  // Vanh sap theo `den` tang dan, de kho moc dan tu trong ra ngoai.
+  const trong: number[] = qh.vanh.filter((v) => v.den < cuoi).map((v) => v.den)
+    .sort((m, n) => m - n);
+  for (const r of trong) {
+    // Nga tu gan nhat tren truc, ca bon huong.
+    const buoc: number = Math.max(c, Math.round(r / c) * c);
+    for (const [da, db] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+      const a: number = giua + (da as number) * buoc;
+      const b: number = giua + (db as number) * buoc;
+      if (a < c || b < c || a > qh.canh - 1 - c || b > qh.canh - 1 - c) continue;
+      const k: number = a * qh.canh + b;
+      if (daCo.has(k)) continue;
+      daCo.add(k);
+      ra.push({ a, b });
+    }
+  }
+  return ra;
+}
+
+/** O nay cach duong vien gan nhat bao nhieu o. */
+export function xaVien(qh: QuyHoach, a: number, b: number): number {
+  const d: number = xaTam(qh, a, b);
+  const cuoi: number = (qh.vanh[qh.vanh.length - 1] as Vanh).den;
+  let gan = Infinity;
+  for (const v of qh.vanh) {
+    if (v.den >= cuoi) continue;
+    gan = Math.min(gan, Math.abs(d - v.den));
+  }
+  return gan;
 }

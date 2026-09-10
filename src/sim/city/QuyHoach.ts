@@ -95,7 +95,7 @@ export function docQuyHoach(tho: unknown, canh: number, duongCach: number): QuyH
 }
 
 /** Khoang cach Chebyshev tu o toi tam ban do. */
-function xaTam(qh: QuyHoach, a: number, b: number): number {
+export function xaTam(qh: QuyHoach, a: number, b: number): number {
   const t: number = (qh.canh - 1) / 2;
   return Math.max(Math.abs(a - t), Math.abs(b - t));
 }
@@ -138,23 +138,6 @@ export function laVien(qh: QuyHoach, a: number, b: number): boolean {
     if (Math.floor(d) === v.den) return true;
   }
   return false;
-}
-
-/**
- * O nay cach duong vien gan nhat bao nhieu o.
- *
- * `choKhoMoi` dung so nay de keo kho ve ranh gioi giua hai vanh - cho nua duong giua noi
- * lam ra hang va noi dung hang.
- */
-export function xaVien(qh: QuyHoach, a: number, b: number): number {
-  const d: number = xaTam(qh, a, b);
-  const cuoi: number = (qh.vanh[qh.vanh.length - 1] as Vanh).den;
-  let gan = Infinity;
-  for (const v of qh.vanh) {
-    if (v.den >= cuoi) continue;
-    gan = Math.min(gan, Math.abs(d - v.den));
-  }
-  return gan;
 }
 
 /** Yeu cau dat mot toa nha, lay tu `data/buildings.json`. */

@@ -110,3 +110,36 @@ Chebyshev từ tâm bản đồ:
 | Nông nghiệp | ruộng, đất | hàng rào gỗ + bụi cây |
 
 Viền dày **1 ô**, chạy liên tục quanh mép vành. Người vác hàng đi xuyên qua bình thường.
+
+
+---
+
+## Kết quả (làm xong 10/09)
+
+| Thước | Trước | Sau | Ngưỡng |
+|---|---:|---:|---:|
+| Cặp giếng cách nhau ≤4 ô | 10/21 | **0/66** (gần nhất 9 ô) | 0 ✅ |
+| Sản lượng một giờ | 86.148 | **85.616** (−0,6%) | — ✅ |
+| Chuyến một giờ | 321.009 | **276.053** (−14%) | ≥300.000 ❌ |
+| `npm run do` | | 6/6 · 133 test | 6/6 ✅ |
+
+**Thước chuyến không đạt, và đã dò tới cùng.** Nâng số kho: 4 → 243k · 6 → 276k · 8 → 277k ·
+10 → 287k. Ngay cả 10 kho cũng không về 321k. Kết luận: **quy hoạch theo vành làm quãng đi
+dài hơn về bản chất**, vì mỗi loại hàng chỉ làm ra ở một vành. Nhưng **sản lượng chỉ giảm
+0,6%** — nhà chờ lâu hơn nên dồn được nhiều hàng hơn rồi mới gọi người, mỗi chuyến chở
+nhiều hơn. Chủ dự án chọn phương án B (sửa chỗ đặt kho) sau khi xem số; chốt `soKhoDau = 6`
+vì thêm nữa là đổi cân bằng nhiều mà được ít.
+
+**Bài học về cách đo:** ngưỡng "300.000 chuyến" tôi tự đặt **đo sai thứ**. Số chuyến là
+phương tiện, sản lượng mới là kết quả. Lần sau đặt ngưỡng vào cái thành phố làm ra được,
+đừng đặt vào số lần người ta đi lại.
+
+**Chỗ đặt kho — sửa theo phương án B:** kho ra **CỬA THÀNH**, chỗ trục đường chính cắt qua
+viền. Bản vẽ đầu tiên cho thấy ba kho nằm ba góc bản đồ (luật cũ "ngã tư xa các kho cũ
+nhất" mà trên bản đồ vuông thì chỗ xa nhất luôn là bốn góc), nửa phía nam và phía đông
+không có kho nào. Nay bốn hướng đều có.
+
+**Công cụ mới `tools/xem_quy_hoach.mjs`** — vẽ bản quy hoạch cả thành phố ra một tấm ảnh.
+Trong game ở mức thu nhỏ nhất chỉ thấy 39 ô trên 96, nên cả ngày 10/09 tôi sửa quy hoạch
+rồi chụp một góc màn và đoán, ba lần chữa nhầm chỗ. Chính tấm ảnh này chỉ ra lỗi kho dồn
+góc trong vòng một phút.

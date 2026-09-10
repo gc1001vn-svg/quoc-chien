@@ -3,4 +3,4 @@
  *
  * Dung sua tay. In len thanh do fps de chu du an chup man la biet ngay dang xem ban nao.
  */
-export const PHIEN_BAN = '10/09 23:03';
+export const PHIEN_BAN = '10/09 23:30';

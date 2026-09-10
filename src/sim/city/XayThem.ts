@@ -8,7 +8,8 @@ import type { Rng } from '../../core/Rng.ts';
 import type { BanDo, O } from './BanDo.ts';
 import { chenVat, congRaDuong } from './BanDo.ts';
 import type { QuyHoach, SoDat } from './QuyHoach.ts';
-import { datNha, xaVien } from './QuyHoach.ts';
+import { datNha } from './QuyHoach.ts';
+import { cuaThanh } from './Nen.ts';
 import type { DinhNghiaNha } from './Buildings.ts';
 import { ThuNha } from './Buildings.ts';
 
@@ -28,39 +29,52 @@ export function veKho(banDo: BanDo, o: O): void {
 }
 
 /**
- * Nga tu XA cac kho cu nhat va BAM RANH GIOI giua hai vanh - cho dat kho moi.
+ * Cho dat kho moi: uu tien CUA THANH, het cua thi lay nga tu xa cac kho cu nhat.
  *
- * Xa nhat chu khong ngau nhien: ca thanh pho do ve mot kho thi truc vao tam dong nghit
- * ma duong ria vang tanh. Kho moi phai keo duoc mot phan dong nguoi do sang huong khac.
+ * Hai luat, theo dung thu tu:
  *
- * Bam ranh gioi la cho quan trong hon. Tu 10/09 thanh pho chia vanh dong tam theo chuc
- * nang, nen hang phai chay tu vanh nay sang vanh kia: lua mi tu vanh nong nghiep vao coi
- * xay o vanh san xuat, banh mi tu do vao nha dan o long thanh. Kho nam giua hai vanh thi
- * moi chang duong chi dai bang NUA khoang cach hai vanh. Do duoc: kho rai deu khap ban do
- * cho 238.172 chuyen mot gio, kho bam ranh gioi cho hon han - xem `docs/NHAT_KY`.
+ * 1. **Cua thanh truoc** - cho truc duong chinh cat qua duong vien giua hai vanh. Tu
+ *    10/09 thanh pho chia vanh theo chuc nang nen hang phai chay tu vanh nay sang vanh
+ *    kia; kho nam ngay cua thi moi chang duong chi dai bang nua khoang cach hai vanh.
+ *    Trong bon cua chua dung, lay cai XA cac kho cu nhat de kho khong don ve mot phia.
+ * 2. **Het cua thi quay ve luat cu** - nga tu xa cac kho cu nhat.
  *
- * Nga tu nam o boi cua 8 ma duong vien nam o toa do le, nen khong bao gio trung khop tuyet
- * doi - vi vay tru dan theo do lech chu khong doi hoi trung khit.
+ * Vi sao khong dung mot minh luat cu: tren ban do vuong, cho xa nhat luon la BON GOC. Ban
+ * ve quy hoach 10/09 cho thay ba kho nam ba goc con nua phia nam va phia dong khong co kho
+ * nao - chu du an nhin ban ve la thay ngay.
  *
  * Tra ve `undefined` khi moi nga tu deu da co kho.
  */
-const HE_SO_VIEN = 4;
-
 export function choKhoMoi(banDo: BanDo, cu: readonly O[], qh?: QuyHoach): O | undefined {
   const c: number = banDo.duongCach;
+  const xaNhat = (a: number, b: number): number => {
+    let gan = Number.MAX_SAFE_INTEGER;
+    for (const k of cu) gan = Math.min(gan, Math.abs(k.a - a) + Math.abs(k.b - b));
+    return gan;
+  };
+
+  if (qh !== undefined) {
+    let cua: O | undefined;
+    let xa = 0;
+    for (const o of cuaThanh(qh)) {
+      const d: number = xaNhat(o.a, o.b);
+      // `d === 0` la cua da co kho roi.
+      if (d > xa) {
+        xa = d;
+        cua = o;
+      }
+    }
+    if (cua !== undefined && xa > 0) return cua;
+  }
+
   let tot: O | undefined;
-  let diemTot = -Infinity;
+  let xa = 0;
   // Chi xet nga tu KHONG sat mep: kho o goc ban do thi nua so nha van phai di het chieu ngang.
   for (let a = c; a <= banDo.canh - 1 - c; a += c) {
     for (let b = c; b <= banDo.canh - 1 - c; b += c) {
-      let gan = Number.MAX_SAFE_INTEGER;
-      for (const k of cu) gan = Math.min(gan, Math.abs(k.a - a) + Math.abs(k.b - b));
-      // Tru dan theo do lech khoi vien, KHONG cong mot mon thuong lon: thuong lon thi moi
-      // nga tu bam vien deu thang, va cai xa cac kho cu nhat lai la BON GOC ban do - noi
-      // te nhat de dat kho. Tru dan thi vua bam vien vua con rai deu.
-      const diem: number = gan - (qh === undefined ? 0 : HE_SO_VIEN * xaVien(qh, a, b));
-      if (diem > diemTot) {
-        diemTot = diem;
+      const d: number = xaNhat(a, b);
+      if (d > xa) {
+        xa = d;
         tot = { a, b };
       }
     }
