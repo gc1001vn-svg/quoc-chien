@@ -27,6 +27,8 @@ export interface CauHinhWalker {
   readonly tranGiao: number;
   /** Chay san bao nhieu nhip truoc khung hinh dau tien. */
   readonly nhipMoDau: number;
+  /** Bao nhieu kho co san luc mo van. */
+  readonly soKhoDau: number;
   readonly hatGiongDatNha: number;
 }
 
@@ -43,6 +45,7 @@ export function docWalker(tho: unknown): CauHinhWalker {
     tranLay: lay('tranLay'),
     tranGiao: lay('tranGiao'),
     nhipMoDau: lay('nhipMoDau'),
+    soKhoDau: lay('soKhoDau'),
     hatGiongDatNha: lay('hatGiongDatNha'),
   };
 }

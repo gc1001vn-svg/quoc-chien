@@ -42,8 +42,9 @@ describe('ap hau qua', () => {
 
   it('xay kho lam doi walker co them mot kho', () => {
     const { tp, td } = tao();
+    const truoc: number = tp.doiWalker.soKho;
     expect(apHauQua({ xayKho: true }, tp, td)[0]?.duoc).toBe(true);
-    expect(tp.doiWalker.soKho).toBe(2);
+    expect(tp.doiWalker.soKho).toBe(truoc + 1);
   });
 
   it('doi nguong doi that hanh vi thong doc, va khong xuong duoi 0', () => {

@@ -29,8 +29,8 @@ function tk(gio: number, dinh: number): ThongKe {
     gio,
     nha: [],
     hang: [{
-      ten: 'bot', hien: 'Bột', ton: 0, tran: 300,
-      lamRa: 0, dungHet: 0, cho: 9999, day: 0, hong: 0,
+      ten: 'bot', hien: 'Bột', ton: 0, tran: 600,
+      lamRa: 0, dungHet: 0, cho: 19999, day: 0, hong: 0,
     }],
     walker: { chuyen: 0, boCuoc: 0, dinh },
   };
@@ -87,8 +87,8 @@ describe('nhip do', () => {
   it('the thuong phai cho du gian cach, the khan thi khong', () => {
     const ds: The[] = docThe(theTho);
     const dc = new DongCo(ds, nd);
-    // Gio 1: the khan `duong_dong` dung dieu kien (dinh 320) va duoc hoi ngay.
-    expect(dc.hoi(tk(1, 320), KHONG_THANH_PHO)?.ten).toBe('duong_dong');
+    // Gio 1: the khan `duong_dong` dung dieu kien (dinh 640) va duoc hoi ngay.
+    expect(dc.hoi(tk(1, 640), KHONG_THANH_PHO)?.ten).toBe('duong_dong');
     // Gio 2: `thieu_bot` dung dieu kien nhung chua du gian cach 2 gio.
     expect(dc.hoi(tk(2, 0), KHONG_THANH_PHO)).toBeUndefined();
     expect(dc.hoi(tk(3, 0), KHONG_THANH_PHO)?.ten).toBe('thieu_bot');
@@ -96,18 +96,18 @@ describe('nhip do', () => {
 
   it('khong hoi lai cung mot the trong `gioLapLai` gio', () => {
     const dc = new DongCo(docThe(theTho), nd);
-    expect(dc.hoi(tk(1, 320), KHONG_THANH_PHO)?.ten).toBe('duong_dong');
+    expect(dc.hoi(tk(1, 640), KHONG_THANH_PHO)?.ten).toBe('duong_dong');
     for (let gio = 3; gio < 1 + nd.gioLapLai; gio += 2) {
-      expect(dc.hoi(tk(gio, 320), KHONG_THANH_PHO)?.ten).not.toBe('duong_dong');
+      expect(dc.hoi(tk(gio, 640), KHONG_THANH_PHO)?.ten).not.toBe('duong_dong');
     }
-    expect(dc.hoi(tk(1 + nd.gioLapLai, 320), KHONG_THANH_PHO)?.ten).toBe('duong_dong');
+    expect(dc.hoi(tk(1 + nd.gioLapLai, 640), KHONG_THANH_PHO)?.ten).toBe('duong_dong');
   });
 
   it('het tran mot van thi ngung hoi', () => {
     const dc = new DongCo(docThe(theTho), { ...nd, toiDaMotVan: 2 });
     let so = 0;
     for (let gio = 1; gio <= 60; gio += 1) {
-      if (dc.hoi(tk(gio, 320), KHONG_THANH_PHO) !== undefined) so += 1;
+      if (dc.hoi(tk(gio, 640), KHONG_THANH_PHO) !== undefined) so += 1;
     }
     expect(so).toBe(2);
     expect(dc.so).toBe(2);

@@ -15,7 +15,7 @@
         {
           "do": "dinh",
           "phep": ">=",
-          "gia": 300
+          "gia": 600
         }
       ],
       "chon": [
@@ -47,13 +47,13 @@
           "do": "ton",
           "hang": "lua_mi",
           "phep": ">=",
-          "gia": 760
+          "gia": 1520
         },
         {
           "do": "day",
           "hang": "lua_mi",
           "phep": ">=",
-          "gia": 20000
+          "gia": 40000
         }
       ],
       "chon": [
@@ -100,13 +100,13 @@
           "do": "ton",
           "hang": "bot",
           "phep": "<=",
-          "gia": 60
+          "gia": 120
         },
         {
           "do": "cho",
           "hang": "bot",
           "phep": ">=",
-          "gia": 5000
+          "gia": 10000
         }
       ],
       "chon": [
@@ -143,7 +143,7 @@
           "do": "hong",
           "hang": "ca",
           "phep": ">=",
-          "gia": 40
+          "gia": 80
         }
       ],
       "chon": [
@@ -187,13 +187,13 @@
           "do": "ton",
           "hang": "van",
           "phep": ">=",
-          "gia": 190
+          "gia": 380
         },
         {
           "do": "day",
           "hang": "van",
           "phep": ">=",
-          "gia": 20000
+          "gia": 40000
         }
       ],
       "chon": [
@@ -232,7 +232,7 @@
         {
           "do": "soNha",
           "phep": ">=",
-          "gia": 100
+          "gia": 200
         }
       ],
       "chon": [

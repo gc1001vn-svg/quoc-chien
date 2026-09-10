@@ -5,14 +5,28 @@
   "_nguongDinh": "Dinh so nguoi cung luc bang ngan nay thi duong da dong (tran walker la 600 trong walkers.json) - them kho de duong ngan lai, moi chuyen it buoc hon. De 540 thi nguong khong bao gio cham va kho thu hai khong bao gio duoc xay: da do, dinh that chi 324.",
   "_nguongCho": "Bao nhieu luot nha phai CHO mot mon trong mot gio thi coi la thieu mon do, xay them nha lam ra no.",
   "_cap": "Cap thong doc. `tuNha` la so nha toi thieu de len cap; `tranNha`, `tranKho` la tran cua cap do. Tran cap truoc bang `tuNha` cap sau, nen thanh pho lon toi tran roi la len cap, khong ket cung.",
-
   "gioMoiLan": 1,
-  "nguongBoCuoc": 1,
-  "nguongDinh": 300,
-  "nguongCho": 20,
+  "nguongBoCuoc": 2,
+  "nguongDinh": 600,
+  "nguongCho": 40,
   "cap": [
-    { "ten": "ly truong", "tuNha": 0, "tranNha": 110, "tranKho": 2 },
-    { "ten": "tri huyen", "tuNha": 110, "tranNha": 130, "tranKho": 3 },
-    { "ten": "tri phu", "tuNha": 130, "tranNha": 150, "tranKho": 4 }
+    {
+      "ten": "ly truong",
+      "tuNha": 0,
+      "tranNha": 220,
+      "tranKho": 4
+    },
+    {
+      "ten": "tri huyen",
+      "tuNha": 220,
+      "tranNha": 260,
+      "tranKho": 6
+    },
+    {
+      "ten": "tri phu",
+      "tuNha": 260,
+      "tranNha": 300,
+      "tranKho": 8
+    }
   ]
 }

@@ -68,7 +68,8 @@ describe('thong doc tu xay', () => {
     const nhaDau: number = tp.soNha;
     tp.chay(NHIP_MOI_GIO * 3);
     expect(tp.soNha).toBe(nhaDau);
-    expect(tp.doiWalker.soKho).toBe(1);
+    // `soKhoDau` kho co san luc mo van; khong co thong doc thi khong them cai nao nua.
+    expect(tp.doiWalker.soKho).toBe(walker.soKhoDau);
   });
 });
 

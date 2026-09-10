@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc lên thật, tốc độ 30×, model KayKit).
+Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc lên thật, 30×, model KayKit, thành phố ×2).
 
 ## 1. Đang ở đâu
 
@@ -26,12 +26,12 @@ Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 check:base · check:credits).
 
 `npm run sim:thu` → **ĐẠT**, 10 giờ game không người bấm (tự chọn lựa chọn đầu):
-**5 thẻ đã hỏi · 94 → 102 nhà · 4 kho · 89.232 chuyến một giờ · đông nhất 325 người ·
-0 lượt bỏ cuộc.** (Phase 6: 84.058 chuyến.)
+**6 thẻ đã hỏi · 188 → 201 nhà · 6 kho · 215.217 chuyến một giờ · đông nhất 655 người ·
+0 lượt bỏ cuộc.** (Trước khi nhân đôi: 89.232 chuyến, 94 nhà.)
 
 | Số đo | Đo được | Trần |
 |---|---:|---:|
-| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.498 | 5.000 |
+| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.546 | 5.000 |
 | Lệnh vẽ | **1** | 4 |
 | Trang atlas, bản 1× | 1 | 4 |
 | Trang atlas, bản 2× | 2 | 4 |
@@ -51,8 +51,9 @@ kinh tế trên màn — bằng đúng con số đo trước Phase 5, khi màn c
 2. **Mở link HAI LẦN** — lần đầu máy còn dùng bản cũ đã lưu, lần sau mới thấy bản mới.
 3. Trả lời thẻ đầu tiên rồi nhìn **góc trái dưới**: bảng sự kiện nằm TRÊN hàng nút tốc
    độ, không đè lên nút nào nữa. Cầm dọc cũng phải không đè.
-4. Tìm **cối xay gió** — giờ là cối xay thật, thân đá, cánh quạt gỗ bốn nan. Cạnh đó:
-   ruộng lúa vàng có hàng rào, hầm mỏ trong vách đá, xưởng cưa có đống gỗ, quầy chợ.
+4. Bấm thẻ xây nhà → **màn hình tự trượt tới chỗ nhà vừa mọc**.
+5. Thành phố giờ **gấp đôi**: 188 nhà, 6 cối xay thay vì 3. Tìm cối xay gió thân đá cánh
+   quạt gỗ, ruộng lúa vàng có hàng rào, hầm mỏ trong vách đá, xưởng cưa có đống gỗ.
 
 Đã đo trên iPhone 10/09: **59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ.
 

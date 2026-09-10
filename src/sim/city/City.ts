@@ -57,13 +57,7 @@ export class ThanhPho implements BoDem, Giao {
   readonly dsChuoi: readonly DinhNghiaChuoi[];
 
   private readonly nhaThat: ThuNha[] = [];
-  /**
-   * O cua thu VUA duoc dung - nha hay kho. `render/` doc de keo camera toi do.
-   *
-   * VI SAO CAN: chu du an bam "xay hai coi xay" xong khong tim ra chung. Ban do 96x96 co
-   * 760 vat trang tri, ma ca van chi co BA cai coi xay - o muc thu nho nhat man hinh chi
-   * thay 39 o, gan nhu khong bao gio trung. Sprite van o do; cai thieu la duong den.
-   */
+  /** O cua thu VUA dung - nha hay kho. `render/` doc de keo camera toi (xem `layOVuaDung`). */
   private oVuaDung: O | undefined;
   /** Day so boc cho dat nha. Song suot van de thong doc xay tiep tu day so do. */
   private readonly rngDat: Rng;
@@ -133,6 +127,9 @@ export class ThanhPho implements BoDem, Giao {
       { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa,
     );
     veKho(this.banDo, { a: giua, b: giua });
+    // Them kho cho du `soKhoDau` (xem `data/walkers.json`): mot kho cho gan hai tram nha
+    // thi duong qua dai, kho rieng tung nha day u va day chuyen tac dung im.
+    for (let i = 1; i < this.cauHinh.soKhoDau; i += 1) this.xayKho();
   }
 
   /** Thong doc xay them mot nha loai `ten`. Tra ve co xay duoc khong. */
@@ -212,7 +209,10 @@ export class ThanhPho implements BoDem, Giao {
     nha.dangLay.delete(w.hang);
   };
 
-  /** O cua nha hay kho vua dung xong. `undefined` khi chua dung gi tu luc doc lan truoc. */
+  /**
+   * O cua nha hay kho vua dung, roi tu xoa. Khong xoa thi camera keo mai ve mot cho.
+   * Can vi vai cai coi xay lan giua 760 vat trang tri thi khong ai tim ra.
+   */
   layOVuaDung(): O | undefined {
     const o: O | undefined = this.oVuaDung;
     this.oVuaDung = undefined;

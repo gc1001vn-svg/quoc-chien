@@ -7,211 +7,211 @@
     {
       "ten": "nuoc",
       "hien": "Nước",
-      "tran": 600,
-      "dau": 60,
+      "tran": 1200,
+      "dau": 120,
       "hao": 10
     },
     {
       "ten": "lua_mi",
       "hien": "Lúa mì",
-      "tran": 800,
-      "dau": 80,
+      "tran": 1600,
+      "dau": 160,
       "hao": 2
     },
     {
       "ten": "bot",
       "hien": "Bột",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 5
     },
     {
       "ten": "banh_mi",
       "hien": "Bánh mì",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 20
     },
     {
       "ten": "ca",
       "hien": "Cá",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 40
     },
     {
       "ten": "ca_muoi",
       "hien": "Cá muối",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 2
     },
     {
       "ten": "lon",
       "hien": "Lợn",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 15
     },
     {
       "ten": "xuc_xich",
       "hien": "Xúc xích",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 5
     },
     {
       "ten": "gia_cam",
       "hien": "Gia cầm",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 20
     },
     {
       "ten": "nho",
       "hien": "Nho",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 15
     },
     {
       "ten": "ruou",
       "hien": "Rượu",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 0
     },
     {
       "ten": "bia",
       "hien": "Bia",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 3
     },
     {
       "ten": "muoi",
       "hien": "Muối",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "da_thu",
       "hien": "Da thú",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 10
     },
     {
       "ten": "ao_da",
       "hien": "Áo da",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 1
     },
     {
       "ten": "len",
       "hien": "Len",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 1
     },
     {
       "ten": "vai",
       "hien": "Vải",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "dat_set",
       "hien": "Đất sét",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 0
     },
     {
       "ten": "gom",
       "hien": "Đồ gốm",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "go_tho",
       "hien": "Gỗ thô",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 1
     },
     {
       "ten": "van",
       "hien": "Ván",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "da_xay",
       "hien": "Đá xây",
-      "tran": 150,
-      "dau": 20,
+      "tran": 300,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "da_voi",
       "hien": "Đá vôi",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 0
     },
     {
       "ten": "voi",
       "hien": "Vôi sống",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 3
     },
     {
       "ten": "quang",
       "hien": "Quặng sắt",
-      "tran": 300,
-      "dau": 30,
+      "tran": 600,
+      "dau": 60,
       "hao": 0
     },
     {
       "ten": "than",
       "hien": "Than",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 2
     },
     {
       "ten": "sat",
       "hien": "Sắt",
-      "tran": 200,
-      "dau": 20,
+      "tran": 400,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "thep",
       "hien": "Thép",
-      "tran": 150,
-      "dau": 20,
+      "tran": 300,
+      "dau": 40,
       "hao": 0
     },
     {
       "ten": "giap",
       "hien": "Giáp",
-      "tran": 100,
-      "dau": 10,
+      "tran": 200,
+      "dau": 20,
       "hao": 0
     },
     {
       "ten": "vu_khi",
       "hien": "Vũ khí",
-      "tran": 100,
-      "dau": 10,
+      "tran": 200,
+      "dau": 20,
       "hao": 0
     }
   ]

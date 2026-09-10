@@ -50,8 +50,8 @@ describe('nha kinh te hien ra ban do', () => {
   it('mo van xong thi so vat the tang dung bang so nha kinh te', () => {
     const truoc: number = sinhBanDo(cauHinh).vat.length;
     const tp: ThanhPho = taoThanhPho();
-    // Vat the trang tri + mot sprite cho moi nha kinh te + mot sprite danh dau kho dau tien.
-    expect(tp.banDo.vat.length).toBe(truoc + tp.soNha + 1);
+    // Vat the trang tri + mot sprite moi nha kinh te + mot sprite moi kho co san luc mo van.
+    expect(tp.banDo.vat.length).toBe(truoc + tp.soNha + walker.soKhoDau);
   });
 
   it('khong hai vat the nao dam vao nhau', () => {

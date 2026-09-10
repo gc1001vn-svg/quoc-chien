@@ -51,8 +51,9 @@ describe('chen sprite kho', () => {
     const tp = new ThanhPho({ hang, nha, chuoi, banDo: cauHinh, walker });
     const dem = (): number => tp.banDo.vat.filter((v) => v.ten === tp.banDo.spriteKho).length;
     const truoc: number = dem();
+    const khoTruoc: number = tp.doiWalker.soKho;
     expect(tp.xayKho()).toBe(true);
-    expect(tp.doiWalker.soKho).toBe(2);
+    expect(tp.doiWalker.soKho).toBe(khoTruoc + 1);
     expect(dem()).toBe(truoc + 1);
   });
 });

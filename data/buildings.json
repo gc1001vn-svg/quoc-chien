@@ -10,7 +10,7 @@
       "hien": "Giếng nước",
       "sprite": "gieng",
       "kieu": "san_xuat",
-      "so": 6,
+      "so": 12,
       "nhip": 100,
       "vao": [],
       "ra": [
@@ -25,7 +25,7 @@
       "hien": "Ruộng lúa",
       "sprite": "ruong",
       "kieu": "san_xuat",
-      "so": 5,
+      "so": 10,
       "nhip": 70,
       "vao": [],
       "ra": [
@@ -40,7 +40,7 @@
       "hien": "Cối xay",
       "sprite": "coi_xay",
       "kieu": "san_xuat",
-      "so": 3,
+      "so": 6,
       "nhip": 90,
       "vao": [
         {
@@ -60,7 +60,7 @@
       "hien": "Lò bánh",
       "sprite": "lo_nho",
       "kieu": "san_xuat",
-      "so": 3,
+      "so": 6,
       "nhip": 100,
       "_": "Lo nao cung phai dot cai gi do. Cui (`go_tho`) buoc nguoi choi giu rung, khong chat het tu dau van.",
       "vao": [
@@ -89,7 +89,7 @@
       "hien": "Nhà chài",
       "sprite": "nha_chai",
       "kieu": "san_xuat",
-      "so": 3,
+      "so": 6,
       "nhip": 80,
       "vao": [],
       "ra": [
@@ -104,7 +104,7 @@
       "hien": "Lò ướp cá",
       "sprite": "lo_nho",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 100,
       "vao": [
         {
@@ -128,7 +128,7 @@
       "hien": "Trại lợn",
       "sprite": "trai_thu",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 80,
       "vao": [
         {
@@ -148,7 +148,7 @@
       "hien": "Lò mổ",
       "sprite": "lo_lon",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 175,
       "_": "Cho duy nhat co HAI dau ra, va la cho de dat so sai nhat.",
       "_ti_le": "5 xuc xich : 4 da thu phai khop dung ti le nhu cau (1.800 : 1.440 mot gio). Lech ti le thi mon nao du se lam day kho, chan ca me, keo mon con lai xuong theo - da bi mot lan: de 2:2 thi dan doi xuc xich trong khi da thu van day kho.",
@@ -178,7 +178,7 @@
       "hien": "Mỏ muối",
       "sprite": "mo",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 100,
       "vao": [],
       "ra": [
@@ -193,7 +193,7 @@
       "hien": "Trại gà",
       "sprite": "trai_thu",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 70,
       "vao": [
         {
@@ -213,7 +213,7 @@
       "hien": "Vườn nho",
       "sprite": "vuon_nho",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 90,
       "vao": [],
       "ra": [
@@ -228,7 +228,7 @@
       "hien": "Xưởng rượu",
       "sprite": "xuong",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 70,
       "vao": [
         {
@@ -252,7 +252,7 @@
       "hien": "Nhà bia",
       "sprite": "xuong",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 100,
       "vao": [
         {
@@ -276,7 +276,7 @@
       "hien": "Xưởng thuộc da",
       "sprite": "xuong",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 90,
       "vao": [
         {
@@ -296,7 +296,7 @@
       "hien": "Trại cừu",
       "sprite": "trai_thu",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 100,
       "vao": [
         {
@@ -316,7 +316,7 @@
       "hien": "Xưởng dệt",
       "sprite": "xuong",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 50,
       "vao": [
         {
@@ -336,7 +336,7 @@
       "hien": "Mỏ đất sét",
       "sprite": "mo",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 120,
       "vao": [],
       "ra": [
@@ -351,7 +351,7 @@
       "hien": "Lò gốm",
       "sprite": "lo_nho",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 100,
       "vao": [
         {
@@ -375,7 +375,7 @@
       "hien": "Trại đốn gỗ",
       "sprite": "trai_go",
       "kieu": "san_xuat",
-      "so": 2,
+      "so": 4,
       "nhip": 60,
       "_": "Nuoi ca xuong cua va lo banh - them cui cho lo banh la phai gap doi so trai.",
       "vao": [],
@@ -391,7 +391,7 @@
       "hien": "Mỏ đá vôi",
       "sprite": "mo",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 300,
       "vao": [],
       "ra": [
@@ -406,7 +406,7 @@
       "hien": "Lò vôi",
       "sprite": "lo_nho",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 200,
       "vao": [
         {
@@ -430,7 +430,7 @@
       "hien": "Xưởng cưa",
       "sprite": "xuong",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 150,
       "vao": [
         {
@@ -450,7 +450,7 @@
       "hien": "Mỏ đá",
       "sprite": "mo",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 250,
       "vao": [],
       "ra": [
@@ -465,7 +465,7 @@
       "hien": "Mỏ quặng",
       "sprite": "mo",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 50,
       "vao": [],
       "ra": [
@@ -480,7 +480,7 @@
       "hien": "Mỏ than",
       "sprite": "mo",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 45,
       "_": "Nuoi bon lo: lo nung, lo gom, lo thep, lo voi. Them lo nao cung phai ha nhip o day.",
       "vao": [],
@@ -496,7 +496,7 @@
       "hien": "Lò nung",
       "sprite": "lo_lon",
       "kieu": "san_xuat",
-      "so": 3,
+      "so": 6,
       "nhip": 150,
       "vao": [
         {
@@ -520,7 +520,7 @@
       "hien": "Lò thép",
       "sprite": "lo_lon",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 120,
       "_": "Bac moi giua sat va vu khi: sat tho phai luyen lai voi than moi ra thep ren duoc.",
       "vao": [
@@ -545,7 +545,7 @@
       "hien": "Lò rèn",
       "sprite": "lo_lon",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 250,
       "vao": [
         {
@@ -565,7 +565,7 @@
       "hien": "Xưởng vũ khí",
       "sprite": "xuong",
       "kieu": "san_xuat",
-      "so": 1,
+      "so": 2,
       "nhip": 250,
       "vao": [
         {
@@ -589,7 +589,7 @@
       "hien": "Nhà dân",
       "sprite": "nha_nho_do",
       "kieu": "tieu_thu",
-      "so": 30,
+      "so": 60,
       "nhip": 1800,
       "_": "Dan bac 1. An tung mon doc lap: het bia thi van an banh mi. Bac 2-3-4 de Phase sau.",
       "vao": [
@@ -645,7 +645,7 @@
       "hien": "Trại lính",
       "sprite": "trai_linh",
       "kieu": "tieu_thu",
-      "so": 4,
+      "so": 8,
       "nhip": 1200,
       "vao": [
         {
@@ -668,7 +668,7 @@
       "hien": "Công trường",
       "sprite": "cong_truong",
       "kieu": "tieu_thu",
-      "so": 6,
+      "so": 12,
       "nhip": 900,
       "vao": [
         {

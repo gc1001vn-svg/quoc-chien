@@ -88,6 +88,34 @@ Vá bằng cơ chế chứ không bằng lời hứa:
   Sáu sprite còn tự ghép (vườn nho, trại thú, lò nhỏ, lò lớn, nhà chài, công trường) đã
   grep — kho **không có** model tương ứng, nên ghép tay là đúng.
 
+## Vá thêm 10/09 (lần ba) — thành phố lớn gấp đôi, và đường tới nhà mới
+
+Chủ dự án: "vẫn chưa thấy cối xay gió, ruộng lúa, hầm mỏ, xưởng cưa". Đếm ra lý do: cả ván
+chỉ có **3 cối xay · 2 xưởng cưa · 2 vườn nho · 5 ruộng**, lẫn giữa **760 vật trang trí**
+trên bản đồ 96×96. Ở mức thu nhỏ nhất màn hình chỉ thấy 39 ô — gần như không bao giờ trúng.
+
+Hai việc:
+
+1. **Camera kéo tới nhà vừa mọc** sau khi bấm thẻ (`ThanhPho.layOVuaDung`). Bấm "xây hai
+   cối xay" là màn hình trượt tới đó.
+2. **Nhân đôi cả thành phố**: 94 → **188 nhà**, cối xay 3 → **6**. Nhân ĐỀU mọi loại nên
+   tỉ lệ giữa các nhà không đổi — cân bằng giữ nguyên. Nhưng phải nhân theo cả bốn thứ
+   khác, thiếu cái nào cũng vỡ (đo từng bước):
+   - **Trần kho chung** (`wares.json > tran`) — không nhân thì kho đầy, cối xay đứng im.
+   - **Trần người vác hàng** — không nhân thì chạm `tranGiao` 300, kho riêng ứ.
+   - **Ngưỡng thẻ và ngưỡng thống đốc** — `ton lua_mi >= 760` vốn là 95 % trần cũ, với
+     trần mới chỉ còn 47 %, thẻ hỏi sai lúc.
+   - **`soKhoDau` = 4 kho ngay lúc mở ván** (mới, trong `walkers.json`) — một kho cho 188
+     nhà thì đường quá dài, dây chuyền tắc ngay cả khi có thống đốc.
+
+**×2,5 và ×3 đều HỎNG** — "mỏ đá kho đầy": bản đồ 96×96 chật, chuyến quá dài. Muốn đông
+hơn nữa phải nới bản đồ, không phải nhân tiếp.
+
+Số đo: **215.217 chuyến một giờ** (trước 89.232) · 188 → 201 nhà · 6 kho · đông nhất 655
+người · 0 bỏ cuộc · **3.546 sprite ở 0,35×** (trần 5.000) · 1 lệnh vẽ.
+
+`City.ts` chạm trần 300 dòng hai lần trong lúc sửa → tách `BangSo.ts` (hàm thuần dựng bảng số).
+
 ## Còn nợ
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được
