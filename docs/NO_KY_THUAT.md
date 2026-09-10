@@ -57,6 +57,10 @@
 - ~~**Chưa đo fps trên iPhone với sprite người**~~ — **ĐÃ TRẢ 08/09: 59 fps · 3.441 sprite ·
   1 lệnh vẽ · 0,35×.** Đường lùi nếu về sau tụt: `ZOOM_HIEN_WALKER` trong
   `src/render/CityScene.ts` đổi 0 → 0,6 là người biến mất khi thu nhỏ.
+- **Người vác hàng đi tay không** (09/09, chủ dự án nhận ra). 16 sprite người hiện có đều
+  là dáng đi tay không; đi lấy hàng hay đang vác hàng về cũng một hình. Kit Fantasy Props
+  có `Crate_Wooden` `Barrel` `Bag` `FarmCrate_*` gắn vào tay được. **Chốt để Phase 10**,
+  nướng một lần cùng bộ 8 hướng × 4 dáng cho khỏi nướng hai lượt.
 - ~~**Nhà kinh tế và vật thể trang trí là hai danh sách riêng**~~ (07/09) — **ĐÃ TRẢ 09/09
   (Phase 6B).** Mỗi `ThuNha` chèn một `OVat` vào bản đồ, và hai bên dùng **chung một
   `daChiem`**. Hoá ra nợ này còn giấu một lỗi: hai tập ô đã chiếm riêng nghĩa là nhà kinh

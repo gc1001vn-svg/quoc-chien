@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 09/09/2026 (Phase 6B — nhà kinh tế mọc lên thật).
+Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc lên thật, và tốc độ 30×).
 
 ## 1. Đang ở đâu
 
@@ -38,23 +38,29 @@ check:base · check:credits).
 
 12 sprite mới không đẩy atlas sang trang nào mới, nên `ASSET_CREDITS.md` không phải sửa.
 
-**Chưa đo trên iPhone thật.** Số fps thật gần nhất vẫn là 59 fps · 3.441 sprite · 0,35×
-(đo trước Phase 5, khi chưa có nhà kinh tế trên màn).
+**iPhone thật, 09/09: 59 fps** ở mức thu nhỏ hết cỡ, có đủ nhà kinh tế trên màn — bằng
+đúng con số đo trước Phase 5, khi màn còn ít hơn 94 toà nhà.
 
 ## 3. Việc của chủ dự án
 
-**Mở game trên iPhone, xem có thấy nhà kinh tế mọc lên không, rồi nhắn con số fps.**
+**Chơi thử với tốc độ 30× mới, xem thẻ có hỏi đủ dày không.**
 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
-1. Mở link, chờ thành phố hiện ra.
-2. Chụm hai ngón **thu nhỏ hết cỡ** để nhìn toàn thành phố.
-3. Liếc **góc trên bên trái**, nhắn lại con số fps ở đó (ví dụ "58 fps").
-4. Chơi tiếp tới lúc có thẻ hỏi "kho lúa mì đầy ứ", bấm **"Xây hai cối xay"**, rồi nhìn
-   quanh xem có mọc lên hai cái tháp mái nón không.
+1. Mở link. Ván **tự chạy ở 8×** rồi, không phải bấm gì.
+2. Trả lời thẻ đầu tiên (hiện gần như ngay).
+3. Bấm nút **30×** — nút cuối cùng bên phải hàng tốc độ dưới đáy màn.
+4. Thẻ sau phải tới trong khoảng **bốn phút**. Nếu vẫn lâu hơn thế thì nhắn "LỖI".
+5. Lúc gặp thẻ "kho lúa mì đầy ứ", bấm **"Xây hai cối xay"** rồi nhìn quanh xem có mọc
+   lên hai cái tháp mái nón không.
+
+Đã đo trên iPhone 09/09: **59 fps** khi thu nhỏ hết cỡ.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **Người vác hàng đi tay không.** Chủ dự án nhận ra 09/09: người đi qua đi lại mà trên
+  tay không có gì. Kit có sẵn thùng, bao, sọt để gắn vào tay. **Chốt: để Phase 10**, nướng
+  một lần cùng bộ 8 hướng × 4 dáng.
 - **Giếng và cối xay chỉ là hình gần đúng.** Kit Quaternius không có hai model này; giếng
   là cột đá có xô, cối xay là tháp mái nón **không cánh quạt** — công thức nướng chỉ quay
   được quanh trục đứng.

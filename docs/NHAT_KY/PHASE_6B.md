@@ -30,8 +30,25 @@ phản hồi vừa dựng.
 Ảnh máy ảo: **3.498 sprite · 1 lệnh vẽ** ở 0,35× (trần 5.000 và 4). Số fps trong máy ảo
 không có nghĩa — máy ảo vẽ bằng phần mềm.
 
+## Vá thêm 10/09 — tốc độ 30×
+
+Chủ dự án chơi thật: **59 fps**, nhưng "chờ mãi không thấy hỏi". Một giờ game dài 36.000
+nhịp, tức đúng **một giờ thật** ở 1×, mà giãn cách hai thẻ là hai giờ. Ở 8× vẫn 15 phút.
+
+Đã thử hướng **rút ngắn giờ game** (36.000 → 1.200 nhịp) và **bỏ**: mọi ngưỡng đếm "mỗi
+giờ" của thống đốc và của thẻ (`nguongCho` 20 lượt, `day` 20.000) nhỏ theo 30 lần nên
+không bao giờ chạm nữa — đo được thống đốc **ngừng xây hẳn** (94 → 94 nhà) và thẻ đầu
+lùi từ giờ 1 tới giờ 23.
+
+Làm thay: **thêm mức 30×** vào dải tốc độ, và mở ván ở **8×** thay vì 1×. Mọi thứ nhanh
+đều nên cân bằng không đổi một chút nào — `sim:thu` vẫn ra đúng 89.232 chuyến, 94 → 102
+nhà, 5 thẻ. `GAME_SPEC` mục 3 và `TECH_SPEC` sửa theo (hai file khoá, chủ dự án đã chốt).
+
 ## Còn nợ
 
 Giếng và cối xay vẫn là **hình gần đúng tự ghép**, không phải model thật: kit Quaternius
 không có. Cối xay là cái tháp mái nón, **không có cánh quạt** — công thức nướng chỉ quay
 được quanh trục đứng (`ry`), không dựng nổi cánh đứng.
+
+**Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được
+vào tay. Chốt để **Phase 10**, nướng một lần cùng bộ 8 hướng × 4 dáng.
