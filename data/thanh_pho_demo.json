@@ -34,158 +34,177 @@
   "leDuong": 1,
   "_bam": "So o toi da cach duong. Co `bam` thi vat the chi dat gan duong - nha bam duong moi ra thanh pho, rai deu ra thi ra rung co nha. Khong co `bam` thi rai tu do.",
   "_o": "Canh khoi o cong trinh chiem, neo o (a,b) di ra. Nha lon Quaternius rong 2 o; khong khai thi 1. Ca khoi phai trong va khong cham duong moi dat duoc.",
+  "_khu": "Ranh gioi nam khu, tinh bang khoang cach Chebyshev tu tam ban do (max cua |a-tam| va |b-tam|). Vuong dong tam chu khong tron: luoi iso nghieng 45 do nen vuong Chebyshev nhin ra hinh THOI tren man - dung cai muon.",
+  "khu": {
+    "do_thi": 15,
+    "san_xuat": 25,
+    "nong_nghiep": 35,
+    "cong_nghiep": 43
+  },
+  "_vat": "`tuXa` la khoang cach Chebyshev toi thieu tinh tu tam. Cay coi de `tuXa` 30 de don thanh RUNG o ria, khong rai khap thanh pho - nha kinh te moi noi len.",
   "vat": [
     {
       "ten": "thap_canh",
-      "so": 11,
+      "so": 6,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngoi_do",
-      "so": 32,
+      "so": 16,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngoi_nau",
-      "so": 27,
+      "so": 14,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngoi_lam",
-      "so": 22,
+      "so": 11,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_ngang_do",
-      "so": 22,
+      "so": 11,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_gach_do",
-      "so": 27,
+      "so": 14,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_gach_nau",
-      "so": 22,
+      "so": 11,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_gach_reu",
-      "so": 18,
+      "so": 9,
       "bam": 3,
       "o": 2
     },
     {
       "ten": "nha_nho_do",
-      "so": 50,
+      "so": 25,
       "bam": 2
     },
     {
       "ten": "nha_nho_nau",
-      "so": 40,
+      "so": 20,
       "bam": 2
     },
     {
       "ten": "nha_nho_lam",
-      "so": 32,
+      "so": 16,
       "bam": 2
     },
     {
       "ten": "cong_lang",
-      "so": 9,
+      "so": 4,
       "bam": 1
     },
     {
       "ten": "quay_hang",
-      "so": 16,
+      "so": 8,
       "bam": 1
     },
     {
       "ten": "quay_xe",
-      "so": 11,
+      "so": 6,
       "bam": 1
     },
     {
       "ten": "xe_keo",
-      "so": 14,
+      "so": 7,
       "bam": 1
     },
     {
       "ten": "ghe_bang",
-      "so": 14,
+      "so": 7,
       "bam": 1
     },
     {
       "ten": "noi_lo",
-      "so": 29,
+      "so": 14,
       "bam": 2
     },
     {
       "ten": "dong_thung",
-      "so": 18,
+      "so": 9,
       "bam": 1
     },
     {
       "ten": "thung_ruou",
-      "so": 16,
+      "so": 8,
       "bam": 1
     },
     {
       "ten": "hang_rao",
-      "so": 32,
+      "so": 16,
       "bam": 2
     },
     {
       "ten": "cay_thong",
-      "so": 45
+      "so": 22,
+      "tuXa": 30
     },
     {
       "ten": "cay_soi",
-      "so": 36
+      "so": 18,
+      "tuXa": 30
     },
     {
       "ten": "cay_soi_2",
-      "so": 32
+      "so": 16,
+      "tuXa": 30
     },
     {
       "ten": "cay_kho",
-      "so": 18
+      "so": 9,
+      "tuXa": 30
     },
     {
       "ten": "bui",
-      "so": 32
+      "so": 16,
+      "tuXa": 30
     },
     {
       "ten": "bui_hoa",
-      "so": 22
+      "so": 11,
+      "tuXa": 30
     },
     {
       "ten": "co_cao",
-      "so": 36
+      "so": 18,
+      "tuXa": 30
     },
     {
       "ten": "hoa",
-      "so": 27
+      "so": 14,
+      "tuXa": 30
     },
     {
       "ten": "nam",
-      "so": 18
+      "so": 9,
+      "tuXa": 30
     },
     {
       "ten": "da_lon",
-      "so": 14
+      "so": 7,
+      "tuXa": 30
     },
     {
       "ten": "da_nho",
-      "so": 18
+      "so": 9,
+      "tuXa": 30
     }
   ],
   "zoomMin": 0.35,

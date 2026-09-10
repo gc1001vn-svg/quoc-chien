@@ -116,6 +116,48 @@ người · 0 bỏ cuộc · **3.546 sprite ở 0,35×** (trần 5.000) · 1 l�
 
 `City.ts` chạm trần 300 dòng hai lần trong lúc sửa → tách `BangSo.ts` (hàm thuần dựng bảng số).
 
+## Vá thêm 10/09 (lần bốn) — quy hoạch năm khu
+
+Chủ dự án chơi tiếp: vẫn không tìm ra cối xay, và đề xuất ba việc. Cả ba đã làm.
+
+**1. Bảng sự kiện ẩn sẵn**, nút `☰` góc trái dưới bật/tắt. Chữ 11px → 10px.
+
+**2. Dải tốc độ** `0 · 1× · 5× · 10× · 20× · 30×`, mở ván ở 10×. Thêm **50× chỉ khi mở
+bằng `?test=1`** — để thử game cho nhanh, bản chơi thật không có.
+
+**3. Quy hoạch năm khu vòng đồng tâm** (`src/sim/city/QuyHoach.ts`), chủ dự án chốt bố cục:
+
+| Khu | Bán kính Chebyshev | Có gì |
+|---|---:|---|
+| Đô thị | < 15 | Nhà dân, chợ, giếng, công trường |
+| Sản xuất | 15–24 | Cối xay, lò bánh, lò ướp, xưởng rượu, xưởng dệt, lò gốm |
+| Nông nghiệp | 25–34 | Ruộng lúa, vườn nho, trại thú, nhà chài, trại đốn gỗ |
+| Công nghiệp | 35–42 | Sáu mỏ, lò mổ, lò nung, lò thép, lò rèn, xưởng vũ khí |
+| Quân sự | ≥ 43 | Trại lính |
+
+Khoảng cách đo bằng **Chebyshev** chứ không Euclid: lưới iso nghiêng 45° nên hình vuông
+Chebyshev hiện ra màn thành hình **thoi** — đúng cái mắt đọc ra là "vòng trong, vòng ngoài".
+
+**Nhà cùng loại đứng thành cụm**: mỗi loại bốc một hạt trong khu của nó, cả đàn xúm quanh
+(`oGanHat`, toả ra từng vòng vuông). Tìm một cối xay là thấy cả sáu.
+
+**Trang trí giảm nửa**: 760 → 381, và cây cối dồn ra rìa (`tuXa: 30`) thành rừng thay vì
+rải khắp thành phố.
+
+Hai chỗ đo mới lộ ra:
+
+- `oTrongKhu` bốc ngẫu nhiên trên **cả** bản đồ thì khu đô thị (9 % diện tích) trượt chín
+  lần trong mười → phải bốc trong **hộp bao** của khu.
+- `soKhoDau` = 4 đã **bằng** trần kho cấp lý trưởng, thống đốc hết chỗ xây kho. Nới trần
+  lên 7/9/11.
+
+Số đo: **252.006 chuyến một giờ** (trước quy hoạch 215.217 — đường ngắn lại nên hàng chảy
+nhanh hơn) · 188 → 197 nhà · 8 kho · đông nhất 638 người · 0 bỏ cuộc · **3.561 sprite ở
+0,35×** · 1 lệnh vẽ.
+
+Quy hoạch còn làm dây chuyền trơn tới mức **thống đốc không còn nhà nào phải xây** — chỉ
+thêm kho cho đường bớt đông. Test "thành phố lớn lên" sửa theo: nhà **hoặc** kho.
+
 ## Còn nợ
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được

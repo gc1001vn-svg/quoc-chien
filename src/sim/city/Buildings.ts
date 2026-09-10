@@ -10,6 +10,7 @@
  *   chuyen gia, khong phai loi kinh te.
  */
 import type { O } from './BanDo.ts';
+import type { TenKhu } from './QuyHoach.ts';
 import { layChuoi, layMang, layObject, laySoNguyen, LoiDuLieu } from './DocJson.ts';
 
 /** Mot mon hang kem so luong. */
@@ -27,6 +28,8 @@ export interface DinhNghiaNha {
   readonly hien: string;
   /** Ten sprite trong atlas. Nhieu loai nha dung chung mot hinh - xem `data/buildings.json`. */
   readonly sprite: string;
+  /** Khu quy hoach: `do_thi` `san_xuat` `nong_nghiep` `cong_nghiep` `quan_su`. */
+  readonly khu: TenKhu;
   readonly kieu: KieuNha;
   readonly so: number;
   readonly nhip: number;
@@ -72,6 +75,15 @@ function docMuc(tho: unknown, duong: string): Muc[] {
   });
 }
 
+/** Nam ten khu hop le, khong hon. Sai ten thi nha se roi vao khu khong ai ngo. */
+const TEN_KHU: readonly string[] = ['do_thi', 'san_xuat', 'nong_nghiep', 'cong_nghiep', 'quan_su'];
+
+function docKhu(tho: unknown, duong: string): TenKhu {
+  const ten = layChuoi(tho, duong);
+  if (!TEN_KHU.includes(ten)) throw new LoiDuLieu(duong, `phai la mot trong ${TEN_KHU.join(' ')}`);
+  return ten as TenKhu;
+}
+
 /** Doc `data/buildings.json`. Nem `LoiDuLieu` neu sai. */
 export function docNha(tho: unknown): DinhNghiaNha[] {
   const goc = layObject(tho, 'buildings.json');
@@ -108,6 +120,7 @@ export function docNha(tho: unknown): DinhNghiaNha[] {
       ten,
       hien: layChuoi(o['hien'], `${duong}.hien`),
       sprite: layChuoi(o['sprite'], `${duong}.sprite`),
+      khu: docKhu(o['khu'], `${duong}.khu`),
       kieu,
       so: laySoNguyen(o['so'], `${duong}.so`),
       nhip: laySoNguyen(o['nhip'], `${duong}.nhip`),

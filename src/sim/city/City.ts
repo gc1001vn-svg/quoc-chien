@@ -8,7 +8,9 @@
 import { DongHo, NHIP_MOI_GIO } from '../Clock.ts';
 import { Rng } from '../../core/Rng.ts';
 import type { BanDo, O } from './BanDo.ts';
-import { chenVat, congRaDuong, datMotNha, sinhBanDo } from './BanDo.ts';
+import { chenVat, congRaDuong, sinhBanDo } from './BanDo.ts';
+import type { VanhKhu } from './QuyHoach.ts';
+import { docVanhKhu, oGanHat, oTrongKhu } from './QuyHoach.ts';
 import { choKhoMoi, dungNha, veKho } from './XayThem.ts';
 import type { BoDem, DinhNghiaNha, Giao } from './Buildings.ts';
 import { docNha, ThuNha } from './Buildings.ts';
@@ -61,6 +63,8 @@ export class ThanhPho implements BoDem, Giao {
   private oVuaDung: O | undefined;
   /** Day so boc cho dat nha. Song suot van de thong doc xay tiep tu day so do. */
   private readonly rngDat: Rng;
+  /** Ranh gioi nam khu quy hoach. */
+  private readonly vanhKhu: VanhKhu;
   /** Thong doc da xay them bao nhieu nha moi loai. */
   private readonly demXay = new Map<string, number>();
   /** Tam bo dem cua gio dang chay. Xoa het moi lan chot gio - xem `BangSo.ts`. */
@@ -86,26 +90,26 @@ export class ThanhPho implements BoDem, Giao {
     this.kho = new Kho(this.dsHang);
     this.banDo = sinhBanDo(tho.banDo as Parameters<typeof sinhBanDo>[0]);
 
-    // Boc tung o mot chu khong dat mot the: thong doc con xay tiep luc dang chay, nen
-    // day so `rngDat` phai song sau constructor. Cung hat giong, cung ban do.
-    // O chiem lay THANG tu `banDo.daChiem` - chung mot tap voi vat the trang tri, khong
-    // thi nha kinh te dat de len cay va nha cua ban do.
+    // `rngDat` song sau constructor vi thong doc con xay tiep. O chiem lay thang tu
+    // `banDo.daChiem` - chung mot tap voi vat the trang tri nen khong dat de len nhau.
     this.rngDat = new Rng(this.cauHinh.hatGiongDatNha);
-    const tongNha: number = this.dsNha.reduce((t, n) => t + n.so, 0);
-    const cho: O[] = [];
-    for (let i = 0; i < tongNha; i += 1) {
-      const o: O | undefined = datMotNha(this.banDo, this.banDo.daChiem, this.rngDat);
-      if (o === undefined) break;
-      cho.push(o);
-    }
-    if (cho.length < tongNha) {
-      throw new LoiDuLieu('ban do', `chi dat duoc ${String(cho.length)}/${String(tongNha)} nha`);
-    }
+    this.vanhKhu = docVanhKhu((tho.banDo as { khu: unknown }).khu);
 
     let k = 0;
     for (const def of this.dsNha) {
+      // Moi LOAI nha boc mot hat trong khu cua no, ca dan xum quanh hat do (`QuyHoach.ts`).
+      const hat: O | undefined =
+        oTrongKhu(this.banDo, this.banDo.daChiem, this.rngDat, this.vanhKhu, def.khu);
+      if (hat === undefined) {
+        throw new LoiDuLieu('ban do', `khu ${def.khu} da chat, khong dat noi "${def.ten}"`);
+      }
       for (let i = 0; i < def.so; i++) {
-        const o: O = cho[k] as O;
+        const o: O | undefined = i === 0
+          ? hat
+          : oGanHat(this.banDo, this.banDo.daChiem, this.vanhKhu, def.khu, hat);
+        if (o === undefined) {
+          throw new LoiDuLieu('ban do', `khong du cho quanh cum "${def.ten}" trong khu ${def.khu}`);
+        }
         // Lech pha deu nhau tren ca chu ky, de 30 nha dan khong cung an vao mot nhip.
         const nha = new ThuNha(
           def, k, Math.floor((i * def.nhip) / def.so),
@@ -127,8 +131,7 @@ export class ThanhPho implements BoDem, Giao {
       { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa,
     );
     veKho(this.banDo, { a: giua, b: giua });
-    // Them kho cho du `soKhoDau` (xem `data/walkers.json`): mot kho cho gan hai tram nha
-    // thi duong qua dai, kho rieng tung nha day u va day chuyen tac dung im.
+    // Them kho cho du `soKhoDau`: mot kho cho gan hai tram nha thi duong qua dai.
     for (let i = 1; i < this.cauHinh.soKhoDau; i += 1) this.xayKho();
   }
 
@@ -138,7 +141,7 @@ export class ThanhPho implements BoDem, Giao {
     if (def === undefined) return false;
     const nha: ThuNha | undefined = dungNha(
       def, this.nhaThat.length, this.banDo, this.rngDat,
-      this.cauHinh.tranRieng, this.cauHinh.moiChuyen,
+      this.cauHinh.tranRieng, this.cauHinh.moiChuyen, this.vanhKhu,
     );
     if (nha === undefined) return false;
     this.nhaThat.push(nha);
@@ -209,10 +212,7 @@ export class ThanhPho implements BoDem, Giao {
     nha.dangLay.delete(w.hang);
   };
 
-  /**
-   * O cua nha hay kho vua dung, roi tu xoa. Khong xoa thi camera keo mai ve mot cho.
-   * Can vi vai cai coi xay lan giua 760 vat trang tri thi khong ai tim ra.
-   */
+  /** O cua nha hay kho vua dung, roi tu xoa - khong xoa thi camera keo mai ve mot cho. */
   layOVuaDung(): O | undefined {
     const o: O | undefined = this.oVuaDung;
     this.oVuaDung = undefined;

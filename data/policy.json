@@ -14,19 +14,20 @@
       "ten": "ly truong",
       "tuNha": 0,
       "tranNha": 220,
-      "tranKho": 4
+      "tranKho": 7
     },
     {
       "ten": "tri huyen",
       "tuNha": 220,
       "tranNha": 260,
-      "tranKho": 6
+      "tranKho": 9
     },
     {
       "ten": "tri phu",
       "tuNha": 260,
       "tranNha": 300,
-      "tranKho": 8
+      "tranKho": 11
     }
-  ]
+  ],
+  "_tranKho_ghi_chu": "Tran kho phai LON HON `soKhoDau` cua walkers.json, khong thi thong doc khong con cho xay kho du duong dang dong - do duoc 10/09."
 }
