@@ -58,10 +58,25 @@ gió" và "chữ góc trái dưới to quá che hết màn hình".
   cắt bằng `...`. Thêm `text-size-adjust: 100%` — Safari trên iPhone tự phóng chữ. Nút
   "Đo trần sprite" đẩy lên trên hàng tốc độ, trước đó hai cái chồng lên nhau.
 
-## Còn nợ
+## Vá thêm 10/09 (lần hai) — dùng model thật của KayKit
 
-Giếng vẫn là **hình gần đúng tự ghép** — kit Quaternius không có model giếng, hiện là cột
-đá có xô.
+Chủ dự án: cánh quạt tự ghép "xấu quá", và "mấy phase trước bạn có đưa hình cối xay rất
+đẹp". Nhớ đúng: mẻ Kenney/KayKit cũ (`tools/me/trung_co.json`) có `coi_xay_gio`,
+`coi_xay_lon`, `gieng_lang` — dựng từ **KayKit Medieval Builder Pack**, gói vẫn nằm trong
+`ASSET_CREDITS` suốt, chỉ vì mẻ cũ bỏ đi nên không ai nghĩ tới nữa.
+
+Sáu toà nhà giờ lấy thẳng model thật: `mill` + `mill_blades` (cối xay gió có cánh),
+`well` (giếng có mái), `mine` (hầm mỏ trong vách đá), `farm_plot` + `farm_wheat` (ruộng
+lúa có hàng rào), `lumbermill` (xưởng cưa có đống gỗ), `market` (quầy chợ có xe).
+
+Đánh đổi chủ dự án đã chốt sau khi xem ảnh: KayKit màu bệt, Quaternius có hoạ tiết — hai
+phong cách không khớp tuyệt đối.
+
+**Bài học ghi vào `NO_KY_THUAT`:** nợ này từng ghi "đã tìm hết, không gói nào có cối xay
+và giếng đúng phong cách". Sai — gói vẫn ở đó, trong chính file credits của dự án. Rà lại
+gói CŨ trước khi kết luận không có.
+
+## Còn nợ
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được
 vào tay. Chốt để **Phase 10**, nướng một lần cùng bộ 8 hướng × 4 dáng.

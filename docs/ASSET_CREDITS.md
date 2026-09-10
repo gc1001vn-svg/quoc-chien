@@ -8,9 +8,9 @@ sang cả dự án.
 
 | File trong `public/assets/` | Nguồn | Tác giả | License | Ngày thêm |
 |---|---|---|---|---|
-| `atlas/trung_co_2_1x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
-| `atlas/trung_co_2_2x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
-| `atlas/trung_co_2_2x_1.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + hoạ tiết Poly Haven, <https://quaternius.com> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 07/09/2026 |
+| `atlas/trung_co_2_1x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + **KayKit Medieval Builder Pack** (cối xay, giếng, mỏ, ruộng, xưởng cưa, chợ — thêm 10/09) + hoạ tiết Poly Haven, <https://quaternius.com> · <https://kaylousberg.itch.io> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Kay Lousberg · Poly Haven | CC0 1.0 | 07/09/2026, sửa 10/09/2026 |
+| `atlas/trung_co_2_2x_0.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + **KayKit Medieval Builder Pack** (cối xay, giếng, mỏ, ruộng, xưởng cưa, chợ — thêm 10/09) + hoạ tiết Poly Haven, <https://quaternius.com> · <https://kaylousberg.itch.io> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Kay Lousberg · Poly Haven | CC0 1.0 | 07/09/2026, sửa 10/09/2026 |
+| `atlas/trung_co_2_2x_1.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + **KayKit Medieval Builder Pack** (cối xay, giếng, mỏ, ruộng, xưởng cưa, chợ — thêm 10/09) + hoạ tiết Poly Haven, <https://quaternius.com> · <https://kaylousberg.itch.io> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Kay Lousberg · Poly Haven | CC0 1.0 | 07/09/2026, sửa 10/09/2026 |
 | `atlas/trung_co_2_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 07/09/2026 |
 | `atlas/trung_co_2_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 07/09/2026 |
 
@@ -36,6 +36,13 @@ Gói nguồn đang dùng, **tất cả CC0 1.0**, license đọc thẳng trong `
 (`trung_co_1x*`, `trung_co_2x*`) đã **xoá khỏi `public/`** — bớt 5,0 MB PWA phải tải về
 máy. Mẻ cũ vẫn dựng lại được bất cứ lúc nào từ `tools/me/trung_co.json`; hai gói Kenney và
 KayKit giữ trong bảng này vì lý do đó, và vì City Builder Bits để dành Phase 8.
+
+**Từ 10/09/2026 mẻ `trung_co_2` dùng THÊM KayKit Medieval Builder Pack** cho sáu toà nhà
+kinh tế mà Quaternius không có model: `mill` + `mill_blades` (cối xay gió có cánh thật),
+`well` (giếng), `mine` (hầm mỏ), `farm_plot` + `farm_wheat` (ruộng lúa), `lumbermill`
+(xưởng cưa), `market` (quầy chợ). Chủ dự án chốt 10/09 sau khi xem ảnh so sánh: hình tự
+ghép từ mảnh tường và mái "xấu quá". KayKit màu bệt còn Quaternius có hoạ tiết, nên hai
+phong cách không khớp tuyệt đối — đánh đổi đã biết trước khi chốt.
 
 **Đã thử rồi bỏ, đừng tải lại:** `quaternius/lowpoly-farm-buildings` (CC0, có `Windmill`,
 `Well`, `Barn`, `Silo` — đúng thứ đang thiếu) nướng ra là **nông trại Mỹ thế kỷ 19**: kho

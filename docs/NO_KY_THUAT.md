@@ -11,9 +11,13 @@
 - ~~**28 toà nhà của kinh tế chưa có sprite.**~~ — **ĐÃ TRẢ 09/09 (Phase 6B).** 12 sprite
   mới phủ cả 32 loại nhà: giếng · cối xay · ruộng · vườn nho · nhà chài · trại thú · lò
   nhỏ · lò lớn · mỏ · xưởng · trại gỗ · công trường (nhà dân và trại lính dùng sprite cũ).
-  Còn nợ lại: **giếng chỉ là hình gần đúng tự ghép** — kit không có model giếng, hiện là
-  cột đá có xô. Cối xay **đã có cánh quạt từ 10/09**: thêm `rz` cho từng mảnh trong
-  `ghep()` là dựng được, chỗ này tưởng đường cùng mà không phải.
+  **Trả nốt 10/09:** cối xay, giếng, mỏ, ruộng, xưởng cưa và chợ lấy thẳng model thật của
+  **KayKit Medieval Builder Pack** (`mill` + `mill_blades`, `well`, `mine`, `farm_plot` +
+  `farm_wheat`, `lumbermill`, `market`). Nợ này từng ghi "đã tìm hết, không gói nào có cối
+  xay và giếng đúng phong cách" — sai: KayKit vẫn nằm trong `ASSET_CREDITS` suốt, chỉ vì
+  mẻ cũ bỏ đi nên không ai nghĩ tới nữa. **Bài học: rà lại gói CŨ trước khi kết luận
+  không có.** Đánh đổi: KayKit màu bệt, Quaternius có hoạ tiết — hai phong cách không
+  khớp tuyệt đối, chủ dự án chốt 10/09 sau khi xem ảnh.
 - **Không có cối xay và giếng đúng phong cách.** Đã tìm hết: Medieval Village (176 model)
   và Stylized Nature (68 model) đều không có. Farm Buildings có đủ `Windmill` `Well`
   `Barn` `Silo` nhưng là **nông trại Mỹ thế kỷ 19**, đã nướng thử rồi bỏ (lý do ở

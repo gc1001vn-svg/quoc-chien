@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc lên thật, tốc độ 30×, cối xay có cánh).
+Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc lên thật, tốc độ 30×, model KayKit).
 
 ## 1. Đang ở đâu
 
@@ -11,7 +11,7 @@ Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc lên thật, tốc �
 
 Thành phố vẫn hỏi như Phase 6 — đường đông thì hỏi xây kho hay chặt tay thống đốc, kho
 lúa mì đầy ứ thì hỏi xay bột hay vỗ béo lợn. Khác ở chỗ: **bấm xong là thấy nhà mọc lên
-đúng chỗ**. Cối xay là cái tháp mái nón, lò có ống khói và mái xám, xưởng mái vàng, mỏ là
+đúng chỗ**. Cối xay là cối xay gió có cánh, lò có ống khói và mái xám, chợ có quầy, mỏ là
 vách đá có thùng và cuốc, ruộng là luống lúa vàng.
 
 Trước phiên này 94 nhà kinh tế vô hình — nằm trong danh sách riêng của `src/sim/`, không
@@ -48,10 +48,11 @@ kinh tế trên màn — bằng đúng con số đo trước Phase 5, khi màn c
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
 1. Mở link. Ván tự chạy ở 8×.
-2. Trả lời thẻ đầu tiên rồi nhìn **góc trái dưới**: bảng sự kiện giờ ba dòng, mỗi dòng
-   một sự kiện, chiếm chưa tới nửa bề ngang. Nếu vẫn thấy che nhiều thì nhắn "LỖI".
-3. Tìm **cối xay**: tháp mái nón, có **chữ X gỗ** nhô ra một bên — đó là cánh quạt.
-4. Thẻ sau phải tới trong khoảng bốn phút ở 30×.
+2. **Mở link HAI LẦN** — lần đầu máy còn dùng bản cũ đã lưu, lần sau mới thấy bản mới.
+3. Trả lời thẻ đầu tiên rồi nhìn **góc trái dưới**: bảng sự kiện nằm TRÊN hàng nút tốc
+   độ, không đè lên nút nào nữa. Cầm dọc cũng phải không đè.
+4. Tìm **cối xay gió** — giờ là cối xay thật, thân đá, cánh quạt gỗ bốn nan. Cạnh đó:
+   ruộng lúa vàng có hàng rào, hầm mỏ trong vách đá, xưởng cưa có đống gỗ, quầy chợ.
 
 Đã đo trên iPhone 10/09: **59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ.
 
@@ -60,8 +61,8 @@ kinh tế trên màn — bằng đúng con số đo trước Phase 5, khi màn c
 - **Người vác hàng đi tay không.** Chủ dự án nhận ra 09/09: người đi qua đi lại mà trên
   tay không có gì. Kit có sẵn thùng, bao, sọt để gắn vào tay. **Chốt: để Phase 10**, nướng
   một lần cùng bộ 8 hướng × 4 dáng.
-- **Giếng chỉ là hình gần đúng** — kit Quaternius không có model giếng, hiện là cột đá có
-  xô. (Cối xay đã có cánh quạt thật từ 10/09.)
+- ~~Giếng và cối xay chỉ là hình gần đúng~~ — **ĐÃ TRẢ 10/09**: sáu toà nhà lấy model
+  thật của KayKit (cối xay gió, giếng, hầm mỏ, ruộng lúa, xưởng cưa, chợ).
 - **Mỗi kho chưa có túi hàng riêng** (chốt tạm 08/09).
 - Mới có **6 thẻ**, đều là thẻ kinh tế. Thẻ chính sách kiểu Civ, công nghệ, quân sự, ngoại
   giao thuộc Phase 8/9/11.
