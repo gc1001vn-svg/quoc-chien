@@ -6,17 +6,33 @@
  * khong giu thi mo phong dung im ma van ve, dung loi cua Tay Vuc.
  */
 import { describe, expect, it } from 'vitest';
-import { chuoiGio, DongHo, NHIP_MOI_GIAY, NHIP_MOI_GIO } from '../src/sim/Clock.ts';
+import { chuoiGio, DongHo, NHIP_MOI_GIAY, NHIP_MOI_GIO, TOC_DO_MO_MAN } from '../src/sim/Clock.ts';
 
 describe('DongHo', () => {
   it('mot giay that o toc do 1x ra dung 10 nhip', () => {
     const dh = new DongHo();
+    dh.tocDo = 1;
     expect(dh.tien(1)).toBe(NHIP_MOI_GIAY);
     expect(dh.soNhip).toBe(10);
   });
 
+  it('mo van o 8x chu khong phai 1x - o 1x thanh pho nhu dung im', () => {
+    expect(new DongHo().tocDo).toBe(TOC_DO_MO_MAN);
+  });
+
+  it('30x nhanh gap ba muoi: mot gio game con hai phut that', () => {
+    const dh = new DongHo();
+    dh.tocDo = 30;
+    // Tran 200 nhip mot lan goi, nen phai nap tung khung hinh nhu vong ve that.
+    // Hai phut that o 60 fps la 7.200 khung.
+    let tong = 0;
+    for (let i = 0; i < 7200; i++) tong += dh.tien(1 / 60);
+    expect(tong).toBe(NHIP_MOI_GIO);
+  });
+
   it('khong troi nhip khi goi tung khung hinh 60 fps', () => {
     const dh = new DongHo();
+    dh.tocDo = 1;
     let tong = 0;
     for (let i = 0; i < 600; i++) tong += dh.tien(1 / 60);
     // 10 giay that -> 100 nhip. Cho phep lech 1 nhip vi phan le con dang giu.

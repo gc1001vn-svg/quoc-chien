@@ -8,7 +8,7 @@
  * moi van vai chuc the la vai chuc cum nut mo coi con dinh listener.
  */
 import type { LuaChon, The } from '../sim/decision/Engine.ts';
-import type { DongHo, TocDo } from '../sim/Clock.ts';
+import { TOC_DO_MO_MAN, type DongHo, type TocDo } from '../sim/Clock.ts';
 
 export class TheQuyetDinh {
   private readonly goc: HTMLDivElement;
@@ -16,7 +16,7 @@ export class TheQuyetDinh {
   private readonly hangNut: HTMLDivElement;
   private readonly dongHo: DongHo;
   /** Toc do truoc luc hien the, de tra lai dung muc do. */
-  private tocDoCu: TocDo = 1;
+  private tocDoCu: TocDo = TOC_DO_MO_MAN;
   private dangHien = false;
 
   constructor(chaMe: HTMLElement, dongHo: DongHo) {

@@ -15,8 +15,24 @@ export const NHIP_MOI_GIAY = 10;
 /** So nhip trong mot gio game. Dung de chia moc do va de doi ra chu. */
 export const NHIP_MOI_GIO = NHIP_MOI_GIAY * 3600;
 
-/** Cac muc toc do nguoi choi bam duoc. GAME_SPEC muc 3. */
-export const TOC_DO = [0, 1, 2, 4, 8] as const;
+/**
+ * Cac muc toc do nguoi choi bam duoc. GAME_SPEC muc 3.
+ *
+ * `30` them ngay 10/09 vi chu du an bao "cho mai khong thay hoi". Mot gio game dai
+ * 36.000 nhip, tuc dung mot gio THAT o 1x, ma the quyet dinh dau tien dat o gio 1 - ngoi
+ * cho mot tieng. O 8x van con bay phut ruoi. O 30x mot gio game con **hai phut**.
+ *
+ * Nhanh deu chu khong rut ngan gio: rut gio thi moi nguong dem "moi gio" cua thong doc va
+ * cua the (`nguongCho` 20 luot, `day` 20.000) nho theo va khong bao gio cham nua - da do
+ * 10/09, thong doc dung xay han, the dau tien lui toi gio 23.
+ */
+export const TOC_DO = [0, 1, 2, 4, 8, 30] as const;
+
+/**
+ * Toc do luc mo van. Khong phai 1x: o 1x thanh pho gan nhu dung im voi mat nguoi choi,
+ * va viec dau tien ai cung lam la bam nut nhanh len.
+ */
+export const TOC_DO_MO_MAN: TocDo = 8;
 
 /** Mot muc toc do hop le. */
 export type TocDo = (typeof TOC_DO)[number];
@@ -33,7 +49,7 @@ const TRAN_NHIP_MOI_LAN = 200;
 export class DongHo {
   private nhipDaChay = 0;
   private leGiay = 0;
-  private tocDoHienTai: TocDo = 1;
+  private tocDoHienTai: TocDo = TOC_DO_MO_MAN;
 
   /** So nhip da chay tu dau van. */
   get soNhip(): number {

@@ -1,8 +1,9 @@
 /**
- * Nut toc do: dung · 1× · 2× · 4× · 8×.
+ * Nut toc do: dung · 1× · 2× · 4× · 8× · 30×.
  *
  * Khong co no thi mot gio game la mot gio THAT o 1x, ma the quyet dinh chi hoi o moc gio -
- * nguoi choi ngoi nhin 60 phut khong ai hoi gi. O 8x mot gio game con 7,5 phut.
+ * nguoi choi ngoi nhin 60 phut khong ai hoi gi. O 8x con 7,5 phut, o 30x con hai phut.
+ * Van mo man o 8x (`TOC_DO_MO_MAN`).
  *
  * The quyet dinh dat `dongHo.tocDo = 0` luc hien; hang nut nay doc lai dong ho moi khung
  * nen nut sang dung theo, khong can ai bao.
