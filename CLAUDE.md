@@ -6,7 +6,8 @@ https://gc1001vn-svg.github.io/quoc-chien/ — **xong việc tự gộp `main`**
 ## Chủ dự án
 
 Không biết lập trình, làm trên iPhone. Từng bước bấm gì ở đâu, link đầy đủ.
-**Mỗi phiên một phase.** Đầu phiên đọc `docs/TIEN_DO.md` → Plan Mode chờ duyệt.
+**Mỗi phiên một phase.** Đầu phiên chạy `docs/DAU_PHIEN.md` → Plan Mode chờ duyệt.
+Máy ảo mới mỗi phiên: `npm ci`; phiên có nướng sprite thì `npm run tai:tatca` (~440 MB).
 **TIẾP** = phase kế · **ĐỔI…** = sửa trong phase này · **LỖI** = dừng sửa trước.
 Nhìn được thì `npm run chup:man` gửi ảnh. **Cấm** báo "hoàn thành" khi chưa xác nhận trên
 iPhone thật — ghi "chờ xác nhận".
@@ -26,7 +27,9 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Commit tiếng Việt **không dấu**, mỗi việc một commit: `feat: them he thong walker`.
 - Asset CC0 · CC-BY · MIT. **CC-BY-SA cấm.** Không copy từ game thương mại.
 - **Dò trước khi làm, ba bước, không được bỏ bước nào:**
-  1. `grep -i '<từ khoá>' docs/KHO_ASSET.md` — 1.855 model **đã tải**. Có thì dùng ngay.
+  1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — 1.855 model
+     **đã tải**. Có thì dùng ngay. **Cấm `grep -i` trần** trên file này: dòng dài tới 4.870
+     ký tự, trúng một dòng là mất ~3.300 token thay vì ~180.
   2. Không có → `grep -i '<từ khoá>' docs/NGUON_MO.md` — nguồn ngoài đã tra sẵn. Có thì tải về.
   3. Vẫn không có → **báo chủ dự án quyết**, ghi một dòng vào `NGUON_MO.md` mục 8.
   **Cấm tự vẽ, tự ghép khi chưa đi hết ba bước.** Tải gói mới xong chạy `npm run kho`.
