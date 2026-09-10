@@ -23,6 +23,7 @@ import { Ghim } from '../ui/Ghim';
 import { baoThieuHinh } from '../ui/BaoThieuHinh';
 import { HangTocDo } from '../ui/TocDo';
 import { Perf } from '../core/Perf';
+import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
 import { Camera } from './Camera';
 import { Gl } from './Gl';
@@ -175,8 +176,11 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
     const lenhVe: number = gl.ketThucKhung();
 
     const canhBao: string = ve.dem > CAU_HINH.tranSprite ? ' ⚠ VƯỢT TRẦN' : '';
+    // So phien ban in ngay day: chu du an chup man gui la biet dang xem ban nao, khong
+    // phai doan "co phai chua cap nhat khong" nua.
     perf.datGhiChu(
-      `${String(ve.dem)} sprite · ${String(lenhVe)} lệnh vẽ · ${cam.zoom().toFixed(2)}×${canhBao}`,
+      `${PHIEN_BAN} · ${String(ve.dem)} sprite · ${String(lenhVe)} lệnh vẽ`
+      + ` · ${cam.zoom().toFixed(2)}×${canhBao}`,
     );
     requestAnimationFrame(veMotKhung);
   };
