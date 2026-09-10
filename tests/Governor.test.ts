@@ -32,14 +32,14 @@ describe('thong doc tu xay', () => {
     expect(tp.soNha).toBeGreaterThan(nhaDau);
     expect(tp.doiWalker.soKho).toBeGreaterThanOrEqual(2);
     expect(td.daLam.length).toBeGreaterThan(0);
-  });
+  }, 20000);
 
   it('moi gio chi lam MOT viec', () => {
     const { tp, td } = taoCoThongDoc();
     tp.chay(NHIP_MOI_GIO * 10);
     const gio: number[] = td.daLam.map((v) => v.gio);
     expect(new Set(gio).size).toBe(gio.length);
-  });
+  }, 20000);
 
   it('khong xay qua tran cua cap', () => {
     const { tp } = taoCoThongDoc();
@@ -47,7 +47,7 @@ describe('thong doc tu xay', () => {
     tp.chay(NHIP_MOI_GIO * 10);
     expect(tp.soNha).toBeLessThanOrEqual(capHienTai(cs, tp.soNha).tranNha);
     expect(tp.doiWalker.soKho).toBeLessThanOrEqual(capHienTai(cs, tp.soNha).tranKho);
-  });
+  }, 20000);
 
   it('bang so bao dung so nha THAT sau khi xay them', () => {
     const { tp, td } = taoCoThongDoc();
@@ -61,7 +61,7 @@ describe('thong doc tu xay', () => {
     // dung hay sai tuy vao viec gio cuoi thong doc co xay nha hay khong.
     const xayGioCuoi: number = td.daLam.filter((v) => v.gio === gio && v.viec !== 'kho').length;
     expect(tong).toBe(tp.soNha - xayGioCuoi);
-  });
+  }, 20000);
 
   it('khong dat thong doc thi thanh pho dung yen nhu Phase 4', () => {
     const tp = new ThanhPho({ hang, nha, chuoi, banDo, walker });

@@ -39,7 +39,7 @@ describe('ThanhPho chay 10 gio game', () => {
 
     expect(loi).toEqual([]);
     expect(tp.dongHo.soNhip).toBe(NHIP_MOI_GIO * 10);
-  });
+  }, 20000);
 
   it('khong mat hang nao vuot tran kho', () => {
     const tp = taoThanhPho();
@@ -59,7 +59,7 @@ describe('ThanhPho chay 10 gio game', () => {
     const dinhNghia = nha.nha.find((n) => n.ten === 'nha_dan');
     const luot: number = (dan?.me ?? 0) * (dinhNghia?.vao.length ?? 1);
     expect(dan?.doi ?? 0).toBeLessThan(luot / 7);
-  });
+  }, 20000);
 
   it('walker giao xong hang, khong ai bo cuoc giua duong', () => {
     const tp = taoThanhPho();

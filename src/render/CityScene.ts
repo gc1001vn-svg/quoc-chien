@@ -122,7 +122,14 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
 
     const the = van.the;
     if (the !== undefined && !theUi.hien) {
-      theUi.hienThe(the, (lc) => { van.traLoi(lc); });
+      theUi.hienThe(the, (lc) => {
+        van.traLoi(lc);
+        // Keo camera toi thu vua dung. Khong co buoc nay thi bam "xay hai coi xay" xong
+        // chu du an khong tim ra chung: ban do 96x96 co 760 vat trang tri ma ca van chi co
+        // BA cai coi xay, o muc thu nho nhat man hinh chi thay 39 o.
+        const o = thanhPho.layOVuaDung();
+        if (o !== undefined) cam.datTam(neoX(o.a, o.b, atlas.oPx()), neoY(o.a, o.b, atlas.oPx()));
+      });
     }
     bangSuKien.capNhat();
     hangTocDo.capNhat();

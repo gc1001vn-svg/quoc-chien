@@ -35,6 +35,8 @@ export interface DuLieuTho {
 }
 
 import type { ThongKe } from './Cham.ts';
+import type { BoDemGio } from './BangSo.ts';
+import { dungBangSo, xoaBoDem } from './BangSo.ts';
 
 /**
  * Duoc goi moi khi chot xong mot gio game - Phase 5 la thong doc. Khai o day chu khong
@@ -55,18 +57,23 @@ export class ThanhPho implements BoDem, Giao {
   readonly dsChuoi: readonly DinhNghiaChuoi[];
 
   private readonly nhaThat: ThuNha[] = [];
+  /**
+   * O cua thu VUA duoc dung - nha hay kho. `render/` doc de keo camera toi do.
+   *
+   * VI SAO CAN: chu du an bam "xay hai coi xay" xong khong tim ra chung. Ban do 96x96 co
+   * 760 vat trang tri, ma ca van chi co BA cai coi xay - o muc thu nho nhat man hinh chi
+   * thay 39 o, gan nhu khong bao gio trung. Sprite van o do; cai thieu la duong den.
+   */
+  private oVuaDung: O | undefined;
   /** Day so boc cho dat nha. Song suot van de thong doc xay tiep tu day so do. */
   private readonly rngDat: Rng;
   /** Thong doc da xay them bao nhieu nha moi loai. */
   private readonly demXay = new Map<string, number>();
-  private readonly demMe = new Map<string, number>();
-  private readonly demDoi = new Map<string, number>();
-  private readonly demTac = new Map<string, number>();
-  private readonly demLamRa = new Map<string, number>();
-  private readonly demDungHet = new Map<string, number>();
-  private readonly demCho = new Map<string, number>();
-  private readonly demDay = new Map<string, number>();
-  private readonly demHong = new Map<string, number>();
+  /** Tam bo dem cua gio dang chay. Xoa het moi lan chot gio - xem `BangSo.ts`. */
+  private readonly dem: BoDemGio = {
+    me: new Map(), doi: new Map(), tac: new Map(), lamRa: new Map(),
+    dungHet: new Map(), cho: new Map(), day: new Map(), hong: new Map(),
+  };
   /** Phan le chua du mot mon de vut di. Giu lai de hong 2 %/gio khong bi lam tron thanh 0. */
   private readonly duHong = new Map<string, number>();
   private gioTruoc: ThongKe | undefined;
@@ -138,6 +145,7 @@ export class ThanhPho implements BoDem, Giao {
     );
     if (nha === undefined) return false;
     this.nhaThat.push(nha);
+    this.oVuaDung = nha.oNha;
     this.demXay.set(ten, (this.demXay.get(ten) ?? 0) + 1);
     return true;
   }
@@ -148,6 +156,7 @@ export class ThanhPho implements BoDem, Giao {
     if (tot === undefined) return false;
     this.doiWalker.themKho(tot);
     veKho(this.banDo, tot);
+    this.oVuaDung = { a: tot.a + 1, b: tot.b + 1 };
     return true;
   }
 
@@ -203,6 +212,13 @@ export class ThanhPho implements BoDem, Giao {
     nha.dangLay.delete(w.hang);
   };
 
+  /** O cua nha hay kho vua dung xong. `undefined` khi chua dung gi tu luc doc lan truoc. */
+  layOVuaDung(): O | undefined {
+    const o: O | undefined = this.oVuaDung;
+    this.oVuaDung = undefined;
+    return o;
+  }
+
   /** Tong so nha co that trong thanh pho. */
   get soNha(): number {
     return this.nhaThat.length;
@@ -225,7 +241,7 @@ export class ThanhPho implements BoDem, Giao {
   private hong(): void {
     const lan: number = NHIP_MOI_GIO / NHIP_HONG;
     for (const [ten, so] of hangHong(this.kho, this.dsHang, this.duHong, lan)) {
-      this.cong(this.demHong, ten, so);
+      this.cong(this.dem.hong, ten, so);
     }
   }
 
@@ -242,25 +258,25 @@ export class ThanhPho implements BoDem, Giao {
   // --- BoDem: `ThuNha` goi nguoc len day. Khong goi tay tu ben ngoai. ---
 
   meXong(tenNha: string): void {
-    this.cong(this.demMe, tenNha, 1);
+    this.cong(this.dem.me, tenNha, 1);
   }
 
   doi(tenNha: string, hang: string): void {
-    this.cong(this.demDoi, tenNha, 1);
-    this.cong(this.demCho, hang, 1);
+    this.cong(this.dem.doi, tenNha, 1);
+    this.cong(this.dem.cho, hang, 1);
   }
 
   tac(tenNha: string, hang: string): void {
-    this.cong(this.demTac, tenNha, 1);
-    this.cong(this.demDay, hang, 1);
+    this.cong(this.dem.tac, tenNha, 1);
+    this.cong(this.dem.day, hang, 1);
   }
 
   lamRa(hang: string, so: number): void {
-    this.cong(this.demLamRa, hang, so);
+    this.cong(this.dem.lamRa, hang, so);
   }
 
   dungHet(hang: string, so: number): void {
-    this.cong(this.demDungHet, hang, so);
+    this.cong(this.dem.dungHet, hang, so);
   }
 
   private cong(dem: Map<string, number>, khoa: string, so: number): void {
@@ -269,31 +285,14 @@ export class ThanhPho implements BoDem, Giao {
 
   /** Chot bang so cua gio vua xong roi xoa bo dem cho gio moi. */
   private chotGio(): void {
-    this.gioTruoc = {
+    this.gioTruoc = dungBangSo({
       gio: this.dongHo.soNhip / NHIP_MOI_GIO,
-      nha: this.dsNha.map((n) => ({
-        ten: n.ten,
-        hien: n.hien,
-        // So THAT: thong doc xay them thi cot nay phai noi len dieu do.
-        so: n.so + this.soDaXay(n.ten),
-        me: this.demMe.get(n.ten) ?? 0,
-        doi: this.demDoi.get(n.ten) ?? 0,
-        tac: this.demTac.get(n.ten) ?? 0,
-      })),
-      hang: this.dsHang.map((h) => ({
-        ten: h.ten,
-        hien: h.hien,
-        ton: this.kho.co(h.ten),
-        tran: h.tran,
-        lamRa: this.demLamRa.get(h.ten) ?? 0,
-        dungHet: this.demDungHet.get(h.ten) ?? 0,
-        cho: this.demCho.get(h.ten) ?? 0,
-        day: this.demDay.get(h.ten) ?? 0,
-        hong: this.demHong.get(h.ten) ?? 0,
-      })),
+      dsNha: this.dsNha,
+      dsHang: this.dsHang,
+      kho: this.kho,
       walker: this.doiWalker.chotGio(),
-    };
-    const bo = [this.demMe, this.demDoi, this.demTac, this.demLamRa, this.demDungHet];
-    for (const dem of [...bo, this.demCho, this.demDay, this.demHong]) dem.clear();
+      soDaXay: (ten) => this.soDaXay(ten),
+    }, this.dem);
+    xoaBoDem(this.dem);
   }
 }

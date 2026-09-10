@@ -66,6 +66,19 @@ describe('nha kinh te hien ra ban do', () => {
     }
   });
 
+  it('xay xong thi bao duoc O VUA DUNG, va chi bao MOT lan', () => {
+    const tp: ThanhPho = taoThanhPho();
+    // Dung con nao luc mo van cung khong tinh: `layOVuaDung` chi noi ve thu VUA dung.
+    tp.layOVuaDung();
+
+    expect(tp.xayNha('coi_xay')).toBe(true);
+    const o = tp.layOVuaDung();
+    expect(o, 'xay xong ma khong bao o nao').toBeDefined();
+    expect(tp.banDo.vat.some((v) => v.a === o?.a && v.b === o?.b && v.ten === 'coi_xay')).toBe(true);
+    // Doc lan hai phai rong, khong thi camera keo di keo lai mai mot cho.
+    expect(tp.layOVuaDung()).toBeUndefined();
+  });
+
   it('nha thong doc xay luc dang chay cung moc len ngay', () => {
     const tp: ThanhPho = taoThanhPho();
     const truocVat: number = tp.banDo.vat.length;

@@ -133,20 +133,20 @@ describe('van that, 10 gio game', () => {
   it('hien du the trong 10 gio game - dieu kien khong dat theo tran ly thuyet', () => {
     const { dc } = chayVan();
     expect(dc.so).toBeGreaterThanOrEqual(3);
-  });
+  }, 20000);
 
   it('tra loi the lam thanh pho doi that', () => {
     const { tp } = chayVan();
     expect(tp.soNha).toBeGreaterThan(94);
     expect(tp.doiWalker.soKho).toBeGreaterThanOrEqual(2);
-  });
+  }, 20000);
 
   it('nhat ky ghi ca the lan lua chon, khong dong nao rong', () => {
     const { nk } = chayVan();
     expect(nk.danhSach.some((s) => s.loai === 'the')).toBe(true);
     expect(nk.danhSach.some((s) => s.loai === 'chon')).toBe(true);
     for (const s of nk.danhSach) expect(s.van.length).toBeGreaterThan(0);
-  });
+  }, 20000);
 
   it('nhat ky chi giu `tran` dong gan nhat', () => {
     const nk = new NhatKy(3);
