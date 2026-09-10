@@ -1,19 +1,23 @@
 #!/usr/bin/env node
 /**
- * Moi file trong `public/assets/` phai co ten trong `docs/ASSET_CREDITS.md`.
+ * Moi file atlas phai co ten trong `docs/ASSET_CREDITS.md`.
  *
  * License chi chap nhan CC0, CC-BY, MIT. CC-BY-SA lay license sang ca du an -> cam.
- * Phase 0 chua co asset nao; script van chay de CI bat duoc ngay khi Phase 1 them atlas.
+ *
+ * 10/09: atlas doi tu `public/assets/atlas/` ve `public/atlas/` (workbox khong bao gio tai
+ * lai file nam trong `assets/`). Script van tro vao duong cu nen no bao "chua co gi de
+ * kiem" va DAT rong suot mot buoi - dung cai bay ma chinh no sinh ra de chan. Neu thu muc
+ * bien mat thi bao HONG, khong bao DAT.
  */
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-const KHO = 'public/assets';
+const KHO = 'public/atlas';
 const SO = 'docs/ASSET_CREDITS.md';
 
 if (!existsSync(KHO)) {
-  console.log('check:credits OK - chua co public/assets/, khong co gi de kiem.');
-  process.exit(0);
+  console.error(`check:credits HONG - khong thay ${KHO}. Atlas doi cho ma script khong doi theo?`);
+  process.exit(1);
 }
 
 const so = existsSync(SO) ? readFileSync(SO, 'utf8') : '';
