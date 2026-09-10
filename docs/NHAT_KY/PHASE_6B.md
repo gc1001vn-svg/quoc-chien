@@ -225,3 +225,43 @@ Số đo: 315.692 chuyến một giờ · 188 → 197 nhà · 8 kho · 0 bỏ cu
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được
 vào tay. Chốt để **Phase 10**, nướng một lần cùng bộ 8 hướng × 4 dáng.
+
+
+## Vòng ba — đo được thủ phạm thật
+
+Chủ dự án gửi clip rồi năm tấm ảnh: bấm năm dòng đầu bảng công trình, **không cái nào
+hiện**. Bảng bay đúng toạ độ, sprite có trong atlas, vật thể có trong `banDo.vat` — vậy mà
+màn hình trống. Ba vòng trước đều chữa nhầm chỗ. Vòng này đo bằng số:
+
+```
+o_px = 64 -> mot o cao 32 px tren man
+nha_ngoi_do  236 px = 7,4 hang o      gieng     78 px = 2,4 hang o
+thap_canh    285 px = 8,9 hang o      mo        96 px = 3,0 hang o
+nha_nho_do   178 px = 5,6 hang o      coi_xay  151 px = 4,7 hang o
+```
+
+Ở góc chéo, cái đứng **trước** vẽ **đè** lên cái đứng sau. Nhà trang trí cao 7–9 hàng ô
+nuốt trọn giếng cao 2,4 hàng đứng sau nó. Đếm ra: **26 trong 120 nhà kinh tế bị che quá
+nửa**. Chúng luôn ở đó, chỉ là không bao giờ nhìn thấy.
+
+Ba việc, làm cả ba:
+
+1. **Bỏ 12 loại nhà trang trí** khỏi `data/thanh_pho_demo.json` — 381 → 224 vật. Chúng
+   không có chức năng gì mà là thủ phạm cao nhất. Từ nay mọi mái nhà trên bản đồ đều là
+   nhà **thật** của `src/sim/`.
+2. **`src/render/VeCanh.ts` — mở lộ.** Đang soi một công trình thì mọi vật đứng trước nó
+   **và trùm lên nó** bị bỏ qua một khung. Tính bằng hộp bao thật, không phải bán kính đoán.
+3. **`src/ui/Ghim.ts` — ghim vàng.** Thẻ DOM nằm trên canvas nên không bao giờ bị che và
+   không tốn sprite nào. Treo đúng mép trên sprite (lấy thẳng hộp bao `VeCanh` vừa đo —
+   mỗi loại neo một kiểu `oy`, tự tính là ghim treo lệch, đã lệch một lần).
+
+Thêm hai chỗ chỉnh vì đo mới thấy:
+
+- Bay tới đặt công trình ở **38 %** chiều cao màn, không phải 72 %. Thẻ quyết định ăn 46 %
+  màn từ dưới lên — ảnh chụp đầu tiên cho ra một vạt cỏ xanh, giếng nằm sau tấm thẻ.
+- Ghim bị **kẹp vào trong khung**: nóc cối xay gió thò hẳn lên trên mép màn, không kẹp thì
+  ghim treo ngoài màn đúng lúc cần nhất.
+
+`CityScene.ts` chạm trần 300 dòng nên tách hai vòng vẽ ra `VeCanh.ts` (206 + 167 dòng).
+
+Số đo: 6/6 thước · `sim:thu` ĐẠT 10 giờ · **3.343 sprite · 1 lệnh vẽ ở 0,35×** (trần 5.000).

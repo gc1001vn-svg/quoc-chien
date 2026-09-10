@@ -3,73 +3,81 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — model KayKit, thành phố ×2, quy hoạch 16 phường kiểu Perry).
+Cập nhật: 10/09/2026 (Phase 6B — bỏ nhà trang trí che tầm, mở lộ công trình, ghim vàng).
 
 ## 1. Đang ở đâu
 
-**GAME CHƠI ĐƯỢC, VÀ GIỜ NHÌN RA ĐƯỢC.** Phase 6/13 xong, cộng một phiên trả nợ.
+**GAME CHƠI ĐƯỢC, VÀ GIỜ NHÌN RA ĐƯỢC THẬT.** Phase 6/13 xong, cộng một phiên trả nợ.
 
-Thành phố vẫn hỏi như Phase 6 — đường đông thì hỏi xây kho hay chặt tay thống đốc, kho
-lúa mì đầy ứ thì hỏi xay bột hay vỗ béo lợn. Khác ở chỗ: **bấm xong là thấy nhà mọc lên
-đúng chỗ**. Cối xay là cối xay gió có cánh, lò có ống khói và mái xám, chợ có quầy, mỏ là
-vách đá có thùng và cuốc, ruộng là luống lúa vàng.
+Suốt phiên chủ dự án báo đi báo lại: bấm bảng công trình mà **không thấy giếng, mỏ, xưởng,
+kho, gian hàng**. Ba vòng đầu chữa nhầm chỗ. Vòng thứ tư đo bằng số và ra thủ phạm:
 
-Trước phiên này 94 nhà kinh tế vô hình — nằm trong danh sách riêng của `src/sim/`, không
-bao giờ được vẽ. Vì vô hình nên cũng không ai thấy chúng **đang đặt đè lên cây và nhà
-trang trí**; giờ hai bên dùng chung một tập ô đã chiếm nên hết đè.
+| Sprite | Cao | Sprite | Cao |
+|---|---:|---|---:|
+| `thap_canh` (trang trí) | 8,9 hàng ô | `coi_xay` | 4,7 hàng ô |
+| `nha_ngoi_do` (trang trí) | 7,4 hàng ô | `mo` | 3,0 hàng ô |
+| `nha_nho_do` (nhà dân) | 5,6 hàng ô | `gieng` | **2,4 hàng ô** |
+
+Ở góc chéo, cái đứng **trước** vẽ **đè** lên cái đứng sau. Nhà trang trí cao 7–9 hàng ô
+nuốt trọn cái giếng cao 2,4 hàng đứng sau nó. Đếm ra **26 trong 120 nhà kinh tế bị che quá
+nửa**. Chúng vẫn luôn ở đó — chỉ là không bao giờ nhìn thấy.
+
+Ba việc đã làm:
+
+1. **Bỏ 12 loại nhà trang trí** (381 → 224 vật). Chúng không có chức năng gì mà cao nhất
+   bản đồ. Từ nay mọi mái nhà trên màn đều là nhà **thật** của `src/sim/`.
+2. **Mở lộ** (`src/render/VeCanh.ts`): đang soi một công trình thì mọi vật đứng trước nó
+   và trùm lên nó bị giấu đi một khung.
+3. **Ghim vàng** (`src/ui/Ghim.ts`): thẻ chữ nằm trên canvas, treo đúng nóc công trình, chỉ
+   thẳng vào nó. Không bao giờ bị che, không tốn sprite nào.
 
 Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 
 ## 2. Số đo mới nhất
 
-`bash scripts/do.sh` → **6/6 thước đạt** (lint · typecheck · test **128 test** · build ·
+`npm run do` → **6/6 thước đạt** (lint · typecheck · test **131 test** · build ·
 check:base · check:credits).
 
-`npm run sim:thu` → **ĐẠT**, 10 giờ game không người bấm (tự chọn lựa chọn đầu):
-**188 → 196 nhà · 8 kho · 313.370 chuyến một giờ · đông nhất 658 người · 0 lượt bỏ cuộc.**
-(Trước khi nhân đôi và quy hoạch: 89.232 chuyến, 94 nhà.)
+`npm run sim:thu` → **ĐẠT**, 10 giờ game không người bấm:
+**188 → 196 nhà · 8 kho · 321.009 chuyến · đông nhất 659 người · 0 lượt bỏ cuộc.**
 
 | Số đo | Đo được | Trần |
 |---|---:|---:|
-| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.368 | 5.000 |
+| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.343 | 5.000 |
 | Lệnh vẽ | **1** | 4 |
 | Trang atlas, bản 1× | 1 | 4 |
 | Trang atlas, bản 2× | 2 | 4 |
+| `CityScene.ts` | 206 dòng | 300 |
+| `VeCanh.ts` (mới, tách ra) | 167 dòng | 300 |
 
-12 sprite mới không đẩy atlas sang trang nào mới, nên `ASSET_CREDITS.md` không phải sửa.
-
-**iPhone thật, 10/09: 59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ, có đủ nhà
-kinh tế trên màn — bằng đúng con số đo trước Phase 5, khi màn còn ít hơn 94 toà nhà.
+**iPhone thật, 10/09: 59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ — đo trước
+lần vá này, số sprite giờ còn thấp hơn vì đã bỏ 157 vật trang trí.
 
 ## 3. Việc của chủ dự án
 
-**Xem hai chỗ vừa vá: bảng sự kiện góc trái, và cối xay có cánh chưa.**
+**Kiểm đúng cái đã báo bốn lần: bấm bảng công trình có thấy công trình không.**
 
 <https://gc1001vn-svg.github.io/quoc-chien/>
 
-1. Mở link. Ván tự chạy ở 8×.
-2. **Mở link HAI LẦN** — lần đầu máy còn dùng bản cũ đã lưu, lần sau mới thấy bản mới.
-3. Trả lời thẻ đầu tiên rồi nhìn **góc trái dưới**: bảng sự kiện nằm TRÊN hàng nút tốc
-   độ, không đè lên nút nào nữa. Cầm dọc cũng phải không đè.
-4. Bấm thẻ xây nhà → **màn hình tự trượt tới chỗ nhà vừa mọc**.
-5. **Thành phố chia 16 phường** (4×4, mỗi phường 24 ô). Bốn phường giữa là khu dân cư:
-   nhà ở rải đều, **giếng nằm giữa phường**. Vành ngoài là sản xuất, nông nghiệp, công
-   nghiệp, quân sự — bảng bố cục ở `data/thanh_pho_demo.json > phuong`.
-6. Nhà **không còn dính nhau**: giữa hai nhà luôn có một ô cỏ hoặc lối đi.
-7. **Nút `⌂` góc trái dưới mở BẢNG CÔNG TRÌNH** — danh sách mọi loại nhà kèm số lượng.
-   **Bấm một dòng là màn hình bay tới đó**; bấm lại thì sang cái kế tiếp cùng loại.
-   Đây là cách tìm giếng, cối xay, mỏ, xưởng — không phải đi mò bằng mắt nữa.
-8. Bảng sự kiện ẩn sau nút `☰`. Nút **50×** có sẵn, không cần `?test=1`.
+1. Mở link. **Mở HAI LẦN** — lần đầu máy còn dùng bản cũ đã lưu, lần sau mới thấy bản mới.
+2. Bấm nút **`⌂`** góc trái dưới → danh sách công trình.
+3. Bấm dòng **Giếng**. Màn hình bay tới, tự phóng to, và có **ghim vàng chỉ thẳng vào nó**.
+   Cái gì đứng trước che nó sẽ tự biến mất trong lúc soi.
+4. Bấm lại dòng đó → sang cái giếng kế tiếp. 12 giếng xem hết bằng 12 lần bấm.
+5. **Làm y như vậy với năm dòng đầu** — Giếng, Cối xay, Mỏ, Xưởng, Ruộng. Cái nào không
+   thấy thì chụp màn gửi lại, ghi rõ bấm dòng nào.
+6. Bảng sự kiện ẩn sau nút `☰`. Nút **50×** có sẵn, không cần `?test=1`.
 
-Đã đo trên iPhone 10/09: **59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ.
+Đây là chỗ duy nhất cần anh xác nhận. Chưa có xác nhận trên iPhone thật thì phiên này
+**chưa xong** — mới là "chờ xác nhận".
 
 ## 4. Nợ đang chặn phase kế tiếp
 
 - **Người vác hàng đi tay không.** Chủ dự án nhận ra 09/09: người đi qua đi lại mà trên
   tay không có gì. Kit có sẵn thùng, bao, sọt để gắn vào tay. **Chốt: để Phase 10**, nướng
   một lần cùng bộ 8 hướng × 4 dáng.
-- ~~Giếng và cối xay chỉ là hình gần đúng~~ — **ĐÃ TRẢ 10/09**: sáu toà nhà lấy model
-  thật của KayKit (cối xay gió, giếng, hầm mỏ, ruộng lúa, xưởng cưa, chợ).
+- **Bản đồ thưa hơn trước** — bỏ 157 vật trang trí thì thành phố trống ra. Cần bù bằng vật
+  **thấp** (bụi, đá, hàng rào, thùng, luống rau), không bằng nhà. Chưa làm.
 - **Mỗi kho chưa có túi hàng riêng** (chốt tạm 08/09).
 - Mới có **6 thẻ**, đều là thẻ kinh tế. Thẻ chính sách kiểu Civ, công nghệ, quân sự, ngoại
   giao thuộc Phase 8/9/11.
