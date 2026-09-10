@@ -27,9 +27,11 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Commit tiếng Việt **không dấu**, mỗi việc một commit: `feat: them he thong walker`.
 - Asset CC0 · CC-BY · MIT. **CC-BY-SA cấm.** Không copy từ game thương mại.
 - **Dò trước khi làm, ba bước, không được bỏ bước nào:**
-  1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — 3.946 model
-     **đã tải**. Có thì dùng ngay. **Cấm `grep -i` trần** trên file này: dòng dài tới 4.870
-     ký tự, trúng một dòng là mất ~3.300 token thay vì ~180.
+  1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — có thì dùng ngay.
+     Kho có **1.222 model dùng được** (tên khác nhau *và* có `.obj` — máy nướng chỉ đọc OBJ).
+     Con số cuối `KHO_ASSET.md` là số đúng; **đừng trích "lượt file"**, nó phồng ~3 lần vì
+     mỗi model xuất ra `fbx/` `gltf/` `obj/`. **Cấm `grep -i` trần**: dòng dài 4.870 ký tự,
+     trúng một dòng mất ~3.300 token thay vì ~180.
   2. Không có → `grep -i '<từ khoá>' docs/NGUON_MO.md` — nguồn ngoài đã tra sẵn. Có thì tải về.
   3. Vẫn không có → **báo chủ dự án quyết**, ghi một dòng vào `NGUON_MO.md` mục 8.
   **Cấm tự vẽ, tự ghép khi chưa đi hết ba bước.** Tải gói mới xong chạy `npm run kho`.

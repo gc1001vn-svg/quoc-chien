@@ -36,6 +36,7 @@ function quet(duong, sau = 0) {
     return ra;
   }
   const ten = new Set();
+  const coObj = new Set();
   for (const m of muc) {
     const day = join(duong, m);
     if (statSync(day).isDirectory()) {
@@ -43,9 +44,12 @@ function quet(duong, sau = 0) {
       continue;
     }
     const i = m.lastIndexOf('.');
-    if (i > 0 && DUOI.includes(m.slice(i).toLowerCase())) ten.add(m.slice(0, i));
+    if (i > 0 && DUOI.includes(m.slice(i).toLowerCase())) {
+      ten.add(m.slice(0, i));
+      if (m.slice(i).toLowerCase() === '.obj') coObj.add(m.slice(0, i));
+    }
   }
-  if (ten.size > 0) ra.push({ duong, ten: [...ten].sort() });
+  if (ten.size > 0) ra.push({ duong, ten: [...ten].sort(), coObj });
   return ra;
 }
 
@@ -67,6 +71,10 @@ const dong = [
 ];
 
 let tong = 0;
+// Mot model thuong xuat ra ca fbx/ gltf/ obj/ - ba thu muc rieng nen dem ba lan.
+// Giu ca ba so: tong file, ten khac nhau, va ten CO BAN OBJ (may nuong chi doc OBJ).
+const tenKhacNhau = new Set();
+const tenCoObj = new Set();
 for (const goi of readdirSync(KHO).sort()) {
   const duongGoi = join(KHO, goi);
   if (!statSync(duongGoi).isDirectory()) continue;
@@ -75,18 +83,34 @@ for (const goi of readdirSync(KHO).sort()) {
   dong.push(`## ${goi}`, '');
   for (const n of nhom) {
     tong += n.ten.length;
+    for (const t of n.ten) {
+      tenKhacNhau.add(t);
+      if (n.coObj.has(t)) tenCoObj.add(t);
+    }
     dong.push(`**\`${n.duong}\`** — ${String(n.ten.length)} model`, '', `\`${n.ten.join('` · `')}\``, '');
   }
 }
 
-dong.push('---', '', `Tổng: **${String(tong)} model** trong \`${KHO}/\`.`, '');
+dong.push(
+  '---',
+  '',
+  `**${String(tenCoObj.size)} model dùng được** trong \`${KHO}/\` — đây là con số đáng tin:`,
+  'tên khác nhau **và** có bản `.obj`, vì máy nướng chỉ đọc OBJ.',
+  '',
+  `Hai số dưới đây **không phải** số model, đừng trích dẫn: ${String(tong)} lượt file`,
+  `(một model xuất ra fbx/gltf/obj thì đếm ba lần) · ${String(tenKhacNhau.size)} tên khác nhau`,
+  'kể cả tên chỉ có FBX hoặc GLB.',
+  '',
+);
 
 // Kho mat theo container moi phien. Tai thieu goi roi chay lenh nay la ghi de mat
 // danh muc cu, im lang. Chan lai khi so model tut qua 20% so voi ban dang co.
-const cu = existsSync(RA) ? /Tổng: \*\*(\d+) model/.exec(readFileSync(RA, 'utf8'))?.[1] : null;
-if (cu !== null && cu !== undefined && tong < Number(cu) * 0.8) {
+const cu = existsSync(RA)
+  ? /\*\*(\d+) model dùng được\*\*|Tổng: \*\*(\d+) model/.exec(readFileSync(RA, 'utf8'))?.slice(1).find(Boolean)
+  : null;
+if (cu !== null && cu !== undefined && tenCoObj.size < Number(cu) * 0.8) {
   console.error(
-    `kho: DUNG LAI. Ban cu ${cu} model, quet duoc ${String(tong)} - tut qua 20%.\n` +
+    `kho: DUNG LAI. Ban cu ${cu} model, quet duoc ${String(tenCoObj.size)} - tut qua 20%.\n` +
     `  Nhieu kha nang assets_source/ chua tai du. Chay "npm run tai:tatca" truoc.\n` +
     `  Co that su muon ghi de thi: KHO_EP=1 npm run kho`,
   );
@@ -94,4 +118,7 @@ if (cu !== null && cu !== undefined && tong < Number(cu) * 0.8) {
 }
 
 writeFileSync(RA, dong.join('\n'));
-console.log(`kho: ${String(tong)} model -> ${RA}`);
+console.log(
+  `kho: ${String(tenCoObj.size)} model dung duoc (co OBJ) -> ${RA}` +
+  `   [${String(tong)} luot file, ${String(tenKhacNhau.size)} ten khac nhau]`,
+);

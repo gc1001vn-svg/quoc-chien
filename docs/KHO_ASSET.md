@@ -301,6 +301,16 @@
 
 `hex_road_A` · `hex_road_A_sloped_high` · `hex_road_A_sloped_low` · `hex_road_B` · `hex_road_C` · `hex_road_D` · `hex_road_E` · `hex_road_F` · `hex_road_G` · `hex_road_H` · `hex_road_I` · `hex_road_J` · `hex_road_K` · `hex_road_L` · `hex_road_M`
 
+## lowpoly-animated-animals
+
+**`assets_source/lowpoly-animated-animals/FBX`** — 7 model
+
+`Cow` · `Horse` · `Llama` · `Pig` · `Pug` · `Sheep` · `Zebra`
+
+**`assets_source/lowpoly-animated-animals/OBJ`** — 7 model
+
+`Cow` · `Horse` · `Llama` · `Pig` · `Pug` · `Sheep` · `Zebra`
+
 ## medieval-village-megakit
 
 **`assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/FBX`** — 176 model
@@ -397,4 +407,9 @@
 
 ---
 
-Tổng: **3946 model** trong `assets_source/`.
+**1222 model dùng được** trong `assets_source/` — đây là con số đáng tin:
+tên khác nhau **và** có bản `.obj`, vì máy nướng chỉ đọc OBJ.
+
+Hai số dưới đây **không phải** số model, đừng trích dẫn: 3960 lượt file
+(một model xuất ra fbx/gltf/obj thì đếm ba lần) · 1482 tên khác nhau
+kể cả tên chỉ có FBX hoặc GLB.
