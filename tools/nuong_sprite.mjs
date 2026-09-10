@@ -256,17 +256,29 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
     const goc = ((p.ry ?? 0) * Math.PI) / 180;
     const c = Math.cos(goc);
     const s = Math.sin(goc);
+    // `rz` quay quanh truc DUNG MAN HINH, ap TRUOC `ry`. Chi co `ry` thi khong bao gio
+    // dung noi canh quat coi xay: canh nam trong mat phang thang dung, ma `ry` chi quay
+    // quanh truc dung nen thanh go van cu nam ngang.
+    const gocZ = ((p.rz ?? 0) * Math.PI) / 180;
+    const cz = Math.cos(gocZ);
+    const sz = Math.sin(gocZ);
     for (let i = 0; i < dinh.length; i += BUOC) {
-      const x = dinh[i];
+      const x0 = dinh[i];
+      const y0 = dinh[i + 1];
+      const nx0 = dinh[i + 5];
+      const ny0 = dinh[i + 6];
+      const x = x0 * cz - y0 * sz;
+      const y = x0 * sz + y0 * cz;
       const z = dinh[i + 2];
-      const nx = dinh[i + 5];
+      const nx = nx0 * cz - ny0 * sz;
+      const ny = nx0 * sz + ny0 * cz;
       const nz = dinh[i + 7];
       ra.push(
         (x * c + z * s) * tiLe + (p.x ?? 0),
-        dinh[i + 1] * tiLe + (p.y ?? 0),
+        y * tiLe + (p.y ?? 0),
         (-x * s + z * c) * tiLe + (p.z ?? 0),
         dinh[i + 3], dinh[i + 4],
-        nx * c + nz * s, dinh[i + 6], -nx * s + nz * c,
+        nx * c + nz * s, ny, -nx * s + nz * c,
         son ? t[0] : dinh[i + 8] * t[0],
         son ? t[1] : dinh[i + 9] * t[1],
         son ? t[2] : dinh[i + 10] * t[2],

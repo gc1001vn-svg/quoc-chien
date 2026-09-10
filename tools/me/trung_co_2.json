@@ -1050,7 +1050,9 @@
       { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 270, "x": 0.5 },
       { "m": "qv:Floor_Brick", "ti_le": 0.5, "y": 1.5 },
       { "m": "qv:Roof_Tower_RoundTiles", "ti_le": 0.26, "y": 1.5 },
-      { "m": "qp:Bag", "ti_le": 0.5, "x": 0.34, "z": 0.36, "mau": [1.2, 1.16, 1.05] }
+      { "m": "qp:Bag", "ti_le": 0.5, "x": 0.34, "z": 0.36, "mau": [1.2, 1.16, 1.05] },
+      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.85, "rz": 45, "y": 1.95, "z": 0.72, "mau": [1.32, 1.28, 1.22] },
+      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.85, "rz": 135, "y": 1.95, "z": 0.72, "mau": [1.32, 1.28, 1.22] }
     ],
     "ruong": [
       { "phang": 1.02, "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg", "lap": 1, "mau": [1.05, 0.94, 0.7] },
