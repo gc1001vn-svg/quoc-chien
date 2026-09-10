@@ -62,76 +62,8 @@
       "nong_nghiep"
     ]
   ],
-  "_vat": "`tuXa` la khoang cach Chebyshev toi thieu tinh tu tam. Cay coi de `tuXa` 30 de don thanh RUNG o ria, khong rai khap thanh pho - nha kinh te moi noi len.",
+  "_vat": "Chi con vat TRANG TRI that: cay, bui, da, quay hang, thung, ghe, xe, hang rao. Nha trang tri da bo 10/09: chung khong co chuc nang gi ma sprite cao 7-9 hang o, nuot tron gieng (2,4 hang), mo (3,0) va coi xay (4,7) dung phia sau. Tu nay moi nha tren ban do la nha THAT cua src/sim/.",
   "vat": [
-    {
-      "ten": "thap_canh",
-      "so": 6,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_ngoi_do",
-      "so": 16,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_ngoi_nau",
-      "so": 14,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_ngoi_lam",
-      "so": 11,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_ngang_do",
-      "so": 11,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_gach_do",
-      "so": 14,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_gach_nau",
-      "so": 11,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_gach_reu",
-      "so": 9,
-      "bam": 3,
-      "o": 2
-    },
-    {
-      "ten": "nha_nho_do",
-      "so": 25,
-      "bam": 2
-    },
-    {
-      "ten": "nha_nho_nau",
-      "so": 20,
-      "bam": 2
-    },
-    {
-      "ten": "nha_nho_lam",
-      "so": 16,
-      "bam": 2
-    },
-    {
-      "ten": "cong_lang",
-      "so": 4,
-      "bam": 1
-    },
     {
       "ten": "quay_hang",
       "so": 8,

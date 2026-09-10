@@ -75,7 +75,10 @@ describe('sinh ban do trung bay', () => {
 
   it('dat gan het so vat the da khai', () => {
     const khai: number = CAU_HINH.vat.reduce((t, v) => t + v.so, 0);
-    expect(khai).toBeGreaterThan(250);
+    // Chan duoi de bat cau hinh bi xoa rong. Ha tu 250 xuong 200 ngay 10/09 khi bo 12 loai
+    // NHA trang tri: chung khong co chuc nang gi ma sprite cao 7-9 hang o, che mat gieng va
+    // mo dung sau. Con lai cay, bui, da, thung - toan thu thap.
+    expect(khai).toBeGreaterThan(200);
     // Boc trung o thi bo, nhung ban do 64x64 rong chan nen hut khong dang ke.
     expect(banDo.vat.length).toBeGreaterThan(khai * 0.97);
     expect(banDo.vat.length).toBeLessThanOrEqual(khai);
