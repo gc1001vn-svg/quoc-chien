@@ -25,8 +25,11 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Comment tiếng Việt; tên biến, tên hàm tiếng Anh.
 - Commit tiếng Việt **không dấu**, mỗi việc một commit: `feat: them he thong walker`.
 - Asset CC0 · CC-BY · MIT. **CC-BY-SA cấm.** Không copy từ game thương mại.
-- **Dò kho trước khi làm**: `grep -i '<từ khoá>' docs/KHO_ASSET.md` (1.855 model đã tải).
-  **Cấm ghép tay khi kho có model sẵn.** Tải gói mới xong chạy `npm run kho`.
+- **Dò trước khi làm, ba bước, không được bỏ bước nào:**
+  1. `grep -i '<từ khoá>' docs/KHO_ASSET.md` — 1.855 model **đã tải**. Có thì dùng ngay.
+  2. Không có → `grep -i '<từ khoá>' docs/NGUON_MO.md` — nguồn ngoài đã tra sẵn. Có thì tải về.
+  3. Vẫn không có → **báo chủ dự án quyết**, ghi một dòng vào `NGUON_MO.md` mục 8.
+  **Cấm tự vẽ, tự ghép khi chưa đi hết ba bước.** Tải gói mới xong chạy `npm run kho`.
 - Thư viện ngoài: đề xuất tên + license + lý do, **chờ đồng ý**.
 - **Trước mỗi commit `npm run do`**. Sửa bằng Edit, đừng `python`/`sed` — tốn token.
 - File khoá: `.claude/file_khoa.txt`. `KE_HOACH.md` mục 4 và `NHAT_KY/*` chỉ thêm.
