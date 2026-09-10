@@ -21,6 +21,10 @@ const GOC = process.env.DIA_CHI ?? 'http://127.0.0.1:4173/';
 // Man hinh tham chieu cua du an: iPhone 16 Pro nam ngang.
 // Man hinh tham chieu nam ngang; dat `MAN=doc` de chup dung khung iPhone cam doc, la
 // cach chu du an that su cam may. Chup ngang mai thi khong bao gio thay cai anh anh thay.
+//
+// LUU Y: khung doc la 1179x2556 diem anh that. May ao ve bang phan mem (swiftshader) nen
+// tu khi them 25 sprite nha moi, `Page.captureScreenshot` o co do treo qua 120 giay roi
+// chet. Khung ngang 1748x804 van chup binh thuong. Can anh doc thi ha `DPR=2`.
 const DOC = process.env.MAN === 'doc';
 const RONG = Number(process.env.RONG ?? (DOC ? 393 : 874));
 const CAO = Number(process.env.CAO ?? (DOC ? 852 : 402));

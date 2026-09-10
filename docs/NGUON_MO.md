@@ -125,7 +125,9 @@ Ghi vào đây mỗi khi dò không ra, **trước khi tự vẽ**:
 | Cần gì | Phase | Đã dò | Kết quả |
 |---|---|---|---|
 | Vườn nho, chuồng thú, lò nung, nhà chài, công trường | P6B | Kenney · Quaternius · KayKit | Không có → **ghép tay, chủ dự án biết** |
+| Lò rèn · xưởng cưa · xưởng rượu · xưởng vũ khí · trại lính · nhà dân | P6B vòng 2 | KayKit Medieval **Hexagon** Pack | **CÓ ĐỦ, đã dùng 10/09** — `blacksmith` `lumbermill` `tavern` `archeryrange` `barracks` `home_A/B` |
 | Cối xay gió, giếng | P6B | — | **Có, ở KayKit** — 10/09 tự ghép nhầm rồi thay lại bằng model thật |
+| **Lợn · gà · cừu** (3 trại chăn nuôi) | P6B | Kenney · Quaternius · KayKit ×2 · 2.781 model trong kho | **Không có con vật nào.** Ba trại tạm phân biệt bằng màu nền + màu lán + đồ chất quanh. Cần model thú thì phải tìm nguồn mới |
 | Nhà ở · tháp canh · cổng làng (290 công trình) | P2 | `kk:house` `kk:watchtower` `kk:wall_gate` | **Có model nguyên khối, nhưng CỐ Ý không dùng** — xem dưới |
 
 ### Nhà ở: ghép tay là cố ý, đừng "sửa" lại

@@ -1,5 +1,5 @@
 {
-  "ghi_chu": "Me trung co ban 2 - Quaternius. Thuoc: 2 don vi model = 1 o luoi (ti_le 0.5). Dinh tuong o y=1.56 o luoi (3.12 don vi * 0.5) - MOI mai neo o do. Nha 2x2 dich +0.5 tren ca x va z de trai dung o (a,b)..(a+1,b+1), khong lech nua o. Bien the mai/tuong khai bang `nhu` cho khoi chep 16 manh. Ngoi goc 178,84,48. 12 sprite nha kinh te (gieng, coi_xay, ruong, vuon_nho, nha_chai, trai_thu, lo_nho, lo_lon, mo, xuong, trai_go, cong_truong) phu 32 loai nha cua data/buildings.json - deu RONG MOT O vi `datMotNha` chi cap mot o.",
+  "ghi_chu": "Me trung co ban 2. Thuoc: 2 don vi model = 1 o luoi (ti_le 0.5 cho Quaternius, ~1.2-1.9 cho KayKit). Dinh tuong o y=1.56 - MOI mai neo o do. 10/09 vong hai: bo 11 sprite nha trang tri khong ai dung, them 25 sprite cho 23 loai nha truoc day dung chung 5 hinh. Nguon moi: KayKit Medieval Hexagon Pack (CC0) - tien to kh/khg/khb/khy/khn/khp/khw.",
   "kit": {
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
@@ -36,21 +36,103 @@
     "nb": {
       "duong": "assets_source/universal-base-characters/Universal Base Characters[Standard]/Base Characters/Godot - UE",
       "loai": "gltf"
+    },
+    "kh": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/red",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khg": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/green",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khb": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/blue",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khy": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/yellow",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khn": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/neutral",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khp": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/decoration/props",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khw": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/decoration/nature",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
     }
   },
   "ghi_chu_dang": "Bang dang cho model co xuong. Ten xuong -> ba goc xoay (do) quanh truc rieng cua xuong do. Model goc nam o tu the chu T, khong kem cu dong nao, nen dang di bo phai tu dat: ha hai tay xuong (xoay quanh z), buoc mot chan ra truoc (xoay quanh x). Dang thu hai chi la ban guong cua dang nay - xem `guong` trong tung manh.",
   "dang": {
     "di": {
-      "upperarm_l": [-18, 0, -74],
-      "upperarm_r": [18, 0, 74],
-      "lowerarm_l": [0, 0, -25],
-      "lowerarm_r": [0, 0, 25],
-      "thigh_l": [22, 0, 0],
-      "thigh_r": [-20, 0, 0],
-      "calf_l": [-18, 0, 0],
-      "calf_r": [10, 0, 0],
-      "foot_l": [-8, 0, 0],
-      "foot_r": [14, 0, 0]
+      "upperarm_l": [
+        -18,
+        0,
+        -74
+      ],
+      "upperarm_r": [
+        18,
+        0,
+        74
+      ],
+      "lowerarm_l": [
+        0,
+        0,
+        -25
+      ],
+      "lowerarm_r": [
+        0,
+        0,
+        25
+      ],
+      "thigh_l": [
+        22,
+        0,
+        0
+      ],
+      "thigh_r": [
+        -20,
+        0,
+        0
+      ],
+      "calf_l": [
+        -18,
+        0,
+        0
+      ],
+      "calf_r": [
+        10,
+        0,
+        0
+      ],
+      "foot_l": [
+        -8,
+        0,
+        0
+      ],
+      "foot_r": [
+        14,
+        0,
+        0
+      ]
     }
   },
   "sprite": {
@@ -138,506 +220,6 @@
         ]
       }
     ],
-    "nha_ngoi_do": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Door_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 0.0,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 0.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 1.0,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Thin_Round",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "y": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "y": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Roof_Front_Brick4",
-        "ti_le": 0.5,
-        "y": 1.56,
-        "x": 0.5,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Roof_Front_Brick4",
-        "ti_le": 0.5,
-        "ry": 180,
-        "y": 1.56,
-        "x": 0.5,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Roof_RoundTiles_4x4",
-        "ti_le": 0.5,
-        "y": 1.56,
-        "x": 0.5,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Prop_Chimney",
-        "ti_le": 0.5,
-        "x": 1.1,
-        "z": 0.1,
-        "y": 2.1
-      }
-    ],
-    "nha_gach_do": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Door_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 0.0,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 0.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Wide_Flat",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 1.0,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Thin_Round",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_WoodGrid",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "y": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "y": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Roof_Front_Brick4",
-        "ti_le": 0.5,
-        "y": 1.56,
-        "x": 0.5,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Roof_Front_Brick4",
-        "ti_le": 0.5,
-        "ry": 180,
-        "y": 1.56,
-        "x": 0.5,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Roof_RoundTiles_4x4",
-        "ti_le": 0.5,
-        "y": 1.56,
-        "x": 0.5,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Prop_Chimney",
-        "ti_le": 0.5,
-        "x": 0.1,
-        "z": 1.1,
-        "y": 2.1
-      }
-    ],
-    "nha_nho_do": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Door_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "y": 1.5
-      },
-      {
-        "m": "qv:Roof_2x4_RoundTile",
-        "ti_le": 0.5,
-        "ry": 90,
-        "y": 1.56
-      }
-    ],
-    "thap_canh": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Door_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 0.0,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 0.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Window_Wide_Flat",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Round",
-        "ti_le": 0.5,
-        "ry": 0,
-        "x": 1.0,
-        "z": 1.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Thin_Round",
-        "ti_le": 0.5,
-        "ry": 180,
-        "x": 1.0,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_Plaster_Straight",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Wall_Plaster_WoodGrid",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "y": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 0.0,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "y": 1.5,
-        "z": 0.0
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "x": 1.0,
-        "y": 1.5,
-        "z": 1.0
-      },
-      {
-        "m": "qv:Roof_Tower_RoundTiles",
-        "ti_le": 0.5,
-        "y": 1.56,
-        "x": 0.5,
-        "z": 0.5
-      }
-    ],
-    "nha_ngoi_nau": {
-      "nhu": "nha_ngoi_do",
-      "mau_vl": {
-        "MI_RoundTiles": [
-          0.72,
-          0.8,
-          0.78
-        ]
-      }
-    },
-    "nha_ngoi_lam": {
-      "nhu": "nha_ngoi_do",
-      "mau_vl": {
-        "MI_RoundTiles": [
-          0.58,
-          1.02,
-          1.5
-        ]
-      }
-    },
-    "nha_ngang_do": {
-      "nhu": "nha_ngoi_do",
-      "xoay": 90
-    },
-    "nha_gach_nau": {
-      "nhu": "nha_gach_do",
-      "mau_vl": {
-        "MI_RoundTiles": [
-          0.72,
-          0.8,
-          0.78
-        ]
-      }
-    },
-    "nha_gach_reu": {
-      "nhu": "nha_gach_do",
-      "mau_vl": {
-        "MI_RoundTiles": [
-          0.5,
-          1.05,
-          0.85
-        ]
-      }
-    },
-    "nha_nho_nau": {
-      "nhu": "nha_nho_do",
-      "mau_vl": {
-        "MI_RoundTiles": [
-          0.72,
-          0.8,
-          0.78
-        ]
-      }
-    },
-    "nha_nho_lam": {
-      "nhu": "nha_nho_do",
-      "mau_vl": {
-        "MI_RoundTiles": [
-          0.58,
-          1.02,
-          1.5
-        ]
-      }
-    },
     "cay_soi": [
       {
         "m": "qn:CommonTree_1",
@@ -1007,10 +589,47 @@
         ]
       }
     ],
-    "cong_lang": [
+    "gieng": [
       {
-        "m": "qv:Wall_Arch",
+        "m": "kk:well",
+        "ti_le": 1.3
+      }
+    ],
+    "coi_xay": [
+      {
+        "m": "kk:mill",
+        "ti_le": 1.25
+      },
+      {
+        "m": "kk:mill_blades",
+        "ti_le": 1.25
+      }
+    ],
+    "ruong": [
+      {
+        "m": "kk:farm_plot",
+        "ti_le": 1.35
+      },
+      {
+        "m": "kk:farm_wheat",
+        "ti_le": 1.2
+      }
+    ],
+    "vuon_nho": [
+      {
+        "phang": 1.02,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          0.98,
+          0.9,
+          0.72
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
         "ti_le": 0.5,
+        "z": -0.34,
         "mau": [
           1.32,
           1.28,
@@ -1018,9 +637,9 @@
         ]
       },
       {
-        "m": "qv:Prop_Chimney2",
+        "m": "qv:Prop_WoodenFence_Single",
         "ti_le": 0.5,
-        "x": -0.56,
+        "z": 0.36,
         "mau": [
           1.32,
           1.28,
@@ -1028,9 +647,22 @@
         ]
       },
       {
-        "m": "qv:Prop_Chimney2",
+        "m": "qv:Prop_Vine9",
+        "ti_le": 0.24,
+        "y": 0.4,
+        "z": -0.34
+      },
+      {
+        "m": "qv:Prop_Vine9",
+        "ti_le": 0.24,
+        "y": 0.4,
+        "z": 0.36
+      },
+      {
+        "m": "qp:Barrel",
         "ti_le": 0.5,
-        "x": 0.56,
+        "x": 0.36,
+        "z": 0.02,
         "mau": [
           1.32,
           1.28,
@@ -1038,87 +670,135 @@
         ]
       }
     ],
-    "gieng": [
-      { "m": "kk:well", "ti_le": 1.3 }
-    ],
-    "coi_xay": [
-      { "m": "kk:mill", "ti_le": 1.25 },
-      { "m": "kk:mill_blades", "ti_le": 1.25 }
-    ],
-    "ruong": [
-      { "m": "kk:farm_plot", "ti_le": 1.35 },
-      { "m": "kk:farm_wheat", "ti_le": 1.2 }
-    ],
-    "vuon_nho": [
-      { "phang": 1.02, "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg", "lap": 1, "mau": [0.98, 0.9, 0.72] },
-      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.5, "z": -0.34, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.5, "z": 0.36, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qv:Prop_Vine9", "ti_le": 0.24, "y": 0.4, "z": -0.34 },
-      { "m": "qv:Prop_Vine9", "ti_le": 0.24, "y": 0.4, "z": 0.36 },
-      { "m": "qp:Barrel", "ti_le": 0.5, "x": 0.36, "z": 0.02, "mau": [1.32, 1.28, 1.22] }
-    ],
     "nha_chai": [
-      { "m": "qv:Floor_Brick", "ti_le": 0.5 },
-      { "m": "qv:Wall_Plaster_Door_Round", "ti_le": 0.5, "ry": 0, "z": 0.5 },
-      { "m": "qv:Wall_Plaster_Straight", "ti_le": 0.5, "ry": 180, "z": -0.5 },
-      { "m": "qv:Wall_Plaster_Window_Wide_Round", "ti_le": 0.5, "ry": 90, "x": -0.5 },
-      { "m": "qv:Wall_Plaster_Straight", "ti_le": 0.5, "ry": 270, "x": 0.5 },
-      { "m": "qv:Floor_Brick", "ti_le": 0.5, "y": 1.5 },
-      { "m": "qv:Roof_2x4_RoundTile", "ti_le": 0.5, "ry": 90, "y": 1.56, "thay_mau": true, "mau": [0.42, 0.55, 0.62] },
-      { "m": "qp:Rope_3", "ti_le": 0.7, "x": -0.34, "z": 0.38, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qp:Barrel", "ti_le": 0.5, "x": 0.34, "z": 0.36, "mau": [1.32, 1.28, 1.22] }
-    ],
-    "trai_thu": [
-      { "phang": 1.02, "texture": "assets_source/hoa_tiet/leafy_grass.jpg", "lap": 1, "mau": [0.9, 0.98, 0.76] },
-      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.5, "z": -0.46, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.5, "ry": 90, "x": -0.46, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qv:Prop_WoodenFence_Single", "ti_le": 0.5, "ry": 90, "x": 0.46, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qp:Cage_Small", "ti_le": 0.6, "x": 0.1, "z": -0.12, "mau": [1.32, 1.28, 1.22] },
-      { "m": "qp:FarmCrate_Empty", "ti_le": 0.7, "x": -0.24, "z": 0.24, "mau": [1.32, 1.28, 1.22] }
-    ],
-    "lo_nho": [
-      { "m": "qv:Floor_Brick", "ti_le": 0.5 },
-      { "m": "qv:Wall_UnevenBrick_Door_Round", "ti_le": 0.5, "ry": 0, "z": 0.5 },
-      { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 180, "z": -0.5 },
-      { "m": "qv:Wall_UnevenBrick_Window_Wide_Flat", "ti_le": 0.5, "ry": 90, "x": -0.5 },
-      { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 270, "x": 0.5 },
-      { "m": "qv:Floor_Brick", "ti_le": 0.5, "y": 1.5 },
-      { "m": "qv:Roof_2x4_RoundTile", "ti_le": 0.5, "ry": 90, "y": 1.56, "thay_mau": true, "mau": [0.46, 0.45, 0.47] },
-      { "m": "qv:Prop_Chimney", "ti_le": 0.4, "x": 0.56, "z": 0.08, "y": 1.7 },
-      { "m": "qp:Cauldron", "ti_le": 0.45, "x": -0.36, "z": 0.36, "mau": [1.2, 1.18, 1.15] }
-    ],
-    "lo_lon": [
-      { "m": "qv:Floor_Brick", "ti_le": 0.5 },
-      { "m": "qv:Wall_UnevenBrick_Door_Flat", "ti_le": 0.5, "ry": 0, "z": 0.5 },
-      { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 180, "z": -0.5 },
-      { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 90, "x": -0.5 },
-      { "m": "qv:Wall_UnevenBrick_Window_Wide_Flat", "ti_le": 0.5, "ry": 270, "x": 0.5 },
-      { "m": "qv:Floor_Brick", "ti_le": 0.5, "y": 1.5 },
-      { "m": "qv:Roof_2x4_RoundTile", "ti_le": 0.5, "ry": 90, "y": 1.56, "thay_mau": true, "mau": [0.3, 0.29, 0.31] },
-      { "m": "qv:Prop_Chimney", "ti_le": 0.44, "x": 0.56, "z": 0.3, "y": 1.7 },
-      { "m": "qv:Prop_Chimney2", "ti_le": 0.4, "x": 0.56, "z": -0.24, "y": 1.7 },
-      { "m": "qp:Anvil_Log", "ti_le": 0.5, "x": 0.3, "z": 0.38, "mau": [1.2, 1.16, 1.12] }
-    ],
-    "mo": [
-      { "m": "kk:mine", "ti_le": 1.2 }
-    ],
-    "xuong": [
-      { "m": "kk:market", "ti_le": 1.3 }
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Door_Round",
+        "ti_le": 0.5,
+        "ry": 0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Window_Wide_Round",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.5
+      },
+      {
+        "m": "qv:Wall_Plaster_Straight",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "y": 1.5
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.5,
+        "ry": 90,
+        "y": 1.56,
+        "thay_mau": true,
+        "mau": [
+          0.42,
+          0.55,
+          0.62
+        ]
+      },
+      {
+        "m": "qp:Rope_3",
+        "ti_le": 0.7,
+        "x": -0.34,
+        "z": 0.38,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Barrel",
+        "ti_le": 0.5,
+        "x": 0.34,
+        "z": 0.36,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
     ],
     "trai_go": [
-      { "m": "kk:lumbermill", "ti_le": 1.15 }
-    ],
-    "trai_linh": [
-      { "m": "kk:barracks", "ti_le": 1.05 }
+      {
+        "m": "kk:lumbermill",
+        "ti_le": 1.15
+      }
     ],
     "cong_truong": [
-      { "phang": 1.02, "texture": "assets_source/hoa_tiet/cobblestone_01.jpg", "lap": 1, "mau": [1.02, 1.0, 0.96] },
-      { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 180, "z": -0.44 },
-      { "m": "qv:Wall_UnevenBrick_Straight", "ti_le": 0.5, "ry": 90, "x": -0.44, "z": 0.04 },
-      { "m": "qv:Prop_Brick2", "ti_le": 1.0, "x": 0.24, "z": 0.16 },
-      { "m": "qv:Prop_Brick3", "ti_le": 1.0, "x": 0.36, "z": 0.16 },
-      { "m": "qv:Prop_Brick4", "ti_le": 1.0, "x": 0.3, "z": 0.16, "y": 0.1 },
-      { "m": "qv:Prop_Crate", "ti_le": 0.42, "x": 0.1, "z": 0.4, "mau": [1.32, 1.28, 1.22] }
+      {
+        "phang": 1.02,
+        "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.02,
+          1.0,
+          0.96
+        ]
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "z": -0.44
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.44,
+        "z": 0.04
+      },
+      {
+        "m": "qv:Prop_Brick2",
+        "ti_le": 1.0,
+        "x": 0.24,
+        "z": 0.16
+      },
+      {
+        "m": "qv:Prop_Brick3",
+        "ti_le": 1.0,
+        "x": 0.36,
+        "z": 0.16
+      },
+      {
+        "m": "qv:Prop_Brick4",
+        "ti_le": 1.0,
+        "x": 0.3,
+        "z": 0.16,
+        "y": 0.1
+      },
+      {
+        "m": "qv:Prop_Crate",
+        "ti_le": 0.42,
+        "x": 0.1,
+        "z": 0.4,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      }
     ],
     "nguoi_nam_1_0": [
       {
@@ -1188,17 +868,1097 @@
         "ti_le": 0.5
       }
     ],
-    "nguoi_nam_0_0": { "nhu": "nguoi_nam_1_0", "xoay": 90 },
-    "nguoi_nam_0_1": { "nhu": "nguoi_nam_1_1", "xoay": 90 },
-    "nguoi_nam_2_0": { "nhu": "nguoi_nam_1_0", "xoay": 270 },
-    "nguoi_nam_2_1": { "nhu": "nguoi_nam_1_1", "xoay": 270 },
-    "nguoi_nam_3_0": { "nhu": "nguoi_nam_1_0", "xoay": 180 },
-    "nguoi_nam_3_1": { "nhu": "nguoi_nam_1_1", "xoay": 180 },
-    "nguoi_nu_0_0": { "nhu": "nguoi_nu_1_0", "xoay": 90 },
-    "nguoi_nu_0_1": { "nhu": "nguoi_nu_1_1", "xoay": 90 },
-    "nguoi_nu_2_0": { "nhu": "nguoi_nu_1_0", "xoay": 270 },
-    "nguoi_nu_2_1": { "nhu": "nguoi_nu_1_1", "xoay": 270 },
-    "nguoi_nu_3_0": { "nhu": "nguoi_nu_1_0", "xoay": 180 },
-    "nguoi_nu_3_1": { "nhu": "nguoi_nu_1_1", "xoay": 180 }
+    "nguoi_nam_0_0": {
+      "nhu": "nguoi_nam_1_0",
+      "xoay": 90
+    },
+    "nguoi_nam_0_1": {
+      "nhu": "nguoi_nam_1_1",
+      "xoay": 90
+    },
+    "nguoi_nam_2_0": {
+      "nhu": "nguoi_nam_1_0",
+      "xoay": 270
+    },
+    "nguoi_nam_2_1": {
+      "nhu": "nguoi_nam_1_1",
+      "xoay": 270
+    },
+    "nguoi_nam_3_0": {
+      "nhu": "nguoi_nam_1_0",
+      "xoay": 180
+    },
+    "nguoi_nam_3_1": {
+      "nhu": "nguoi_nam_1_1",
+      "xoay": 180
+    },
+    "nguoi_nu_0_0": {
+      "nhu": "nguoi_nu_1_0",
+      "xoay": 90
+    },
+    "nguoi_nu_0_1": {
+      "nhu": "nguoi_nu_1_1",
+      "xoay": 90
+    },
+    "nguoi_nu_2_0": {
+      "nhu": "nguoi_nu_1_0",
+      "xoay": 270
+    },
+    "nguoi_nu_2_1": {
+      "nhu": "nguoi_nu_1_1",
+      "xoay": 270
+    },
+    "nguoi_nu_3_0": {
+      "nhu": "nguoi_nu_1_0",
+      "xoay": 180
+    },
+    "nguoi_nu_3_1": {
+      "nhu": "nguoi_nu_1_1",
+      "xoay": 180
+    },
+    "mo_da": [
+      {
+        "m": "kk:mine",
+        "ti_le": 1.2,
+        "mau": [
+          1.0,
+          1.0,
+          1.02
+        ]
+      },
+      {
+        "m": "khp:resource_stone",
+        "ti_le": 1.5,
+        "x": -0.34,
+        "z": 0.36
+      },
+      {
+        "m": "khw:rock_single_B",
+        "ti_le": 1.5,
+        "x": 0.4,
+        "z": 0.2
+      }
+    ],
+    "mo_than": [
+      {
+        "m": "kk:mine",
+        "ti_le": 1.2,
+        "mau": [
+          0.34,
+          0.34,
+          0.38
+        ]
+      },
+      {
+        "m": "khp:crate_A_small",
+        "ti_le": 1.8,
+        "x": -0.34,
+        "z": 0.36
+      },
+      {
+        "m": "khp:wheelbarrow",
+        "ti_le": 1.5,
+        "x": 0.36,
+        "z": 0.26,
+        "ry": 30
+      }
+    ],
+    "mo_muoi": [
+      {
+        "m": "kk:mine",
+        "ti_le": 1.2,
+        "mau": [
+          1.3,
+          1.3,
+          1.32
+        ]
+      },
+      {
+        "m": "khp:sack",
+        "ti_le": 2.6,
+        "x": -0.32,
+        "z": 0.34
+      },
+      {
+        "m": "khp:sack",
+        "ti_le": 2.6,
+        "x": -0.14,
+        "z": 0.44,
+        "ry": 50
+      }
+    ],
+    "mo_dat_set": [
+      {
+        "m": "kk:mine",
+        "ti_le": 1.2,
+        "mau": [
+          1.34,
+          0.86,
+          0.56
+        ]
+      },
+      {
+        "m": "qp:Pot_1",
+        "ti_le": 0.6,
+        "x": -0.32,
+        "z": 0.36
+      },
+      {
+        "m": "qp:Vase_2",
+        "ti_le": 0.6,
+        "x": -0.12,
+        "z": 0.44
+      }
+    ],
+    "mo_da_voi": [
+      {
+        "m": "kk:mine",
+        "ti_le": 1.2,
+        "mau": [
+          1.24,
+          1.2,
+          1.0
+        ]
+      },
+      {
+        "m": "khp:resource_stone",
+        "ti_le": 1.5,
+        "x": -0.32,
+        "z": 0.36
+      },
+      {
+        "m": "khp:pallet",
+        "ti_le": 1.6,
+        "x": 0.34,
+        "z": 0.3
+      }
+    ],
+    "mo_quang": [
+      {
+        "m": "kk:mine",
+        "ti_le": 1.2,
+        "mau": [
+          0.82,
+          0.94,
+          1.3
+        ]
+      },
+      {
+        "m": "khp:crate_open",
+        "ti_le": 1.8,
+        "x": -0.34,
+        "z": 0.34
+      },
+      {
+        "m": "qp:Pickaxe_Bronze",
+        "ti_le": 0.6,
+        "x": 0.3,
+        "z": 0.3,
+        "ry": 40
+      }
+    ],
+    "xuong_cua": [
+      {
+        "m": "kh:building_lumbermill_red",
+        "ti_le": 1.2
+      },
+      {
+        "m": "kh:building_lumbermill_red_building_lumbermill_top_red",
+        "ti_le": 1.2
+      },
+      {
+        "m": "kh:building_lumbermill_red_building_lumbermill_saw_red",
+        "ti_le": 1.2
+      },
+      {
+        "m": "khp:resource_lumber",
+        "ti_le": 1.5,
+        "x": -0.36,
+        "z": 0.34
+      }
+    ],
+    "xuong_ruou": [
+      {
+        "m": "kh:building_tavern_red",
+        "ti_le": 1.3
+      },
+      {
+        "m": "khp:barrel",
+        "ti_le": 1.8,
+        "x": -0.34,
+        "z": 0.34
+      },
+      {
+        "m": "khp:barrel",
+        "ti_le": 1.8,
+        "x": -0.16,
+        "z": 0.44
+      }
+    ],
+    "nha_bia": [
+      {
+        "m": "khy:building_tavern_yellow",
+        "ti_le": 1.3
+      },
+      {
+        "m": "khp:barrel",
+        "ti_le": 1.8,
+        "x": 0.34,
+        "z": 0.32
+      },
+      {
+        "m": "qp:Mug",
+        "ti_le": 0.9,
+        "x": -0.3,
+        "z": 0.36
+      }
+    ],
+    "xuong_vu_khi": [
+      {
+        "m": "kh:building_archeryrange_red",
+        "ti_le": 1.25
+      },
+      {
+        "m": "khp:weaponrack",
+        "ti_le": 1.6,
+        "x": -0.36,
+        "z": 0.3
+      },
+      {
+        "m": "khp:target",
+        "ti_le": 1.6,
+        "x": 0.3,
+        "z": 0.4,
+        "ry": 35
+      }
+    ],
+    "xuong_det": [
+      {
+        "m": "khb:building_market_blue",
+        "ti_le": 1.15
+      },
+      {
+        "m": "khp:crate_long_A",
+        "ti_le": 1.5,
+        "x": -0.34,
+        "z": 0.34
+      }
+    ],
+    "xuong_thuoc": [
+      {
+        "m": "khg:building_home_A_green",
+        "ti_le": 1.9
+      },
+      {
+        "m": "qp:Cauldron",
+        "ti_le": 0.5,
+        "x": -0.34,
+        "z": 0.34
+      },
+      {
+        "m": "khp:bucket_water",
+        "ti_le": 1.8,
+        "x": -0.14,
+        "z": 0.44
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": 0.44,
+        "mau": [
+          1.3,
+          1.26,
+          1.2
+        ]
+      }
+    ],
+    "lo_ren": [
+      {
+        "m": "kh:building_blacksmith_red",
+        "ti_le": 1.35
+      },
+      {
+        "m": "qp:Anvil_Log",
+        "ti_le": 0.5,
+        "x": -0.34,
+        "z": 0.34,
+        "mau": [
+          1.2,
+          1.16,
+          1.12
+        ]
+      }
+    ],
+    "lo_thep": [
+      {
+        "m": "khb:building_blacksmith_blue",
+        "ti_le": 1.35,
+        "mau": [
+          0.7,
+          0.74,
+          0.86
+        ]
+      },
+      {
+        "m": "khp:crate_A_big",
+        "ti_le": 1.5,
+        "x": -0.34,
+        "z": 0.34
+      }
+    ],
+    "lo_nung": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Flat",
+        "ti_le": 0.5,
+        "ry": 0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "y": 1.5
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.5,
+        "ry": 90,
+        "y": 1.56,
+        "thay_mau": true,
+        "mau": [
+          0.42,
+          0.41,
+          0.43
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney",
+        "ti_le": 0.44,
+        "x": 0.56,
+        "z": 0.3,
+        "y": 1.7
+      },
+      {
+        "m": "qv:Prop_Chimney2",
+        "ti_le": 0.4,
+        "x": 0.56,
+        "z": -0.24,
+        "y": 1.7
+      },
+      {
+        "m": "qp:Anvil_Log",
+        "ti_le": 0.5,
+        "x": 0.3,
+        "z": 0.38,
+        "mau": [
+          1.2,
+          1.16,
+          1.12
+        ]
+      },
+      {
+        "m": "qv:Prop_Brick1",
+        "ti_le": 1.0,
+        "x": -0.34,
+        "z": 0.36
+      },
+      {
+        "m": "qv:Prop_Brick2",
+        "ti_le": 1.0,
+        "x": -0.2,
+        "z": 0.42
+      }
+    ],
+    "lo_mo": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Flat",
+        "ti_le": 0.5,
+        "ry": 0,
+        "z": 0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 180,
+        "z": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.5
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.5,
+        "ry": 270,
+        "x": 0.5
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.5,
+        "y": 1.5
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.5,
+        "ry": 90,
+        "y": 1.56,
+        "thay_mau": true,
+        "mau": [
+          0.55,
+          0.26,
+          0.23
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney",
+        "ti_le": 0.44,
+        "x": 0.56,
+        "z": 0.3,
+        "y": 1.7
+      },
+      {
+        "m": "qv:Prop_Chimney2",
+        "ti_le": 0.4,
+        "x": 0.56,
+        "z": -0.24,
+        "y": 1.7
+      },
+      {
+        "m": "qp:Anvil_Log",
+        "ti_le": 0.5,
+        "x": 0.3,
+        "z": 0.38,
+        "mau": [
+          1.2,
+          1.16,
+          1.12
+        ]
+      },
+      {
+        "m": "qp:Cage_Small",
+        "ti_le": 0.62,
+        "x": -0.32,
+        "z": 0.36
+      },
+      {
+        "m": "qp:Bucket_Metal",
+        "ti_le": 0.6,
+        "x": -0.12,
+        "z": 0.44
+      }
+    ],
+    "lo_banh": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Round",
+        "ti_le": 0.39,
+        "ry": 0,
+        "z": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 180,
+        "z": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.39,
+        "ry": 90,
+        "x": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 270,
+        "x": 0.39
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39,
+        "y": 1.17
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.39,
+        "ry": 90,
+        "y": 1.2168,
+        "thay_mau": true,
+        "mau": [
+          0.68,
+          0.55,
+          0.32
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney",
+        "ti_le": 0.312,
+        "x": 0.4368,
+        "z": 0.0624,
+        "y": 1.326
+      },
+      {
+        "m": "qp:Cauldron",
+        "ti_le": 0.351,
+        "x": -0.2808,
+        "z": 0.2808,
+        "mau": [
+          1.2,
+          1.18,
+          1.15
+        ]
+      },
+      {
+        "m": "khp:sack",
+        "ti_le": 2.6,
+        "x": -0.3,
+        "z": 0.4
+      },
+      {
+        "m": "qp:FarmCrate_Empty",
+        "ti_le": 0.6,
+        "x": 0.32,
+        "z": 0.34
+      }
+    ],
+    "lo_uop": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Round",
+        "ti_le": 0.39,
+        "ry": 0,
+        "z": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 180,
+        "z": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.39,
+        "ry": 90,
+        "x": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 270,
+        "x": 0.39
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39,
+        "y": 1.17
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.39,
+        "ry": 90,
+        "y": 1.2168,
+        "thay_mau": true,
+        "mau": [
+          0.31,
+          0.42,
+          0.5
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney",
+        "ti_le": 0.312,
+        "x": 0.4368,
+        "z": 0.0624,
+        "y": 1.326
+      },
+      {
+        "m": "qp:Cauldron",
+        "ti_le": 0.351,
+        "x": -0.2808,
+        "z": 0.2808,
+        "mau": [
+          1.2,
+          1.18,
+          1.15
+        ]
+      },
+      {
+        "m": "khp:barrel",
+        "ti_le": 1.8,
+        "x": -0.32,
+        "z": 0.36
+      },
+      {
+        "m": "khp:bucket_water",
+        "ti_le": 1.8,
+        "x": -0.12,
+        "z": 0.44
+      }
+    ],
+    "lo_gom": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Round",
+        "ti_le": 0.39,
+        "ry": 0,
+        "z": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 180,
+        "z": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.39,
+        "ry": 90,
+        "x": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 270,
+        "x": 0.39
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39,
+        "y": 1.17
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.39,
+        "ry": 90,
+        "y": 1.2168,
+        "thay_mau": true,
+        "mau": [
+          0.52,
+          0.31,
+          0.23
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney",
+        "ti_le": 0.312,
+        "x": 0.4368,
+        "z": 0.0624,
+        "y": 1.326
+      },
+      {
+        "m": "qp:Cauldron",
+        "ti_le": 0.351,
+        "x": -0.2808,
+        "z": 0.2808,
+        "mau": [
+          1.2,
+          1.18,
+          1.15
+        ]
+      },
+      {
+        "m": "qp:Vase_4",
+        "ti_le": 0.6,
+        "x": -0.32,
+        "z": 0.36
+      },
+      {
+        "m": "qp:Pot_1",
+        "ti_le": 0.6,
+        "x": -0.12,
+        "z": 0.44
+      }
+    ],
+    "lo_voi": [
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Door_Round",
+        "ti_le": 0.39,
+        "ry": 0,
+        "z": 0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 180,
+        "z": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
+        "ti_le": 0.39,
+        "ry": 90,
+        "x": -0.39
+      },
+      {
+        "m": "qv:Wall_UnevenBrick_Straight",
+        "ti_le": 0.39,
+        "ry": 270,
+        "x": 0.39
+      },
+      {
+        "m": "qv:Floor_Brick",
+        "ti_le": 0.39,
+        "y": 1.17
+      },
+      {
+        "m": "qv:Roof_2x4_RoundTile",
+        "ti_le": 0.39,
+        "ry": 90,
+        "y": 1.2168,
+        "thay_mau": true,
+        "mau": [
+          0.78,
+          0.78,
+          0.74
+        ]
+      },
+      {
+        "m": "qv:Prop_Chimney",
+        "ti_le": 0.312,
+        "x": 0.4368,
+        "z": 0.0624,
+        "y": 1.326
+      },
+      {
+        "m": "qp:Cauldron",
+        "ti_le": 0.351,
+        "x": -0.2808,
+        "z": 0.2808,
+        "mau": [
+          1.2,
+          1.18,
+          1.15
+        ]
+      },
+      {
+        "m": "khp:resource_stone",
+        "ti_le": 1.4,
+        "x": -0.32,
+        "z": 0.36
+      },
+      {
+        "m": "khp:pallet",
+        "ti_le": 1.5,
+        "x": 0.32,
+        "z": 0.34
+      }
+    ],
+    "trai_lon": [
+      {
+        "phang": 1.02,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          0.72,
+          0.62,
+          0.44
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "z": -0.46,
+        "mau": [
+          1.1,
+          1.02,
+          0.9
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.46,
+        "mau": [
+          1.1,
+          1.02,
+          0.9
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": 0.46,
+        "mau": [
+          1.1,
+          1.02,
+          0.9
+        ]
+      },
+      {
+        "m": "qp:Cage_Small",
+        "ti_le": 0.6,
+        "x": 0.1,
+        "z": -0.12,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:FarmCrate_Empty",
+        "ti_le": 0.7,
+        "x": -0.24,
+        "z": 0.24,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "khy:building_home_A_yellow",
+        "ti_le": 1.35,
+        "x": 0.26,
+        "z": -0.3
+      },
+      {
+        "m": "qp:Bucket_Wooden_1",
+        "ti_le": 0.6,
+        "x": -0.3,
+        "z": 0.3
+      },
+      {
+        "m": "khp:sack",
+        "ti_le": 2.4,
+        "x": 0.3,
+        "z": 0.36
+      }
+    ],
+    "trai_ga": [
+      {
+        "phang": 1.02,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          1.0,
+          0.98,
+          0.6
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "z": -0.46,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.46,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": 0.46,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:Cage_Small",
+        "ti_le": 0.6,
+        "x": 0.1,
+        "z": -0.12,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:FarmCrate_Empty",
+        "ti_le": 0.7,
+        "x": -0.24,
+        "z": 0.24,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "kh:building_home_A_red",
+        "ti_le": 1.35,
+        "x": 0.26,
+        "z": -0.3
+      },
+      {
+        "m": "qp:Cage_Small",
+        "ti_le": 0.55,
+        "x": -0.3,
+        "z": 0.3
+      },
+      {
+        "m": "qp:FarmCrate_Carrot",
+        "ti_le": 0.6,
+        "x": 0.3,
+        "z": 0.36
+      }
+    ],
+    "trai_cuu": [
+      {
+        "phang": 1.02,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          0.86,
+          1.0,
+          0.78
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "z": -0.46,
+        "mau": [
+          1.0,
+          1.0,
+          1.05
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": -0.46,
+        "mau": [
+          1.0,
+          1.0,
+          1.05
+        ]
+      },
+      {
+        "m": "qv:Prop_WoodenFence_Single",
+        "ti_le": 0.5,
+        "ry": 90,
+        "x": 0.46,
+        "mau": [
+          1.0,
+          1.0,
+          1.05
+        ]
+      },
+      {
+        "m": "qp:Cage_Small",
+        "ti_le": 0.6,
+        "x": 0.1,
+        "z": -0.12,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "qp:FarmCrate_Empty",
+        "ti_le": 0.7,
+        "x": -0.24,
+        "z": 0.24,
+        "mau": [
+          1.32,
+          1.28,
+          1.22
+        ]
+      },
+      {
+        "m": "khb:building_home_A_blue",
+        "ti_le": 1.35,
+        "x": 0.26,
+        "z": -0.3
+      },
+      {
+        "m": "khp:sack",
+        "ti_le": 2.6,
+        "x": -0.28,
+        "z": 0.34
+      },
+      {
+        "m": "khp:sack",
+        "ti_le": 2.6,
+        "x": -0.1,
+        "z": 0.42,
+        "ry": 40
+      },
+      {
+        "m": "khp:bucket_water",
+        "ti_le": 1.7,
+        "x": 0.32,
+        "z": 0.34
+      }
+    ],
+    "nha_dan": [
+      {
+        "m": "kh:building_home_B_red",
+        "ti_le": 1.9
+      }
+    ],
+    "trai_linh": [
+      {
+        "m": "kh:building_barracks_red",
+        "ti_le": 1.2
+      },
+      {
+        "m": "khp:tent",
+        "ti_le": 1.5,
+        "x": -0.4,
+        "z": 0.34
+      }
+    ]
   }
 }

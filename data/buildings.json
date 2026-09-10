@@ -65,7 +65,7 @@
     {
       "ten": "lo_banh",
       "hien": "Lò bánh",
-      "sprite": "lo_nho",
+      "sprite": "lo_banh",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -113,7 +113,7 @@
     {
       "ten": "lo_uop",
       "hien": "Lò ướp cá",
-      "sprite": "lo_nho",
+      "sprite": "lo_uop",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -139,7 +139,7 @@
     {
       "ten": "trai_lon",
       "hien": "Trại lợn",
-      "sprite": "trai_thu",
+      "sprite": "trai_lon",
       "khu": "nong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -161,7 +161,7 @@
     {
       "ten": "lo_mo",
       "hien": "Lò mổ",
-      "sprite": "lo_lon",
+      "sprite": "lo_mo",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -193,7 +193,7 @@
     {
       "ten": "mo_muoi",
       "hien": "Mỏ muối",
-      "sprite": "mo",
+      "sprite": "mo_muoi",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -210,7 +210,7 @@
     {
       "ten": "trai_ga",
       "hien": "Trại gà",
-      "sprite": "trai_thu",
+      "sprite": "trai_ga",
       "khu": "nong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -249,7 +249,7 @@
     {
       "ten": "xuong_ruou",
       "hien": "Xưởng rượu",
-      "sprite": "xuong",
+      "sprite": "xuong_ruou",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -275,7 +275,7 @@
     {
       "ten": "nha_bia",
       "hien": "Nhà bia",
-      "sprite": "xuong",
+      "sprite": "nha_bia",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -301,7 +301,7 @@
     {
       "ten": "xuong_thuoc",
       "hien": "Xưởng thuộc da",
-      "sprite": "xuong",
+      "sprite": "xuong_thuoc",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -323,7 +323,7 @@
     {
       "ten": "trai_cuu",
       "hien": "Trại cừu",
-      "sprite": "trai_thu",
+      "sprite": "trai_cuu",
       "khu": "nong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -345,7 +345,7 @@
     {
       "ten": "xuong_det",
       "hien": "Xưởng dệt",
-      "sprite": "xuong",
+      "sprite": "xuong_det",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -367,7 +367,7 @@
     {
       "ten": "mo_dat_set",
       "hien": "Mỏ đất sét",
-      "sprite": "mo",
+      "sprite": "mo_dat_set",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -384,7 +384,7 @@
     {
       "ten": "lo_gom",
       "hien": "Lò gốm",
-      "sprite": "lo_nho",
+      "sprite": "lo_gom",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -428,7 +428,7 @@
     {
       "ten": "mo_da_voi",
       "hien": "Mỏ đá vôi",
-      "sprite": "mo",
+      "sprite": "mo_da_voi",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -445,7 +445,7 @@
     {
       "ten": "lo_voi",
       "hien": "Lò vôi",
-      "sprite": "lo_nho",
+      "sprite": "lo_voi",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -471,7 +471,7 @@
     {
       "ten": "xuong_cua",
       "hien": "Xưởng cưa",
-      "sprite": "xuong",
+      "sprite": "xuong_cua",
       "khu": "san_xuat",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -493,7 +493,7 @@
     {
       "ten": "mo_da",
       "hien": "Mỏ đá",
-      "sprite": "mo",
+      "sprite": "mo_da",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -510,7 +510,7 @@
     {
       "ten": "mo_quang",
       "hien": "Mỏ quặng",
-      "sprite": "mo",
+      "sprite": "mo_quang",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -527,7 +527,7 @@
     {
       "ten": "mo_than",
       "hien": "Mỏ than",
-      "sprite": "mo",
+      "sprite": "mo_than",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -545,7 +545,7 @@
     {
       "ten": "lo_nung",
       "hien": "Lò nung",
-      "sprite": "lo_lon",
+      "sprite": "lo_nung",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -571,7 +571,7 @@
     {
       "ten": "lo_thep",
       "hien": "Lò thép",
-      "sprite": "lo_lon",
+      "sprite": "lo_thep",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -598,7 +598,7 @@
     {
       "ten": "lo_ren",
       "hien": "Lò rèn",
-      "sprite": "lo_lon",
+      "sprite": "lo_ren",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -620,7 +620,7 @@
     {
       "ten": "xuong_vu_khi",
       "hien": "Xưởng vũ khí",
-      "sprite": "xuong",
+      "sprite": "xuong_vu_khi",
       "khu": "cong_nghiep",
       "veLoi": false,
       "kieu": "san_xuat",
@@ -646,7 +646,7 @@
     {
       "ten": "nha_dan",
       "hien": "Nhà dân",
-      "sprite": "nha_nho_do",
+      "sprite": "nha_dan",
       "khu": "do_thi",
       "veLoi": false,
       "kieu": "tieu_thu",
