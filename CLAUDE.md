@@ -27,7 +27,7 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Commit tiếng Việt **không dấu**, mỗi việc một commit: `feat: them he thong walker`.
 - Asset CC0 · CC-BY · MIT. **CC-BY-SA cấm.** Không copy từ game thương mại.
 - **Dò trước khi làm, ba bước, không được bỏ bước nào:**
-  1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — 1.855 model
+  1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — 2.781 model
      **đã tải**. Có thì dùng ngay. **Cấm `grep -i` trần** trên file này: dòng dài tới 4.870
      ký tự, trúng một dòng là mất ~3.300 token thay vì ~180.
   2. Không có → `grep -i '<từ khoá>' docs/NGUON_MO.md` — nguồn ngoài đã tra sẵn. Có thì tải về.

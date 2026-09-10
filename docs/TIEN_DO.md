@@ -80,7 +80,7 @@ sản lượng mới là kết quả** — lần sau đặt ngưỡng vào cái 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 **Trước khi làm bất cứ thứ gì trong các phase sau, dò hai file này:**
-`docs/KHO_ASSET.md` (1.855 model đã tải) → `docs/NGUON_MO.md` (nguồn ngoài đã tra) →
+`docs/KHO_ASSET.md` (2.781 model đã tải) → `docs/NGUON_MO.md` (nguồn ngoài đã tra) →
 không có thì hỏi chủ dự án. Luật ba bước ở `CLAUDE.md` mục Quy ước.
 
 ## 5. Phase kế tiếp — Phase 7: bản đồ tỉnh (PHIÊN MỚI)

@@ -26,6 +26,10 @@ Kho `ghi-nho`: theo đúng skill, `cat` cả ba file, cũng cấm cắt.
 `assets_source/` **không lên git** (đúng luật). Không nướng sprite thì đừng tải —
 mất 5–10 phút và không dùng tới.
 
+**Cấm chạy `npm run kho` khi kho chưa tải đủ** — nó ghi đè `docs/KHO_ASSET.md`.
+Từ 11/09 `kho_asset.mjs` tự chặn khi số model tụt quá 20% so với bản đang có; ép ghi
+đè phải `KHO_EP=1 npm run kho`, và chỉ làm khi biết chắc kho đã đủ.
+
 ## C. Git
 
 ```bash

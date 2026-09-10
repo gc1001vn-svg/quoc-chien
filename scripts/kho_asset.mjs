@@ -17,7 +17,7 @@
  *
  *   grep -i 'mill\|well\|mine' docs/KHO_ASSET.md
  */
-import { readdirSync, statSync, writeFileSync, existsSync } from 'node:fs';
+import { readdirSync, statSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const KHO = 'assets_source';
@@ -80,5 +80,18 @@ for (const goi of readdirSync(KHO).sort()) {
 }
 
 dong.push('---', '', `Tổng: **${String(tong)} model** trong \`${KHO}/\`.`, '');
+
+// Kho mat theo container moi phien. Tai thieu goi roi chay lenh nay la ghi de mat
+// danh muc cu, im lang. Chan lai khi so model tut qua 20% so voi ban dang co.
+const cu = existsSync(RA) ? /Tổng: \*\*(\d+) model/.exec(readFileSync(RA, 'utf8'))?.[1] : null;
+if (cu !== null && cu !== undefined && tong < Number(cu) * 0.8) {
+  console.error(
+    `kho: DUNG LAI. Ban cu ${cu} model, quet duoc ${String(tong)} - tut qua 20%.\n` +
+    `  Nhieu kha nang assets_source/ chua tai du. Chay "npm run tai:tatca" truoc.\n` +
+    `  Co that su muon ghi de thi: KHO_EP=1 npm run kho`,
+  );
+  if (process.env.KHO_EP !== '1') process.exit(1);
+}
+
 writeFileSync(RA, dong.join('\n'));
 console.log(`kho: ${String(tong)} model -> ${RA}`);

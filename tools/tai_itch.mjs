@@ -35,12 +35,19 @@ class Hu {
   get chuoi() { return [...this.banh].map(([k, v]) => `${k}=${v}`).join('; '); }
 }
 
-async function goi(hu, duong, tuyChon = {}) {
+/** Itch chan toc do (429) khi goi lien tiep nhieu goi. Nghi roi thu lai, moi lan gap doi. */
+async function goi(hu, duong, tuyChon = {}, conThu = 4) {
   const res = await fetch(duong, {
     ...tuyChon,
     redirect: 'follow',
     headers: { cookie: hu.chuoi, 'x-requested-with': 'XMLHttpRequest', ...(tuyChon.headers ?? {}) },
   });
+  if (res.status === 429 && conThu > 0) {
+    const cho = (5 - conThu) * 5 + 5;
+    console.log(`itch chan toc do (429), nghi ${cho}s roi thu lai...`);
+    await new Promise((xong) => setTimeout(xong, cho * 1000));
+    return goi(hu, duong, tuyChon, conThu - 1);
+  }
   hu.nhan(res);
   return res;
 }
