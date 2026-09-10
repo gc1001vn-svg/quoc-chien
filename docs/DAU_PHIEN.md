@@ -21,7 +21,7 @@ Kho `ghi-nho`: theo đúng skill, `cat` cả ba file, cũng cấm cắt.
 |---|---|---|
 | `npm ci` | **luôn luôn** | `node_modules` không bao giờ có sẵn |
 | `npm run do` | **luôn luôn** | phải **6/6 thước** trước khi động vào code |
-| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~440 MB, 8 gói itch + 2 gói Kenney, chạy `npm run kho` ở cuối |
+| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB, 9 gói itch + 2 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
 
 `assets_source/` **không lên git** (đúng luật). Không nướng sprite thì đừng tải —
 mất 5–10 phút và không dùng tới.
