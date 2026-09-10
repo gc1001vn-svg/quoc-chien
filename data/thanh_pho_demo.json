@@ -34,34 +34,6 @@
   "leDuong": 1,
   "_bam": "So o toi da cach duong. Co `bam` thi vat the chi dat gan duong - nha bam duong moi ra thanh pho, rai deu ra thi ra rung co nha. Khong co `bam` thi rai tu do.",
   "_o": "Canh khoi o cong trinh chiem, neo o (a,b) di ra. Nha lon Quaternius rong 2 o; khong khai thi 1. Ca khoi phai trong va khong cham duong moi dat duoc.",
-  "_phuong": "Ban do chuc nang, mot o bang la mot PHUONG rong `phuongCanh` o luoi. Don vi lan can kieu Clarence Perry: bon phuong giua la khu dan cu tu cap (nha o + gieng + cho + kho ngay trong phuong), vanh ngoai la san xuat, nong nghiep, cong nghiep, quan su. Sua bo cuc thanh pho = sua bang nay.",
-  "phuongCanh": 24,
-  "phuong": [
-    [
-      "nong_nghiep",
-      "san_xuat",
-      "san_xuat",
-      "nong_nghiep"
-    ],
-    [
-      "cong_nghiep",
-      "do_thi",
-      "do_thi",
-      "san_xuat"
-    ],
-    [
-      "san_xuat",
-      "do_thi",
-      "do_thi",
-      "cong_nghiep"
-    ],
-    [
-      "nong_nghiep",
-      "cong_nghiep",
-      "quan_su",
-      "nong_nghiep"
-    ]
-  ],
   "_vat": "Chi con vat TRANG TRI that: cay, bui, da, quay hang, thung, ghe, xe, hang rao. Nha trang tri da bo 10/09: chung khong co chuc nang gi ma sprite cao 7-9 hang o, nuot tron gieng (2,4 hang), mo (3,0) va coi xay (4,7) dung phia sau. Tu nay moi nha tren ban do la nha THAT cua src/sim/.",
   "vat": [
     {
@@ -154,5 +126,133 @@
   "zoomDau": 1.0,
   "tranSprite": 5000,
   "_spriteKho": "Sprite danh dau kho hang, dat canh nga tu co kho. Bo trong thi kho vo hinh nhu truoc Phase 5.",
-  "spriteKho": "dong_thung"
+  "spriteKho": "dong_thung",
+  "_vanh": "Bo cuc thanh pho, xet theo THU TU nen quan_su phai dung truoc. `tu`/`den` la khoang cach Chebyshev tu tam ban do (tam 47,5 nen `den` cuoi cung la 47). `goc` bat o phai nam gan mot goc ban do. `nen` la o nen trong RUOT vanh - moi khu mot chat rieng, day la 'thematic continuity' cua Kevin Lynch. `vienNen`/`vienVat` la duong vien day mot o chay quanh mep ngoai vanh. Sua bo cuc thanh pho = sua bang nay, khong dung toi code.",
+  "vanh": [
+    {
+      "khu": "quan_su",
+      "tu": 41,
+      "den": 47,
+      "goc": 14,
+      "nen": [
+        {
+          "ten": "o_da",
+          "trong": 50
+        },
+        {
+          "ten": "o_co",
+          "trong": 35
+        },
+        {
+          "ten": "o_dat",
+          "trong": 15
+        }
+      ],
+      "vienNen": "o_da",
+      "vienVat": [
+        "hang_rao",
+        "da_lon"
+      ]
+    },
+    {
+      "khu": "do_thi",
+      "tu": 0,
+      "den": 21,
+      "nen": [
+        {
+          "ten": "o_co",
+          "trong": 58
+        },
+        {
+          "ten": "o_duong_lat",
+          "trong": 26
+        },
+        {
+          "ten": "o_dat",
+          "trong": 16
+        }
+      ],
+      "vienNen": "o_duong_lat",
+      "vienVat": [
+        "da_lon",
+        "bui_hoa",
+        "ghe_bang"
+      ]
+    },
+    {
+      "khu": "san_xuat",
+      "tu": 22,
+      "den": 31,
+      "nen": [
+        {
+          "ten": "o_co",
+          "trong": 62
+        },
+        {
+          "ten": "o_dat",
+          "trong": 26
+        },
+        {
+          "ten": "o_da",
+          "trong": 12
+        }
+      ],
+      "vienNen": "o_dat",
+      "vienVat": [
+        "hang_rao",
+        "bui",
+        "thung_ruou"
+      ]
+    },
+    {
+      "khu": "cong_nghiep",
+      "tu": 32,
+      "den": 40,
+      "nen": [
+        {
+          "ten": "o_da",
+          "trong": 46
+        },
+        {
+          "ten": "o_dat",
+          "trong": 34
+        },
+        {
+          "ten": "o_co",
+          "trong": 20
+        }
+      ],
+      "vienNen": "o_da",
+      "vienVat": [
+        "da_lon",
+        "da_nho",
+        "dong_thung"
+      ]
+    },
+    {
+      "khu": "nong_nghiep",
+      "tu": 41,
+      "den": 47,
+      "nen": [
+        {
+          "ten": "o_ruong",
+          "trong": 44
+        },
+        {
+          "ten": "o_co",
+          "trong": 38
+        },
+        {
+          "ten": "o_dat",
+          "trong": 18
+        }
+      ],
+      "vienNen": "o_dat",
+      "vienVat": [
+        "hang_rao",
+        "bui",
+        "co_cao"
+      ]
+    }
+  ]
 }

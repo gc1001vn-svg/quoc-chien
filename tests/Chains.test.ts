@@ -44,7 +44,7 @@ describe('kiemTra bat duoc loi', () => {
   it('hang khong ai lam ra', () => {
     const nha = docNha({
       nha: [
-        { ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', kieu: 'tieu_thu', so: 1, nhip: 1, vao: [{ hang: 'go', so: 1 }], ra: [] },
+        { ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', cachNhau: 4, kieu: 'tieu_thu', so: 1, nhip: 1, vao: [{ hang: 'go', so: 1 }], ra: [] },
       ],
     });
     const chuoi = docChuoi({ chuoi: [{ ten: 'c', hien: 'C', qua: ['a', 'a'] }] });
@@ -53,7 +53,7 @@ describe('kiemTra bat duoc loi', () => {
 
   it('hang khong ai dung den', () => {
     const nha = docNha({
-      nha: [{ ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', kieu: 'san_xuat', so: 1, nhip: 1, vao: [], ra: [{ hang: 'go', so: 1 }] }],
+      nha: [{ ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', cachNhau: 4, kieu: 'san_xuat', so: 1, nhip: 1, vao: [], ra: [{ hang: 'go', so: 1 }] }],
     });
     const chuoi = docChuoi({ chuoi: [{ ten: 'c', hien: 'C', qua: ['a', 'a'] }] });
     expect(kiemTra(hang, nha, chuoi).join(' ')).toMatch(/khong nha nao dung den/);
@@ -62,8 +62,8 @@ describe('kiemTra bat duoc loi', () => {
   it('nha quen ke vao chuoi nao', () => {
     const nha = docNha({
       nha: [
-        { ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', kieu: 'san_xuat', so: 1, nhip: 1, vao: [], ra: [{ hang: 'go', so: 1 }] },
-        { ten: 'b', hien: 'B', sprite: 'nha_nho_do', khu: 'do_thi', kieu: 'tieu_thu', so: 1, nhip: 1, vao: [{ hang: 'go', so: 1 }], ra: [] },
+        { ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', cachNhau: 4, kieu: 'san_xuat', so: 1, nhip: 1, vao: [], ra: [{ hang: 'go', so: 1 }] },
+        { ten: 'b', hien: 'B', sprite: 'nha_nho_do', khu: 'do_thi', cachNhau: 4, kieu: 'tieu_thu', so: 1, nhip: 1, vao: [{ hang: 'go', so: 1 }], ra: [] },
       ],
     });
     const chuoi = docChuoi({ chuoi: [{ ten: 'c', hien: 'C', qua: ['a', 'a'] }] });
@@ -73,8 +73,8 @@ describe('kiemTra bat duoc loi', () => {
   it('chuoi di qua nha khong co that', () => {
     const nha = docNha({
       nha: [
-        { ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', kieu: 'san_xuat', so: 1, nhip: 1, vao: [], ra: [{ hang: 'go', so: 1 }] },
-        { ten: 'b', hien: 'B', sprite: 'nha_nho_do', khu: 'do_thi', kieu: 'tieu_thu', so: 1, nhip: 1, vao: [{ hang: 'go', so: 1 }], ra: [] },
+        { ten: 'a', hien: 'A', sprite: 'nha_nho_do', khu: 'do_thi', cachNhau: 4, kieu: 'san_xuat', so: 1, nhip: 1, vao: [], ra: [{ hang: 'go', so: 1 }] },
+        { ten: 'b', hien: 'B', sprite: 'nha_nho_do', khu: 'do_thi', cachNhau: 4, kieu: 'tieu_thu', so: 1, nhip: 1, vao: [{ hang: 'go', so: 1 }], ra: [] },
       ],
     });
     const chuoi = docChuoi({ chuoi: [{ ten: 'c', hien: 'C', qua: ['a', 'b', 'z'] }] });

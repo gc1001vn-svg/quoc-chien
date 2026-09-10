@@ -30,8 +30,10 @@ export interface DinhNghiaNha {
   readonly sprite: string;
   /** Khu quy hoach: `do_thi` `san_xuat` `nong_nghiep` `cong_nghiep` `quan_su`. */
   readonly khu: TenKhu;
-  /** Dat sat LOI phuong (gieng, cho, cong truong) hay rai ra vanh ngoai (nha o, xuong). */
-  readonly veLoi: boolean;
+  /** Khoang cach Chebyshev toi thieu toi mot nha CUNG LOAI - xem `QuyHoach.ts`. */
+  readonly cachNhau: number;
+  /** Tien ich: moi khoi pho 8x8 mot cai, dat gan giua khoi (ped shed). */
+  readonly motKhoi: boolean;
   readonly kieu: KieuNha;
   readonly so: number;
   readonly nhip: number;
@@ -123,7 +125,8 @@ export function docNha(tho: unknown): DinhNghiaNha[] {
       hien: layChuoi(o['hien'], `${duong}.hien`),
       sprite: layChuoi(o['sprite'], `${duong}.sprite`),
       khu: docKhu(o['khu'], `${duong}.khu`),
-      veLoi: o['veLoi'] === true,
+      cachNhau: laySoNguyen(o['cachNhau'], `${duong}.cachNhau`),
+      motKhoi: o['motKhoi'] === true,
       kieu,
       so: laySoNguyen(o['so'], `${duong}.so`),
       nhip: laySoNguyen(o['nhip'], `${duong}.nhip`),

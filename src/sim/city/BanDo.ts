@@ -8,6 +8,8 @@
  * Cung mot hat giong thi ra dung mot ban do - TECH_SPEC muc 8 bat buoc.
  */
 import { Rng } from '../../core/Rng.ts';
+import { sinhNen, vatVien } from './Nen.ts';
+import { docQuyHoach, type QuyHoach } from './QuyHoach.ts';
 
 /** Mot vat the dat tren luoi. */
 export interface OVat {
@@ -117,9 +119,8 @@ export interface CauHinhBanDo {
   readonly vat: readonly {
     readonly ten: string; readonly so: number; readonly bam?: number; readonly o?: number;
   }[];
-  /** Canh mot phuong va ban do chuc nang tung phuong - xem `QuyHoach.ts`. */
-  readonly phuongCanh: number;
-  readonly phuong: readonly (readonly string[])[];
+  /** Bo cuc vanh dong tam: chuc nang, o nen va duong vien tung vanh - xem `QuyHoach.ts`. */
+  readonly vanh: unknown;
   readonly zoomMin: number;
   readonly zoomMax: number;
   readonly zoomDau: number;
@@ -135,21 +136,14 @@ const BOC_TOI_DA = 60;
 export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   const canh: number = ch.canh;
   const rng: Rng = new Rng(ch.hatGiong);
-  const nen: string[] = new Array<string>(canh * canh);
-  const trongSo = ch.nen.thuong.map((t) => ({ gia: t.ten, trong: t.trong }));
-
-  for (let a = 0; a < canh; a += 1) {
-    for (let b = 0; b < canh; b += 1) {
-      const doc: boolean = a % ch.duongCach === 0;
-      const ngang: boolean = b % ch.duongCach === 0;
-      // Boc so NGAY CA khi o la duong, de day so cua rng khong doi theo bo cuc duong.
-      const thuong: string = rng.theoTrongSo(trongSo);
-      nen[a * canh + b] = doc && ngang ? ch.nen.ngaTu : (doc || ngang ? ch.nen.duong : thuong);
-    }
-  }
+  const qh: QuyHoach = docQuyHoach(ch.vanh, canh, ch.duongCach);
+  // Moi vanh mot chat nen rieng, va mot duong vien chay quanh mep - `Nen.ts`.
+  const nen: string[] = sinhNen(qh, rng, ch.nen);
 
   const vat: OVat[] = [];
   const daChiem: Set<number> = new Set<number>();
+  // Vat danh dau tren vien dat TRUOC vat trang tri, de vien luon lien tuc.
+  vat.push(...vatVien(qh, rng, daChiem));
   for (const loai of ch.vat) {
     const canhKhoi: number = loai.o ?? 1;
     for (let i = 0; i < loai.so; i += 1) {

@@ -9,8 +9,8 @@ import { DongHo, NHIP_MOI_GIO } from '../Clock.ts';
 import { Rng } from '../../core/Rng.ts';
 import type { BanDo, O } from './BanDo.ts';
 import { chenVat, congRaDuong, sinhBanDo } from './BanDo.ts';
-import type { BanDoPhuong } from './QuyHoach.ts';
-import { docPhuong, oTrongKhu } from './QuyHoach.ts';
+import type { QuyHoach, SoDat } from './QuyHoach.ts';
+import { datNha, docQuyHoach, soDatMoi } from './QuyHoach.ts';
 import { choKhoMoi, dungNha, veKho } from './XayThem.ts';
 import type { BoDem, DinhNghiaNha, Giao } from './Buildings.ts';
 import { docNha, ThuNha } from './Buildings.ts';
@@ -64,8 +64,10 @@ export class ThanhPho implements BoDem, Giao {
 
   /** Day so boc cho dat nha, song suot van de thong doc xay tiep tu day so do. */
   private readonly rngDat: Rng;
-  /** Ban do chuc nang tung phuong (`QuyHoach.ts`). */
-  private readonly phuong: BanDoPhuong;
+  /** Bo cuc vanh dong tam (`QuyHoach.ts`). */
+  private readonly quyHoach: QuyHoach;
+  /** So sach dat nha: da dat cai nao o dau, khoi pho nao da co tien ich. */
+  private readonly soDat: SoDat = soDatMoi();
   /** Thong doc da xay them bao nhieu nha moi loai. */
   private readonly demXay = new Map<string, number>();
   /** Tam bo dem cua gio dang chay. Xoa het moi lan chot gio - xem `BangSo.ts`. */
@@ -94,19 +96,17 @@ export class ThanhPho implements BoDem, Giao {
     // `rngDat` song sau constructor vi thong doc con xay tiep. O chiem lay thang tu
     // `banDo.daChiem` - chung mot tap voi vat the trang tri nen khong dat de len nhau.
     this.rngDat = new Rng(this.cauHinh.hatGiongDatNha);
-    const chBanDo = tho.banDo as { phuong: unknown; phuongCanh: number };
-    this.phuong = docPhuong(chBanDo.phuong, chBanDo.phuongCanh);
+    const chBanDo = tho.banDo as { vanh: unknown };
+    this.quyHoach = docQuyHoach(chBanDo.vanh, this.banDo.canh, this.banDo.duongCach);
 
     let k = 0;
     for (const def of this.dsNha) {
       for (let i = 0; i < def.so; i++) {
-        // Tien ich (gieng, cho, kho) ve LOI phuong - don vi lan can kieu Perry: ai cung di
-        // bo vai buoc la toi. Nha o va nha xuong thi rai deu ra vanh ngoai cua phuong.
-        const o: O | undefined = oTrongKhu(
-          this.banDo, this.banDo.daChiem, this.rngDat, this.phuong, def.khu, def.veLoi,
-        );
+        // Moi loai giu khoang cach toi thieu voi chinh no (Poisson-disk), va tien ich thi
+        // moi khoi pho mot cai dat gan giua khoi (ped shed). Xem `QuyHoach.ts`.
+        const o: O | undefined = datNha(this.banDo, this.rngDat, this.quyHoach, def, this.soDat);
         if (o === undefined) {
-          throw new LoiDuLieu('ban do', `khu ${def.khu} da chat, khong dat noi "${def.ten}"`);
+          throw new LoiDuLieu('ban do', `vanh ${def.khu} da chat, khong dat noi "${def.ten}"`);
         }
         // Lech pha deu nhau tren ca chu ky, de 30 nha dan khong cung an vao mot nhip.
         const nha = new ThuNha(
@@ -139,7 +139,7 @@ export class ThanhPho implements BoDem, Giao {
     if (def === undefined) return false;
     const nha: ThuNha | undefined = dungNha(
       def, this.nhaThat.length, this.banDo, this.rngDat,
-      this.cauHinh.tranRieng, this.cauHinh.moiChuyen, this.phuong,
+      this.cauHinh.tranRieng, this.cauHinh.moiChuyen, this.quyHoach, this.soDat,
     );
     if (nha === undefined) return false;
     this.nhaThat.push(nha);
@@ -150,7 +150,7 @@ export class ThanhPho implements BoDem, Giao {
 
   /** Thong doc xay them mot kho o nga tu xa cac kho cu nhat. */
   xayKho(): boolean {
-    const tot: O | undefined = choKhoMoi(this.banDo, this.doiWalker.danhSachKho);
+    const tot: O | undefined = choKhoMoi(this.banDo, this.doiWalker.danhSachKho, this.quyHoach);
     if (tot === undefined) return false;
     this.doiWalker.themKho(tot);
     veKho(this.banDo, tot);

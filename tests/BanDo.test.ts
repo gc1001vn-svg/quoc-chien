@@ -8,6 +8,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import cauHinhTho from '../data/thanh_pho_demo.json';
+import { docQuyHoach, laVien } from '../src/sim/city/QuyHoach.ts';
 import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/sim/city/BanDo.ts';
 import { docBoAtlas } from '../src/render/Atlas';
 
@@ -73,15 +74,36 @@ describe('sinh ban do trung bay', () => {
     }
   });
 
-  it('dat gan het so vat the da khai', () => {
+  it('dat gan het so vat the da khai, cong vat danh dau tren vien', () => {
     const khai: number = CAU_HINH.vat.reduce((t, v) => t + v.so, 0);
     // Chan duoi de bat cau hinh bi xoa rong. Ha tu 250 xuong 200 ngay 10/09 khi bo 12 loai
     // NHA trang tri: chung khong co chuc nang gi ma sprite cao 7-9 hang o, che mat gieng va
     // mo dung sau. Con lai cay, bui, da, thung - toan thu thap.
     expect(khai).toBeGreaterThan(200);
-    // Boc trung o thi bo, nhung ban do 64x64 rong chan nen hut khong dang ke.
+    // Tu 10/09 `sinhBanDo` con rai them vat danh dau doc duong VIEN giua cac vanh, nen
+    // tong lon hon so khai. Chan tren de vien khong phinh thanh mot bien vat the.
     expect(banDo.vat.length).toBeGreaterThan(khai * 0.97);
-    expect(banDo.vat.length).toBeLessThanOrEqual(khai);
+    expect(banDo.vat.length).toBeLessThan(khai * 2);
+  });
+
+  it('duong vien co that: co vat danh dau, va duong van di xuyen qua', () => {
+    const qh = docQuyHoach(CAU_HINH.vanh, CAU_HINH.canh, CAU_HINH.duongCach);
+    let oVien = 0;
+    let vienLaDuong = 0;
+    for (let a = 0; a < CAU_HINH.canh; a += 1) {
+      for (let b = 0; b < CAU_HINH.canh; b += 1) {
+        if (!laVien(qh, a, b)) continue;
+        oVien += 1;
+        if (a % CAU_HINH.duongCach === 0 || b % CAU_HINH.duongCach === 0) vienLaDuong += 1;
+      }
+    }
+    // Ba duong vien quanh ban do 96 o: phai dai hang tram o.
+    expect(oVien).toBeGreaterThan(400);
+    // Vien PHAI cho duong cat qua - Lynch goi vien la "unity seam", noi lien chu khong
+    // ngan cach. Chan het thi nguoi vac hang khong sang duoc vanh ben.
+    expect(vienLaDuong).toBeGreaterThan(0);
+    const tren: number = banDo.vat.filter((v) => laVien(qh, v.a, v.b)).length;
+    expect(tren, 'khong co vat nao danh dau duong vien').toBeGreaterThan(30);
   });
 
   it('cung hat giong ra dung mot ban do', () => {
