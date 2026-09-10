@@ -158,6 +158,43 @@ nhanh hơn) · 188 → 197 nhà · 8 kho · đông nhất 638 người · 0 bỏ
 Quy hoạch còn làm dây chuyền trơn tới mức **thống đốc không còn nhà nào phải xây** — chỉ
 thêm kho cho đường bớt đông. Test "thành phố lớn lên" sửa theo: nhà **hoặc** kho.
 
+## Vá thêm 10/09 (lần năm) — quy hoạch LẠI cho đúng nghĩa
+
+Chủ dự án nhìn ảnh và gọi đúng tên: **"đây là dồn cục chứ không phải quy hoạch"**. Đúng —
+bản trước gom mọi nhà cùng loại vào một cụm quanh một hạt, mái chồng mái thành một khối đỏ.
+Anh bảo lên mạng học cách quy hoạch thật.
+
+Tra được **đơn vị lân cận** (neighbourhood unit, Clarence Perry 1929 — nền của "thành phố
+15 phút" ngày nay). Ba luật lấy nguyên:
+
+1. **Phường tự cấp** — tiện ích ở **lõi** phường, đi bộ vài bước là tới. Không gom hết
+   giếng cả thành phố vào một chỗ.
+2. **Đường lớn chạy vòng quanh phường, không xuyên qua** — lưới đường sẵn có làm việc đó.
+3. **Nhà rải đều, không dính nhau** — đặt xong một nhà thì bốn ô kề bị đánh dấu luôn.
+
+Bản đồ 96 ô chia **4×4 = 16 phường** (mỗi phường 24 ô = ba khối đường). Chức năng từng
+phường khai thẳng trong `data/thanh_pho_demo.json > phuong` — một bảng chữ nhật đọc được
+bằng mắt, sửa bố cục không phải động tới code:
+
+```
+nông nghiệp · sản xuất  · sản xuất  · nông nghiệp
+công nghiệp · ĐÔ THỊ    · ĐÔ THỊ    · sản xuất
+sản xuất    · ĐÔ THỊ    · ĐÔ THỊ    · công nghiệp
+nông nghiệp · công nghiệp· quân sự  · nông nghiệp
+```
+
+`veLoi` trong `buildings.json` chia hai loại: giếng và công trường về **lõi** phường, nhà ở
+và nhà xưởng rải ra **vành ngoài**.
+
+Một lỗi chỉ đo mới thấy: `diemTot` khởi `-1` trong khi điểm là khoảng cách lấy dấu âm nên
+**luôn** âm — không ô nào vượt qua được, hàm báo "khu chật" ngay ở nhà đầu tiên.
+
+Số đo: **313.370 chuyến một giờ** — cao nhất từ trước tới nay (dồn cục: 252.006; chưa quy
+hoạch: 215.217). 188 → 196 nhà · 8 kho · đông nhất 658 người · 0 bỏ cuộc · **3.368 sprite
+ở 0,35×** · 1 lệnh vẽ.
+
+Nút **50× giữ luôn** trong bản chơi thật, không còn phải mở bằng `?test=1`.
+
 ## Còn nợ
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được

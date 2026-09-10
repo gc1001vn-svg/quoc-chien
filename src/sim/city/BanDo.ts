@@ -8,7 +8,6 @@
  * Cung mot hat giong thi ra dung mot ban do - TECH_SPEC muc 8 bat buoc.
  */
 import { Rng } from '../../core/Rng.ts';
-import { xaTam } from './QuyHoach.ts';
 
 /** Mot vat the dat tren luoi. */
 export interface OVat {
@@ -117,11 +116,10 @@ export interface CauHinhBanDo {
    */
   readonly vat: readonly {
     readonly ten: string; readonly so: number; readonly bam?: number; readonly o?: number;
-    /** Khoang cach Chebyshev toi thieu tinh tu tam. Cay coi de xa de don thanh rung o ria. */
-    readonly tuXa?: number;
   }[];
-  /** Ranh gioi nam khu quy hoach - xem `QuyHoach.ts`. */
-  readonly khu: { readonly [k: string]: number };
+  /** Canh mot phuong va ban do chuc nang tung phuong - xem `QuyHoach.ts`. */
+  readonly phuongCanh: number;
+  readonly phuong: readonly (readonly string[])[];
   readonly zoomMin: number;
   readonly zoomMax: number;
   readonly zoomDau: number;
@@ -155,7 +153,7 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
   for (const loai of ch.vat) {
     const canhKhoi: number = loai.o ?? 1;
     for (let i = 0; i < loai.so; i += 1) {
-      const o: number | null = bocODat(rng, ch, daChiem, canhKhoi, loai.bam, loai.tuXa);
+      const o: number | null = bocODat(rng, ch, daChiem, canhKhoi, loai.bam);
       if (o === null) continue;
       const a: number = Math.floor(o / canh);
       const b: number = o % canh;
@@ -183,8 +181,7 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
  * @returns Chi so o neo `a * canh + b`, hay `null` neu boc mai khong ra.
  */
 function bocODat(
-  rng: Rng, ch: CauHinhBanDo, daChiem: ReadonlySet<number>, canhKhoi: number,
-  bam?: number, tuXa?: number,
+  rng: Rng, ch: CauHinhBanDo, daChiem: ReadonlySet<number>, canhKhoi: number, bam?: number,
 ): number | null {
   const canh: number = ch.canh;
   const le: number = ch.leDuong;
@@ -194,7 +191,6 @@ function bocODat(
     // Chua mep ban do: vat the neo o chan nen phan tren cua no tran ra ngoai luoi.
     if (a < le || b < le || a + canhKhoi > canh - le || b + canhKhoi > canh - le) continue;
     if (bam !== undefined && xaDuong(a, b, ch.duongCach) > bam) continue;
-    if (tuXa !== undefined && xaTam(a, b, ch.canh) < tuXa) continue;
     if (!khoiTrong(a, b, canhKhoi, ch, daChiem)) continue;
     return a * canh + b;
   }

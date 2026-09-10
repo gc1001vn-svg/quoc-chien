@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 10/09/2026 (Phase 6B — nhà kinh tế mọc thật, model KayKit, thành phố ×2, quy hoạch 5 khu).
+Cập nhật: 10/09/2026 (Phase 6B — model KayKit, thành phố ×2, quy hoạch 16 phường kiểu Perry).
 
 ## 1. Đang ở đâu
 
@@ -26,12 +26,12 @@ Chi tiết: `docs/NHAT_KY/PHASE_6B.md`.
 check:base · check:credits).
 
 `npm run sim:thu` → **ĐẠT**, 10 giờ game không người bấm (tự chọn lựa chọn đầu):
-**188 → 197 nhà · 8 kho · 252.006 chuyến một giờ · đông nhất 638 người · 0 lượt bỏ cuộc.**
+**188 → 196 nhà · 8 kho · 313.370 chuyến một giờ · đông nhất 658 người · 0 lượt bỏ cuộc.**
 (Trước khi nhân đôi và quy hoạch: 89.232 chuyến, 94 nhà.)
 
 | Số đo | Đo được | Trần |
 |---|---:|---:|
-| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.561 | 5.000 |
+| Sprite một khung ở 0,35× (thu nhỏ nhất) | 3.368 | 5.000 |
 | Lệnh vẽ | **1** | 4 |
 | Trang atlas, bản 1× | 1 | 4 |
 | Trang atlas, bản 2× | 2 | 4 |
@@ -52,13 +52,12 @@ kinh tế trên màn — bằng đúng con số đo trước Phase 5, khi màn c
 3. Trả lời thẻ đầu tiên rồi nhìn **góc trái dưới**: bảng sự kiện nằm TRÊN hàng nút tốc
    độ, không đè lên nút nào nữa. Cầm dọc cũng phải không đè.
 4. Bấm thẻ xây nhà → **màn hình tự trượt tới chỗ nhà vừa mọc**.
-5. **Thành phố giờ có quy hoạch năm khu, tính từ giữa ra:** đô thị (nhà dân, chợ, giếng) →
-   sản xuất (cối xay, lò bánh, xưởng) → nông nghiệp (ruộng, vườn nho, trại thú) → công
-   nghiệp (mỏ, lò nung, lò rèn) → quân sự (trại lính) ở rìa.
-6. Nhà **cùng loại đứng thành cụm** — thấy một cối xay là thấy cả sáu. Kéo ra khỏi giữa
-   một quãng là tới khu sản xuất.
-7. Bảng sự kiện giờ **ẩn sẵn**, bấm nút `☰` góc trái dưới mới hiện.
-8. Muốn chạy nhanh khi thử: mở `?test=1` sẽ có thêm nút **50×**.
+5. **Thành phố chia 16 phường** (4×4, mỗi phường 24 ô). Bốn phường giữa là khu dân cư:
+   nhà ở rải đều, **giếng nằm giữa phường**. Vành ngoài là sản xuất, nông nghiệp, công
+   nghiệp, quân sự — bảng bố cục ở `data/thanh_pho_demo.json > phuong`.
+6. Nhà **không còn dính nhau**: giữa hai nhà luôn có một ô cỏ hoặc lối đi.
+7. Bảng sự kiện **ẩn sẵn**, bấm nút `☰` góc trái dưới mới hiện.
+8. Nút **50×** có sẵn, không cần `?test=1` nữa.
 
 Đã đo trên iPhone 10/09: **59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ.
 

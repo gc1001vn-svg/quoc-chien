@@ -34,13 +34,34 @@
   "leDuong": 1,
   "_bam": "So o toi da cach duong. Co `bam` thi vat the chi dat gan duong - nha bam duong moi ra thanh pho, rai deu ra thi ra rung co nha. Khong co `bam` thi rai tu do.",
   "_o": "Canh khoi o cong trinh chiem, neo o (a,b) di ra. Nha lon Quaternius rong 2 o; khong khai thi 1. Ca khoi phai trong va khong cham duong moi dat duoc.",
-  "_khu": "Ranh gioi nam khu, tinh bang khoang cach Chebyshev tu tam ban do (max cua |a-tam| va |b-tam|). Vuong dong tam chu khong tron: luoi iso nghieng 45 do nen vuong Chebyshev nhin ra hinh THOI tren man - dung cai muon.",
-  "khu": {
-    "do_thi": 15,
-    "san_xuat": 25,
-    "nong_nghiep": 35,
-    "cong_nghiep": 43
-  },
+  "_phuong": "Ban do chuc nang, mot o bang la mot PHUONG rong `phuongCanh` o luoi. Don vi lan can kieu Clarence Perry: bon phuong giua la khu dan cu tu cap (nha o + gieng + cho + kho ngay trong phuong), vanh ngoai la san xuat, nong nghiep, cong nghiep, quan su. Sua bo cuc thanh pho = sua bang nay.",
+  "phuongCanh": 24,
+  "phuong": [
+    [
+      "nong_nghiep",
+      "san_xuat",
+      "san_xuat",
+      "nong_nghiep"
+    ],
+    [
+      "cong_nghiep",
+      "do_thi",
+      "do_thi",
+      "san_xuat"
+    ],
+    [
+      "san_xuat",
+      "do_thi",
+      "do_thi",
+      "cong_nghiep"
+    ],
+    [
+      "nong_nghiep",
+      "cong_nghiep",
+      "quan_su",
+      "nong_nghiep"
+    ]
+  ],
   "_vat": "`tuXa` la khoang cach Chebyshev toi thieu tinh tu tam. Cay coi de `tuXa` 30 de don thanh RUNG o ria, khong rai khap thanh pho - nha kinh te moi noi len.",
   "vat": [
     {
@@ -153,58 +174,47 @@
     },
     {
       "ten": "cay_thong",
-      "so": 22,
-      "tuXa": 30
+      "so": 22
     },
     {
       "ten": "cay_soi",
-      "so": 18,
-      "tuXa": 30
+      "so": 18
     },
     {
       "ten": "cay_soi_2",
-      "so": 16,
-      "tuXa": 30
+      "so": 16
     },
     {
       "ten": "cay_kho",
-      "so": 9,
-      "tuXa": 30
+      "so": 9
     },
     {
       "ten": "bui",
-      "so": 16,
-      "tuXa": 30
+      "so": 16
     },
     {
       "ten": "bui_hoa",
-      "so": 11,
-      "tuXa": 30
+      "so": 11
     },
     {
       "ten": "co_cao",
-      "so": 18,
-      "tuXa": 30
+      "so": 18
     },
     {
       "ten": "hoa",
-      "so": 14,
-      "tuXa": 30
+      "so": 14
     },
     {
       "ten": "nam",
-      "so": 9,
-      "tuXa": 30
+      "so": 9
     },
     {
       "ten": "da_lon",
-      "so": 7,
-      "tuXa": 30
+      "so": 7
     },
     {
       "ten": "da_nho",
-      "so": 9,
-      "tuXa": 30
+      "so": 9
     }
   ],
   "zoomMin": 0.35,

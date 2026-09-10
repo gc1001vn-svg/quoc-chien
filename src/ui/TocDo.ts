@@ -1,5 +1,5 @@
 /**
- * Nut toc do: dung · 1× · 5× · 10× · 20× · 30×, them 50× khi mo bang `?test=1`.
+ * Nut toc do: dung · 1× · 5× · 10× · 20× · 30× · 50×.
  *
  * Khong co no thi mot gio game la mot gio THAT o 1x, ma the quyet dinh chi hoi o moc gio -
  * nguoi choi ngoi nhin 60 phut khong ai hoi gi. O 8x con 7,5 phut, o 30x con hai phut.
@@ -8,12 +8,7 @@
  * The quyet dinh dat `dongHo.tocDo = 0` luc hien; hang nut nay doc lai dong ho moi khung
  * nen nut sang dung theo, khong can ai bao.
  */
-import { TOC_DO, TOC_DO_THU, type DongHo, type TocDo } from '../sim/Clock.ts';
-
-/** Mo bang `?test=1` thi hang nut co them muc 50x. Ban choi that khong co. */
-function dangThuGame(): boolean {
-  return new URLSearchParams(window.location.search).get('test') === '1';
-}
+import { TOC_DO, type DongHo, type TocDo } from '../sim/Clock.ts';
 
 export class HangTocDo {
   private readonly dongHo: DongHo;
@@ -24,8 +19,7 @@ export class HangTocDo {
     this.dongHo = dongHo;
     const hang: HTMLDivElement = document.createElement('div');
     hang.className = 'toc-do';
-    const muc50: readonly TocDo[] = dangThuGame() ? [TOC_DO_THU] : [];
-    for (const muc of [...TOC_DO, ...muc50]) {
+    for (const muc of TOC_DO) {
       const n: HTMLButtonElement = document.createElement('button');
       n.type = 'button';
       n.textContent = muc === 0 ? '❚❚' : `${String(muc)}×`;
@@ -38,18 +32,13 @@ export class HangTocDo {
     chaMe.appendChild(hang);
   }
 
-  /** Muc toc do cua nut thu `i`. Nut cuoi la 50x khi dang thu game. */
-  private mucCua(i: number): TocDo {
-    return TOC_DO[i] ?? TOC_DO_THU;
-  }
-
   /** Goi moi khung. Chi ve lai khi toc do doi that. */
   capNhat(): void {
     const muc: TocDo = this.dongHo.tocDo;
     if (muc === this.daVe) return;
     this.daVe = muc;
     for (const [i, n] of this.nut.entries()) {
-      n.dataset['bat'] = this.mucCua(i) === muc ? 'co' : 'khong';
+      n.dataset['bat'] = TOC_DO[i] === muc ? 'co' : 'khong';
     }
   }
 }

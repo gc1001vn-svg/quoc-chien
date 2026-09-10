@@ -387,7 +387,7 @@ Canvas 2D vẫn dùng được cho: HUD, thẻ quyết định, bản đồ chi�
 ```
 src/
   sim/                    ← TypeScript thuần, ESLint chặn import trình duyệt
-    Clock.ts              nhịp 10 Hz; tốc độ 0 / 1× / 5× / 10× / 20× / 30× (+50× khi `?test=1`), mở ván 10×
+    Clock.ts              nhịp 10 Hz; tốc độ 0 / 1× / 5× / 10× / 20× / 30× / 50×, mở ván 10×
     State.ts              trạng thái toàn ván
     city/                 Wares · Walkers · Buildings · Chains · Citizens · Order
     campaign/             Provinces · Armies · Battle · BattleScript · Diplomacy · Rival

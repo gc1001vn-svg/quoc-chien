@@ -7,7 +7,7 @@
 import type { Rng } from '../../core/Rng.ts';
 import type { BanDo, O } from './BanDo.ts';
 import { chenVat, congRaDuong } from './BanDo.ts';
-import type { VanhKhu } from './QuyHoach.ts';
+import type { BanDoPhuong } from './QuyHoach.ts';
 import { oTrongKhu } from './QuyHoach.ts';
 import type { DinhNghiaNha } from './Buildings.ts';
 import { ThuNha } from './Buildings.ts';
@@ -65,10 +65,10 @@ export function choKhoMoi(banDo: BanDo, cu: readonly O[]): O | undefined {
  */
 export function dungNha(
   def: DinhNghiaNha, chiSo: number, banDo: BanDo, rng: Rng,
-  tranRieng: number, moiChuyen: number, vanh: VanhKhu,
+  tranRieng: number, moiChuyen: number, phuong: BanDoPhuong,
 ): ThuNha | undefined {
   // Nha thong doc xay cung phai vao dung khu quy hoach, khong thi mo may lai roi rac.
-  const o: O | undefined = oTrongKhu(banDo, banDo.daChiem, rng, vanh, def.khu);
+  const o: O | undefined = oTrongKhu(banDo, banDo.daChiem, rng, phuong, def.khu, def.veLoi);
   if (o === undefined) return undefined;
   const nha = new ThuNha(
     def, chiSo, chiSo % def.nhip, o, congRaDuong(o, banDo.duongCach), tranRieng,

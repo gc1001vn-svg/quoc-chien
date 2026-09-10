@@ -26,16 +26,7 @@ export const NHIP_MOI_GIO = NHIP_MOI_GIAY * 3600;
  * cua the (`nguongCho` 20 luot, `day` 20.000) nho theo va khong bao gio cham nua - da do
  * 10/09, thong doc dung xay han, the dau tien lui toi gio 23.
  */
-export const TOC_DO = [0, 1, 5, 10, 20, 30] as const;
-
-/**
- * Muc 50x CHI DUNG DE THU GAME, khong co trong ban choi that.
- *
- * Bat bang `?test=1` tren dia chi. Chu du an can no de chay het mot van trong vai phut khi
- * kiem, con nguoi choi that thi 30x da la mot gio game trong hai phut - nhanh hon nua thi
- * khong kip nhin thanh pho doi.
- */
-export const TOC_DO_THU = 50;
+export const TOC_DO = [0, 1, 5, 10, 20, 30, 50] as const;
 
 /**
  * Toc do luc mo van. Khong phai 1x: o 1x thanh pho gan nhu dung im voi mat nguoi choi,
@@ -44,7 +35,7 @@ export const TOC_DO_THU = 50;
 export const TOC_DO_MO_MAN: TocDo = 10;
 
 /** Mot muc toc do hop le. */
-export type TocDo = (typeof TOC_DO)[number] | typeof TOC_DO_THU;
+export type TocDo = (typeof TOC_DO)[number];
 
 /**
  * Tran so nhip tra ve trong mot lan goi `tien`.

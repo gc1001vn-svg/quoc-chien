@@ -56,7 +56,7 @@ kinh tế sâu" là bất khả thi trên iPhone.
 ## 3. Vòng lặp game
 
 1. Chọn nước → sinh bản đồ chiến dịch từ hạt giống
-2. Mô phỏng chạy tự động (tốc độ 0 / 1× / 5× / 10× / 20× / 30×, **mở ván ở 10×**; thêm 50× khi mở bằng `?test=1`, bản chơi thật không có):
+2. Mô phỏng chạy tự động (tốc độ 0 / 1× / 5× / 10× / 20× / 30× / 50×, **mở ván ở 10×**):
    - Governor xây nhà theo chính sách người chơi đặt
    - Walker đi giao hàng, phục vụ nhà dân
    - Nước đối thủ lớn lên trên bản đồ chiến dịch

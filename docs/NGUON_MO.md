@@ -99,6 +99,14 @@ Tóm tắt để grep:
 | OpenRA | GPL | Giải trận bằng bảng giáp × đạn | P9 |
 | 0 A.D. | GPLv2 (đồ hoạ CC-BY-SA — **cấm dùng đồ hoạ**) | AI chia lớp kinh tế/quân sự | P5 |
 
+### Nguyên tắc quy hoạch đô thị — tra 10/09
+
+| Nguồn | Học gì | Dùng ở |
+|---|---|---|
+| **Đơn vị lân cận** (Clarence Perry, 1929) <https://www.designboom.com/architecture/clarence-perry-neighborhood-unit-15-minute-city/> | Khu ở tự cấp: tiện ích ở **lõi**, đi bộ 5–10 phút là tới; đường lớn chạy **vòng quanh**, không xuyên qua; 10 % diện tích để trống | `src/sim/city/QuyHoach.ts` |
+| **Thành phố 15 phút** | Bản hiện đại của cùng ý tưởng | như trên |
+| Caesar III | Nhà cần **giếng hoặc đài nước** trong tầm; chợ đặt giữa khối nhà | Bố cục phường |
+
 ## 8. Chưa tìm được — cần chủ dự án quyết
 
 Ghi vào đây mỗi khi dò không ra, **trước khi tự vẽ**:
