@@ -27,6 +27,7 @@ import { NhatKy } from '../sim/decision/NhatKy';
 import { Van } from '../sim/decision/Van';
 import { TheQuyetDinh } from '../ui/DecisionCard';
 import { BangSuKien } from '../ui/NhatKySuKien';
+import { BangCongTrinh } from '../ui/BangCongTrinh';
 import { HangTocDo } from '../ui/TocDo';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
@@ -93,6 +94,10 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
     CAU_HINH.zoomMin, CAU_HINH.zoomMax, zoomBanDau(),
   );
   cam.noiVao(canvas);
+  const oDau = oBanDau();
+  if (oDau !== undefined) {
+    cam.datTam(neoX(oDau.a, oDau.b, atlas.oPx()), neoY(oDau.a, oDau.b, atlas.oPx()));
+  }
 
   let rongDev = 1;
   let caoDev = 1;
@@ -112,6 +117,11 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   const theUi: TheQuyetDinh = new TheQuyetDinh(goc, nhipKe);
   const bangSuKien: BangSuKien = new BangSuKien(goc, nhatKy);
   const hangTocDo: HangTocDo = new HangTocDo(goc, nhipKe);
+  // Bam mot dong trong bang la bay toi cong trinh do. Khong co duong den thi sau cai coi
+  // xay giua gan tram cong trinh la khong bao gio tim ra.
+  new BangCongTrinh(goc, thanhPho, (o) => {
+    cam.datTam(neoX(o.a, o.b, atlas.oPx()), neoY(o.a, o.b, atlas.oPx()));
+  });
   let truoc = 0;
   const veMotKhung = (now: number): void => {
     perf.danhDau(now);
@@ -249,6 +259,22 @@ function datSprite(ve: Ve, a: number, b: number, ten: string): void {
   const [u0, v0, u1, v1] = ve.atlas.uv(s);
   ve.gl.them(s.trang, x, y, rong, cao, u0, v0, u1, v1);
   ve.dem += 1;
+}
+
+/**
+ * O dat camera luc mo man, lay tu `?o=a,b`. `undefined` thi de camera o giua ban do.
+ *
+ * Co tham so nay de may ao chup duoc DUNG cho mot toa nha va kiem xem no co that su hien
+ * ra khong - truoc do chi doan bang mat tren anh toan canh.
+ */
+function oBanDau(): { a: number; b: number } | undefined {
+  const tho: string | null = new URLSearchParams(window.location.search).get('o');
+  if (tho === null) return undefined;
+  const [a, b] = tho.split(',').map(Number);
+  if (a === undefined || b === undefined || !Number.isFinite(a) || !Number.isFinite(b)) {
+    return undefined;
+  }
+  return { a, b };
 }
 
 /**

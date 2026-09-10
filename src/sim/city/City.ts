@@ -59,11 +59,12 @@ export class ThanhPho implements BoDem, Giao {
   readonly dsChuoi: readonly DinhNghiaChuoi[];
 
   private readonly nhaThat: ThuNha[] = [];
-  /** O cua thu VUA dung - nha hay kho. `render/` doc de keo camera toi (xem `layOVuaDung`). */
+  /** O cua thu VUA dung - nha hay kho, `render/` keo camera toi. Xem `layOVuaDung`. */
   private oVuaDung: O | undefined;
-  /** Day so boc cho dat nha. Song suot van de thong doc xay tiep tu day so do. */
+
+  /** Day so boc cho dat nha, song suot van de thong doc xay tiep tu day so do. */
   private readonly rngDat: Rng;
-  /** Ban do chuc nang tung phuong - xem `QuyHoach.ts`. */
+  /** Ban do chuc nang tung phuong (`QuyHoach.ts`). */
   private readonly phuong: BanDoPhuong;
   /** Thong doc da xay them bao nhieu nha moi loai. */
   private readonly demXay = new Map<string, number>();
@@ -128,7 +129,7 @@ export class ThanhPho implements BoDem, Giao {
       { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa,
     );
     veKho(this.banDo, { a: giua, b: giua });
-    // Them kho cho du `soKhoDau`: mot kho cho gan hai tram nha thi duong qua dai.
+    // `soKhoDau` kho: mot kho cho gan hai tram nha thi duong qua dai.
     for (let i = 1; i < this.cauHinh.soKhoDau; i += 1) this.xayKho();
   }
 
@@ -216,6 +217,8 @@ export class ThanhPho implements BoDem, Giao {
     return o;
   }
 
+  /** Vi tri moi nha loai `ten`. `render/` keo camera toi tung cai. */
+  viTriNha(ten: string): O[] { return this.nhaThat.filter((n) => n.def.ten === ten).map((n) => n.oNha); }
   /** Tong so nha co that trong thanh pho. */
   get soNha(): number {
     return this.nhaThat.length;

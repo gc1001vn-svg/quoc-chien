@@ -157,8 +157,16 @@ export function sinhBanDo(ch: CauHinhBanDo): BanDo {
       if (o === null) continue;
       const a: number = Math.floor(o / canh);
       const b: number = o % canh;
-      for (let da = 0; da < canhKhoi; da += 1) {
-        for (let db = 0; db < canhKhoi; db += 1) daChiem.add((a + da) * canh + (b + db));
+      // Chiem CA VIEN mot o quanh khoi. Khong chua vien ra thi nha trang tri 2 o dung sat
+      // nha kinh te 1 o, ma hai cai cung do sau ve (`a+b+2*o` bang nhau) nen thu tu bap
+      // benh - mai nha trang tri cao gap doi de len giieng va coi xay, nhin nhu chung
+      // khong ton tai. Chu du an bao "khong thay gieng" ba lan vi cho nay.
+      for (let da = -1; da <= canhKhoi; da += 1) {
+        for (let db = -1; db <= canhKhoi; db += 1) {
+          const x: number = a + da;
+          const y: number = b + db;
+          if (x >= 0 && y >= 0 && x < canh && y < canh) daChiem.add(x * canh + y);
+        }
       }
       vat.push({ a, b, ten: loai.ten, o: canhKhoi });
     }

@@ -195,6 +195,32 @@ hoạch: 215.217). 188 → 196 nhà · 8 kho · đông nhất 658 người · 0 
 
 Nút **50× giữ luôn** trong bản chơi thật, không còn phải mở bằng `?test=1`.
 
+## Vá thêm 10/09 (lần sáu) — bảng công trình, và cái thật sự che giếng
+
+Chủ dự án gửi clip: **vẫn không thấy giếng, mỏ, xưởng, kho, gian hàng**. Bốn lần trước tôi
+chữa sai chỗ — không phải chúng thiếu, mà **không có đường đến**. Lần này kiểm bằng số
+thay vì đoán:
+
+1. **Đối chiếu tên sprite với atlas đã nướng**: đủ cả 32 loại nhà và 31 vật trang trí.
+   `datSprite` bỏ qua im lặng khi thiếu tên — nếu thiếu thì đây là chỗ chết câm.
+2. **Đếm và in toạ độ**: 12 giếng, 6 cối xay, 12 mỏ, 18 quầy chợ, 13 kho — có đủ.
+3. **Chụp đúng ô (34,33) ở 1,00×**: hai cái giếng hiện rõ. Chúng **vẫn luôn ở đó**.
+
+Nhưng tìm ra một lỗi thật: **nhà trang trí 2 ô đứng sát nhà kinh tế 1 ô**. Hai bên có cùng
+độ sâu vẽ (`a+b+2*o` bằng nhau) nên thứ tự bấp bênh, mà mái nhà trang trí cao gấp đôi —
+giếng và cối xay bị mái đè lên, nhìn như không tồn tại. Vá: `sinhBanDo` chiếm cả **viền một
+ô** quanh mỗi khối trang trí.
+
+Và làm cái đáng ra phải làm từ đầu:
+
+- **`src/ui/BangCongTrinh.ts`** — nút `⌂` mở danh sách công trình, mỗi dòng một loại kèm số
+  lượng. **Bấm một dòng là camera bay tới**, bấm lại thì sang cái kế tiếp, xoay vòng. Sáu
+  cái cối xay xem hết bằng sáu lần bấm.
+- `?o=a,b` đặt camera lúc mở màn, `?bang=1` mở sẵn bảng — để máy ảo tự kiểm được thay vì
+  đoán bằng mắt trên ảnh toàn cảnh.
+
+Số đo: 315.692 chuyến một giờ · 188 → 197 nhà · 8 kho · 0 bỏ cuộc · 6/6 thước.
+
 ## Còn nợ
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được

@@ -56,8 +56,10 @@ kinh tế trên màn — bằng đúng con số đo trước Phase 5, khi màn c
    nhà ở rải đều, **giếng nằm giữa phường**. Vành ngoài là sản xuất, nông nghiệp, công
    nghiệp, quân sự — bảng bố cục ở `data/thanh_pho_demo.json > phuong`.
 6. Nhà **không còn dính nhau**: giữa hai nhà luôn có một ô cỏ hoặc lối đi.
-7. Bảng sự kiện **ẩn sẵn**, bấm nút `☰` góc trái dưới mới hiện.
-8. Nút **50×** có sẵn, không cần `?test=1` nữa.
+7. **Nút `⌂` góc trái dưới mở BẢNG CÔNG TRÌNH** — danh sách mọi loại nhà kèm số lượng.
+   **Bấm một dòng là màn hình bay tới đó**; bấm lại thì sang cái kế tiếp cùng loại.
+   Đây là cách tìm giếng, cối xay, mỏ, xưởng — không phải đi mò bằng mắt nữa.
+8. Bảng sự kiện ẩn sau nút `☰`. Nút **50×** có sẵn, không cần `?test=1`.
 
 Đã đo trên iPhone 10/09: **59 fps · 3.253 sprite · 1 lệnh vẽ** ở mức thu nhỏ hết cỡ.
 
