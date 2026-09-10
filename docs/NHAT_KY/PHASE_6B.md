@@ -44,11 +44,24 @@ Làm thay: **thêm mức 30×** vào dải tốc độ, và mở ván ở **8×*
 đều nên cân bằng không đổi một chút nào — `sim:thu` vẫn ra đúng 89.232 chuyến, 94 → 102
 nhà, 5 thẻ. `GAME_SPEC` mục 3 và `TECH_SPEC` sửa theo (hai file khoá, chủ dự án đã chốt).
 
+## Vá thêm 10/09 — cối xay có cánh, bảng sự kiện gọn lại
+
+Chủ dự án chơi tiếp: **59 fps · 3.253 sprite · 1 lệnh vẽ**, nhưng "tìm không thấy cối xay
+gió" và "chữ góc trái dưới to quá che hết màn hình".
+
+- **Cánh quạt**: thêm phép quay `rz` cho từng mảnh trong `ghep()` — quay quanh trục dựng
+  màn hình, áp trước `ry`. Nợ kỹ thuật ghi chỗ này là đường cùng vì `ry` không dựng nổi
+  cánh đứng; hoá ra chỉ cần thêm một phép xoay. Ba lần thử bỏ đi: cánh đặt thấp thì mái
+  che hết, `Roof_FrontSupports` là nhiều mảnh rời nên quay ra mấy mẩu gỗ bay lơ lửng,
+  cánh ngắn thì chìm trong lòng mái nón.
+- **Bảng sự kiện**: ba dòng thay vì bốn, 42 % bề ngang thay vì 62 %, mỗi sự kiện một dòng
+  cắt bằng `...`. Thêm `text-size-adjust: 100%` — Safari trên iPhone tự phóng chữ. Nút
+  "Đo trần sprite" đẩy lên trên hàng tốc độ, trước đó hai cái chồng lên nhau.
+
 ## Còn nợ
 
-Giếng và cối xay vẫn là **hình gần đúng tự ghép**, không phải model thật: kit Quaternius
-không có. Cối xay là cái tháp mái nón, **không có cánh quạt** — công thức nướng chỉ quay
-được quanh trục đứng (`ry`), không dựng nổi cánh đứng.
+Giếng vẫn là **hình gần đúng tự ghép** — kit Quaternius không có model giếng, hiện là cột
+đá có xô.
 
 **Người vác hàng đi tay không** — chủ dự án nhận ra 09/09. Kit có thùng, bao, sọt gắn được
 vào tay. Chốt để **Phase 10**, nướng một lần cùng bộ 8 hướng × 4 dáng.

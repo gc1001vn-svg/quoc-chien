@@ -11,10 +11,9 @@
 - ~~**28 toà nhà của kinh tế chưa có sprite.**~~ — **ĐÃ TRẢ 09/09 (Phase 6B).** 12 sprite
   mới phủ cả 32 loại nhà: giếng · cối xay · ruộng · vườn nho · nhà chài · trại thú · lò
   nhỏ · lò lớn · mỏ · xưởng · trại gỗ · công trường (nhà dân và trại lính dùng sprite cũ).
-  Còn nợ lại: **giếng và cối xay chỉ là hình gần đúng tự ghép** — kit không có hai model
-  này, và cối xay **không có cánh quạt** vì công thức nướng chỉ quay được quanh trục đứng
-  (`ry`), không dựng nổi cánh đứng. Muốn có cánh thì phải thêm `rx`/`rz` cho từng mảnh
-  trong `ghep()` của `tools/nuong_sprite.mjs`.
+  Còn nợ lại: **giếng chỉ là hình gần đúng tự ghép** — kit không có model giếng, hiện là
+  cột đá có xô. Cối xay **đã có cánh quạt từ 10/09**: thêm `rz` cho từng mảnh trong
+  `ghep()` là dựng được, chỗ này tưởng đường cùng mà không phải.
 - **Không có cối xay và giếng đúng phong cách.** Đã tìm hết: Medieval Village (176 model)
   và Stylized Nature (68 model) đều không có. Farm Buildings có đủ `Windmill` `Well`
   `Barn` `Silo` nhưng là **nông trại Mỹ thế kỷ 19**, đã nướng thử rồi bỏ (lý do ở
