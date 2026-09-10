@@ -35,6 +35,17 @@ Trước khi thật sự dùng một nguồn: mở `LICENSE` của chính gói �
 | **itch.io CC0** <https://itch.io/game-assets/assets-cc0/tag-3d> | CC0 | Gói lẻ nhiều tác giả | Mọi phase | `node tools/tai_itch.mjs <tác-giả>/<gói>` |
 | **Game Assets Garden** <https://gameassetsgarden.com> | Miễn phí, không cần ghi nguồn | Gói nhỏ, không cần đăng ký | Phương án dự phòng | Tải tay |
 
+**Đã tải 10/09 — KayKit Medieval Hexagon Pack** <https://kaylousberg.itch.io/kaykit-medieval-hexagon>
+· CC0 (`License.txt` đã mở đọc: "Creative Commons Zero, CC0", Kay Lousberg, 26/04/2024)
+· **135 model công trình + 68 model trang trí**, cùng một hoạ sĩ với gói `builder-pack` đang
+dùng nên **cùng phong cách**. Công trình đứng rời trên `y = 0`, KHÔNG dính đế lục giác, nướng
+được thẳng. Có: `blacksmith` `lumbermill` (lưỡi cưa rời) `tavern` `market` `church` `barracks`
+`archeryrange` `mine` `well` `windmill` (cánh quạt rời) `watermill` (bánh xe rời) `castle`
+`tower_A/B` `tower_catapult` `home_A/B` `grain` `scaffolding` `bridge` `stage` — **mỗi cái bốn
+màu** red · green · blue · yellow. Trang trí: `barrel` `sack` `crate_*` `pallet` `wheelbarrow`
+`weaponrack` `target` `tent` `ladder` `fence_wood/stone` `resource_lumber` `resource_stone`
+`rock_single_A..E` `tree_*` `hill_*` `mountain_*`.
+
 **Chưa tải nhưng chắc chắn cần:** Kenney City Kit + Factory Kit (P12 công nghiệp/hiện đại),
 Quaternius Modular Sci-Fi Megakit (P12 tương lai), KayKit City Builder Bits (P8 — đã ghi
 trong `ASSET_CREDITS.md` từ 07/09 nhưng **chưa nướng**).
