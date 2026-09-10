@@ -265,3 +265,46 @@ Thêm hai chỗ chỉnh vì đo mới thấy:
 `CityScene.ts` chạm trần 300 dòng nên tách hai vòng vẽ ra `VeCanh.ts` (206 + 167 dòng).
 
 Số đo: 6/6 thước · `sim:thu` ĐẠT 10 giờ · **3.343 sprite · 1 lệnh vẽ ở 0,35×** (trần 5.000).
+
+
+## Vòng bốn — tìm ra nguyên nhân thật: service worker giữ ATLAS CŨ
+
+Chủ dự án gửi bốn ảnh chụp iPhone thật, đã phóng to: **trống trơn**. Nhà dân, cây, người,
+xe, thùng, hàng rào đều hiện — riêng giếng, cối xay, mỏ, xưởng, ruộng, lò, công trường
+thì không. Đó là **đúng 12 sprite nướng ở Phase 6B**.
+
+Chứng minh không đoán:
+
+1. Chụp máy ảo **cùng khung iPhone cầm dọc, cùng góc bản đồ, cùng mức thu phóng** với ảnh
+   của chủ dự án (`MAN=doc npm run chup:man`). Cây khô, xe kéo, thùng, hàng rào **trùng
+   khít từng cái** — cùng một bản dữ liệu.
+2. Nhưng ảnh của tôi có thêm cối xay, hai thửa ruộng vàng, nhà mái xanh. Của anh không.
+3. Đối chiếu bố cục vật trang trí của bản cũ (commit `1262950`): **khác hẳn** — góc bản đồ
+   bản cũ có 11 nhà trang trí. Vậy máy anh **đang chạy mã và dữ liệu MỚI**.
+4. Mở `dist/sw.js` ra đọc danh sách nạp sẵn của workbox:
+
+```
+{url:"assets/atlas/trung_co_2_2x.json", revision: null}
+```
+
+**`revision: null`** — workbox coi mọi file trong `dist/assets/` là đã có băm nội dung
+trong tên nên **không bao giờ tải lại**. Tên file atlas của ta thì **cố định**. Kết quả:
+mã mới + dữ liệu mới + **atlas cũ, vĩnh viễn**. `atlas.co('gieng')` trả `false`,
+`datSprite` bỏ qua im lặng, giếng biến mất mà không một dòng báo lỗi.
+
+Đúng cái bẫy `vite.config.ts` đã ghi chú là mất một buổi sáng 08/09. Lần đó vá bằng
+`skipWaiting`; lần này `skipWaiting` không cứu được vì lỗi nằm ở `revision: null`.
+
+Vá ba lớp:
+
+1. **`public/assets/atlas/` → `public/atlas/`.** Ra khỏi `assets/` thì workbox băm nội dung
+   thật; đổi atlas là máy người chơi tải lại. Đổi đường dẫn cũng làm mục nhớ cũ thành vô
+   dụng, nên máy đang kẹt tự thoát.
+2. **`scripts/check_sw_atlas.mjs`**, chạy ngay trong `npm run build` (nên CI cũng chặn):
+   file atlas nào trong `dist/sw.js` còn `revision: null` là **build hỏng**.
+3. **`src/ui/BaoThieuHinh.ts`** — mở màn đối chiếu mọi tên sprite bản đồ sẽ hỏi với atlas
+   đã nạp; thiếu cái nào thì **một dải đỏ trên đầu màn liệt kê ra**. Thêm một test đọc
+   atlas ĐÃ NƯỚNG trong `public/atlas/` chứ không đọc mẹ.
+
+Bài học: `datSprite` bỏ qua im lặng đã ăn mất **năm vòng đoán mò và gần trọn một phiên**.
+Lỗi câm phải biến thành lỗi nói được, trước khi đi chữa cái gì khác.

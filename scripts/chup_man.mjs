@@ -19,9 +19,12 @@ import { TrinhDuyet } from '../tools/lib/cdp.mjs';
 const CHROMIUM = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium';
 const GOC = process.env.DIA_CHI ?? 'http://127.0.0.1:4173/';
 // Man hinh tham chieu cua du an: iPhone 16 Pro nam ngang.
-const RONG = 874;
-const CAO = 402;
-const DPR = 2;
+// Man hinh tham chieu nam ngang; dat `MAN=doc` de chup dung khung iPhone cam doc, la
+// cach chu du an that su cam may. Chup ngang mai thi khong bao gio thay cai anh anh thay.
+const DOC = process.env.MAN === 'doc';
+const RONG = Number(process.env.RONG ?? (DOC ? 393 : 874));
+const CAO = Number(process.env.CAO ?? (DOC ? 852 : 402));
+const DPR = Number(process.env.DPR ?? (DOC ? 3 : 2));
 const THU_MUC = 'anh_chup';
 
 const duongThem = process.argv[2] ?? '';
