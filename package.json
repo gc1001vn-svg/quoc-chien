@@ -26,6 +26,7 @@
     "check:credits": "node scripts/check_credits.mjs",
     "chup:man": "node scripts/chup_man.mjs",
     "sim:thu": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_thu.ts",
+    "sim:bando": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_ban_do.ts",
     "do": "bash scripts/do.sh",
     "check:sw": "node scripts/check_sw_atlas.mjs",
     "phien:ban": "node scripts/ghi_phien_ban.mjs",

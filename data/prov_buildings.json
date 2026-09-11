@@ -1,0 +1,40 @@
+{
+  "_": "Cong trinh xay duoc tren O XAY DUNG cua mot tinh (GAME_SPEC muc 5). MOI so o day.",
+  "_luot": "So luot xay. Mot luot = mot nhip cua lop chien dich, KHONG phai nhip 10 Hz cua thanh pho - hai lop chay rieng (Phase 7 co y giu tach).",
+  "_sprite": "Ten goc cua sprite; ten day du la `<sprite>_<mau nuoc>`, vi du `mo_do`. Xem `tools/me/hex_1.json`.",
+  "_dia_hinh": "Danh sach dia hinh xay duoc. De trong la xay duoc o moi dia hinh.",
+  "cong_trinh": [
+    {
+      "id": "lang",
+      "hien": "Làng",
+      "sprite": "nha",
+      "luot": 3,
+      "dia_hinh": [],
+      "mo_ta": "Dân về ở, tỉnh có người nộp thuế."
+    },
+    {
+      "id": "cho",
+      "hien": "Chợ phiên",
+      "sprite": "cho",
+      "luot": 4,
+      "dia_hinh": ["dong_bang", "ven_bien"],
+      "mo_ta": "Hàng qua lại, tỉnh thu được thuế chợ."
+    },
+    {
+      "id": "trai_linh",
+      "hien": "Trại lính",
+      "sprite": "trai_linh",
+      "luot": 5,
+      "dia_hinh": [],
+      "mo_ta": "Nơi mộ quân. Phase 9 mới có quân thật."
+    },
+    {
+      "id": "mo",
+      "hien": "Mỏ quặng",
+      "sprite": "mo",
+      "luot": 6,
+      "dia_hinh": ["nui"],
+      "mo_ta": "Đào quặng trong núi. Chỉ xây được ở tỉnh miền núi."
+    }
+  ]
+}

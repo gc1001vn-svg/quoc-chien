@@ -1,0 +1,35 @@
+{
+  "_": "Bon nuoc cua lop chien dich (GAME_SPEC muc 10). MOI so nam o day, khong nam trong .ts.",
+  "_mau": "Khoa mau trung voi duoi ten sprite trong me `tools/me/hex_1.json`: thanh_<mau>, nha_<mau>, co_<mau>. Goi KayKit chi co bon mau phe; tinh trung lap khong co mau, ve bang ruong va dat trong.",
+  "_dac_tinh": "Hai dac tinh moi nuoc. Phase 7 chi HIEN chung ra bang tinh; so lieu an vao can bang thi Phase 9 va 11 moi dung toi.",
+  "nuoc": [
+    {
+      "id": "hoa_nguyen",
+      "hien": "Hoả Nguyên",
+      "mau": "do",
+      "nguoi_choi": true,
+      "dac_tinh": ["Lò rèn tốn ít than hơn", "Quân giữ thành bền hơn"]
+    },
+    {
+      "id": "luc_khe",
+      "hien": "Lục Khê",
+      "mau": "la",
+      "nguoi_choi": false,
+      "dac_tinh": ["Xưởng gỗ cho nhiều gỗ hơn", "Quân đi nhanh hơn trong rừng"]
+    },
+    {
+      "id": "thanh_hai",
+      "hien": "Thanh Hải",
+      "mau": "lam",
+      "nguoi_choi": false,
+      "dac_tinh": ["Thương mại đường biển lợi hơn", "Cảng cho thêm Eureka"]
+    },
+    {
+      "id": "kim_coc",
+      "hien": "Kim Cốc",
+      "mau": "vang",
+      "nguoi_choi": false,
+      "dac_tinh": ["Mỏ cho nhiều quặng hơn", "Chợ thu thuế cao hơn"]
+    }
+  ]
+}
