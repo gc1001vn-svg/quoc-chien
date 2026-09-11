@@ -71,10 +71,26 @@ html, body {
   text-decoration: none;
 }
 
+/*
+ * Nhan fps va hang nut lop nam HAI HANG, o MOI be ngang.
+ *
+ * Truoc 11/09 chi tach hai hang o man hep (<= 700px); man rong thi nhan chi dat `left`,
+ * dai bao nhieu cung tran sang phai. Chu du an chup iPhone 11/09: may that ve **1414
+ * sprite** - bon chu so - nen chu `0.44x` chui xuong duoi nut "Nen". May ao chi ve 503
+ * sprite (ba chu so) nen chup bao nhieu lan cung khong thay.
+ *
+ * Bai hoc: nhan co gian theo du lieu thi phai thu voi gia tri LON NHAT (tran sprite la
+ * 5.000, tuc bon chu so la chuyen binh thuong), khong phai gia tri may ao tinh co co.
+ *
+ * Chu du an chon cach nay 11/09 sau khi da duoc neu ro ba cach va mat trai tung cach:
+ * cat bang dau `...` thi mat muc thu phong, rut gon chu thi khong chac du cho. Cach nay
+ * dung mai, doi lai mat 28 px chieu cao goc tren.
+ */
 .perf-nhan {
   position: absolute;
   top: calc(env(safe-area-inset-top) + 6px);
   left: calc(env(safe-area-inset-left) + 10px);
+  right: calc(env(safe-area-inset-right) + 10px);
   z-index: 3;
   font: 13px ui-monospace, monospace;
   background: rgba(0, 0, 0, 0.55);
@@ -84,7 +100,7 @@ html, body {
 
 .perf-nut {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + 6px);
+  top: calc(env(safe-area-inset-top) + 34px);
   right: calc(env(safe-area-inset-right) + 10px);
   z-index: 3;
   display: flex;
@@ -202,18 +218,20 @@ html, body {
 .toc-do button[data-bat='co'] { color: var(--nhan); border-color: var(--nhan); }
 
 /*
- * Man hep - iPhone cam DUNG. Man tham chieu la 874x402 nam ngang, nhung chu du an cam
- * dung cung choi: luc do nhan fps va hang nut lop dam thang vao nhau tren mot hang.
- * Tach lam hai hang: nhan chiem het be ngang o tren, nut lop xuong duoi.
+ * Man hep - iPhone cam DUNG. Hai hang thi moi be ngang deu co san roi (xem `.perf-nhan`
+ * o tren), nhung o be ngang 393 px thi nhan fps **xuong hai dong** (khoang 62 ky tu chu
+ * mono 11 px la ~410 px, rong hon 373 px con lai). Hai dong cao ~40 px, nen hang nut lop
+ * phai tut them, va moi thu neo duoi no tut theo. Da chup thay hai cai cham nhau 11/09.
  */
 @media (max-width: 700px) {
   .perf-nhan {
-    right: calc(env(safe-area-inset-right) + 10px);
     font-size: 11px;
   }
   .perf-nut {
-    top: calc(env(safe-area-inset-top) + 34px);
+    top: calc(env(safe-area-inset-top) + 56px);
   }
+  /* `.nut-doi-man`, `.cong-trinh`, `.bang-meta` tut theo - nhung o CUOI FILE, vi ba cai do
+     khai bao SAU khoi nay va cung do dac hieu thi luat sau thang. */
   .su-kien {
     max-width: calc(100% - 20px);
     font-size: 10px;
@@ -257,7 +275,7 @@ html, body {
 .cong-trinh {
   position: absolute;
   left: calc(env(safe-area-inset-left) + 10px);
-  top: calc(env(safe-area-inset-top) + 40px);
+  top: calc(env(safe-area-inset-top) + 70px);
   bottom: calc(env(safe-area-inset-bottom) + 98px);
   z-index: 4;
   width: 190px;
@@ -296,7 +314,7 @@ html, body {
 .nut-doi-man {
   position: absolute;
   right: calc(env(safe-area-inset-right) + 10px);
-  top: calc(env(safe-area-inset-top) + 40px);
+  top: calc(env(safe-area-inset-top) + 70px);
   z-index: 4;
   font-size: 13px;
   padding: 7px 12px;
@@ -369,12 +387,9 @@ html, body {
 
 /* Man hep: hang nut cua `Perf` tut xuong 34px, nen nut doi man phai tut theo. Khoi nay
    PHAI nam sau khai bao `.nut-doi-man` o tren - cung do dac hieu thi luat sau thang, de
-   trong khoi @media o giua file thi luat desktop ghi de len no. Da bi dung mot lan. */
-@media (max-width: 700px) {
-  .nut-doi-man {
-    top: calc(env(safe-area-inset-top) + 70px);
-  }
-}
+   trong khoi @media o giua file thi luat desktop ghi de len no. Da bi dung mot lan.
+   Tu 11/09 hang nut `Perf` tut xuong 34px o MOI be ngang, nen 70px thanh luat chung; khoi
+   rieng cho man hep doi xuong CUOI FILE, sau khai bao `.bang-meta`. */
 
 /* ---- Nhan ten tinh tren ban do ------------------------------------------------------ */
 
@@ -462,7 +477,7 @@ html, body {
 .bang-meta {
   position: absolute;
   left: calc(env(safe-area-inset-left) + 10px);
-  top: calc(env(safe-area-inset-top) + 40px);
+  top: calc(env(safe-area-inset-top) + 70px);
   bottom: calc(env(safe-area-inset-bottom) + 98px);
   z-index: 5;
   width: 264px;
@@ -531,3 +546,20 @@ html, body {
    mat chu cuoi o khung doc - da chup thay 11/09. */
 .bang-meta-phu { font-size: 11px; opacity: 0.72; overflow-wrap: anywhere; }
 .bang-meta-hai { font-size: 11px; color: #e0857a; opacity: 0.85; overflow-wrap: anywhere; }
+
+/*
+ * Man hep - PHAI nam o CUOI FILE.
+ *
+ * Ba luat duoi day cung do dac hieu voi `.nut-doi-man`, `.cong-trinh`, `.bang-meta` khai
+ * bao o tren, ma cung do dac hieu thi LUAT SAU THANG. De trong khoi @media o giua file
+ * thi ba khai bao kia ghi de len no va man hep khong tut gi ca. Da bi dung mot lan 10/09,
+ * suyt bi lan hai 11/09.
+ *
+ * O be ngang 393 px nhan fps xuong hai dong nen hang nut lop o 56 px; moi thu neo duoi no
+ * phai bat dau tu 92 px.
+ */
+@media (max-width: 700px) {
+  .nut-doi-man, .cong-trinh, .bang-meta {
+    top: calc(env(safe-area-inset-top) + 92px);
+  }
+}

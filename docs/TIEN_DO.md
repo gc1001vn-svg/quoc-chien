@@ -48,14 +48,13 @@ bảng nghiên cứu đọc được, thẻ chính sách lắp/tháo ăn.
 
 Phiên bản anh đã xác nhận: **11/09 12:35**.
 
-**Hai việc anh quyết giúp:**
+**Một việc anh kiểm lại giúp:** nhãn fps bị hàng nút đè lên (ảnh anh gửi, `1414 sprite`
+làm chữ `0.44×` chui xuống dưới nút "Nền") **đã sửa** theo cách anh chọn — nhãn một hàng,
+nút lớp xuống hàng dưới. Anh mở lại xem nhãn có hiện đủ tới `0.44×` không.
 
-1. **Nhãn fps bị hàng nút đè lên.** Ảnh anh gửi hiện `1414 sprite` — bốn chữ số làm nhãn
-   dài ra, chữ `0.44×` chui xuống dưới nút "Nền". Máy ảo chỉ có `503 sprite` nên không
-   lộ ra. Ba cách sửa, mỗi cách một mặt trái — xem `NO_KY_THUAT.md` mục "Lớp meta".
-2. **`docs/ASSET_CREDITS.md` (file khoá) đã sửa mà chưa hỏi được.** Phiên trước sửa lúc
-   anh đang ngủ — thêm bốn dòng ghi công mẻ `hex_1`, không đụng phần cũ, vì
-   `check:credits` chặn build. Anh xem có giữ không.
+**Một việc cũ anh quyết giúp:** `docs/ASSET_CREDITS.md` là **file khoá** nhưng phiên trước
+sửa lúc anh đang ngủ — thêm bốn dòng ghi công mẻ `hex_1`, không đụng phần cũ, vì
+`check:credits` chặn build. Anh xem có giữ không.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

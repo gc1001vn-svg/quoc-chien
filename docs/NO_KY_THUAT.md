@@ -146,20 +146,24 @@
 
 ## Lớp meta — nợ mở ra ở Phase 8A (11/09/2026)
 
-- **Nhãn fps bị hàng nút lớp đè lên khi số sprite có bốn chữ số.** Ảnh chủ dự án gửi
-  11/09: `59 fps · 17.0 ms · 11/09 12:35 · 1414 sprite · 1 lệnh vẽ · 0.44×` — chữ `0.44×`
-  chui xuống dưới nút "Nền". `.perf-nhan` chỉ đặt `left`, không có `right` ở màn rộng, nên
-  nhãn dài bao nhiêu cũng tràn sang phải. Máy ảo chỉ vẽ `503 sprite` (ba chữ số) nên
-  **không bao giờ chụp ra được lỗi này** — bài học: nhãn co giãn theo dữ liệu thì phải thử
-  với giá trị LỚN NHẤT, không phải giá trị máy ảo tình cờ có.
-  Ba cách sửa, mỗi cách một mặt trái, **chờ chủ dự án chọn**:
-  (a) cắt nhãn bằng `text-overflow: ellipsis` — rẻ nhất, một dòng CSS, nhưng **mất chữ
-  cuối** tức mất mức thu phóng;
-  (b) rút gọn chữ trong nhãn (`sprite` → `spr`, `lệnh vẽ` → `vẽ`) — không mất thông tin,
-  nhưng khó đọc hơn và **không chắc đủ chỗ** khi số sprite lên năm chữ số;
-  (c) luôn tách hai hàng (nhãn trên, nút lớp dưới) ở mọi bề ngang — chắc chắn đúng mãi,
-  nhưng phải kéo theo `nut-doi-man` và `bang-meta` tụt xuống 34 px, tức **đụng bố cục bốn
-  chỗ**, và mất 28 px chiều cao ở góc trên.
+- ~~**Nhãn fps bị hàng nút lớp đè lên khi số sprite có bốn chữ số.**~~ — **ĐÃ TRẢ 11/09.**
+  Ảnh chủ dự án gửi: `59 fps · … · 1414 sprite · 1 lệnh vẽ · 0.44×` — chữ `0.44×` chui
+  xuống dưới nút "Nền". `.perf-nhan` chỉ đặt `left`, không có `right` ở màn rộng, nên nhãn
+  dài bao nhiêu cũng tràn sang phải. Máy ảo chỉ vẽ `503 sprite` (ba chữ số) nên **không
+  bao giờ chụp ra được lỗi này**. Chủ dự án chọn cách **tách hai hàng ở mọi bề ngang**
+  sau khi được nêu rõ ba cách và mặt trái từng cách (cắt bằng `…` thì mất mức thu phóng ·
+  rút gọn chữ thì không chắc đủ chỗ khi sprite lên năm chữ số). Đã đo lại bằng
+  `?zoom=0.35` (1.485 sprite ngang, 1.582 dọc): cả hai khung đều hiện đủ nhãn.
+  **Bài học: nhãn co giãn theo dữ liệu thì phải thử với giá trị LỚN NHẤT** — trần sprite
+  là 5.000 nên bốn chữ số là chuyện bình thường — chứ không phải giá trị máy ảo tình cờ
+  có. Đánh đổi đã nhận: nhãn giờ là dải đen kéo hết bề ngang, và mất 28 px chiều cao góc
+  trên (`nut-doi-man`, `cong-trinh`, `bang-meta` tụt từ 40 px xuống 70 px).
+
+- **Nút "Đo trần sprite" bị hàng nút tốc độ đè lên ở màn dọc.** Lộ ra khi chụp lại khung
+  dọc 11/09: `.nut-do` neo góc trái dưới, `.toc-do` neo góc phải dưới, mà ở bề ngang
+  393 px sáu nút tốc độ rộng hơn nửa màn nên tràn sang trái, nút ⏸ đè lên chữ "Đo trần
+  sprite". Không phải nợ của Phase 8 — có sẵn từ khi thêm hàng tốc độ. Chưa sửa vì chủ
+  dự án mới chỉ chốt sửa nhãn fps.
 
 - **Phase 8B: chưa nướng mẻ sprite hiện đại.** Thành phố **chưa đổi mặt** khi lên thời đại;
   cả sáu đời cùng trỏ `trung_co_2` trong `data/balance.json`. Khớp nối đã dựng sẵn
