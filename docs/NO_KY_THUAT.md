@@ -110,9 +110,39 @@
   `node tools/tai_itch.mjs quaternius/medieval-village-megakit quaternius/stylized-nature-megakit quaternius/fantasy-props-megakit quaternius/modular-character-outfits-fantasy quaternius/universal-base-characters`
   rồi `node tools/tai_hoa_tiet.mjs sparse_grass leafy_grass brown_mud_dry cobblestone_01 dry_river_pebbles coast_sand_01 aerial_rocks_02 clay_plaster clay_roof_tiles_02`.
   (`npm run tai:asset` và `npm run tai:itch` chỉ cần khi muốn dựng lại mẻ Kenney cũ.)
+- **ĐÍNH CHÍNH 11/09 — lệnh tải `assets_source/` ghi ngay trên đã LỖI THỜI.** Nó thiếu ba
+  gói thêm sau: `kaykit-medieval-builder-pack`, `kaykit-medieval-hexagon`,
+  `city-builder-bits`, và `lowpoly-animated-animals`. Chạy đúng lệnh cũ là kho thiếu, nướng
+  lại mẻ nào cũng hỏng. **Dùng `npm run tai:tatca`** — nó gọi cả ba bước và chạy
+  `npm run kho` ở cuối. Giữ lệnh cũ ở đây vì luật chỉ thêm không xoá; đừng chép nó ra dùng.
+  (Chính `tai:tatca` cũng từng thiếu `lowpoly-animated-animals`, vá 11/09.)
 - Chưa tìm được kho **gigalomania** (SourceForge, `api.github.com/search` bị khoá theo
   phiên). Game đáng đọc nhất về một ván đi suốt nhiều thời kỳ — tìm lại phiên sau.
 - `vercel.json` giữ lại, chưa dùng. Muốn quay về Vercel thì sửa `BASE` về `'/'`.
+
+## Lớp chiến dịch — nợ mở ra ở Phase 7 (11/09/2026)
+
+- **Chưa nối vào kinh tế thành phố.** Công trình tỉnh (mỏ, chợ, trại lính, làng) xây xong
+  thì đứng đó, **chưa đổ hàng vào kho thành phố**. Cố ý tách ở Phase 7 để khỏi vỡ cân bằng
+  đã cân suốt Phase 3–6; nối là việc từ Phase 9 trở đi. Nối thì phải cân lại cả bảng
+  `data/buildings.json`, không phải cộng thêm một con số.
+- **Chưa có AI nước khác.** Ba nước đối thủ đứng yên: không bành trướng, không chiếm tỉnh
+  trung lập, không ngoại giao. Tám tỉnh trung lập nằm đó vĩnh viễn. Phase 9 và 11.
+- **Bản đồ không có sông và đường.** Gói hexagon có sẵn 15 ô sông + 15 ô đường
+  (`hex_river_*`, `hex_road_*`) nhưng mẻ `hex_1` **không nướng 30 sprite đó** — để dành
+  làm van xả phòng khi vượt trần trang atlas. Hoá ra không cần: mẻ 40 sprite chỉ lấp
+  63,5 % một trang ở cỡ 2×. Nướng thêm được, nhưng phải đo lại số trang.
+- **Hai sprite đồi (`hills_*`) không dùng được.** Mặt trên lấy ô olive của bảng màu nền
+  nên ra **vàng chói** cạnh núi đá xám. Máy nướng chỉ có phép NHÂN màu, không khử được bão
+  hoà — đừng thử chữa bằng cách nhân, đã sập ba lần vì đúng cách đó (xem mục Đồ hoạ).
+- **Trần atlas sắp chật.** Hai màn (thành phố + bản đồ tỉnh) giữ **2 trang cùng lúc**,
+  trần `TECH_SPEC` mục 2 là **4**. Mẻ hiện đại của Phase 8 là bộ atlas **thứ ba** — chỉ
+  còn đúng 2 trang để tiêu. Đo số trang trước khi nướng cả mẻ, và tính xem có nên nhả
+  atlas mẻ cũ khi lên thời đại không.
+- **`docs/ASSET_CREDITS.md` (file khoá) đã sửa mà chưa hỏi được.** Đêm 11/09 chủ dự án
+  đang ngủ, mà `check:credits` chặn build khi atlas mới chưa ghi công. Chỉ thêm bốn dòng
+  ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
+  lại.**
 
 ## Deploy — đã chốt, không phải nợ, để đây cho khỏi quên
 
