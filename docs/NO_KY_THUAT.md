@@ -146,6 +146,21 @@
 
 ## Lớp meta — nợ mở ra ở Phase 8A (11/09/2026)
 
+- **Nhãn fps bị hàng nút lớp đè lên khi số sprite có bốn chữ số.** Ảnh chủ dự án gửi
+  11/09: `59 fps · 17.0 ms · 11/09 12:35 · 1414 sprite · 1 lệnh vẽ · 0.44×` — chữ `0.44×`
+  chui xuống dưới nút "Nền". `.perf-nhan` chỉ đặt `left`, không có `right` ở màn rộng, nên
+  nhãn dài bao nhiêu cũng tràn sang phải. Máy ảo chỉ vẽ `503 sprite` (ba chữ số) nên
+  **không bao giờ chụp ra được lỗi này** — bài học: nhãn co giãn theo dữ liệu thì phải thử
+  với giá trị LỚN NHẤT, không phải giá trị máy ảo tình cờ có.
+  Ba cách sửa, mỗi cách một mặt trái, **chờ chủ dự án chọn**:
+  (a) cắt nhãn bằng `text-overflow: ellipsis` — rẻ nhất, một dòng CSS, nhưng **mất chữ
+  cuối** tức mất mức thu phóng;
+  (b) rút gọn chữ trong nhãn (`sprite` → `spr`, `lệnh vẽ` → `vẽ`) — không mất thông tin,
+  nhưng khó đọc hơn và **không chắc đủ chỗ** khi số sprite lên năm chữ số;
+  (c) luôn tách hai hàng (nhãn trên, nút lớp dưới) ở mọi bề ngang — chắc chắn đúng mãi,
+  nhưng phải kéo theo `nut-doi-man` và `bang-meta` tụt xuống 34 px, tức **đụng bố cục bốn
+  chỗ**, và mất 28 px chiều cao ở góc trên.
+
 - **Phase 8B: chưa nướng mẻ sprite hiện đại.** Thành phố **chưa đổi mặt** khi lên thời đại;
   cả sáu đời cùng trỏ `trung_co_2` trong `data/balance.json`. Khớp nối đã dựng sẵn
   (`ThoiDai.me`), Phase 8B chỉ sửa một cột JSON rồi nối `gl.deleteTexture` vào `CityScene`.

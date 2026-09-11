@@ -3,12 +3,16 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 11/09/2026 (Phase 8A — lớp meta, **chờ xác nhận trên iPhone**).
+Cập nhật: 11/09/2026 (Phase 8A — lớp meta, **đã xác nhận trên iPhone, 59 fps**).
 
 ## 1. Đang ở đâu
 
-**Phase 8A xong, chờ anh xác nhận trên iPhone.** Phase 8 tách làm hai, anh chốt 11/09:
-8A là phần ruột, 8B là nướng mẻ sprite hiện đại (phiên sau).
+**Phase 8A xong và đã xác nhận trên iPhone (59 fps, bản 11/09 12:35).** Phase 8 tách làm
+hai, anh chốt 11/09: 8A là phần ruột, 8B là nướng mẻ sprite hiện đại (phiên sau).
+
+Ảnh anh gửi cho thấy cả ba thứ đều chạy: bảng công nghệ (2/24, đang học Nông nghiệp
+19/30 điểm) · thẻ **Tích trữ** lắp được vào ô chính phủ, đếm ngược "Đổi thẻ sau 5 giờ
+nữa" · hệ số nghiên cứu tụt xuống **95 %** đúng bằng mặt hại của thẻ.
 
 Màn thành phố có thêm nút **🔬** ở góc trái dưới, cạnh nút ☰ và ⌂. Bấm vào hiện bảng
 **Nghiên cứu**, hai thẻ chữ:
@@ -39,20 +43,19 @@ Kho asset **không tải phiên này** — 8A không nướng sprite.
 
 ## 3. Việc của chủ dự án
 
-**Anh mở game trên iPhone và kiểm ba việc:**
+**Phase 8A không còn gì phải kiểm.** Anh đã xem trên iPhone 11/09 và xác nhận: 59 fps,
+bảng nghiên cứu đọc được, thẻ chính sách lắp/tháo ăn.
 
-1. Mở https://gc1001vn-svg.github.io/quoc-chien/ (kéo xuống làm mới cho ăn bản mới).
-2. Góc **trái dưới** giờ có ba nút: ☰ (nhật ký) · ⌂ (công trình) · **🔬 (nghiên cứu)**.
-   Bấm 🔬. Đọc xem chữ có bị cắt, có tràn ra ngoài, có che mất thành phố không.
-3. Bấm nút **10×** hoặc **30×** cho chạy nhanh, đợi vài phút. Phải thấy: thanh tiến độ
-   chạy, nhật ký hiện dòng xanh "Nghiên cứu xong …", rồi "Mở thẻ chính sách …". Lúc đó
-   sang thẻ chữ **Chính sách**, chạm một thẻ xem có lắp vào ô được không.
+Phiên bản anh đã xác nhận: **11/09 12:35**.
 
-Nhắn em: **chữ có đọc được không · thẻ lắp/tháo có ăn không · fps bao nhiêu**.
+**Hai việc anh quyết giúp:**
 
-**Một việc cũ anh quyết giúp:** `docs/ASSET_CREDITS.md` là **file khoá** nhưng phiên trước
-đã sửa lúc anh đang ngủ — thêm bốn dòng ghi công mẻ `hex_1`, không đụng phần cũ, vì
-`check:credits` chặn build. Anh xem có giữ không.
+1. **Nhãn fps bị hàng nút đè lên.** Ảnh anh gửi hiện `1414 sprite` — bốn chữ số làm nhãn
+   dài ra, chữ `0.44×` chui xuống dưới nút "Nền". Máy ảo chỉ có `503 sprite` nên không
+   lộ ra. Ba cách sửa, mỗi cách một mặt trái — xem `NO_KY_THUAT.md` mục "Lớp meta".
+2. **`docs/ASSET_CREDITS.md` (file khoá) đã sửa mà chưa hỏi được.** Phiên trước sửa lúc
+   anh đang ngủ — thêm bốn dòng ghi công mẻ `hex_1`, không đụng phần cũ, vì
+   `check:credits` chặn build. Anh xem có giữ không.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

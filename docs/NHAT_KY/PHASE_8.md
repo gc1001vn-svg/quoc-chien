@@ -39,3 +39,14 @@ lên Trung cổ giờ 21, Súng ống giờ 65, xong 21/24 công nghệ, Eureka 
 
 Chưa có mẻ hiện đại nên cả sáu đời cùng trỏ `trung_co_2` trong `balance.json` — khớp nối
 dựng sẵn, Phase 8B chỉ sửa một cột.
+
+## Chủ dự án xác nhận 11/09 — và một lỗi chỉ iPhone thật mới lộ
+
+**59 fps**, bản 11/09 12:35. Bảng nghiên cứu đọc được, thẻ Tích trữ lắp được, hệ số tụt
+xuống 95 % đúng bằng mặt hại của thẻ.
+
+Ảnh anh gửi lộ ra thứ tư máy ảo không lộ được: **nhãn fps bị hàng nút lớp đè lên**. Máy
+thật vẽ `1414 sprite` (bốn chữ số) nên nhãn dài ra và chữ `0.44×` chui xuống dưới nút
+"Nền"; máy ảo chỉ vẽ `503 sprite` nên chụp bao nhiêu lần cũng không thấy. **Bài học: nhãn
+co giãn theo dữ liệu thì phải thử với giá trị LỚN NHẤT, không phải giá trị máy ảo tình cờ
+có.** Ba cách sửa và mặt trái từng cách nằm ở `NO_KY_THUAT.md`, chờ anh chọn.
