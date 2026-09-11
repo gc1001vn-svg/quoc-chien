@@ -27,7 +27,7 @@ Cũng vá một lỗi quy trình: `npm run tai:tatca` **thiếu gói `lowpoly-an
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 · 133 test | **6/6 · 161 test** |
+| `npm run do` | 6/6 · 133 test | **6/6 · 166 test** |
 | Màn bản đồ — sprite mỗi khung | — | **283** (trần 5.000) |
 | Màn bản đồ — lệnh vẽ | — | **1** (trần 4) |
 | Trang atlas cùng lúc (hai màn cùng sống) | 1 | **2** (trần 4) |
@@ -39,19 +39,17 @@ nào xây hai lần, không lệnh nào kẹt.
 
 ## 3. Việc của chủ dự án
 
-**Mở game trên iPhone và xem giúp bốn thứ**, nhắn lại "được" hay "hỏng chỗ nào":
+Anh đã xem bản đồ tỉnh trên iPhone 11/09: **chạy 59 fps, mọi thứ ổn**, và nêu hai chỗ —
+đã làm xong cả hai, **cần xem lại**:
 
 https://gc1001vn-svg.github.io/quoc-chien/
 
-1. Góc phải trên có nút **🗺 Bản đồ tỉnh** — bấm vào, có ra bản đồ lục giác không?
-2. Trên bản đồ: thấy **hai toà thành bên trái, hai bên phải** (bốn nước, bốn màu mái) và
-   vùng đất nâu ở góc trái trên (đất nước ta) không?
-3. Chạm vào **một mảnh đất nâu** → có hiện bảng "Viêm Tân ★ · Hoả Nguyên · đồng bằng"
-   kèm ba nút công trình không? Bấm **Làng**, đợi khoảng 10 giây, chạm lại ô đó — đã
-   thành nhà chưa?
-4. Bấm **⌂ Về thành phố** — có quay lại đúng chỗ cũ của thành phố không?
-
-Và **một con số**: bản đồ tỉnh chạy được bao nhiêu fps (nhãn góc trái trên)?
+1. **Bản đồ tỉnh:** giờ mỗi tỉnh có **tên viết bằng chữ**, màu theo phe. Năm tỉnh của
+   nước ta (Hoả Nguyên, màu đỏ) có **gạch chân vàng**; góc trái dưới có dòng
+   "● Nước ta: Hoả Nguyên". Cầm dọc thì chỉ hiện tên tỉnh của ta và bốn thủ đô cho đỡ
+   chen — chụm hai ngón phóng to là hiện đủ 28 tên.
+2. **Thành phố:** chạm thẳng vào một công trình bất kỳ → tên nó hiện ngay trên nóc.
+   Chạm vào chỗ trống thì tên biến đi.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

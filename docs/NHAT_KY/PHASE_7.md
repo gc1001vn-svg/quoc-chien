@@ -40,9 +40,24 @@ vì `npm run kho` đếm 1.215 thay vì 1.222. Đã thêm vào `tai:itch`, đế
 `check:credits` chặn build khi atlas mới chưa ghi công. Chỉ thêm bốn dòng ghi công cho mẻ
 `hex_1` và ghi lại hai điều đo được ở trên, không đụng phần cũ.
 
+## Hai thứ chủ dự án bảo thêm sau khi xem trên iPhone
+
+Anh xác nhận **59 fps** trên máy thật và nêu hai chỗ:
+
+1. **"Không thấy chữ đất nước ta đâu."** Đúng — màu mái thành và mảnh đất nâu phân biệt
+   được bốn nước, nhưng không ai đọc ra cái nào là *của mình*. Thêm 28 nhãn tên tỉnh
+   (thẻ DOM, không tốn sprite nào), màu chữ theo phe, tỉnh của ta gạch chân vàng, thủ đô
+   có dấu sao, và một dòng "Nước ta: Hoả Nguyên" ở góc. Hex hẹp hơn 46 px — iPhone cầm
+   dọc rơi đúng vào đó — thì 28 tên chen thành một đám, nên lúc ấy chỉ giữ tỉnh của ta và
+   bốn thủ đô.
+2. **Chạm thẳng vào công trình ở thành phố là hiện tên.** So khớp theo **hộp bao sprite**
+   chứ không theo ô lưới dưới chân: nhà cao tới 5,6 hàng ô, đổi qua lưới là bấm mái nhà
+   này lại ra tên nhà kia. Tên hiển thị tra theo **ô** chứ không theo tên sprite — nhiều
+   loại nhà dùng chung một hình.
+
 ## Số đo
 
-`npm run do` → **6/6 thước · 161 test** (trước 133) · `npm run sim:bando` → **ĐẠT**:
+`npm run do` → **6/6 thước · 166 test** (trước 133) · `npm run sim:bando` → **ĐẠT**:
 196 hex lát khít, 143 ô xây, chạy 200 lượt không ô nào xây hai lần, không lệnh nào kẹt.
 Màn bản đồ: **283 sprite · 1 lệnh vẽ · 1 trang atlas** (trần 5.000 · 4 · 4).
 
