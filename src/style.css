@@ -232,6 +232,21 @@ html, body {
   }
   /* `.nut-doi-man`, `.cong-trinh`, `.bang-meta` tut theo - nhung o CUOI FILE, vi ba cai do
      khai bao SAU khoi nay va cung do dac hieu thi luat sau thang. */
+
+  /* Nut "Do tran sprite" ve cung hang voi ☰ ⌂ 🔬, chi con thuoc do. O be ngang 393 px bay
+     nut toc do rong 316 px de thang len chu o goc trai duoi - da chup thay 11/09. Ba nut
+     kia o 10 / 52 / 94 px, buoc 42 px, nen cho tiep theo la 136 px. */
+  .nut-do {
+    left: calc(env(safe-area-inset-left) + 136px);
+    bottom: calc(env(safe-area-inset-bottom) + 56px);
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    font-size: 16px;
+  }
+  .nut-do-chu {
+    display: none;
+  }
   .su-kien {
     max-width: calc(100% - 20px);
     font-size: 10px;

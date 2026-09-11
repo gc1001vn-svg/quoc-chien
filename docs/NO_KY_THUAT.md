@@ -159,11 +159,15 @@
   có. Đánh đổi đã nhận: nhãn giờ là dải đen kéo hết bề ngang, và mất 28 px chiều cao góc
   trên (`nut-doi-man`, `cong-trinh`, `bang-meta` tụt từ 40 px xuống 70 px).
 
-- **Nút "Đo trần sprite" bị hàng nút tốc độ đè lên ở màn dọc.** Lộ ra khi chụp lại khung
-  dọc 11/09: `.nut-do` neo góc trái dưới, `.toc-do` neo góc phải dưới, mà ở bề ngang
-  393 px sáu nút tốc độ rộng hơn nửa màn nên tràn sang trái, nút ⏸ đè lên chữ "Đo trần
-  sprite". Không phải nợ của Phase 8 — có sẵn từ khi thêm hàng tốc độ. Chưa sửa vì chủ
-  dự án mới chỉ chốt sửa nhãn fps.
+- ~~**Nút "Đo trần sprite" bị hàng nút tốc độ đè lên ở màn dọc.**~~ — **ĐÃ TRẢ 11/09.**
+  Lộ ra khi chụp lại khung dọc: `.nut-do` neo góc trái dưới, `.toc-do` neo góc phải dưới,
+  mà ở bề ngang 393 px hàng tốc độ rộng **316 px** (bảy nút) nên tràn sang trái, nút ⏸ đè
+  lên chữ. Không phải nợ của Phase 8 — có sẵn từ khi thêm hàng tốc độ. Chữ tách vào một
+  `<span class="nut-do-chu">` để màn dọc giấu đi, nút thu về thước đo 📏 và đứng cùng hàng
+  với ☰ ⌂ 🔬 ở `left: 136px` (ba nút kia ở 10 / 52 / 94, bước 42). Đo lại bằng
+  `getBoundingClientRect`: màn dọc nút ở y 762–796, hàng tốc độ ở 802–842 — **cách nhau
+  6 px**, trước đó trùng hoàn toàn. Màn ngang nút ở x 10–124, hàng tốc độ ở x 548–864, và
+  chữ vẫn đủ.
 
 - **Phase 8B: chưa nướng mẻ sprite hiện đại.** Thành phố **chưa đổi mặt** khi lên thời đại;
   cả sáu đời cùng trỏ `trung_co_2` trong `data/balance.json`. Khớp nối đã dựng sẵn

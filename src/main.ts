@@ -55,7 +55,7 @@ async function moHaiMan(boc: HTMLElement): Promise<void> {
   };
   nut(oThanhPho, 'nut-doi-man', '🗺 Bản đồ tỉnh', () => { sang(manBanDo, manThanhPho); });
   nut(oBanDo, 'nut-doi-man', '⌂ Về thành phố', () => { sang(manThanhPho, manBanDo); });
-  nut(oThanhPho, 'nut-do', 'Đo trần sprite', () => { window.location.search = '?do=sprite'; });
+  nutDoTranSprite(oThanhPho);
 
   if (thamSo.get('man') === 'ban-do') manBanDo.hien();
   else manThanhPho.hien();
@@ -68,6 +68,26 @@ function taoMan(boc: HTMLElement): HTMLDivElement {
   d.hidden = true;
   boc.appendChild(d);
   return d;
+}
+
+/**
+ * Nut mo trang do tran sprite.
+ *
+ * Chu nam trong mot `<span>` rieng de man hep giau di bang CSS, chi con thuoc do. Khong
+ * tach ra thi o be ngang 393 px bay nut toc do rong 316 px de thang len chu "Do tran
+ * sprite" o goc trai duoi - da chup thay 11/09. Man rong van hien du chu.
+ */
+function nutDoTranSprite(cha: HTMLElement): void {
+  const b: HTMLButtonElement = document.createElement('button');
+  b.type = 'button';
+  b.className = 'nut-do';
+  const chu: HTMLSpanElement = document.createElement('span');
+  chu.className = 'nut-do-chu';
+  chu.textContent = 'Đo trần sprite';
+  b.append('📏 ', chu);
+  b.title = 'Đo trần sprite';
+  b.addEventListener('click', () => { window.location.search = '?do=sprite'; });
+  cha.appendChild(b);
 }
 
 /** Mot nut goc man. */
