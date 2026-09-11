@@ -3,101 +3,83 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 11/09/2026 (Phase 6C — trả nợ rà soát, lợn và cừu thật).
+Cập nhật: 11/09/2026 (Phase 7 — bản đồ tỉnh).
 
 ## 1. Đang ở đâu
 
-Phase 6/13 xong. Phiên 11/09 định mở Phase 7 nhưng **dừng lại để vá quy trình** — chủ dự
-án hỏi hai câu làm lộ ra chuỗi lỗi rà soát kéo dài nhiều phiên.
+**Phase 7/13 xong, chờ anh xác nhận trên iPhone.** Game giờ có hai màn: lớp thành phố
+(Phase 2–6) và **lớp chiến dịch** — bản đồ 28 tỉnh lục giác, bốn nước, bấm nút góc màn
+để qua lại.
 
-**Con số model trong kho sai suốt từ đầu.** `kho_asset.mjs` khử trùng tên trong từng thư
-mục, mà mỗi gói xuất ra `fbx/` `gltf/` `obj/` là ba thư mục riêng nên mỗi model đếm ba
-lần. Số này lại còn gõ tay ở ba file nên lệch nhau qua các phiên: **1.855 → 2.781 →
-3.946**, trong khi thật sự dùng được chỉ **1.222**. Kế hoạch dựa trên số phồng nên luôn
-lạc quan sai: tưởng kho thừa model, hoá ra thiếu.
+Bấm vào một mảnh đất nâu trong tỉnh của mình → hiện bảng chọn công trình (Làng · Chợ
+phiên · Trại lính · Mỏ quặng) → bấm là xây, mất 3–6 lượt, mỗi lượt 3 giây thật. Bấm vào
+tỉnh khác → xem tên tỉnh, nước, địa hình, số ô xây.
 
-**Ba lỗ hổng chỉ lộ khi chạy thật**, không lộ khi đọc code: `tai_itch.mjs` không chịu
-được 429 của itch · `tai:tatca` không tải hoạ tiết nên nướng sập · `check:credits` chỉ
-kiểm tên file atlas nên thêm gói mới quên ghi công vẫn ĐẠT.
+Ba thứ chỉ lộ khi nướng và chụp thật (chi tiết: `docs/NHAT_KY/PHASE_7.md`): thư mục
+`neutral` của gói KayKit **không có nhà** như bốn màu phe · vẽ mảnh đất ở cả 143 ô xây
+làm bản đồ thành một mảng nâu · mức thu phóng mở màn phải **đo từ khung thật**, số cứng
+hợp màn ngang thì cầm dọc bị cắt.
 
-**Lợn và cừu thật.** Chủ dự án chỉ ra ba trại chăn nuôi dùng chung một hàng rào chỉ khác
-màu nền — đúng. Đã tải `quaternius/lowpoly-animated-animals` (CC0) và gắn `Pig`, `Sheep`.
-**`trai_ga` vẫn không có gà**, không gói nào có.
-
-Chi tiết: `docs/NHAT_KY/PHASE_6C.md`.
+Cũng vá một lỗi quy trình: `npm run tai:tatca` **thiếu gói `lowpoly-animated-animals`**
+— máy ảo mới mà nướng lại mẻ `trung_co_2` là hỏng, vì kit `av` trỏ thẳng vào gói đó.
 
 ## 2. Số đo mới nhất
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| Model trong kho — số **dùng được** | ghi 3.946 (sai) | **1.222** (3.960 lượt file · 1.482 tên) |
-| Gói asset đã tải | 9 | **10** + 6 hoạ tiết Poly Haven (~1 GB) |
-| Trang atlas | 2 | 2 (trần 4) |
-| Sprite trong mẻ `trung_co_2` | 74 | 74 |
+| `npm run do` | 6/6 · 133 test | **6/6 · 161 test** |
+| Màn bản đồ — sprite mỗi khung | — | **283** (trần 5.000) |
+| Màn bản đồ — lệnh vẽ | — | **1** (trần 4) |
+| Trang atlas cùng lúc (hai màn cùng sống) | 1 | **2** (trần 4) |
+| Mẻ `hex_1` — sprite · lấp trang 2× | — | 40 · **63,5 %** |
+| Model trong kho — số **dùng được** | 1.222 | 1.222 (dòng cuối `KHO_ASSET.md`) |
 
-`npm run do` → **6/6 thước** · **133 test**.
-
-**Chốt chặn mới, dựng bằng code chứ không bằng lời hứa:**
-
-| Chốt | Ở đâu |
-|---|---|
-| Đếm ba số riêng, nói rõ số nào được trích dẫn | `kho_asset.mjs` |
-| Dừng khi số model tụt >20% (ép bằng `KHO_EP=1`) | `kho_asset.mjs` |
-| Chịu được 429, nghỉ tăng dần 5/10/15/20s | `tai_itch.mjs` |
-| Kiểm cả **gói nguồn**, không chỉ tên file atlas | `check_credits.mjs` |
-| Bảy bước đầu phiên A–G | `docs/DAU_PHIEN.md` |
-| Bỏ hết số gõ tay, chỉ trỏ nguồn sinh tự động | `CLAUDE.md` · `TIEN_DO.md` |
-
-Kho `ghi-nho` thêm ba quyết định: đọc hết ba file cấm cắt · bảy bước đầu phiên · số liệu
-phải sinh từ lệnh và phải đếm đúng đơn vị.
+`npm run sim:bando` → **ĐẠT**: 196 hex lát khít, 143 ô xây dựng, chạy 200 lượt không ô
+nào xây hai lần, không lệnh nào kẹt.
 
 ## 3. Việc của chủ dự án
 
-**Không có việc gì phải kiểm.** Lợn và cừu anh đã xác nhận thấy trên iPhone 11/09.
+**Mở game trên iPhone và xem giúp bốn thứ**, nhắn lại "được" hay "hỏng chỗ nào":
 
-Phiên sau mở Phase 7 — xem mục 5.
+https://gc1001vn-svg.github.io/quoc-chien/
+
+1. Góc phải trên có nút **🗺 Bản đồ tỉnh** — bấm vào, có ra bản đồ lục giác không?
+2. Trên bản đồ: thấy **hai toà thành bên trái, hai bên phải** (bốn nước, bốn màu mái) và
+   vùng đất nâu ở góc trái trên (đất nước ta) không?
+3. Chạm vào **một mảnh đất nâu** → có hiện bảng "Viêm Tân ★ · Hoả Nguyên · đồng bằng"
+   kèm ba nút công trình không? Bấm **Làng**, đợi khoảng 10 giây, chạm lại ô đó — đã
+   thành nhà chưa?
+4. Bấm **⌂ Về thành phố** — có quay lại đúng chỗ cũ của thành phố không?
+
+Và **một con số**: bản đồ tỉnh chạy được bao nhiêu fps (nhãn góc trái trên)?
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **`trai_ga` không có model gà.** Dò hết 10 gói: Kenney · Quaternius ×6 · KayKit ×3, đều
-  không có. Trại gà còn phân biệt bằng chuồng + màu nền. Muốn có gà phải tìm nguồn mới —
-  `NGUON_MO.md` mục 8.
-- **Lò và xưởng vẫn dùng chung dáng.** `lo_mo` và `lo_gom` cùng `qv:Floor_Brick` màu chênh
-  3%; `lo_thep` là tháp canh tô xám; `lo_banh` và `xuong_det` đều là chợ. Kho không có
-  `kiln` `furnace` `forge` `oven` `bakery` `tannery` `weaver` — cả 12 từ khoá đều 0 kết
-  quả. **Chủ dự án chốt 11/09: giữ nguyên.**
-- **Người vác hàng đi tay không** — chốt để Phase 10, nướng cùng bộ 8 hướng × 4 dáng.
-- **Mỗi kho chưa có túi hàng riêng** (chốt tạm 08/09).
+- **Lớp chiến dịch chưa nối vào kinh tế thành phố.** Công trình tỉnh chưa đổ hàng vào kho
+  thành phố — cố ý tách, để khỏi vỡ cân bằng đã cân ở Phase 3–6. Nối là việc Phase 9.
+- **Chưa có AI nước khác.** Ba nước đối thủ đứng yên, không bành trướng, không ngoại giao.
+- **`docs/ASSET_CREDITS.md` (file khoá) đã sửa mà chưa hỏi được** — anh đang ngủ, mà
+  `check:credits` chặn build khi atlas mới chưa ghi công. Chỉ thêm bốn dòng ghi công mẻ
+  `hex_1`, không đụng phần cũ. Anh xem lại giúp.
+- **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
+- **Lò và xưởng vẫn dùng chung dáng** — chủ dự án chốt 11/09: giữ nguyên.
+- **Người vác hàng đi tay không** — để Phase 10, nướng cùng bộ 8 hướng × 4 dáng.
 - Mới có **6 thẻ**, đều là thẻ kinh tế. Thẻ chính sách, công nghệ, quân sự, ngoại giao
   thuộc Phase 8/9/11.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase kế tiếp — Phase 7: bản đồ tỉnh (PHIÊN MỚI)
+## 5. Phase kế tiếp — Phase 8: cây công nghệ và thời đại (PHIÊN MỚI)
 
-`sim/campaign/` + `render/MapScene.ts`: bản đồ tỉnh giấy da, ô xây dựng, các nước khác.
-Nhìn thấy thế giới ngoài thành phố.
+`sim/meta/`: cây công nghệ, Eureka, lên thời đại, thẻ chính sách. Nướng mẻ **hiện đại**.
+Xong thì thành phố tiến hoá trước mắt.
 
-**Asset đã dò sẵn:** gói `kaykit-medieval-hexagon` có ô lục giác và nhà theo **5 màu**
-(xanh dương · xanh lá · đỏ · vàng · trung lập) — bốn phe cộng bên trung lập, đúng thứ
-Phase 7 cần. Không phải tải thêm.
+**Asset:** gói `city-builder-bits` (KayKit, CC0) đã nằm sẵn trong kho từ 10/09, để dành
+đúng cho thời hiện đại — không phải tải thêm.
 
-**Ba điều đã chốt 11/09 — phiên sau khỏi hỏi lại:**
-
-1. **Ô lục giác.** Chủ dự án chốt.
-2. **4 nước · 28 tỉnh · mỗi tỉnh 7 hex.** Chủ dự án giao Claude quyết; căn cứ:
-   - 4 nước = người chơi + 3 đối thủ. `GAME_SPEC` mục 10 nêu đúng 3 nước ví dụ; điều kiện
-     thắng **Ngoại giao** ("đa số nước bầu") cần ≥3 nước khác mới có nghĩa; gói
-     `kaykit-medieval-hexagon` có nhà **5 màu** = 4 phe + trung lập, không phải tô màu giả.
-   - 28 tỉnh = 4 nước × 5 tỉnh khởi đầu + **8 tỉnh trung lập** để bành trướng mà chưa phải
-     tuyên chiến.
-   - Mỗi tỉnh = **1 hex thủ phủ ở giữa + vành 6 hex**, trong đó **4–6 hex là ô xây dựng**
-     (`GAME_SPEC` mục 122–125). Hình lục giác cho đúng 6 ô vành — khớp sẵn, không ép.
-3. **Bấm vào tỉnh xây được luôn.** Chủ dự án chốt.
-
-**Rủi ro phải đo trước khi hứa:** 28 × 7 = 196 hex + biển/viền + cờ hiệu + công trình
-≈ 360 sprite — nhẹ so với trần 5.000. Nhưng **nướng mẻ hex mới sẽ thêm trang atlas**:
-đang 2 trang, trần 4. Đo số trang trước khi nướng cả bộ, đừng nướng xong mới biết vượt.
+**Rủi ro phải đo trước khi hứa:** nướng mẻ hiện đại là **bộ atlas thứ ba**. Hai màn hiện
+đã giữ 2 trang cùng lúc, trần là 4 — mẻ thứ ba chỉ còn đúng 2 trang để tiêu. Đo số trang
+trước khi nướng cả mẻ, và tính xem có nên nhả atlas mẻ cũ khi lên thời đại không.
 
 **Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G, không bỏ bước nào.
