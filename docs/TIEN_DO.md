@@ -143,17 +143,31 @@ Kho chung nằm **trong git của `tayvuc`**: **2.677 file, 326 MB** — `kaykit
 `kenney` `polyhaven` `effekseer` `game-icons`. Và `tayvuc/docs/TIEN_DO.md` ghi thẳng:
 *"Quốc Chiến tái dùng ba thứ của Tây Vực: 269 MB model 3D trong `assets_source/`"*.
 
-**`quoc-chien` chưa nối vào kho đó** — `.gitignore` bỏ qua `assets_source/` nên mỗi phiên
-tải lại từ internet, dù **5/9 gói đã có sẵn** bên `tayvuc`. Chưa nối vì cấu trúc thư mục
-hai bên khác nhau (`tayvuc` gom theo tác giả, `quoc-chien` theo tên gói itch) — cần bảng
-ánh xạ. **Việc đáng làm, chờ chủ dự án chốt.**
+**ĐÃ NỐI 11/09** (chủ dự án chốt). Cách nối:
+
+| Lệnh | Việc |
+|---|---|
+| `npm run kho:chung` | sinh `docs/KHO_CHUNG.md` — bản kê **514 model máy nướng đọc được** |
+| `npm run kho:lay <gói>` | chép một gói từ kho chung sang `assets_source/` |
+
+`docs/KHO_CHUNG.md` **lên git** (36 KB) nên **mọi phiên dò được bằng `grep` mà không phải
+clone 326 MB**. Chỉ khi trúng mới clone `tayvuc` rồi lấy gói thật. Luật dò giờ có **bước
+1b** — xem `docs/DAU_PHIEN.md` mục F.
+
+**Nối được tới đâu, nói thẳng:** kho chung giữ gói **đã lọc**, phần lớn chỉ còn `glTF/`,
+**không có `OBJ/`**. Các mẻ hiện tại của dự án trỏ vào thư mục OBJ nên **không thay thế
+được** — nối này **không giảm việc tải cho mẻ cũ**. Giá trị thật là **mở rộng nguồn dò**:
+514 model mà trước nay dự án không biết có (`kaykit/forest` 105 · `ultimate-monsters` 50 ·
+`fantasy-weapons` 31 · `adventurers` 31 · `skeletons` 13…), dùng được ngay cho Phase 10
+(lính) và Phase 12 (thời đại khác).
 
 Kèm một đính chính: **máy nướng đọc được `.gltf`**, không chỉ OBJ — `tools/nuong_sprite.mjs`
-có cả `docGltf` lẫn `docObj`. Kho `tayvuc` có **521 file `.gltf` dùng được ngay**
-(`medieval-village-megakit` 176 · `kaykit/forest` 105 · `fantasy-props-megakit` 94 …).
-Ghi chú cũ "máy nướng chỉ đọc OBJ" chỉ còn đúng với `.glb`.
+có cả `docGltf` lẫn `docObj`, và mẻ `trung_co_2` **đang dùng glTF thật** cho hai kit. Vì
+vậy `scripts/kho_asset.mjs` đã sửa cách đếm "dùng được" thành **`.obj` hoặc `.gltf`**.
+**Con số 1.222 ở dòng cuối `KHO_ASSET.md` là số CŨ, tính sai theo luật chỉ-OBJ** — sẽ đúng
+sau lần `npm run kho` đầu tiên có đủ kho. `.glb` thì vẫn chưa đọc được.
 
-`city-builder-bits` **không có** trong kho `tayvuc` → Phase 8B vẫn phải tải gói đó.
+`city-builder-bits` **không có** trong kho chung → Phase 8B vẫn phải tải gói đó từ itch.
 
 **Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G, không bỏ bước nào.

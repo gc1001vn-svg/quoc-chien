@@ -56,6 +56,31 @@ không mở phase mới** — hỏi anh trước, đừng tự cho là xong.
 
 `CLAUDE.md` mục Quy ước. Không đi hết ba bước thì cấm tự vẽ, tự ghép.
 
+**Từ 11/09 có thêm KHO CHUNG — dò ở bước 1b, giữa `KHO_ASSET.md` và `NGUON_MO.md`:**
+
+```bash
+grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_CHUNG.md | sort -u
+```
+
+`docs/KHO_CHUNG.md` là bản kê **514 model máy nướng đọc được** trong kho dùng chung —
+`assets_source/` nằm trong git của repo `tayvuc` (luật hai kho, `tayvuc/CLAUDE.md` mục
+Asset). File kê **lên git** nên dò được mọi phiên, **không phải clone 326 MB**.
+
+Trúng rồi mới lấy model thật:
+
+```bash
+git clone --depth 1 https://github.com/gc1001vn-svg/tayvuc /home/user/tayvuc
+npm run kho:lay quaternius/medieval-village-megakit
+```
+
+**Kho chung giữ gói ĐÃ LỌC** — phần lớn chỉ còn `glTF/`, không có `OBJ/`. Các mẻ hiện tại
+trỏ vào thư mục OBJ nên **không thay thế được**; kho chung để **tìm model mới**, và mẻ mới
+thì trỏ thẳng vào glTF. Máy nướng đọc được cả hai (`docObj`, `docGltf`), **chưa đọc được
+`.glb`**.
+
+Tải gói mới từ itch xong chạy `npm run kho`; lấy từ kho chung xong chạy `npm run kho:chung`
+(chỉ khi kho chung có thay đổi).
+
 ## G. Plan Mode
 
 Xong A–F mới lập kế hoạch, rồi chờ duyệt.

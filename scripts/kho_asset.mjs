@@ -46,7 +46,12 @@ function quet(duong, sau = 0) {
     const i = m.lastIndexOf('.');
     if (i > 0 && DUOI.includes(m.slice(i).toLowerCase())) {
       ten.add(m.slice(0, i));
-      if (m.slice(i).toLowerCase() === '.obj') coObj.add(m.slice(0, i));
+      // "Dung duoc" = may nuong doc duoc. `tools/nuong_sprite.mjs` co CA `docObj` LAN
+      // `docGltf`, va me `trung_co_2` dang dung glTF that cho hai kit
+      // (`modular-character-outfits-fantasy`, `universal-base-characters`).
+      // Truoc 11/09 cho nay chi dem `.obj` va dong tong ghi "may nuong chi doc OBJ" -
+      // SAI, bo sot moi model chi co glTF. `.glb` (nhi phan) thi van chua doc duoc.
+      if (['.obj', '.gltf'].includes(m.slice(i).toLowerCase())) coObj.add(m.slice(0, i));
     }
   }
   if (ten.size > 0) ra.push({ duong, ten: [...ten].sort(), coObj });
@@ -95,7 +100,8 @@ dong.push(
   '---',
   '',
   `**${String(tenCoObj.size)} model dùng được** trong \`${KHO}/\` — đây là con số đáng tin:`,
-  'tên khác nhau **và** có bản `.obj`, vì máy nướng chỉ đọc OBJ.',
+  'tên khác nhau **và** có bản `.obj` hoặc `.gltf` — hai định dạng máy nướng đọc được',
+  '(`tools/nuong_sprite.mjs` có cả `docObj` lẫn `docGltf`). `.glb` nhị phân thì chưa.',
   '',
   `Hai số dưới đây **không phải** số model, đừng trích dẫn: ${String(tong)} lượt file`,
   `(một model xuất ra fbx/gltf/obj thì đếm ba lần) · ${String(tenKhacNhau.size)} tên khác nhau`,

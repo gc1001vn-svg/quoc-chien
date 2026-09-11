@@ -144,6 +144,22 @@
   ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
   lại.**
 
+## Kho chung — nối 11/09/2026
+
+- **Con số "1.222 model dùng được" ở dòng cuối `KHO_ASSET.md` là SỐ CŨ, tính sai.** Nó đếm
+  theo luật chỉ-`.obj`, trong khi máy nướng đọc được **cả `.gltf`** (`tools/nuong_sprite.mjs`
+  có `docGltf`, và mẻ `trung_co_2` đang dùng glTF thật cho `modular-character-outfits-fantasy`
+  và `universal-base-characters`). `scripts/kho_asset.mjs` đã sửa cách đếm 11/09, nhưng
+  `KHO_ASSET.md` **chưa sinh lại được** vì `assets_source/` rỗng ở phiên này (container mới).
+  Số sẽ đúng sau lần `npm run kho` đầu tiên có đủ kho. Đúng kiểu lỗi mà
+  `ghi-nho/quyet-dinh/2026-09-11-so-lieu-phai-sinh-tu-lenh.md` cảnh báo.
+- **Nối kho chung KHÔNG giảm việc tải cho mẻ cũ.** Kho chung giữ gói đã lọc, phần lớn chỉ
+  còn `glTF/`; mẻ hiện tại trỏ vào `OBJ/`. Muốn hết tải lại thì phải **đổi mẻ sang glTF rồi
+  nướng lại** — đụng màu và thước đo, là chỗ đã sập nhiều lần ("máy nướng chỉ có phép nhân
+  màu"). Phải đo trước khi hứa, đừng làm kèm với việc khác.
+- **`.glb` vẫn chưa đọc được** — 814 file `.glb` trong kho chung (`ultimate-monsters`,
+  `animals`, `nature`…) nằm ngoài tầm với. Bộ đọc GLB ~200 dòng sẽ mở thêm chừng ấy model.
+
 ## Quy trình — hook chặn file khoá (11/09/2026)
 
 - ~~**Hook chặn file khoá không có cơ chế "đã được đồng ý", và chỉ chặn một đường.**~~ —
