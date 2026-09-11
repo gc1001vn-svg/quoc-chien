@@ -61,22 +61,34 @@ không tụt một bậc nào. **Trần 5.000 của dự án dư ít nhất 3,6 
 **Phase 8A không còn gì phải kiểm.** Anh đã xem trên iPhone 11/09 và xác nhận: 59 fps,
 bảng nghiên cứu đọc được, thẻ chính sách lắp/tháo ăn.
 
-Phiên bản anh đã xác nhận: **11/09 12:35**.
+Phiên bản anh đã xác nhận Phase 8A: **11/09 12:35**. Bản cuối phiên: **11/09 15:08**.
 
-**Ba việc anh kiểm lại giúp — cả ba đã sửa 11/09:**
+**Ba lỗi sửa trong phiên, anh đã xác nhận hai:**
 
-1. **Nhãn fps bị hàng nút đè lên** (ảnh anh gửi, `1414 sprite` làm chữ `0.44×` chui xuống
-   dưới nút "Nền") — nhãn giờ một hàng, nút lớp xuống hàng dưới. Anh xem nhãn có hiện đủ
-   tới mức thu phóng ở cuối không.
-2. **Nút "Đo trần sprite" bị hàng nút tốc độ đè ở màn dọc** — giờ ở màn dọc nó thu về
-   thước đo 📏 và đứng cùng hàng với ☰ ⌂ 🔬; màn ngang vẫn đủ chữ. Anh **cầm máy dọc**
-   xem bốn nút có thẳng hàng và bấm được không.
-
-3. **Trang đo trần sprite đã hỏng từ Phase 6, nay sửa xong** — anh đã bấm lại và nó chạy,
-   ra **18.089 sprite ở 60 fps** trên atlas thật 2×. Xem mục 2.
+1. ✅ **Nhãn fps bị hàng nút đè lên** — ảnh anh chụp trang đo lúc 14:42 cho thấy nhãn
+   `50 fps · 20.0 ms · 24000 sprite · 1 lệnh vẽ · atlas 2×` hiện **đủ**, hàng nút nằm hàng
+   dưới. Xong.
+2. ⏳ **Nút "Đo trần sprite" ở màn dọc** — anh bấm được (trang đo mở ra), nhưng **chưa có
+   ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng**. Việc nhỏ, phiên sau anh liếc là xong.
+3. ✅ **Trang đo trần sprite hỏng từ Phase 6** — anh bấm lại và nó chạy, ra 18.089 sprite
+   ở 60 fps trên atlas thật 2×. Xem mục 2.
 
 **`docs/ASSET_CREDITS.md`: anh đã chốt GIỮ (11/09).** Không còn là việc treo.
 **`docs/TECH_SPEC.md` mục 2 và 3: anh đã duyệt sửa (11/09)**, ghi số đo mới vào.
+**Hook file khoá: anh chốt sửa (11/09)** — vé duyệt dùng một lần, sổ ghi, chặn cả đường
+`Bash`. Chi tiết và **giới hạn của nó** ở `NO_KY_THUAT.md` mục "Quy trình".
+
+### Một việc quy trình anh nên biết
+
+**Skill `ghi-nho` không dùng được trong phiên này.** Đầu phiên em không clone được repo
+`gc1001vn-svg/ghi-nho` (repo Private, phiên không có quyền), và lệnh xin thêm quyền bị
+chặn. Nghĩa là em chạy cả phiên **không nạp được kho ghi nhớ chung** — chỉ dựa vào bốn
+dòng cốt lõi chép sẵn trong chính skill đó.
+
+Hệ quả thật: hôm nay có ít nhất hai điều **còn đúng ở dự án khác** mà lẽ ra phải ghi vào
+`ghi-nho/quyet-dinh/` nhưng không ghi được — "kiểm mã HTTP không phải kiểm chức năng" và
+"hook chặn không phải khoá, giá trị của nó là dấu vết". Phiên sau vẫn sẽ vậy nếu quyền
+chưa mở.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
