@@ -372,3 +372,66 @@ html, body {
     top: calc(env(safe-area-inset-top) + 70px);
   }
 }
+
+/* ---- Nhan ten tinh tren ban do ------------------------------------------------------ */
+
+/* Chu du an xem ban do tren iPhone 11/09 va bao "khong thay chu dat nuoc ta dau": mau mai
+   thanh phan biet duoc bon nuoc, nhung khong ai doc ra cai nao la CUA MINH. */
+.nhan-tinh {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nhan-tinh span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* `translate(-50%, -50%)` dat trong `transform` cua JS thi bi ghi de moi khung, nen
+     lui bang `margin` - re hon va khong dung toi `transform` lan hai. */
+  margin: -9px 0 0 -50px;
+  width: 100px;
+  text-align: center;
+  font: 700 11px/1.1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-shadow: 0 1px 2px #000, 0 0 3px #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tinh cua nuoc ta: chu to hon mot nac va co gach chan vang - nhin luot la ra vung minh.
+   Gach bang `text-decoration` chu khong bang `border-bottom`: the nhan rong 100 px co
+   dinh nen vien duoi keo dai het be ngang, trong nhu mot thanh ngang chu khong nhu gach
+   chan - da chup thay 11/09. */
+.nhan-tinh span[data-cua-ta='co'] {
+  font-size: 12px;
+  text-decoration: underline solid var(--nhan) 2px;
+  text-underline-offset: 3px;
+}
+
+/* Goc trai duoi, tren nut do tran sprite. */
+.nhan-nuoc-ta {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 10px);
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.62);
+  color: var(--chu);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.nhan-cham {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}

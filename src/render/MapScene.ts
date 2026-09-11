@@ -22,6 +22,7 @@ import {
 import { ChienDich, docCongTrinh } from '../sim/campaign/ChienDich';
 import { khoa, type OHex } from '../sim/campaign/Hex';
 import { BangTinh } from '../ui/BangTinh';
+import { NhanTinh } from '../ui/NhanTinh';
 import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
@@ -69,6 +70,7 @@ export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
 
   let oChon = '';
   const bang = new BangTinh(goc, cd, () => { oChon = ''; });
+  const nhan = new NhanTinh(goc, banDo, cd.nuocCuaTa());
 
   let rongCss = 1;
   let caoCss = 1;
@@ -169,6 +171,16 @@ export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
     gl.batDauKhung();
     veBanDoTinh(ve, banDo, cd, oChon);
     const lenhVe: number = gl.ketThucKhung();
+
+    // Nhan ten tinh la the DOM nen dat theo CSS px, khong theo diem anh khung ve.
+    const ti: number = cam.cssTrenWorld();
+    nhan.ve(
+      (t: Tinh) => ({
+        x: (hexX(t.tam, atlas.oPx()) - ve.camX) * ti + rongCss / 2,
+        y: (hexY(t.tam, atlas.oPx()) - ve.camY) * ti + caoCss / 2,
+      }),
+      atlas.oPx(), ti, rongCss, caoCss,
+    );
     perf.datGhiChu(
       `${PHIEN_BAN} · map · lượt ${String(cd.luot())} · ${String(ve.dem)} sprite`
       + ` · ${String(lenhVe)} lệnh vẽ · ${cam.zoom().toFixed(2)}×`,
