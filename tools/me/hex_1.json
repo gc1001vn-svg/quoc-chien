@@ -1,0 +1,109 @@
+{
+  "ghi_chu": "Me ban do tinh (Phase 7). Nguon: KayKit Medieval Hexagon Pack 1.0 FREE (CC0). Thuoc: 1 don vi model = 1 o luoi, hex rong 2 o (X) va 2,309 o (Z) - pointy-top theo truc Z. Buoc luoi: ngang 2,0 - doc 1,7321 (= 1,5 * ban kinh 1,1547). Cong thuc va so do o src/render/HexIso.ts. Trung lap KHONG co nha 5 loai nhu 4 phe - thu muc neutral chi co tuong, cau, gian giao, ruong; nen o trong ve bang ruong va o dang xay ve bang gian giao. Bo hai sprite doi (hills_*): mat tren lay o mau olive cua bang mau nen ra vang choi, khong hop canh nui da; dia hinh dung nui + rung + bien la du.",
+  "kit": {
+    "hxb": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/tiles/base",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "hxc": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/tiles/coast",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "hxn": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/decoration/nature",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "hxp": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/decoration/props",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "kh": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/red",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khg": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/green",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khb": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/blue",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khy": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/yellow",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    },
+    "khn": {
+      "duong": "assets_source/kaykit-medieval-hexagon/KayKit_Medieval_Hexagon_Pack_1.0_FREE/Assets/obj/buildings/neutral",
+      "anh": "mtl",
+      "thu_muc_anh": ".",
+      "gamma": true
+    }
+  },
+  "sprite": {
+    "hex_co": [{ "m": "hxb:hex_grass", "ti_le": 1 }],
+    "hex_nuoc": [{ "m": "hxb:hex_water", "ti_le": 1 }],
+    "hex_bien_a": [{ "m": "hxc:hex_coast_A", "ti_le": 1 }],
+    "hex_bien_b": [{ "m": "hxc:hex_coast_B", "ti_le": 1 }],
+    "hex_bien_c": [{ "m": "hxc:hex_coast_C", "ti_le": 1 }],
+    "hex_bien_d": [{ "m": "hxc:hex_coast_D", "ti_le": 1 }],
+    "hex_bien_e": [{ "m": "hxc:hex_coast_E", "ti_le": 1 }],
+
+    "nui_a": [{ "m": "hxn:mountain_A", "ti_le": 1 }],
+    "nui_b": [{ "m": "hxn:mountain_C", "ti_le": 1 }],
+    "rung_lon": [{ "m": "hxn:trees_A_large", "ti_le": 1 }],
+    "rung_vua": [{ "m": "hxn:trees_A_medium", "ti_le": 1 }],
+    "rung_nho": [{ "m": "hxn:trees_B_small", "ti_le": 1 }],
+    "rung_thua": [{ "m": "hxn:trees_B_medium", "ti_le": 1 }],
+
+    "thanh_do": [{ "m": "kh:building_castle_red", "ti_le": 1 }],
+    "thanh_la": [{ "m": "khg:building_castle_green", "ti_le": 1 }],
+    "thanh_lam": [{ "m": "khb:building_castle_blue", "ti_le": 1 }],
+    "thanh_vang": [{ "m": "khy:building_castle_yellow", "ti_le": 1 }],
+
+    "nha_do": [{ "m": "kh:building_home_A_red", "ti_le": 1 }],
+    "nha_la": [{ "m": "khg:building_home_A_green", "ti_le": 1 }],
+    "nha_lam": [{ "m": "khb:building_home_A_blue", "ti_le": 1 }],
+    "nha_vang": [{ "m": "khy:building_home_A_yellow", "ti_le": 1 }],
+
+    "mo_do": [{ "m": "kh:building_mine_red", "ti_le": 1 }],
+    "mo_la": [{ "m": "khg:building_mine_green", "ti_le": 1 }],
+    "mo_lam": [{ "m": "khb:building_mine_blue", "ti_le": 1 }],
+    "mo_vang": [{ "m": "khy:building_mine_yellow", "ti_le": 1 }],
+
+    "trai_linh_do": [{ "m": "kh:building_barracks_red", "ti_le": 1 }],
+    "trai_linh_la": [{ "m": "khg:building_barracks_green", "ti_le": 1 }],
+    "trai_linh_lam": [{ "m": "khb:building_barracks_blue", "ti_le": 1 }],
+    "trai_linh_vang": [{ "m": "khy:building_barracks_yellow", "ti_le": 1 }],
+
+    "cho_do": [{ "m": "kh:building_market_red", "ti_le": 1 }],
+    "cho_la": [{ "m": "khg:building_market_green", "ti_le": 1 }],
+    "cho_lam": [{ "m": "khb:building_market_blue", "ti_le": 1 }],
+    "cho_vang": [{ "m": "khy:building_market_yellow", "ti_le": 1 }],
+
+    "ruong": [{ "m": "khn:building_grain", "ti_le": 1 }],
+    "dat_trong": [{ "m": "khn:building_dirt", "ti_le": 1 }],
+    "gian_giao": [{ "m": "khn:building_scaffolding", "ti_le": 1 }],
+
+    "co_do": [{ "m": "hxp:flag_red", "ti_le": 2.5 }],
+    "co_la": [{ "m": "hxp:flag_green", "ti_le": 2.5 }],
+    "co_lam": [{ "m": "hxp:flag_blue", "ti_le": 2.5 }],
+    "co_vang": [{ "m": "hxp:flag_yellow", "ti_le": 2.5 }]
+  }
+}

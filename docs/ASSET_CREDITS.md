@@ -16,6 +16,10 @@ sang cả dự án.
 | `trung_co_2_2x_1.png` | Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters + **KayKit Medieval Builder Pack** (cối xay, giếng, mỏ, ruộng, xưởng cưa, chợ — thêm 10/09) + **LowPoly Animated Animals** (lợn, cừu — thêm 11/09) + hoạ tiết Poly Haven, <https://quaternius.com> · <https://kaylousberg.itch.io> · <https://polyhaven.com> | Quaternius (Tomás Laulhé) · Kay Lousberg · Poly Haven | CC0 1.0 | 07/09/2026, sửa 10/09/2026 |
 | `trung_co_2_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 07/09/2026 |
 | `trung_co_2_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 07/09/2026 |
+| `hex_1_1x_0.png` | KayKit Medieval Hexagon Pack 1.0 FREE — ô lục giác, bờ biển, núi, rừng, công trình bốn màu phe, cờ hiệu (mẻ bản đồ tỉnh, Phase 7), <https://kaylousberg.itch.io/kaykit-medieval-hexagon-pack> | Kay Lousberg | CC0 1.0 | 11/09/2026 |
+| `hex_1_2x_0.png` | KayKit Medieval Hexagon Pack 1.0 FREE — ô lục giác, bờ biển, núi, rừng, công trình bốn màu phe, cờ hiệu (mẻ bản đồ tỉnh, Phase 7), <https://kaylousberg.itch.io/kaykit-medieval-hexagon-pack> | Kay Lousberg | CC0 1.0 | 11/09/2026 |
+| `hex_1_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 11/09/2026 |
+| `hex_1_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 11/09/2026 |
 
 
 Atlas là ảnh **nướng lại** từ model 3D CC0 bằng `tools/nuong_sprite.mjs`, không phải bản
@@ -64,6 +68,22 @@ Sáu hầm mỏ dùng chung model `mine` nhưng **khác màu quặng và khác �
 than đen, muối trắng, đất sét cam, đá vôi kem, quặng xanh thép, đá xám. Tám lò dùng chung
 hai khuôn tường gạch nhưng **khác cỡ** (lò lớn 224 px, lò nhỏ 173 px) **và khác màu mái**.
 Kho không có model lợn, gà, cừu — ghi vào `NGUON_MO.md` mục 8.
+
+**Từ 11/09/2026, mẻ thứ hai `hex_1` cho BẢN ĐỒ TỈNH (Phase 7)** — cùng gói KayKit Medieval
+Hexagon Pack, lần này lấy phần chưa dùng tới: `tiles/base` (`hex_grass`, `hex_water`) ·
+`tiles/coast` (5 ô bờ biển) · `decoration/nature` (`mountain_A/C`, bốn cụm cây) ·
+`buildings/{red,green,blue,yellow}` (castle, home_A, mine, barracks, market — bốn màu phe) ·
+`buildings/neutral` (`building_grain`, `building_dirt`, `building_scaffolding`) ·
+`decoration/props` (`flag_red/green/blue/yellow`).
+
+Hai điều đo được khi nướng mẻ này, ghi lại kẻo lần sau lại dò:
+
+- Thư mục `buildings/neutral` **không có nhà** như bốn màu phe — chỉ có tường, cầu, giàn
+  giáo, ruộng, đất. Nên tỉnh trung lập vẽ bằng ruộng, ô xây trống vẽ bằng mảnh đất, ô đang
+  xây vẽ bằng giàn giáo. Câu "5 màu = 4 phe + trung lập" ghi trong `TIEN_DO.md` 11/09 là
+  **đúng với ô lục giác, sai với nhà**.
+- Hai sprite đồi (`hills_*`) đã bỏ: mặt trên lấy ô olive của bảng màu nền nên ra vàng chói
+  cạnh núi đá xám. Máy nướng chỉ có phép nhân màu, không khử được bão hoà — đừng thử lại.
 
 **Cũng thêm 10/09 (chưa nướng, để dành):** Kenney Fantasy Town Kit 2.0 — 167 model CC0,
 chủ dự án yêu cầu tải về kho để sau này dùng. Là kit lắp ghép (tường, mái, cửa rời) cộng
