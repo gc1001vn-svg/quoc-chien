@@ -78,12 +78,12 @@ chỉ chiếm 57 sprite. Nên cách duy nhất để nhìn rộng hơn là chấ
 
 Ô nền là sprite **rẻ nhất có thể**: cùng một atlas, một hình chữ nhật, không chồng lấn,
 không trong suốt. Trần 1.500 cũ là ước tính từ kích thước màn hình chứ không phải đo máy
-thật; số đo máy thật duy nhất đang có là **18.089 sprite ở 60 fps** trên iPhone — và con
-số đó **chạm trần công cụ đo, không phải trần máy** (xem `docs/NHAT_KY/PHASE_2B.md`).
-3.500 vẫn còn thấp hơn năm lần số đó.
+thật; số đo máy thật là **≥ 18.089 sprite ở 60 fps** trên iPhone (`docs/NHAT_KY/PHASE_2B.md`,
+đo lại 11/09 — xem "Đo lại bằng atlas thật" ở mục 3). 3.500 vẫn thấp hơn năm lần số đó.
 
-**Vẫn chưa đo lại trên iPhone với mẻ mới.** Rớt fps thì đường lùi là nâng `zoomMin` trong
-`data/thanh_pho_demo.json` về 0,45 — một dòng, không đụng mã.
+**ĐÃ đo lại trên iPhone thật ngày 11/09** bằng mẻ hiện tại và atlas thật cỡ 2×. Rớt fps
+thì đường lùi vẫn là nâng `zoomMin` trong `data/thanh_pho_demo.json` về 0,45 — một dòng,
+không đụng mã.
 
 ### Vì sao nâng tiếp 3.500 → 5.000 (07/09, Phase 4)
 
@@ -294,9 +294,33 @@ Nướng cả hai cỡ. **Ship cả 2×** — chốt 06/09 sau khi trang đo Pha
 iPhone: **18.089 sprite ở 60 fps**, dư 5 lần so với trần 3.500. Sprite 2× tốn gấp 4 lần
 diện tích vẽ → còn ~4.500 sprite ở 60 fps, vẫn trên trần.
 
-Cảnh báo: số đó đo với atlas giả 256×256 và **chạm trần công cụ đo, không phải trần máy**;
-atlas thật 2048×2048 nặng băng thông hơn nhiều. **Vẫn chưa đo lại.** Rớt dưới 3.500 ở cỡ
-2× thì lùi về ship 1×, hoặc nâng `zoomMin` về 0,45.
+### Đo lại bằng atlas thật — 11/09/2026
+
+Cảnh báo cũ ở đây ghi: số 18.089 đo với **atlas giả 256×256**, atlas thật nặng băng thông
+hơn nhiều, ước tính cỡ 2× "còn ~4.500 sprite ở 60 fps", và **vẫn chưa đo lại**.
+
+Chủ dự án đã đo lại trên iPhone thật ngày 11/09 bằng mẻ `trung_co_2` và **atlas thật
+2048×2048 cỡ 2×**:
+
+| Số sprite | fps đo được |
+|---:|---|
+| **18.089** | **≥ 58** (giữ 60 fps) |
+| 24.000 | 50 |
+
+**Ước tính ~4.500 kia sai, thấp hơn thực tế ít nhất bốn lần.** Atlas thật nặng hơn atlas
+giả rất nhiều mà **không tụt một bậc nào** của thang đo.
+
+**18.089 KHÔNG phải trần máy — nó là một bậc của thang đo.** Trang đo nhảy từng bậc 1,35×
+từ 200: `… 9.925 → 13.399 → 18.089 → 24.000`. Phase 0 ra đúng con số này vì **cùng thang
+đo**, không phải vì hai lần đo trùng nhau — và cả dự án đã hiểu nhầm nó là trần máy suốt
+năm phase. Trần 60 fps thật nằm **giữa 18.089 và 24.000**; 24.000 là **sức chứa của công
+cụ đo**, không phải sức máy. Từ 11/09 trang đo tự nói rõ điều này, và
+`tests/DoSprite.test.ts` chặn việc trang đo lại chết câm.
+
+**Kết luận cho trần 5.000:** máy thật dư **ít nhất 3,6 lần**. Không có lý do nâng trần, và
+cũng không cần đo chính xác hơn — con số chính xác không đổi quyết định nào.
+
+Rớt dưới 3.500 ở cỡ 2× thì lùi về ship 1×, hoặc nâng `zoomMin` về 0,45.
 
 ### Ngân sách atlas cho lính
 

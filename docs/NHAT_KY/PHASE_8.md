@@ -67,3 +67,20 @@ chỉ gọi ở `CityScene`; và không test nào đối chiếu tên sprite tro
 
 **Bài học: kiểm mã HTTP không phải kiểm chức năng.** Đã vá cả ba lớp, và
 `tests/DoSprite.test.ts` đã thử ngược — đổi lại tên cũ thì nó đỏ và chỉ thẳng tên sai.
+
+## Sửa xong trang đo thì lộ tiếp một hiểu nhầm năm phase
+
+Chủ dự án bấm lại và đo ra **18.089 sprite ở 60 fps** — **đúng bằng con số Phase 0**. Không
+phải trùng hợp: thang đo nhảy từng bậc 1,35× từ 200, và 18.089 là **bậc áp chót** trước
+sức chứa 24.000 của công cụ (`… 9.925 → 13.399 → 18.089 → 24.000`; con số `1.214` trong
+ảnh giữa chừng cũng nằm đúng trên thang này). Cả dự án đã đọc bậc thang đó thành "trần
+máy" suốt từ Phase 0.
+
+Điều thật sự đo được: ở 18.089 máy giữ ≥58 fps, ở 24.000 còn 50 fps, nên **trần 60 fps
+thật nằm giữa hai số đó**. Và điều đáng giá nhất: Phase 0 đo bằng **atlas giả 256×256**,
+`TECH_SPEC` từ đó ước tính atlas thật cỡ 2× "còn ~4.500 sprite ở 60 fps" — **ước tính ấy
+thấp hơn thực tế ít nhất bốn lần**. Atlas thật nặng hơn nhiều mà không tụt một bậc nào.
+
+Trang đo giờ tự nói rõ kết quả là một **khoảng**, và cảnh báo khi chạm sức chứa công cụ.
+`TECH_SPEC.md` mục 2 và 3 đã cập nhật — chủ dự án duyệt sửa file khoá 11/09. Trần 5.000
+giữ nguyên: máy dư ít nhất 3,6 lần, không có lý do nâng.

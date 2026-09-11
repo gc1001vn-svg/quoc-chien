@@ -41,6 +41,21 @@ Thành phố **chưa đổi mặt** khi lên đời: chưa có mẻ sprite hiệ
 
 Kho asset **không tải phiên này** — 8A không nướng sprite.
 
+### Đo trần sprite trên iPhone thật (11/09, atlas thật 2×)
+
+| Số sprite | fps |
+|---:|---|
+| **18.089** | **≥ 58** — giữ 60 fps |
+| 24.000 | 50 — và 24.000 là **hết sức chứa công cụ đo**, không phải hết sức máy |
+
+**18.089 không phải trần máy, nó là một bậc của thang đo** (thang nhảy 1,35× từ 200).
+Phase 0 ra đúng con số này vì cùng thang đo — cả dự án đã hiểu nhầm là trần máy suốt năm
+phase. Trần thật nằm giữa 18.089 và 24.000.
+
+Điều đáng giá: Phase 0 đo bằng **atlas giả** 256×256 và `TECH_SPEC` ước tính atlas thật cỡ
+2× "còn ~4.500 sprite". **Ước tính đó sai, thấp hơn thực tế ít nhất bốn lần** — atlas thật
+không tụt một bậc nào. **Trần 5.000 của dự án dư ít nhất 3,6 lần.**
+
 ## 3. Việc của chủ dự án
 
 **Phase 8A không còn gì phải kiểm.** Anh đã xem trên iPhone 11/09 và xác nhận: 59 fps,
@@ -57,12 +72,11 @@ Phiên bản anh đã xác nhận: **11/09 12:35**.
    thước đo 📏 và đứng cùng hàng với ☰ ⌂ 🔬; màn ngang vẫn đủ chữ. Anh **cầm máy dọc**
    xem bốn nút có thẳng hàng và bấm được không.
 
-3. **Trang đo trần sprite đã hỏng từ Phase 6, nay sửa xong.** Anh bấm nút 📏 và gặp màn
-   đen — trang xin ba sprite `o_co` · `bui_ram` · `nha_ngoi_do`, mà hai cái sau đã đổi tên
-   thành `bui` và `nha_dan` từ mẻ Phase 6B/6C. Anh bấm 📏 lại, phải thấy nhà cửa chạy
-   quanh màn và một bảng số ở giữa.
+3. **Trang đo trần sprite đã hỏng từ Phase 6, nay sửa xong** — anh đã bấm lại và nó chạy,
+   ra **18.089 sprite ở 60 fps** trên atlas thật 2×. Xem mục 2.
 
 **`docs/ASSET_CREDITS.md`: anh đã chốt GIỮ (11/09).** Không còn là việc treo.
+**`docs/TECH_SPEC.md` mục 2 và 3: anh đã duyệt sửa (11/09)**, ghi số đo mới vào.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

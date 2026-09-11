@@ -203,9 +203,24 @@ function dangDo(n: number, fps: number): string {
     hiện <b>${fps.toFixed(0)}</b> fps. Giữ máy yên, đừng chuyển ứng dụng.</p>`;
 }
 
+/** Bac ke tiep cua thang do sau `n`. Ket qua chi chinh xac toi day, khong hon. */
+function bacSau(n: number): number {
+  return Math.min(SUC_CHUA, Math.round(n * BUOC));
+}
+
+/**
+ * Ke lai ket qua.
+ *
+ * NOI THANG DAY LA MOT KHOANG, khong phai mot con so. Thang do nhay tung buoc 1,35 lan
+ * nen "18.089" khong co nghia la may chay duoc dung 18.089 sprite - no co nghia la may
+ * qua duoc bac 18.089 va truot bac 24.000. Phase 0 ghi mot con so tron va ca du an tuong
+ * do la tran may suot nam phase; chu du an do lai 11/09 va ra **dung con so cu**, vi cung
+ * thang do chu khong phai vi hai lan do trung nhau.
+ */
 function ketQua(nMax60: number, nMax30: number, lenhVe: number, heSo: number): string {
   const chan: string = `<p class="do-phu">Số lệnh vẽ cao nhất: ${String(lenhVe)} (trần là 4).
-    Đo bằng atlas thật cỡ ${String(heSo)}×.</p>`;
+    Đo bằng atlas thật cỡ ${String(heSo)}×. Thang đo nhảy từng bậc ${String(BUOC)}× nên
+    kết quả là một KHOẢNG, không phải một con số chính xác.</p>`;
   if (nMax60 === 0) {
     return `<div class="do-xong">
       <p>Máy này <b>không giữ nổi 60 fps</b> ngay cả với ${String(BAT_DAU)} sprite.</p>
@@ -214,10 +229,17 @@ function ketQua(nMax60: number, nMax30: number, lenhVe: number, heSo: number): s
       ${chan}
     </div>`;
   }
+  // Cham suc chua o moc 30 fps = HET CHO CUA CONG CU, khong phai het suc may.
+  const chamTran: boolean = nMax30 >= SUC_CHUA;
+  const moc30: string = chamTran
+    ? `<p class="do-phu">Ở mức 30 fps: <b>ít nhất ${String(SUC_CHUA)}</b> — đó là hết sức
+       chứa của công cụ đo, <b>không phải hết sức máy</b>.</p>`
+    : `<p class="do-phu">Ở mức 30 fps thì được ${String(nMax30)} sprite.</p>`;
   return `<div class="do-xong">
     <p class="do-so">${String(nMax60)}</p>
-    <p>sprite là nhiều nhất mà máy này vẫn giữ 60 fps.</p>
-    <p class="do-phu">Ở mức 30 fps thì được ${String(nMax30)} sprite.</p>
+    <p>sprite thì máy này vẫn giữ 60 fps. Trần thật nằm giữa
+      <b>${String(nMax60)}</b> và <b>${String(bacSau(nMax60))}</b>.</p>
+    ${moc30}
     ${chan}
     <p class="do-phu">Nhắn con số <b>${String(nMax60)}</b> lại là xong việc đo.</p>
   </div>`;
