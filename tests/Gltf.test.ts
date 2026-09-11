@@ -7,7 +7,7 @@
  * File dung o day co dung mot tam giac va hai xuong, nhung du de bat ba loi nang nhat:
  * tron da sai, xoay xuong sai chieu, va lat toa do anh thieu.
  */
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -87,6 +87,54 @@ function taoFileGltf(): string {
   return duong;
 }
 
+/**
+ * Goi chinh file glTF o tren thanh mot file `.glb`, khong doi mot con so nao.
+ *
+ * GLB la glTF **goi nhi phan**: 12 byte dau (chu ky `glTF`, phien ban, do dai), roi cac
+ * khoi, moi khoi 8 byte dau (do dai, loai). Khoi `JSON` la nguyen van file `.gltf`, khoi
+ * `BIN` la thu ma ban `.gltf` de o `data:` hay file `.bin` rieng - nen buffer trong JSON
+ * **khong con `uri`**.
+ *
+ * Dung chung nguon voi `taoFileGltf` la co y: hai dinh dang cung mot du lieu thi ket qua
+ * phai GIONG HET. Lech mot con so la bo doc GLB sai.
+ */
+function taoFileGlb(): string {
+  const j = JSON.parse(readFileSync(taoFileGltf(), 'utf8')) as {
+    buffers: { byteLength: number; uri?: string }[];
+  };
+  const uri: string = j.buffers[0]?.uri ?? '';
+  const dem: Buffer = Buffer.from(uri.slice(uri.indexOf(',') + 1), 'base64');
+  delete j.buffers[0]?.uri;
+
+  const canLe = (b: Buffer, chen: number): Buffer => {
+    const du = (4 - (b.length % 4)) % 4;
+    return du === 0 ? b : Buffer.concat([b, Buffer.alloc(du, chen)]);
+  };
+  // Khoi JSON chen bang dau cach, khoi BIN chen bang byte 0 - dung theo ban dac ta.
+  const khoiJson: Buffer = canLe(Buffer.from(JSON.stringify(j), 'utf8'), 0x20);
+  const khoiBin: Buffer = canLe(dem, 0);
+
+  const dau = (dai: number, loai: number): Buffer => {
+    const b = Buffer.alloc(8);
+    b.writeUInt32LE(dai, 0);
+    b.writeUInt32LE(loai, 4);
+    return b;
+  };
+  const tong: number = 12 + 8 + khoiJson.length + 8 + khoiBin.length;
+  const dauFile = Buffer.alloc(12);
+  dauFile.writeUInt32LE(0x46546c67, 0);
+  dauFile.writeUInt32LE(2, 4);
+  dauFile.writeUInt32LE(tong, 8);
+
+  const duong: string = join(mkdtempSync(join(tmpdir(), 'glb-')), 'thu.glb');
+  writeFileSync(duong, Buffer.concat([
+    dauFile,
+    dau(khoiJson.length, 0x4e4f534a), khoiJson,
+    dau(khoiBin.length, 0x004e4942), khoiBin,
+  ]));
+  return duong;
+}
+
 /** Lay toa do cua dinh thu `i` trong mang dinh phang. */
 function dinhThu(dinh: Float32Array, i: number): number[] {
   return [dinh[i * 12] ?? 0, dinh[i * 12 + 1] ?? 0, dinh[i * 12 + 2] ?? 0];
@@ -132,5 +180,25 @@ describe('docGltf', () => {
   it('loc theo xuong: tam giac nao co mot dinh bam xuong bi loai thi bo ca tam giac', () => {
     expect(docGltf(duong, { xuong: ['canh'] }).soTamGiac).toBe(0);
     expect(docGltf(duong, { xuong: ['root', 'canh'] }).soTamGiac).toBe(1);
+  });
+});
+
+describe('docGltf doc file .glb', () => {
+  // 814 file `.glb` cua kho chung (`docs/KHO_CHUNG.md`) truoc 11/09 nam ngoai tam voi vi
+  // may nuong chi doc `.gltf`. `NO_KY_THUAT` uoc "bo doc GLB ~200 dong" - uoc do SAI, het
+  // 30 dong, vi phan kho da nam san trong `gltf.mjs`.
+  it('ra ket qua GIONG HET ban .gltf cung du lieu', () => {
+    const a = docGltf(taoFileGltf(), {});
+    const b = docGltf(taoFileGlb(), {});
+    expect(b.soTamGiac).toBe(a.soTamGiac);
+    expect(b.min).toEqual(a.min);
+    expect(b.max).toEqual(a.max);
+    expect(Array.from(b.dinh)).toEqual(Array.from(a.dinh));
+  });
+
+  it('bao loi ro khi file khong phai GLB', () => {
+    const duong = taoFileGltf().replace(/\.gltf$/, '.glb');
+    writeFileSync(duong, 'khong phai glb');
+    expect(() => docGltf(duong, {})).toThrow(/chu ky/);
   });
 });

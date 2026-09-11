@@ -9,7 +9,7 @@
 > **Dò ở đây SAU khi dò `KHO_ASSET.md` không ra** — luật ba bước ở `CLAUDE.md`.
 >
 > Kho chung giữ gói **đã lọc**: phần lớn chỉ còn `glTF/`, không có `OBJ/`.
-> Máy nướng đọc được cả `.obj` lẫn `.gltf`, **chưa đọc được `.glb`**.
+> Máy nướng đọc được `.obj`, `.gltf` **và `.glb`** (từ 11/09). `.fbx` thì chưa.
 
 ## kaykit/adventurers
 
@@ -147,8 +147,8 @@
 
 ---
 
-**514 model máy nướng đọc được** trong kho chung — tên khác nhau
-**và** có bản `.obj` hoặc `.gltf`. Đây là con số đáng tin.
+**1310 model máy nướng đọc được** trong kho chung — tên khác nhau
+**và** có bản `.obj`, `.gltf` hoặc `.glb`. Đây là con số đáng tin.
 
 Hai số dưới **không phải** số model, đừng trích dẫn: 1347 lượt file ·
-1318 tên khác nhau kể cả tên chỉ có `.glb` hoặc `.fbx`.
+1318 tên khác nhau kể cả tên chỉ có `.fbx`.

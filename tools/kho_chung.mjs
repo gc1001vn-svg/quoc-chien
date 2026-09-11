@@ -22,7 +22,8 @@
  * CHO PHAI BIET TRUOC KHI DUNG: kho chung giu goi da LOC - phan lon chi con thu muc
  * `glTF/`, khong co `OBJ/`. Cac me hien tai cua du an nay tro vao thu muc OBJ nen KHONG
  * thay the duoc bang kho chung; kho chung dung de **tim model moi** va cho me moi tro
- * thang vao glTF. May nuong doc duoc ca hai (`docObj`, `docGltf`).
+ * thang vao glTF/GLB. May nuong doc duoc `.obj` `.gltf` `.glb` (`.glb` mo tu 11/09);
+ * `.fbx` thi chua.
  */
 import { cpSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -31,8 +32,11 @@ import { join } from 'node:path';
 const KHO_CHUNG = process.env.KHO_CHUNG ?? '/home/user/tayvuc/assets_source';
 const KHO = 'assets_source';
 const RA = 'docs/KHO_CHUNG.md';
-/** Duoi may nuong DOC DUOC. `.glb` nhi phan thi chua - xem `tools/nuong_sprite.mjs`. */
-const DOC_DUOC = ['.obj', '.gltf'];
+/**
+ * Duoi may nuong DOC DUOC. Tu 11/09 co ca `.glb` — `tools/lib/gltf.mjs` co `tachGlb`,
+ * va kit khai `"loai": "glb"` trong file me. `.fbx` thi chua.
+ */
+const DOC_DUOC = ['.obj', '.gltf', '.glb'];
 /** Duoi tinh la model, ke ca thu chua doc duoc - de biet kho co gi. */
 const DUOI = ['.obj', '.gltf', '.glb', '.fbx'];
 
@@ -87,7 +91,7 @@ function sinhDanhMuc() {
     '> **Dò ở đây SAU khi dò `KHO_ASSET.md` không ra** — luật ba bước ở `CLAUDE.md`.',
     '>',
     '> Kho chung giữ gói **đã lọc**: phần lớn chỉ còn `glTF/`, không có `OBJ/`.',
-    '> Máy nướng đọc được cả `.obj` lẫn `.gltf`, **chưa đọc được `.glb`**.',
+    '> Máy nướng đọc được `.obj`, `.gltf` **và `.glb`** (từ 11/09). `.fbx` thì chưa.',
     '',
   ];
   let tong = 0;
@@ -112,10 +116,10 @@ function sinhDanhMuc() {
     '---',
     '',
     `**${String(tenDocDuoc.size)} model máy nướng đọc được** trong kho chung — tên khác nhau`,
-    '**và** có bản `.obj` hoặc `.gltf`. Đây là con số đáng tin.',
+    '**và** có bản `.obj`, `.gltf` hoặc `.glb`. Đây là con số đáng tin.',
     '',
     `Hai số dưới **không phải** số model, đừng trích dẫn: ${String(tong)} lượt file ·`,
-    `${String(tenKhacNhau.size)} tên khác nhau kể cả tên chỉ có \`.glb\` hoặc \`.fbx\`.`,
+    `${String(tenKhacNhau.size)} tên khác nhau kể cả tên chỉ có \`.fbx\`.`,
     '',
   );
   writeFileSync(RA, dong.join('\n'));

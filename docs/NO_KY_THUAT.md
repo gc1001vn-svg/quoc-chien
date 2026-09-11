@@ -157,8 +157,15 @@
   còn `glTF/`; mẻ hiện tại trỏ vào `OBJ/`. Muốn hết tải lại thì phải **đổi mẻ sang glTF rồi
   nướng lại** — đụng màu và thước đo, là chỗ đã sập nhiều lần ("máy nướng chỉ có phép nhân
   màu"). Phải đo trước khi hứa, đừng làm kèm với việc khác.
-- **`.glb` vẫn chưa đọc được** — 814 file `.glb` trong kho chung (`ultimate-monsters`,
-  `animals`, `nature`…) nằm ngoài tầm với. Bộ đọc GLB ~200 dòng sẽ mở thêm chừng ấy model.
+- ~~**`.glb` chưa đọc được** — 814 file nằm ngoài tầm với, bộ đọc GLB ~200 dòng.~~ —
+  **ĐÃ TRẢ 11/09.** Ước "~200 dòng" **sai**: phần khó (node, xương, accessor) đã nằm sẵn
+  trong `tools/lib/gltf.mjs`; GLB chỉ là glTF **gói nhị phân** nên chỉ cần thêm `tachGlb`
+  — **hết 30 dòng**. Kit khai `"loai": "glb"` là dùng được. Đo thật: **120/120 file `.glb`
+  ngẫu nhiên của kho chung đọc được, 0 hỏng**. Kho chung từ **514 → 1.310 model dùng được**.
+  Test `tests/Gltf.test.ts` gói chính file glTF tí hon thành `.glb` rồi đòi **kết quả giống
+  hệt** — lệch một con số là đỏ. `.fbx` (22 file) thì vẫn chưa.
+  **Bài học: con số ước trong tài liệu không phải con số đo.** "~200 dòng" nằm đó nhiều
+  phiên và đủ để làm việc này trông không đáng làm.
 
 ## Quy trình — hook chặn file khoá (11/09/2026)
 

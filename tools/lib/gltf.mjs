@@ -128,10 +128,48 @@ function docAcc(j, dem, i) {
 }
 
 /** Doc mot buffer: file .bin nam canh, hay chuoi `data:` nhung thang trong file glTF. */
-function docBuffer(b, thuMuc) {
+function docBuffer(b, thuMuc, demGlb = null) {
   const uri = b.uri ?? '';
+  // Buffer KHONG co `uri` la buffer nhi phan nam trong chinh file `.glb` (khoi BIN).
+  if (uri === '') {
+    if (demGlb === null) throw new Error('buffer khong co uri ma file khong phai .glb');
+    return demGlb;
+  }
   if (uri.startsWith('data:')) return Buffer.from(uri.slice(uri.indexOf(',') + 1), 'base64');
   return readFileSync(join(thuMuc, decodeURIComponent(uri)));
+}
+
+/**
+ * Tach mot file `.glb` thanh `{ json, dem }`.
+ *
+ * GLB chi la glTF **goi nhi phan**: 12 byte dau (chu ky `glTF`, phien ban, do dai), roi
+ * cac khoi, moi khoi 8 byte dau (do dai, loai) roi toi noi dung. Khoi `JSON` la nguyen
+ * van file `.gltf`; khoi `BIN` la thu ma ban `.gltf` de o file `.bin` rieng.
+ *
+ * VI SAO CO HAM NAY: kho model dung chung (`docs/KHO_CHUNG.md`) co **814 file `.glb`** ma
+ * truoc 11/09 may nuong khong doc duoc - `NO_KY_THUAT` uoc "bo doc GLB ~200 dong". Uoc do
+ * SAI: phan kho (node, xuong, accessor) da nam san trong file nay, GLB chi them mot lop
+ * boc. Het 30 dong.
+ */
+function tachGlb(duong) {
+  const b = readFileSync(duong);
+  if (b.length < 12 || b.readUInt32LE(0) !== 0x46546c67) {
+    throw new Error(`${duong}: khong phai file GLB (thieu chu ky "glTF")`);
+  }
+  let json = null;
+  let dem = null;
+  let i = 12;
+  while (i + 8 <= b.length) {
+    const doDai = b.readUInt32LE(i);
+    const loai = b.readUInt32LE(i + 4);
+    const noiDung = b.subarray(i + 8, i + 8 + doDai);
+    if (loai === 0x4e4f534a) json = JSON.parse(noiDung.toString('utf8'));
+    else if (loai === 0x004e4942) dem = noiDung;
+    // Khoi luon can le 4 byte.
+    i += 8 + doDai + ((4 - (doDai % 4)) % 4);
+  }
+  if (json === null) throw new Error(`${duong}: GLB khong co khoi JSON`);
+  return { json, dem };
 }
 
 /**
@@ -170,9 +208,12 @@ function doiDang(dang, guong) {
  */
 export function docGltf(duong, tuyChon = {}) {
   const { dang = {}, guong = false, traAnh = null, mau_vl: mauVl = {}, xuong: locXuong = null } = tuyChon;
-  const j = JSON.parse(readFileSync(duong, 'utf8'));
+  // Doc duoc ca `.gltf` (JSON + `.bin` roi) lan `.glb` (goi nhi phan mot file).
+  const laGlb = duong.toLowerCase().endsWith('.glb');
+  const glb = laGlb ? tachGlb(duong) : null;
+  const j = glb === null ? JSON.parse(readFileSync(duong, 'utf8')) : glb.json;
   const thuMuc = dirname(duong);
-  const dem = (j.buffers ?? []).map((b) => docBuffer(b, thuMuc));
+  const dem = (j.buffers ?? []).map((b) => docBuffer(b, thuMuc, glb?.dem ?? null));
   const nodes = j.nodes ?? [];
   const bangDang = doiDang(dang, guong);
 

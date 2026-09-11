@@ -50,8 +50,9 @@ function quet(duong, sau = 0) {
       // `docGltf`, va me `trung_co_2` dang dung glTF that cho hai kit
       // (`modular-character-outfits-fantasy`, `universal-base-characters`).
       // Truoc 11/09 cho nay chi dem `.obj` va dong tong ghi "may nuong chi doc OBJ" -
-      // SAI, bo sot moi model chi co glTF. `.glb` (nhi phan) thi van chua doc duoc.
-      if (['.obj', '.gltf'].includes(m.slice(i).toLowerCase())) coObj.add(m.slice(0, i));
+      // SAI, bo sot moi model chi co glTF. Cung ngay 11/09 them bo doc `.glb`
+      // (`tools/lib/gltf.mjs`, ham `tachGlb`). `.fbx` thi van chua doc duoc.
+      if (['.obj', '.gltf', '.glb'].includes(m.slice(i).toLowerCase())) coObj.add(m.slice(0, i));
     }
   }
   if (ten.size > 0) ra.push({ duong, ten: [...ten].sort(), coObj });
@@ -100,12 +101,12 @@ dong.push(
   '---',
   '',
   `**${String(tenCoObj.size)} model dùng được** trong \`${KHO}/\` — đây là con số đáng tin:`,
-  'tên khác nhau **và** có bản `.obj` hoặc `.gltf` — hai định dạng máy nướng đọc được',
-  '(`tools/nuong_sprite.mjs` có cả `docObj` lẫn `docGltf`). `.glb` nhị phân thì chưa.',
+  'tên khác nhau **và** có bản `.obj`, `.gltf` hoặc `.glb` — ba định dạng máy nướng đọc',
+  'được (`tools/lib/gltf.mjs` có `tachGlb` từ 11/09). `.fbx` thì chưa.',
   '',
   `Hai số dưới đây **không phải** số model, đừng trích dẫn: ${String(tong)} lượt file`,
   `(một model xuất ra fbx/gltf/obj thì đếm ba lần) · ${String(tenKhacNhau.size)} tên khác nhau`,
-  'kể cả tên chỉ có FBX hoặc GLB.',
+  'kể cả tên chỉ có FBX.',
   '',
 );
 

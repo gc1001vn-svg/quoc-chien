@@ -57,12 +57,17 @@ function doiKit(khai) {
   for (const [ma, v] of Object.entries(khai)) {
     const o = typeof v === 'string' ? { duong: v } : v;
     // Kit glTF mang san ten anh trong chinh file model, va anh nam ngay canh model.
-    const laGltf = o.loai === 'gltf';
+    // `loai: "glb"` la cung bo doc do, chi khac duoi file - GLB la glTF goi nhi phan,
+    // anh nam luon trong file (`tools/lib/gltf.mjs`, ham `tachGlb`). Mo tu 11/09 de dung
+    // duoc 814 file `.glb` cua kho chung (`docs/KHO_CHUNG.md`).
+    const laGlb = o.loai === 'glb';
+    const laGltf = o.loai === 'gltf' || laGlb;
     const theoMtl = o.anh === 'mtl' || laGltf;
     const thuMuc = o.thu_muc_anh ?? (laGltf ? '.' : '../Textures');
     ra[ma] = {
       duong: o.duong,
       laGltf,
+      duoiModel: laGlb ? '.glb' : (laGltf ? '.gltf' : '.obj'),
       theoMtl,
       thuMucAnh: theoMtl
         ? (Array.isArray(thuMuc) ? thuMuc : [thuMuc]).map((t) => join(o.duong, t))
@@ -237,7 +242,7 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
       ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(timAnh(k.thuMucAnh, tenAnh)))
       : () => (k.anh === null ? -1 : soAnh.them(k.anh));
     const { dinh } = k.laGltf
-      ? docGltf(join(k.duong, `${ten}.gltf`), {
+      ? docGltf(join(k.duong, `${ten}${k.duoiModel}`), {
         dang: bangDang[p.dang] ?? {},
         guong: p.guong === true,
         xuong: p.xuong ?? null,

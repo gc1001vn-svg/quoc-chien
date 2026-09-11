@@ -28,6 +28,11 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Asset CC0 · CC-BY · MIT. **CC-BY-SA cấm.** Không copy từ game thương mại.
 - **Dò trước khi làm, ba bước, không được bỏ bước nào:**
   1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — có thì dùng ngay.
+     **Không ra thì dò tiếp `docs/KHO_CHUNG.md`** (cùng lệnh): kho model dùng chung, nằm
+     trong git của `tayvuc`, **1.310 model** máy nướng đọc được. Trúng thì
+     `git clone --depth 1 https://github.com/gc1001vn-svg/tayvuc /home/user/tayvuc`
+     rồi `npm run kho:lay <gói>`. Kho đó giữ gói **đã lọc** — hầu hết chỉ có `glTF/`, mẻ
+     mới trỏ thẳng vào đó (`"loai": "gltf"` hoặc `"glb"`).
      Kho to bao nhiêu thì **đọc dòng cuối `KHO_ASSET.md`**, đừng nhớ số — số gõ tay vào
      tài liệu đã sai ba lần. Chỉ tin dòng "model dùng được"; "lượt file" phồng ~3 lần
      vì mỗi model xuất ra `fbx/` `gltf/` `obj/`. **Cấm `grep -i` trần**: dòng dài 4.870

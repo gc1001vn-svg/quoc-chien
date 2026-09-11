@@ -32,12 +32,12 @@ Thành phố **chưa đổi mặt** khi lên đời: chưa có mẻ sprite hiệ
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 · 166 test | **6/6 · 194 test** |
+| `npm run do` | 6/6 · 166 test | **6/6 · 211 test** |
 | `npm run sim:congnghe` (mới) | — | **ĐẠT** · 120 giờ game |
 | Lên Trung cổ · lên Súng ống | — | giờ **21** · giờ **65** |
 | Công nghệ học xong trong 120 giờ | — | **21/24** |
 | Điểm nghiên cứu mỗi giờ (241 nhà) | — | **11** ở hệ số 100 % |
-| Model trong kho — số **dùng được** | 1.222 | 1.222 (dòng cuối `KHO_ASSET.md`) |
+| Model dò được — kho riêng + **kho chung** | 1.222 | 1.222 + **1.310** (`KHO_CHUNG.md`) |
 
 Kho asset **không tải phiên này** — 8A không nướng sprite.
 
@@ -147,7 +147,7 @@ Kho chung nằm **trong git của `tayvuc`**: **2.677 file, 326 MB** — `kaykit
 
 | Lệnh | Việc |
 |---|---|
-| `npm run kho:chung` | sinh `docs/KHO_CHUNG.md` — bản kê **514 model máy nướng đọc được** |
+| `npm run kho:chung` | sinh `docs/KHO_CHUNG.md` — bản kê **1.310 model máy nướng đọc được** |
 | `npm run kho:lay <gói>` | chép một gói từ kho chung sang `assets_source/` |
 
 `docs/KHO_CHUNG.md` **lên git** (36 KB) nên **mọi phiên dò được bằng `grep` mà không phải
@@ -157,9 +157,13 @@ clone 326 MB**. Chỉ khi trúng mới clone `tayvuc` rồi lấy gói thật. L
 **Nối được tới đâu, nói thẳng:** kho chung giữ gói **đã lọc**, phần lớn chỉ còn `glTF/`,
 **không có `OBJ/`**. Các mẻ hiện tại của dự án trỏ vào thư mục OBJ nên **không thay thế
 được** — nối này **không giảm việc tải cho mẻ cũ**. Giá trị thật là **mở rộng nguồn dò**:
-514 model mà trước nay dự án không biết có (`kaykit/forest` 105 · `ultimate-monsters` 50 ·
-`fantasy-weapons` 31 · `adventurers` 31 · `skeletons` 13…), dùng được ngay cho Phase 10
-(lính) và Phase 12 (thời đại khác).
+**1.310 model** mà trước nay dự án không biết có, dùng được ngay cho Phase 10 (lính) và
+Phase 12 (thời đại khác).
+
+Con số đó là **514 + 796**: cùng phiên đã trả luôn nợ **bộ đọc `.glb`**. Tài liệu ước nó
+"~200 dòng" — ước sai, hết **30 dòng**, vì phần khó đã nằm sẵn trong `tools/lib/gltf.mjs`
+và GLB chỉ là glTF gói nhị phân. Đo thật: **120/120 file `.glb` ngẫu nhiên đọc được,
+0 hỏng**. Kit khai `"loai": "glb"` là nướng được.
 
 Kèm một đính chính: **máy nướng đọc được `.gltf`**, không chỉ OBJ — `tools/nuong_sprite.mjs`
 có cả `docGltf` lẫn `docObj`, và mẻ `trung_co_2` **đang dùng glTF thật** cho hai kit. Vì
