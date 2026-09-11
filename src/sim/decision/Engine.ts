@@ -6,31 +6,14 @@
  * Nho vay `npm run sim:thu` chay het 10 gio va tra loi thay nguoi choi duoc.
  * Moi con so nhip do nam trong `data/balance.json`, van the trong `data/decisions.json`.
  */
-import type { SoHang, ThongKe } from '../city/Cham.ts';
+import type { ThongKe } from '../city/Cham.ts';
 import { layChuoi, layMang, layObject, laySoNguyen, LoiDuLieu } from '../city/DocJson.ts';
+import { docDieuKien, dung, type DieuKien, type SoThanhPho } from './DieuKien.ts';
 
-/** Phep so sanh cua mot dieu kien. */
-export type Phep = '>=' | '<=' | '>' | '<';
-
-/** Con so mot dieu kien nhin vao. Sau mon dau doc theo `hang`. */
-export type DoGi =
-  | 'ton' | 'cho' | 'day' | 'hong' | 'lamRa' | 'dungHet'
-  | 'dinh' | 'boCuoc' | 'chuyen' | 'soNha' | 'soKho';
-
-const CAN_HANG: readonly DoGi[] = ['ton', 'cho', 'day', 'hong', 'lamRa', 'dungHet'];
-const MOI_DO: readonly DoGi[] = [
-  ...CAN_HANG, 'dinh', 'boCuoc', 'chuyen', 'soNha', 'soKho',
-];
-const MOI_PHEP: readonly string[] = ['>=', '<=', '>', '<'];
-
-/** Mot dieu kien kich hoat. */
-export interface DieuKien {
-  readonly do: DoGi;
-  /** Bat buoc khi `do` doc theo mat hang. */
-  readonly hang?: string;
-  readonly phep: Phep;
-  readonly gia: number;
-}
+// Dieu kien nam o `DieuKien.ts` (Eureka dung chung). Tai xuat de moi cho goi cu khong
+// phai sua duong import.
+export type { DieuKien, DoGi, Phep, SoThanhPho } from './DieuKien.ts';
+export { docDieuKien, dung } from './DieuKien.ts';
 
 /** Hau qua cua mot lua chon. Cach ap nam trong `HauQua.ts`. */
 export interface HauQua {
@@ -66,12 +49,6 @@ export interface NhipDo {
   readonly gioGianCach: number;
   readonly gioLapLai: number;
   readonly toiDaMotVan: number;
-}
-
-/** So cua thanh pho ma `ThongKe` khong mang: dieu kien `soNha` va `soKho` can. */
-export interface SoThanhPho {
-  readonly soNha: number;
-  readonly soKho: number;
 }
 
 /** Doc `data/balance.json`. */
@@ -126,23 +103,6 @@ function docHauQua(tho: unknown, duong: string): HauQua {
   return ra;
 }
 
-function docDieuKien(tho: unknown, duong: string): DieuKien {
-  const o = layObject(tho, duong);
-  const doGi = layChuoi(o['do'], `${duong}.do`) as DoGi;
-  if (!MOI_DO.includes(doGi)) {
-    throw new LoiDuLieu(`${duong}.do`, `khong biet do gi: "${doGi}"`);
-  }
-  const phep = layChuoi(o['phep'], `${duong}.phep`) as Phep;
-  if (!MOI_PHEP.includes(phep)) throw new LoiDuLieu(`${duong}.phep`, `khong biet phep "${phep}"`);
-  const canHang: boolean = CAN_HANG.includes(doGi);
-  const hang: string | undefined = o['hang'] === undefined
-    ? undefined
-    : layChuoi(o['hang'], `${duong}.hang`);
-  if (canHang && hang === undefined) throw new LoiDuLieu(duong, `"${doGi}" phai kem "hang"`);
-  const gia = laySoNguyen(o['gia'], `${duong}.gia`, 0);
-  return { do: doGi, phep, gia, ...(hang === undefined ? {} : { hang }) };
-}
-
 /** Doc `data/decisions.json`. Nem `LoiDuLieu` neu sai. */
 export function docThe(tho: unknown): The[] {
   const goc = layObject(tho, 'decisions.json');
@@ -189,26 +149,6 @@ export function docThe(tho: unknown): The[] {
     });
   }
   return ra;
-}
-
-/** Con so ma mot dieu kien nhin vao. `undefined` khi khong co mat hang do. */
-function doSo(dk: DieuKien, tk: ThongKe, tp: SoThanhPho): number | undefined {
-  if (dk.do === 'dinh') return tk.walker.dinh;
-  if (dk.do === 'boCuoc') return tk.walker.boCuoc;
-  if (dk.do === 'chuyen') return tk.walker.chuyen;
-  if (dk.do === 'soNha') return tp.soNha;
-  if (dk.do === 'soKho') return tp.soKho;
-  const h: SoHang | undefined = tk.hang.find((m) => m.ten === dk.hang);
-  return h === undefined ? undefined : h[dk.do];
-}
-
-function dung(dk: DieuKien, tk: ThongKe, tp: SoThanhPho): boolean {
-  const so: number | undefined = doSo(dk, tk, tp);
-  if (so === undefined) return false;
-  if (dk.phep === '>=') return so >= dk.gia;
-  if (dk.phep === '<=') return so <= dk.gia;
-  if (dk.phep === '>') return so > dk.gia;
-  return so < dk.gia;
 }
 
 /**
