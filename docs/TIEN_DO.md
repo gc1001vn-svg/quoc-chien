@@ -123,17 +123,37 @@ hai thời). **Nướng xong gửi ảnh cho anh chọn.**
 trang cùng lúc, trần là 4 — còn đúng 2 trang để tiêu. Đo số trang trước khi nướng cả mẻ.
 TECH_SPEC mục 2 đã chốt cách lùi: đổi đời thì `gl.deleteTexture` nhả atlas cũ.
 
-**Asset: KHÔNG cần `npm run tai:tatca` (~1 GB).** `assets_source/` mất theo container mỗi
-phiên (đúng luật, không lên git — `docs/KHO_ASSET.md` chỉ là **bản kê tên**, không chứa
-model), nhưng `tools/tai_itch.mjs` tải được **từng gói**. Mẻ hiện đại chỉ cần một gói:
+**Asset — KHÔNG cần `npm run tai:tatca` (~1 GB).** Mẻ hiện đại chỉ cần **một gói**:
 
 ```bash
 node tools/tai_itch.mjs kaylousberg/city-builder-bits
 ```
 
 **Tải lẻ thì CẤM chạy `npm run kho`** — nó ghi đè `docs/KHO_ASSET.md` bằng đúng những gì
-đang có trên đĩa, mà lúc đó kho chỉ có một gói. `kho_asset.mjs` tự chặn khi số model tụt
-quá 20 %, nhưng đừng ép qua. `KHO_ASSET.md` đã có sẵn mục `city-builder-bits` từ 10/09.
+đang có trên đĩa, mà lúc đó kho chỉ có một gói. `KHO_ASSET.md` đã có sẵn mục
+`city-builder-bits` từ 10/09.
+
+### Kho model dùng chung — có thật, nằm trong git của `tayvuc`
+
+Chủ dự án nhắc 11/09 và **anh đúng**: luật **hai kho** đã chốt cho mọi dự án, ghi ở
+`tayvuc/CLAUDE.md` mục Asset — `assets_source/` giữ gói tải về nguyên vẹn (không lên máy
+chủ), `public/assets/` chỉ giữ thứ game thật sự dùng (có lên máy chủ).
+
+Kho chung nằm **trong git của `tayvuc`**: **2.677 file, 326 MB** — `kaykit` `quaternius`
+`kenney` `polyhaven` `effekseer` `game-icons`. Và `tayvuc/docs/TIEN_DO.md` ghi thẳng:
+*"Quốc Chiến tái dùng ba thứ của Tây Vực: 269 MB model 3D trong `assets_source/`"*.
+
+**`quoc-chien` chưa nối vào kho đó** — `.gitignore` bỏ qua `assets_source/` nên mỗi phiên
+tải lại từ internet, dù **5/9 gói đã có sẵn** bên `tayvuc`. Chưa nối vì cấu trúc thư mục
+hai bên khác nhau (`tayvuc` gom theo tác giả, `quoc-chien` theo tên gói itch) — cần bảng
+ánh xạ. **Việc đáng làm, chờ chủ dự án chốt.**
+
+Kèm một đính chính: **máy nướng đọc được `.gltf`**, không chỉ OBJ — `tools/nuong_sprite.mjs`
+có cả `docGltf` lẫn `docObj`. Kho `tayvuc` có **521 file `.gltf` dùng được ngay**
+(`medieval-village-megakit` 176 · `kaykit/forest` 105 · `fantasy-props-megakit` 94 …).
+Ghi chú cũ "máy nướng chỉ đọc OBJ" chỉ còn đúng với `.glb`.
+
+`city-builder-bits` **không có** trong kho `tayvuc` → Phase 8B vẫn phải tải gói đó.
 
 **Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G, không bỏ bước nào.

@@ -109,6 +109,21 @@ describe('khong chan nham', () => {
       command: 'git commit -m "ghi chu vo hai" && echo x > CLAUDE.md',
     })).toBe(true);
   });
+
+  // Ca thu tu trong ngay 11/09: `git commit -F -` doc message tu heredoc, ma message ke
+  // lai viec vua lam nen nhac ten file khoa. Van ban, khong phai lenh.
+  it('heredoc cua `git commit -F -` la van ban, cho qua', () => {
+    expect(chan('Bash', {
+      command: "git add -A && git commit -F - <<'MSG'\nsua theo tayvuc/CLAUDE.md\nMSG",
+    })).toBe(false);
+  });
+
+  // Nhung heredoc cua `python3` thi la LENH THAT - khong duoc bo nham.
+  it('heredoc cua python3 VAN bi chan', () => {
+    expect(chan('Bash', {
+      command: 'python3 - <<PY\nopen("CLAUDE.md","w")\nPY',
+    })).toBe(true);
+  });
 });
 
 describe('ve duyet', () => {

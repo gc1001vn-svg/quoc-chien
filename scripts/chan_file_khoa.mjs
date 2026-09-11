@@ -76,7 +76,14 @@ function chuyenHuongVao(lenh, duong) {
  * Da bi dung 11/09: hook chan chinh cai `git commit` ke lai viec vua sua hook.
  */
 function boVanBan(lenh) {
-  return lenh.replace(/-m\s+(['"])[\s\S]*?\1/g, '-m ""');
+  let ra = lenh.replace(/-m\s+(['"])[\s\S]*?\1/g, '-m ""');
+  // `git commit -F -` doc message tu heredoc. Do cung la VAN BAN, va commit message ke
+  // lai viec vua lam thi gan nhu chac chan nhac ten file khoa. Chi bo heredoc cho DUNG
+  // `git commit`/`git tag` - khong bo chung, vi `python3 - <<PY` thi heredoc la LENH THAT.
+  if (/git\s+(commit|tag)\b/.test(ra)) {
+    ra = ra.replace(/<<-?\s*(['"]?)([A-Za-z_][A-Za-z0-9_]*)\1[\s\S]*?^\2$/gm, '<<HEREDOC');
+  }
+  return ra;
 }
 
 /** Doc danh sach khoa cua du an, khong co thi tra ve MAC_DINH. */
