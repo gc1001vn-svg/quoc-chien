@@ -144,6 +144,31 @@
   ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
   lại.**
 
+## Lớp meta — nợ mở ra ở Phase 8A (11/09/2026)
+
+- **Phase 8B: chưa nướng mẻ sprite hiện đại.** Thành phố **chưa đổi mặt** khi lên thời đại;
+  cả sáu đời cùng trỏ `trung_co_2` trong `data/balance.json`. Khớp nối đã dựng sẵn
+  (`ThoiDai.me`), Phase 8B chỉ sửa một cột JSON rồi nối `gl.deleteTexture` vào `CityScene`.
+  Việc khó nằm ở dữ liệu chứ không ở mã: gói `city-builder-bits` chỉ có **8 dáng nhà** cho
+  **32 loại nhà** của game.
+- **Thưởng công nghệ chưa đổi được thành phố.** `noiTran` đo ra gần như vô tác dụng (trần
+  398, thành phố chỉ tới 241 — nhu cầu mới là cái chặn, không phải trần). Đổi một phần
+  sang `doiNguong` (ngưỡng chờ 40→28) thì số nhà **vẫn 241**. Muốn thưởng có sức nặng thật
+  thì phải móc vào chỗ khác — nhịp sản xuất, hay mở khoá loại nhà. Cả hai đều đụng cân
+  bằng đã cân ở Phase 3–6, nên để Phase 9 làm cùng lúc nối lớp chiến dịch vào kinh tế.
+- **Thẻ chính sách chưa đụng được kinh tế.** Cố ý: hiệu ứng chỉ có `heSoNghienCuu` và
+  `noiTran`, vì hai cái đó **tháo ra được đúng bằng cái đã lắp vào**. Thẻ kiểu "+15 % lương
+  thực, −10 % sản xuất" trong GAME_SPEC mục 7 cần một đường áp hệ số vào `City.ts` mà tháo
+  ra vẫn về đúng chỗ cũ — chưa có.
+- **Chưa có dân số và vàng.** `ThoiDai` dùng **số công trình** thay cho dân số và bỏ hẳn
+  điều kiện vàng; thẻ chính sách không mất tiền đổi mà mất **thời gian chờ**
+  (`gioChoDoiThe`). Có vàng rồi thì đổi lại — mỗi thứ một dòng trong `balance.json`.
+- **Ba thời đại sau chưa có công nghệ.** `tech.json` mới có 24 công nghệ cho ba đời đầu;
+  đời 4–6 để `len: null`, tức lên tới Công nghiệp là hết đường. Đúng như KE_HOACH Phase 12.
+- **Bảng chính sách lúc đã có thẻ chưa ai nhìn tận mắt.** Thẻ đầu tiên mở ở giờ game thứ 4,
+  mà máy ảo chụp được đúng khoảnh khắc mở màn. Hành vi lắp/tháo đã kiểm bằng
+  `npm run sim:congnghe` và test, còn **bề ngoài thì chờ chủ dự án xem trên iPhone**.
+
 ## Deploy — đã chốt, không phải nợ, để đây cho khỏi quên
 
 - **GitHub Pages tự động từ `main`** (chốt 06/09), `BASE = '/quoc-chien/'`. Máy ảo bị chặn

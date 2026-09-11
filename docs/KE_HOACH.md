@@ -112,3 +112,4 @@ muốn đổi là đổi rẻ**:
 | 05/09/2026 | Bản 3: thêm **chia ba lớp** (Total War) và **thẻ chính sách / Eureka / điều kiện thắng** (Civilization) | Chủ dự án bổ sung hai game mẫu |
 | 05/09/2026 | Bản 4: **sân khấu trận đánh** — trận phải xem được, không chỉ ra một con số | Bản 3 cắt nhầm phần này. Chủ dự án chỉ ra |
 | 05/09/2026 | Bản 5: thêm mục 1 của file này — cách sửa kế hoạch giữa chừng, đổi rẻ / đổi đắt | Chủ dự án muốn tránh cảnh sửa đi sửa lại quy trình như dự án trước |
+| 11/09/2026 | **Phase 8 tách làm 8A và 8B.** 8A: `sim/meta/` (cây công nghệ, Eureka, thời đại, thẻ chính sách). 8B: nướng mẻ sprite hiện đại | Dò kho thấy `city-builder-bits` chỉ có **8 dáng nhà** mà game có **32 loại**. Ghép 32 về 8 là quyết định phải nhìn ảnh thật, không nên chốt mù cùng phiên với việc viết luật chơi. Chủ dự án chốt 11/09 |

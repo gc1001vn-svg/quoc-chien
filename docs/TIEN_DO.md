@@ -3,77 +3,88 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 11/09/2026 (Phase 7 — bản đồ tỉnh, đã xác nhận trên iPhone).
+Cập nhật: 11/09/2026 (Phase 8A — lớp meta, **chờ xác nhận trên iPhone**).
 
 ## 1. Đang ở đâu
 
-**Phase 7/13 xong và đã xác nhận trên iPhone (59 fps).** Game giờ có hai màn: lớp thành phố
-(Phase 2–6) và **lớp chiến dịch** — bản đồ 28 tỉnh lục giác, bốn nước, bấm nút góc màn
-để qua lại.
+**Phase 8A xong, chờ anh xác nhận trên iPhone.** Phase 8 tách làm hai, anh chốt 11/09:
+8A là phần ruột, 8B là nướng mẻ sprite hiện đại (phiên sau).
 
-Bấm vào một mảnh đất nâu trong tỉnh của mình → hiện bảng chọn công trình (Làng · Chợ
-phiên · Trại lính · Mỏ quặng) → bấm là xây, mất 3–6 lượt, mỗi lượt 3 giây thật. Bấm vào
-tỉnh khác → xem tên tỉnh, nước, địa hình, số ô xây.
+Màn thành phố có thêm nút **🔬** ở góc trái dưới, cạnh nút ☰ và ⌂. Bấm vào hiện bảng
+**Nghiên cứu**, hai thẻ chữ:
 
-Ba thứ chỉ lộ khi nướng và chụp thật (chi tiết: `docs/NHAT_KY/PHASE_7.md`): thư mục
-`neutral` của gói KayKit **không có nhà** như bốn màu phe · vẽ mảnh đất ở cả 143 ô xây
-làm bản đồ thành một mảng nâu · mức thu phóng mở màn phải **đo từ khung thật**, số cứng
-hợp màn ngang thì cầm dọc bị cắt.
+- **Công nghệ** — thời đại đang ở, thanh tiến độ, danh sách công nghệ học được (bấm là
+  chọn học), và câu Eureka của từng cái ("Làm ra 680 thép trong một giờ").
+- **Chính sách** — số ô chính phủ, thẻ đã mở. Chạm một thẻ là lắp vào ô trống, chạm lại là
+  tháo ra. Mỗi thẻ ghi rõ **mặt lợi và mặt hại**.
 
-Cũng vá một lỗi quy trình: `npm run tai:tatca` **thiếu gói `lowpoly-animated-animals`**
-— máy ảo mới mà nướng lại mẻ `trung_co_2` là hỏng, vì kit `av` trỏ thẳng vào gói đó.
+Lên thời đại là **tự động** khi đủ công nghệ và đủ công trình — không có nút bấm, vì lên
+đời không có mặt trái nào để cân nhắc. Nhật ký sự kiện ghi lại bằng chữ xanh lá.
+
+Thành phố **chưa đổi mặt** khi lên đời: chưa có mẻ sprite hiện đại, cả sáu đời cùng dùng
+`trung_co_2`. Đó là Phase 8B.
 
 ## 2. Số đo mới nhất
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 · 133 test | **6/6 · 166 test** |
-| Màn bản đồ — sprite mỗi khung | — | **283** (trần 5.000) |
-| Màn bản đồ — lệnh vẽ | — | **1** (trần 4) |
-| Trang atlas cùng lúc (hai màn cùng sống) | 1 | **2** (trần 4) |
-| Mẻ `hex_1` — sprite · lấp trang 2× | — | 40 · **63,5 %** |
+| `npm run do` | 6/6 · 166 test | **6/6 · 194 test** |
+| `npm run sim:congnghe` (mới) | — | **ĐẠT** · 120 giờ game |
+| Lên Trung cổ · lên Súng ống | — | giờ **21** · giờ **65** |
+| Công nghệ học xong trong 120 giờ | — | **21/24** |
+| Điểm nghiên cứu mỗi giờ (241 nhà) | — | **11** ở hệ số 100 % |
 | Model trong kho — số **dùng được** | 1.222 | 1.222 (dòng cuối `KHO_ASSET.md`) |
 
-`npm run sim:bando` → **ĐẠT**: 196 hex lát khít, 143 ô xây dựng, chạy 200 lượt không ô
-nào xây hai lần, không lệnh nào kẹt.
+Kho asset **không tải phiên này** — 8A không nướng sprite.
 
 ## 3. Việc của chủ dự án
 
-**Không có việc gì phải kiểm.** Anh đã xem Phase 7 trên iPhone 11/09 và xác nhận xong:
-bản đồ tỉnh chạy **59 fps**, mọi thứ ổn. Hai chỗ anh nêu — chữ tên tỉnh trên bản đồ, và
-chạm công trình ở thành phố là hiện tên — đã làm và anh đã kiểm lại.
+**Anh mở game trên iPhone và kiểm ba việc:**
 
-Phiên bản anh đã xác nhận: **11/09 10:44**.
+1. Mở https://gc1001vn-svg.github.io/quoc-chien/ (kéo xuống làm mới cho ăn bản mới).
+2. Góc **trái dưới** giờ có ba nút: ☰ (nhật ký) · ⌂ (công trình) · **🔬 (nghiên cứu)**.
+   Bấm 🔬. Đọc xem chữ có bị cắt, có tràn ra ngoài, có che mất thành phố không.
+3. Bấm nút **10×** hoặc **30×** cho chạy nhanh, đợi vài phút. Phải thấy: thanh tiến độ
+   chạy, nhật ký hiện dòng xanh "Nghiên cứu xong …", rồi "Mở thẻ chính sách …". Lúc đó
+   sang thẻ chữ **Chính sách**, chạm một thẻ xem có lắp vào ô được không.
 
-Phiên sau mở Phase 8 — xem mục 5.
+Nhắn em: **chữ có đọc được không · thẻ lắp/tháo có ăn không · fps bao nhiêu**.
+
+**Một việc cũ anh quyết giúp:** `docs/ASSET_CREDITS.md` là **file khoá** nhưng phiên trước
+đã sửa lúc anh đang ngủ — thêm bốn dòng ghi công mẻ `hex_1`, không đụng phần cũ, vì
+`check:credits` chặn build. Anh xem có giữ không.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Lớp chiến dịch chưa nối vào kinh tế thành phố.** Công trình tỉnh chưa đổ hàng vào kho
-  thành phố — cố ý tách, để khỏi vỡ cân bằng đã cân ở Phase 3–6. Nối là việc Phase 9.
-- **Chưa có AI nước khác.** Ba nước đối thủ đứng yên, không bành trướng, không ngoại giao.
-- **`docs/ASSET_CREDITS.md` (file khoá) đã sửa mà chưa hỏi được** — anh đang ngủ, mà
-  `check:credits` chặn build khi atlas mới chưa ghi công. Chỉ thêm bốn dòng ghi công mẻ
-  `hex_1`, không đụng phần cũ. Anh xem lại giúp.
+- **Phase 8B chưa làm: chưa có mẻ sprite hiện đại.** Khớp nối dựng sẵn, việc khó là dữ
+  liệu: gói `city-builder-bits` chỉ có **8 dáng nhà** cho **32 loại nhà** của game.
+- **Thưởng công nghệ chưa đổi được thành phố.** Đo ra: trần nhà 398 mà thành phố chỉ tới
+  241 — trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
+- **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra được đúng bằng cái
+  đã lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 phải chờ Phase 9.
+- **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
+- **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
 - **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
-- **Lò và xưởng vẫn dùng chung dáng** — chủ dự án chốt 11/09: giữ nguyên.
-- **Người vác hàng đi tay không** — để Phase 10, nướng cùng bộ 8 hướng × 4 dáng.
-- Mới có **6 thẻ**, đều là thẻ kinh tế. Thẻ chính sách, công nghệ, quân sự, ngoại giao
-  thuộc Phase 8/9/11.
+- **Người vác hàng đi tay không** — để Phase 10.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase kế tiếp — Phase 8: cây công nghệ và thời đại (PHIÊN MỚI)
+## 5. Phase kế tiếp — Phase 8B: nướng mẻ hiện đại (PHIÊN MỚI)
 
-`sim/meta/`: cây công nghệ, Eureka, lên thời đại, thẻ chính sách. Nướng mẻ **hiện đại**.
-Xong thì thành phố tiến hoá trước mắt.
+Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0 — đã nằm sẵn trong kho
+từ 10/09, không phải tải thêm), rồi nối vào `ThoiDai.me` để lên đời là thành phố đổi mặt.
 
-**Asset:** gói `city-builder-bits` (KayKit, CC0) đã nằm sẵn trong kho từ 10/09, để dành
-đúng cho thời hiện đại — không phải tải thêm.
+**Việc phải quyết trước khi nướng:** gói chỉ có **8 dáng nhà** (`building_A`…`building_H`)
+cộng đường, xe, cột đèn — mà game có **32 loại nhà**. Hai đường: ghép 32 về 8 dáng phân
+biệt bằng màu và vật trang trí (mọi nhà đổi mặt, nhưng nhà khác chức năng trông giống
+nhau), hay chỉ đổi mặt nhóm `do_thi` (không nhà nào sai chức năng, nhưng thành phố lẫn lộn
+hai thời). **Nướng xong gửi ảnh cho anh chọn.**
 
-**Rủi ro phải đo trước khi hứa:** nướng mẻ hiện đại là **bộ atlas thứ ba**. Hai màn hiện
-đã giữ 2 trang cùng lúc, trần là 4 — mẻ thứ ba chỉ còn đúng 2 trang để tiêu. Đo số trang
-trước khi nướng cả mẻ, và tính xem có nên nhả atlas mẻ cũ khi lên thời đại không.
+**Rủi ro phải đo trước khi hứa:** mẻ hiện đại là **bộ atlas thứ ba**. Hai màn hiện giữ 2
+trang cùng lúc, trần là 4 — còn đúng 2 trang để tiêu. Đo số trang trước khi nướng cả mẻ.
+TECH_SPEC mục 2 đã chốt cách lùi: đổi đời thì `gl.deleteTexture` nhả atlas cũ.
+
+**Phiên có nướng sprite** nên phải chạy `npm run tai:tatca` (~1 GB, 5–10 phút).
 
 **Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G, không bỏ bước nào.
