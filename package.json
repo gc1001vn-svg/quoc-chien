@@ -19,7 +19,7 @@
     "xem:atlas": "node tools/xem_atlas.mjs",
     "xem:canh": "node tools/xem_canh.mjs",
     "tai:asset": "node tools/tai_asset.mjs fantasy-town-kit tower-defense-kit",
-    "tai:itch": "node tools/tai_itch.mjs quaternius/medieval-village-megakit quaternius/stylized-nature-megakit quaternius/fantasy-props-megakit quaternius/modular-character-outfits-fantasy quaternius/universal-base-characters kaylousberg/kaykit-medieval-builder-pack kaylousberg/kaykit-medieval-hexagon kaylousberg/city-builder-bits",
+    "tai:itch": "node tools/tai_itch.mjs quaternius/medieval-village-megakit quaternius/stylized-nature-megakit quaternius/fantasy-props-megakit quaternius/modular-character-outfits-fantasy quaternius/universal-base-characters kaylousberg/kaykit-medieval-builder-pack kaylousberg/kaykit-medieval-hexagon kaylousberg/city-builder-bits quaternius/lowpoly-animated-animals",
     "tai:hoatiet": "node tools/tai_hoa_tiet.mjs leafy_grass brown_mud_dry dry_river_pebbles cobblestone_01 coast_sand_01 aerial_rocks_02",
     "tai:tatca": "npm run tai:asset && npm run tai:itch && npm run tai:hoatiet && npm run kho",
     "check:base": "node scripts/check_base_path.mjs",
