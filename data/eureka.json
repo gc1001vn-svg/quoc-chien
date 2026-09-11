@@ -2,118 +2,120 @@
   "_": "Eureka (Phase 8, GAME_SPEC muc 9 - hoc Civilization VI). Lam mot viec cu the thi mot cong nghe re han di. MOI so nam o day (CLAUDE.md luat 2).",
   "_dieuKien": "Dung DUNG khuon dieu kien cua the quyet dinh (data/decisions.json), cham bang cung mot ham `dung` o src/sim/decision/DieuKien.ts. Mot bo luat, khong co ban sao thu hai.",
   "_giam": "Giam bao nhieu PHAN TRAM gia cong nghe. 40 la gan dung con so Civ VI. Moi Eureka chi an MOT lan, ca khi dieu kien dung lai lan nua.",
-  "_vi_sao": "Khong co Eureka thi len thoi dai la ngoi doi dong ho chay. Co Eureka thi no la thu KIEM DUOC: xay them lo thep la re duoc Luyen thep.",
+  "_do_that_11_09": "DA DO, khong doan. Ban dau moc dat theo `ton` (ton kho) va ca 19 moc deu sang ngay gio 1. Do lai 120 gio thi ro vi sao: thanh pho demo mo man da co san 188 cong trinh, nen gan nhu mat hang nao cung CHAM TRAN tu gio dau (lua_mi 1600/1600, go_tho 400/400...). `ton` khong phai tin hieu - no la tran kho.",
+  "_do_lan_hai": "Do tiep `lamRa` (san luong moi gio) thi cung gan dinh ngay gio 1, vi thanh pho da xay du. Chi vai mat hang CO tang that khi thong doc xay them, do duoc trong 120 gio: muoi 1422->2128 · thep 537->802 · ca muoi 1256->1774 · gom 994->1292 · bot 4220->4670 · vai 1136->1281 · ao da 1445->1504 · banh mi 3774->3874 · ruou 3614->3692. Nhung mat hang khac (da xay, voi, giap, vu khi, than, quang) DUNG YEN - dat moc vao do la dat mot dieu kien khong bao gio dung.",
+  "_nen_moc_dat_the_nay": "Moc chi dat vao thu CO TANG: `lamRa` cua chin mat hang tren, `soNha` (188 -> 241 trong 120 gio), va `soKho`. Vai moc doi 3 co tinh dat cao hon 120 gio - van dai hon the moi toi, dung y: khong phai Eureka nao cung nhat duoc trong mot van ngan.",
   "giam": 40,
   "eureka": [
     {
       "congNghe": "nong_nghiep",
-      "hien": "Kho có 60 lúa mì",
-      "dieuKien": { "do": "ton", "hang": "lua_mi", "phep": ">=", "gia": 60 }
+      "hien": "Làm ra 3830 bánh mì trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "banh_mi", "phep": ">=", "gia": 3830 }
     },
     {
       "congNghe": "do_gom",
-      "hien": "Kho có 30 đất sét",
-      "dieuKien": { "do": "ton", "hang": "dat_set", "phep": ">=", "gia": 30 }
+      "hien": "Làm ra 1150 gốm trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "gom", "phep": ">=", "gia": 1150 }
     },
     {
       "congNghe": "chan_nuoi",
-      "hien": "Kho có 20 len",
-      "dieuKien": { "do": "ton", "hang": "len", "phep": ">=", "gia": 20 }
+      "hien": "Làm ra 1480 áo da trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "ao_da", "phep": ">=", "gia": 1480 }
     },
     {
       "congNghe": "banh_xe",
-      "hien": "Kho có 40 gỗ thô",
-      "dieuKien": { "do": "ton", "hang": "go_tho", "phep": ">=", "gia": 40 }
+      "hien": "Thành phố có 195 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 195 }
     },
     {
       "congNghe": "luyen_dong",
-      "hien": "Kho có 20 quặng",
-      "dieuKien": { "do": "ton", "hang": "quang", "phep": ">=", "gia": 20 }
+      "hien": "Thành phố có 5 kho",
+      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 5 }
     },
     {
       "congNghe": "xay_da",
-      "hien": "Kho có 30 đá xây",
-      "dieuKien": { "do": "ton", "hang": "da_xay", "phep": ">=", "gia": 30 }
+      "hien": "Thành phố có 205 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 205 }
     },
     {
       "congNghe": "coi_xay_nuoc",
-      "hien": "Kho có 30 bột",
-      "dieuKien": { "do": "ton", "hang": "bot", "phep": ">=", "gia": 30 }
+      "hien": "Làm ra 4500 bột trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "bot", "phep": ">=", "gia": 4500 }
     },
     {
       "congNghe": "luyen_sat",
-      "hien": "Kho có 20 sắt",
-      "dieuKien": { "do": "ton", "hang": "sat", "phep": ">=", "gia": 20 }
+      "hien": "Thành phố có 215 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 215 }
     },
     {
       "congNghe": "chung_cat",
-      "hien": "Kho có 15 rượu",
-      "dieuKien": { "do": "ton", "hang": "ruou", "phep": ">=", "gia": 15 }
+      "hien": "Làm ra 3660 rượu trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "ruou", "phep": ">=", "gia": 3660 }
     },
     {
       "congNghe": "khung_cui",
-      "hien": "Kho có 15 vải",
-      "dieuKien": { "do": "ton", "hang": "vai", "phep": ">=", "gia": 15 }
+      "hien": "Làm ra 1200 vải trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "vai", "phep": ">=", "gia": 1200 }
     },
     {
       "congNghe": "kien_truc_vom",
-      "hien": "Kho có 20 vôi",
-      "dieuKien": { "do": "ton", "hang": "voi", "phep": ">=", "gia": 20 }
+      "hien": "Thành phố có 9 kho",
+      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 9 }
     },
     {
       "congNghe": "nong_cu_sat",
-      "hien": "Thành phố có 210 công trình",
-      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 210 }
+      "hien": "Thành phố có 225 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 225 }
     },
     {
       "congNghe": "hang_hai",
-      "hien": "Kho có 20 cá muối",
-      "dieuKien": { "do": "ton", "hang": "ca_muoi", "phep": ">=", "gia": 20 }
+      "hien": "Làm ra 1500 cá muối trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "ca_muoi", "phep": ">=", "gia": 1500 }
     },
     {
       "congNghe": "in_an",
-      "hien": "Thành phố có 4 kho",
-      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 4 }
+      "hien": "Thành phố có 14 kho",
+      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 14 }
     },
     {
       "congNghe": "thuoc_sung",
-      "hien": "Kho có 30 than",
-      "dieuKien": { "do": "ton", "hang": "than", "phep": ">=", "gia": 30 }
+      "hien": "Làm ra 1800 muối trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "muoi", "phep": ">=", "gia": 1800 }
     },
     {
       "congNghe": "luyen_thep",
-      "hien": "Kho có 20 thép",
-      "dieuKien": { "do": "ton", "hang": "thep", "phep": ">=", "gia": 20 }
+      "hien": "Làm ra 680 thép trong một giờ",
+      "dieuKien": { "do": "lamRa", "hang": "thep", "phep": ">=", "gia": 680 }
     },
     {
       "congNghe": "thanh_sao",
-      "hien": "Kho có 15 giáp",
-      "dieuKien": { "do": "ton", "hang": "giap", "phep": ">=", "gia": 15 }
+      "hien": "Thành phố có 235 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 235 }
     },
     {
       "congNghe": "ke_toan_kep",
-      "hien": "Thành phố có 240 công trình",
-      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 240 }
+      "hien": "Thành phố có 18 kho",
+      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 18 }
     },
     {
       "congNghe": "hai_do",
-      "hien": "Kho có 25 cá muối",
-      "dieuKien": { "do": "ton", "hang": "ca_muoi", "phep": ">=", "gia": 25 }
+      "hien": "Thành phố có 245 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 245 }
     },
     {
       "congNghe": "dong_co_hoi_nuoc",
-      "hien": "Kho có 40 than",
-      "dieuKien": { "do": "ton", "hang": "than", "phep": ">=", "gia": 40 }
+      "hien": "Thành phố có 22 kho",
+      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 22 }
     },
     {
       "congNghe": "xe_goong",
-      "hien": "Kho có 30 quặng",
-      "dieuKien": { "do": "ton", "hang": "quang", "phep": ">=", "gia": 30 }
+      "hien": "Thành phố có 260 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 260 }
     },
     {
       "congNghe": "cong_xuong",
-      "hien": "Kho có 10 vũ khí",
-      "dieuKien": { "do": "ton", "hang": "vu_khi", "phep": ">=", "gia": 10 }
+      "hien": "Thành phố có 275 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 275 }
     }
   ]
 }

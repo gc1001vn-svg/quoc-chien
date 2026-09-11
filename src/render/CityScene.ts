@@ -11,6 +11,9 @@ import walkerTho from '../../data/walkers.json';
 import chinhSachTho from '../../data/policy.json';
 import theTho from '../../data/decisions.json';
 import canBangTho from '../../data/balance.json';
+import techTho from '../../data/tech.json';
+import eurekaTho from '../../data/eureka.json';
+import theChinhSachTho from '../../data/the_chinh_sach.json';
 import { Governor } from '../sim/autoplay/Governor';
 import { docChinhSach } from '../sim/autoplay/Policy';
 import { DongCo, docNhipDo, docThe } from '../sim/decision/Engine';
@@ -19,6 +22,8 @@ import { Van } from '../sim/decision/Van';
 import { TheQuyetDinh } from '../ui/DecisionCard';
 import { BangSuKien } from '../ui/NhatKySuKien';
 import { BangCongTrinh } from '../ui/BangCongTrinh';
+import { BangMeta } from '../ui/BangMeta';
+import { docDuLieuMeta, Meta } from '../sim/meta/Meta';
 import { Ghim } from '../ui/Ghim';
 import { baoThieuHinh } from '../ui/BaoThieuHinh';
 import { HangTocDo } from '../ui/TocDo';
@@ -70,12 +75,18 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   // moi, dung nhu bang so cua `npm run sim:thu`. Nhung KHONG hoi the trong `moDau` -
   // hoi luc do la the hien ra truoc ca thanh pho, va dung sim khi chua co gi de nhin.
   const nhatKy: NhatKy = new NhatKy();
+  const thongDoc: Governor = new Governor(thanhPho, docChinhSach(chinhSachTho));
+  // Lop meta cua Phase 8: cay cong nghe, Eureka, thoi dai, the chinh sach.
+  const meta: Meta = new Meta(
+    docDuLieuMeta(techTho, eurekaTho, theChinhSachTho, canBangTho), thanhPho, thongDoc,
+  );
   const van: Van = new Van(
     thanhPho,
-    new Governor(thanhPho, docChinhSach(chinhSachTho)),
+    thongDoc,
     new DongCo(docThe(theTho), docNhipDo(canBangTho)),
     nhatKy,
     false,
+    meta,
   );
   thanhPho.datThongDoc(van);
   thanhPho.moDau();
@@ -131,6 +142,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   // Bam mot dong trong bang la bay toi cong trinh do. Khong co duong den thi sau cai coi
   // xay giua gan tram cong trinh la khong bao gio tim ra.
   new BangCongTrinh(goc, thanhPho, bayToi);
+  const bangMeta: BangMeta = new BangMeta(goc, meta);
   // Cham vao mot cong trinh la hien ten no - xem `ChamChon.ts`.
   let veCuoi: Ve | undefined;
   noiChamChon(canvas, () => veCuoi, banDo, thanhPho, ghim, () => gl.tiLeDiemAnh());
@@ -149,6 +161,9 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
 
     const the = van.the;
     if (the !== undefined && !theUi.hien) {
+      // The quyet dinh chiem 46 % man tu duoi len - dong bang nghien cuu de hai cai khong
+      // de len nhau. Nguoi choi tra loi xong thi bam nut mo lai.
+      bangMeta.dong();
       theUi.hienThe(the, (lc) => {
         van.traLoi(lc);
         // Keo camera toi thu vua dung. Khong co buoc nay thi bam "xay hai coi xay" xong
@@ -160,6 +175,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
     }
     bangSuKien.capNhat();
     hangTocDo.capNhat();
+    bangMeta.capNhat();
 
     const ve: Ve = {
       gl, atlas, rongDev: rongCss * gl.tiLeDiemAnh(), caoDev: caoCss * gl.tiLeDiemAnh(),

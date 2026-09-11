@@ -10,22 +10,44 @@ import { docEureka, SoEureka } from '../src/sim/meta/Eureka.ts';
 import { BoChinhSach, docTheChinhSach, type The } from '../src/sim/meta/TheChinhSach.ts';
 import { docThoiDai, ThoiDai } from '../src/sim/meta/ThoiDai.ts';
 import { docCongNghe } from '../src/sim/meta/CongNghe.ts';
+import { ThanhPho } from '../src/sim/city/City.ts';
+import { Governor } from '../src/sim/autoplay/Governor.ts';
+import { docChinhSach } from '../src/sim/autoplay/Policy.ts';
+import { DongCo, docNhipDo, docThe } from '../src/sim/decision/Engine.ts';
+import { NhatKy } from '../src/sim/decision/NhatKy.ts';
+import { Van } from '../src/sim/decision/Van.ts';
+import { NHIP_MOI_GIO } from '../src/sim/Clock.ts';
 import eurekaTho from '../data/eureka.json';
 import theTho from '../data/the_chinh_sach.json';
 import canBang from '../data/balance.json';
 import techTho from '../data/tech.json';
+import hang from '../data/wares.json';
+import nha from '../data/buildings.json';
+import chuoi from '../data/chains.json';
+import banDo from '../data/thanh_pho_demo.json';
+import walker from '../data/walkers.json';
+import chinhSach from '../data/policy.json';
+import theQuyetDinh from '../data/decisions.json';
 
 const KHONG_XONG = (): boolean => false;
 /** Thanh pho rong: de moc Eureka doc `soNha`/`soKho` khong dat theo, chi con moc mat hang. */
 const SO_TP = { soNha: 0, soKho: 0 };
 
-/** Bang so gia: mot mat hang, ton bang `ton`. */
-function tk(gio: number, hang: string, ton: number): ThongKe {
+/**
+ * Bang so gia: mot mat hang, moi con so cua no deu bang `so`.
+ *
+ * Dat het chu khong rieng `ton`: moc Eureka doc `lamRa` (xem `_do_that_11_09` trong
+ * `data/eureka.json`), va test khong nen biet moc dang doc cot nao.
+ */
+function tk(gio: number, hang: string, so: number): ThongKe {
   return {
     gio,
     nha: [],
-    hang: [{ ten: hang, hien: hang, ton, tran: 600, lamRa: 0, dungHet: 0, cho: 0, day: 0, hong: 0 }],
-    walker: { chuyen: 0, boCuoc: 0, dinh: 0 },
+    hang: [{
+      ten: hang, hien: hang, ton: so, tran: 9999,
+      lamRa: so, dungHet: so, cho: so, day: so, hong: so,
+    }],
+    walker: { chuyen: so, boCuoc: so, dinh: so },
   };
 }
 
@@ -60,6 +82,39 @@ describe('eureka', () => {
     const hang: string = m?.dieuKien.hang ?? '';
     so.cham(tk(1, hang, (m?.dieuKien.gia ?? 0) + 100), SO_TP, KHONG_XONG);
     expect(so.gia(cn, 100)).toBe(100 - du.giam);
+  });
+
+  it('khong moc nao doc `ton` - ton kho cham TRAN ngay gio dau, khong phai tin hieu', () => {
+    // Bai hoc 11/09: 19 moc dau tien deu dat theo `ton` va ca 19 sang ngay gio 1, vi
+    // thanh pho demo mo man da co 188 cong trinh nen kho day tu dau. Xem `_do_that_11_09`
+    // trong `data/eureka.json`.
+    for (const m of docEureka(eurekaTho).ds) {
+      expect(m.dieuKien.do, `moc "${m.congNghe}" doc \`ton\``).not.toBe('ton');
+    }
+  });
+
+  it('sau MOT gio game that, qua nua so moc VAN chua dat - Eureka phai kiem duoc', () => {
+    const tp = new ThanhPho({
+      hang, nha, chuoi, banDo, walker,
+    });
+    tp.datThongDoc(new Van(
+      tp,
+      new Governor(tp, docChinhSach(chinhSach)),
+      new DongCo(docThe(theQuyetDinh), docNhipDo(canBang)),
+      new NhatKy(),
+      false,
+    ));
+    tp.chay(NHIP_MOI_GIO);
+    const tk1 = tp.gioVuaXong();
+    expect(tk1).toBeDefined();
+
+    const du = docEureka(eurekaTho);
+    const so = new SoEureka(du);
+    const dat: number = so.cham(
+      tk1 as ThongKe, { soNha: tp.soNha, soKho: tp.doiWalker.soKho }, KHONG_XONG,
+    ).length;
+    expect(dat, `${String(dat)}/${String(du.ds.length)} moc dat san ngay gio 1`)
+      .toBeLessThan(du.ds.length / 2);
   });
 
   it('da hoc xong roi thi khong ghi Eureka nua', () => {

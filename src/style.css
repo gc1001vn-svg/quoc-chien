@@ -178,6 +178,9 @@ html, body {
 }
 .su-kien p[data-loai='the'] { color: var(--nhan); }
 .su-kien p[data-loai='hong'] { color: #e0857a; }
+/* Phase 8: viec cua lop meta - nghien cuu xong, Eureka, len thoi dai. Mau khac the quyet
+   dinh de doc luot qua biet ngay dong nao la viec minh phai bam, dong nao la tin bao. */
+.su-kien p[data-loai='meta'] { color: #8fc7a8; }
 
 .toc-do {
   position: absolute;
@@ -435,3 +438,96 @@ html, body {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.6);
 }
+
+/* ---- Phase 8: bang nghien cuu (cay cong nghe + the chinh sach) ---------------------- */
+
+/* Nut o goc trai duoi, dung sau nut nhat ky (10px) va nut cong trinh (52px). */
+.bang-meta-nut {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 94px);
+  bottom: calc(env(safe-area-inset-bottom) + 56px);
+  z-index: 4;
+  min-width: 34px;
+  min-height: 34px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--chu);
+  font-size: 16px;
+}
+.bang-meta-nut[data-bat='co'] { color: var(--nhan); border-color: var(--nhan); }
+
+/* Rong 264px chu khong 190 nhu bang cong trinh: moi muc o day co ba dong chu (ten, mat
+   loi, mat hai), 190px thi chu xuong dong lien tuc va doc khong ra. */
+.bang-meta {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 10px);
+  top: calc(env(safe-area-inset-top) + 40px);
+  bottom: calc(env(safe-area-inset-bottom) + 98px);
+  z-index: 5;
+  width: 264px;
+  max-width: calc(100% - 20px);
+  overflow-y: auto;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #55504a;
+  background: rgba(8, 7, 6, 0.94);
+}
+
+.bang-meta-dau { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
+.bang-meta-dau b { font-size: 15px; }
+.bang-meta-dau span { font-size: 11px; opacity: 0.72; }
+
+.bang-meta-the { display: flex; gap: 6px; margin-bottom: 6px; }
+.bang-meta-the button {
+  flex: 1;
+  min-height: 32px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--chu);
+  font-size: 12px;
+}
+.bang-meta-the button[data-bat='co'] { color: var(--nhan); border-color: var(--nhan); }
+
+.bang-meta-chu { margin: 4px 0; font-size: 11px; opacity: 0.8; }
+.bang-meta-chu[data-loai='dang'] { opacity: 1; color: var(--nhan); font-size: 12px; }
+.bang-meta-chu[data-loai='bao'] { color: #e0857a; opacity: 1; }
+
+/* Thanh tien do cong nghe dang hoc. */
+.bang-meta-thanh {
+  height: 6px;
+  margin: 2px 0 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.bang-meta-thanh div { height: 100%; background: var(--nhan); }
+
+/* Mot muc bam duoc: mot cong nghe, hay mot the chinh sach. Cao toi thieu 44px - ngon tay
+   tren iPhone khong bam trung nut nho hon. */
+.bang-meta-muc {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 5px;
+  padding: 6px 8px;
+  text-align: left;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--chu);
+}
+.bang-meta-muc[data-bat='co'] { border-color: var(--nhan); }
+.bang-meta-muc:active { background: rgba(255, 255, 255, 0.1); }
+
+.bang-meta-hang { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.bang-meta-hang b { font-size: 13px; font-weight: 400; }
+.bang-meta-hang span { font-size: 11px; color: var(--nhan); font-variant-numeric: tabular-nums; }
+
+/* `overflow-wrap: anywhere`: cau Eureka dai ("Lam ra 3830 banh mi trong mot gio") bi cat
+   mat chu cuoi o khung doc - da chup thay 11/09. */
+.bang-meta-phu { font-size: 11px; opacity: 0.72; overflow-wrap: anywhere; }
+.bang-meta-hai { font-size: 11px; color: #e0857a; opacity: 0.85; overflow-wrap: anywhere; }

@@ -9,8 +9,9 @@
   "_gia": "Diem nghien cuu phai dong. Doi 1 la 30-48, doi 2 la 55-75, doi 3 la 85-120 - hoc cang sau cang lau.",
   "nghienCuu": {
     "_": "Diem nghien cuu moi gio game = coBan + floor(soNha / moiNhaMotDiem), roi nhan he so cua the chinh sach. Thanh pho cang lon nghien cuu cang nhanh - dan dong thi nhieu nguoi nghi ra cai moi.",
-    "coBan": 2,
-    "moiNhaMotDiem": 40
+    "_nhip_do": "Do 11/09 tren `npm run sim:congnghe`: voi coBan 2 va moiNhaMotDiem 40 thi chi duoc ~5 diem/gio, va khi Eureka thoi khong con dat san nua thi 120 gio KHONG toi noi thoi dai 3. Nang len 3 va 30 cho ~11 diem/gio o thanh pho 241 nha.",
+    "coBan": 3,
+    "moiNhaMotDiem": 30
   },
   "congNghe": [
     {
