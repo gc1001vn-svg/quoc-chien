@@ -1,0 +1,169 @@
+{
+  "_": "The chinh sach (Phase 8, GAME_SPEC muc 7 - hoc Civilization VI). Chinh phu co N o, N tang theo thoi dai (data/balance.json > thoiDai). MOI so nam o day (CLAUDE.md luat 2).",
+  "_moKhoa": "The mo ra bang CONG NGHE, khong bang thoi dai: `moThe` trong data/tech.json. Mot cua thoi, khong hai cua de quen dong mot cai.",
+  "_hieuUng": "CHI hai thu, va ca hai deu THAO RA DUOC DUNG BANG CAI DA LAP VAO: `heSoNghienCuu` (phan tram, 100 la khong doi) va `noiTran` (cong vao tran nha / tran kho cua thong doc). Khong cho `xay` nhu the quyet dinh: xay roi thi thao the ra khong do nha di duoc, va chinh sach phai doi lai duoc luc nao cung duoc.",
+  "_danh_doi": "Moi the phai co danh doi THAT (GAME_SPEC muc 7). Truc danh doi o day la: thanh pho DONG hay thanh pho HOC. Dan dong thi nghien cuu cham lai vi mieng an chiem cho; dat cho truong hoc va vien han lam thi thanh pho nho lai.",
+  "_phi_doi": "Chua co vang trong game nen doi the khong mat tien - thay bang thoi gian cho `gioChoDoiThe` o data/balance.json. Co vang roi (Phase 9) thi doi lai.",
+  "the": [
+    {
+      "id": "khan_hoang",
+      "hien": "Khẩn hoang",
+      "loi": "Mở thêm đất, trần công trình +25",
+      "hai": "Nghiên cứu chậm còn 85%",
+      "heSoNghienCuu": 85,
+      "noiTran": { "nha": 25, "kho": 0 }
+    },
+    {
+      "id": "tich_tru",
+      "hien": "Tích trữ",
+      "loi": "Trần kho +2",
+      "hai": "Nghiên cứu chậm còn 95%",
+      "heSoNghienCuu": 95,
+      "noiTran": { "nha": 0, "kho": 2 }
+    },
+    {
+      "id": "trong_nong",
+      "hien": "Trọng nông",
+      "loi": "Trần công trình +18",
+      "hai": "Nghiên cứu chậm còn 92%",
+      "heSoNghienCuu": 92,
+      "noiTran": { "nha": 18, "kho": 0 }
+    },
+    {
+      "id": "lao_dich",
+      "hien": "Lao dịch",
+      "loi": "Trần công trình +15",
+      "hai": "Nghiên cứu còn 90%, trần kho −1",
+      "heSoNghienCuu": 90,
+      "noiTran": { "nha": 15, "kho": -1 }
+    },
+    {
+      "id": "bao_tro_hoc_thuat",
+      "hien": "Bảo trợ học thuật",
+      "loi": "Nghiên cứu nhanh 125%",
+      "hai": "Trần công trình −12",
+      "heSoNghienCuu": 125,
+      "noiTran": { "nha": -12, "kho": 0 }
+    },
+    {
+      "id": "hoi_dong_gia_lang",
+      "hien": "Hội đồng già làng",
+      "loi": "Nghiên cứu nhanh 110%",
+      "hai": "Trần công trình −6",
+      "heSoNghienCuu": 110,
+      "noiTran": { "nha": -6, "kho": 0 }
+    },
+    {
+      "id": "quan_dien",
+      "hien": "Quân điền",
+      "loi": "Trần công trình +10",
+      "hai": "Nghiên cứu còn 98%, trần kho −1",
+      "heSoNghienCuu": 98,
+      "noiTran": { "nha": 10, "kho": -1 }
+    },
+    {
+      "id": "phuong_hoi",
+      "hien": "Phường hội",
+      "loi": "Nghiên cứu nhanh 115%",
+      "hai": "Trần công trình −10",
+      "heSoNghienCuu": 115,
+      "noiTran": { "nha": -10, "kho": 0 }
+    },
+    {
+      "id": "thue_thap",
+      "hien": "Thuế thấp",
+      "loi": "Trần công trình +22",
+      "hai": "Nghiên cứu chậm còn 88%",
+      "heSoNghienCuu": 88,
+      "noiTran": { "nha": 22, "kho": 0 }
+    },
+    {
+      "id": "duong_cai_quan",
+      "hien": "Đường cái quan",
+      "loi": "Trần kho +3",
+      "hai": "Nghiên cứu còn 95%, trần công trình −5",
+      "heSoNghienCuu": 95,
+      "noiTran": { "nha": -5, "kho": 3 }
+    },
+    {
+      "id": "truong_lang",
+      "hien": "Trường làng",
+      "loi": "Nghiên cứu nhanh 130%",
+      "hai": "Trần công trình −16",
+      "heSoNghienCuu": 130,
+      "noiTran": { "nha": -16, "kho": 0 }
+    },
+    {
+      "id": "cuong_bach_tong_quan",
+      "hien": "Cưỡng bách tòng quân",
+      "loi": "Trần công trình +30",
+      "hai": "Nghiên cứu chậm còn 80%",
+      "heSoNghienCuu": 80,
+      "noiTran": { "nha": 30, "kho": 0 }
+    },
+    {
+      "id": "hoi_quan",
+      "hien": "Hội quán thương nhân",
+      "loi": "Nghiên cứu nhanh 118%, trần kho +2",
+      "hai": "Trần công trình −12",
+      "heSoNghienCuu": 118,
+      "noiTran": { "nha": -12, "kho": 2 }
+    },
+    {
+      "id": "xuong_quoc_gia",
+      "hien": "Xưởng quốc gia",
+      "loi": "Trần kho +4, nghiên cứu nhanh 105%",
+      "hai": "Trần công trình −8",
+      "heSoNghienCuu": 105,
+      "noiTran": { "nha": -8, "kho": 4 }
+    },
+    {
+      "id": "bao_chi",
+      "hien": "Báo chí",
+      "loi": "Nghiên cứu nhanh 135%",
+      "hai": "Trần công trình −20",
+      "heSoNghienCuu": 135,
+      "noiTran": { "nha": -20, "kho": 0 }
+    },
+    {
+      "id": "thuoc_dia",
+      "hien": "Khai thác thuộc địa",
+      "loi": "Trần công trình +28, trần kho +1",
+      "hai": "Nghiên cứu chậm còn 90%",
+      "heSoNghienCuu": 90,
+      "noiTran": { "nha": 28, "kho": 1 }
+    },
+    {
+      "id": "vien_han_lam",
+      "hien": "Viện hàn lâm",
+      "loi": "Nghiên cứu nhanh 145%",
+      "hai": "Trần công trình −26",
+      "heSoNghienCuu": 145,
+      "noiTran": { "nha": -26, "kho": 0 }
+    },
+    {
+      "id": "duong_sat",
+      "hien": "Đường sắt",
+      "loi": "Trần kho +6",
+      "hai": "Trần công trình −10",
+      "heSoNghienCuu": 100,
+      "noiTran": { "nha": -10, "kho": 6 }
+    },
+    {
+      "id": "cong_nghiep_hoa",
+      "hien": "Công nghiệp hoá",
+      "loi": "Trần công trình +35, trần kho +2",
+      "hai": "Nghiên cứu chậm còn 92%",
+      "heSoNghienCuu": 92,
+      "noiTran": { "nha": 35, "kho": 2 }
+    },
+    {
+      "id": "tu_dong_hoa",
+      "hien": "Tự động hoá",
+      "loi": "Nghiên cứu nhanh 150%, trần kho +3",
+      "hai": "Trần công trình −30",
+      "heSoNghienCuu": 150,
+      "noiTran": { "nha": -30, "kho": 3 }
+    }
+  ]
+}

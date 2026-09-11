@@ -1,0 +1,119 @@
+{
+  "_": "Eureka (Phase 8, GAME_SPEC muc 9 - hoc Civilization VI). Lam mot viec cu the thi mot cong nghe re han di. MOI so nam o day (CLAUDE.md luat 2).",
+  "_dieuKien": "Dung DUNG khuon dieu kien cua the quyet dinh (data/decisions.json), cham bang cung mot ham `dung` o src/sim/decision/DieuKien.ts. Mot bo luat, khong co ban sao thu hai.",
+  "_giam": "Giam bao nhieu PHAN TRAM gia cong nghe. 40 la gan dung con so Civ VI. Moi Eureka chi an MOT lan, ca khi dieu kien dung lai lan nua.",
+  "_vi_sao": "Khong co Eureka thi len thoi dai la ngoi doi dong ho chay. Co Eureka thi no la thu KIEM DUOC: xay them lo thep la re duoc Luyen thep.",
+  "giam": 40,
+  "eureka": [
+    {
+      "congNghe": "nong_nghiep",
+      "hien": "Kho có 60 lúa mì",
+      "dieuKien": { "do": "ton", "hang": "lua_mi", "phep": ">=", "gia": 60 }
+    },
+    {
+      "congNghe": "do_gom",
+      "hien": "Kho có 30 đất sét",
+      "dieuKien": { "do": "ton", "hang": "dat_set", "phep": ">=", "gia": 30 }
+    },
+    {
+      "congNghe": "chan_nuoi",
+      "hien": "Kho có 20 len",
+      "dieuKien": { "do": "ton", "hang": "len", "phep": ">=", "gia": 20 }
+    },
+    {
+      "congNghe": "banh_xe",
+      "hien": "Kho có 40 gỗ thô",
+      "dieuKien": { "do": "ton", "hang": "go_tho", "phep": ">=", "gia": 40 }
+    },
+    {
+      "congNghe": "luyen_dong",
+      "hien": "Kho có 20 quặng",
+      "dieuKien": { "do": "ton", "hang": "quang", "phep": ">=", "gia": 20 }
+    },
+    {
+      "congNghe": "xay_da",
+      "hien": "Kho có 30 đá xây",
+      "dieuKien": { "do": "ton", "hang": "da_xay", "phep": ">=", "gia": 30 }
+    },
+    {
+      "congNghe": "coi_xay_nuoc",
+      "hien": "Kho có 30 bột",
+      "dieuKien": { "do": "ton", "hang": "bot", "phep": ">=", "gia": 30 }
+    },
+    {
+      "congNghe": "luyen_sat",
+      "hien": "Kho có 20 sắt",
+      "dieuKien": { "do": "ton", "hang": "sat", "phep": ">=", "gia": 20 }
+    },
+    {
+      "congNghe": "chung_cat",
+      "hien": "Kho có 15 rượu",
+      "dieuKien": { "do": "ton", "hang": "ruou", "phep": ">=", "gia": 15 }
+    },
+    {
+      "congNghe": "khung_cui",
+      "hien": "Kho có 15 vải",
+      "dieuKien": { "do": "ton", "hang": "vai", "phep": ">=", "gia": 15 }
+    },
+    {
+      "congNghe": "kien_truc_vom",
+      "hien": "Kho có 20 vôi",
+      "dieuKien": { "do": "ton", "hang": "voi", "phep": ">=", "gia": 20 }
+    },
+    {
+      "congNghe": "nong_cu_sat",
+      "hien": "Thành phố có 210 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 210 }
+    },
+    {
+      "congNghe": "hang_hai",
+      "hien": "Kho có 20 cá muối",
+      "dieuKien": { "do": "ton", "hang": "ca_muoi", "phep": ">=", "gia": 20 }
+    },
+    {
+      "congNghe": "in_an",
+      "hien": "Thành phố có 4 kho",
+      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 4 }
+    },
+    {
+      "congNghe": "thuoc_sung",
+      "hien": "Kho có 30 than",
+      "dieuKien": { "do": "ton", "hang": "than", "phep": ">=", "gia": 30 }
+    },
+    {
+      "congNghe": "luyen_thep",
+      "hien": "Kho có 20 thép",
+      "dieuKien": { "do": "ton", "hang": "thep", "phep": ">=", "gia": 20 }
+    },
+    {
+      "congNghe": "thanh_sao",
+      "hien": "Kho có 15 giáp",
+      "dieuKien": { "do": "ton", "hang": "giap", "phep": ">=", "gia": 15 }
+    },
+    {
+      "congNghe": "ke_toan_kep",
+      "hien": "Thành phố có 240 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 240 }
+    },
+    {
+      "congNghe": "hai_do",
+      "hien": "Kho có 25 cá muối",
+      "dieuKien": { "do": "ton", "hang": "ca_muoi", "phep": ">=", "gia": 25 }
+    },
+    {
+      "congNghe": "dong_co_hoi_nuoc",
+      "hien": "Kho có 40 than",
+      "dieuKien": { "do": "ton", "hang": "than", "phep": ">=", "gia": 40 }
+    },
+    {
+      "congNghe": "xe_goong",
+      "hien": "Kho có 30 quặng",
+      "dieuKien": { "do": "ton", "hang": "quang", "phep": ">=", "gia": 30 }
+    },
+    {
+      "congNghe": "cong_xuong",
+      "hien": "Kho có 10 vũ khí",
+      "dieuKien": { "do": "ton", "hang": "vu_khi", "phep": ">=", "gia": 10 }
+    }
+  ]
+}
