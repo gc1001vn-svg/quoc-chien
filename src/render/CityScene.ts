@@ -30,6 +30,7 @@ import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { doMuc, veLopNen, veLopVat, type Muc, type Ve } from './VeCanh';
+import { noiChamChon } from './ChamChon';
 import type { BanDo, CauHinhBanDo, O } from '../sim/city/BanDo';
 import { ThanhPho } from '../sim/city/City';
 import { DongHo } from '../sim/Clock';
@@ -130,6 +131,10 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   // Bam mot dong trong bang la bay toi cong trinh do. Khong co duong den thi sau cai coi
   // xay giua gan tram cong trinh la khong bao gio tim ra.
   new BangCongTrinh(goc, thanhPho, bayToi);
+  // Cham vao mot cong trinh la hien ten no - xem `ChamChon.ts`.
+  let veCuoi: Ve | undefined;
+  noiChamChon(canvas, () => veCuoi, banDo, thanhPho, ghim, () => gl.tiLeDiemAnh());
+
   let truoc = 0;
   let dangChay = false;
   const veMotKhung = (now: number): void => {
@@ -164,6 +169,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
     const khung = cam.khung();
     ve.camX = (khung.x0 + khung.x1) / 2;
     ve.camY = (khung.y0 + khung.y1) / 2;
+    veCuoi = ve;
     const vung: VungO = vungONhinThay(khung, atlas.oPx(), banDo.canh, atlas.bienDo());
     const oGhim: O | undefined = ghim.layMuc();
     const muc: Muc | undefined = oGhim === undefined ? undefined : doMuc(ve, banDo, oGhim);

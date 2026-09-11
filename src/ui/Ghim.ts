@@ -62,8 +62,12 @@ export class Ghim {
     this.goc.hidden = false;
     // Kep vao trong khung: coi xay gio cao 4,7 hang o nen noc no tho han len tren mep man,
     // khong kep thi ghim treo ngoai man va bien mat dung luc can nhat.
+    //
+    // Nguong tren la 92 chu khong 46: tu 11/09 ghim con dung cho viec CHAM thang vao cong
+    // trinh, ma cong trinh nao cung cham duoc - ke ca cai sat mep tren. O 46 thi ghim de
+    // len nhan fps va hang nut tat lop, doc khong ra ca hai.
     this.goc.style.left = `${String(Math.round(kep(x, 34, rongCss - 34)))}px`;
-    this.goc.style.top = `${String(Math.round(kep(yNoc, 46, caoCss - 8)))}px`;
+    this.goc.style.top = `${String(Math.round(kep(yNoc, 92, caoCss - 8)))}px`;
   }
 
   /** Thoi soi. */

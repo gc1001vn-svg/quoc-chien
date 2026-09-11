@@ -12,7 +12,7 @@
 import { neoX, neoY, type VungO } from './IsoMath';
 import type { Atlas } from './Atlas';
 import type { Gl } from './Gl';
-import type { BanDo, O } from '../sim/city/BanDo';
+import type { BanDo, O, OVat } from '../sim/city/BanDo';
 import type { ThanhPho } from '../sim/city/City';
 import type { Walker } from '../sim/city/Walkers';
 
@@ -131,6 +131,31 @@ export function veLopVat(
     const w = nguoi[i] as Walker;
     datSprite(ve, w.a, w.b, spriteWalker(w));
   }
+}
+
+/**
+ * Vat the nam duoi diem `(x, y)` tren khung ve, tinh bang DIEM ANH khung ve.
+ *
+ * Duyet tu GAN ve XA (`banDo.vat` da xep theo truc sau tang dan) va tra ve cai dau tien
+ * trum diem do: cai dung gan man hinh nhat la cai nguoi choi tuong minh dang cham.
+ *
+ * So khop theo HOP BAO cua sprite chu khong theo o luoi duoi chan no. Nha Quaternius cao
+ * toi 5,6 hang o, cham vao mai thi o luoi duoi diem cham la mot o khac han - doi qua luoi
+ * la bam mai nha nay lai ra ten nha kia.
+ *
+ * @param nhan Loc: chi nhan vat the thoa ham nay. Bo qua thi nhan moi vat the.
+ */
+export function vatTaiDiem(
+  ve: Ve, banDo: BanDo, x: number, y: number, nhan?: (v: OVat) => boolean,
+): OVat | undefined {
+  for (let i = banDo.vat.length - 1; i >= 0; i -= 1) {
+    const v = banDo.vat[i] as OVat;
+    if (nhan !== undefined && !nhan(v)) continue;
+    const hop: Hop | undefined = hopSprite(ve, v.a, v.b, v.ten);
+    if (hop === undefined) continue;
+    if (x >= hop.x0 && x <= hop.x1 && y >= hop.y0 && y <= hop.y1) return v;
+  }
+  return undefined;
 }
 
 /** Sprite `ten` o `(a,b)` co trum len muc dang soi khong. */
