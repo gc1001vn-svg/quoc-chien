@@ -15,6 +15,7 @@ import cauHinhTho from '../../data/thanh_pho_demo.json';
 import { Gl } from '../render/Gl';
 import { Perf } from '../core/Perf';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from '../render/Atlas';
+import { baoThieuHinh } from '../ui/BaoThieuHinh';
 
 /** Suc chua buffer. Dat cao hon tran 1.500 de tim ra tran that cua may. */
 const SUC_CHUA = 24000;
@@ -45,10 +46,17 @@ const ME: string = cauHinhTho.me;
  * Do bang mot co duy nhat se ra so vo nghia: 1.500 toa nha khong bao gio cung xuat hien
  * tren mot man hinh 874x402.
  */
-const TRON: readonly { readonly ten: string; readonly phan: number }[] = [
+/**
+ * TEN PHAI CO THAT TRONG ATLAS. `Atlas.o()` nem loi khi ten sai, ma loi do nem TRONG
+ * `requestAnimationFrame` nen khong ai bat: trang chi den thui, bang so rong, khong mot
+ * dong bao. Chu du an bam nut do 11/09 va gap dung canh do - `bui_ram` va `nha_ngoi_do`
+ * da doi ten thanh `bui` va `nha_dan` tu me Phase 6B/6C ma file nay khong sua theo.
+ * `tests/DoSprite.test.ts` chan viec do tai dien.
+ */
+export const TRON: readonly { readonly ten: string; readonly phan: number }[] = [
   { ten: 'o_co', phan: 0.6 },
-  { ten: 'bui_ram', phan: 0.3 },
-  { ten: 'nha_ngoi_do', phan: 0.1 },
+  { ten: 'bui', phan: 0.3 },
+  { ten: 'nha_dan', phan: 0.1 },
 ];
 
 interface DiemVe {
@@ -79,6 +87,15 @@ export async function chayDoSprite(goc: HTMLElement): Promise<void> {
   const gl: Gl = new Gl(canvas, SUC_CHUA, bo.trang.length);
   const atlas: Atlas = new Atlas(bo, await napTrangLenGpu(bo, gl));
   gl.datTrang(atlas.cacTrang());
+
+  // Lop thu hai, phong khi ten lai lech: bao bang CHU DO thay vi de trang den thui. Man
+  // den khong noi duoc gi, con dong chu nay chi thang vao ten sprite sai.
+  const thieu: string[] = atlas.thieu(TRON.map((c) => c.ten));
+  baoThieuHinh(goc, thieu);
+  if (thieu.length > 0) {
+    bang.textContent = `Không đo được: atlas "${ME}" thiếu ${thieu.join(', ')}.`;
+    return;
+  }
 
   // Toa do va co sprite deu tinh bang DIEM ANH CUA KHUNG VE, khong phai CSS px -
   // shader chia cho kich thuoc that cua canvas. Nham cho nay la sprite don ve mot goc.

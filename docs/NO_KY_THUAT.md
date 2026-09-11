@@ -146,6 +146,24 @@
 
 ## Lớp meta — nợ mở ra ở Phase 8A (11/09/2026)
 
+- ~~**Trang đo trần sprite (`?do=sprite`) hỏng — màn đen, không một dòng báo.**~~ —
+  **ĐÃ TRẢ 11/09.** Chủ dự án bấm nút 📏 và gặp trang đen thui: không hình, bảng số rỗng.
+  `DoSprite.ts` xin ba sprite `o_co` · `bui_ram` · `nha_ngoi_do`, mà từ mẻ **Phase 6B/6C**
+  hai cái sau đã đổi tên thành `bui` và `nha_dan`. `Atlas.o()` ném lỗi khi tên sai, nhưng
+  nó ném **trong `requestAnimationFrame`** nên không ai bắt được — promise của `main.ts`
+  đã resolve xong rồi, nên cả `nap-hong` lẫn `dang-nap` đều không hiện.
+  **Điều đáng sợ không phải lỗi, mà là nó sống im lặng bao lâu:** trang đo là thước đo hiệu
+  năng CHÍNH của dự án (`KE_HOACH.md` mục 3, Phase 0), hỏng từ Phase 6 tới 11/09 mà không
+  ai biết. Vì sao không ai bắt được:
+  - `deploy.yml` có gọi `?do=sprite` và kiểm HTTP 200 — nhưng 200 đó là `index.html`, luôn
+    trả 200 dù trang bên trong có chạy hay không. **Kiểm mã HTTP không phải kiểm chức năng.**
+  - `baoThieuHinh` (lớp chống đúng loại lỗi này, dựng từ 10/09) chỉ được gọi ở `CityScene`,
+    không gọi ở trang đo.
+  - Không có test nào đối chiếu tên sprite trong mã với atlas đã nướng.
+  Đã vá cả ba lớp: sửa tên · gọi `baoThieuHinh` trong `DoSprite.ts` (thiếu hình thì hiện
+  **chữ đỏ** chứ không đen thui) · thêm `tests/DoSprite.test.ts` đối chiếu `TRON` với JSON
+  atlas cả hai cỡ 1x/2x. Test đã thử ngược: đổi lại `bui_ram` thì nó đỏ và chỉ thẳng tên sai.
+
 - ~~**Nhãn fps bị hàng nút lớp đè lên khi số sprite có bốn chữ số.**~~ — **ĐÃ TRẢ 11/09.**
   Ảnh chủ dự án gửi: `59 fps · … · 1414 sprite · 1 lệnh vẽ · 0.44×` — chữ `0.44×` chui
   xuống dưới nút "Nền". `.perf-nhan` chỉ đặt `left`, không có `right` ở màn rộng, nên nhãn

@@ -49,4 +49,21 @@ xuống 95 % đúng bằng mặt hại của thẻ.
 thật vẽ `1414 sprite` (bốn chữ số) nên nhãn dài ra và chữ `0.44×` chui xuống dưới nút
 "Nền"; máy ảo chỉ vẽ `503 sprite` nên chụp bao nhiêu lần cũng không thấy. **Bài học: nhãn
 co giãn theo dữ liệu thì phải thử với giá trị LỚN NHẤT, không phải giá trị máy ảo tình cờ
-có.** Ba cách sửa và mặt trái từng cách nằm ở `NO_KY_THUAT.md`, chờ anh chọn.
+có.** Anh chọn tách hai hàng; sửa xong thì chụp lại khung dọc, và chính lần chụp đó lộ tiếp
+nút "Đo trần sprite" bị hàng tốc độ đè — cũng đã sửa.
+
+## Và cái đắt nhất: trang đo trần sprite hỏng từ Phase 6
+
+Anh bấm nút 📏 và gặp **màn đen**: không hình, bảng số rỗng, không một dòng báo.
+`DoSprite.ts` xin ba sprite `o_co` · `bui_ram` · `nha_ngoi_do`, mà từ mẻ Phase 6B/6C hai
+cái sau đã đổi tên thành `bui` và `nha_dan`. `Atlas.o()` có ném lỗi, nhưng nó ném **trong
+`requestAnimationFrame`** — promise của `main.ts` đã resolve xong nên không ai bắt.
+
+Điều đáng ghi không phải lỗi, mà là **nó sống im lặng năm phase**. Trang đo là thước đo
+hiệu năng chính của dự án (`KE_HOACH.md` mục 3, Phase 0). Ba lớp lẽ ra phải chặn, cả ba
+đều hụt: `deploy.yml` chỉ kiểm `?do=sprite` trả **HTTP 200** — mà 200 đó là `index.html`,
+luôn 200 dù trang bên trong chết; `baoThieuHinh` dựng đúng cho loại lỗi này từ 10/09 nhưng
+chỉ gọi ở `CityScene`; và không test nào đối chiếu tên sprite trong mã với atlas đã nướng.
+
+**Bài học: kiểm mã HTTP không phải kiểm chức năng.** Đã vá cả ba lớp, và
+`tests/DoSprite.test.ts` đã thử ngược — đổi lại tên cũ thì nó đỏ và chỉ thẳng tên sai.

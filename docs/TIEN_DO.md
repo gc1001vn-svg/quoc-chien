@@ -48,7 +48,7 @@ bảng nghiên cứu đọc được, thẻ chính sách lắp/tháo ăn.
 
 Phiên bản anh đã xác nhận: **11/09 12:35**.
 
-**Hai việc anh kiểm lại giúp — cả hai đã sửa 11/09:**
+**Ba việc anh kiểm lại giúp — cả ba đã sửa 11/09:**
 
 1. **Nhãn fps bị hàng nút đè lên** (ảnh anh gửi, `1414 sprite` làm chữ `0.44×` chui xuống
    dưới nút "Nền") — nhãn giờ một hàng, nút lớp xuống hàng dưới. Anh xem nhãn có hiện đủ
@@ -57,11 +57,12 @@ Phiên bản anh đã xác nhận: **11/09 12:35**.
    thước đo 📏 và đứng cùng hàng với ☰ ⌂ 🔬; màn ngang vẫn đủ chữ. Anh **cầm máy dọc**
    xem bốn nút có thẳng hàng và bấm được không.
 
-**Một việc cũ anh quyết giúp:** `docs/ASSET_CREDITS.md` là **file khoá** nhưng phiên trước
-sửa lúc anh đang ngủ. Sửa gồm **bốn dòng ghi công** mẻ `hex_1` trong bảng, **cộng một khối
-16 dòng** kể mẻ đó lấy thư mục nào của gói và hai điều đo được khi nướng. Không đụng phần
-cũ. Gói là **CC0 1.0** nên ghi công là tự nguyện, không có rủi ro bản quyền — cái chặn
-build là `check:credits` của chính dự án. Anh xem có giữ không.
+3. **Trang đo trần sprite đã hỏng từ Phase 6, nay sửa xong.** Anh bấm nút 📏 và gặp màn
+   đen — trang xin ba sprite `o_co` · `bui_ram` · `nha_ngoi_do`, mà hai cái sau đã đổi tên
+   thành `bui` và `nha_dan` từ mẻ Phase 6B/6C. Anh bấm 📏 lại, phải thấy nhà cửa chạy
+   quanh màn và một bảng số ở giữa.
+
+**`docs/ASSET_CREDITS.md`: anh đã chốt GIỮ (11/09).** Không còn là việc treo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
