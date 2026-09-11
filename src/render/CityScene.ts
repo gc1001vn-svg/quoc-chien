@@ -25,6 +25,7 @@ import { HangTocDo } from '../ui/TocDo';
 import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
+import type { Man } from './Man';
 import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
@@ -48,7 +49,7 @@ const SUC_CHUA = 6144;
 const CHO_SOI = 0.38;
 
 /** Mo canh thanh pho trong `goc`. */
-export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
+export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   const canvas: HTMLCanvasElement = document.createElement('canvas');
   goc.appendChild(canvas);
   const perf: Perf = new Perf(goc);
@@ -130,7 +131,11 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
   // xay giua gan tram cong trinh la khong bao gio tim ra.
   new BangCongTrinh(goc, thanhPho, bayToi);
   let truoc = 0;
+  let dangChay = false;
   const veMotKhung = (now: number): void => {
+    // Man bi an thi dung han vong ve. Khong dung thi ca hai man cung ve mot luc, ma mo
+    // phong thanh pho van chay 10 Hz trong khi nguoi choi dang xem ban do tinh.
+    if (!dangChay) return;
     perf.danhDau(now);
 
     const giay: number = truoc === 0 ? 0 : (now - truoc) / 1000;
@@ -186,7 +191,23 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<void> {
     );
     requestAnimationFrame(veMotKhung);
   };
-  requestAnimationFrame(veMotKhung);
+
+  return {
+    hien: (): void => {
+      goc.hidden = false;
+      doKichThuoc();
+      // Xoa moc thoi gian: khong xoa thi lan ve dau tien sau khi quay lai nhan duoc ca
+      // quang thoi gian dang xem ban do, va thanh pho nhay mot cai vai chuc nhip.
+      truoc = 0;
+      if (dangChay) return;
+      dangChay = true;
+      requestAnimationFrame(veMotKhung);
+    },
+    an: (): void => {
+      dangChay = false;
+      goc.hidden = true;
+    },
+  };
 }
 
 /**

@@ -282,3 +282,93 @@ html, body {
 .cong-trinh button b { font-weight: 400; }
 .cong-trinh button span { color: var(--nhan); font-variant-numeric: tabular-nums; }
 .cong-trinh button:active { background: rgba(255, 255, 255, 0.1); }
+
+/* ---- Phase 7: hai man chong len nhau, va man ban do tinh ---------------------------- */
+
+/* Moi man phu kin `#app`. Canvas ben trong neo theo man, khong theo `#app`. */
+.man { position: absolute; inset: 0; }
+
+/* Nut doi man. Goc phai, nam NGAY DUOI hang nut tat lop cua `Perf`: de cung hang thi no
+   de len nut "Hiệu ứng" (da chup thay 11/09), de goc duoi thi bang tinh trum len. */
+.nut-doi-man {
+  position: absolute;
+  right: calc(env(safe-area-inset-right) + 10px);
+  top: calc(env(safe-area-inset-top) + 40px);
+  z-index: 4;
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.62);
+  color: var(--chu);
+}
+
+/* Bang tinh: nam duoi day man, cham vao tinh la hien. Cao toi da 46 % man - bang nguong
+   cua the quyet dinh, de hai cai khong bao gio che nhau nhieu hon the. */
+.bang-tinh {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 8px);
+  right: calc(env(safe-area-inset-right) + 8px);
+  bottom: calc(env(safe-area-inset-bottom) + 8px);
+  z-index: 5;
+  max-height: 46%;
+  overflow-y: auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #55504a;
+  background: rgba(16, 14, 12, 0.92);
+  color: var(--chu);
+}
+
+.bang-tinh-dau {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 30px;
+  margin-bottom: 8px;
+}
+
+.bang-tinh-dau b { font-size: 16px; }
+.bang-tinh-dau span { font-size: 12px; opacity: 0.72; }
+
+.bang-tinh-dong {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--chu);
+  font-size: 14px;
+}
+
+.bang-tinh-chu { margin: 4px 0; font-size: 13px; opacity: 0.85; }
+
+.bang-tinh-nut {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 8px 10px;
+  text-align: left;
+  border-radius: 9px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--chu);
+}
+
+.bang-tinh-nut b { font-size: 14px; }
+.bang-tinh-nut span { font-size: 12px; opacity: 0.7; }
+
+/* Man hep: hang nut cua `Perf` tut xuong 34px, nen nut doi man phai tut theo. Khoi nay
+   PHAI nam sau khai bao `.nut-doi-man` o tren - cung do dac hieu thi luat sau thang, de
+   trong khoi @media o giua file thi luat desktop ghi de len no. Da bi dung mot lan. */
+@media (max-width: 700px) {
+  .nut-doi-man {
+    top: calc(env(safe-area-inset-top) + 70px);
+  }
+}
