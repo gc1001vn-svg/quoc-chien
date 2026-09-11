@@ -3,11 +3,11 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 11/09/2026 (Phase 7 — bản đồ tỉnh).
+Cập nhật: 11/09/2026 (Phase 7 — bản đồ tỉnh, đã xác nhận trên iPhone).
 
 ## 1. Đang ở đâu
 
-**Phase 7/13 xong, chờ anh xác nhận trên iPhone.** Game giờ có hai màn: lớp thành phố
+**Phase 7/13 xong và đã xác nhận trên iPhone (59 fps).** Game giờ có hai màn: lớp thành phố
 (Phase 2–6) và **lớp chiến dịch** — bản đồ 28 tỉnh lục giác, bốn nước, bấm nút góc màn
 để qua lại.
 
@@ -39,17 +39,13 @@ nào xây hai lần, không lệnh nào kẹt.
 
 ## 3. Việc của chủ dự án
 
-Anh đã xem bản đồ tỉnh trên iPhone 11/09: **chạy 59 fps, mọi thứ ổn**, và nêu hai chỗ —
-đã làm xong cả hai, **cần xem lại**:
+**Không có việc gì phải kiểm.** Anh đã xem Phase 7 trên iPhone 11/09 và xác nhận xong:
+bản đồ tỉnh chạy **59 fps**, mọi thứ ổn. Hai chỗ anh nêu — chữ tên tỉnh trên bản đồ, và
+chạm công trình ở thành phố là hiện tên — đã làm và anh đã kiểm lại.
 
-https://gc1001vn-svg.github.io/quoc-chien/
+Phiên bản anh đã xác nhận: **11/09 10:44**.
 
-1. **Bản đồ tỉnh:** giờ mỗi tỉnh có **tên viết bằng chữ**, màu theo phe. Năm tỉnh của
-   nước ta (Hoả Nguyên, màu đỏ) có **gạch chân vàng**; góc trái dưới có dòng
-   "● Nước ta: Hoả Nguyên". Cầm dọc thì chỉ hiện tên tỉnh của ta và bốn thủ đô cho đỡ
-   chen — chụm hai ngón phóng to là hiện đủ 28 tên.
-2. **Thành phố:** chạm thẳng vào một công trình bất kỳ → tên nó hiện ngay trên nóc.
-   Chạm vào chỗ trống thì tên biến đi.
+Phiên sau mở Phase 8 — xem mục 5.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

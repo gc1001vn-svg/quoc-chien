@@ -61,4 +61,14 @@ Anh xác nhận **59 fps** trên máy thật và nêu hai chỗ:
 196 hex lát khít, 143 ô xây, chạy 200 lượt không ô nào xây hai lần, không lệnh nào kẹt.
 Màn bản đồ: **283 sprite · 1 lệnh vẽ · 1 trang atlas** (trần 5.000 · 4 · 4).
 
-Chưa ai xác nhận trên iPhone thật — **chờ xác nhận**.
+Chủ dự án đã xem trên iPhone thật 11/09: **59 fps**, và xác nhận lại sau hai việc thêm.
+Phiên bản đã xác nhận: **11/09 10:44**.
+
+## Một thói quen thiếu, vá luôn
+
+Chủ dự án hỏi: *"nhiều lúc không biết bạn đưa lên lúc nào"*. Đúng — số phiên bản in sẵn
+trên thanh đo fps từ 10/09, nhưng tôi chưa bao giờ **báo số đó ra** khi đẩy xong, nên anh
+không có gì để đối chiếu. Đã ghi thành luật chung trong kho `ghi-nho`: đẩy xong thì in
+`PHIÊN BẢN: <ngày giờ>`. Kèm chỗ bẫy — số trong `src/PhienBan.ts` ở nhánh **không phải**
+số anh thấy, vì CI dựng lại sau khi checkout nên file luôn chậm đúng một commit; phải
+tính từ commit cuối.
