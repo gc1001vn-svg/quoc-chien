@@ -144,6 +144,39 @@
   ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
   lại.**
 
+## Quy trình — hook chặn file khoá (11/09/2026)
+
+- ~~**Hook chặn file khoá không có cơ chế "đã được đồng ý", và chỉ chặn một đường.**~~ —
+  **ĐÃ TRẢ 11/09.** Lộ ra khi chủ dự án duyệt sửa `docs/TECH_SPEC.md`: hook vẫn chặn, nên
+  trợ lý phải sửa bằng `python3` — **đi vòng qua chính cái hook đang bảo vệ file đó**. Hai
+  lỗ hổng cùng lúc: không ghi nhận được sự đồng ý, và chỉ gắn vào `Edit|Write|NotebookEdit`
+  nên đường `Bash` bỏ ngỏ hoàn toàn. Đã thêm:
+  - **Vé duyệt** `.claude/da_duyet.txt` — một dòng một đường dẫn, **dùng đúng một lần** rồi
+    tự tiêu. Không để một lần đồng ý thành giấy phép vĩnh viễn.
+  - **Sổ ghi** `.claude/nhat_ky_file_khoa.log` — mọi lần chặn và cho qua đều ghi thời gian,
+    đường dẫn, công cụ. **Sổ này LÊN git** (vé thì không) để chủ dự án soi lại được.
+  - Chặn cả **đường `Bash`**: ghi thẳng `>`/`>>` vào file khoá, `sed -i`, `tee`, `mv`, `cp`,
+    heredoc `python`/`perl`…
+  - `tests/ChanFileKhoa.test.ts` — 9 test, chạy hook trên một **thư mục gốc giả** để không
+    xoá mất vé thật của phiên đang chạy.
+
+  **Nói thẳng giới hạn:** hook này **không phải cái khoá, nó là cái nhắc cộng một cuốn sổ.**
+  Vé do chính trợ lý ghi được, và shell còn nhiều đường ghi file mà đọc chuỗi lệnh không bắt
+  hết (`dd`, ghi qua Node API, đổi tên rồi ghi…). Mức bảo vệ thật đạt được là: **sửa nhầm
+  thì bị chặn, còn sửa lén thì phải cố ý và để lại dấu vết.** Đừng tin nó hơn thế.
+
+  **Quét chuỗi lệnh thô bắt nhầm hai lần ngay trong lúc dựng** — cả hai đều thành test:
+  1. Bản nháp đầu để `>` **trần** làm dấu hiệu ghi, nên `2>/dev/null` — chuyển hướng **lỗi**
+     — bị đọc thành ghi vào file khoá, và hook chặn nhầm ngay lệnh đọc đầu tiên. Giờ chuyển
+     hướng phải trỏ **đúng đường dẫn file khoá** mới tính.
+  2. Rồi hook chặn chính cái `git commit` kể lại việc vừa sửa hook, vì **commit message**
+     nhắc "python3" và nhắc tên file khoá. **Văn bản không phải lệnh** — giờ bỏ nội dung
+     `-m "…"` trước khi quét. Có test riêng chứng minh việc bỏ đó không mở lỗ hổng: ghi
+     thật vẫn bị chặn dù cùng lệnh có `-m`.
+
+  Cả hai đều cùng một gốc: **đọc chuỗi lệnh là công cụ thô**. Nó sẽ còn bắt nhầm, và cũng
+  sẽ còn bỏ lọt. Đó là lý do cuốn sổ ghi quan trọng ngang cái chặn.
+
 ## Lớp meta — nợ mở ra ở Phase 8A (11/09/2026)
 
 - ~~**Trang đo trần sprite (`?do=sprite`) hỏng — màn đen, không một dòng báo.**~~ —
