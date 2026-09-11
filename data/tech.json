@@ -2,7 +2,8 @@
   "_": "Cay cong nghe (Phase 8, GAME_SPEC muc 9). MOI so nam o day, khong nam trong .ts (CLAUDE.md luat 2).",
   "_tienDe": "Toi da HAI tien de moi cong nghe - hoc Freeciv, GAME_SPEC muc 9. Nhieu hon thi cay ro thanh luoi, nhin khong ra duong di.",
   "_ten": "Ten lich su co that (Luyen dong, Banh xe, In an...) - kien thuc chung, khong phai noi dung dac che cua game nao. GAME_SPEC muc 12.",
-  "_thuong": "Phan thuong khi hoc xong, DUNG CHUNG khuon `hauQua` cua the quyet dinh (data/decisions.json) va di qua dung ham `apHauQua` - khong co duong thu hai de doi thanh pho. Chi dung `noiTran`: `xay` thi cong nghe tu dat nha vao ban do, vo can bang da can o Phase 3-6.",
+  "_thuong": "Phan thuong khi hoc xong, DUNG CHUNG khuon `hauQua` cua the quyet dinh (data/decisions.json) va di qua dung ham `apHauQua` - khong co duong thu hai de doi thanh pho. Chi dung `noiTran` va `doiNguong`; KHONG dung `xay`, vi xay la cong nghe tu dat nha vao ban do, vo can bang da can o Phase 3-6.",
+  "_doiNguong": "`nguongCho` thap di la thong doc xay som hon khi thieu hang - day moi la thu doi THAT trong mot van 120 gio. Da do 11/09: chi noi tran thoi thi gan nhu vo tac dung, vi tran (398) khong phai cai chan thanh pho lai, nhu cau moi la. Tong ca cay tru 12 tren `nguongCho` (40 -> 28) va 60 tren `nguongDinh` (600 -> 540) - khong duoc tru sau hon, ngưỡng ve 0 la thong doc xay khong nghi.",
   "_loi": "Chu hien tren bang cong nghe cho nguoi choi doc. KHONG phai khoa nha: moi loai nha van xay duoc tu dau van. Khoa nha theo thoi dai la viec Phase 9, luc lop chien dich noi vao kinh te thanh pho.",
   "_moThe": "Id the chinh sach mo ra khi hoc xong - cai nay CO hieu luc that, xem data/the_chinh_sach.json.",
   "_gia": "Diem nghien cuu phai dong. Doi 1 la 30-48, doi 2 la 55-75, doi 3 la 85-120 - hoc cang sau cang lau.",
@@ -20,7 +21,7 @@
       "tienDe": [],
       "loi": "Ruộng lúa cho nhiều hơn, làng xóm nuôi được nhiều miệng ăn hơn.",
       "moThe": ["khan_hoang"],
-      "thuong": { "noiTran": { "nha": 4 } }
+      "thuong": { "noiTran": { "nha": 4 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "do_gom",
@@ -40,7 +41,7 @@
       "tienDe": ["nong_nghiep"],
       "loi": "Trại lợn, trại cừu, trại gà nuôi có bài bản.",
       "moThe": ["trong_nong"],
-      "thuong": { "noiTran": { "nha": 3 } }
+      "thuong": { "noiTran": { "nha": 3 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "banh_xe",
@@ -60,7 +61,7 @@
       "tienDe": ["do_gom"],
       "loi": "Ghi được sổ sách thì việc học không mất theo người già.",
       "moThe": ["bao_tro_hoc_thuat", "hoi_dong_gia_lang"],
-      "thuong": { "noiTran": { "nha": 3 } }
+      "thuong": { "noiTran": { "nha": 3 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "luyen_dong",
@@ -70,7 +71,7 @@
       "tienDe": ["do_gom"],
       "loi": "Lò nung đủ nóng để nấu chảy quặng.",
       "moThe": [],
-      "thuong": { "noiTran": { "nha": 3 } }
+      "thuong": { "noiTran": { "nha": 3 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "xay_da",
@@ -80,7 +81,7 @@
       "tienDe": ["banh_xe", "luyen_dong"],
       "loi": "Tường đá thay tường đất, nhà đứng được trăm năm.",
       "moThe": [],
-      "thuong": { "noiTran": { "nha": 5 } }
+      "thuong": { "noiTran": { "nha": 5 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "lich_phap",
@@ -90,7 +91,7 @@
       "tienDe": ["chu_viet"],
       "loi": "Biết ngày gieo ngày gặt thì mùa màng không phụ thuộc may rủi.",
       "moThe": [],
-      "thuong": { "noiTran": { "nha": 4, "kho": 1 } }
+      "thuong": { "noiTran": { "nha": 4 } }
     },
     {
       "id": "coi_xay_nuoc",
@@ -100,7 +101,7 @@
       "tienDe": ["banh_xe"],
       "loi": "Sức nước thay sức người ở cối xay.",
       "moThe": ["quan_dien"],
-      "thuong": { "noiTran": { "nha": 4 } }
+      "thuong": { "noiTran": { "nha": 4 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "luyen_sat",
@@ -110,7 +111,7 @@
       "tienDe": ["luyen_dong", "xay_da"],
       "loi": "Sắt cứng hơn đồng, lưỡi cày và lưỡi gươm đều khác.",
       "moThe": ["phuong_hoi"],
-      "thuong": { "noiTran": { "nha": 4 } }
+      "thuong": { "noiTran": { "nha": 4 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "chung_cat",
@@ -120,7 +121,7 @@
       "tienDe": ["chan_nuoi"],
       "loi": "Xưởng rượu và nhà bia làm ra thứ để dành được.",
       "moThe": ["thue_thap"],
-      "thuong": { "noiTran": { "kho": 2 } }
+      "thuong": { "noiTran": { "kho": 2 }, "doiNguong": { "nguongDinh": -20 } }
     },
     {
       "id": "khung_cui",
@@ -130,7 +131,7 @@
       "tienDe": ["chan_nuoi", "chu_viet"],
       "loi": "Dệt bằng khung nhanh gấp mấy lần dệt tay.",
       "moThe": ["duong_cai_quan"],
-      "thuong": { "noiTran": { "nha": 4 } }
+      "thuong": { "noiTran": { "nha": 4 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "kien_truc_vom",
@@ -140,7 +141,7 @@
       "tienDe": ["xay_da"],
       "loi": "Vòm đỡ được mái rộng: kho lớn, cầu dài.",
       "moThe": ["truong_lang"],
-      "thuong": { "noiTran": { "nha": 4, "kho": 1 } }
+      "thuong": { "noiTran": { "nha": 4 } }
     },
     {
       "id": "nong_cu_sat",
@@ -150,7 +151,7 @@
       "tienDe": ["luyen_sat", "coi_xay_nuoc"],
       "loi": "Lưỡi cày sắt lật được đất nặng.",
       "moThe": ["cuong_bach_tong_quan"],
-      "thuong": { "noiTran": { "nha": 5 } }
+      "thuong": { "noiTran": { "nha": 5 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "hang_hai",
@@ -160,7 +161,7 @@
       "tienDe": ["lich_phap", "kien_truc_vom"],
       "loi": "Thuyền đi xa bờ, nhà chài không còn phụ thuộc con nước.",
       "moThe": [],
-      "thuong": { "noiTran": { "nha": 4, "kho": 1 } }
+      "thuong": { "noiTran": { "nha": 4 } }
     },
     {
       "id": "in_an",
@@ -170,7 +171,7 @@
       "tienDe": ["khung_cui", "lich_phap"],
       "loi": "Sách chép tay thành sách in: cái biết lan ra cả nước.",
       "moThe": [],
-      "thuong": { "noiTran": { "nha": 5 } }
+      "thuong": { "noiTran": { "nha": 5 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "thuoc_sung",
@@ -180,7 +181,7 @@
       "tienDe": ["luyen_sat"],
       "loi": "Than, diêm sinh và muối tiêu trộn đúng tỉ lệ.",
       "moThe": ["thuoc_dia"],
-      "thuong": { "noiTran": { "nha": 5 } }
+      "thuong": { "noiTran": { "nha": 5 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "luyen_thep",
@@ -190,7 +191,7 @@
       "tienDe": ["thuoc_sung", "nong_cu_sat"],
       "loi": "Lò thép giữ được nhiệt lâu, thép ra đều tay.",
       "moThe": ["xuong_quoc_gia"],
-      "thuong": { "noiTran": { "nha": 5, "kho": 1 } }
+      "thuong": { "noiTran": { "nha": 5 } }
     },
     {
       "id": "thanh_sao",
@@ -200,7 +201,7 @@
       "tienDe": ["thuoc_sung", "kien_truc_vom"],
       "loi": "Tường thấp mà dày, đại bác bắn không sập.",
       "moThe": [],
-      "thuong": { "noiTran": { "nha": 5 } }
+      "thuong": { "noiTran": { "nha": 5 }, "doiNguong": { "nguongCho": -1 } }
     },
     {
       "id": "ke_toan_kep",
@@ -210,7 +211,7 @@
       "tienDe": ["in_an"],
       "loi": "Sổ có hai vế thì thiếu hụt lộ ra ngay.",
       "moThe": ["hoi_quan"],
-      "thuong": { "noiTran": { "kho": 2 } }
+      "thuong": { "noiTran": { "kho": 2 }, "doiNguong": { "nguongDinh": -20 } }
     },
     {
       "id": "hai_do",
@@ -220,7 +221,7 @@
       "tienDe": ["hang_hai", "in_an"],
       "loi": "Bản đồ biển in sẵn: đi buôn xa không còn là đánh cược.",
       "moThe": ["bao_chi"],
-      "thuong": { "noiTran": { "nha": 5, "kho": 1 } }
+      "thuong": { "noiTran": { "nha": 5 } }
     },
     {
       "id": "dong_co_hoi_nuoc",
@@ -240,7 +241,7 @@
       "tienDe": ["dong_co_hoi_nuoc"],
       "loi": "Đường ray trong mỏ: than và quặng ra khỏi lòng đất nhanh hơn.",
       "moThe": [],
-      "thuong": { "noiTran": { "kho": 3 } }
+      "thuong": { "noiTran": { "kho": 3 }, "doiNguong": { "nguongDinh": -20 } }
     },
     {
       "id": "cong_xuong",

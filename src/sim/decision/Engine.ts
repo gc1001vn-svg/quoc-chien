@@ -62,7 +62,8 @@ export function docNhipDo(tho: unknown): NhipDo {
   };
 }
 
-function docHauQua(tho: unknown, duong: string): HauQua {
+/** Doc mot `hauQua` tu JSON. Cay cong nghe dung lai de doc phan thuong cua cong nghe. */
+export function docHauQua(tho: unknown, duong: string): HauQua {
   const o = layObject(tho, duong);
   const ra: {
     xay?: { ten: string; so: number }[];

@@ -7,7 +7,7 @@
  */
 
 /** Loai su kien - de ben ve to mau khac nhau, khong de sim dung vao. */
-export type LoaiSuKien = 'the' | 'chon' | 'thong_doc' | 'hong';
+export type LoaiSuKien = 'the' | 'chon' | 'thong_doc' | 'hong' | 'meta';
 
 /** Mot dong nhat ky. */
 export interface SuKien {
