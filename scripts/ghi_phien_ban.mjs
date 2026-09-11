@@ -16,9 +16,15 @@
  *
  * Gio lay theo mui gio Viet Nam de khop dong ho tren iPhone cua chu du an.
  *
- * File sinh ra CO trong git de `npm run typecheck` chay duoc khi chua build. Ban tren may
- * toi co the cham mot commit; ban tren may chu thi luon dung, vi CI build lai sau khi
- * checkout dung commit do.
+ * File sinh ra **KHONG con trong git** tu 11/09. Truoc do no co trong git de `typecheck`
+ * chay duoc khi chua build, nhung sinh ra mot vong luan quan: commit xong thi ngay gio
+ * commit cuoi doi, lan build sau ghi so moi, cay lam viec ban, lai phai commit... va so
+ * trong git KHONG BAO GIO khop voi chinh commit chua no (luon cham mot commit). Hook
+ * kiem cay sach bat dung cai do ngay 11/09.
+ *
+ * Gio file nam trong `.gitignore`, va `package.json` goi script nay o `prelint`,
+ * `pretypecheck`, `pretest` - ba buoc CI chay TRUOC `build`. Nho vay may chu van co file
+ * du no khong nam trong git, va cay lam viec khong bao gio ban vi mot file sinh tu dong.
  */
 import { execFileSync } from 'node:child_process';
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';

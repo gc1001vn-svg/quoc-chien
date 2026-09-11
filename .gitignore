@@ -12,6 +12,13 @@ assets_source/
 .claude/so_lenh.log
 anh_chup/
 
+# So phien ban: SINH TU DONG tu ngay gio commit cuoi (scripts/ghi_phien_ban.mjs).
+# Giu trong git thi thanh vong luan quan - commit xong la ngay gio commit cuoi doi, lan
+# build sau ghi so moi, cay lam viec ban, lai phai commit. Va so trong git khong bao gio
+# khop voi chinh commit chua no. `package.json` sinh no o prelint/pretypecheck/pretest
+# nen may chu van co file du no khong len git.
+src/PhienBan.ts
+
 # Ve duyet sua file khoa: tam, dung mot lan roi tu tieu. Khong len git.
 # Nhung SO GHI (.claude/nhat_ky_file_khoa.log) thi CO len git - do la dau vet de
 # chu du an soi lai xem file khoa nao da bi sua, luc nao, bang cong cu gi.
