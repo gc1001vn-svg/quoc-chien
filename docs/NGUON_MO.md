@@ -5,7 +5,9 @@
 >
 > Hai file khác nhau, đừng nhầm:
 > - **File này** — nguồn ở ngoài, phần lớn **chưa tải**. Tra ngày 10/09/2026.
-> - **`docs/KHO_ASSET.md`** — 1.855 model **đã tải về** `assets_source/`, sinh bằng `npm run kho`.
+> - **`docs/KHO_ASSET.md`** — model **đã tải về** `assets_source/`, sinh bằng `npm run kho`.
+>   Số thật ở **dòng cuối** file đó; đừng chép về đây (dòng này từng ghi một con số thứ ba,
+>   khác cả hai chỗ khác, và không ai biết).
 >
 > Tìm nhanh theo phase: `grep -i 'P7' docs/NGUON_MO.md` · theo loại: `grep -i 'âm thanh'`
 
@@ -127,7 +129,7 @@ Ghi vào đây mỗi khi dò không ra, **trước khi tự vẽ**:
 | Vườn nho, chuồng thú, lò nung, nhà chài, công trường | P6B | Kenney · Quaternius · KayKit | Không có → **ghép tay, chủ dự án biết** |
 | Lò rèn · xưởng cưa · xưởng rượu · xưởng vũ khí · trại lính · nhà dân | P6B vòng 2 | KayKit Medieval **Hexagon** Pack | **CÓ ĐỦ, đã dùng 10/09** — `blacksmith` `lumbermill` `tavern` `archeryrange` `barracks` `home_A/B` |
 | Cối xay gió, giếng | P6B | — | **Có, ở KayKit** — 10/09 tự ghép nhầm rồi thay lại bằng model thật |
-| **Lợn · gà · cừu** (3 trại chăn nuôi) | P6B | Kenney · Quaternius · KayKit ×2 · 1.222 model dùng được | **Không có con vật nào.** Ba trại tạm phân biệt bằng màu nền + màu lán + đồ chất quanh. Cần model thú thì phải tìm nguồn mới |
+| **Lợn · gà · cừu** (3 trại chăn nuôi) | P6B | Kenney · Quaternius · KayKit ×2 · cả kho asset | **Không có con vật nào.** Ba trại tạm phân biệt bằng màu nền + màu lán + đồ chất quanh. Cần model thú thì phải tìm nguồn mới |
 | **Lợn · cừu** — dò lại 11/09 | P6B | `quaternius/lowpoly-animated-animals` | **ĐÃ TẢI VÀ DÙNG 11/09.** CC0 1.0, 7 con có OBJ. `Pig` vào `trai_lon`, `Sheep` vào `trai_cuu` — hai trại nay phân biệt bằng con vật thật, không còn chỉ khác màu nền |
 | **Gà** | P6B | Kenney · Quaternius ×6 · KayKit ×3 | **Vẫn không gói nào có.** `trai_ga` còn phân biệt bằng chuồng + màu nền. Cần thì phải tìm nguồn mới |
 | Nhà ở · tháp canh · cổng làng (290 công trình) | P2 | `kk:house` `kk:watchtower` `kk:wall_gate` | **Có model nguyên khối, nhưng CỐ Ý không dùng** — xem dưới |

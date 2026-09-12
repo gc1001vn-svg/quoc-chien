@@ -21,7 +21,11 @@ Kho `ghi-nho`: theo đúng skill, `cat` cả ba file, cũng cấm cắt.
 |---|---|---|
 | `npm ci` | **luôn luôn** | `node_modules` không bao giờ có sẵn |
 | `npm run do` | **luôn luôn** | phải **6/6 thước** trước khi động vào code |
-| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB, 9 gói itch + 2 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
+| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB (**ước, chưa đo lại**), 9 gói itch + 2 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
+
+**Cỡ kho chỉ ghi ở đúng dòng trên** — `tests/TaiLieu.test.ts` giữ luật này. Trước 12/09
+nó ghi hai nơi, hai số khác nhau (440 MB và 1 GB) và không ai biết cái nào đúng. Đo được
+số thật thì sửa dòng này và bỏ chữ "ước".
 
 `assets_source/` **không lên git** (đúng luật). Không nướng sprite thì đừng tải —
 mất 5–10 phút và không dùng tới.
@@ -62,7 +66,8 @@ không mở phase mới** — hỏi anh trước, đừng tự cho là xong.
 grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_CHUNG.md | sort -u
 ```
 
-`docs/KHO_CHUNG.md` là bản kê **514 model máy nướng đọc được** trong kho dùng chung —
+`docs/KHO_CHUNG.md` là bản kê **model máy nướng đọc được** trong kho dùng chung (số thật
+ở **dòng cuối** chính file đó — đừng nhớ số, đừng chép về đây) —
 `assets_source/` nằm trong git của repo `tayvuc` (luật hai kho, `tayvuc/CLAUDE.md` mục
 Asset). File kê **lên git** nên dò được mọi phiên, **không phải clone 326 MB**.
 
@@ -75,8 +80,13 @@ npm run kho:lay quaternius/medieval-village-megakit
 
 **Kho chung giữ gói ĐÃ LỌC** — phần lớn chỉ còn `glTF/`, không có `OBJ/`. Các mẻ hiện tại
 trỏ vào thư mục OBJ nên **không thay thế được**; kho chung để **tìm model mới**, và mẻ mới
-thì trỏ thẳng vào glTF. Máy nướng đọc được cả hai (`docObj`, `docGltf`), **chưa đọc được
-`.glb`**.
+thì trỏ thẳng vào glTF. **Máy nướng đọc được cả ba: `.obj` · `.gltf` · `.glb`** —
+`.glb` mở từ 11/09 (`tools/nuong_sprite.mjs`, đo 120/120 file, 0 hỏng), kit khai
+`"loai": "glb"` là nướng được. **`.fbx` thì chưa.**
+
+> Dòng trên từng ghi ngược lại — "chưa đọc được `.glb`" — và sai suốt từ 11/09. File này
+> đọc mỗi đầu phiên nên nó dạy sai ngay từ bước đầu, làm phiên sau bỏ qua phần `.glb` của
+> kho chung. Sửa 12/09; `tests/TaiLieu.test.ts` giữ cho khỏi tái phát.
 
 Tải gói mới từ itch xong chạy `npm run kho`; lấy từ kho chung xong chạy `npm run kho:chung`
 (chỉ khi kho chung có thay đổi).

@@ -7,7 +7,8 @@ https://gc1001vn-svg.github.io/quoc-chien/ — **xong việc tự gộp `main`**
 
 Không biết lập trình, làm trên iPhone. Từng bước bấm gì ở đâu, link đầy đủ.
 **Mỗi phiên một phase.** Đầu phiên chạy `docs/DAU_PHIEN.md` → Plan Mode chờ duyệt.
-Máy ảo mới mỗi phiên: `npm ci`; phiên có nướng sprite thì `npm run tai:tatca` (~440 MB).
+Máy ảo mới mỗi phiên: `npm ci`; phiên có nướng sprite thì `npm run tai:tatca`
+(cỡ kho ghi ở `docs/DAU_PHIEN.md` mục B — **một nơi duy nhất**, đừng chép về đây).
 **TIẾP** = phase kế · **ĐỔI…** = sửa trong phase này · **LỖI** = dừng sửa trước.
 Nhìn được thì `npm run chup:man` gửi ảnh. **Cấm** báo "hoàn thành" khi chưa xác nhận trên
 iPhone thật — ghi "chờ xác nhận".
@@ -29,7 +30,7 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - **Dò trước khi làm, ba bước, không được bỏ bước nào:**
   1. `grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_ASSET.md | sort -u` — có thì dùng ngay.
      **Không ra thì dò tiếp `docs/KHO_CHUNG.md`** (cùng lệnh): kho model dùng chung, nằm
-     trong git của `tayvuc`, **1.310 model** máy nướng đọc được. Trúng thì
+     trong git của `tayvuc`, số model đọc được ghi ở **dòng cuối `KHO_CHUNG.md`**. Trúng thì
      `git clone --depth 1 https://github.com/gc1001vn-svg/tayvuc /home/user/tayvuc`
      rồi `npm run kho:lay <gói>`. Kho đó giữ gói **đã lọc** — hầu hết chỉ có `glTF/`, mẻ
      mới trỏ thẳng vào đó (`"loai": "gltf"` hoặc `"glb"`).
@@ -43,4 +44,7 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Thư viện ngoài: đề xuất tên + license + lý do, **chờ đồng ý**.
 - **Trước mỗi commit `npm run do`**. Sửa bằng Edit, đừng `python`/`sed` — tốn token.
 - File khoá: `.claude/file_khoa.txt`. `KE_HOACH.md` mục 4 và `NHAT_KY/*` chỉ thêm.
+  **Hỏi chủ dự án trước; anh đồng ý rồi thì ghi một dòng đường dẫn vào
+  `.claude/da_duyet.txt` là `Edit` qua được** — vé dùng một lần, mọi lần đụng đều vào sổ
+  `.claude/nhat_ky_file_khoa.log`. Chưa hỏi thì không được tự ghi vé.
 - Mâu thuẫn `GAME_SPEC.md` / `TECH_SPEC.md` → hỏi lại, không tự quyết.
