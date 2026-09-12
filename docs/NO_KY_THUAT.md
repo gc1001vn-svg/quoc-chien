@@ -144,6 +144,58 @@
   ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
   lại.**
 
+## XUNG ĐỘT CHỜ GỠ — rà 12/09/2026, là việc của phiên sau
+
+Chủ dự án bảo 12/09: *"Có quá nhiều thứ đã làm mà bạn đã quên. Có những thứ rõ ràng phiên
+trước làm được phiên sau lại bị chặn. Có sự xung đột. Cần giải quyết triệt để."* Đã rà
+**bằng lệnh** và xác nhận mười chỗ. **Chưa sửa gì** — để nguyên cho phiên rà soát.
+
+**Gốc chung: không một test nào kiểm tài liệu.** `ls tests/` có 27 file, không cái nào đối
+chiếu số trong `docs/` với số sinh ra từ lệnh. Nên số gõ tay trôi tự do qua các phiên.
+
+### Luật đánh nhau với luật
+
+1. **`CLAUDE.md` bảo "Sửa bằng `Edit`, đừng `python`/`sed`" (dòng 44)** — nhưng file khoá
+   thì `Edit` **bị hook chặn**, buộc dùng `python`; rồi 11/09 hook chặn luôn `python`.
+   **Không chỗ nào trong `CLAUDE.md` nhắc vé duyệt**, nên đọc xong là vào ngõ cụt. Đây
+   đúng là "phiên trước làm được, phiên sau bị chặn".
+2. **Hook quét chuỗi lệnh thô nên chặn nhầm.** Sổ ghi một phiên: **16 dòng, 13 lần CHẶN**,
+   trong đó **4 lần nhầm** — `2>/dev/null` · nội dung `-m "…"` của commit · heredoc
+   `git commit` · heredoc `python` sửa file **repo khác**. Vá hai, còn hai.
+
+### Số liệu mâu thuẫn
+
+3. **Cỡ `npm run tai:tatca` ghi hai số khác nhau**: `CLAUDE.md` dòng 10 ghi **~440 MB**,
+   `DAU_PHIEN.md` và `ghi-nho/trang-thai.md` ghi **~1 GB**.
+4. **`CLAUDE.md` dòng 32 gõ tay "1.310 model"** — ngay cạnh dòng 37 của chính nó:
+   *"đừng nhớ số — số gõ tay vào tài liệu đã sai ba lần"*.
+5. **`KHO_ASSET.md` còn 1.222** (số cũ, tính sai theo luật chỉ-`.obj`) và
+   `docs/NGUON_MO.md` dòng 130 **chép lại** con số đó.
+6. **`ghi-nho/trang-thai.md` dòng 91 tự khai "đang 57 dòng"** — thật ra **181 dòng**.
+
+### Kho ghi nhớ lạc hậu
+
+7. `ghi-nho/du-an.md` ghi `quoc-chien` **"Phase 2 xong"** — thực tế **Phase 8A**.
+8. `ghi-nho/trang-thai.md` còn mục **"1b. (cũ) Phase 3"** đã xong từ lâu.
+
+### Quy trình
+
+9. `CLAUDE.md` dòng 9 ghi **"Mỗi phiên một phase"**, nhưng phiên 11/09 làm Phase 8A **cộng**
+   năm lỗi sửa + nối kho chung + bộ đọc GLB. Luật bị phá mà không ai ghi nhận — đây chính
+   là "quá nhiều thứ đã làm" chủ dự án nói.
+10. Skill `ghi-nho` **trên tài khoản chưa có bản mới** (`trang-thai.md`: "CHỜ TẢI LÊN").
+    May là luật "đọc hết ba file" nằm trong `so-thich.md` nên vẫn tới nơi.
+
+### Hướng gỡ — chủ dự án đã chốt một phần (12/09)
+
+**Hook: bỏ chặn shell, GIỮ vé duyệt và sổ ghi.** Lý do anh chọn: chặn shell **không ngăn
+được ai cố ý** (shell có mười đường ghi file), nó chỉ làm phiền người đang làm việc thật.
+**Dấu vết mới là thứ bảo vệ, không phải cái chặn.**
+
+Phần còn lại phiên sau quyết. Thứ đáng làm nhất là **test nhất quán tài liệu** — chạy được
+mà không cần `assets_source/`, nên CI xanh: chặn số model gõ tay ngoài hai file sinh tự
+động · chặn cỡ `tai:tatca` ghi ở hai nơi · đòi `CLAUDE.md` nhắc đường ra `da_duyet.txt`.
+
 ## Kho chung — nối 11/09/2026
 
 - **Con số "1.222 model dùng được" ở dòng cuối `KHO_ASSET.md` là SỐ CŨ, tính sai.** Nó đếm

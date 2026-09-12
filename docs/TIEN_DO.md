@@ -108,10 +108,32 @@ kết luận là không có quyền rồi chạy tiếp cả phiên mà thiếu 
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase kế tiếp — Phase 8B: nướng mẻ hiện đại (PHIÊN MỚI)
+## 5. Phiên sau — RÀ SOÁT VÀ GỠ XUNG ĐỘT, chưa phải Phase 8B
 
-Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0 — đã nằm sẵn trong kho
-từ 10/09, không phải tải thêm), rồi nối vào `ThoiDai.me` để lên đời là thành phố đổi mặt.
+**Chủ dự án chốt 12/09: Phase 8B lùi một phiên.** Trước khi làm tiếp phải dọn cho sạch, vì
+*"có quá nhiều thứ đã làm mà bạn đã quên; có những thứ rõ ràng phiên trước làm được phiên
+sau lại bị chặn"*.
+
+Việc đã rà xong **bằng lệnh**, mười xung đột nằm ở **`docs/NO_KY_THUAT.md`** mục
+**"XUNG ĐỘT CHỜ GỠ — rà 12/09"**, kèm bằng chứng từng cái. **Chưa sửa gì cả** — phiên sau
+đọc mục đó rồi gỡ, khỏi phải dò lại.
+
+Ba cái nặng nhất:
+
+- `CLAUDE.md` bảo "sửa bằng `Edit`" mà file khoá thì `Edit` bị chặn, **không chỗ nào nhắc
+  vé duyệt** → đọc xong là vào ngõ cụt.
+- Hook quét chuỗi lệnh thô nên **chặn nhầm 4 lần trong một phiên**.
+- **Không một test nào kiểm tài liệu**, nên số gõ tay trôi tự do: cỡ `tai:tatca` ghi hai số
+  khác nhau, `CLAUDE.md` gõ tay số model ngay cạnh câu chính nó cấm nhớ số.
+
+**Anh đã chốt một phần hướng gỡ (12/09):** hook **bỏ chặn shell, giữ vé duyệt và sổ ghi** —
+chặn shell không ngăn được ai cố ý, chỉ làm phiền người làm việc thật; dấu vết mới là thứ
+bảo vệ.
+
+## 6. Phase 8B — nướng mẻ hiện đại (sau khi rà soát xong)
+
+Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0), rồi nối vào
+`ThoiDai.me` để lên đời là thành phố đổi mặt.
 
 **Việc phải quyết trước khi nướng:** gói chỉ có **8 dáng nhà** (`building_A`…`building_H`)
 cộng đường, xe, cột đèn — mà game có **32 loại nhà**. Hai đường: ghép 32 về 8 dáng phân
