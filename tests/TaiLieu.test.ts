@@ -109,18 +109,22 @@ describe('danh sach file khoa phai tro vao file co that', () => {
 describe('tai lieu khong duoc day sai ve dinh dang may nuong doc duoc', () => {
   // Xung dot thu 11, ra 12/09. `DAU_PHIEN.md` doc MOI DAU PHIEN, nen mot cau sai o day
   // chan ca phien sau: no bao bo qua `.glb`, tuc bo qua 796 model cua kho chung.
-  it('DAU_PHIEN.md khong con noi may nuong bo `.glb`', () => {
-    const doGlb = doc('tools/nuong_sprite.mjs').includes('laGlb');
-    expect(doGlb, 'May nuong mat kha nang doc .glb - sua lai tai lieu theo').toBe(true);
+  it('may nuong VAN doc duoc `.glb` - khong thi tai lieu phai sua theo', () => {
+    expect(doc('tools/nuong_sprite.mjs')).toContain('laGlb');
+  });
 
-    // Bo dong trich dan (`>`) truoc khi soi: do la cho ghi lai LICH SU - "dong tren tung
-    // ghi nguoc lai: chua doc duoc .glb" - va cam ke lai loi cu thi khong con hoc duoc gi
-    // tu no. Chi soi cau dang DAY viec.
-    const dangDay = doc('docs/DAU_PHIEN.md')
+  // Soi ca hai file doc dau phien. Ban dau chi soi DAU_PHIEN.md, va TIEN_DO.md lo ra ngay
+  // sau do: no ket mot doan bang "`.glb` thi van chua doc duoc" NGAY DUOI doan noi
+  // "120/120 file .glb doc duoc". Tu mau thuan trong cung mot doan, va van lot qua dot ra
+  // 12/09 vi ra bang mat.
+  it.each(['docs/DAU_PHIEN.md', 'docs/TIEN_DO.md'])('%s khong noi may nuong bo `.glb`', (duong) => {
+    // Bo dong trich dan (`>`): do la cho ghi lai LICH SU - "dong tren tung ghi nguoc lai" -
+    // va cam ke lai loi cu thi khong con hoc duoc gi tu no. Chi soi cau dang DAY viec.
+    const dangDay = doc(duong)
       .split('\n')
       .filter((d) => !d.trimStart().startsWith('>'))
       .join('\n');
-    expect(dangDay, 'DAU_PHIEN.md day sai: may nuong doc duoc `.glb` tu 11/09')
+    expect(dangDay, `${duong} day sai: may nuong doc duoc \`.glb\` tu 11/09`)
       .not.toMatch(/ch[uư]a[^.\n]{0,40}`?\.glb`?/i);
   });
 });

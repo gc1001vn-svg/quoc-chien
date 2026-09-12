@@ -3,43 +3,58 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 11/09/2026 (Phase 8A — lớp meta, **đã xác nhận trên iPhone, 59 fps**).
+Cập nhật: 12/09/2026 (phiên rà soát — gỡ 7/11 xung đột, **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Phase 8A xong và đã xác nhận trên iPhone (59 fps, bản 11/09 12:35).** Phase 8 tách làm
-hai, anh chốt 11/09: 8A là phần ruột, 8B là nướng mẻ sprite hiện đại (phiên sau).
+**Game vẫn ở Phase 8A** — phiên 12/09 không đụng gì màn hình game. Anh chốt lùi Phase 8B
+một phiên để dọn xung đột trước. Việc đó **xong**.
 
-Ảnh anh gửi cho thấy cả ba thứ đều chạy: bảng công nghệ (2/24, đang học Nông nghiệp
-19/30 điểm) · thẻ **Tích trữ** lắp được vào ô chính phủ, đếm ngược "Đổi thẻ sau 5 giờ
-nữa" · hệ số nghiên cứu tụt xuống **95 %** đúng bằng mặt hại của thẻ.
+**Gỡ 7 trong 11 xung đột.** Nặng nhất là ba cái:
 
-Màn thành phố có thêm nút **🔬** ở góc trái dưới, cạnh nút ☰ và ⌂. Bấm vào hiện bảng
-**Nghiên cứu**, hai thẻ chữ:
+- **`CLAUDE.md` hết ngõ cụt.** Nó bảo "sửa bằng `Edit`", mà file khoá thì `Edit` bị chặn,
+  và không chỗ nào nhắc vé duyệt. Giờ có dòng chỉ thẳng đường `.claude/da_duyet.txt`, và
+  có test giữ cho khỏi mất lại.
+- **Hook thôi chặn đường shell, chỉ ghi sổ** (anh chốt 12/09). Đo phiên thật: 13 lần chặn
+  thì **4 lần chặn nhầm**, mà cái được bằng không — shell có mười đường ghi file.
+- **Có test giữ tài liệu**, thứ trước nay không có: 27 file test, không cái nào đối chiếu
+  số trong `docs/` với thực tế. Nên số gõ tay trôi tự do.
 
-- **Công nghệ** — thời đại đang ở, thanh tiến độ, danh sách công nghệ học được (bấm là
-  chọn học), và câu Eureka của từng cái ("Làm ra 680 thép trong một giờ").
-- **Chính sách** — số ô chính phủ, thẻ đã mở. Chạm một thẻ là lắp vào ô trống, chạm lại là
-  tháo ra. Mỗi thẻ ghi rõ **mặt lợi và mặt hại**.
+**Bốn cái còn treo đều nằm trong kho `ghi-nho`** — repo Private, phiên này clone hỏng và
+xin quyền bị chặn. Đã thử hai lần. Là vấn đề **quyền**, không phải khó; phiên nào mở được
+kho đó thì gỡ, việc nhỏ. Danh sách: `docs/NO_KY_THUAT.md`.
 
-Lên thời đại là **tự động** khi đủ công nghệ và đủ công trình — không có nút bấm, vì lên
-đời không có mặt trái nào để cân nhắc. Nhật ký sự kiện ghi lại bằng chữ xanh lá.
+**Hai thứ mới lộ ra khi gỡ, đáng nhớ hơn cả việc gỡ:**
 
-Thành phố **chưa đổi mặt** khi lên đời: chưa có mẻ sprite hiện đại, cả sáu đời cùng dùng
-`trung_co_2`. Đó là Phase 8B.
+1. **Xung đột thứ 11, chưa ai ghi.** `docs/DAU_PHIEN.md` dạy *"máy nướng chưa đọc được
+   `.glb`"* — sai từ 11/09. File này đọc **mỗi đầu phiên**, nên nó dạy sai ngay bước đầu
+   và làm phiên sau bỏ qua phần `.glb` của kho chung.
+2. **Con số gõ tay thứ ba.** Hàng rào vừa dựng bắt ngay `NGUON_MO.md` ghi "1.855 model" —
+   khác **cả** 1.222 lẫn 1.310. Đợt rà 12/09 soi bằng mắt không thấy; test bắt trong vài
+   phút.
+3. **Chỗ dạy sai về `.glb` có hai, không phải một.** Chính `TIEN_DO.md` này cũng kết một
+   đoạn bằng *"`.glb` thì vẫn chưa đọc được"* — ngay dưới đoạn nói "120/120 file `.glb`
+   đọc được". Tự mâu thuẫn trong cùng một đoạn.
+
+Tức là: **rà bằng mắt không đủ, phải có máy giữ.** Cả ba cái đều lọt qua một đợt rà có
+chủ đích hẳn hoi.
 
 ## 2. Số đo mới nhất
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 · 166 test | **6/6 · 211 test** |
-| `npm run sim:congnghe` (mới) | — | **ĐẠT** · 120 giờ game |
-| Lên Trung cổ · lên Súng ống | — | giờ **21** · giờ **65** |
-| Công nghệ học xong trong 120 giờ | — | **21/24** |
-| Điểm nghiên cứu mỗi giờ (241 nhà) | — | **11** ở hệ số 100 % |
-| Model dò được — kho riêng + **kho chung** | 1.222 | 1.222 + **1.310** (`KHO_CHUNG.md`) |
+| `npm run do` | 6/6 · 211 test | **6/6 · 222 test** |
+| Xung đột đã gỡ | 0/11 | **7/11** (4 treo vì quyền) |
+| Test kiểm tài liệu | **0** | **11** (`tests/TaiLieu.test.ts`) |
+| Hook chặn nhầm mỗi phiên | 4 lần | **0** — đường `Bash` chỉ ghi sổ |
 
-Kho asset **không tải phiên này** — 8A không nướng sprite.
+Số model **không đo phiên này** (kho không tải). Số thật luôn nằm ở **dòng cuối**
+`docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — từ 12/09 có test cấm chép số đó ra tài liệu
+luật, vì chép về là trôi.
+
+Số đo game giữ nguyên từ 11/09 (Phase 8A): `sim:congnghe` **ĐẠT** 120 giờ · lên Trung cổ
+giờ **21**, Súng ống giờ **65** · **21/24** công nghệ trong 120 giờ · **11** điểm nghiên
+cứu mỗi giờ ở 241 nhà. Trần sprite ngay dưới.
 
 ### Đo trần sprite trên iPhone thật (11/09, atlas thật 2×)
 
@@ -58,40 +73,40 @@ không tụt một bậc nào. **Trần 5.000 của dự án dư ít nhất 3,6 
 
 ## 3. Việc của chủ dự án
 
-**Phase 8A không còn gì phải kiểm.** Anh đã xem trên iPhone 11/09 và xác nhận: 59 fps,
-bảng nghiên cứu đọc được, thẻ chính sách lắp/tháo ăn.
+**Phiên 12/09 không đụng gì màn hình game, nên không có gì phải kiểm trên iPhone.**
 
-Phiên bản anh đã xác nhận Phase 8A: **11/09 12:35**. Bản cuối phiên: **11/09 15:08**.
+Còn đúng **một việc treo từ 11/09**, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm
+được, nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì
+liếc một cái.
 
-**Ba lỗi sửa trong phiên, anh đã xác nhận hai:**
+### Hai việc cần anh quyết
 
-1. ✅ **Nhãn fps bị hàng nút đè lên** — ảnh anh chụp trang đo lúc 14:42 cho thấy nhãn
-   `50 fps · 20.0 ms · 24000 sprite · 1 lệnh vẽ · atlas 2×` hiện **đủ**, hàng nút nằm hàng
-   dưới. Xong.
-2. ⏳ **Nút "Đo trần sprite" ở màn dọc** — anh bấm được (trang đo mở ra), nhưng **chưa có
-   ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng**. Việc nhỏ, phiên sau anh liếc là xong.
-3. ✅ **Trang đo trần sprite hỏng từ Phase 6** — anh bấm lại và nó chạy, ra 18.089 sprite
-   ở 60 fps trên atlas thật 2×. Xem mục 2.
+**1. Kho `ghi-nho` — cần mở quyền.** Bốn xung đột không gỡ được phiên này chỉ vì phiên
+không vào được kho đó. Repo để **Private**, clone hỏng (`could not read Username`) và
+lệnh xin quyền bị chặn; đã thử hai lần. Việc gỡ thì nhỏ — sửa mấy dòng ghi sai
+("Phase 2 xong" trong khi thực tế Phase 8A, tự khai "57 dòng" trong khi 181 dòng).
 
-**`docs/ASSET_CREDITS.md`: anh đã chốt GIỮ (11/09).** Không còn là việc treo.
-**`docs/TECH_SPEC.md` mục 2 và 3: anh đã duyệt sửa (11/09)**, ghi số đo mới vào.
-**Hook file khoá: anh chốt sửa (11/09)** — vé duyệt dùng một lần, sổ ghi, chặn cả đường
-`Bash`. Chi tiết và **giới hạn của nó** ở `NO_KY_THUAT.md` mục "Quy trình".
+**2. Kho chung cho game — anh nêu 12/09, chưa làm.** Anh muốn một repo riêng cho mọi thứ
+liên quan làm game (tài nguyên, đồ hoạ, gameplay, cách xây dựng) để các dự án dùng chung,
+khỏi tải đi tải lại. Anh đã chốt để **phiên sau**. Hai số anh hỏi, trả lời rồi:
 
-### Một việc quy trình — lỗi của trợ lý, đã sửa
+- **Phình tối đa:** file đơn >50 MB GitHub cảnh báo, **>100 MB chặn cứng**; cả kho khuyến
+  nghị <1 GB, khuyên mạnh **<5 GB** (quá 5 GB GitHub liên hệ bắt giảm, không chặn cứng).
+  Kho hiện **326 MB** → còn dư khoảng **15 lần** nữa.
+- **Tải lại tốn bao nhiêu token: gần như không.** File tải về **không đi qua trợ lý** —
+  lệnh chạy trên máy ảo, trợ lý chỉ đọc mấy dòng kết quả, tốn **~200–500 token** dù 1 MB
+  hay 1 GB. Cái tải lại thật sự tốn là **5–10 phút chờ**, itch.io **chặn tốc độ (429)**
+  làm tải hay hỏng, và **nguồn có thể biến mất** (itch gỡ gói là mất vĩnh viễn).
 
-**Đầu phiên KHÔNG đọc kho ghi nhớ `ghi-nho`, và đó là lỗi bỏ cuộc sớm chứ không phải
-thiếu quyền.** Lệnh xin quyền bị chặn **một lần**, trợ lý chấp nhận rồi chạy tiếp cả phiên.
-Chủ dự án hỏi lại cuối phiên, thử lần hai thì **được ngay**.
+Tức lý do đáng làm kho chung **không phải tiết kiệm token** như anh nghĩ, mà là ba cái sau
+cùng, cộng với việc gom kiến thức làm game một chỗ — phần kiến thức thì nhẹ, vài MB.
 
-Hệ quả thật: suốt phiên không biết mấy điều đã chốt từ trước, trong đó có
-`trang-thai.md` mục "Đang kẹt" — **đã ghi từ 04/09 và kiểm lại 07/09** rằng hook file khoá
-là *chốt nhắc chứ không phải hàng rào*, ghi qua Bash vẫn được, và **làm vậy chỉ cần nói rõ
-với chủ dự án**. Tức việc sửa `TECH_SPEC.md` bằng `python3` hôm nay là **đúng quy trình đã
-chốt**, không phải lách lệ như trợ lý đã tự mô tả.
+### Một việc quy trình — giữ lại vì bài học còn dùng
 
-**Bài học: một lần bị chặn không phải kết luận.** Thử lại, hoặc hỏi chủ dự án — đừng tự
-kết luận là không có quyền rồi chạy tiếp cả phiên mà thiếu bối cảnh.
+**Bài học 11/09: một lần bị chặn không phải kết luận.** Phiên đó bỏ đọc kho `ghi-nho` sau
+khi bị chặn một lần, hoá ra thử lần hai là được. Phiên 12/09 đã theo đúng bài học này —
+thử clone hai lần, thêm một đường xin quyền khác — nhưng lần này **chặn thật**, nên ghi
+lại là chặn thật chứ không phải bỏ cuộc sớm.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -105,32 +120,16 @@ kết luận là không có quyền rồi chạy tiếp cả phiên mà thiếu 
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
 - **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
+- **Bốn xung đột trong kho `ghi-nho` chưa gỡ** — chặn vì **quyền**, không phải khó. Kho
+  ghi sai tiến độ dự án ("Phase 2 xong" trong khi thực tế Phase 8A), nên phiên nào đọc
+  được kho đó cũng nhận bối cảnh sai.
+- **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
+  `.gltf` và `.glb`). File **sinh tự động** nên sửa tay là sai luật — nó tự đúng ở lần
+  `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phiên sau — RÀ SOÁT VÀ GỠ XUNG ĐỘT, chưa phải Phase 8B
-
-**Chủ dự án chốt 12/09: Phase 8B lùi một phiên.** Trước khi làm tiếp phải dọn cho sạch, vì
-*"có quá nhiều thứ đã làm mà bạn đã quên; có những thứ rõ ràng phiên trước làm được phiên
-sau lại bị chặn"*.
-
-Việc đã rà xong **bằng lệnh**, mười xung đột nằm ở **`docs/NO_KY_THUAT.md`** mục
-**"XUNG ĐỘT CHỜ GỠ — rà 12/09"**, kèm bằng chứng từng cái. **Chưa sửa gì cả** — phiên sau
-đọc mục đó rồi gỡ, khỏi phải dò lại.
-
-Ba cái nặng nhất:
-
-- `CLAUDE.md` bảo "sửa bằng `Edit`" mà file khoá thì `Edit` bị chặn, **không chỗ nào nhắc
-  vé duyệt** → đọc xong là vào ngõ cụt.
-- Hook quét chuỗi lệnh thô nên **chặn nhầm 4 lần trong một phiên**.
-- **Không một test nào kiểm tài liệu**, nên số gõ tay trôi tự do: cỡ `tai:tatca` ghi hai số
-  khác nhau, `CLAUDE.md` gõ tay số model ngay cạnh câu chính nó cấm nhớ số.
-
-**Anh đã chốt một phần hướng gỡ (12/09):** hook **bỏ chặn shell, giữ vé duyệt và sổ ghi** —
-chặn shell không ngăn được ai cố ý, chỉ làm phiền người làm việc thật; dấu vết mới là thứ
-bảo vệ.
-
-## 6. Phase 8B — nướng mẻ hiện đại (sau khi rà soát xong)
+## 5. Phase 8B — nướng mẻ hiện đại (rà soát xong rồi, làm được)
 
 Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0), rồi nối vào
 `ThoiDai.me` để lên đời là thành phố đổi mặt.
@@ -169,7 +168,7 @@ Kho chung nằm **trong git của `tayvuc`**: **2.677 file, 326 MB** — `kaykit
 
 | Lệnh | Việc |
 |---|---|
-| `npm run kho:chung` | sinh `docs/KHO_CHUNG.md` — bản kê **1.310 model máy nướng đọc được** |
+| `npm run kho:chung` | sinh `docs/KHO_CHUNG.md` — bản kê model máy nướng đọc được (số ở **dòng cuối** file đó) |
 | `npm run kho:lay <gói>` | chép một gói từ kho chung sang `assets_source/` |
 
 `docs/KHO_CHUNG.md` **lên git** (36 KB) nên **mọi phiên dò được bằng `grep` mà không phải
@@ -179,19 +178,23 @@ clone 326 MB**. Chỉ khi trúng mới clone `tayvuc` rồi lấy gói thật. L
 **Nối được tới đâu, nói thẳng:** kho chung giữ gói **đã lọc**, phần lớn chỉ còn `glTF/`,
 **không có `OBJ/`**. Các mẻ hiện tại của dự án trỏ vào thư mục OBJ nên **không thay thế
 được** — nối này **không giảm việc tải cho mẻ cũ**. Giá trị thật là **mở rộng nguồn dò**:
-**1.310 model** mà trước nay dự án không biết có, dùng được ngay cho Phase 10 (lính) và
-Phase 12 (thời đại khác).
+cả một kho model mà trước nay dự án không biết có, dùng được ngay cho Phase 10 (lính) và
+Phase 12 (thời đại khác). Số cụ thể ở dòng cuối `KHO_CHUNG.md`.
 
-Con số đó là **514 + 796**: cùng phiên đã trả luôn nợ **bộ đọc `.glb`**. Tài liệu ước nó
-"~200 dòng" — ước sai, hết **30 dòng**, vì phần khó đã nằm sẵn trong `tools/lib/gltf.mjs`
-và GLB chỉ là glTF gói nhị phân. Đo thật: **120/120 file `.glb` ngẫu nhiên đọc được,
-0 hỏng**. Kit khai `"loai": "glb"` là nướng được.
+Kho chung nhảy lên hơn gấp đôi vì **cùng phiên đã trả luôn nợ bộ đọc `.glb`**. Tài liệu
+ước nợ đó "~200 dòng" — ước sai, hết **30 dòng**, vì phần khó đã nằm sẵn trong
+`tools/lib/gltf.mjs` và GLB chỉ là glTF gói nhị phân. Đo thật: **120/120 file `.glb` ngẫu
+nhiên đọc được, 0 hỏng**. Kit khai `"loai": "glb"` là nướng được.
 
-Kèm một đính chính: **máy nướng đọc được `.gltf`**, không chỉ OBJ — `tools/nuong_sprite.mjs`
-có cả `docGltf` lẫn `docObj`, và mẻ `trung_co_2` **đang dùng glTF thật** cho hai kit. Vì
-vậy `scripts/kho_asset.mjs` đã sửa cách đếm "dùng được" thành **`.obj` hoặc `.gltf`**.
-**Con số 1.222 ở dòng cuối `KHO_ASSET.md` là số CŨ, tính sai theo luật chỉ-OBJ** — sẽ đúng
-sau lần `npm run kho` đầu tiên có đủ kho. `.glb` thì vẫn chưa đọc được.
+**Máy nướng đọc được cả ba: `.obj` · `.gltf` · `.glb`.** `.fbx` thì chưa.
+`tools/nuong_sprite.mjs` có `docObj`, `docGltf` và nhánh `laGlb`; mẻ `trung_co_2` **đang
+dùng glTF thật** cho hai kit. `scripts/kho_asset.mjs` đã sửa cách đếm "dùng được" theo cả
+ba đuôi. **Con số ở dòng cuối `KHO_ASSET.md` vẫn là số CŨ** (đếm theo luật chỉ-`.obj`) —
+nó tự đúng sau lần `npm run kho` đầu tiên có đủ kho, tức phiên này.
+
+> Đoạn này từng kết bằng câu *"`.glb` thì vẫn chưa đọc được"* — ngược hẳn với chính đoạn
+> ngay trên nó ("120/120 file `.glb` đọc được"). Sửa 12/09. Cùng loại với xung đột thứ 11
+> ở `DAU_PHIEN.md`, và lọt qua đợt rà vì rà bằng mắt.
 
 `city-builder-bits` **không có** trong kho chung → Phase 8B vẫn phải tải gói đó từ itch.
 
