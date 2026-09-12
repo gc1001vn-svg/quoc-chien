@@ -144,7 +144,32 @@
   ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
   lại.**
 
-## XUNG ĐỘT CHỜ GỠ — rà 12/09/2026, là việc của phiên sau
+## XUNG ĐỘT — rà 12/09/2026, **đã gỡ 12/09** trừ bốn cái ở kho `ghi-nho`
+
+> **Trạng thái sau phiên gỡ 12/09.** Bảy gỡ xong, bốn còn treo vì nằm ngoài tầm với của
+> phiên. Rà lại lúc gỡ tìm thêm **xung đột thứ 11** và **một số gõ tay thứ ba** mà đợt rà
+> trước bỏ sót — chi tiết ở cuối mục.
+>
+> | # | Xung đột | Trạng thái |
+> |---|---|---|
+> | 1 | `CLAUDE.md` dẫn vào ngõ cụt, không nhắc vé duyệt | ✅ gỡ — thêm dòng chỉ đường `da_duyet.txt`, có test giữ |
+> | 2 | Hook chặn nhầm 4 lần/phiên | ✅ gỡ — đường `Bash` bỏ chặn, chỉ ghi sổ |
+> | 3 | Cỡ `tai:tatca` ghi hai số | ✅ gỡ — một nơi duy nhất, ghi rõ "ước, chưa đo lại" |
+> | 4 | `CLAUDE.md` gõ tay số model | ✅ gỡ |
+> | 5 | `KHO_ASSET.md` 1222 · `NGUON_MO.md` chép lại | ⚠️ **nửa** — chỗ chép tay bỏ rồi; số trong file sinh tự động chỉ đúng sau `npm run kho` có đủ kho (phiên 8B) |
+> | 6 | `trang-thai.md` tự khai "57 dòng", thật ra 181 | ⛔ **treo** — kho `ghi-nho` |
+> | 7 | `du-an.md` ghi "Phase 2 xong", thật ra Phase 8A | ⛔ **treo** — kho `ghi-nho` |
+> | 8 | `trang-thai.md` còn mục "1b. (cũ) Phase 3" | ⛔ **treo** — kho `ghi-nho` |
+> | 9 | "Mỗi phiên một phase" bị phá 11/09 | ✅ ghi nhận — quá khứ không sửa được; test mới chặn tái phát phần số liệu |
+> | 10 | Skill `ghi-nho` trên tài khoản chưa có bản mới | ⛔ **treo** — kho `ghi-nho` |
+> | 11 | `DAU_PHIEN.md` dạy sai "chưa đọc được `.glb`" | ✅ gỡ — **mới tìm ra 12/09** |
+>
+> **Bốn cái treo đều ở kho `ghi-nho`, và lý do là quyền chứ không phải khó.** Repo để
+> **Private**; phiên 12/09 clone hỏng (`could not read Username for 'https://github.com'`)
+> và `add_repo` bị chặn. Đã thử **hai lần** — đúng bài học 11/09 rằng một lần bị chặn
+> không phải kết luận — vẫn không qua. Phiên nào mở được kho đó thì gỡ, việc nhỏ.
+
+### Bản rà gốc — 12/09, giữ nguyên để đối chiếu
 
 Chủ dự án bảo 12/09: *"Có quá nhiều thứ đã làm mà bạn đã quên. Có những thứ rõ ràng phiên
 trước làm được phiên sau lại bị chặn. Có sự xung đột. Cần giải quyết triệt để."* Đã rà
@@ -195,6 +220,38 @@ chiếu số trong `docs/` với số sinh ra từ lệnh. Nên số gõ tay tr�
 Phần còn lại phiên sau quyết. Thứ đáng làm nhất là **test nhất quán tài liệu** — chạy được
 mà không cần `assets_source/`, nên CI xanh: chặn số model gõ tay ngoài hai file sinh tự
 động · chặn cỡ `tai:tatca` ghi ở hai nơi · đòi `CLAUDE.md` nhắc đường ra `da_duyet.txt`.
+
+### Gỡ 12/09 — làm gì, và hai thứ mới lộ ra
+
+**Hook** (`scripts/chan_file_khoa.mjs`): đường `Bash` đổi hậu quả từ **chặn** sang **ghi
+sổ**. Phần nhận diện lệnh giữ nguyên — chặn nhầm thì hỏng việc thật, ghi nhầm chỉ tốn một
+dòng sổ, nên đánh đổi lệch hẳn về phía giữ. Đường `Bash` cũng **không tiêu vé** nữa: nếu
+nó tiêu, một lệnh đoán nhầm sẽ ăn mất cái vé đang để dành cho `Edit` — đúng cái bẫy mà
+luật vé-một-lần sinh ra để tránh. Đường `Edit`/`Write` chặn như cũ.
+
+**Test nhất quán tài liệu** (`tests/TaiLieu.test.ts`): bốn hàng rào như đã đề. Riêng hàng
+rào số model phải làm **hai lớp**, vì không phải số model nào cũng là số kiểm kê:
+
+- Cấm **số kiểm kê** — tổng cả kho, đổi mỗi lần tải thêm gói. Đó là thứ trôi.
+- Cho **số đặc tả một gói** — "135 model công trình" của `city-builder-bits` là thuộc tính
+  của gói, không đổi, và là thứ cần biết khi chọn nguồn.
+
+Lớp 1 bắt theo cỡ số (từ 1.000 trở lên thì chắc chắn là kiểm kê cả kho); lớp 2 bắt theo
+cách nói đặc trưng ("model dùng được", "đã tải về") ở mọi cỡ. **Còn lọt:** một số kiểm kê
+dưới 1.000 diễn đạt bằng cách nói khác hẳn. Chưa bịt được bằng máy, đổi lấy việc không
+chặn nhầm đặc tả gói.
+
+**Hai thứ mới lộ ra khi gỡ:**
+
+1. **Xung đột thứ 11 — `DAU_PHIEN.md` dạy sai về `.glb`.** Dòng 79 ghi *"chưa đọc được
+   `.glb`"*, trong khi `tools/nuong_sprite.mjs` đọc được từ 11/09 (`laGlb`, đo 120/120
+   file, 0 hỏng). File này đọc **mỗi đầu phiên**, nên nó dạy sai ngay từ bước đầu và làm
+   phiên sau bỏ qua phần `.glb` của kho chung. Đúng dạng "phiên trước làm được, phiên sau
+   bị chặn" chủ dự án nói. Có test giữ cho khỏi tái phát.
+2. **Con số gõ tay thứ ba.** Hàng rào vừa dựng đã bắt ngay `NGUON_MO.md` dòng 8:
+   *"1.855 model đã tải về"* — khác **cả** 1.222 lẫn 1.310, và đợt rà 12/09 không thấy.
+   Ba con số cho cùng một thứ, ở ba chỗ, không ai biết cái nào đúng. Đây là bằng chứng
+   thẳng cho việc rà bằng mắt không đủ: **phải có máy giữ.**
 
 ## Kho chung — nối 11/09/2026
 
