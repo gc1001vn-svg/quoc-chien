@@ -10,7 +10,7 @@ Cập nhật: 12/09/2026 (phiên rà soát — gỡ 7/11 xung đột, **không �
 **Game vẫn ở Phase 8A** — phiên 12/09 không đụng gì màn hình game. Anh chốt lùi Phase 8B
 một phiên để dọn xung đột trước. Việc đó **xong**.
 
-**Gỡ 7 trong 11 xung đột.** Nặng nhất là ba cái:
+**Gỡ 10/11 xung đột** (cái thứ 11 chờ anh bấm — mục 3). Nặng nhất là ba cái:
 
 - **`CLAUDE.md` hết ngõ cụt.** Nó bảo "sửa bằng `Edit`", mà file khoá thì `Edit` bị chặn,
   và không chỗ nào nhắc vé duyệt. Giờ có dòng chỉ thẳng đường `.claude/da_duyet.txt`, và
@@ -20,9 +20,11 @@ một phiên để dọn xung đột trước. Việc đó **xong**.
 - **Có test giữ tài liệu**, thứ trước nay không có: 27 file test, không cái nào đối chiếu
   số trong `docs/` với thực tế. Nên số gõ tay trôi tự do.
 
-**Bốn cái còn treo đều nằm trong kho `ghi-nho`** — repo Private, phiên này clone hỏng và
-xin quyền bị chặn. Đã thử hai lần. Là vấn đề **quyền**, không phải khó; phiên nào mở được
-kho đó thì gỡ, việc nhỏ. Danh sách: `docs/NO_KY_THUAT.md`.
+**Bốn cái trong kho `ghi-nho` cũng gỡ xong** — nhưng suýt bị bỏ lại, và lý do đáng ghi:
+phiên kết luận "không có quyền" sau khi clone hỏng, trong khi lỗi thật là **xin sai loại
+quyền** (xin quyền *ghi* thay vì *đọc*). Câu sai đó nằm sẵn trong skill `ghi-nho` nên
+phiên nào cũng vấp; đã sửa. Bài học 11/09 "một lần bị chặn không phải kết luận" vẫn đúng
+nhưng chưa đủ: **thử lại cùng một cách hai lần không phải là thử lại.**
 
 **Hai thứ mới lộ ra khi gỡ, đáng nhớ hơn cả việc gỡ:**
 
@@ -81,10 +83,15 @@ liếc một cái.
 
 ### Hai việc cần anh quyết
 
-**1. Kho `ghi-nho` — cần mở quyền.** Bốn xung đột không gỡ được phiên này chỉ vì phiên
-không vào được kho đó. Repo để **Private**, clone hỏng (`could not read Username`) và
-lệnh xin quyền bị chặn; đã thử hai lần. Việc gỡ thì nhỏ — sửa mấy dòng ghi sai
-("Phase 2 xong" trong khi thực tế Phase 8A, tự khai "57 dòng" trong khi 181 dòng).
+**1. Tải skill `ghi-nho` bản mới lên claude.ai** — xung đột duy nhất còn lại, và **chỉ anh
+làm được** (trợ lý không sửa được skill trên tài khoản). Bản trên tài khoản còn thiếu hai
+thứ: luật "đọc hết ba file, cấm cắt", và chỗ sửa `access: read` — chính chỗ khiến phiên
+12/09 tưởng là không vào được kho ghi nhớ rồi bỏ dở bốn việc. Chưa tải lên thì phiên sau
+vấp lại đúng chỗ đó. File `.zip` đã gửi kèm.
+
+**Nếu anh đã chuyển kho `ghi-nho` sang Public: chuyển về lại Private.** Việc đó không chữa
+được gì (nguyên nhân là xin sai loại quyền, không phải quyền riêng tư), mà kho này chứa
+cách làm việc, quyền hạn và giới hạn máy ảo — không nên để công khai.
 
 **2. Kho chung cho game — anh nêu 12/09, chưa làm.** Anh muốn một repo riêng cho mọi thứ
 liên quan làm game (tài nguyên, đồ hoạ, gameplay, cách xây dựng) để các dự án dùng chung,
@@ -120,9 +127,8 @@ lại là chặn thật chứ không phải bỏ cuộc sớm.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
 - **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
-- **Bốn xung đột trong kho `ghi-nho` chưa gỡ** — chặn vì **quyền**, không phải khó. Kho
-  ghi sai tiến độ dự án ("Phase 2 xong" trong khi thực tế Phase 8A), nên phiên nào đọc
-  được kho đó cũng nhận bối cảnh sai.
+- **Skill `ghi-nho` trên tài khoản còn bản cũ** — chỉ chủ dự án tải lên được. Nó dạy phiên
+  sau xin sai loại quyền, nên phiên nào cũng có thể vấp lại và bỏ dở việc trong kho ghi nhớ.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động** nên sửa tay là sai luật — nó tự đúng ở lần
   `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.

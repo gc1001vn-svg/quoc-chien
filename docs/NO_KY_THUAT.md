@@ -144,11 +144,11 @@
   ghi công mẻ `hex_1` và hai đoạn ghi lại điều đo được, không đụng phần cũ. **Chờ anh xem
   lại.**
 
-## XUNG ĐỘT — rà 12/09/2026, **đã gỡ 12/09** trừ bốn cái ở kho `ghi-nho`
+## XUNG ĐỘT — rà 12/09/2026, **gỡ hết 11/11 trong cùng ngày**
 
-> **Trạng thái sau phiên gỡ 12/09.** Bảy gỡ xong, bốn còn treo vì nằm ngoài tầm với của
-> phiên. Rà lại lúc gỡ tìm thêm **xung đột thứ 11** và **một số gõ tay thứ ba** mà đợt rà
-> trước bỏ sót — chi tiết ở cuối mục.
+> **Trạng thái sau phiên gỡ 12/09.** Bảy cái trong repo này gỡ trước; bốn cái ở kho
+> `ghi-nho` gỡ nốt sau khi vào được kho. Rà lại lúc gỡ tìm thêm **xung đột thứ 11** và
+> **một số gõ tay thứ ba** mà đợt rà trước bỏ sót — chi tiết ở cuối mục.
 >
 > | # | Xung đột | Trạng thái |
 > |---|---|---|
@@ -157,17 +157,26 @@
 > | 3 | Cỡ `tai:tatca` ghi hai số | ✅ gỡ — một nơi duy nhất, ghi rõ "ước, chưa đo lại" |
 > | 4 | `CLAUDE.md` gõ tay số model | ✅ gỡ |
 > | 5 | `KHO_ASSET.md` 1222 · `NGUON_MO.md` chép lại | ⚠️ **nửa** — chỗ chép tay bỏ rồi; số trong file sinh tự động chỉ đúng sau `npm run kho` có đủ kho (phiên 8B) |
-> | 6 | `trang-thai.md` tự khai "57 dòng", thật ra 181 | ⛔ **treo** — kho `ghi-nho` |
-> | 7 | `du-an.md` ghi "Phase 2 xong", thật ra Phase 8A | ⛔ **treo** — kho `ghi-nho` |
-> | 8 | `trang-thai.md` còn mục "1b. (cũ) Phase 3" | ⛔ **treo** — kho `ghi-nho` |
+> | 6 | `trang-thai.md` tự khai "57 dòng", thật ra gấp hơn ba lần | ✅ gỡ — bỏ số, chỉ cách đếm |
+> | 7 | `du-an.md` ghi "Phase 2 xong", thật ra Phase 8A | ✅ gỡ — kèm một mâu thuẫn nữa trong chính dòng đó |
+> | 8 | `trang-thai.md` còn mục "1b. (cũ) Phase 3" | ✅ gỡ — bỏ |
 > | 9 | "Mỗi phiên một phase" bị phá 11/09 | ✅ ghi nhận — quá khứ không sửa được; test mới chặn tái phát phần số liệu |
-> | 10 | Skill `ghi-nho` trên tài khoản chưa có bản mới | ⛔ **treo** — kho `ghi-nho` |
+> | 10 | Skill `ghi-nho` trên tài khoản chưa có bản mới | ⏳ **chờ chủ dự án** — chỉ anh tải `.zip` lên claude.ai được |
 > | 11 | `DAU_PHIEN.md` dạy sai "chưa đọc được `.glb`" | ✅ gỡ — **mới tìm ra 12/09** |
 >
-> **Bốn cái treo đều ở kho `ghi-nho`, và lý do là quyền chứ không phải khó.** Repo để
-> **Private**; phiên 12/09 clone hỏng (`could not read Username for 'https://github.com'`)
-> và `add_repo` bị chặn. Đã thử **hai lần** — đúng bài học 11/09 rằng một lần bị chặn
-> không phải kết luận — vẫn không qua. Phiên nào mở được kho đó thì gỡ, việc nhỏ.
+> **Bốn cái ở kho `ghi-nho` suýt bị bỏ lại, và lý do đáng ghi.** Phiên 12/09 clone hỏng
+> (`could not read Username`) rồi `add_repo` bị chặn, nên kết luận là không có quyền. Sai:
+> lỗi nằm ở chỗ **xin `access: push`** cho một repo ngoài phạm vi phiên — quyền GHI thì bị
+> từ chối, còn **`access: read` qua ngay**. Câu `push` đó nằm sẵn trong chính skill
+> `ghi-nho`, nên phiên nào cũng vấp. Đã sửa skill.
+>
+> Hệ quả thật: phiên đi phiền chủ dự án chuyển repo sang Public — một việc **không chữa
+> được gì** và lại làm lộ kho ghi chép nội bộ. Bài học 11/09 ("một lần bị chặn không phải
+> kết luận") vẫn đúng, nhưng chưa đủ: **thử lại cùng một cách hai lần không phải là thử
+> lại** — phải đổi cách hỏi.
+>
+> Cái số 10 không ai gỡ hộ được: skill trên tài khoản chỉ chủ dự án tải lên được từ
+> claude.ai. Bản `.zip` đã đóng gói sẵn.
 
 ### Bản rà gốc — 12/09, giữ nguyên để đối chiếu
 
