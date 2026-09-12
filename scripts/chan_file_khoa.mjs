@@ -30,11 +30,28 @@
 //   1. VE DUYET (`.claude/da_duyet.txt`): mot dong mot duong dan. Co ve thi cho
 //      qua va XOA dong do ngay - ve dung MOT LAN, khong thanh giay phep vinh
 //      vien. Tro ly chi duoc ghi ve SAU khi chu du an dong y.
-//   2. SO GHI (`.claude/nhat_ky_file_khoa.log`): moi lan cho qua deu ghi lai
-//      thoi gian + duong dan + cong cu. Chu du an soi lai duoc.
+//   2. SO GHI (`.claude/nhat_ky_file_khoa.log`): moi lan dung toi file khoa deu
+//      ghi lai thoi gian + duong dan + cong cu. Chu du an soi lai duoc.
 //
 // Ve do tro ly tu ghi duoc, nen no khong ngan duoc gian doi - no chi lam viec
 // gian doi PHAI CO Y va DE LAI DAU VET. Do la muc bao ve that su dat duoc.
+//
+// ---------------------------------------------------------------------------
+// 12/09/2026 - DUONG `Bash` KHONG CON CHAN, CHI GHI SO. Chu du an chot.
+//
+// Ban 11/09 chan ca duong Bash. Do mot phien that: so ghi 16 dong, 13 lan CHAN,
+// trong do 4 lan CHAN NHAM - `2>/dev/null` (chuyen huong LOI, khong phai ghi) ·
+// noi dung `-m "..."` cua commit · heredoc `git commit` · heredoc `python` sua
+// file cua REPO KHAC. Va nan hon: `CLAUDE.md` day "sua bang Edit, dung python",
+// ma file khoa thi Edit BI CHAN - doc xong la vao ngo cut.
+//
+// Ly do chu du an chon bo: chan shell KHONG NGAN DUOC AI CO Y - shell co muoi
+// duong ghi file va doc chuoi lenh khong bat het duoc (chinh dau file nay da
+// noi vay). No chi lam phien nguoi dang lam viec that. Nen doi hau qua tu CHAN
+// sang GHI SO: dau vet moi la thu bao ve, khong phai cai chan.
+//
+// Chan nham thi hong viec that; ghi nham chi ton mot dong so. Doi chieu do la
+// ly do phan nhan dien duoi day GIU NGUYEN du khong con chan.
 //
 // Fail-open: doc loi hoac du lieu hong thi cho qua, khong lam treo phien.
 // Y tuong co che hook lay tu MoonshotAI/kimi-code (MIT), code viet lai tu dau.
@@ -49,8 +66,7 @@ const DUONG_VE = '.claude/da_duyet.txt';
 const DUONG_SO = '.claude/nhat_ky_file_khoa.log';
 
 /**
- * Lenh co the GHI de len file. Dung de bat duong vong ro rang, khong phai de
- * bat het - xem ghi chu dau file.
+ * Lenh co the GHI de len file. Tu 12/09 dung de GHI SO, khong con de chan.
  *
  * KHONG dua `>` tran vao day. Da thu 11/09 va no chan nham ngay lenh dau tien:
  * gan nhu moi lenh deu co `2>/dev/null` hay `2>&1`, ma do la chuyen huong LOI
@@ -146,7 +162,8 @@ function chan(norm, khoa, nguon) {
     `Phai HOI CHU DU AN va duoc dong y truoc khi sua.\n` +
     `Duoc dong y roi thi ghi mot dong "${norm}" vao ${DUONG_VE} roi sua lai — ` +
     `ve dung mot lan, va moi lan cho qua deu ghi vao ${DUONG_SO}.\n` +
-    `CHUA duoc dong y thi KHONG duoc tu ghi ve, va khong duoc di vong bang shell.`,
+    `CHUA duoc dong y thi KHONG duoc tu ghi ve. Duong Bash tu 12/09 khong bi chan ` +
+    `nhung van GHI SO — di duong do ma chua hoi thi chi la sua trom co dau vet.`,
   );
   process.exit(2);
 }
@@ -164,7 +181,8 @@ process.stdin.on('end', () => {
   const { muc, nguon } = docDanhSach(root);
   const tenCongCu = tho?.tool_name ?? '';
 
-  // --- Bash: bat duong vong ro rang -----------------------------------------
+  // --- Bash: KHONG chan, chi ghi so -----------------------------------------
+  // Doi tu chan sang ghi so ngay 12/09 - xem ghi chu dau file.
   if (tenCongCu === 'Bash') {
     const lenh = boVanBan(tho?.tool_input?.command ?? '');
     if (!lenh) process.exit(0);
@@ -173,14 +191,9 @@ process.stdin.on('end', () => {
     // hay xuat hien trong lenh doc binh thuong (`ls .github/workflows/`).
     const trung = muc.filter((d) => !d.endsWith('/') && lenh.includes(d)
       && (coLenhGhi || chuyenHuongVao(lenh, d)));
-    for (const d of trung) {
-      if (tieuVe(root, d)) {
-        ghiSo(root, `CHO QUA (ve) Bash -> ${d}`);
-        continue;
-      }
-      ghiSo(root, `CHAN Bash -> ${d}`);
-      chan(d, d, nguon);
-    }
+    // Ve duyet la cua duong Edit/Write. Duong Bash khong tieu ve - tieu o day
+    // thi mot lenh `grep` doan nham se an mat cai ve dang cho dung.
+    for (const d of trung) ghiSo(root, `GHI SO Bash -> ${d}`);
     process.exit(0);
   }
 

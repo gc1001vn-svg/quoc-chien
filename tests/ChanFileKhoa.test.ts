@@ -8,15 +8,21 @@
  *   chinh cai hook dang bao ve file do.
  * - Hook chi gan vao `Edit|Write|NotebookEdit`, nen duong `Bash` bo ngo hoan toan.
  *
- * Ban moi them VE DUYET dung mot lan va chan ca duong `Bash`. Hai thu do de hong nguoc
- * lai: chan qua tay thi moi lenh co `2>/dev/null` deu bi chan (da bi dung mot lan trong
- * luc lam), con chan qua long thi ve thanh giay phep vinh vien.
+ * Ban 11/09 them VE DUYET dung mot lan va chan ca duong `Bash`. Do mot phien that thi
+ * cai chan Bash lo gia cua no: so ghi 16 dong, 13 lan CHAN, 4 lan trong do la CHAN NHAM.
+ *
+ * NEN 12/09 CHU DU AN CHOT BO CHAN DUONG BASH, GIU GHI SO. Chan shell khong ngan duoc ai
+ * co y - shell co muoi duong ghi file - no chi lam phien nguoi lam viec that. Dau vet
+ * moi la thu bao ve. Duong `Edit`/`Write` van chan nhu cu.
+ *
+ * Hai dau con lai van de hong nguoc: nhan dien qua tay thi moi lenh co `2>/dev/null` deu
+ * vao so (da bi dung mot lan trong luc lam), con ve qua long thi thanh giay phep vinh vien.
  *
  * Test chay hook tren mot THU MUC GOC GIA, khong dung toi `.claude/` that cua repo - de
  * no khong xoa mat cai ve ma phien dang cho dung.
  */
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -45,6 +51,17 @@ function datVe(duong: string): void {
   writeFileSync(join(goc, '.claude/da_duyet.txt'), `${duong}\n`);
 }
 
+/** Cac dong so ghi, da bo dau thoi gian. Chua ghi gi thi tra ve mang rong. */
+function so(): string[] {
+  let van: string;
+  try {
+    van = readFileSync(join(goc, '.claude/nhat_ky_file_khoa.log'), 'utf8');
+  } catch {
+    return [];
+  }
+  return van.split('\n').filter(Boolean).map((d) => d.replace(/^\S+ /, ''));
+}
+
 beforeEach(() => {
   goc = mkdtempSync(join(tmpdir(), 'khoa-'));
   mkdirSync(join(goc, '.claude'), { recursive: true });
@@ -68,13 +85,28 @@ describe('chan dung cho', () => {
     expect(chan('Write', { file_path: '.github/workflows/ci.yml' })).toBe(true);
   });
 
-  it('chan duong Bash - ghi thang, sed -i, va heredoc python', () => {
-    expect(chan('Bash', { command: 'echo x > CLAUDE.md' })).toBe(true);
-    expect(chan('Bash', { command: 'echo x >> docs/TECH_SPEC.md' })).toBe(true);
-    expect(chan('Bash', { command: 'sed -i s/a/b/ docs/TECH_SPEC.md' })).toBe(true);
+  // Tu 12/09 duong Bash KHONG chan nua, chi ghi so - chu du an chot. Ly do: chan shell
+  // khong ngan duoc ai co y (shell co muoi duong ghi file), no chi lam phien nguoi lam
+  // viec that. Bon lan chan nham trong mot phien la cai gia thay, con cai duoc thi bang
+  // khong. Dau vet moi la thu bao ve.
+  it('duong Bash cho qua nhung VAN ghi so', () => {
+    expect(chan('Bash', { command: 'echo x > CLAUDE.md' })).toBe(false);
+    expect(chan('Bash', { command: 'sed -i s/a/b/ docs/TECH_SPEC.md' })).toBe(false);
     expect(chan('Bash', {
       command: 'python3 - <<PY\nopen("docs/TECH_SPEC.md","w")\nPY',
-    })).toBe(true);
+    })).toBe(false);
+    expect(so()).toEqual([
+      'GHI SO Bash -> CLAUDE.md',
+      'GHI SO Bash -> docs/TECH_SPEC.md',
+      'GHI SO Bash -> docs/TECH_SPEC.md',
+    ]);
+  });
+
+  // Ghi so ma khong nhan dien duoc thi bo chan thanh ra bo luon dau vet - tuc la mat
+  // ca hai. Ca nay giu cho phan nhan dien khong bi xoa theo cai chan.
+  it('lenh chi DOC file khoa thi khong ghi so - so phai sach de con doc duoc', () => {
+    expect(chan('Bash', { command: 'cat CLAUDE.md | head -20' })).toBe(false);
+    expect(so()).toEqual([]);
   });
 });
 
@@ -104,10 +136,11 @@ describe('khong chan nham', () => {
     })).toBe(false);
   });
 
-  it('nhung ghi that VAN bi chan du cung lenh do co -m', () => {
+  it('nhung ghi that VAN vao so du cung lenh do co -m', () => {
     expect(chan('Bash', {
       command: 'git commit -m "ghi chu vo hai" && echo x > CLAUDE.md',
-    })).toBe(true);
+    })).toBe(false);
+    expect(so()).toEqual(['GHI SO Bash -> CLAUDE.md']);
   });
 
   // Ca thu tu trong ngay 11/09: `git commit -F -` doc message tu heredoc, ma message ke
@@ -118,11 +151,12 @@ describe('khong chan nham', () => {
     })).toBe(false);
   });
 
-  // Nhung heredoc cua `python3` thi la LENH THAT - khong duoc bo nham.
-  it('heredoc cua python3 VAN bi chan', () => {
+  // Nhung heredoc cua `python3` thi la LENH THAT - khong duoc bo nham khoi so.
+  it('heredoc cua python3 VAN vao so', () => {
     expect(chan('Bash', {
       command: 'python3 - <<PY\nopen("CLAUDE.md","w")\nPY',
-    })).toBe(true);
+    })).toBe(false);
+    expect(so()).toEqual(['GHI SO Bash -> CLAUDE.md']);
   });
 });
 
@@ -140,8 +174,12 @@ describe('ve duyet', () => {
     expect(chan('Edit', { file_path: 'CLAUDE.md' })).toBe(true);
   });
 
-  it('ve cung mo duoc duong Bash', () => {
+  // Duong Bash khong con chan nen cung khong duoc TIEU ve. Neu no tieu, mot lenh Bash
+  // doan nham se an mat cai ve ma phien dang cho dung cho Edit - dung cai bay ma ve mot
+  // lan sinh ra de tranh.
+  it('duong Bash khong an mat ve dang de danh cho Edit', () => {
     datVe('CLAUDE.md');
     expect(chan('Bash', { command: 'echo x >> CLAUDE.md' })).toBe(false);
+    expect(chan('Edit', { file_path: 'CLAUDE.md' })).toBe(false);
   });
 });
