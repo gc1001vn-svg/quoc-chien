@@ -4,7 +4,7 @@ Không phải một phase: chủ dự án chốt lùi Phase 8B một phiên đ�
 nêu: *"có quá nhiều thứ đã làm mà bạn đã quên; có những thứ rõ ràng phiên trước làm được
 phiên sau lại bị chặn"*.
 
-**Gỡ 10/11 xung đột**; cái còn lại chỉ chủ dự án bấm được (tải skill lên claude.ai).
+**Gỡ hết 11/11 xung đột.**
 
 - **Hook** bỏ chặn đường `Bash`, giữ ghi sổ (anh chốt). Đo phiên thật: 13 lần chặn thì 4
   lần chặn nhầm, mà cái được bằng không — shell có mười đường ghi file. Phần nhận diện
@@ -38,5 +38,12 @@ việc không chữa được gì.
 **Bài học 11/09 chưa đủ.** "Một lần bị chặn không phải kết luận" vẫn đúng, nhưng phiên này
 thử lại **hai lần cùng một cách** rồi vẫn kết luận sai. Thử lại phải là **đổi cách hỏi**.
 
-`npm run do`: **6/6 · 222 test** (trước: 211). Không đụng gì màn hình game nên không cần
+**Cái thứ 11 tưởng phải chờ chủ dự án, hoá ra là gỡ sai chỗ.** Skill trên tài khoản chỉ anh
+tải lên được, mà app iPhone không có mục Skills — kẹt cứng. Gỡ bằng cách bỏ hẳn phụ thuộc:
+chuyển luật vào `CLAUDE.md`, thứ harness **nạp bắt buộc**. Đo bốn thước trước khi chọn —
+skill chạy đúng **1/4** phiên gần nhất, `CLAUDE.md` **4/4**. Nguyên tắc này kho ghi nhớ đã
+chốt từ 11/09, phiên này quên áp dụng và mất nửa ngày.
+**Việc "chỉ chủ dự án làm được" thường là dấu hiệu chọn sai đường, không phải giới hạn thật.**
+
+`npm run do`: **6/6 · 223 test** (trước: 211). Không đụng gì màn hình game nên không cần
 xác nhận trên iPhone.

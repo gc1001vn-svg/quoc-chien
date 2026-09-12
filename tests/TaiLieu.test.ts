@@ -83,6 +83,32 @@ describe('co kho tai ve chi duoc ghi o mot noi', () => {
   });
 });
 
+describe('duong vao kho ghi nho phai nam trong CLAUDE.md', () => {
+  /*
+   * VI SAO O DAY chu khong phai trong skill `ghi-nho`. Do bon thuoc 12/09:
+   *
+   * - Ti le toi noi: skill chay dung 1/4 phien gan nhat. 11/09 KHONG doc kho (bi chan mot
+   *   lan roi bo, chay tiep ca phien thieu boi canh) · 11/09 lan khac cat mat 79/199 dong
+   *   bang `head -120` · 12/09 doc ban cu nen xin sai quyen va bo do bon viec ca ngay.
+   *   CLAUDE.md: 4/4. Ly do ky thuat chu khong phai xui - CLAUDE.md do harness NAP BAT
+   *   BUOC, con skill thi tro ly phai tu nho goi.
+   * - So buoc chu du an phai bam: skill dang CHAN o buoc 1 (app iPhone khong co muc
+   *   Skills, chi ban web moi co). CLAUDE.md: 0.
+   * - Ton them moi phien: ~400 ky tu. Nho hon han cai gia o tren.
+   * - Diem yeu that: CLAUDE.md chi ăn trong repo da sua, skill thi moi repo. Chap nhan -
+   *   repo moi nao cung phai viet CLAUDE.md.
+   *
+   * Nguyen tac nay kho ghi nho da chot tu 11/09 va phien 12/09 quen ap dung: thu chu du
+   * an phai bam tay thi de ket o day, thu Claude push thang duoc thi toi noi ngay.
+   */
+  it('CLAUDE.md chi duong vao kho va cach xin quyen dung', () => {
+    const van = doc('CLAUDE.md');
+    expect(van, 'CLAUDE.md phai chi duong clone kho ghi nho').toContain('ghi-nho');
+    expect(van, 'Phai ghi ro xin `access: read` - xin `push` bi chan thang, da mat mot phien')
+      .toMatch(/access:\s*`?read/);
+  });
+});
+
 describe('duong ra khoi file khoa phai duoc chi', () => {
   // Xung dot nang nhat cua dot 12/09: `CLAUDE.md` bao "sua bang Edit, dung python/sed",
   // ma file khoa thi Edit BI CHAN, va khong cho nao nhac ve duyet. Doc xong la vao ngo

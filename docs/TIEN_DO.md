@@ -10,7 +10,7 @@ Cập nhật: 12/09/2026 (phiên rà soát — gỡ 7/11 xung đột, **không �
 **Game vẫn ở Phase 8A** — phiên 12/09 không đụng gì màn hình game. Anh chốt lùi Phase 8B
 một phiên để dọn xung đột trước. Việc đó **xong**.
 
-**Gỡ 10/11 xung đột** (cái thứ 11 chờ anh bấm — mục 3). Nặng nhất là ba cái:
+**Gỡ hết 11/11 xung đột.** Nặng nhất là ba cái:
 
 - **`CLAUDE.md` hết ngõ cụt.** Nó bảo "sửa bằng `Edit`", mà file khoá thì `Edit` bị chặn,
   và không chỗ nào nhắc vé duyệt. Giờ có dòng chỉ thẳng đường `.claude/da_duyet.txt`, và
@@ -45,9 +45,9 @@ chủ đích hẳn hoi.
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 · 211 test | **6/6 · 222 test** |
-| Xung đột đã gỡ | 0/11 | **7/11** (4 treo vì quyền) |
-| Test kiểm tài liệu | **0** | **11** (`tests/TaiLieu.test.ts`) |
+| `npm run do` | 6/6 · 211 test | **6/6 · 223 test** |
+| Xung đột đã gỡ | 0/11 | **11/11** |
+| Test kiểm tài liệu | **0** | **12** (`tests/TaiLieu.test.ts`) |
 | Hook chặn nhầm mỗi phiên | 4 lần | **0** — đường `Bash` chỉ ghi sổ |
 
 Số model **không đo phiên này** (kho không tải). Số thật luôn nằm ở **dòng cuối**
@@ -83,11 +83,18 @@ liếc một cái.
 
 ### Hai việc cần anh quyết
 
-**1. Tải skill `ghi-nho` bản mới lên claude.ai** — xung đột duy nhất còn lại, và **chỉ anh
-làm được** (trợ lý không sửa được skill trên tài khoản). Bản trên tài khoản còn thiếu hai
-thứ: luật "đọc hết ba file, cấm cắt", và chỗ sửa `access: read` — chính chỗ khiến phiên
-12/09 tưởng là không vào được kho ghi nhớ rồi bỏ dở bốn việc. Chưa tải lên thì phiên sau
-vấp lại đúng chỗ đó. File `.zip` đã gửi kèm.
+**1. Không còn việc nào bắt buộc.** Xung đột thứ 11 (skill trên tài khoản còn bản cũ)
+**gỡ bằng đường khác**: luật vào kho ghi nhớ chuyển thẳng vào `CLAUDE.md`, harness nạp bắt
+buộc mỗi phiên nên **anh không phải bấm gì**. Có `tests/TaiLieu.test.ts` giữ.
+
+Đo trước khi chọn, bốn thước: skill chạy đúng **1/4** phiên gần nhất (11/09 không đọc kho ·
+11/09 cắt mất 79/199 dòng · 12/09 xin sai quyền rồi bỏ dở bốn việc), `CLAUDE.md` **4/4** —
+vì harness nạp bắt buộc, còn skill thì trợ lý phải tự nhớ gọi. Và skill đang chặn ở bước
+đầu: **app iPhone không có mục Skills**, chỉ bản web mới có.
+`ghi-nho/quyet-dinh/2026-09-12-luat-di-vao-claude-md-khong-phai-skill.md`.
+
+*Tuỳ anh, không gấp:* lúc nào rảnh mở **claude.ai bằng Safari** thì tải `.zip` đã gửi lên —
+giờ nó chỉ còn là lưới đỡ cho repo chưa sửa `CLAUDE.md`.
 
 **Nếu anh đã chuyển kho `ghi-nho` sang Public: chuyển về lại Private.** Việc đó không chữa
 được gì (nguyên nhân là xin sai loại quyền, không phải quyền riêng tư), mà kho này chứa
@@ -127,8 +134,9 @@ lại là chặn thật chứ không phải bỏ cuộc sớm.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
 - **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
-- **Skill `ghi-nho` trên tài khoản còn bản cũ** — chỉ chủ dự án tải lên được. Nó dạy phiên
-  sau xin sai loại quyền, nên phiên nào cũng có thể vấp lại và bỏ dở việc trong kho ghi nhớ.
+- **Skill `ghi-nho` trên tài khoản còn bản cũ** — không còn chặn việc gì (luật đã chuyển
+  vào `CLAUDE.md`), nhưng **repo khác chưa sửa `CLAUDE.md` thì vẫn ăn bản skill sai**.
+  Chép đoạn đó sang `tayvuc` · `vsp-fleet-safety` · `chung-cho-claude-code` khi đụng tới.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động** nên sửa tay là sai luật — nó tự đúng ở lần
   `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.

@@ -161,7 +161,7 @@
 > | 7 | `du-an.md` ghi "Phase 2 xong", thật ra Phase 8A | ✅ gỡ — kèm một mâu thuẫn nữa trong chính dòng đó |
 > | 8 | `trang-thai.md` còn mục "1b. (cũ) Phase 3" | ✅ gỡ — bỏ |
 > | 9 | "Mỗi phiên một phase" bị phá 11/09 | ✅ ghi nhận — quá khứ không sửa được; test mới chặn tái phát phần số liệu |
-> | 10 | Skill `ghi-nho` trên tài khoản chưa có bản mới | ⏳ **chờ chủ dự án** — chỉ anh tải `.zip` lên claude.ai được |
+> | 10 | Skill `ghi-nho` trên tài khoản chưa có bản mới | ✅ gỡ — **bằng đường khác**: luật chuyển vào `CLAUDE.md`, harness nạp bắt buộc nên khỏi cần ai bấm |
 > | 11 | `DAU_PHIEN.md` dạy sai "chưa đọc được `.glb`" | ✅ gỡ — **mới tìm ra 12/09** |
 >
 > **Bốn cái ở kho `ghi-nho` suýt bị bỏ lại, và lý do đáng ghi.** Phiên 12/09 clone hỏng
@@ -175,8 +175,16 @@
 > kết luận") vẫn đúng, nhưng chưa đủ: **thử lại cùng một cách hai lần không phải là thử
 > lại** — phải đổi cách hỏi.
 >
-> Cái số 10 không ai gỡ hộ được: skill trên tài khoản chỉ chủ dự án tải lên được từ
-> claude.ai. Bản `.zip` đã đóng gói sẵn.
+> **Cái số 10 tưởng không gỡ được, hoá ra là gỡ sai chỗ.** Skill trên tài khoản chỉ chủ dự
+> án tải lên được, mà app iPhone **không có mục Skills** — nên đường đó kẹt cứng. Gỡ bằng
+> cách bỏ hẳn phụ thuộc: chuyển luật vào `CLAUDE.md`, thứ harness **nạp bắt buộc** mỗi
+> phiên. Đo bốn thước trước khi chọn — skill chạy đúng **1/4** phiên gần nhất,
+> `CLAUDE.md` **4/4**; số bước chủ dự án phải bấm: skill **đang chặn**, `CLAUDE.md` **0**.
+> `ghi-nho/quyet-dinh/2026-09-12-luat-di-vao-claude-md-khong-phai-skill.md`.
+>
+> Bài học thứ ba của ngày: **một việc "chỉ chủ dự án làm được" thường là dấu hiệu chọn sai
+> đường, không phải giới hạn thật.** Kho ghi nhớ đã chốt nguyên tắc này từ 11/09 và phiên
+> 12/09 quên áp dụng, mất nửa ngày.
 
 ### Bản rà gốc — 12/09, giữ nguyên để đối chiếu
 

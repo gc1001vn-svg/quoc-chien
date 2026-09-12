@@ -7,6 +7,20 @@ https://gc1001vn-svg.github.io/quoc-chien/ — **xong việc tự gộp `main`**
 
 Không biết lập trình, làm trên iPhone. Từng bước bấm gì ở đâu, link đầy đủ.
 **Mỗi phiên một phase.** Đầu phiên chạy `docs/DAU_PHIEN.md` → Plan Mode chờ duyệt.
+
+**Đầu phiên đọc kho ghi nhớ trước hết** — `so-thich.md` `du-an.md` `trang-thai.md`,
+**đọc HẾT, cấm `head`/`tail`/`sed -n`** (thứ đắt nhất nằm cuối `trang-thai.md`):
+
+```bash
+git -C /home/user/ghi-nho pull -q 2>/dev/null \
+  || git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho
+cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md
+```
+
+Kho **Private**, clone hỏng thì gọi `add_repo` với `access: read` — **đừng xin `push`**,
+xin quyền ghi cho repo ngoài phạm vi phiên là bị chặn thẳng, còn `read` qua ngay. Hỏng
+tiếp thì **đổi cách hỏi**, đừng thử lại y hệt rồi kết luận là không có quyền: đã mất
+nguyên một phiên vì nghĩ vậy (12/09), và một phiên khác vì cắt `head -120` (11/09).
 Máy ảo mới mỗi phiên: `npm ci`; phiên có nướng sprite thì `npm run tai:tatca`
 (cỡ kho ghi ở `docs/DAU_PHIEN.md` mục B — **một nơi duy nhất**, đừng chép về đây).
 **TIẾP** = phase kế · **ĐỔI…** = sửa trong phase này · **LỖI** = dừng sửa trước.
