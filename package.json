@@ -36,7 +36,8 @@
     "do": "bash scripts/do.sh",
     "check:sw": "node scripts/check_sw_atlas.mjs",
     "phien:ban": "node scripts/ghi_phien_ban.mjs",
-    "xem:quyhoach": "node tools/xem_quy_hoach.mjs"
+    "xem:quyhoach": "node tools/xem_quy_hoach.mjs",
+    "check:token": "node scripts/check_token.mjs"
   },
   "repository": {
     "type": "git",
