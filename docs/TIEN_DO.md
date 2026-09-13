@@ -41,6 +41,10 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 - **Skill: chỉ `md` còn bật.** Nó có `convert.sh`, không có bản thay thế — gửi file mà
   không gọi thì đọc file gốc (một `.json` 27 MB ≈ 7 triệu token). `giam-token`
   `lap-ke-hoach` `code-review` tắt, gõ `/` vẫn chạy.
+- **Lỗ hổng cuối đã vá: phiên quên ghi nhật ký.** Máy không cưỡng chế được ba việc cuối
+  phiên; `chan_bao_xong` chỉ đòi dòng `Số đo:`. Nay `dau_phien` so ngày commit cuối của
+  code với ngày commit cuối của `docs/NHAT_KY` + `docs/TIEN_DO.md` — code mới hơn thì
+  **đầu phiên sau** báo đọc `git log` ghi bù. Không chặn giữa phiên.
 
 ### Ba thứ mới biết, dùng được cho mọi phiên sau
 
@@ -73,11 +77,13 @@ Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.
 **Kho tách hai tầng:** `so-thich.md` giữ thứ phải biết **trước** mỗi phiên; năm luật chỉ cần
 đúng lúc làm việc đó sang `cong-cu/luat-chi-tiet.md`, tra bằng `grep`.
 
-**Bốn hook chạy ở cả bốn repo:** `SessionStart` (kiểm đầu phiên) · `PreToolUse`
+**Bốn hook chạy ở cả bốn repo** (`dau_phien.mjs` cùng `md5 55e1060a`)**:** `SessionStart` (kiểm đầu phiên) · `PreToolUse`
 (chặn sửa file khoá) · `PostToolUse` (ghi sổ lệnh) · `Stop` (chặn báo "xong" thiếu `Số đo:`).
 
 **Ba bước vẫn phải nhớ, máy không kiểm được:** xác nhận trên iPhone thật · dò asset ba bước ·
-Plan Mode. Cùng bốn việc cuối phiên.
+Plan Mode. Việc cuối phiên thì **máy bắt được ở đầu phiên sau** — commit code mới hơn commit
+`docs/NHAT_KY` + `docs/TIEN_DO.md` là hook `dau_phien` báo ghi bù (thử hai chiều, không có
+cảnh báo giả).
 
 **Rà soát chốt phiên: không còn trùng lặp, chồng chéo hay xung đột.** Quét 14 luật — chỗ
 xuất hiện nhiều nơi đều khác ngữ cảnh. Không có đường trỏ chết. Bốn repo cùng sáu script

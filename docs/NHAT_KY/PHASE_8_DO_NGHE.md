@@ -151,3 +151,39 @@ script" trong khi thật **bảy**. Sửa cả hai thành **trỏ vào nguồn**
 
 **Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0, **742 test đạt / 56 file**.
+
+---
+
+## Phần bảy — vá lỗ hổng cuối: máy không cưỡng chế được việc cuối phiên
+
+Chủ dự án hỏi lại repo `ghi-nho` có thừa không, có thật sự chống được chuyện quên không.
+Đo trên máy ảo phiên này: `~/.claude/projects/` chỉ có **phiên đang chạy**, không có thư
+mục bộ nhớ nào → **Claude Code không có bộ nhớ tự động giữa phiên**. Git là thứ duy nhất
+sống qua phiên; `ghi-nho` đã **107 commit** từ 04/09. Kho **không trùng** với cái gì cả.
+
+Chỗ lẫn là **skill `ghi-nho`** (trùng với mồi trong `CLAUDE.md`, đã tắt) ≠ **repo `ghi-nho`**
+(nguồn duy nhất, giữ nguyên).
+
+**Mắt xích trí nhớ 7 khâu, đo lại không đứt khâu nào:** cài đặt cá nhân có lệnh clone →
+`CLAUDE.md` có mồi → kho có nội dung → kho trỏ `TIEN_DO.md` → kho trỏ `quyet-dinh/` (36 file)
+→ tiến độ trỏ `NHAT_KY/` (16 file) → `tests/TaiLieu.test.ts` giữ mắt xích khỏi đứt.
+
+**Lỗ hổng còn lại duy nhất:** ba việc cuối phiên (ghi nhật ký · ghi đè tiến độ · cập nhật
+`trang-thai.md`) **không có máy nào kiểm**. Hook `chan_bao_xong` chỉ đòi dòng `Số đo:`.
+Một phiên làm xong rồi quên ghi thì phiên sau **không biết chuyện đó từng xảy ra** — đúng
+cái mà kho sinh ra để chống.
+
+**Vá:** không chặn giữa phiên (làm code trước, ghi nhật ký sau là bình thường), mà bắt ở
+**đầu phiên sau**. `dau_phien.mjs` so ngày commit cuối của code với ngày commit cuối của
+`docs/NHAT_KY` + `docs/TIEN_DO.md`; code mới hơn thì in
+`phien truoc sua code <ngay> ma nhat ky/tien do dung o <ngay> — doc git log roi ghi bu`.
+
+Thử cả hai chiều trong repo git giả: code 12/09 + tài liệu 10/09 → **báo**; ghi bù 13/09 →
+**im**. Không có cảnh báo giả.
+
+**Vá kèm:** `cai_dat.mjs` nhận `--vsp` làm đường dẫn repo khi không truyền đường dẫn rõ —
+chạy `cai_dat.mjs --vsp` trong `ghi-nho` đã đặt nhầm bộ khoá VSP (29) vào đó. Đã sửa để bỏ
+qua mọi tham số bắt đầu bằng `--`, và trả `ghi-nho` về 32 khoá.
+
+**Số đo:** bốn repo cùng `dau_phien.mjs` md5 `55e1060a` · `quoc-chien` **8/8** ·
+`ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** · `tayvuc` mã 0 · khoá 32/32/29/32.
