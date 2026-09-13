@@ -37,7 +37,8 @@
     "check:sw": "node scripts/check_sw_atlas.mjs",
     "phien:ban": "node scripts/ghi_phien_ban.mjs",
     "xem:quyhoach": "node tools/xem_quy_hoach.mjs",
-    "check:token": "node scripts/check_token.mjs"
+    "check:token": "node scripts/check_token.mjs",
+    "check:kehoach": "node scripts/check_ke_hoach.mjs"
   },
   "repository": {
     "type": "git",

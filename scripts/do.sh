@@ -25,6 +25,7 @@ chay "build"      "npm run build"
 chay "check:base" "npm run check:base"
 chay "check:credits" "npm run check:credits"
 chay "check:token" "npm run check:token"
+chay "check:kehoach" "npm run check:kehoach"
 
 rm -f /tmp/do_$$.log
 echo "Số đo: ${dat}/${tong} thước đạt"
