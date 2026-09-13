@@ -57,5 +57,26 @@ một bộ đồ nghề theo ba cách chia. Sửa hai khối lạc hậu trong `
 được quay lại sửa khi làm lộ ra lỗi · "Memory → tìm `ways-of-working`" → **chỉ sai chỗ**, nó
 nằm trong bộ nhớ **Project "Du lịch"**, không phải Memory chung · lỡ commit vé duyệt lên git.
 
+---
+
+## Phần ba (13/09 tối) — thứ gì MÁY kiểm được thì để máy kiểm
+
+Rà lại theo câu hỏi "món nào đang tự chạy, món nào còn phải nhớ". Ra **hai lỗ hổng**:
+
+**1. `tayvuc` có bốn thước mà không có lệnh đo gộp** — `check:base` `check:credits`
+`check:token` `check:kehoach` nằm đó không ai chạy. Thêm `npm run do` chạy đủ tám bước.
+
+**2. Bốn trong bảy bước đầu phiên chỉ là chữ phải tự nhớ.** Dựng hook `SessionStart`
+(`scripts/dau_phien.mjs`) tự in 2–3 dòng mỗi phiên: nhánh git + file chưa commit + commit
+chưa đẩy · thư viện đã cài chưa · `skillOverrides` có trống không · lệnh đo của repo là gì.
+Trần cứng **dưới 10 dòng** — nó vào ngữ cảnh mỗi phiên, dài là phản tác dụng, đúng cái đang
+đi chống.
+
+**Ba bước vẫn phải nhớ, máy không kiểm được:** xác nhận trên iPhone thật (máy không biết chủ
+dự án đã xem chưa) · dò asset ba bước (máy không biết định vẽ hay định dò) · Plan Mode.
+Cùng bốn việc cuối phiên. Không tìm ra cách biến thành máy mà không gây phiền.
+
+`cai_dat.mjs` giờ cài **bốn hook** + ba script đo — repo mới chạy một lệnh là có hết.
+
 **Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **29/29** · `vsp-fleet-safety` **5/5** ·
-`tayvuc` `check:token` và `check:kehoach` đều mã 0.
+`tayvuc` `npm run do` mã 0, **742 test đạt / 56 file**.

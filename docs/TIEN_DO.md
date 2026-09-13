@@ -27,6 +27,11 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 - **Luật chung chuyển sang kho**, `CLAUDE.md` chỉ giữ mồi + luật riêng repo.
 - **Vá `vsp-fleet-safety`:** lệnh đo ra 1/3 trên máy ảo sạch vì `requirements.txt` thiếu
   `httpx2` — không phải lỗi code.
+- **Bốn bước đầu phiên hết phải nhớ.** Hook `SessionStart` (`scripts/dau_phien.mjs`) tự in
+  2–3 dòng: nhánh git + file chưa commit · thư viện đã cài chưa · `skillOverrides` có trống
+  không · lệnh đo là gì. Trước đó cả bốn chỉ là chữ trong bảy bước.
+- **`tayvuc` có bốn thước mà không có lệnh đo gộp** — thước nằm đó không ai chạy. Thêm
+  `npm run do`.
 
 ### Ba thứ mới biết, dùng được cho mọi phiên sau
 
@@ -49,7 +54,13 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 | `skillOverrides` tiết kiệm | chưa đo | **12.546 ký tự/phiên** |
 
 Lệnh đo ba repo kia: `ghi-nho` **29/29** · `vsp-fleet-safety` **5/5** ·
-`tayvuc` `check:token` và `check:kehoach` đều mã 0.
+`tayvuc` `npm run do` mã 0 (**742 test / 56 file**).
+
+**Bốn hook chạy ở cả bốn repo:** `SessionStart` (kiểm đầu phiên) · `PreToolUse`
+(chặn sửa file khoá) · `PostToolUse` (ghi sổ lệnh) · `Stop` (chặn báo "xong" thiếu `Số đo:`).
+
+**Ba bước vẫn phải nhớ, máy không kiểm được:** xác nhận trên iPhone thật · dò asset ba bước ·
+Plan Mode. Cùng bốn việc cuối phiên.
 
 Số model **không đo phiên này** (kho không tải). Số thật luôn ở **dòng cuối**
 `docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — có test cấm chép số đó ra tài liệu luật.
@@ -75,16 +86,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 Còn một việc treo từ 11/09, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm được,
 nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì liếc một cái.
 
-### Ba việc còn treo
+### Hai việc còn treo
 
-**1. Sửa bộ nhớ Project "Du lịch" trên claude.ai — chỉ anh làm được.**
-Anh đã chốt 13/09: **không tự lái**. Cài đặt cá nhân, `so-thich.md` và bộ nhớ chung
-(`/topics/travel.md`) đều **đã đúng**. Chỗ sai nằm ở **bộ nhớ riêng của Project "Du lịch"**:
-*"Solo travel with motorbike rental preferred for flexibility at destinations"*.
-Không phải Settings → Memory, nên tìm ở đó không thấy. Mở project đó trên claude.ai rồi bảo
-Claude *"tôi không tự lái khi du lịch, cập nhật bộ nhớ dự án"*. Claude Code không với tới.
+✅ **Bộ nhớ Project "Du lịch" — chủ dự án sửa xong 13/09.** Chốt: **không tự lái**.
 
-**2. Có dán đoạn mồi vào cài đặt cá nhân không?** Để repo **mới** cũng tự có hook:
+**1. Có dán đoạn mồi vào cài đặt cá nhân không?** Để repo **mới** cũng tự có hook:
 
 ```
 Claude Code, đầu mỗi phiên ở bất kỳ repo nào, làm trước khi làm việc khác:
@@ -97,7 +103,7 @@ Giá: ~350 ký tự nạp mỗi phiên, **kể cả hội thoại claude.ai** n�
 đặt cá nhân là một ô duy nhất, không tách theo sản phẩm được. Không dán thì bốn repo hiện
 tại vẫn đủ, chỉ repo mới phải gõ tay một lệnh.
 
-**3. Nhánh tạm `claude/do-ab-skill` trên GitHub.** Nó là bản sao `main` với
+**2. Nhánh tạm `claude/do-ab-skill` trên GitHub.** Nó là bản sao `main` với
 `.claude/settings.json` bỏ 15 khoá, dựng để đo A/B xem harness nạp thêm skill nào khi tắt.
 Đo xong, **hết tác dụng**, vô hại. Máy ảo xoá không được. Muốn dọn thì vào
 https://github.com/gc1001vn-svg/quoc-chien/branches bấm thùng rác.
