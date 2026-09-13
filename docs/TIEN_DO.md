@@ -34,7 +34,13 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
   `npm run do`.
 - **Kho có thước rồi.** Rà cuối phiên bắt được chính phiên này làm kho phình 32%
   (`trang-thai.md` 17.252 → 23.356) — `CLAUDE.md` có thước nên không phình được, kho thì
-  không. Cắt về **10.768** và **12.562**, dựng `check_kho.mjs` chặn.
+  không. Cắt, tách hai tầng, dựng `check_kho.mjs` chặn.
+- **`skillOverrides` không tự phủ skill mới** — skill mới xuất hiện là lọt vào ngữ cảnh mà
+  không ai báo. Hook `dau_phien` giờ so thư mục skill với khoá và báo tên chưa có khoá;
+  skill cố ý bật ghi vào `.claude/skill_bat.txt` kèm **lý do bắt buộc**.
+- **Skill: chỉ `md` còn bật.** Nó có `convert.sh`, không có bản thay thế — gửi file mà
+  không gọi thì đọc file gốc (một `.json` 27 MB ≈ 7 triệu token). `giam-token`
+  `lap-ke-hoach` `code-review` tắt, gõ `/` vẫn chạy.
 
 ### Ba thứ mới biết, dùng được cho mọi phiên sau
 
@@ -55,13 +61,16 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 | Repo chạy bản hook chuẩn | 1/4 | **4/4** |
 | Repo có `skillOverrides` | 1/4 | **4/4** |
 | `skillOverrides` tiết kiệm | chưa đo | **12.546 ký tự/phiên** |
-| **Token nạp mỗi phiên** | 37.071 ký tự | **34.244 ≈ 11.413 token** |
+| **Token nạp mỗi phiên** | 37.071 ký tự | **25.252 ≈ 8.417 token** · **−32%** |
 
 Lệnh đo ba repo kia: `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0 (**742 test / 56 file**).
 
-Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich` 12.562 ·
-`du-an` 6.096 · `trang-thai` 10.768 · mô tả 3 skill 718 · hook `SessionStart` 82.
+Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich` **7.965** ·
+`du-an` **4.869** · `trang-thai` **8.098** · mô tả skill `md` 220 · hook `SessionStart` 82.
+
+**Kho tách hai tầng:** `so-thich.md` giữ thứ phải biết **trước** mỗi phiên; năm luật chỉ cần
+đúng lúc làm việc đó sang `cong-cu/luat-chi-tiet.md`, tra bằng `grep`.
 
 **Bốn hook chạy ở cả bốn repo:** `SessionStart` (kiểm đầu phiên) · `PreToolUse`
 (chặn sửa file khoá) · `PostToolUse` (ghi sổ lệnh) · `Stop` (chặn báo "xong" thiếu `Số đo:`).

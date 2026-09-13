@@ -100,5 +100,32 @@ Không nhân nhượng, đúng ý.
 12.562 · `du-an` 6.096 · `trang-thai` 10.768 · mô tả 3 skill 718 · hook `SessionStart` 82.
 **Cộng 34.244 ký tự ≈ 11.413 token** — đầu phiên là 37.071, giảm 8%.
 
+---
+
+## Phần năm — giảm token tiếp, và một lỗ hổng về skill
+
+**Lỗ hổng:** `skillOverrides` **không tự phủ skill mới**. Anthropic thêm một skill dựng sẵn,
+hoặc chủ dự án tải lên skill mới → nó lọt vào ngữ cảnh mỗi phiên, **không ai báo**. Vá bằng
+hook `dau_phien.mjs`: so thư mục skill đồng bộ với `skillOverrides`, báo tên nào chưa có
+khoá. Thử: bỏ `pptx` khỏi khoá → hook báo ngay.
+
+**Tắt bốn skill còn bật** (`user-invocable-only`, gõ `/` vẫn chạy) → 33 khoá.
+**Rồi bật lại `md`** — chủ dự án hỏi đúng chỗ, tắt nó là **sai**: nó có `convert.sh`,
+**không có bản thay thế**. Gửi file mà không gọi nó thì đọc file gốc — `conversations.json`
+27 MB ≈ **7 triệu token**. 73 token/phiên là bảo hiểm rẻ nhất cả bộ.
+`giam-token` giữ tắt (luật đã thành thước `check:token`), `lap-ke-hoach` giữ tắt (chỉ cần
+lúc mở dự án), `code-review` giữ tắt (chưa dùng lần nào trong 38 phiên).
+
+**Tách kho làm hai tầng.** `so-thich.md` giữ thứ phải biết **trước** mỗi phiên; năm luật chỉ
+cần **đúng lúc làm việc đó** (ghi `quyet-dinh/` · lập kế hoạch · `CLAUDE.md` phình · số liệu ·
+in số phiên bản) sang `cong-cu/luat-chi-tiet.md`, tra bằng `grep`. `so-thich.md` giữ bảng
+tóm tắt + lệnh tra — luật không mất, chỉ dời chỗ. **13.327 → 7.965 ký tự.**
+
+**`.claude/skill_bat.txt`** — skill cố ý bật, kèm **lý do bắt buộc**. Không có nó thì hook
+báo cả `md` → cảnh báo giả, mà cảnh báo giả thì phiên sau học cách bỏ qua, mất luôn tác
+dụng thật.
+
+**Token nạp mỗi phiên:** 37.071 → **25.252 ký tự** (~8.417 token). **Giảm 32%.**
+
 **Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0, **742 test đạt / 56 file**.
