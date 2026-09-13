@@ -32,6 +32,9 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
   không · lệnh đo là gì. Trước đó cả bốn chỉ là chữ trong bảy bước.
 - **`tayvuc` có bốn thước mà không có lệnh đo gộp** — thước nằm đó không ai chạy. Thêm
   `npm run do`.
+- **Kho có thước rồi.** Rà cuối phiên bắt được chính phiên này làm kho phình 32%
+  (`trang-thai.md` 17.252 → 23.356) — `CLAUDE.md` có thước nên không phình được, kho thì
+  không. Cắt về **10.768** và **12.562**, dựng `check_kho.mjs` chặn.
 
 ### Ba thứ mới biết, dùng được cho mọi phiên sau
 
@@ -52,9 +55,13 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 | Repo chạy bản hook chuẩn | 1/4 | **4/4** |
 | Repo có `skillOverrides` | 1/4 | **4/4** |
 | `skillOverrides` tiết kiệm | chưa đo | **12.546 ký tự/phiên** |
+| **Token nạp mỗi phiên** | 37.071 ký tự | **34.244 ≈ 11.413 token** |
 
-Lệnh đo ba repo kia: `ghi-nho` **29/29** · `vsp-fleet-safety` **5/5** ·
+Lệnh đo ba repo kia: `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0 (**742 test / 56 file**).
+
+Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich` 12.562 ·
+`du-an` 6.096 · `trang-thai` 10.768 · mô tả 3 skill 718 · hook `SessionStart` 82.
 
 **Bốn hook chạy ở cả bốn repo:** `SessionStart` (kiểm đầu phiên) · `PreToolUse`
 (chặn sửa file khoá) · `PostToolUse` (ghi sổ lệnh) · `Stop` (chặn báo "xong" thiếu `Số đo:`).

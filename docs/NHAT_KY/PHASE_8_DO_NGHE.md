@@ -78,5 +78,27 @@ Cùng bốn việc cuối phiên. Không tìm ra cách biến thành máy mà kh
 
 `cai_dat.mjs` giờ cài **bốn hook** + ba script đo — repo mới chạy một lệnh là có hết.
 
-**Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **29/29** · `vsp-fleet-safety` **5/5** ·
+---
+
+## Phần bốn — rà soát cuối, bắt được chính phiên này làm kho phình
+
+Đo lại token từng khối thì lộ: giữa phiên **kho phình 32%** — `trang-thai.md` 17.252 →
+**23.356**, `so-thich.md` 6.700 → **14.646**. Tăng trong đúng cái phiên đi chống phình.
+Lý do: `CLAUDE.md` có thước nên không phình được, **kho thì không có thước nào**.
+
+**Cắt:**
+- `trang-thai.md` → **10.768**. Mục "Nợ kỹ thuật" phần lớn là nợ **riêng `quoc-chien`**,
+  mà file này đọc mỗi phiên **mọi repo** — phiên làm ở `vsp-fleet-safety` cũng phải gánh nợ
+  atlas của game. Giờ chỉ giữ nợ dùng chung, nợ riêng trỏ về file của repo đó.
+- `so-thich.md` → **12.562**. Bỏ chi tiết riêng `quoc-chien` và ví dụ dài.
+
+**Dựng `check_kho.mjs`** — trần 13.000 / 7.000 / 13.000 ký tự. Nó **bắt ngay lần đầu**:
+`so-thich.md` vượt 279 ký tự; cắt xong vượt tiếp **1 ký tự**, phải cắt lần nữa.
+Không nhân nhượng, đúng ý.
+
+**Token nạp mỗi phiên, đo cuối:** cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich`
+12.562 · `du-an` 6.096 · `trang-thai` 10.768 · mô tả 3 skill 718 · hook `SessionStart` 82.
+**Cộng 34.244 ký tự ≈ 11.413 token** — đầu phiên là 37.071, giảm 8%.
+
+**Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0, **742 test đạt / 56 file**.
