@@ -79,6 +79,14 @@ Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.
 **Ba bước vẫn phải nhớ, máy không kiểm được:** xác nhận trên iPhone thật · dò asset ba bước ·
 Plan Mode. Cùng bốn việc cuối phiên.
 
+**Rà soát chốt phiên: không còn trùng lặp, chồng chéo hay xung đột.** Quét 14 luật — chỗ
+xuất hiện nhiều nơi đều khác ngữ cảnh. Không có đường trỏ chết. Bốn repo cùng sáu script
+(`md5` khớp), bốn hook, 32 khoá (`vsp-fleet-safety` 29 — thiếu ba khoá VSP, cố ý).
+
+**Phiên sau thêm skill mới:** hook `SessionStart` tự báo skill chưa có khoá. Giữ bật thì ghi
+vào `.claude/skill_bat.txt` **kèm lý do**; muốn tắt thì thêm vào `cong-cu/skill_overrides.json`
+rồi chạy `cai_dat.mjs` cho cả bốn repo.
+
 Số model **không đo phiên này** (kho không tải). Số thật luôn ở **dòng cuối**
 `docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — có test cấm chép số đó ra tài liệu luật.
 

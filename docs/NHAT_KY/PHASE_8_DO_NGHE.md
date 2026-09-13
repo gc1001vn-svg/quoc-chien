@@ -127,5 +127,27 @@ dụng thật.
 
 **Token nạp mỗi phiên:** 37.071 → **25.252 ký tự** (~8.417 token). **Giảm 32%.**
 
+---
+
+## Phần sáu — rà soát chốt phiên
+
+Quét 14 luật xem còn trùng không: chỗ nào xuất hiện nhiều nơi đều **khác ngữ cảnh**, không
+phải chép. `cấm head/tail` 3 nơi nhưng nói về ba file khác nhau · `Plan Mode` ở `DAU_PHIEN`
+chỉ nằm trong ghi chú *"bốn mục cũ đã gộp"* · `cai_dat.mjs` 5 nơi là **trỏ lệnh**.
+Đường trỏ chết: **không có** (hai cái script báo là dương tính giả — `convert.sh` có thật
+trong thư mục skill `md`).
+
+Bốn repo khớp: sáu script cùng `md5`, bốn hook mỗi repo, 32 khoá (`vsp-fleet-safety` 29 —
+thiếu ba khoá VSP, cố ý).
+
+**Hai lỗi tìm ra, đều là số gõ tay lạc hậu — đúng cái luật này cấm:**
+`so-thich.md` ghi "33 khoá" trong khi thật **32** · `luat-chi-tiet.md` ghi "chép sẵn **hai**
+script" trong khi thật **bảy**. Sửa cả hai thành **trỏ vào nguồn**, không gõ số.
+Đo lại tiết kiệm `skillOverrides` với 32 khoá: **14.349 ký tự/phiên**, không phải 12.546.
+
+**Token nạp mỗi phiên, đo cuối:** cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich`
+8.008 · `du-an` 4.869 · `trang-thai` 8.098 · mô tả `md` 220 · hook 82 =
+**25.295 ký tự ≈ 8.431 token**. Đầu ngày 37.071 → giảm **11.776 ký tự, 31%**.
+
 **Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0, **742 test đạt / 56 file**.
