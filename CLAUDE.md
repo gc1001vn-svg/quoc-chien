@@ -32,25 +32,8 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 2. **Cấm số cân bằng trong `.ts`** — mọi tỉ lệ vào `data/*.json`.
 3. **Vượt trần hiệu năng là lỗi**, không "tối ưu sau" — `docs/TECH_SPEC.md` mục 2.
 
-## Tra trước, đừng tự viết — luật đắt nhất về token
-
-Trước khi viết dòng code nào, leo thang, dừng ở bậc đầu tiên đỡ được:
-**cần tồn tại không** → **repo đã có chưa** (`grep` trước) → **stdlib** → **nền tảng có sẵn**
-→ **thư viện ĐÃ cài** → **một dòng** → mới viết tối thiểu.
-Không có trong repo → tra **npm, GitHub, mã nguồn mở**. Vẫn không → tìm công cụ, học cách
-người ta làm. **Tự viết là bậc cuối.** Đừng thêm thư viện mới cho thứ vài dòng làm xong.
-Bộ đọc GLB từng bị ước "~200 dòng" nên bỏ nhiều phiên — làm thật **30 dòng**, phần khó đã
-nằm sẵn trong `tools/lib/gltf.mjs`.
-
-Thang rút ngắn lời giải, **không rút ngắn phần đọc**. Sửa lỗi thì **sửa gốc**: `grep` mọi
-nơi gọi hàm sắp sửa, chốt chặn trong hàm dùng chung nhỏ hơn chốt ở từng nơi gọi.
-
-**Đọc file lớn:** ước trên ~10.000 token thì **cấm `Read` trọn**. Lấy dàn bài
-`grep -n '^#'` rồi `grep -A/-B` hoặc `Read` với `offset`/`limit`. File dữ liệu lớn trích
-bằng `node -e`.
-
-**Trước khi hỏi chủ dự án:** tra ba file kho, rồi tra máy (`manifest.json`, `git log`, tài
-liệu chính thức). Chỉ hỏi thứ không tra được.
+**Thang tra-trước-khi-viết · cấm đọc trọn file lớn · tra trước khi hỏi chủ dự án: Ở KHO**
+(`so-thich.md`). Áp cho mọi repo, không chép về đây.
 
 ## Quy ước
 

@@ -14,10 +14,16 @@
 
 import { readFileSync, existsSync } from 'node:fs';
 
-// `NGUONG_TOKEN=<so>` de thu thuoc nay co that su bat khong — dung khi kiem,
-// dung dat trong CI de lach nguong that.
-const NGUONG = Number(process.env.NGUONG_TOKEN) || 1600;
+// Nguong lay theo thu tu: bien moi truong -> `.claude/nguong_token.txt` -> 1600.
+// `NGUONG_TOKEN=<so>` de THU thuoc nay co that su bat khong; dung dat trong CI
+// de lach nguong that. Repo can nguong khac thi ghi `.claude/nguong_token.txt`,
+// dong dau la so, cac dong sau la LY DO — bat buoc noi ra vi sao noi nguong.
 const FILE = 'CLAUDE.md';
+const P_NGUONG = '.claude/nguong_token.txt';
+const NGUONG =
+  Number(process.env.NGUONG_TOKEN) ||
+  (existsSync(P_NGUONG) ? Number(readFileSync(P_NGUONG, 'utf8').split('\n')[0].trim()) : 0) ||
+  1600;
 
 if (!existsSync(FILE)) {
   console.log(`${FILE} khong ton tai — bo qua`);
