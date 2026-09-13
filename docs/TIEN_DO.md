@@ -60,14 +60,15 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 | `CLAUDE.md` | 101 dòng · 2.237 token | **53 dòng · 1.064 token** |
 | Repo chạy bản hook chuẩn | 1/4 | **4/4** |
 | Repo có `skillOverrides` | 1/4 | **4/4** |
-| `skillOverrides` tiết kiệm | chưa đo | **12.546 ký tự/phiên** |
-| **Token nạp mỗi phiên** | 37.071 ký tự | **25.252 ≈ 8.417 token** · **−32%** |
+| `skillOverrides` tiết kiệm | chưa đo | **14.349 ký tự/phiên** (~4.783 token) |
+| **Token nạp mỗi phiên** | 37.071 ký tự | **25.295 ≈ 8.431 token** · **−31%** |
 
 Lệnh đo ba repo kia: `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0 (**742 test / 56 file**).
 
-Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich` **7.965** ·
+Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich` **8.008** ·
 `du-an` **4.869** · `trang-thai` **8.098** · mô tả skill `md` 220 · hook `SessionStart` 82.
+**Ba file kho: 20.975 ký tự ~6.991 token** — đọc HẾT mỗi phiên, mọi repo.
 
 **Kho tách hai tầng:** `so-thich.md` giữ thứ phải biết **trước** mỗi phiên; năm luật chỉ cần
 đúng lúc làm việc đó sang `cong-cu/luat-chi-tiet.md`, tra bằng `grep`.
