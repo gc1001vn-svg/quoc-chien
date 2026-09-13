@@ -187,3 +187,40 @@ qua mọi tham số bắt đầu bằng `--`, và trả `ghi-nho` về 32 khoá.
 
 **Số đo:** bốn repo cùng `dau_phien.mjs` md5 `55e1060a` · `quoc-chien` **8/8** ·
 `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** · `tayvuc` mã 0 · khoá 32/32/29/32.
+
+---
+
+## Phần tám — tra công cụ tiết kiệm token ngoài, đo thật, chỉ giữ một
+
+Chủ dự án bảo lên mạng/mã nguồn mở tìm trình tiết kiệm token đáng xài. Tra xong **đo trên
+chính phiên này** (`usage` trong transcript, 933 lượt gọi model) — số lật ngược phần lớn
+lời khuyên trên blog:
+
+| Khoản | Token | Theo hệ số giá quen dùng |
+|---|---:|---:|
+| Cache đọc (gửi lại lịch sử) | **373.501.861** | 84,5% |
+| Output | 834.745 | 9,4% |
+| Cache ghi | 2.134.877 | 6,0% |
+
+**Mỗi lượt gọi model gửi lại 400.323 token.** Toàn bộ `tool_result` + `tool_use` cả phiên
+chỉ ~240.297 — **đọc file không phải chỗ tốn**. Chỗ tốn là *số lượt* × *cỡ ngữ cảnh*: thứ
+nạp sớm bị nhân với số lượt còn lại (8.431 token đầu phiên × 933 ≈ **7,9 triệu**).
+
+**Giữ đúng một công cụ:** `repomix --compress` (npm, MIT) → `scripts/goi_repo.sh` ở cả bốn
+repo. Đo thật: TS 84 file **134.317 → 65.774** token (−51%), Python 23 file
+**16.759 → 11.551** (−31%). Chạy bằng `npx` khi cần hiểu toàn hệ thống một lần;
+**không** đưa vào `package.json` — gói cả repo vẫn đắt hơn `grep` + đọc ba file.
+
+**Loại, kèm lý do đo được:** `caveman` và mọi thứ cắt *output* (output chỉ **0,22%** token
+thô) · Serena MCP (repo 55 file, mô tả tool nạp mỗi lượt là lỗ; có báo cáo ngược là tốn
+hơn) · `gitingest` `code2prompt` (repomix trùm, không nén AST) · `ast-grep` để dành.
+
+**Thứ mọi blog khuyên mà ở đây vô dụng:** hook nén output lệnh. Đo: `npm run do` in **331
+ký tự**, `vitest` **176**, `tsc` **0** — `do.sh` đã in gọn từ đầu, không còn gì để cắt.
+
+**Luật mới vào kho:** gộp lệnh vào một `Bash`, việc độc lập gọi song song một lượt; việc mới
+không liên quan thì mở phiên mới. `so-thich.md` giữ bản ngắn, số đo ở
+`cong-cu/luat-chi-tiet.md`, chốt ở `quyet-dinh/2026-09-13-token-dat-o-so-luot-goi.md`.
+
+`check_kho.mjs` lại bắt đúng lúc: thêm luật là `so-thich.md` vượt trần **567 ký tự**. Cắt
+bốn lần mới lọt — **8.497/8.500**. Không nới ngưỡng.

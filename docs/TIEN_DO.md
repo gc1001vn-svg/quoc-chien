@@ -41,6 +41,13 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 - **Skill: chỉ `md` còn bật.** Nó có `convert.sh`, không có bản thay thế — gửi file mà
   không gọi thì đọc file gốc (một `.json` 27 MB ≈ 7 triệu token). `giam-token`
   `lap-ke-hoach` `code-review` tắt, gõ `/` vẫn chạy.
+- **Tra công cụ tiết kiệm token ngoài, đo thật, chỉ giữ một.** Đo `usage` phiên này: cache
+  đọc **373.501.861** token, **400.323 mỗi lượt gọi model**; toàn bộ `tool_result` cả phiên
+  chỉ ~240.297 → **đọc file không phải chỗ tốn, số lượt mới là**. Giữ `repomix --compress`
+  (`scripts/goi_repo.sh`, cả bốn repo, chạy `npx` khi cần): TS **134.317 → 65.774** (−51%),
+  Python **16.759 → 11.551** (−31%). Loại `caveman` (output chỉ 0,22% token thô), Serena
+  MCP, `gitingest`, `code2prompt`. Hook nén output lệnh mà mọi blog khuyên thì ở đây vô
+  dụng: `npm run do` in **331 ký tự**, `vitest` **176**, `tsc` **0**.
 - **Lỗ hổng cuối đã vá: phiên quên ghi nhật ký.** Máy không cưỡng chế được ba việc cuối
   phiên; `chan_bao_xong` chỉ đòi dòng `Số đo:`. Nay `dau_phien` so ngày commit cuối của
   code với ngày commit cuối của `docs/NHAT_KY` + `docs/TIEN_DO.md` — code mới hơn thì
