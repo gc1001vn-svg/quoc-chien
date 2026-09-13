@@ -36,6 +36,43 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 2. **Cấm số cân bằng trong `.ts`** — mọi tỉ lệ vào `data/*.json`.
 3. **Vượt trần hiệu năng là lỗi**, không "tối ưu sau" — `docs/TECH_SPEC.md` mục 2.
 
+## Tra trước, đừng tự viết — luật đắt nhất về token
+
+**Trước khi viết bất cứ dòng code nào**, leo thang, dừng ở bậc đầu tiên đỡ được:
+
+1. **Việc này có cần tồn tại không?** Nhu cầu phỏng đoán → bỏ, nói một dòng.
+2. **Repo này đã có chưa?** Hàm, util, kiểu, mẫu sẵn có → dùng lại. Viết lại thứ nằm cách
+   vài file là lỗi hay gặp nhất. Bộ đọc GLB từng bị ước "~200 dòng" nên bỏ qua nhiều phiên
+   — làm thật hết **30 dòng** vì phần khó đã nằm sẵn trong `tools/lib/gltf.mjs`.
+3. **Thư viện chuẩn của ngôn ngữ làm được?** Dùng.
+4. **Nền tảng có sẵn?** CSS hơn JS, API trình duyệt hơn thư viện.
+5. **Thư viện ĐÃ cài giải quyết được?** Dùng. Đừng thêm thư viện mới cho thứ vài dòng làm xong.
+6. **Một dòng được không?** Một dòng.
+7. Chỉ khi hết bậc trên: viết tối thiểu cho chạy được.
+
+Không có trong repo → tra **mã nguồn mở, npm, GitHub** trước. Vẫn không có → tìm công cụ,
+hoặc học cách người ta làm. **Tự viết là bậc cuối, không phải bậc đầu.**
+Với asset thì theo luật dò ba bước ở mục Quy ước.
+
+**Đừng lười phần hiểu bài.** Thang này rút ngắn lời giải, không rút ngắn phần đọc. Diff nhỏ
+đặt sai chỗ không phải lười, là thêm một lỗi nữa.
+
+**Sửa lỗi thì sửa gốc.** `grep` mọi nơi gọi hàm sắp sửa. Một chốt chặn trong hàm dùng chung
+là diff nhỏ hơn chốt chặn ở từng nơi gọi.
+
+## Đọc file lớn — cấm đọc trọn
+
+Ước trên **~10.000 token** thì **không** `Read` cả file. Lấy dàn bài (`grep -n '^#'`), rồi
+`grep` kèm `-A`/`-B` hoặc `Read` với `offset`/`limit` đúng đoạn cần.
+File dữ liệu lớn thì trích bằng `node -e` chứ đừng đọc thô — `conversations.json` 27 MB
+(~7 triệu token) trích bằng `node` hết vài nghìn token.
+
+## Trước khi hỏi chủ dự án
+
+Tra ba file kho, rồi tra chính máy (`~/.claude/skills/synced/*/manifest.json`, tài liệu
+chính thức, `git log`). **Chỉ hỏi thứ không tra được.** Anh làm trên iPhone, mỗi câu hỏi
+thừa là một vòng chờ.
+
 ## Quy ước
 
 - Comment tiếng Việt; tên biến, tên hàm tiếng Anh.

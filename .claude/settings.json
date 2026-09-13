@@ -42,6 +42,9 @@
     ]
   },
   "skillOverrides": {
+    "ghi-nho": "user-invocable-only",
+    "bo-tro": "user-invocable-only",
+    "ponytail": "user-invocable-only",
     "pptx": "off",
     "docx": "off",
     "xlsx": "off",
