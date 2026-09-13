@@ -1,19 +1,19 @@
 # ĐẦU PHIÊN — QUỐC CHIẾN
 
-> Chạy hết bảng này **trước khi** vào Plan Mode. Không bỏ mục nào, không báo "xong" khi
-> còn mục treo. Bảy bước chung cho mọi dự án nằm ở `so-thich.md` của kho `ghi-nho`;
-> file này chỉ ghi phần **riêng repo quốc chiến**.
+> **Bảy bước chung A–G ở `so-thich.md` của kho `ghi-nho`** — chạy theo bảng đó.
+> File này chỉ ghi thứ **riêng repo này**: lệnh cụ thể và bẫy đã sập.
+> Gộp 13/09: bốn mục cũ (git · xác nhận phase · Plan Mode · đối chiếu `skillOverrides`)
+> **đã xoá khỏi đây** vì chép nguyên từ kho — sửa một nơi là lệch với nơi kia.
 
-## A. Nạp bối cảnh — đọc HẾT, cấm cắt
+## A. Nạp bối cảnh — lệnh của repo này
 
 ```bash
 cat docs/TIEN_DO.md
 cat .claude/settings.json
 ```
 
-**Cấm `head`, `tail`, `sed -n` ở bước này.** Khối `skillOverrides` nằm **cuối**
-`settings.json`; `head -40` cắt mất nó thì phiên tưởng là chưa tắt skill nào.
-Kho `ghi-nho`: theo đúng skill, `cat` cả ba file, cũng cấm cắt.
+**Cấm cắt.** `skillOverrides` nằm **cuối** `settings.json`; `head -40` cắt mất nó thì phiên
+tưởng chưa tắt skill nào.
 
 ## B. Dựng lại máy ảo — container mới, mất sạch mỗi phiên
 
@@ -34,33 +34,16 @@ mất 5–10 phút và không dùng tới.
 Từ 11/09 `kho_asset.mjs` tự chặn khi số model tụt quá 20% so với bản đang có; ép ghi
 đè phải `KHO_EP=1 npm run kho`, và chỉ làm khi biết chắc kho đã đủ.
 
-## C. Git
+## D. Chi phí token — phần riêng repo này
 
-```bash
-git status && git log --oneline origin/main -1
-```
+Dò `KHO_ASSET.md` phải dùng `grep -io ... | sort -u`, **cấm `grep -i` trần**: dòng dài
+4.870 ký tự, trúng một dòng mất ~3.300 token thay vì ~180. Luật đầy đủ: `CLAUDE.md` mục
+Quy ước.
 
-Nhánh phải sạch và đã gộp `main` từ phiên trước. Còn commit chưa gộp thì gộp trước
-khi làm việc mới.
+## F. Dò asset — bước 1b, kho chung
 
-## D. Chi phí token
-
-- Đối chiếu danh sách skill harness in ra với `skillOverrides` trong `.claude/settings.json`.
-  Lệch thì sửa `settings.json`, **đừng bảo chủ dự án vào claude.ai bấm tay** — anh làm
-  trên iPhone và đường đó đã có sẵn từ 06/09.
-- Dò `KHO_ASSET.md` phải dùng `grep -io ... | sort -u` (`CLAUDE.md` mục Quy ước).
-  `grep -i` trần tốn gấp ~19 lần.
-
-## E. Xác nhận phase trước
-
-`docs/TIEN_DO.md` mục 3 là việc của chủ dự án. **Chưa có xác nhận trên iPhone thật thì
-không mở phase mới** — hỏi anh trước, đừng tự cho là xong.
-
-## F. Dò asset cho phase mới — luật ba bước
-
-`CLAUDE.md` mục Quy ước. Không đi hết ba bước thì cấm tự vẽ, tự ghép.
-
-**Từ 11/09 có thêm KHO CHUNG — dò ở bước 1b, giữa `KHO_ASSET.md` và `NGUON_MO.md`:**
+Luật ba bước ở `CLAUDE.md` mục Quy ước. Riêng bước **1b**, giữa `KHO_ASSET.md` và
+`NGUON_MO.md`:
 
 ```bash
 grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_CHUNG.md | sort -u
@@ -90,7 +73,3 @@ thì trỏ thẳng vào glTF. **Máy nướng đọc được cả ba: `.obj` ·
 
 Tải gói mới từ itch xong chạy `npm run kho`; lấy từ kho chung xong chạy `npm run kho:chung`
 (chỉ khi kho chung có thay đổi).
-
-## G. Plan Mode
-
-Xong A–F mới lập kế hoạch, rồi chờ duyệt.

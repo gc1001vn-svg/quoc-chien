@@ -3,13 +3,9 @@
 Game chiến thuật offline, 2D isometric, PWA. Đẩy `main` là tự lên
 https://gc1001vn-svg.github.io/quoc-chien/ — **xong việc tự gộp `main`**, không hỏi, không PR.
 
-## Chủ dự án
+## Đầu phiên — đọc kho ghi nhớ trước hết
 
-Không biết lập trình, làm trên iPhone. Từng bước bấm gì ở đâu, link đầy đủ.
-**Mỗi phiên một phase.** Đầu phiên chạy `docs/DAU_PHIEN.md` → Plan Mode chờ duyệt.
-
-**Đầu phiên đọc kho ghi nhớ trước hết** — `so-thich.md` `du-an.md` `trang-thai.md`,
-**đọc HẾT, cấm `head`/`tail`/`sed -n`** (thứ đắt nhất nằm cuối `trang-thai.md`):
+Ba file, **đọc HẾT, cấm `head`/`tail`/`sed -n`** (thứ đắt nhất nằm cuối `trang-thai.md`):
 
 ```bash
 git -C /home/user/ghi-nho pull -q 2>/dev/null \
@@ -21,11 +17,15 @@ Kho **Private**, clone hỏng thì gọi `add_repo` với `access: read` — **�
 xin quyền ghi cho repo ngoài phạm vi phiên là bị chặn thẳng, còn `read` qua ngay. Hỏng
 tiếp thì **đổi cách hỏi**, đừng thử lại y hệt rồi kết luận là không có quyền: đã mất
 nguyên một phiên vì nghĩ vậy (12/09), và một phiên khác vì cắt `head -120` (11/09).
-Máy ảo mới mỗi phiên: `npm ci`; phiên có nướng sprite thì `npm run tai:tatca`
-(cỡ kho ghi ở `docs/DAU_PHIEN.md` mục B — **một nơi duy nhất**, đừng chép về đây).
-**TIẾP** = phase kế · **ĐỔI…** = sửa trong phase này · **LỖI** = dừng sửa trước.
-Nhìn được thì `npm run chup:man` gửi ảnh. **Cấm** báo "hoàn thành" khi chưa xác nhận trên
-iPhone thật — ghi "chờ xác nhận".
+
+Rồi chạy `docs/DAU_PHIEN.md` — lệnh và bẫy riêng repo này.
+
+**Bảy bước đầu phiên · cách trả lời · luật báo "xong" · sở thích chủ dự án: ĐỀU Ở KHO,
+không chép về đây.** Gộp 13/09 — trước đó cùng một luật nằm 4–6 nơi, sửa một nơi là lệch
+với năm nơi kia.
+
+**Mỗi phiên một phase.** **TIẾP** = phase kế · **ĐỔI…** = sửa trong phase này ·
+**LỖI** = dừng sửa trước. Nhìn được thì `npm run chup:man` gửi ảnh.
 Cuối phiên: `docs/NHAT_KY/PHASE_<n>.md` (~15 dòng), ghi đè `docs/TIEN_DO.md` mục 1–5,
 in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 
