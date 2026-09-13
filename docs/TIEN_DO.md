@@ -15,13 +15,18 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 
 ### Phiên 13/09 đã đổi gì
 
-- **`giam-token` hết là skill phải nhớ gọi** — thành **thước `check:token`** trong
-  `npm run do`. `CLAUDE.md` phình quá ngưỡng là lệnh đo đỏ, không commit được.
-- **Cả bốn repo cùng một bản hook** (`md5 cadf0d7e`). Trước đó chạy ba bản khác nhau, bản
-  gốc để chép đi thì lạc hậu 41 dòng.
+- **Hai luật không ai giữ, nay thành thước.** `giam-token` hết là skill phải nhớ gọi →
+  `check:token`. Khuôn kế hoạch "tối đa 20 dòng" chưa lần nào đạt (thực tế 210 và 145) →
+  `check:kehoach`, trần 60. Vượt ngưỡng là lệnh đo đỏ, không commit được.
+- **Cả bốn repo cùng một bản hook** (`md5 cadf0d7e`) và cùng `skillOverrides`. Trước đó
+  chạy ba bản khác nhau, bản gốc để chép đi thì lạc hậu 41 dòng.
+- **Cài vào repo mới bằng một lệnh:** `node /home/user/ghi-nho/cong-cu/cai_dat.mjs`
+  (`--vsp` cho repo việc VSP).
 - **Gộp trùng lặp: mỗi luật đúng một chỗ.** Trước đó một luật nằm 4–6 nơi — sửa một nơi là
   lệch với năm nơi kia.
 - **Luật chung chuyển sang kho**, `CLAUDE.md` chỉ giữ mồi + luật riêng repo.
+- **Vá `vsp-fleet-safety`:** lệnh đo ra 1/3 trên máy ảo sạch vì `requirements.txt` thiếu
+  `httpx2` — không phải lỗi code.
 
 ### Ba thứ mới biết, dùng được cho mọi phiên sau
 
@@ -37,14 +42,14 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 | **7/7** (thêm `check:token`) |
-| `CLAUDE.md` | 101 dòng · 2.237 token | **57 dòng · 1.191 token** |
+| `npm run do` | 6/6 | **8/8** (thêm `check:token`, `check:kehoach`) |
+| `CLAUDE.md` | 101 dòng · 2.237 token | **53 dòng · 1.064 token** |
 | Repo chạy bản hook chuẩn | 1/4 | **4/4** |
 | Repo có `skillOverrides` | 1/4 | **4/4** |
 | `skillOverrides` tiết kiệm | chưa đo | **12.546 ký tự/phiên** |
 
-Lệnh đo ba repo kia: `ghi-nho` **28/28** · `vsp-fleet-safety` **4/4** ·
-`tayvuc` `npm run check:token` mã 0.
+Lệnh đo ba repo kia: `ghi-nho` **29/29** · `vsp-fleet-safety` **5/5** ·
+`tayvuc` `check:token` và `check:kehoach` đều mã 0.
 
 Số model **không đo phiên này** (kho không tải). Số thật luôn ở **dòng cuối**
 `docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — có test cấm chép số đó ra tài liệu luật.
@@ -70,11 +75,14 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 Còn một việc treo từ 11/09, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm được,
 nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì liếc một cái.
 
-### Ba câu cần anh quyết, không gấp
+### Ba việc còn treo
 
-**1. Đi du lịch có thuê xe máy ở điểm đến không?** Hai kho đang ghi ngược nhau: cài đặt cá
-nhân và `so-thich.md` ghi *"không tự lái"*, còn bộ nhớ claude.ai ghi *"motorbike rental
-preferred"* — và bộ nhớ đó còn tự mâu thuẫn với chính nó. Anh trả lời thì sửa cho khớp.
+**1. Sửa bộ nhớ Project "Du lịch" trên claude.ai — chỉ anh làm được.**
+Anh đã chốt 13/09: **không tự lái**. Cài đặt cá nhân, `so-thich.md` và bộ nhớ chung
+(`/topics/travel.md`) đều **đã đúng**. Chỗ sai nằm ở **bộ nhớ riêng của Project "Du lịch"**:
+*"Solo travel with motorbike rental preferred for flexibility at destinations"*.
+Không phải Settings → Memory, nên tìm ở đó không thấy. Mở project đó trên claude.ai rồi bảo
+Claude *"tôi không tự lái khi du lịch, cập nhật bộ nhớ dự án"*. Claude Code không với tới.
 
 **2. Có dán đoạn mồi vào cài đặt cá nhân không?** Để repo **mới** cũng tự có hook:
 
@@ -89,8 +97,9 @@ Giá: ~350 ký tự nạp mỗi phiên, **kể cả hội thoại claude.ai** n�
 đặt cá nhân là một ô duy nhất, không tách theo sản phẩm được. Không dán thì bốn repo hiện
 tại vẫn đủ, chỉ repo mới phải gõ tay một lệnh.
 
-**3. Nhánh tạm `claude/do-ab-skill` trên GitHub** — em tạo để đo A/B, xoá không được từ máy
-ảo. Vô hại. Muốn dọn thì vào
+**3. Nhánh tạm `claude/do-ab-skill` trên GitHub.** Nó là bản sao `main` với
+`.claude/settings.json` bỏ 15 khoá, dựng để đo A/B xem harness nạp thêm skill nào khi tắt.
+Đo xong, **hết tác dụng**, vô hại. Máy ảo xoá không được. Muốn dọn thì vào
 https://github.com/gc1001vn-svg/quoc-chien/branches bấm thùng rác.
 
 **Nếu anh đã chuyển kho `ghi-nho` sang Public: chuyển về Private.** Kho chứa cách làm việc,

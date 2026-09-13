@@ -29,3 +29,33 @@ chính là thang tra-trước, thiếu là thiếu hook · "`ghi-nho` trùng 100
 lỡ commit vé duyệt lên git, đã gỡ.
 
 **Còn treo:** bộ nhớ claude.ai lệch với kho về phương tiện du lịch (xe máy) — chờ chủ dự án.
+
+---
+
+## Phần hai (13/09 chiều) — đồng bộ bốn repo, dựng hai thước mới
+
+**Đồng bộ:** `vsp-fleet-safety` và `tayvuc` nhận bản hook chuẩn + `skillOverrides`.
+`tayvuc` trước chạy **hai** bản cũ: `chan_file_khoa` 65→215 dòng và `chan_bao_xong` 98→107
+(bản cũ chặn NHẦM cụm từ giữa dòng — nợ ghi từ 05/09, nay trả). **Cả bốn repo giờ cùng một
+bản** (`md5 cadf0d7e`). Cài vào repo mới bằng một lệnh: `cong-cu/cai_dat.mjs`.
+
+**Hai thước mới, cả hai thay cho luật không ai giữ:**
+
+- `check:token` — `giam-token` hết là skill phải nhớ gọi. Chạy lần đầu: `CLAUDE.md`
+  **101 dòng ~2.237 token**, gấp 4,5 lần mức khuyến nghị 500. Cắt còn **53 dòng ~1.064**.
+- `check:kehoach` — khuôn kế hoạch ghi "tối đa 20 dòng" mà thực tế **210** và **145** dòng.
+  Trần mới **60**, hai file cũ miễn.
+
+**Vá `vsp-fleet-safety`:** `bash scripts/do.sh` ra 1/3 trên máy ảo sạch. Không phải lỗi
+code — `requirements.txt` thiếu `httpx2` (`starlette.testclient` bản mới đòi gói đó, tài
+liệu ghi `httpx`). Thêm vào là 3/3.
+
+**Gỡ chồng chéo:** xoá hai file `nang-cap/` do chính phiên này đẻ ra — ba file cùng liệt kê
+một bộ đồ nghề theo ba cách chia. Sửa hai khối lạc hậu trong `trang-thai.md`.
+
+**Sai tiếp của phiên này, đã sửa:** "`ke-hoach/` bỏ được mà không mất gì" → **sai**, một bản
+được quay lại sửa khi làm lộ ra lỗi · "Memory → tìm `ways-of-working`" → **chỉ sai chỗ**, nó
+nằm trong bộ nhớ **Project "Du lịch"**, không phải Memory chung · lỡ commit vé duyệt lên git.
+
+**Số đo cuối:** `quoc-chien` **8/8** · `ghi-nho` **29/29** · `vsp-fleet-safety` **5/5** ·
+`tayvuc` `check:token` và `check:kehoach` đều mã 0.
