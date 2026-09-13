@@ -86,24 +86,15 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 Còn một việc treo từ 11/09, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm được,
 nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì liếc một cái.
 
-### Hai việc còn treo
+### Một việc còn treo
 
 ✅ **Bộ nhớ Project "Du lịch" — chủ dự án sửa xong 13/09.** Chốt: **không tự lái**.
 
-**1. Có dán đoạn mồi vào cài đặt cá nhân không?** Để repo **mới** cũng tự có hook:
+✅ **Mồi đã dán vào cài đặt cá nhân 13/09** (Settings → General → *Instructions for Claude*).
+**376 ký tự ≈ 125 token/phiên.** Từ phiên sau, **repo mới cũng tự có đủ đồ nghề** — không
+còn phụ thuộc repo đã sửa `CLAUDE.md` hay chưa. Nội dung ghi ở `ghi-nho/so-thich.md`.
 
-```
-Claude Code, đầu mỗi phiên ở bất kỳ repo nào, làm trước khi làm việc khác:
-git -C /home/user/ghi-nho pull -q 2>/dev/null || git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho
-cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md
-node /home/user/ghi-nho/cong-cu/cai_dat.mjs
-```
-
-Giá: ~350 ký tự nạp mỗi phiên, **kể cả hội thoại claude.ai** nơi không có repo nào — ô cài
-đặt cá nhân là một ô duy nhất, không tách theo sản phẩm được. Không dán thì bốn repo hiện
-tại vẫn đủ, chỉ repo mới phải gõ tay một lệnh.
-
-**2. Nhánh tạm `claude/do-ab-skill` trên GitHub.** Nó là bản sao `main` với
+**Còn lại: nhánh tạm `claude/do-ab-skill` trên GitHub.** Nó là bản sao `main` với
 `.claude/settings.json` bỏ 15 khoá, dựng để đo A/B xem harness nạp thêm skill nào khi tắt.
 Đo xong, **hết tác dụng**, vô hại. Máy ảo xoá không được. Muốn dọn thì vào
 https://github.com/gc1001vn-svg/quoc-chien/branches bấm thùng rác.
