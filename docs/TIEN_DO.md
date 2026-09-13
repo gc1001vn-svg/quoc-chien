@@ -3,153 +3,126 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 12/09/2026 (phiên rà soát — gỡ 7/11 xung đột, **không đụng màn hình game**).
+Cập nhật: 13/09/2026 (phiên đồng bộ bộ đồ nghề — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A** — phiên 12/09 không đụng gì màn hình game. Anh chốt lùi Phase 8B
-một phiên để dọn xung đột trước. Việc đó **xong**.
+**Game vẫn ở Phase 8A.** Hai phiên liền (12/09 và 13/09) không đụng gì màn hình game:
+12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn repo.
+Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.md`.
 
-**Gỡ hết 11/11 xung đột.** Nặng nhất là ba cái:
+**Phase 8B làm được ngay phiên sau** — không còn gì chặn.
 
-- **`CLAUDE.md` hết ngõ cụt.** Nó bảo "sửa bằng `Edit`", mà file khoá thì `Edit` bị chặn,
-  và không chỗ nào nhắc vé duyệt. Giờ có dòng chỉ thẳng đường `.claude/da_duyet.txt`, và
-  có test giữ cho khỏi mất lại.
-- **Hook thôi chặn đường shell, chỉ ghi sổ** (anh chốt 12/09). Đo phiên thật: 13 lần chặn
-  thì **4 lần chặn nhầm**, mà cái được bằng không — shell có mười đường ghi file.
-- **Có test giữ tài liệu**, thứ trước nay không có: 27 file test, không cái nào đối chiếu
-  số trong `docs/` với thực tế. Nên số gõ tay trôi tự do.
+### Phiên 13/09 đã đổi gì
 
-**Bốn cái trong kho `ghi-nho` cũng gỡ xong** — nhưng suýt bị bỏ lại, và lý do đáng ghi:
-phiên kết luận "không có quyền" sau khi clone hỏng, trong khi lỗi thật là **xin sai loại
-quyền** (xin quyền *ghi* thay vì *đọc*). Câu sai đó nằm sẵn trong skill `ghi-nho` nên
-phiên nào cũng vấp; đã sửa. Bài học 11/09 "một lần bị chặn không phải kết luận" vẫn đúng
-nhưng chưa đủ: **thử lại cùng một cách hai lần không phải là thử lại.**
+- **`giam-token` hết là skill phải nhớ gọi** — thành **thước `check:token`** trong
+  `npm run do`. `CLAUDE.md` phình quá ngưỡng là lệnh đo đỏ, không commit được.
+- **Cả bốn repo cùng một bản hook** (`md5 cadf0d7e`). Trước đó chạy ba bản khác nhau, bản
+  gốc để chép đi thì lạc hậu 41 dòng.
+- **Gộp trùng lặp: mỗi luật đúng một chỗ.** Trước đó một luật nằm 4–6 nơi — sửa một nơi là
+  lệch với năm nơi kia.
+- **Luật chung chuyển sang kho**, `CLAUDE.md` chỉ giữ mồi + luật riêng repo.
 
-**Hai thứ mới lộ ra khi gỡ, đáng nhớ hơn cả việc gỡ:**
+### Ba thứ mới biết, dùng được cho mọi phiên sau
 
-1. **Xung đột thứ 11, chưa ai ghi.** `docs/DAU_PHIEN.md` dạy *"máy nướng chưa đọc được
-   `.glb`"* — sai từ 11/09. File này đọc **mỗi đầu phiên**, nên nó dạy sai ngay bước đầu
-   và làm phiên sau bỏ qua phần `.glb` của kho chung.
-2. **Con số gõ tay thứ ba.** Hàng rào vừa dựng bắt ngay `NGUON_MO.md` ghi "1.855 model" —
-   khác **cả** 1.222 lẫn 1.310. Đợt rà 12/09 soi bằng mắt không thấy; test bắt trong vài
-   phút.
-3. **Chỗ dạy sai về `.glb` có hai, không phải một.** Chính `TIEN_DO.md` này cũng kết một
-   đoạn bằng *"`.glb` thì vẫn chưa đọc được"* — ngay dưới đoạn nói "120/120 file `.glb`
-   đọc được". Tự mâu thuẫn trong cùng một đoạn.
-
-Tức là: **rà bằng mắt không đủ, phải có máy giữ.** Cả ba cái đều lọt qua một đợt rà có
-chủ đích hẳn hoi.
+1. **Có NĂM chỗ để thứ dùng chung, không phải ba.** Thiếu **cài đặt cá nhân**
+   (tự nạp ở *cả* claude.ai lẫn Claude Code, chủ dự án sửa trên iPhone) và **bộ nhớ
+   claude.ai** (Claude tự ghi, **không** tới Claude Code). Bảy luật sở thích đã nằm sẵn ở
+   cài đặt cá nhân mà kho vẫn chép lại → trả tiền hai lần.
+2. **Đo A/B skill làm được trong MỘT phiên.** `git checkout -b <nhánh tạm>`, bỏ khoá khỏi
+   `.claude/settings.json`, commit → harness **nạp lại danh sách skill ngay**.
+3. **`skillOverrides` khớp theo tên thư mục**, không theo `name:` trong frontmatter.
 
 ## 2. Số đo mới nhất
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 · 211 test | **6/6 · 223 test** |
-| Xung đột đã gỡ | 0/11 | **11/11** |
-| Test kiểm tài liệu | **0** | **12** (`tests/TaiLieu.test.ts`) |
-| Hook chặn nhầm mỗi phiên | 4 lần | **0** — đường `Bash` chỉ ghi sổ |
+| `npm run do` | 6/6 | **7/7** (thêm `check:token`) |
+| `CLAUDE.md` | 101 dòng · 2.237 token | **57 dòng · 1.191 token** |
+| Repo chạy bản hook chuẩn | 1/4 | **4/4** |
+| Repo có `skillOverrides` | 1/4 | **4/4** |
+| `skillOverrides` tiết kiệm | chưa đo | **12.546 ký tự/phiên** |
 
-Số model **không đo phiên này** (kho không tải). Số thật luôn nằm ở **dòng cuối**
-`docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — từ 12/09 có test cấm chép số đó ra tài liệu
-luật, vì chép về là trôi.
+Lệnh đo ba repo kia: `ghi-nho` **28/28** · `vsp-fleet-safety` **4/4** ·
+`tayvuc` `npm run check:token` mã 0.
+
+Số model **không đo phiên này** (kho không tải). Số thật luôn ở **dòng cuối**
+`docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — có test cấm chép số đó ra tài liệu luật.
 
 Số đo game giữ nguyên từ 11/09 (Phase 8A): `sim:congnghe` **ĐẠT** 120 giờ · lên Trung cổ
 giờ **21**, Súng ống giờ **65** · **21/24** công nghệ trong 120 giờ · **11** điểm nghiên
-cứu mỗi giờ ở 241 nhà. Trần sprite ngay dưới.
+cứu mỗi giờ ở 241 nhà.
 
-### Đo trần sprite trên iPhone thật (11/09, atlas thật 2×)
+### Trần sprite trên iPhone thật (11/09, atlas thật 2×)
 
-| Số sprite | fps |
-|---:|---|
-| **18.089** | **≥ 58** — giữ 60 fps |
-| 24.000 | 50 — và 24.000 là **hết sức chứa công cụ đo**, không phải hết sức máy |
+**18.089 sprite ở ≥58 fps** · 24.000 ở 50 fps — và 24.000 là **hết sức chứa công cụ đo**,
+không phải hết sức máy.
 
 **18.089 không phải trần máy, nó là một bậc của thang đo** (thang nhảy 1,35× từ 200).
-Phase 0 ra đúng con số này vì cùng thang đo — cả dự án đã hiểu nhầm là trần máy suốt năm
-phase. Trần thật nằm giữa 18.089 và 24.000.
-
-Điều đáng giá: Phase 0 đo bằng **atlas giả** 256×256 và `TECH_SPEC` ước tính atlas thật cỡ
-2× "còn ~4.500 sprite". **Ước tính đó sai, thấp hơn thực tế ít nhất bốn lần** — atlas thật
-không tụt một bậc nào. **Trần 5.000 của dự án dư ít nhất 3,6 lần.**
+Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là trần máy suốt năm phase.
+`TECH_SPEC` từng ước atlas thật 2× "còn ~4.500 sprite": **sai, thấp hơn thực tế ít nhất
+bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-**Phiên 12/09 không đụng gì màn hình game, nên không có gì phải kiểm trên iPhone.**
+**Hai phiên liền không đụng màn hình game — không có gì phải kiểm trên iPhone.**
 
-Còn đúng **một việc treo từ 11/09**, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm
-được, nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì
-liếc một cái.
+Còn một việc treo từ 11/09, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm được,
+nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì liếc một cái.
 
-### Hai việc cần anh quyết
+### Ba câu cần anh quyết, không gấp
 
-**1. Không còn việc nào bắt buộc.** Xung đột thứ 11 (skill trên tài khoản còn bản cũ)
-**gỡ bằng đường khác**: luật vào kho ghi nhớ chuyển thẳng vào `CLAUDE.md`, harness nạp bắt
-buộc mỗi phiên nên **anh không phải bấm gì**. Có `tests/TaiLieu.test.ts` giữ.
+**1. Đi du lịch có thuê xe máy ở điểm đến không?** Hai kho đang ghi ngược nhau: cài đặt cá
+nhân và `so-thich.md` ghi *"không tự lái"*, còn bộ nhớ claude.ai ghi *"motorbike rental
+preferred"* — và bộ nhớ đó còn tự mâu thuẫn với chính nó. Anh trả lời thì sửa cho khớp.
 
-Đo trước khi chọn, bốn thước: skill chạy đúng **1/4** phiên gần nhất (11/09 không đọc kho ·
-11/09 cắt mất 79/199 dòng · 12/09 xin sai quyền rồi bỏ dở bốn việc), `CLAUDE.md` **4/4** —
-vì harness nạp bắt buộc, còn skill thì trợ lý phải tự nhớ gọi. Và skill đang chặn ở bước
-đầu: **app iPhone không có mục Skills**, chỉ bản web mới có.
-`ghi-nho/quyet-dinh/2026-09-12-luat-di-vao-claude-md-khong-phai-skill.md`.
+**2. Có dán đoạn mồi vào cài đặt cá nhân không?** Để repo **mới** cũng tự có hook:
 
-*Tuỳ anh, không gấp:* lúc nào rảnh mở **claude.ai bằng Safari** thì tải `.zip` đã gửi lên —
-giờ nó chỉ còn là lưới đỡ cho repo chưa sửa `CLAUDE.md`.
+```
+Claude Code, đầu mỗi phiên ở bất kỳ repo nào, làm trước khi làm việc khác:
+git -C /home/user/ghi-nho pull -q 2>/dev/null || git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho
+cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md
+node /home/user/ghi-nho/cong-cu/cai_dat.mjs
+```
 
-**Nếu anh đã chuyển kho `ghi-nho` sang Public: chuyển về lại Private.** Việc đó không chữa
-được gì (nguyên nhân là xin sai loại quyền, không phải quyền riêng tư), mà kho này chứa
-cách làm việc, quyền hạn và giới hạn máy ảo — không nên để công khai.
+Giá: ~350 ký tự nạp mỗi phiên, **kể cả hội thoại claude.ai** nơi không có repo nào — ô cài
+đặt cá nhân là một ô duy nhất, không tách theo sản phẩm được. Không dán thì bốn repo hiện
+tại vẫn đủ, chỉ repo mới phải gõ tay một lệnh.
 
-**2. Kho chung cho game — anh nêu 12/09, chưa làm.** Anh muốn một repo riêng cho mọi thứ
-liên quan làm game (tài nguyên, đồ hoạ, gameplay, cách xây dựng) để các dự án dùng chung,
-khỏi tải đi tải lại. Anh đã chốt để **phiên sau**. Hai số anh hỏi, trả lời rồi:
+**3. Nhánh tạm `claude/do-ab-skill` trên GitHub** — em tạo để đo A/B, xoá không được từ máy
+ảo. Vô hại. Muốn dọn thì vào
+https://github.com/gc1001vn-svg/quoc-chien/branches bấm thùng rác.
 
-- **Phình tối đa:** file đơn >50 MB GitHub cảnh báo, **>100 MB chặn cứng**; cả kho khuyến
-  nghị <1 GB, khuyên mạnh **<5 GB** (quá 5 GB GitHub liên hệ bắt giảm, không chặn cứng).
-  Kho hiện **326 MB** → còn dư khoảng **15 lần** nữa.
-- **Tải lại tốn bao nhiêu token: gần như không.** File tải về **không đi qua trợ lý** —
-  lệnh chạy trên máy ảo, trợ lý chỉ đọc mấy dòng kết quả, tốn **~200–500 token** dù 1 MB
-  hay 1 GB. Cái tải lại thật sự tốn là **5–10 phút chờ**, itch.io **chặn tốc độ (429)**
-  làm tải hay hỏng, và **nguồn có thể biến mất** (itch gỡ gói là mất vĩnh viễn).
-
-Tức lý do đáng làm kho chung **không phải tiết kiệm token** như anh nghĩ, mà là ba cái sau
-cùng, cộng với việc gom kiến thức làm game một chỗ — phần kiến thức thì nhẹ, vài MB.
-
-### Một việc quy trình — giữ lại vì bài học còn dùng
-
-**Bài học 11/09: một lần bị chặn không phải kết luận.** Phiên đó bỏ đọc kho `ghi-nho` sau
-khi bị chặn một lần, hoá ra thử lần hai là được. Phiên 12/09 đã theo đúng bài học này —
-thử clone hai lần, thêm một đường xin quyền khác — nhưng lần này **chặn thật**, nên ghi
-lại là chặn thật chứ không phải bỏ cuộc sớm.
+**Nếu anh đã chuyển kho `ghi-nho` sang Public: chuyển về Private.** Kho chứa cách làm việc,
+quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
 - **Phase 8B chưa làm: chưa có mẻ sprite hiện đại.** Khớp nối dựng sẵn, việc khó là dữ
-  liệu: gói `city-builder-bits` chỉ có **8 dáng nhà** cho **32 loại nhà** của game.
-- **Thưởng công nghệ chưa đổi được thành phố.** Đo ra: trần nhà 398 mà thành phố chỉ tới
-  241 — trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
-- **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra được đúng bằng cái
-  đã lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 phải chờ Phase 9.
+  liệu: `city-builder-bits` chỉ có **8 dáng nhà** cho **32 loại nhà** của game.
+- **Thưởng công nghệ chưa đổi được thành phố.** Trần nhà 398 mà thành phố chỉ tới 241 —
+  trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
+- **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra đúng bằng cái đã
+  lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
 - **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
 - **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
-- **Skill `ghi-nho` trên tài khoản còn bản cũ** — không còn chặn việc gì (luật đã chuyển
-  vào `CLAUDE.md`), nhưng **repo khác chưa sửa `CLAUDE.md` thì vẫn ăn bản skill sai**.
-  Chép đoạn đó sang `tayvuc` · `vsp-fleet-safety` · `chung-cho-claude-code` khi đụng tới.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
-  `.gltf` và `.glb`). File **sinh tự động** nên sửa tay là sai luật — nó tự đúng ở lần
+  `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
   `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.
+- **`tayvuc`: `CLAUDE.md` 2.322 token**, vượt ngưỡng chung 1.600. Không cắt vì repo dừng
+  hẳn; đặt ngưỡng tạm 2.400 kèm lý do trong `.claude/nguong_token.txt`, cắt khi mở lại.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase 8B — nướng mẻ hiện đại (rà soát xong rồi, làm được)
+## 5. Phase 8B — nướng mẻ hiện đại (làm được ngay)
 
 Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0), rồi nối vào
 `ThoiDai.me` để lên đời là thành phố đổi mặt.
 
 **Việc phải quyết trước khi nướng:** gói chỉ có **8 dáng nhà** (`building_A`…`building_H`)
-cộng đường, xe, cột đèn — mà game có **32 loại nhà**. Hai đường: ghép 32 về 8 dáng phân
+cộng đường, xe, cột đèn — mà game có **32 loại nhà**. Hai đường: ghép 32 về 8 dáng, phân
 biệt bằng màu và vật trang trí (mọi nhà đổi mặt, nhưng nhà khác chức năng trông giống
 nhau), hay chỉ đổi mặt nhóm `do_thi` (không nhà nào sai chức năng, nhưng thành phố lẫn lộn
 hai thời). **Nướng xong gửi ảnh cho anh chọn.**
@@ -168,49 +141,8 @@ node tools/tai_itch.mjs kaylousberg/city-builder-bits
 đang có trên đĩa, mà lúc đó kho chỉ có một gói. `KHO_ASSET.md` đã có sẵn mục
 `city-builder-bits` từ 10/09.
 
-### Kho model dùng chung — có thật, nằm trong git của `tayvuc`
+`city-builder-bits` **không có** trong kho chung của `tayvuc` → vẫn phải tải từ itch.
+Luật dò và cách lấy từ kho chung: `docs/DAU_PHIEN.md` mục F.
 
-Chủ dự án nhắc 11/09 và **anh đúng**: luật **hai kho** đã chốt cho mọi dự án, ghi ở
-`tayvuc/CLAUDE.md` mục Asset — `assets_source/` giữ gói tải về nguyên vẹn (không lên máy
-chủ), `public/assets/` chỉ giữ thứ game thật sự dùng (có lên máy chủ).
-
-Kho chung nằm **trong git của `tayvuc`**: **2.677 file, 326 MB** — `kaykit` `quaternius`
-`kenney` `polyhaven` `effekseer` `game-icons`. Và `tayvuc/docs/TIEN_DO.md` ghi thẳng:
-*"Quốc Chiến tái dùng ba thứ của Tây Vực: 269 MB model 3D trong `assets_source/`"*.
-
-**ĐÃ NỐI 11/09** (chủ dự án chốt). Cách nối:
-
-| Lệnh | Việc |
-|---|---|
-| `npm run kho:chung` | sinh `docs/KHO_CHUNG.md` — bản kê model máy nướng đọc được (số ở **dòng cuối** file đó) |
-| `npm run kho:lay <gói>` | chép một gói từ kho chung sang `assets_source/` |
-
-`docs/KHO_CHUNG.md` **lên git** (36 KB) nên **mọi phiên dò được bằng `grep` mà không phải
-clone 326 MB**. Chỉ khi trúng mới clone `tayvuc` rồi lấy gói thật. Luật dò giờ có **bước
-1b** — xem `docs/DAU_PHIEN.md` mục F.
-
-**Nối được tới đâu, nói thẳng:** kho chung giữ gói **đã lọc**, phần lớn chỉ còn `glTF/`,
-**không có `OBJ/`**. Các mẻ hiện tại của dự án trỏ vào thư mục OBJ nên **không thay thế
-được** — nối này **không giảm việc tải cho mẻ cũ**. Giá trị thật là **mở rộng nguồn dò**:
-cả một kho model mà trước nay dự án không biết có, dùng được ngay cho Phase 10 (lính) và
-Phase 12 (thời đại khác). Số cụ thể ở dòng cuối `KHO_CHUNG.md`.
-
-Kho chung nhảy lên hơn gấp đôi vì **cùng phiên đã trả luôn nợ bộ đọc `.glb`**. Tài liệu
-ước nợ đó "~200 dòng" — ước sai, hết **30 dòng**, vì phần khó đã nằm sẵn trong
-`tools/lib/gltf.mjs` và GLB chỉ là glTF gói nhị phân. Đo thật: **120/120 file `.glb` ngẫu
-nhiên đọc được, 0 hỏng**. Kit khai `"loai": "glb"` là nướng được.
-
-**Máy nướng đọc được cả ba: `.obj` · `.gltf` · `.glb`.** `.fbx` thì chưa.
-`tools/nuong_sprite.mjs` có `docObj`, `docGltf` và nhánh `laGlb`; mẻ `trung_co_2` **đang
-dùng glTF thật** cho hai kit. `scripts/kho_asset.mjs` đã sửa cách đếm "dùng được" theo cả
-ba đuôi. **Con số ở dòng cuối `KHO_ASSET.md` vẫn là số CŨ** (đếm theo luật chỉ-`.obj`) —
-nó tự đúng sau lần `npm run kho` đầu tiên có đủ kho, tức phiên này.
-
-> Đoạn này từng kết bằng câu *"`.glb` thì vẫn chưa đọc được"* — ngược hẳn với chính đoạn
-> ngay trên nó ("120/120 file `.glb` đọc được"). Sửa 12/09. Cùng loại với xung đột thứ 11
-> ở `DAU_PHIEN.md`, và lọt qua đợt rà vì rà bằng mắt.
-
-`city-builder-bits` **không có** trong kho chung → Phase 8B vẫn phải tải gói đó từ itch.
-
-**Mở phiên mới rồi hãy bắt đầu** — CLAUDE.md: mỗi phiên một phase.
-Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G, không bỏ bước nào.
+**Mở phiên mới rồi hãy bắt đầu** — mỗi phiên một phase.
+Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G ở kho, không bỏ bước nào.
