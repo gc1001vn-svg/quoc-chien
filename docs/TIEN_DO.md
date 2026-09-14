@@ -3,15 +3,25 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 13/09/2026 (phiên đồng bộ bộ đồ nghề — **không đụng màn hình game**).
+Cập nhật: 14/09/2026 (phiên thêm hook nhắc kho — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Hai phiên liền (12/09 và 13/09) không đụng gì màn hình game:
-12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn repo.
-Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md` và `docs/NHAT_KY/PHASE_8_DO_NGHE.md`.
+**Game vẫn ở Phase 8A.** Ba phiên liền (12/09, 13/09, 14/09) không đụng gì màn hình
+game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn
+repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho. Chi tiết:
+`docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn.
+
+### Phiên 14/09 đã đổi gì
+
+- **Hook thứ năm: `UserPromptSubmit` → `scripts/nhac_kho.mjs`.** Tra bốn file kho
+  theo từ khoá câu vừa gõ, chèn 1–2 khối, không lặp trong cùng phiên. Ý tưởng từ
+  `supermemoryai/claude-supermemory` (MIT); **không cài plugin của họ** — plugin
+  không đồng bộ xuống phiên web, và auto-capture đẩy hội thoại lên server họ.
+- **`dau_phien.mjs` in giá token của chính nó** (2 dòng ≈ 26 tok).
+- **Bốn hook cũ fail-open khi chính hook hỏng**, không còn đổ vệt stack vào ngữ cảnh.
 
 ### Phiên 13/09 đã đổi gì
 
