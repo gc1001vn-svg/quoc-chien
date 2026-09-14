@@ -27,6 +27,12 @@ const BAO_XONG = 'xong|hoàn thành|hoan thanh|hoàn tất|hoan tat';
 const CO_SO_DO = /^[\s>*_`~#-]*(số đo|so do)\s*:/im;
 
 let raw = '';
+// Fail-open ca khi CHINH hook hong, khong chi khi du lieu hong. Doan duoi co
+// may regex phuc tap; loi khong bat se in ca vet stack vao ngu canh.
+process.on('uncaughtException', () => process.exit(0));
+process.on('unhandledRejection', () => process.exit(0));
+process.stdin.on('error', () => process.exit(0));
+
 process.stdin.on('data', (c) => { raw += c; });
 process.stdin.on('end', () => {
   let d;

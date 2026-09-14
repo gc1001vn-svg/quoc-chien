@@ -14,6 +14,11 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 
+// Hook nay chi BAO CAO. No hong thi phien van phai chay binh thuong — khong co
+// luoi nay thi mot loi khong ai ngo do ra ca vet stack vao ngu canh moi phien.
+process.on('uncaughtException', () => process.exit(0));
+process.on('unhandledRejection', () => process.exit(0));
+
 const chay = (c) => { try { return execSync(c, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }).trim(); } catch { return ''; } };
 const d = [];
 
@@ -93,4 +98,10 @@ if (existsSync('package.json')) {
 if (!lenhDo && existsSync('scripts/do.sh')) lenhDo = 'bash scripts/do.sh';
 d.push(lenhDo ? `lenh do: ${lenhDo}` : 'repo CHUA co lenh do — dung mot cai truoc khi lam viec moi');
 
-console.log(`[dau phien] ${d.join('\n[dau phien] ')}`);
+// --- gia cua chinh khoi nay --------------------------------------------------
+// Luat kho: so lieu phai SINH TU LENH, dung go tay vao tai lieu. Khoi nay vao
+// ngu canh moi phien ma truoc gio khong ai biet no ton bao nhieu — tran "duoi
+// ~10 dong" la uoc bang mat. In ra thi lan sau cat hay giu deu co so ma cai.
+// ~4 ky tu/token, du de thay xu huong.
+const ra = `[dau phien] ${d.join('\n[dau phien] ')}`;
+console.log(`${ra}\n[dau phien] khoi nay: ${d.length} dong · ~${Math.round(ra.length / 4)} tok`);

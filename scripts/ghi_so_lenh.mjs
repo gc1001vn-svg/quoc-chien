@@ -19,7 +19,13 @@ import { join, dirname } from 'node:path';
 
 const GIU_DONG = 300;
 
+// Than ham da boc try/catch, nhung loi NGOAI than — stdin dut, JSON qua lon —
+// van lam Node in vet stack vao ngu canh. Boc not.
+process.on('uncaughtException', () => process.exit(0));
+process.on('unhandledRejection', () => process.exit(0));
+
 let raw = '';
+process.stdin.on('error', () => process.exit(0));
 process.stdin.on('data', (c) => { raw += c; });
 process.stdin.on('end', () => {
   try {

@@ -168,7 +168,18 @@ function chan(norm, khoa, nguon) {
   process.exit(2);
 }
 
+// FAIL-OPEN khi chinh hook hong. Chan la exit 2; moi ma thoat khac deu cho lenh
+// di tiep. Nhung loi khong bat thi Node in ca vet stack ra stderr va vet do vao
+// ngu canh — nen bat lay roi thoat 0 im lang.
+//
+// Chon fail-open chu khong fail-closed: do mot phien 12/09, 13 lan chan thi 4
+// lan chan NHAM. Hook hong ma chan het thi khong ai lam viec duoc; hook hong ma
+// cho qua thi chi mat mot lop nhac — so lenh van ghi, van con dau vet.
+process.on('uncaughtException', () => process.exit(0));
+process.on('unhandledRejection', () => process.exit(0));
+
 let raw = '';
+process.stdin.on('error', () => process.exit(0));
 process.stdin.on('data', (c) => { raw += c; });
 process.stdin.on('end', () => {
   let tho;
