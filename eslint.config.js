@@ -61,7 +61,7 @@ export default tseslint.config(
         'error',
         {
           selector: 'MemberExpression[object.name="Math"][property.name="random"]',
-          message: 'src/sim/ phai tat dinh: dung bo sinh so co hat giong, truyen vao qua tham so.',
+          message: 'src/sim/ phai tat dinh: dung `Rng` (src/core/Rng) co hat giong, truyen vao qua tham so.',
         },
         {
           selector: ':matches(MemberExpression[object.name="Date"], NewExpression[callee.name="Date"], MemberExpression[object.name="performance"])',

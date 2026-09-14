@@ -24,6 +24,19 @@ const CAM: readonly { readonly mau: RegExp; readonly ten: string }[] = [
   { mau: /\bWebGL|getContext\s*\(/, ten: 'WebGL / getContext' },
   { mau: /from\s+['"][^'"]*\/(render|ui|bench)\//, ten: 'import tu render/ui/bench' },
   { mau: /from\s+['"]three['"]/, ten: 'import three' },
+  // TECH_SPEC muc 8: "cung hat giong -> cung ket qua". Ba nguon lam lech ma hang rao
+  // tren KHONG bat duoc, vi khong cai nao la thu cua trinh duyet:
+  //   dong ho   - ket qua doi theo luc chay
+  //   ngau nhien - `Math.random` khong co hat giong, khong phat lai duoc (dung `Rng`)
+  //   locale     - sap xep theo may, byte xuat ra khac nhau giua cac may
+  // ESLint da chan (khoi `src/sim/**`); day van la hang rao thu hai nhu ca bo tren.
+  { mau: /\bMath\.random\b/, ten: 'Math.random' },
+  { mau: /\bDate\.now\b|\bnew\s+Date\b/, ten: 'dong ho (Date)' },
+  { mau: /\bperformance\.\w/, ten: 'performance' },
+  { mau: /\blocaleCompare\b|\btoLocale\w*/, ten: 'locale' },
+  { mau: /\bIntl\./, ten: 'Intl' },
+  { mau: /\.sort\(\s*\)/, ten: '.sort() tran' },
+  { mau: /\bprocess\.\w/, ten: 'process' },
 ];
 
 function liet(duong: string): string[] {
@@ -57,5 +70,24 @@ describe('src/sim/ la TypeScript thuan', () => {
     const dinh: string[] = CAM.filter((c) => c.mau.test(mau)).map((c) => c.ten);
     expect(dinh).toContain('window');
     expect(dinh).toContain('import tu render/ui/bench');
+  });
+
+  it('bat duoc ca ba nguon lam lech tat dinh', () => {
+    // Moi dong mot vi pham, doi chieu voi dung ten no phai dinh - de trong mot mau
+    // gop thi mot bieu thuc hong van xanh nho bieu thuc khac dinh.
+    const thu: readonly (readonly [string, string])[] = [
+      ['const x = Math.random();', 'Math.random'],
+      ['const t = Date.now();', 'dong ho (Date)'],
+      ['const t = new Date();', 'dong ho (Date)'],
+      ['const t = performance.now();', 'performance'],
+      ["a.localeCompare(b);", 'locale'],
+      ['n.toLocaleString();', 'locale'],
+      ["new Intl.NumberFormat('vi');", 'Intl'],
+      ['ds.sort();', '.sort() tran'],
+      ['const v = process.env.X;', 'process'],
+    ];
+    for (const [ma, ten] of thu) {
+      expect(CAM.filter((c) => c.mau.test(ma)).map((c) => c.ten)).toContain(ten);
+    }
   });
 });
