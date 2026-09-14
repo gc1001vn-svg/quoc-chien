@@ -200,22 +200,49 @@ function thoat(o) {
 
 const IM = { continue: true, suppressOutput: true };
 
+/**
+ * Ghi so MOI luot, ke ca luot hook chon im.
+ *
+ * VI SAO: do 14/09, ba phien lien khong ket luan duoc "hook khong chay" hay "hook
+ * chay ma khong chen" — vi hook chi de lai dau vet khi no CHEN. `systemMessage`
+ * thi app iPhone khong hien. Ghi ca luot im thi so nay tra loi dut khoat:
+ * co dong = hook chay, khong co dong nao = hook khong chay.
+ */
+function ghi_so(ly_do) {
+  try {
+    const root = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
+    const thu_muc = join(root, '.claude');
+    mkdirSync(thu_muc, { recursive: true });
+    const so = join(thu_muc, 'nhac_kho.log');
+    const cu = existsSync(so) ? readFileSync(so, 'utf8').split('\n').filter(Boolean) : [];
+    const moi = `${new Date().toISOString()}\t${ly_do}`;
+    writeFileSync(so, `${[...cu, moi].slice(-200).join('\n')}\n`);
+  } catch { /* ghi so hong thi van phai chay tiep */ }
+}
+
+/** Im lang, nhung vao so. */
+function im(ly_do) {
+  ghi_so(`im — ${ly_do}`);
+  return thoat(IM);
+}
+
 function chinh(raw) {
   let vao;
-  try { vao = JSON.parse(raw); } catch { return thoat(IM); }
+  try { vao = JSON.parse(raw); } catch { return im('stdin khong phai JSON'); }
 
   const prompt = String(vao?.prompt ?? '').trim();
-  if (prompt.length < DAI_TOI_THIEU) return thoat(IM);
-  if (['/', '!', '#'].includes(prompt[0])) return thoat(IM);
+  if (!vao?.session_id) ghi_so('CANH BAO: hook khong nhan duoc session_id');
+  if (prompt.length < DAI_TOI_THIEU) return im(`cau ngan (${prompt.length} ky tu)`);
+  if (['/', '!', '#'].includes(prompt[0])) return im('cau bat dau bang / ! #');
 
   const tu = tu_khoa(prompt);
-  if (tu.length === 0) return thoat(IM);
+  if (tu.length === 0) return im('khong con tu khoa nao sau khi loc');
 
   // Chi lay tu VUNG DAU bang xep. Khoi thu 6 tro xuong la "co dinh tu khoa" chu
   // khong phai "noi ve thu dang hoi" — chen no vao la nhieu, khong phai nhac.
   // Nen khi ca vung dau da chen roi thi IM, khong voi xuong lay hang kem hon.
   const kho = doc_kho();
-  if (kho.length === 0) return thoat(IM);
+  if (kho.length === 0) return im(`kho chua clone ve ${KHO}`);
   const hiem = do_hiem(kho, tu);
 
   const xep = kho
@@ -227,7 +254,7 @@ function chinh(raw) {
     .filter((x) => x.diem >= DIEM_TOI_THIEU && x.trung.length >= Math.ceil(tu.length * BAO_PHU))
     .sort((a, b) => b.diem - a.diem)
     .slice(0, VUNG_DAU);
-  if (xep.length === 0) return thoat(IM);
+  if (xep.length === 0) return im(`khong khoi nao du diem (${tu.length} tu khoa)`);
 
   const p_so = duong_so(vao?.session_id);
   const da = new Set(p_so ? doc_so(p_so) : []);
@@ -242,7 +269,7 @@ function chinh(raw) {
     chon.push({ ...x, noi });
     bam_moi.push(h);
   }
-  if (chon.length === 0) return thoat(IM);
+  if (chon.length === 0) return im('vung dau da chen het trong phien nay');
 
   if (p_so) {
     try { writeFileSync(p_so, JSON.stringify([...da, ...bam_moi].slice(-NHO_TOI_DA))); }
@@ -263,17 +290,7 @@ function chinh(raw) {
   // ~4 ky tu/token. In gia ngay tai cho — luat kho: so lieu phai sinh tu lenh.
   const tok = Math.round(ngu_canh.length / 4);
 
-  // Ghi so. VI SAO: `systemMessage` co the KHONG hien tren app iPhone — do 14/09,
-  // mot phien tra dung y kho ma khong thay dong `[nhac kho]` nao, khong phan biet
-  // duoc "hook im" voi "app khong hien". Dau vet tren dia thi phan biet duoc:
-  //   cat .claude/nhac_kho.log
-  try {
-    const root = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
-    const so = join(root, '.claude', 'nhac_kho.log');
-    const cu = existsSync(so) ? readFileSync(so, 'utf8').split('\n').filter(Boolean) : [];
-    const moi = `${new Date().toISOString()}\t${chon.length} khoi\t~${tok} tok\t${chon.map((x) => x.k.tieu_de).join(' | ')}`;
-    writeFileSync(so, `${[...cu, moi].slice(-200).join('\n')}\n`);
-  } catch { /* ghi so hong thi van phai chen duoc */ }
+  ghi_so(`CHEN ${chon.length} khoi\t~${tok} tok\t${chon.map((x) => x.k.tieu_de).join(' | ')}`);
 
   thoat({
     systemMessage: `[nhac kho] ${chon.length} khoi (~${tok} tok)`,
