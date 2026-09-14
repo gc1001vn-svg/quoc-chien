@@ -179,11 +179,17 @@ quyền hạn và giới hạn máy ảo.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
   `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.
-- **4 nhánh `claude/*` còn trên remote** (chủ dự án đã xoá 11 hôm 14/09): ba cái sót
-  (`list-tasks-todo-yr3dk5`, `quoc-chien-docs-phase-0-tuxtom`, `tiep-0hnwp2`) đã gộp hết
-  vào `main`, xoá được; `caveman-mode-tetfj7` giữ lại vì còn 463 dòng công thức mẻ bản cũ
-  không có trong `main` — đọc thì là bản đã bị thay, không phải việc chưa gộp.
-  Máy ảo xoá không được (`HTTP 403`, đo lại 14/09) — chỉ chủ dự án bấm ở trang `branches`.
+- **Nhánh `claude/*` chết trên remote.** Máy ảo xoá không được (`HTTP 403`, đo lại 14/09)
+  — chỉ chủ dự án bấm ở trang `branches`. **Đừng chép số nhánh vào đây**, nó đổi mỗi lần
+  anh bấm; đếm bằng lệnh, và `git branch -r --merged origin/main` nói cái nào xoá được:
+
+  ```bash
+  git ls-remote --heads origin | sed 's#.*refs/heads/##'
+  ```
+
+  Một ngoại lệ đáng ghi, vì đọc `--merged` sẽ ra kết luận sai: `caveman-mode-tetfj7` git
+  báo **chưa gộp** nhưng đừng tưởng là việc còn treo — `main` đã có cả Phase 2B và đi xa
+  hơn; nhánh chỉ còn bản công thức mẻ CŨ đã bị thay. Giữ hay xoá đều được.
 - **`tayvuc`: `CLAUDE.md` 2.322 token**, vượt ngưỡng chung 1.600. Không cắt vì repo dừng
   hẳn; đặt ngưỡng tạm 2.400 kèm lý do trong `.claude/nguong_token.txt`, cắt khi mở lại.
 
