@@ -262,6 +262,19 @@ function chinh(raw) {
 
   // ~4 ky tu/token. In gia ngay tai cho — luat kho: so lieu phai sinh tu lenh.
   const tok = Math.round(ngu_canh.length / 4);
+
+  // Ghi so. VI SAO: `systemMessage` co the KHONG hien tren app iPhone — do 14/09,
+  // mot phien tra dung y kho ma khong thay dong `[nhac kho]` nao, khong phan biet
+  // duoc "hook im" voi "app khong hien". Dau vet tren dia thi phan biet duoc:
+  //   cat .claude/nhac_kho.log
+  try {
+    const root = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
+    const so = join(root, '.claude', 'nhac_kho.log');
+    const cu = existsSync(so) ? readFileSync(so, 'utf8').split('\n').filter(Boolean) : [];
+    const moi = `${new Date().toISOString()}\t${chon.length} khoi\t~${tok} tok\t${chon.map((x) => x.k.tieu_de).join(' | ')}`;
+    writeFileSync(so, `${[...cu, moi].slice(-200).join('\n')}\n`);
+  } catch { /* ghi so hong thi van phai chen duoc */ }
+
   thoat({
     systemMessage: `[nhac kho] ${chon.length} khoi (~${tok} tok)`,
     hookSpecificOutput: { hookEventName: 'UserPromptSubmit', additionalContext: ngu_canh },

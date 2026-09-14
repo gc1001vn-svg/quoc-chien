@@ -23,3 +23,6 @@ src/PhienBan.ts
 # Nhung SO GHI (.claude/nhat_ky_file_khoa.log) thi CO len git - do la dau vet de
 # chu du an soi lai xem file khoa nao da bi sua, luc nao, bang cong cu gi.
 .claude/da_duyet.txt
+
+# Ve duyet dung mot lan va so lenh — KHONG len git
+.claude/nhac_kho.log
