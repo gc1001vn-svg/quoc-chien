@@ -17,6 +17,17 @@ import { join } from 'node:path';
 /** @returns {Promise<void>} */
 const nghi = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/** Ba loai su kien `scripts/khoi_dong.mjs` doc. Them loai moi thi them vao day. */
+const GIU_SU_KIEN = new Set([
+  'Runtime.exceptionThrown',
+  'Runtime.consoleAPICalled',
+  'Network.loadingFailed',
+  // `loadingFailed` KHONG bao HTTP 404: voi Chromium mot 404 la mot cau tra loi hop le,
+  // no chi bao khi hong o tang mang. Atlas thieu hay duong dan goc sai deu ra 404, nen
+  // phai doc them `responseReceived` va tu xem ma tra ve. Do 14/09.
+  'Network.responseReceived',
+]);
+
 export class TrinhDuyet {
   /**
    * @param {string} chromium Đường dẫn file chạy Chromium.
@@ -28,6 +39,9 @@ export class TrinhDuyet {
     this.hoSo = mkdtempSync(join(tmpdir(), 'chup-'));
     this.tien = 0;
     this.cho = new Map();
+    // Su kien trang tu bao ve (khong co `id`). Chi giu ba loai dang dung, giu het
+    // thi mot trang noi nhieu la day bo nho ma khong ai doc.
+    this.suKien = [];
     this.ws = null;
     this.phien = null;
     this.tienTrinh = null;
@@ -94,6 +108,10 @@ export class TrinhDuyet {
   /** @param {string} tin @returns {void} */
   nhanTin(tin) {
     const doc = JSON.parse(tin);
+    if (doc.id === undefined) {
+      if (GIU_SU_KIEN.has(doc.method)) this.suKien.push({ ten: doc.method, tham: doc.params });
+      return;
+    }
     const chua = this.cho.get(doc.id);
     if (chua === undefined) return;
     this.cho.delete(doc.id);
@@ -133,6 +151,16 @@ export class TrinhDuyet {
       width: rong, height: cao, deviceScaleFactor: tiLe, mobile: true,
     });
     await this.goi('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 });
+  }
+
+  /**
+   * Bat mien Network de nhan `Network.loadingFailed`. KHONG bat san trong `mo()`:
+   * chup anh khong can, ma bat la them mot luong su kien cho moi file tai ve.
+   *
+   * @returns {Promise<void>}
+   */
+  async batMang() {
+    await this.goi('Network.enable');
   }
 
   /** @param {string} diaChi @returns {Promise<void>} */
