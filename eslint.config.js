@@ -48,6 +48,33 @@ export default tseslint.config(
         { name: 'localStorage', message: 'src/sim/ la TypeScript thuan, cam dung trinh duyet.' },
         { name: 'requestAnimationFrame', message: 'src/sim/ chay theo nhip 10 Hz, khong theo vong ve.' },
         { name: 'fetch', message: 'src/sim/ khong duoc goi mang.' },
+        { name: 'process', message: 'src/sim/ khong duoc doc moi truong — ket qua se khac nhau theo may.' },
+      ],
+      // Sim phai TAT DINH: cung mot ban do, cung mot chuoi lenh, moi may ra
+      // cung mot ket qua. Ba nguon lam lech, khong cai nao la "trinh duyet"
+      // nen hang rao tren khong bat duoc:
+      //   dong ho  — doc gio la ket qua doi theo luc chay
+      //   ngau nhien — `Math.random` khong co hat giong, khong phat lai duoc
+      //   locale   — `localeCompare` sap xep theo may, byte xuat ra doi theo may
+      // Can gio hay so ngau nhien thi NHAN QUA THAM SO, giong `Clock` hien co.
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'MemberExpression[object.name="Math"][property.name="random"]',
+          message: 'src/sim/ phai tat dinh: dung bo sinh so co hat giong, truyen vao qua tham so.',
+        },
+        {
+          selector: ':matches(MemberExpression[object.name="Date"], NewExpression[callee.name="Date"], MemberExpression[object.name="performance"])',
+          message: 'src/sim/ khong duoc doc dong ho. Nhan thoi gian qua tham so (xem Clock).',
+        },
+        {
+          selector: ':matches(MemberExpression[property.name="localeCompare"], MemberExpression[property.name=/^toLocale/], MemberExpression[object.name="Intl"])',
+          message: 'src/sim/ cam locale: so sanh va dinh dang theo locale lam ket qua khac nhau giua cac may.',
+        },
+        {
+          selector: 'CallExpression[callee.property.name="sort"][arguments.length=0]',
+          message: 'src/sim/ phai sap xep co ham so sanh ro rang — `.sort()` tran sap theo chuoi UTF-16.',
+        },
       ],
       'no-restricted-imports': [
         'error',
