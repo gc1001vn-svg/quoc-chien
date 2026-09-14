@@ -7,14 +7,27 @@ Cập nhật: 14/09/2026 (phiên thêm hook nhắc kho — **không đụng màn
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Ba phiên liền (12/09, 13/09, 14/09) không đụng gì màn hình
+**Game vẫn ở Phase 8A.** Bốn phiên liền (12/09, 13/09, 14/09 ×2) không đụng gì màn hình
 game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn
-repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho. Chi tiết:
-`docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`.
+repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, rồi 14/09 (lần 2) dựng hàng rào tất
+định và thước `khoi:dong`. Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
+`PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn.
 
-### Phiên 14/09 đã đổi gì
+### Phiên 14/09 (lần 2) đã đổi gì
+
+- **Luật tất định thành thước.** `eslint.config.js` khối `src/sim/**` chặn `Math.random`
+  `Date` `performance` `Intl` `localeCompare` `toLocale*` `.sort()` trần `process`; cùng
+  bộ mẫu đó vào `tests/SimKhongDungTrinhDuyet.test.ts` theo lệ hai hàng rào của repo.
+- **Thước `khoi:dong`** — mở bản đã build bằng Chromium thật trước khi đẩy, hỏng khi có
+  ngoại lệ chưa bắt, `console.error`, request từ HTTP 400 trở lên, hoặc canvas không hiện.
+  Bịt chỗ hở: bước curl trong `deploy.yml` chạy sau khi đẩy và trang trắng cũng trả 200.
+- **`Network.loadingFailed` không báo HTTP 404** — phải đọc `Network.responseReceived`.
+- Sáu luật nguồn ở kho: `ghi-nho/cong-cu/luat-chi-tiet.md` mục "Lõi thuần · cổng chết ·
+  test tự lừa"; vì sao: `quyet-dinh/2026-09-14-loi-thuan-cong-chet-test-tu-lua.md`.
+
+### Phiên 14/09 (lần 1) đã đổi gì
 
 - **Hook thứ năm: `UserPromptSubmit` → `scripts/nhac_kho.mjs`.** Tra bốn file kho
   theo từ khoá câu vừa gõ, chèn 1–2 khối, không lặp trong cùng phiên. Ý tưởng từ
@@ -77,7 +90,7 @@ repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho. Chi tiết:
 
 | Thước | Trước | Sau |
 |---|---:|---:|
-| `npm run do` | 6/6 | **8/8** (thêm `check:token`, `check:kehoach`) |
+| `npm run do` | 6/6 | **9/9** (thêm `check:token`, `check:kehoach`, `khoi:dong`) |
 | `CLAUDE.md` | 101 dòng · 2.237 token | **53 dòng · 1.064 token** |
 | Repo chạy bản hook chuẩn | 1/4 | **4/4** |
 | Repo có `skillOverrides` | 1/4 | **4/4** |
@@ -87,9 +100,10 @@ repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho. Chi tiết:
 Lệnh đo ba repo kia: `ghi-nho` **30/30** · `vsp-fleet-safety` **5/5** ·
 `tayvuc` `npm run do` mã 0 (**742 test / 56 file**).
 
-Chia nhỏ token nạp mỗi phiên: cài đặt cá nhân 826 · `CLAUDE.md` 3.192 · `so-thich` **8.008** ·
-`du-an` **4.869** · `trang-thai` **8.098** · mô tả skill `md` 220 · hook `SessionStart` 82.
-**Ba file kho: 20.975 ký tự ~6.991 token** — đọc HẾT mỗi phiên, mọi repo.
+Chia nhỏ token nạp mỗi phiên (đo lại 14/09 lần 2): cài đặt cá nhân 826 · `CLAUDE.md` 3.192 ·
+`so-thich` **8.492** · `du-an` **4.449** · `trang-thai` **8.983** · mô tả skill `md` 220 ·
+hook `SessionStart` 82. **Ba file kho: 21.924 ký tự ~7.308 token** — đọc HẾT mỗi phiên,
+mọi repo. Sinh lại bằng `node scripts/check_kho.mjs` ở `ghi-nho`, đừng chép tay.
 
 **Kho tách hai tầng:** `so-thich.md` giữ thứ phải biết **trước** mỗi phiên; năm luật chỉ cần
 đúng lúc làm việc đó sang `cong-cu/luat-chi-tiet.md`, tra bằng `grep`.
@@ -165,6 +179,8 @@ quyền hạn và giới hạn máy ảo.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
   `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.
+- **15 nhánh `claude/*` chết trên remote.** Máy ảo xoá không được (`HTTP 403`, đo lại
+  14/09) — chỉ chủ dự án bấm thùng rác ở trang `branches`.
 - **`tayvuc`: `CLAUDE.md` 2.322 token**, vượt ngưỡng chung 1.600. Không cắt vì repo dừng
   hẳn; đặt ngưỡng tạm 2.400 kèm lý do trong `.claude/nguong_token.txt`, cắt khi mở lại.
 
