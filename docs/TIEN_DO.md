@@ -12,11 +12,25 @@ hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồn
 repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng rào tất
 định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset. Chi tiết:
 `docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
-`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`.
+`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn.
 
-### Phiên 15/09 đã đổi gì
+### Phiên 15/09 (lần 2) đã đổi gì
+
+- **`npm run mo:mang` chết ở container mới, đã vá.** `~/.pki/nssdb` **không tồn tại** khi
+  container chưa từng mở Chromium, `certutil -L` thoát
+  `SEC_ERROR_BAD_DATABASE: security library: bad database.` — **giống hệt lúc thiếu
+  `libnss3-tools`**, nên script đi `apt-get` rồi chết. Nay tự `certutil -N --empty-password`.
+  Lần 1 tưởng xong vì kho NSS đã tạo tay lúc mò.
+- **Đọc dấu vết để biết ai chặn** — hai loại, đừng lẫn: `000` kèm
+  `connect_rejected (organization policy)` là **allowlist môi trường** (chủ dự án sửa được);
+  `HTTP/2 403` kèm `server: cloudflare` và `cf-mitigated: challenge` là **đích từ chối**,
+  request đã tới nơi nên thêm allowlist vô ích. `static.poly.pizza` thuộc loại thứ hai.
+- **Đo lại toàn bộ đường tải Poly Pizza, không thêm được gì.** Chi tiết và danh sách đã thử:
+  `docs/NHAT_KY/PHASE_8_TAI_POLY.md`. **Đừng mò lại.**
+
+### Phiên 15/09 (lần 1) đã đổi gì
 
 - **Chromium ra được Internet — lỗi sống sót nhiều phase, nay vá.** Kho NSS của trình duyệt
   (`~/.pki/nssdb`) **RỖNG HOÀN TOÀN** dù README của proxy nói đã dựng sẵn, nên `cdp.mjs`
@@ -169,16 +183,27 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc mới 15/09
+### Việc mới 15/09 (lần 2)
 
-**1. Lấy khoá Poly Pizza** — mở nguồn 10.400+ model cho Phase 8B. Claude lấy không được:
-`poly.pizza` trả `403` cho `curl`, chỉ trình duyệt thật vào được.
+**Mở allowlist cho kho gương Icosa — ANH BÁO ĐÃ LÀM XONG 15/09, phiên sau đo lại.**
+Bốn dòng thêm vào **Allowed domains** của môi trường (`claude.ai/code` → bộ chọn môi trường
+→ **Update cloud environment** → **Network**): `icosa.gallery` · `*.icosa.gallery` ·
+`archive.org` · `*.archive.org`.
 
-1. Safari mở https://poly.pizza/ → đăng nhập
-2. Vào mục **Settings** → tạo một **app** → copy **API key**
-3. Dán vào phiên cho Claude
+Phiên sau **việc đầu tiên** là đo, đừng giả định đã thông:
 
-**Khoá là mật khẩu. Repo này Public — không bao giờ commit khoá vào git.**
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" "https://api.icosa.gallery/v1/assets?limit=1"
+```
+
+`200` thì có đường lấy model `"Poly by Google"` mà không đụng Cloudflare — phần lớn model
+nhà trên Poly Pizza gốc từ kho đó. Vẫn `000` thì báo anh, đừng mò cách khác.
+
+### Việc cũ 15/09 (lần 1)
+
+**1. ✅ Lấy khoá Poly Pizza — XONG.** Khoá đã có, `POLY_PIZZA_KEY` chạy tốt
+(`api.poly.pizza` trả `200`). **Khoá là mật khẩu. Repo này Public — không bao giờ commit
+khoá vào git.**
 
 **2. Thử bản duyệt, báo lại chạy được không** (đây là lần đầu dùng đường này):
 https://claude.ai/artifact/9qbdDmdrqPkMNiAyVcMGZt
@@ -228,6 +253,10 @@ quyền hạn và giới hạn máy ảo.
   không làm**: đó là né kiểm soát truy cập của bên thứ ba.
   **Hệ quả: Poly Pizza dò được, không tải được** — muốn model thì chủ dự án tải bằng máy
   mình. Chi tiết: `docs/DAU_PHIEN.md` mục H.
+  **Đo lại toàn bộ 15/09 (lần 2): y nguyên, đừng mò lại** — `v1.1/download/<id>`,
+  `v1.1/model/<id>/download`, `v1.1/asset/<id>` đều `404 Not Found`; `cdn.` `files.`
+  `assets.poly.pizza` không tồn tại; Chromium có `cf_clearance@.poly.pizza` rồi vẫn kẹt.
+  Đường còn lại là **kho gương Icosa**, chờ allowlist — mục 3.
 - **`trai_ga`: đã tìm ra model, chưa tải về được.** Poly Pizza có `Chicken` (CC0 1.0 ·
   2.648 tam · `.glb`) và `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`) — đúng thứ cần, nhưng
   vướng đúng cái nợ ngay trên. Kho chung có `Chicken` của
