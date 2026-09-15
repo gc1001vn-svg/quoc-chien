@@ -95,6 +95,37 @@ thóc đỏ mái tôn, silo bê tông, cối xay bơm nước khung thép. Lại
 không hoạ tiết. Sai cả thời đại lẫn phong cách. Gói `Ultimate Modular Ruins` **không có
 trên itch.io của Quaternius** — đã liệt kê hết 30 gói, không thấy.
 
+## Poly Pizza — nguồn thứ tư, cấp phép 15/09/2026
+
+**Model trong game này một phần lấy từ Poly Pizza: <https://poly.pizza>**
+
+Dòng trên là **nghĩa vụ theo điều khoản API của họ**, không phải theo license từng model.
+Hai điều đã đồng ý khi tạo khoá API ngày 15/09: *"Provide appropriate attribution for
+models used"* và *"Clearly mention that models are provided by Poly Pizza and if possible
+include a link"*. **CC0 cũng phải ghi** — đây là điều kiện dùng API, tách khỏi license.
+
+Hai điều khác đã đồng ý, ràng buộc cách dùng: **không bán lại content** và **không dùng
+thương mại nếu thu trên 50.000 USD/năm**. Game phi thương mại nên không vướng; đổi ý định
+đó thì phải đọc lại điều khoản trước.
+
+Truy cập bằng biến môi trường **`POLY_PIZZA_KEY`** — **khoá KHÔNG bao giờ vào git**, repo
+này Public. Dò bằng `npm run do:asset <từ khoá>`.
+
+Đo 15/09 trên 16 từ khoá loại nhà: **127 dáng `Buildings` duy nhất · 103 dáng ≤ 8.000 tam ·
+52 CC0 · 0 model CC-BY-SA**. Tải về luôn là **`.glb`**, máy nướng đọc được.
+
+**Chưa model nào của Poly Pizza vào `public/atlas/`.** Khi nướng mẻ đầu có model của họ thì
+phải làm đủ ba việc, không được bỏ việc nào:
+
+1. Thêm dòng vào bảng atlas ở đầu file này, cột *Nguồn* ghi rõ Poly Pizza kèm link.
+2. **Model CC-BY phải chép nguyên chuỗi `Attribution` API trả về** — nó đã có sẵn tên tác
+   giả, link model và link license. Đừng tự viết lại.
+3. **Ghi công Poly Pizza ở chỗ người chơi thấy được**, không chỉ trong file này — điều
+   khoản đòi *"clearly mention"*. Chỗ đặt do chủ dự án chốt.
+
+Hai model đầu tiên đã nhắm, cả hai CC0 1.0, cho `trai_ga` (nợ treo từ 06/09):
+`Chicken` (2.648 tam) và `ChickenCoop` (948 tam).
+
 ## Hoạ tiết bề mặt
 
 **Mẻ Kenney cũ (`trung_co`)** không có toạ độ ảnh trải phẳng (`roof-point.obj` chỉ có 5
