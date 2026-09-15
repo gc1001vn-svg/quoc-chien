@@ -203,3 +203,38 @@ mà không `apt-get update` được, **đường nạp CA vào NSS coi như t�
 
 **Hệ quả: `tools/lib/cdp.mjs` chỉ dùng được cho file cục bộ.** Thước `khoi:dong` vẫn đúng.
 Đừng dựng công cụ nào dựa vào Chromium ra Internet cho tới khi máy ảo đổi.
+
+## H. Cho Chromium ra Internet — GỠ XONG 15/09, phải chạy lại mỗi phiên
+
+```bash
+npm run mo:mang
+```
+
+**Chủ dự án phải đổi chế độ quyền sang `Accept edits` trước** (nút chế độ cạnh ô soạn tin,
+mặc định `Auto`). Ở `Auto`, `apt-get update` bị chặn `[Containment Escape]` **dù đã có luật
+trong `.claude/settings.json`** — đo 15/09, ba biến thể đều chặn. Đổi chế độ xong thì qua
+ngay, không cần mở phiên mới. Xong việc đổi lại `Auto`.
+
+**Nguyên nhân gốc, tìm ra 15/09:** kho NSS của trình duyệt (`~/.pki/nssdb`) **RỖNG HOÀN
+TOÀN**, dù README của proxy (`/root/.ccr/README.md`) viết *"the browser NSS store ...
+already set up"*. Nên mọi trang ngoài đều `net::ERR_CERT_AUTHORITY_INVALID`, và
+`tools/lib/cdp.mjs` xưa nay **chỉ mở được file cục bộ**. Thước `khoi:dong` vẫn xanh vì nó
+chỉ mở bản build trong máy — lỗi này sống sót nhiều phase mà không ai thấy.
+
+Sau khi chạy, đo 15/09: Chromium mở được **4/4** — `kenney.nl` · `polyhaven.com` ·
+`itch.io` · `quaternius.com`.
+
+**Cấm dùng `--ignore-certificate-errors*`.** Script chỉ thêm đúng một CA của proxy phiên
+vào kho tin cậy, đúng cách README đòi.
+
+### Poly Pizza vẫn không tải được, kể cả bằng Chromium
+
+Đo lại sau khi gỡ TLS: `poly.pizza` kẹt ở `Just a moment...` **suốt 60 giây**, không thoát.
+Cloudflare có cấp cookie `cf_clearance@.poly.pizza` nhưng trang vẫn quay vòng thử thách —
+nó nhận ra IP trung tâm dữ liệu. Đã thử thêm: User-Agent thật thay `HeadlessChrome/141`,
+ẩn `navigator.webdriver`, `Browser.setDownloadBehavior` rồi điều hướng thẳng tới `.glb`
+(0 file rơi xuống).
+
+**Dừng ở đây là cố ý.** Bước tiếp theo sẽ là bê cookie `cf_clearance` ra ngoài trình duyệt
+— đó là né kiểm soát truy cập của bên thứ ba, không làm. Poly Pizza **dò được, tải không
+được**; muốn model thì chủ dự án tải bằng máy mình.

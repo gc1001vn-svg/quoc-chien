@@ -41,7 +41,8 @@
     "check:kehoach": "node scripts/check_ke_hoach.mjs",
     "khoi:dong": "node scripts/khoi_dong.mjs",
     "duyet": "node scripts/duyet.mjs",
-    "do:asset": "node tools/do_asset.mjs"
+    "do:asset": "node tools/do_asset.mjs",
+    "mo:mang": "node scripts/mo_mang_chromium.mjs"
   },
   "repository": {
     "type": "git",

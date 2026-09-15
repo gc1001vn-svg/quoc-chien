@@ -18,6 +18,13 @@ repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hà
 
 ### Phiên 15/09 đã đổi gì
 
+- **Chromium ra được Internet — lỗi sống sót nhiều phase, nay vá.** Kho NSS của trình duyệt
+  (`~/.pki/nssdb`) **RỖNG HOÀN TOÀN** dù README của proxy nói đã dựng sẵn, nên `cdp.mjs`
+  xưa nay chỉ mở được file cục bộ; thước `khoi:dong` vẫn xanh vì nó chỉ mở bản build trong
+  máy. `npm run mo:mang` nạp CA của proxy vào kho NSS — **chạy lại mỗi phiên**, và chủ dự
+  án phải đổi chế độ quyền sang `Accept edits` trước. Đo sau khi vá: mở được **4/4**
+  (`kenney.nl` · `polyhaven.com` · `itch.io` · `quaternius.com`). Chi tiết: `DAU_PHIEN.md` mục H.
+
 - **`npm run duyet` + Artifact — hết phải đẩy `main` để chủ dự án nhìn game.** Build
   `--base=./`, bỏ service worker, `xem.html` bọc iframe, tự đối chiếu trần Artifact và
   thoát mã 1 khi vượt. Đo: **15 file · 4,2 MB**. Cách dùng và ba bẫy: `docs/DAU_PHIEN.md` mục G.
@@ -214,14 +221,13 @@ quyền hạn và giới hạn máy ảo.
 - **NỢ CHẶN NẶNG NHẤT: tải model Poly Pizza không được.** `static.poly.pizza` — host của
   **mọi** đường `Download` — trả `403` với thân `Just a moment...` của **Cloudflare**.
   Không phải proxy phiên chặn. Đã thử hết bộ header trình duyệt, vẫn `403`.
-  Đường duy nhất là lái Chromium, nhưng **Chromium trong máy ảo chưa tin CA của proxy**:
-  mọi trang ngoài đều `net::ERR_CERT_AUTHORITY_INVALID`.
-  **15/09 đã thử gỡ và TẮC.** Chủ dự án cấp luật trong `.claude/settings.json`;
-  `apt-get install -y libnss3-tools` qua được bộ lọc nhưng hỏng ở `404 Not Found` (danh mục
-  gói trong máy ảo cũ hơn kho Ubuntu), mà `apt-get update` thì **bị chặn dù đã có luật**.
-  Bảng đầy đủ sáu cách đã thử: `docs/DAU_PHIEN.md` mục "Đã thử gì để cho Chromium ra
-  Internet". **Đừng thử lại cho tới khi máy ảo đổi.**
-  **Hệ quả: Poly Pizza chỉ dò được, không tải được** — mất cả 127 dáng nhà lẫn con gà.
+  Lái Chromium **nay làm được** (`npm run mo:mang`, mục 1 ở trên) nhưng **vẫn không tải
+  được**: `poly.pizza` kẹt ở `Just a moment...` suốt 60 giây, Cloudflare nhận ra IP trung
+  tâm dữ liệu. Đã thử User-Agent thật, ẩn `navigator.webdriver`, điều hướng thẳng tới
+  `.glb` — 0 file. Bước tiếp theo là bê cookie `cf_clearance` ra ngoài trình duyệt, **cố ý
+  không làm**: đó là né kiểm soát truy cập của bên thứ ba.
+  **Hệ quả: Poly Pizza dò được, không tải được** — muốn model thì chủ dự án tải bằng máy
+  mình. Chi tiết: `docs/DAU_PHIEN.md` mục H.
 - **`trai_ga`: đã tìm ra model, chưa tải về được.** Poly Pizza có `Chicken` (CC0 1.0 ·
   2.648 tam · `.glb`) và `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`) — đúng thứ cần, nhưng
   vướng đúng cái nợ ngay trên. Kho chung có `Chicken` của
