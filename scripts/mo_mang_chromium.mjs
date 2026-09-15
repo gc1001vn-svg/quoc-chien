@@ -26,7 +26,7 @@
  *   npm run mo:mang
  */
 import { execFileSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 
 const CA = '/root/.ccr/agent-proxy-ca.crt';
 const KHO = `sql:${process.env.HOME}/.pki/nssdb`;
@@ -51,12 +51,22 @@ try {
   coCertutil = false;
 }
 
-if (!coCertutil) {
+if (!coCertutil && !existsSync('/usr/bin/certutil')) {
   console.log('Chua co certutil, dang cai libnss3-tools...');
   // `apt-get update` BAT BUOC: danh muc goi trong anh may ao cu hon kho Ubuntu, cai thang
   // thi hong o `404 Not Found` vi so hieu ban da doi. Do 15/09.
   chay('apt-get', ['update']);
   chay('apt-get', ['install', '-y', 'libnss3-tools']);
+}
+
+// May ao moi chua tung mo Chromium thi thu muc kho NSS KHONG TON TAI, va `-L` thoat
+// `SEC_ERROR_BAD_DATABASE` — giong het luc thieu `certutil`. Do 15/09 (lan 2): phien truoc
+// tuong da xong vi kho da duoc tao san tu lan chay tay, container moi thi khong.
+// `-N --empty-password` tao kho rong, chay lai khi da co thi bao loi nen boc try.
+if (!existsSync(`${process.env.HOME}/.pki/nssdb/cert9.db`)) {
+  mkdirSync(`${process.env.HOME}/.pki/nssdb`, { recursive: true });
+  chay('certutil', ['-d', KHO, '-N', '--empty-password']);
+  console.log('Da tao kho NSS rong');
 }
 
 const truoc = chay('certutil', ['-d', KHO, '-L']);
