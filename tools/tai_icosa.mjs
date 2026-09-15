@@ -36,7 +36,7 @@
  * Chay lai duoc: model da co tren dia thi bo qua, hong giua chung thi chay tiep.
  */
 import { execFile } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { promisify } from 'node:util';
 
@@ -45,6 +45,9 @@ const chay_lenh = promisify(execFile);
 const API = 'https://api.icosa.gallery/v1/assets';
 const THU_MUC = 'assets_source/icosa';
 const TU_DIEN = 'tools/tu_dien_asset.json';
+const CACHE = '.cache';
+/** Cache ket qua do song 24 gio, giong `do_asset.mjs`. Kho Poly da dong bang tu 2021. */
+const CACHE_SONG = 24 * 60 * 60 * 1000;
 /** Tran so tam mac dinh: bang tran da dung khi do Poly Pizza, vua suc may nuong. */
 const TAM_MAC_DINH = 8000;
 /** So model tai cung luc. Wayback cham (~15 giay/model) nhung khong thich bi doi. */
@@ -91,8 +94,16 @@ function licenseDuoc(asset) {
   return LICENSE_NHAN.includes(l);
 }
 
-/** Lay het model trung tu khoa, di het cac trang. */
+/**
+ * Lay het model trung tu khoa, di het cac trang.
+ * Co cache 24 gio: buoc do het 17 tu khoa mat ~25 phut, ma lan chay lai (tai tiep cho
+ * hong) khong can hoi lai API.
+ */
 async function doTuKhoa(tuKhoa) {
+  const cache = join(CACHE, `icosa_${tuKhoa.replace(/\W/g, '_')}.json`);
+  if (existsSync(cache) && Date.now() - statSync(cache).mtimeMs < CACHE_SONG) {
+    return JSON.parse(readFileSync(cache, 'utf8'));
+  }
   const ra = [];
   let token = '';
   for (;;) {
@@ -101,19 +112,27 @@ async function doTuKhoa(tuKhoa) {
     const j = await (await fetch(u)).json();
     ra.push(...(j.assets || []));
     token = j.nextPageToken;
-    if (!token || !(j.assets || []).length) return ra;
+    if (!token || !(j.assets || []).length) {
+      mkdirSync(CACHE, { recursive: true });
+      writeFileSync(cache, JSON.stringify(ra));
+      return ra;
+    }
   }
 }
 
-/** Chon format tai duoc: uu tien GLB, va chi lay ban nam tren wayback (bay 4). */
-function chonFormat(asset) {
+/**
+ * Danh sach ban tai duoc, uu tien GLB, chi lay ban nam tren wayback (bay 4).
+ * Tra ve CA DANH SACH chu khong mot ban: wayback thieu ban luu cua tung file rieng le -
+ * do 9 model dau thi 3 truot, ma 2 trong so do co ban khac tai duoc.
+ */
+function dsFormat(asset) {
+  const ra = [];
   for (const loai of FORMAT_UU_TIEN) {
-    const f = (asset.formats || []).find(
-      (x) => x.formatType === loai && x.root?.url?.includes('web.archive.org'),
-    );
-    if (f) return f;
+    for (const f of asset.formats || []) {
+      if (f.formatType === loai && f.root?.url?.includes('web.archive.org')) ra.push(f);
+    }
   }
-  return null;
+  return ra;
 }
 
 function tenFile(f) {
@@ -121,21 +140,32 @@ function tenFile(f) {
   return duong.replace(/[^\w.-]/g, '_');
 }
 
+/** Tai mot ban (format) ve `dich`. Tra ve false khi wayback khong co ban luu tu te. */
+async function taiMotBan(f, dich) {
+  const moc = await mocThat(f.root.url);
+  if (!moc) return false;
+  await curl(['-o', dich, moc]);
+  const dau = existsSync(dich) ? readFileSync(dich).subarray(0, 5).toString() : '';
+  // Wayback tra trang HTML (hay rong) khi thieu ban luu - xoa, dung de file rac nam lai.
+  if (dau.startsWith('glTF') || dau.trimStart().startsWith('{')) return true;
+  rmSync(dich, { force: true });
+  return false;
+}
+
 /** Tai mot asset ve `assets_source/icosa/<assetId>/`. Tra ve so byte, 0 la bo qua. */
-async function taiAsset(asset, f) {
+async function taiAsset(asset, ds) {
   const thuMuc = join(THU_MUC, asset.assetId);
-  const dich = join(thuMuc, tenFile(f));
-  if (existsSync(dich) && statSync(dich).size > 0) return { byte: 0, bo_qua: true };
+  const cuDich = ds.map((x) => join(thuMuc, tenFile(x)));
+  const daCo = cuDich.find((d) => existsSync(d) && statSync(d).size > 0);
+  if (daCo) return { byte: 0, bo_qua: true };
   mkdirSync(thuMuc, { recursive: true });
 
-  const moc = await mocThat(f.root.url);
-  if (!moc) throw new Error('khong co snapshot');
-  await curl(['-o', dich, moc]);
-  const dau = readFileSync(dich).subarray(0, 5).toString();
-  // Wayback tra trang HTML khi thieu ban luu - bat o day chu khong de file rac nam lai.
-  if (!(dau.startsWith('glTF') || dau.trimStart().startsWith('{'))) {
-    throw new Error('khong phai model: ' + dau);
+  // Thu lan luot cac ban: GLB truoc, roi GLTF2, GLTF1 - ban nay thieu thi con ban kia.
+  let f = null, dich = null;
+  for (let i = 0; i < ds.length; i++) {
+    if (await taiMotBan(ds[i], cuDich[i])) { f = ds[i]; dich = cuDich[i]; break; }
   }
+  if (f === null) throw new Error(`khong ban nao co luu (thu ${ds.length})`);
 
   // GLTF tho: keo not file .bin va anh di kem, giu nguyen duong dan tuong doi.
   for (const r of f.resources || []) {
@@ -170,7 +200,8 @@ async function main() {
   const thu = args.includes('--thu');
   const iTam = args.indexOf('--tam');
   const tranTam = iTam >= 0 ? Number(args[iTam + 1]) : TAM_MAC_DINH;
-  const tuKhoa = args.filter((a, i) => !a.startsWith('--') && i !== iTam + 1);
+  // Bo ca `--tam` lan so dung sau no; `iTam < 0` thi khong duoc bo arg dau tien.
+  const tuKhoa = args.filter((a, i) => !a.startsWith('--') && !(iTam >= 0 && i === iTam + 1));
   if (!tuKhoa.length) {
     console.log('Dung: node tools/tai_icosa.mjs <tu khoa...> [--tam 8000] [--thu]');
     process.exit(1);
@@ -188,9 +219,9 @@ async function main() {
       if (thay.has(a.assetId)) continue;
       if (!licenseDuoc(a)) { bo.license++; continue; }
       if (tranTam > 0 && a.triangleCount > tranTam) { bo.tam++; continue; }
-      const f = chonFormat(a);
-      if (!f) { bo.format++; continue; }
-      thay.set(a.assetId, { a, f });
+      const ban = dsFormat(a);
+      if (!ban.length) { bo.format++; continue; }
+      thay.set(a.assetId, { a, ban });
     }
     console.log(`do "${t}": ${ds.length} model, gio giu ${thay.size}`);
   }
@@ -211,7 +242,7 @@ async function main() {
       const v = viec.shift();
       if (!v) return;
       try {
-        const r = await taiAsset(v.a, v.f);
+        const r = await taiAsset(v.a, v.ban);
         if (r.bo_qua) boQua++;
         else { xong++; tongByte += r.byte; }
       } catch (loi) {
