@@ -3,17 +3,30 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 14/09/2026 (phiên thêm hook nhắc kho — **không đụng màn hình game**).
+Cập nhật: 15/09/2026 (phiên bản duyệt Artifact + lệnh dò asset — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Bốn phiên liền (12/09, 13/09, 14/09 ×2) không đụng gì màn hình
-game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn
-repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, rồi 14/09 (lần 2) dựng hàng rào tất
-định và thước `khoi:dong`. Chi tiết: `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
-`PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`.
+**Game vẫn ở Phase 8A.** Năm phiên liền (12/09, 13/09, 14/09 ×2, 15/09) không đụng gì màn
+hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn
+repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng rào tất
+định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset. Chi tiết:
+`docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
+`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn.
+
+### Phiên 15/09 đã đổi gì
+
+- **`npm run duyet` + Artifact — hết phải đẩy `main` để chủ dự án nhìn game.** Build
+  `--base=./`, bỏ service worker, `xem.html` bọc iframe, tự đối chiếu trần Artifact và
+  thoát mã 1 khi vượt. Đo: **15 file · 4,2 MB**. Cách dùng và ba bẫy: `docs/DAU_PHIEN.md` mục G.
+- **`npm run do:asset <từ khoá>` — ba bước dò asset gộp một lệnh**, cộng Poly Haven
+  (521 model CC0, API mở) và Poly Pizza (10.400+ model, cần `POLY_PIZZA_KEY`).
+  Từ điển Việt→Anh ở `tools/tu_dien_asset.json` — **dò hụt thì thêm từ, đừng sửa mã nguồn.**
+- **Lần chạy đầu đã ra thứ sáu phiên trước bỏ sót:** `Chicken` nằm ở
+  `quaternius/ultimate-monsters/Blob` trong kho chung. Nợ `trai_ga` xem mục 4.
+- **MCP đã tra và loại**, kèm số đo: `docs/NHAT_KY/PHASE_8_BAN_DUYET.md`. Đừng tra lại từ đầu.
 
 ### Phiên 14/09 (lần 2) đã đổi gì
 
@@ -124,6 +137,12 @@ xuất hiện nhiều nơi đều khác ngữ cảnh. Không có đường trỏ
 vào `.claude/skill_bat.txt` **kèm lý do**; muốn tắt thì thêm vào `cong-cu/skill_overrides.json`
 rồi chạy `cai_dat.mjs` cho cả bốn repo.
 
+**Nguồn xa đã đo 15/09, đừng tra lại:** `api.polyhaven.com` HTTP 200, không cần khoá,
+**521 model toàn bộ CC0** — `props 176 · nature 110 · industrial 97 · furniture 85 ·
+containers 68` nhưng `structures` chỉ **26**, tức **mạnh đồ dùng, yếu nhà**.
+`api.poly.pizza` HTTP 401 (thông, thiếu khoá), 10.400+ model, lọc được `licence=CC0`.
+Chặn `000`: `sketchfab.com` `huggingface.co` `fab.com`.
+
 Số model **không đo phiên này** (kho không tải). Số thật luôn ở **dòng cuối**
 `docs/KHO_ASSET.md` và `docs/KHO_CHUNG.md` — có test cấm chép số đó ra tài liệu luật.
 
@@ -143,7 +162,21 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-**Hai phiên liền không đụng màn hình game — không có gì phải kiểm trên iPhone.**
+### Việc mới 15/09
+
+**1. Lấy khoá Poly Pizza** — mở nguồn 10.400+ model cho Phase 8B. Claude lấy không được:
+`poly.pizza` trả `403` cho `curl`, chỉ trình duyệt thật vào được.
+
+1. Safari mở https://poly.pizza/ → đăng nhập
+2. Vào mục **Settings** → tạo một **app** → copy **API key**
+3. Dán vào phiên cho Claude
+
+**Khoá là mật khẩu. Repo này Public — không bao giờ commit khoá vào git.**
+
+**2. Thử bản duyệt, báo lại chạy được không** (đây là lần đầu dùng đường này):
+https://claude.ai/artifact/9qbdDmdrqPkMNiAyVcMGZt
+Mở bằng Safari trên iPhone. Cần biết: game có hiện không, có xoay ngang được không,
+fps có tệ hơn bản GitHub Pages không.
 
 Còn một việc treo từ 11/09, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm được,
 nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì liếc một cái.
@@ -174,7 +207,11 @@ quyền hạn và giới hạn máy ảo.
   lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
 - **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
-- **`trai_ga` vẫn không có model gà.** Dò hết 11 gói, không gói nào có — `NGUON_MO.md` mục 8.
+- **`trai_ga`: đã tìm ra `Chicken`, nhưng chưa chắc dùng được.** Nằm ở
+  `quaternius/ultimate-monsters/Blob` của kho chung — **gói quái vật kiểu blob**, dáng khác
+  hẳn `Pig`/`Sheep` đang dùng. Khớp phong cách không thì **chưa đo**; nướng thử rồi gửi ảnh
+  cho chủ dự án quyết. Câu "dò hết 11 gói, không gói nào có" đúng với 11 gói đã tải, nhưng
+  **thiếu bước 1b** — `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
