@@ -132,6 +132,7 @@ Ghi vào đây mỗi khi dò không ra, **trước khi tự vẽ**:
 | **Lợn · gà · cừu** (3 trại chăn nuôi) | P6B | Kenney · Quaternius · KayKit ×2 · cả kho asset | **Không có con vật nào.** Ba trại tạm phân biệt bằng màu nền + màu lán + đồ chất quanh. Cần model thú thì phải tìm nguồn mới |
 | **Lợn · cừu** — dò lại 11/09 | P6B | `quaternius/lowpoly-animated-animals` | **ĐÃ TẢI VÀ DÙNG 11/09.** CC0 1.0, 7 con có OBJ. `Pig` vào `trai_lon`, `Sheep` vào `trai_cuu` — hai trại nay phân biệt bằng con vật thật, không còn chỉ khác màu nền |
 | **Gà** | P6B | Kenney · Quaternius ×6 · KayKit ×3 | **Vẫn không gói nào có.** `trai_ga` còn phân biệt bằng chuồng + màu nền. Cần thì phải tìm nguồn mới |
+| **Gà — dò lại 15/09 bằng `npm run do:asset ga`** | P6B | + kho chung `tayvuc` · Poly Haven (521 model) | **Kho chung CÓ `Chicken`** — `quaternius/ultimate-monsters/Blob`. Kết luận "không gói nào có" ở dòng trên **thiếu bước 1b**, không sai hẳn: 11 gói đã tải thì đúng là không có. Nhưng đây là **gói quái vật kiểu blob**, dáng khác hẳn `Pig`/`Sheep` đang dùng — nướng ra có khớp phong cách không thì **chưa đo**, chủ dự án quyết. Poly Haven: dò 521 model, **0 trúng** |
 | Nhà ở · tháp canh · cổng làng (290 công trình) | P2 | `kk:house` `kk:watchtower` `kk:wall_gate` | **Có model nguyên khối, nhưng CỐ Ý không dùng** — xem dưới |
 
 ### Nhà ở: ghép tay là cố ý, đừng "sửa" lại
