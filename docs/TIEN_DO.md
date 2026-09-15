@@ -211,10 +211,20 @@ quyền hạn và giới hạn máy ảo.
   lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
 - **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
-- **`trai_ga`: HẾT NỢ 15/09.** Poly Pizza có `Chicken` (CC0 1.0 · 2.648 tam · `.glb`) và
-  `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`). Máy nướng đọc `.glb` từ 11/09 → dùng thẳng,
-  chỉ còn việc thêm vào mẻ. Nợ này treo từ 06/09 vì hai chỗ: **thiếu bước 1b** và
-  **thiếu nguồn**. `NGUON_MO.md` mục 8.
+- **NỢ CHẶN NẶNG NHẤT: tải model Poly Pizza không được.** `static.poly.pizza` — host của
+  **mọi** đường `Download` — trả `403` với thân `Just a moment...` của **Cloudflare**.
+  Không phải proxy phiên chặn. Đã thử hết bộ header trình duyệt, vẫn `403`.
+  Đường duy nhất là lái Chromium, nhưng **Chromium trong máy ảo chưa tin CA của proxy**:
+  mọi trang ngoài đều `net::ERR_CERT_AUTHORITY_INVALID`. Hai cách sửa đều bị bộ lọc quyền
+  chặn (`[Containment Escape]` và `[TLS/Auth Weaken]`) — **cần chủ dự án cấp quyền**.
+  Chi tiết và lệnh: `docs/DAU_PHIEN.md` mục "Poly Pizza — DÒ ĐƯỢC, TẢI KHÔNG ĐƯỢC".
+  **Chưa gỡ chỗ này thì Poly Pizza chỉ dò được, không dùng được** — mất cả 127 dáng nhà
+  lẫn con gà.
+- **`trai_ga`: đã tìm ra model, chưa tải về được.** Poly Pizza có `Chicken` (CC0 1.0 ·
+  2.648 tam · `.glb`) và `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`) — đúng thứ cần, nhưng
+  vướng đúng cái nợ ngay trên. Kho chung có `Chicken` của
+  `quaternius/ultimate-monsters/Blob` (**tải được ngay**) nhưng là gói quái vật kiểu blob,
+  dáng khác `Pig`/`Sheep`. Nợ treo từ 06/09. `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
