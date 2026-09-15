@@ -30,7 +30,8 @@ Trước khi thật sự dùng một nguồn: mở `LICENSE` của chính gói �
 | **Kenney** <https://kenney.nl/assets> | CC0 | ~80 gói: Fantasy Town, Tower Defense, Castle, Nature, City, Factory, Space, Car, Blaster | P1 trung cổ · P12 công nghiệp, hiện đại, tương lai | `npm run tai:asset <slug>` |
 | **Quaternius** <https://quaternius.com> | CC0 | ~30 gói: Medieval Village, Stylized Nature, Fantasy Props, Modular Sci-Fi Megakit (270 mảnh), Sci-Fi Essentials, Ultimate Modular Sci-Fi, Modular Street, Survival, Modular Dungeon | P1 trung cổ · P12 tương lai, hiện đại | `node tools/tai_itch.mjs quaternius/<slug>` |
 | **KayKit** (Kay Lousberg) <https://kaylousberg.itch.io> | CC0 | Medieval Builder (công trình nguyên khối), City Builder Bits (hiện đại), Dungeon, Character | P1 trung cổ · P8 hiện đại | `node tools/tai_itch.mjs kaylousberg/<slug>` |
-| **Poly Pizza** <https://poly.pizza> | CC0 + CC-BY (lọc) | Kho low-poly gộp nhiều tác giả, tìm theo từ khoá | Mọi phase — **chỗ tìm khi ba nguồn trên không có** | Tải tay, kiểm license từng model |
+| **Poly Pizza** <https://poly.pizza> | CC0 + CC-BY (lọc) | Kho low-poly gộp nhiều tác giả, tìm theo từ khoá | Mọi phase — **chỗ tìm khi ba nguồn trên không có** | **Dò được, TẢI KHÔNG ĐƯỢC** (Cloudflare) — mục 9 |
+| **Icosa Gallery** <https://icosa.gallery> | **CC-BY** (không có CC0) | Kho gương của Google Poly — hàng chục nghìn model low-poly | Mọi phase — **nguồn tải được thay Poly Pizza** | `npm run tai:icosa <từ khoá>` — mục 9 |
 | **Sketchfab** (lọc CC0) <https://sketchfab.com/search> | Lọc CC0 | Kho lớn nhất, chất lượng lẫn lộn | Khi cần một model lẻ rất cụ thể | Tải tay |
 | **Smithsonian Open Access** <https://3d.si.edu/cc0> | CC0 | Hiện vật bảo tàng quét 3D thật | P12 cổ đại — **hiện vật lịch sử thật** | Tải tay |
 | **Blend Swap** (lọc CC0) <https://blendswap.com> | Lọc CC0 | File `.blend`, phải xuất sang OBJ | Phương án cuối | Tải tay |
@@ -149,7 +150,40 @@ khung gỗ; nhà KayKit chỉ **165×100 px** màu bệt. Thêm nữa hai công 
 Bảy ô nền là tấm phẳng tự sinh + hoạ tiết Poly Haven, lý do ở `TECH_SPEC` mục 3: Quaternius
 không có ô nền, mượn ô nền gói khác thì lệch thước lưới.
 
+## 9. Icosa Gallery — kho gương Google Poly, đo 15/09/2026
+
+**Đây là nguồn thay Poly Pizza.** Poly Pizza dò được nhưng `static.poly.pizza` trả `403`
+kèm `Just a moment...` của Cloudflare, kể cả khi lái Chromium. Icosa là kho gương của
+chính Google Poly — phần lớn model nhà trên Poly Pizza gốc từ đó — và đường tải của nó
+đi qua `web.archive.org`, không đụng Cloudflare.
+
+```bash
+npm run tai:icosa house building        # từ khoá tiếng Anh
+npm run tai:icosa nha --tam 8000        # tiếng Việt: dịch qua tools/tu_dien_asset.json
+npm run tai:icosa house --thu           # chỉ in ra sẽ tải gì
+```
+
+Model rơi vào `assets_source/icosa/<assetId>/`, kèm `ghi_cong.json` (tên · tác giả ·
+license · số tam · link trang) — nguyên liệu cho `docs/ASSET_CREDITS.md`.
+
+**License: TOÀN BỘ CC-BY, không có CC0 nào.** Đo 788 model nhà: `770 CC-BY 3.0` ·
+`1 CC-BY 4.0` · `17 CC-BY-ND 3.0`. Luật repo nhận CC-BY nhưng **bắt buộc ghi tên từng tác
+giả**; `tai_icosa.mjs` **tự loại ND và SA** — ND cấm tác phẩm phái sinh, mà nướng sprite
+chính là phái sinh.
+
+**Bốn bẫy đã đo, đừng "tối ưu" lại** (chi tiết ở đầu `tools/tai_icosa.mjs`):
+
+| Bẫy | Dấu hiệu | Cách đúng |
+|---|---|---|
+| `fetch` của Node không tải được wayback | `403 Blocked by egress policy` | Gọi `curl` (nó đi CONNECT qua proxy phiên) |
+| HTTP/2 đứt giữa chừng | `ws_closed_mid_exchange` sau ~11 giây | Thêm `--http1.1` |
+| Tải thẳng URL API trả về | Mốc giả `20250101010101id_/…` trả 302, chờ `cdx.remote` ~16 giây rồi đứt | `curl -I` lấy `location` mốc thật rồi mới GET (11s đứt → 2,4s xong) |
+| Host thứ hai của Icosa | `s3.us-east-005.backblazeb2.com` → `000 connect_rejected` | Chưa trong allowlist. Không chặn đường chính: 778/788 model nhà có bản GLB/GLTF2 trên wayback |
+
+Số model tải được thật nằm ở `docs/KHO_ASSET.md` — **đừng chép số về đây**.
+
 ---
 
-Tra ngày 10/09/2026. Danh sách gộp thêm từ <https://github.com/madjin/awesome-cc0>.
+Tra ngày 10/09/2026, thêm mục 9 ngày 15/09/2026.
+Danh sách gộp thêm từ <https://github.com/madjin/awesome-cc0>.
 Thêm nguồn mới thì thêm dòng vào đây, đừng viết ra chỗ khác.
