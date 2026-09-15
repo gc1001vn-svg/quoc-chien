@@ -38,6 +38,9 @@ trung tâm dữ liệu. Đường tải khác trong API: `v1.1/download/<id>`,
 **Dừng lại là cố ý** — bước kế duy nhất là giả vân tay trình duyệt để lừa Cloudflare, tức
 né kiểm soát truy cập của bên thứ ba. Không làm.
 
+**Nợ này CHƯA CHỐT.** Claude đề nghị đóng, chủ dự án bác: chờ đo kho gương Icosa ở phiên
+sau rồi mới tính. Đừng ghi "đã chốt" vào đâu.
+
 ## Việc đã giao chủ dự án
 
 Thêm `icosa.gallery` `*.icosa.gallery` `archive.org` `*.archive.org` vào **Allowed domains**

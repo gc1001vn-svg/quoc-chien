@@ -205,13 +205,11 @@ nhà trên Poly Pizza gốc từ kho đó. Vẫn `000` thì báo anh, đừng m�
 (`api.poly.pizza` trả `200`). **Khoá là mật khẩu. Repo này Public — không bao giờ commit
 khoá vào git.**
 
-**2. Thử bản duyệt, báo lại chạy được không** (đây là lần đầu dùng đường này):
+**2. ✅ Bản duyệt Artifact — XONG, anh xác nhận chạy được** trên iPhone (15/09).
+Đường này dùng được, khỏi đẩy `main` chỉ để anh nhìn game:
 https://claude.ai/artifact/9qbdDmdrqPkMNiAyVcMGZt
-Mở bằng Safari trên iPhone. Cần biết: game có hiện không, có xoay ngang được không,
-fps có tệ hơn bản GitHub Pages không.
 
-Còn một việc treo từ 11/09, nhỏ: ⏳ **nút "Đo trần sprite" ở màn dọc** — anh bấm được,
-nhưng chưa có ảnh nào cho thấy bốn nút ☰ ⌂ 🔬 📏 thẳng hàng. Lúc nào mở game thì liếc một cái.
+**✅ Nút "Đo trần sprite" ở màn dọc — XONG**, anh xác nhận ổn (treo từ 11/09).
 
 ### Một việc còn treo
 
@@ -253,6 +251,8 @@ quyền hạn và giới hạn máy ảo.
   không làm**: đó là né kiểm soát truy cập của bên thứ ba.
   **Hệ quả: Poly Pizza dò được, không tải được** — muốn model thì chủ dự án tải bằng máy
   mình. Chi tiết: `docs/DAU_PHIEN.md` mục H.
+  **CHƯA CHỐT** — chủ dự án giữ nợ này mở tới khi phiên sau đo xong kho gương Icosa
+  (mục 3). Đừng ghi là đã đóng.
   **Đo lại toàn bộ 15/09 (lần 2): y nguyên, đừng mò lại** — `v1.1/download/<id>`,
   `v1.1/model/<id>/download`, `v1.1/asset/<id>` đều `404 Not Found`; `cdn.` `files.`
   `assets.poly.pizza` không tồn tại; Chromium có `cf_clearance@.poly.pizza` rồi vẫn kẹt.
