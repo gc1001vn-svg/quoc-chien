@@ -215,11 +215,13 @@ quyền hạn và giới hạn máy ảo.
   **mọi** đường `Download` — trả `403` với thân `Just a moment...` của **Cloudflare**.
   Không phải proxy phiên chặn. Đã thử hết bộ header trình duyệt, vẫn `403`.
   Đường duy nhất là lái Chromium, nhưng **Chromium trong máy ảo chưa tin CA của proxy**:
-  mọi trang ngoài đều `net::ERR_CERT_AUTHORITY_INVALID`. Hai cách sửa đều bị bộ lọc quyền
-  chặn (`[Containment Escape]` và `[TLS/Auth Weaken]`) — **cần chủ dự án cấp quyền**.
-  Chi tiết và lệnh: `docs/DAU_PHIEN.md` mục "Poly Pizza — DÒ ĐƯỢC, TẢI KHÔNG ĐƯỢC".
-  **Chưa gỡ chỗ này thì Poly Pizza chỉ dò được, không dùng được** — mất cả 127 dáng nhà
-  lẫn con gà.
+  mọi trang ngoài đều `net::ERR_CERT_AUTHORITY_INVALID`.
+  **15/09 đã thử gỡ và TẮC.** Chủ dự án cấp luật trong `.claude/settings.json`;
+  `apt-get install -y libnss3-tools` qua được bộ lọc nhưng hỏng ở `404 Not Found` (danh mục
+  gói trong máy ảo cũ hơn kho Ubuntu), mà `apt-get update` thì **bị chặn dù đã có luật**.
+  Bảng đầy đủ sáu cách đã thử: `docs/DAU_PHIEN.md` mục "Đã thử gì để cho Chromium ra
+  Internet". **Đừng thử lại cho tới khi máy ảo đổi.**
+  **Hệ quả: Poly Pizza chỉ dò được, không tải được** — mất cả 127 dáng nhà lẫn con gà.
 - **`trai_ga`: đã tìm ra model, chưa tải về được.** Poly Pizza có `Chicken` (CC0 1.0 ·
   2.648 tam · `.glb`) và `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`) — đúng thứ cần, nhưng
   vướng đúng cái nợ ngay trên. Kho chung có `Chicken` của
