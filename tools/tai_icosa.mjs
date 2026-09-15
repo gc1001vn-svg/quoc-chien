@@ -18,9 +18,11 @@
  * 3. CAM tai thang URL API tra ve. No la moc gia `20250101010101id_/...`, wayback phai
  *    tra loi 302 sang moc that; cho `cdx.remote` mat ~16 giay thi tunnel da dut. Phai
  *    `curl -I` lay `location` truoc, roi GET dung moc that. Do: 11s dut / 2,4s xong.
- * 4. Host thu hai cua Icosa - `s3.us-east-005.backblazeb2.com` - `000 connect_rejected`,
- *    chua trong allowlist moi truong. Khong chan duong chinh: do 788 model nha thi 778
- *    co ban GLB/GLTF2 nam tren wayback.
+ * 4. Wayback thieu ban luu that du CDX bao co. Model `aqgXtgV8xVy`: CDX ghi
+ *    `200 model/gltf-binary 1661644`, ma replay tra trang 404 ca bon lan thu. Vi vay
+ *    phai thu lan luot moi ban (GLB -> GLTF2 -> GLTF1) roi moi sang host thu hai
+ *    `s3.us-east-005.backblazeb2.com` - host nay tung `000 connect_rejected`, chu du an
+ *    mo allowlist 15/09 thi thanh `200`.
  *
  * LICENSE. Kho Poly TOAN BO la CC-BY, khong co CC0 (do 788 model: 770 CC-BY 3.0 ·
  * 1 CC-BY 4.0 · 17 CC-BY-ND 3.0). Luat repo nhan CC0 · CC-BY · MIT, cam CC-BY-SA;
@@ -80,12 +82,18 @@ async function curl(args, lan = 4) {
   }
 }
 
-/** Doi URL moc gia cua API sang moc that (bay 3). Khong co snapshot thi tra null. */
+/**
+ * Doi URL moc gia cua API sang moc that (bay 3). Khong co ban luu thi tra null.
+ * URL cua host backblaze khong co chuyen huong - no ve thang qua nhanh 200.
+ */
 async function mocThat(url) {
   const dau = (await curl(['-I', url])).toString();
   const loc = (dau.match(/^location: (\S+)/im) || [])[1];
   if (loc) return loc;
-  return /HTTP\/1\.1 200/.test(dau) ? url : null;
+  // Dong dau la `HTTP/1.1 200 Connection Established` cua proxy phien - lay ma CUOI cung,
+  // khong thi 404 nao cung thanh 200.
+  const ma = (dau.match(/^HTTP\/[\d.]+ (\d{3})/gm) || []).pop() || '';
+  return ma.endsWith('200') ? url : null;
 }
 
 function licenseDuoc(asset) {
@@ -127,9 +135,12 @@ async function doTuKhoa(tuKhoa) {
  */
 function dsFormat(asset) {
   const ra = [];
-  for (const loai of FORMAT_UU_TIEN) {
-    for (const f of asset.formats || []) {
-      if (f.formatType === loai && f.root?.url?.includes('web.archive.org')) ra.push(f);
+  // Wayback truoc (nhe, mot file GLB), backblaze sau - no vot duoc model wayback hong.
+  for (const host of ['web.archive.org', 's3.us-east-005.backblazeb2.com']) {
+    for (const loai of FORMAT_UU_TIEN) {
+      for (const f of asset.formats || []) {
+        if (f.formatType === loai && f.root?.url?.includes(host)) ra.push(f);
+      }
     }
   }
   return ra;
