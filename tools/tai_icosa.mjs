@@ -38,7 +38,9 @@
  * Chay lai duoc: model da co tren dia thi bo qua, hong giua chung thi chay tiep.
  */
 import { execFile } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync, statSync } from 'node:fs';
+import {
+  existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync, statSync,
+} from 'node:fs';
 import { dirname, join } from 'node:path';
 import { promisify } from 'node:util';
 
@@ -47,6 +49,7 @@ const chay_lenh = promisify(execFile);
 const API = 'https://api.icosa.gallery/v1/assets';
 const THU_MUC = 'assets_source/icosa';
 const TU_DIEN = 'tools/tu_dien_asset.json';
+const KE_KHO = 'docs/KHO_ICOSA.md';
 const CACHE = '.cache';
 /** Cache ket qua do song 24 gio, giong `do_asset.mjs`. Kho Poly da dong bang tu 2021. */
 const CACHE_SONG = 24 * 60 * 60 * 1000;
@@ -206,6 +209,48 @@ async function taiAsset(asset, ds) {
   return { byte: statSync(dich).size, bo_qua: false };
 }
 
+/**
+ * Ghi lai ban ke model da tai ve `docs/KHO_ICOSA.md` - de phien sau `grep` ra ten model
+ * ma khong phai tai lai 800 MB, giong cach `docs/KHO_CHUNG.md` lam voi kho chung.
+ * File SINH TU DONG: sua tay la mat o lan chay sau.
+ */
+function keKho() {
+  if (!existsSync(THU_MUC)) return;
+  const dong = [];
+  for (const id of readdirSync(THU_MUC).sort()) {
+    const gc = join(THU_MUC, id, 'ghi_cong.json');
+    if (!existsSync(gc)) continue;
+    const g = JSON.parse(readFileSync(gc, 'utf8'));
+    const file = readdirSync(join(THU_MUC, id)).find((x) => /\.(glb|gltf)$/i.test(x)) || '';
+    dong.push(`| ${g.ten} | \`${id}/${file}\` | ${g.tac_gia} | ${g.license} | ${g.so_tam} |`);
+  }
+  mkdirSync('docs', { recursive: true });
+  writeFileSync(
+    KE_KHO,
+    [
+      '# KHO ICOSA — model đã tải về `assets_source/icosa/`',
+      '',
+      '> **File này SINH TỰ ĐỘNG** bằng `npm run tai:icosa`. Sửa tay là mất.',
+      '> `assets_source/` không lên git, file kê này thì có — nhờ vậy phiên sau dò được',
+      '> mà không phải tải lại.',
+      '>',
+      '> Dò bằng `grep -io` để khỏi in cả dòng:',
+      "> `grep -io '[a-z0-9_ -]*chicken[a-z0-9_ -]*' docs/KHO_ICOSA.md | sort -u`",
+      '>',
+      '> **Toàn bộ là CC-BY** — dùng thì phải ghi tên tác giả vào `docs/ASSET_CREDITS.md`,',
+      '> kèm dòng ghi công Icosa Gallery. Bản ND và SA đã bị `tai_icosa.mjs` loại từ đầu.',
+      '',
+      '| Tên | File | Tác giả | License | Số tam |',
+      '|---|---|---|---|---:|',
+      ...dong,
+      '',
+      `**${dong.length} model.** Số này là số thật trên đĩa lúc chạy lệnh cuối cùng.`,
+      '',
+    ].join('\n'),
+  );
+  console.log(`Ke kho: ${dong.length} model -> ${KE_KHO}`);
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const thu = args.includes('--thu');
@@ -266,6 +311,7 @@ async function main() {
     }
   };
   await Promise.all(Array.from({ length: SONG_SONG }, chay));
+  keKho();
   console.log(
     `Tai ${xong} · co san ${boQua} · hong ${hong} · ${(tongByte / 1048576).toFixed(1)} MB vao ${THU_MUC}/`,
   );
