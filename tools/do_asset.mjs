@@ -137,11 +137,13 @@ async function doPolyPizza(tu) {
       continue;
     }
     const bo = await res.json();
-    for (const m of bo.results ?? []) {
+    // Poly Pizza tra khoa kieu PascalCase co dau cach: `Title` `Licence` `Tri Count`.
+    for (const m of bo.Results ?? bo.results ?? []) {
       // Khong doan license: khong ro thi in `?`. CC-BY-SA la CAM, phai nhin thay moi loai.
-      const lic = m.licence ?? m.license ?? '?';
-      const co = lic === 'CC0' ? '' : lic.includes('SA') ? '  <-- CAM (SA)' : '';
-      ra.push(`${m.title ?? m.id}  [${lic}]${co}  ${m.download ?? m.id}`);
+      const lic = m.Licence ?? '?';
+      const co = lic.includes('SA') ? '  <-- CAM (SA)' : '';
+      const tri = m['Tri Count'] ?? '?';
+      ra.push(`${m.Title}  [${lic}]${co}  ${tri} tam  ${m.Category ?? '-'}  ${m.Download ?? m.ID}`);
     }
   }
   return [...new Set(ra)];

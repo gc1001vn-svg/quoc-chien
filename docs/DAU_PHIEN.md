@@ -112,3 +112,18 @@ Lệnh tự đối chiếu trần Artifact (16 MB trang · 15 MB mỗi file nh�
 và **thoát mã 1** khi vượt. Đo 15/09: **15 file · 4,2 MB**.
 
 **Bản duyệt KHÔNG thay `main`.** Bản thật vẫn là GitHub Pages; `.duyet/` không lên git.
+
+### Poly Pizza — hình dạng dữ liệu, đo 15/09
+
+Khoá API đã có (chủ dự án lấy 15/09, **giữ ở biến môi trường `POLY_PIZZA_KEY`, không ở git**).
+
+Trả về khoá **PascalCase, có cả khoá chứa dấu cách**: `Title` · `Licence` · `Download`
+(luôn là **`.glb`** — máy nướng đọc được) · `Category` · `Tri Count` · `Attribution` ·
+`Creator.Username`. Bọc ngoài là `{ total, results }` — **`results` viết thường**, lệch với
+các khoá bên trong. Viết `j.Results` là ra mảng rỗng mà không báo lỗi.
+
+Đo 16 từ khoá loại nhà: **127 dáng `Buildings` duy nhất · 103 dáng ≤ 8.000 tam · 52 CC0 ·
+0 model CC-BY-SA**. Game cần 32 loại nhà → **thừa model, cái thiếu là sự đồng nhất phong cách.**
+
+**ToS của họ buộc ghi công Poly Pizza kèm link**, tách khỏi license từng model — CC0 vẫn
+phải ghi. Chỗ ghi: `docs/ASSET_CREDITS.md` (**file khoá**, hỏi chủ dự án trước khi sửa).

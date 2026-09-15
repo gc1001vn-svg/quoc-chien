@@ -199,19 +199,22 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Phase 8B chưa làm: chưa có mẻ sprite hiện đại.** Khớp nối dựng sẵn, việc khó là dữ
-  liệu: `city-builder-bits` chỉ có **8 dáng nhà** cho **32 loại nhà** của game.
+- **Phase 8B chưa làm: chưa có mẻ sprite hiện đại.** Khớp nối dựng sẵn. Việc khó **không
+  còn là thiếu model**: Poly Pizza đo 15/09 cho **127 dáng nhà duy nhất** (`Category`
+  bắt đầu bằng `Buildings`), **103 dáng ≤ 8.000 tam** tức nướng được, trong đó **52 dáng
+  CC0**. Game cần 32 → dư. `city-builder-bits` chỉ 8 dáng nên **không còn là cái chặn**.
+  Cái chặn mới là **phong cách**: 127 dáng đó của nhiều tác giả khác nhau, ghép vào một
+  thành phố có thể nhìn lộn xộn. Phải nướng thử vài dáng rồi gửi ảnh chủ dự án so.
 - **Thưởng công nghệ chưa đổi được thành phố.** Trần nhà 398 mà thành phố chỉ tới 241 —
   trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
 - **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra đúng bằng cái đã
   lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
 - **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
-- **`trai_ga`: đã tìm ra `Chicken`, nhưng chưa chắc dùng được.** Nằm ở
-  `quaternius/ultimate-monsters/Blob` của kho chung — **gói quái vật kiểu blob**, dáng khác
-  hẳn `Pig`/`Sheep` đang dùng. Khớp phong cách không thì **chưa đo**; nướng thử rồi gửi ảnh
-  cho chủ dự án quyết. Câu "dò hết 11 gói, không gói nào có" đúng với 11 gói đã tải, nhưng
-  **thiếu bước 1b** — `NGUON_MO.md` mục 8.
+- **`trai_ga`: HẾT NỢ 15/09.** Poly Pizza có `Chicken` (CC0 1.0 · 2.648 tam · `.glb`) và
+  `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`). Máy nướng đọc `.glb` từ 11/09 → dùng thẳng,
+  chỉ còn việc thêm vào mẻ. Nợ này treo từ 06/09 vì hai chỗ: **thiếu bước 1b** và
+  **thiếu nguồn**. `NGUON_MO.md` mục 8.
 - **Người vác hàng đi tay không** — để Phase 10.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
