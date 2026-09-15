@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho:*)",
       "Bash(git -C /home/user/ghi-nho:*)",
-      "Bash(apt-get update:*)",
+      "Bash(apt-get update)",
+      "Bash(apt-get update -qq)",
       "Bash(apt-get install -y libnss3-tools)",
       "Bash(certutil:*)"
     ]
