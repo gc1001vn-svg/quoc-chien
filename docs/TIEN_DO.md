@@ -3,18 +3,36 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 15/09/2026 (phiên bản duyệt Artifact + lệnh dò asset — **không đụng màn hình game**).
+Cập nhật: 15/09/2026 (phiên đo kho gương Icosa và tải 1.671 model — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Năm phiên liền (12/09, 13/09, 14/09 ×2, 15/09) không đụng gì màn
+**Game vẫn ở Phase 8A.** Sáu phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3) không đụng gì màn
 hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn
 repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng rào tất
-định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset. Chi tiết:
+định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09 (lần 3)
+đo kho gương Icosa. Chi tiết:
 `docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
-`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`.
+`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`.
 
-**Phase 8B làm được ngay phiên sau** — không còn gì chặn.
+**Phase 8B làm được ngay phiên sau** — không còn gì chặn, và nay có **1.671 model Icosa
+trên đĩa** để chọn dáng nhà thay vì chỉ 8 dáng của `city-builder-bits`.
+
+### Phiên 15/09 (lần 3) đã đổi gì
+
+- **Kho gương Icosa: đo xong, TẢI ĐƯỢC THẬT.** Allowlist chủ dự án mở thông cả bốn tên
+  miền; `web.archive.org` chỉ chạy với **`--http1.1`**. Tải về **1.671 model · 1.009 MB**
+  (nhà/công trình **1.246/1.247**, con vật **434/434**). Đây là đường thay Poly Pizza —
+  mục 4.
+- **`npm run tai:icosa <từ khoá>`** — lọc license (tự loại ND và SA), 4 luồng, chạy lại
+  được, cache dò 24 giờ, mỗi model kèm `ghi_cong.json`. Bốn bẫy đã đo ghi ở đầu
+  `tools/tai_icosa.mjs`; **đừng mò lại**.
+- **`docs/KHO_ICOSA.md`** — bản kê sinh tự động, lên git nên phiên sau `grep` được mà
+  không phải tải lại 1 GB. Dò bằng `grep -io`, đừng `grep -i` trần.
+- **Nợ `trai_ga` (treo từ 06/09) hết chặn** — `1YE8U35HXsI/Chicken_01.glb`, 648 tam,
+  `docGltf()` đọc được. Còn việc nướng, không còn việc tìm.
+- **Máy nướng không phải sửa gì** — `docGltf()` đọc cả `.glb` của wayback lẫn `.gltf` +
+  `.bin` + `.png` của backblaze.
 
 ### Phiên 15/09 (lần 2) đã đổi gì
 
@@ -158,6 +176,11 @@ xuất hiện nhiều nơi đều khác ngữ cảnh. Không có đường trỏ
 vào `.claude/skill_bat.txt` **kèm lý do**; muốn tắt thì thêm vào `cong-cu/skill_overrides.json`
 rồi chạy `cai_dat.mjs` cho cả bốn repo.
 
+**Icosa — đo 15/09 (lần 3), số trên đĩa:** nhà/công trình **1.246/1.247** (17 từ khoá,
+811 MB) · con vật **434/434** (9 từ khoá, 157 MB) · tổng **1.671 model · 1.009 MB**.
+Bỏ **376** model vì license ND/SA và **2.804** vì quá 8.000 tam. Danh sách tên:
+`docs/KHO_ICOSA.md` (sinh tự động — **đừng chép số ra đây**, số thật ở dòng cuối file đó).
+
 **Nguồn xa đã đo 15/09, đừng tra lại:** `api.polyhaven.com` HTTP 200, không cần khoá,
 **521 model toàn bộ CC0** — `props 176 · nature 110 · industrial 97 · furniture 85 ·
 containers 68` nhưng `structures` chỉ **26**, tức **mạnh đồ dùng, yếu nhà**.
@@ -183,21 +206,24 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc mới 15/09 (lần 2)
+### Việc mới 15/09 (lần 3)
 
-**Mở allowlist cho kho gương Icosa — ANH BÁO ĐÃ LÀM XONG 15/09, phiên sau đo lại.**
-Bốn dòng thêm vào **Allowed domains** của môi trường (`claude.ai/code` → bộ chọn môi trường
-→ **Update cloud environment** → **Network**): `icosa.gallery` · `*.icosa.gallery` ·
-`archive.org` · `*.archive.org`.
+**Ghi công CC-BY: cần anh cho phép sửa `docs/ASSET_CREDITS.md`** (file khoá). Toàn bộ
+1.671 model Icosa là **CC-BY**, không có CC0 nào — dùng thì **bắt buộc ghi tên từng tác
+giả** kèm một dòng ghi công Icosa Gallery. Tên tác giả đã lưu sẵn trong
+`assets_source/icosa/<id>/ghi_cong.json` và `docs/KHO_ICOSA.md`, phiên nướng chỉ việc chép
+vào. **Chưa nướng thì chưa cần** — hỏi anh đúng lúc nướng mẻ Icosa.
 
-Phiên sau **việc đầu tiên** là đo, đừng giả định đã thông:
+Chỗ này khác Poly Pizza: model Poly Pizza dùng được thì phải chép nguyên chuỗi
+`Attribution` của API họ; Icosa thì ghi `tên model · tác giả · CC-BY 3.0 · link trang`.
 
-```bash
-curl -s -o /dev/null -w "%{http_code}\n" "https://api.icosa.gallery/v1/assets?limit=1"
-```
+### ✅ Việc cũ 15/09 (lần 2) — XONG
 
-`200` thì có đường lấy model `"Poly by Google"` mà không đụng Cloudflare — phần lớn model
-nhà trên Poly Pizza gốc từ kho đó. Vẫn `000` thì báo anh, đừng mò cách khác.
+**Allowlist Icosa: anh mở xong, đã đo trong phiên 15/09 (lần 3).** `api.icosa.gallery`
+**200** · `icosa.gallery` **200** · `archive.org` **200** · `web.archive.org` **200**
+(chỉ với `--http1.1`). Anh mở thêm `backblazeb2.com` ngay trong phiên →
+`s3.us-east-005.backblazeb2.com` từ `000 connect_rejected` thành **200**, vớt được đúng
+những model wayback hỏng.
 
 ### Việc cũ 15/09 (lần 1)
 
@@ -241,7 +267,13 @@ quyền hạn và giới hạn máy ảo.
   lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
 - **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
-- **NỢ CHẶN NẶNG NHẤT: tải model Poly Pizza không được.** `static.poly.pizza` — host của
+- **NỢ CHẶN NẶNG NHẤT ĐÃ HẾT CHẶN — có nguồn thay, chờ anh chốt đóng.** Điều kiện anh đặt
+  ("giữ nợ mở tới khi phiên sau đo xong kho gương Icosa") **đã làm xong 15/09 lần 3**:
+  Icosa tải được thật, **1.671 model · 1.009 MB** trên đĩa, `docGltf()` đọc được ngay.
+  Poly Pizza **vẫn** không tải được và sẽ không bao giờ tải được từ máy ảo (Cloudflare
+  nhận ra IP trung tâm dữ liệu) — nhưng nó không còn chặn việc gì, vì phần lớn model nhà
+  của nó gốc từ Poly, mà Poly thì lấy qua Icosa được. Nguyên văn nợ cũ giữ dưới đây.
+- **Nợ cũ, để đối chiếu: tải model Poly Pizza không được.** `static.poly.pizza` — host của
   **mọi** đường `Download` — trả `403` với thân `Just a moment...` của **Cloudflare**.
   Không phải proxy phiên chặn. Đã thử hết bộ header trình duyệt, vẫn `403`.
   Lái Chromium **nay làm được** (`npm run mo:mang`, mục 1 ở trên) nhưng **vẫn không tải
@@ -257,11 +289,13 @@ quyền hạn và giới hạn máy ảo.
   `v1.1/model/<id>/download`, `v1.1/asset/<id>` đều `404 Not Found`; `cdn.` `files.`
   `assets.poly.pizza` không tồn tại; Chromium có `cf_clearance@.poly.pizza` rồi vẫn kẹt.
   Đường còn lại là **kho gương Icosa**, chờ allowlist — mục 3.
-- **`trai_ga`: đã tìm ra model, chưa tải về được.** Poly Pizza có `Chicken` (CC0 1.0 ·
-  2.648 tam · `.glb`) và `ChickenCoop` (CC0 1.0 · 948 tam · `.glb`) — đúng thứ cần, nhưng
-  vướng đúng cái nợ ngay trên. Kho chung có `Chicken` của
-  `quaternius/ultimate-monsters/Blob` (**tải được ngay**) nhưng là gói quái vật kiểu blob,
-  dáng khác `Pig`/`Sheep`. Nợ treo từ 06/09. `NGUON_MO.md` mục 8.
+- **✅ `trai_ga`: HẾT CHẶN 15/09 (lần 3) — model đã nằm trên đĩa.**
+  `assets_source/icosa/1YE8U35HXsI/Chicken_01.glb` (tác giả Google · CC-BY 3.0 · **648
+  tam** · `docGltf()` đọc được) — đúng model mà Poly Pizza trỏ vào. Kho Icosa còn nhiều
+  dáng gà khác, `grep -io '[a-z0-9_ -]*chicken[a-z0-9_ -]*' docs/KHO_ICOSA.md`.
+  **Còn lại là việc nướng**, không còn việc tìm. Nợ mở 06/09, chặn suốt vì tải.
+  **Chưa có `ChickenCoop`** — chuồng vẫn là thứ phải dò tiếp hoặc giữ cách phân biệt
+  bằng màu nền.
 - **Người vác hàng đi tay không** — để Phase 10.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
@@ -286,6 +320,12 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0), rồi nối vào
 `ThoiDai.me` để lên đời là thành phố đổi mặt.
+
+**Từ 15/09 (lần 3) có đường thứ hai:** kho Icosa trên đĩa có hàng trăm dáng nhà hiện đại
+(`grep -io '[a-z0-9_ -]*house[a-z0-9_ -]*' docs/KHO_ICOSA.md`). Đổi lại: **nhiều tác giả
+khác nhau nên phong cách lộn xộn** — đúng cái chặn đã ghi ở mục 4, và toàn bộ là CC-BY nên
+phải ghi công. `city-builder-bits` một tác giả, đồng nhất, nhưng chỉ 8 dáng.
+**Nướng thử cả hai rồi gửi ảnh cho anh so.**
 
 **Việc phải quyết trước khi nướng:** gói chỉ có **8 dáng nhà** (`building_A`…`building_H`)
 cộng đường, xe, cột đèn — mà game có **32 loại nhà**. Hai đường: ghép 32 về 8 dáng, phân
