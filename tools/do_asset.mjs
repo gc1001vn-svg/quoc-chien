@@ -124,14 +124,25 @@ async function doPolyHaven(tu) {
     .map((ten) => `${ten}  [CC0]`);
 }
 
+/**
+ * HAI DUONG CAP KHOA, file nay chiu duoc ca hai:
+ *
+ *   a) Bien moi truong `POLY_PIZZA_KEY` - file tu dat header `x-auth-token`.
+ *   b) API credential cua moi truong dam may - **khoa khong bao gio vao phien**; proxy
+ *      cua Anthropic tu gan header sau khi request roi khoi may ao. An toan hon (a).
+ *
+ * Nen khong co bien moi truong thi VAN GOI, chu khong bo qua: duong (b) khong de lai dau
+ * vet nao trong phien de kiem truoc. Gap `401` moi biet la chua co khoa nao ca.
+ */
 async function doPolyPizza(tu) {
   const khoa = process.env.POLY_PIZZA_KEY;
-  if (khoa === undefined || khoa === '') return null;
+  const dau = khoa === undefined || khoa === '' ? {} : { 'x-auth-token': khoa };
   const ra = [];
   for (const t of tu.slice(0, 4)) {
     const res = await fetch(`https://api.poly.pizza/v1.1/search/${encodeURIComponent(t)}?limit=12`, {
-      headers: { 'x-auth-token': khoa },
+      headers: dau,
     });
+    if (res.status === 401) return null;
     if (!res.ok) {
       ra.push(`(${t}: HTTP ${res.status})`);
       continue;
@@ -178,9 +189,14 @@ try {
 
 const pizza = await doPolyPizza(tu);
 if (pizza === null) {
-  console.log('\n--- 4. Poly Pizza --- BO QUA: chua co POLY_PIZZA_KEY');
+  console.log('\n--- 4. Poly Pizza --- BO QUA: HTTP 401, chua co khoa nao');
   console.log('  Lay khoa: https://poly.pizza/ -> dang nhap -> Settings -> tao app -> copy key');
-  console.log('  Roi chay: POLY_PIZZA_KEY=<khoa> npm run do:asset ...');
+  console.log('  Roi mot trong hai:');
+  console.log('    a) POLY_PIZZA_KEY=<khoa> npm run do:asset ...   (tam, het khi dong phien)');
+  console.log('    b) API credential cua moi truong (ben, khoa khong vao phien)');
+  console.log('       claude.ai/code -> bo chon moi truong -> Update cloud environment');
+  console.log('       -> API credentials -> Add credential -> host api.poly.pizza,');
+  console.log('          header x-auth-token, xoa trong o Prefix');
   console.log('  KHOA LA MAT KHAU - repo nay Public, KHONG commit khoa vao git.');
 } else {
   in_('4. Poly Pizza  (10.400+ model, CC0 + CC-BY)', pizza);

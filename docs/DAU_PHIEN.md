@@ -115,7 +115,20 @@ và **thoát mã 1** khi vượt. Đo 15/09: **15 file · 4,2 MB**.
 
 ### Poly Pizza — hình dạng dữ liệu, đo 15/09
 
-Khoá API đã có (chủ dự án lấy 15/09, **giữ ở biến môi trường `POLY_PIZZA_KEY`, không ở git**).
+Khoá API đã có (chủ dự án lấy 15/09). **Không bao giờ vào git** — repo này Public.
+Hai đường cấp khoá, `do_asset.mjs` chịu được cả hai:
+
+- **`POLY_PIZZA_KEY`** — biến môi trường, file tự đặt header `x-auth-token`.
+- **API credential của môi trường đám mây** — proxy gắn header **sau khi request rời máy ảo**,
+  khoá không bao giờ vào phiên. An toàn hơn. Đặt ở `claude.ai/code` → bộ chọn môi trường →
+  **Update cloud environment** → **API credentials** → host `api.poly.pizza`, header
+  `x-auth-token`, **xoá ô Prefix**.
+
+Vì đường thứ hai **không để lại dấu vết nào trong phiên**, lệnh luôn gọi thử rồi mới kết
+luận — gặp `HTTP 401` mới báo là chưa có khoá. Đừng "tối ưu" thành kiểm biến môi trường
+trước rồi bỏ qua: làm vậy là mù với đường an toàn hơn.
+
+Biến môi trường chỉ áp cho **phiên mở sau khi đặt**; phiên đang chạy giữ giá trị cũ.
 
 Trả về khoá **PascalCase, có cả khoá chứa dấu cách**: `Title` · `Licence` · `Download`
 (luôn là **`.glb`** — máy nướng đọc được) · `Category` · `Tri Count` · `Attribution` ·
