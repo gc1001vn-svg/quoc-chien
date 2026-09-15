@@ -11,7 +11,8 @@ import tseslint from 'typescript-eslint';
  *      dung bien toan cuc cua trinh duyet. Nho vay chay duoc 10 gio game trong Node.
  */
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**', 'dev-dist/**', '*.config.js'] },
+  // `.duyet/**` la ban build de dang Artifact (scripts/duyet.mjs) - cung loai voi `dist/**`.
+  { ignores: ['dist/**', '.duyet/**', 'node_modules/**', 'dev-dist/**', '*.config.js'] },
 
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,

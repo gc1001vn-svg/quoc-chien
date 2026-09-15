@@ -20,7 +20,7 @@ tưởng chưa tắt skill nào.
 | Lệnh | Khi nào | Ghi chú |
 |---|---|---|
 | `npm ci` | **luôn luôn** | `node_modules` không bao giờ có sẵn |
-| `npm run do` | **luôn luôn** | phải **6/6 thước** trước khi động vào code |
+| `npm run do` | **luôn luôn** | phải **đủ thước** trước khi động vào code — đừng chép số vào đây, lệnh in ra |
 | `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB (**ước, chưa đo lại**), 9 gói itch + 2 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
 
 **Cỡ kho chỉ ghi ở đúng dòng trên** — `tests/TaiLieu.test.ts` giữ luật này. Trước 12/09
@@ -40,10 +40,25 @@ Dò `KHO_ASSET.md` phải dùng `grep -io ... | sort -u`, **cấm `grep -i` tr�
 4.870 ký tự, trúng một dòng mất ~3.300 token thay vì ~180. Luật đầy đủ: `CLAUDE.md` mục
 Quy ước.
 
-## F. Dò asset — bước 1b, kho chung
+## F. Dò asset — một lệnh chạy cả ba bước
 
-Luật ba bước ở `CLAUDE.md` mục Quy ước. Riêng bước **1b**, giữa `KHO_ASSET.md` và
-`NGUON_MO.md`:
+Luật ba bước ở `CLAUDE.md` mục Quy ước. **Từ 15/09 không grep tay nữa:**
+
+```bash
+npm run do:asset ga            # tiếng Việt cũng được, có từ điển dịch sẵn
+npm run do:asset hien_dai nha
+```
+
+Nó chạy `KHO_ASSET.md` → `KHO_CHUNG.md` → `NGUON_MO.md`, cộng **Poly Haven**
+(521 model, toàn bộ CC0, API mở không cần khoá) và **Poly Pizza** (10.400+ model,
+chỉ chạy khi có biến môi trường `POLY_PIZZA_KEY`). Chỉ in **tên model** trúng, không in
+cả dòng — chính là bẫy token ở mục D.
+
+**Dò hụt thì thêm từ vào `tools/tu_dien_asset.json`, đừng sửa mã nguồn.** Ngày 15/09
+`trai_ga` dò lại bằng lệnh này ra `Chicken` ở kho chung, sau khi sáu phiên trước kết luận
+"không gói nào có" — vì các phiên đó **quên bước 1b**.
+
+Cách grep tay bước **1b**, khi cần tra thứ lệnh trên không phủ:
 
 ```bash
 grep -io '[a-z0-9_]*<từ khoá>[a-z0-9_]*' docs/KHO_CHUNG.md | sort -u
@@ -73,3 +88,27 @@ thì trỏ thẳng vào glTF. **Máy nướng đọc được cả ba: `.obj` ·
 
 Tải gói mới từ itch xong chạy `npm run kho`; lấy từ kho chung xong chạy `npm run kho:chung`
 (chỉ khi kho chung có thay đổi).
+
+## G. Bản duyệt — cho chủ dự án xem game mà không cần đẩy `main`
+
+Máy ảo **không mở được trang thật** (`github.io` và mọi hosting đều `000`). Trước 15/09
+mọi vòng duyệt đều phải đẩy `main`, chờ CI, rồi nhờ chủ dự án chụp màn hình.
+
+```bash
+npm run duyet
+```
+
+Build lại với `--base=./`, bỏ service worker, gói vào `.duyet/` kèm `xem.html` bọc iframe.
+Rồi **đăng bằng công cụ Artifact** — chủ dự án bấm link là mở game thật trên iPhone.
+
+Ba chỗ dễ sập, đã ghi đủ trong đầu `scripts/duyet.mjs`:
+
+- **Đừng đẩy thẳng `dist/`** — nó viết cứng `/quoc-chien/`, đăng lên là 404 sạch.
+- **Đừng đăng thẳng một file HTML đủ đầu đủ đuôi** — Artifact tự bọc nó vào khung
+  `<!doctype html>` của nó. Phải qua `xem.html` + iframe.
+- **`.nojekyll` phải bỏ** — Artifact từ chối đuôi file không ứng với kiểu nội dung nào.
+
+Lệnh tự đối chiếu trần Artifact (16 MB trang · 15 MB mỗi file nhị phân · 64 MB · 255 file)
+và **thoát mã 1** khi vượt. Đo 15/09: **15 file · 4,2 MB**.
+
+**Bản duyệt KHÔNG thay `main`.** Bản thật vẫn là GitHub Pages; `.duyet/` không lên git.

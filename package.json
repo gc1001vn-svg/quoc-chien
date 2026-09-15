@@ -39,7 +39,9 @@
     "xem:quyhoach": "node tools/xem_quy_hoach.mjs",
     "check:token": "node scripts/check_token.mjs",
     "check:kehoach": "node scripts/check_ke_hoach.mjs",
-    "khoi:dong": "node scripts/khoi_dong.mjs"
+    "khoi:dong": "node scripts/khoi_dong.mjs",
+    "duyet": "node scripts/duyet.mjs",
+    "do:asset": "node tools/do_asset.mjs"
   },
   "repository": {
     "type": "git",

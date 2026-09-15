@@ -26,3 +26,9 @@ src/PhienBan.ts
 
 # Ve duyet dung mot lan va so lenh — KHONG len git
 .claude/nhac_kho.log
+
+# Ban duyet: build lai voi duong dan tuong doi de dang Artifact. Sinh lai duoc, khong len git.
+.duyet/
+
+# Cache do asset (Poly Haven). Sinh lai duoc, khong len git.
+.cache/
