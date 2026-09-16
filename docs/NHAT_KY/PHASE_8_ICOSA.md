@@ -50,3 +50,35 @@ Trước khi nướng mẻ Icosa phải thêm tên từng tác giả vào `docs/
 - `docs/KHO_ICOSA.md` — bản kê sinh tự động, **lên git** nên phiên sau `grep` được mà
   không phải tải lại 1 GB.
 - `docs/NGUON_MO.md` mục 9.
+
+## Phiên 16/09 — kho chung tách repo, và ba lỗi lộ ra khi đo vòng tải lại
+
+**Kho chung mới: https://github.com/gc1001vn-svg/kho-game** (Public, ~1,5 MB). Chủ dự án
+chốt: repo giữ **bản kê + manifest**, không giữ nhị phân. Lý do bỏ hai đường kia:
+đẩy 1 GB vào git thì lịch sử phình vĩnh viễn; Releases thì **máy ảo bị chặn** —
+`Creating, editing, or deleting releases is not permitted for this session type`.
+Tạo repo cũng chặn: `403 sessions are bound to their configured repositories` (chủ dự án
+tạo tay, rồi `add_repo`).
+
+Đo vòng tải lại từ manifest, 415 model: **377 khớp chính xác số tam · lệch số tam 0 ·
+chỉ 1/415 hỏng riêng ở bản tải lại**. 20 cái còn lại hỏng ở **cả bản gốc**, tức tải lại
+chỉ phơi nợ có sẵn ra.
+
+**Ba lỗi thật, đã sửa gốc ở `tools/tai_icosa.mjs`:**
+
+1. Manifest bản đầu chỉ giải mốc thật cho file gốc, `.bin` giữ mốc giả → **146 model**
+   tải về file phụ **0 byte**; `.gltf` vẫn mở được nhưng `docGltf` gãy
+   `Invalid typed array length: 3`.
+2. **API không luôn khai `resources`** → 15 model có `.gltf` trỏ `model.bin` mà không có
+   file nào. Nay đọc thẳng `buffers`/`images` trong `.gltf` rồi suy URL.
+3. Model Tilt Brush trỏ shader ở `tiltbrush.com` — tham chiếu ngoài, nay bỏ qua thay vì
+   báo hỏng.
+
+Thêm: bảy thư mục có model mà **thiếu `ghi_cong.json`** (di sản bản tool cũ) đã tải lại
+sạch. Kho nay **1.679 model · 0 thiếu ghi công**.
+
+**Ghi công hết phải duyệt tay:** `docs/KHO_ICOSA.md` thêm cột *Trang gốc* → nó **là** bản
+ghi công CC-BY. `docs/ASSET_CREDITS.md` (file khoá) chỉ trỏ sang, sửa đúng một lần bằng vé.
+
+**Nợ để lại:** 5 model gãy `start offset of Float32Array should be a multiple of 4` —
+lỗi căn lề trong `tools/lib/gltf.mjs`, thuộc bộ đọc chứ không phải khâu tải.
