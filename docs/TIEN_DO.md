@@ -22,10 +22,11 @@ mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
 
 ### Phiên 16/09 (lần 2) đã đổi gì
 
-- **Kho mục lục chung 9 nguồn: https://github.com/gc1001vn-svg/kho-game** —
-  112.336 dòng, repo 4,4 MB, **không chứa file nhị phân**. Dò thấy cái nào cần mới tải.
-  Ba loại trước đây không có nguồn nào: **âm thanh, nhạc, font**. Số từng nguồn và bốn
-  kiểu chặn khác nhau: `docs/NHAT_KY/PHASE_8_KHO_CHUNG.md`.
+- **Kho mục lục chung 10 nguồn: https://github.com/gc1001vn-svg/kho-game** —
+  **139.650 dòng**, repo ~4,5 MB, **không chứa file nhị phân**. Dò thấy cái nào cần mới
+  tải. Riêng **model 3D dò được: 86.290**, cộng 215 gói Kenney chưa kê lẻ. Ba loại trước
+  đây không có nguồn nào: **âm thanh (28.740), nhạc (6.825), font (1.941)**.
+  Số từng nguồn và bốn kiểu chặn khác nhau: `docs/NHAT_KY/PHASE_8_KHO_CHUNG.md`.
 - **`npm run do:asset` có bước 1c** gọi thẳng kho đó. Dò `ga` ra thêm 59 trúng ở Icosa,
   trong đó có `Chicken Coop` 8.888 tam.
 - **Bộ đọc glTF sửa ba lỗi, kho Icosa 1.654/1.679 → 1.679/1.679 đọc được.**
@@ -225,21 +226,19 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc mới 16/09 — lấy khoá Freesound (3 phút)
+### ✅ Việc 16/09 — khoá Freesound: XONG
 
-Kho chung có nhạc và âm thanh của OpenGameArt rồi, nhưng **Freesound là kho lớn nhất**
-(~600.000 file). Lệnh `kho-game/cong-cu/quet_freesound.mjs` **viết xong, cắm khoá là chạy** —
-`freesound.org` trả `200`, chỉ thiếu khoá nên `/apiv2/search/text/` trả
-`401 {"detail":"Authentication credentials were not provided."}`.
+Chủ dự án lấy khoá trong phiên, đã quét **27.313 file**. Khoá đi qua biến `FREESOUND_KEY`,
+**không nằm trong repo nào** (đã `grep` lại để chắc). Muốn quét lại mẻ khác:
 
-1. Safari mở <https://freesound.org/apiv2/apply/> — đăng nhập (có nút Google).
-2. Điền tên ứng dụng bất kỳ, ví dụ `quoc-chien`. Mô tả gõ gì cũng được.
-3. Bấm gửi, trang hiện dòng **API key** — chuỗi chữ số dài.
-4. Gửi chuỗi đó vào phiên, **hoặc** an toàn hơn: `claude.ai/code` → bộ chọn môi trường →
-   **Update cloud environment** → **API credentials** → **Add credential**:
-   host `freesound.org` · header `Authorization` · prefix `Token ` (có dấu cách cuối).
+```bash
+FREESOUND_KEY=<khoá> node cong-cu/quet_freesound.mjs ga chim
+```
 
-**Khoá là mật khẩu.** Cả `quoc-chien` lẫn `kho-game` đều Public — không bao giờ commit.
+Khoá cũ hết hạn hay muốn đổi thì lấy lại ở <https://freesound.org/apiv2/apply/> — lấy dòng
+**Api key**, không phải **Client id**. Muốn khoá không bao giờ đi qua phiên: đặt ở
+`claude.ai/code` → bộ chọn môi trường → **Update cloud environment** → **API credentials**
+→ host `freesound.org` · header `Authorization` · prefix `Token ` (có dấu cách cuối).
 
 ### Việc mới 15/09 (lần 3)
 

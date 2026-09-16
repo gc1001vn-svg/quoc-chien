@@ -55,3 +55,18 @@ bắt — chủ dự án phải tự nghĩ ra việc tiếp. Ba repo cùng `md5 
   `cong-cu/tac_gia.mjs <đường dẫn>`. CC-BY đòi ghi tên, **chạy trước khi dùng**.
 - `npm run kho` **vẫn cấm chạy**: `assets_source/` giờ chỉ có `icosa` + 4 City Kit, chạy
   là ghi đè `KHO_ASSET.md` mất phần còn lại.
+
+## Bổ sung cuối phiên — Freesound và chốt số
+
+**Freesound vào kho: 27.313 file** (CC0 14.587 · CC-BY 4.0 10.753 · CC-BY 3.0 1.973).
+Chủ dự án lấy khoá API trong phiên. Quét 41 từ khoá — kho họ có 735.011 file nên đây là
+phần liên quan tới game, không phải cả kho. Khác OpenGameArt: Freesound **có sẵn tên tác
+giả** trong kết quả API, khỏi mở từng trang. Khoá đi qua biến `FREESOUND_KEY`, đã `grep`
+lại repo để chắc nó không lọt vào file nào.
+
+**Chốt: 139.650 dòng mục lục, 10 nguồn.** Riêng **model 3D dò được: 86.290**
+(Icosa 73.626 · Poly Pizza 6.136 · OpenGameArt 3D Art 3.475 · `assets_source` 1.222 ·
+kho chung `tayvuc` 1.310 · Poly Haven 521), cộng **215 gói Kenney** chưa kê lẻ từng model.
+
+Phần còn lại: âm thanh 28.740 · nhạc 6.825 · 2D 9.347 · hoạ tiết 3.497 · HDRI 996 ·
+font 1.941 · mã nguồn mở 10.
