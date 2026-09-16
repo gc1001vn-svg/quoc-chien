@@ -3,20 +3,39 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 15/09/2026 (phiên đo kho gương Icosa và tải 1.671 model — **không đụng màn hình game**).
+Cập nhật: 16/09/2026 (phiên kho mục lục chung 9 nguồn + sửa bộ đọc glTF — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Sáu phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3) không đụng gì màn
-hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ nghề cho cả bốn
-repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng rào tất
-định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09 (lần 3)
-đo kho gương Icosa. Chi tiết:
+**Game vẫn ở Phase 8A.** Tám phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2) không
+đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
+nghề cho cả bốn repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng
+rào tất định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09
+(lần 3) đo kho gương Icosa, 16/09 tách kho chung, 16/09 (lần 2) mở kho lên 9 nguồn và sửa
+bộ đọc glTF. Chi tiết:
 `docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
-`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`.
+`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`,
+`PHASE_8_KHO_CHUNG.md`.
 
-**Phase 8B làm được ngay phiên sau** — không còn gì chặn, và nay có **1.671 model Icosa
-trên đĩa** để chọn dáng nhà thay vì chỉ 8 dáng của `city-builder-bits`.
+**Phase 8B làm được ngay phiên sau** — không còn gì chặn. Ba đường chọn dáng nhà, số đo ở
+mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
+
+### Phiên 16/09 (lần 2) đã đổi gì
+
+- **Kho mục lục chung 9 nguồn: https://github.com/gc1001vn-svg/kho-game** —
+  112.336 dòng, repo 4,4 MB, **không chứa file nhị phân**. Dò thấy cái nào cần mới tải.
+  Ba loại trước đây không có nguồn nào: **âm thanh, nhạc, font**. Số từng nguồn và bốn
+  kiểu chặn khác nhau: `docs/NHAT_KY/PHASE_8_KHO_CHUNG.md`.
+- **`npm run do:asset` có bước 1c** gọi thẳng kho đó. Dò `ga` ra thêm 59 trúng ở Icosa,
+  trong đó có `Chicken Coop` 8.888 tam.
+- **Bộ đọc glTF sửa ba lỗi, kho Icosa 1.654/1.679 → 1.679/1.679 đọc được.**
+  `tai_icosa.mjs` nay gọi `docGltf` ngay sau khi tải, bản nào không mở được thì thử bản kế.
+- **Kenney City Kit: 60 dáng nhà, một tác giả, CC0** — `docObj` đọc 213/213 model, 0 lỗi.
+  Mục 5 dưới đây đã ghi số chi tiết. Cái chặn "8 dáng cho 32 loại nhà" **không còn**.
+- **Hook `chan_bao_xong` đòi thêm dòng `Đề xuất:`** khi báo xong — trước đó luật chỉ nằm ở
+  `CLAUDE.md` repo này và chỉ áp cuối phiên. Ba repo cùng `md5 056679fe`.
+- **Ghi công Icosa hết phải duyệt tay:** `docs/KHO_ICOSA.md` thêm cột *Trang gốc* nên nó
+  **là** bản ghi công; `ASSET_CREDITS.md` chỉ trỏ sang, sửa đúng một lần bằng vé.
 
 ### Phiên 15/09 (lần 3) đã đổi gì
 
@@ -206,6 +225,22 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### Việc mới 16/09 — lấy khoá Freesound (3 phút)
+
+Kho chung có nhạc và âm thanh của OpenGameArt rồi, nhưng **Freesound là kho lớn nhất**
+(~600.000 file). Lệnh `kho-game/cong-cu/quet_freesound.mjs` **viết xong, cắm khoá là chạy** —
+`freesound.org` trả `200`, chỉ thiếu khoá nên `/apiv2/search/text/` trả
+`401 {"detail":"Authentication credentials were not provided."}`.
+
+1. Safari mở <https://freesound.org/apiv2/apply/> — đăng nhập (có nút Google).
+2. Điền tên ứng dụng bất kỳ, ví dụ `quoc-chien`. Mô tả gõ gì cũng được.
+3. Bấm gửi, trang hiện dòng **API key** — chuỗi chữ số dài.
+4. Gửi chuỗi đó vào phiên, **hoặc** an toàn hơn: `claude.ai/code` → bộ chọn môi trường →
+   **Update cloud environment** → **API credentials** → **Add credential**:
+   host `freesound.org` · header `Authorization` · prefix `Token ` (có dấu cách cuối).
+
+**Khoá là mật khẩu.** Cả `quoc-chien` lẫn `kho-game` đều Public — không bao giờ commit.
+
 ### Việc mới 15/09 (lần 3)
 
 **Ghi công CC-BY: cần anh cho phép sửa `docs/ASSET_CREDITS.md`** (file khoá). Toàn bộ
@@ -289,6 +324,12 @@ quyền hạn và giới hạn máy ảo.
   `v1.1/model/<id>/download`, `v1.1/asset/<id>` đều `404 Not Found`; `cdn.` `files.`
   `assets.poly.pizza` không tồn tại; Chromium có `cf_clearance@.poly.pizza` rồi vẫn kẹt.
   Đường còn lại là **kho gương Icosa**, chờ allowlist — mục 3.
+- **✅ Nợ bộ đọc glTF: SỬA XONG 16/09.** `start offset of Float32Array should be a
+  multiple of 4` (offset lệch → đọc bằng `DataView`) · GLTF1 lọt vào
+  (`(j.buffers ?? []).map is not a function`) · file phụ 0 byte vẫn bị bỏ qua.
+  Kho Icosa **1.654/1.679 → 1.679/1.679 đọc được**.
+- **✅ Chuồng gà: đã tìm ra 16/09** — `Chicken Coop` 8.888 tam trên Icosa, dò bằng
+  `npm run do:asset ga`. Trước ghi "chưa có `ChickenCoop`".
 - **✅ `trai_ga`: HẾT CHẶN 15/09 (lần 3) — model đã nằm trên đĩa.**
   `assets_source/icosa/1YE8U35HXsI/Chicken_01.glb` (tác giả Google · CC-BY 3.0 · **648
   tam** · `docGltf()` đọc được) — đúng model mà Poly Pizza trỏ vào. Kho Icosa còn nhiều
