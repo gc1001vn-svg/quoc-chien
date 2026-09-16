@@ -95,6 +95,26 @@ thóc đỏ mái tôn, silo bê tông, cối xay bơm nước khung thép. Lại
 không hoạ tiết. Sai cả thời đại lẫn phong cách. Gói `Ultimate Modular Ruins` **không có
 trên itch.io của Quaternius** — đã liệt kê hết 30 gói, không thấy.
 
+## Icosa Gallery — nguồn thứ năm, ghi công SINH TỰ ĐỘNG (15/09/2026)
+
+**Model trong game này một phần lấy từ Icosa Gallery, kho gương của Google Poly:
+<https://icosa.gallery>** — toàn bộ **CC-BY**, không có CC0.
+
+**Bản ghi công đầy đủ: `docs/KHO_ICOSA.md`** — tên model · tác giả · license · link trang
+gốc, sinh tự động bằng `npm run tai:icosa`. Nướng thêm model Icosa thì **chạy lại lệnh đó,
+KHÔNG phải sửa file này** — đó là lý do bảng nằm ở file khác: file này khoá, mỗi lần sửa là
+một vòng hỏi chủ dự án, mà danh sách thì đổi mỗi mẻ.
+
+Hai việc vẫn phải làm tay khi nướng mẻ đầu có model Icosa:
+
+1. Thêm dòng atlas vào bảng đầu file này, cột *Nguồn* ghi `Icosa Gallery` kèm link và trỏ
+   `docs/KHO_ICOSA.md`. Một dòng cho cả mẻ, không phải một dòng mỗi model.
+2. **Ghi công ở chỗ người chơi thấy được** (màn hình credit trong game), như Poly Pizza.
+   CC-BY đòi ghi tên tác giả, không đòi ghi ngay trên màn chơi.
+
+`tai_icosa.mjs` **tự loại ND và SA** ngay từ bước dò — ND cấm tác phẩm phái sinh, mà nướng
+model thành sprite là phái sinh; chơi phi thương mại không gỡ được điều đó.
+
 ## Poly Pizza — nguồn thứ tư, cấp phép 15/09/2026
 
 **Model trong game này một phần lấy từ Poly Pizza: <https://poly.pizza>**

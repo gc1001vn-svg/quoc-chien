@@ -222,7 +222,12 @@ function keKho() {
     if (!existsSync(gc)) continue;
     const g = JSON.parse(readFileSync(gc, 'utf8'));
     const file = readdirSync(join(THU_MUC, id)).find((x) => /\.(glb|gltf)$/i.test(x)) || '';
-    dong.push(`| ${g.ten} | \`${id}/${file}\` | ${g.tac_gia} | ${g.license} | ${g.so_tam} |`);
+    // Cot `Trang` la BAT BUOC ve phap ly, khong phai trang tri: CC-BY doi ten tac gia va
+    // duong dan ve ban goc. Nho no, file nay dung luon lam ban ghi cong, khong phai chep
+    // tay 1.671 dong sang `ASSET_CREDITS.md` (file khoa, moi lan sua la mot vong hoi).
+    dong.push(
+      `| ${g.ten} | \`${id}/${file}\` | ${g.tac_gia} | ${g.license} | ${g.so_tam} | ${g.trang} |`,
+    );
   }
   mkdirSync('docs', { recursive: true });
   writeFileSync(
@@ -237,11 +242,16 @@ function keKho() {
       '> Dò bằng `grep -io` để khỏi in cả dòng:',
       "> `grep -io '[a-z0-9_ -]*chicken[a-z0-9_ -]*' docs/KHO_ICOSA.md | sort -u`",
       '>',
-      '> **Toàn bộ là CC-BY** — dùng thì phải ghi tên tác giả vào `docs/ASSET_CREDITS.md`,',
-      '> kèm dòng ghi công Icosa Gallery. Bản ND và SA đã bị `tai_icosa.mjs` loại từ đầu.',
+      '> **File này LÀ bản ghi công của nguồn Icosa**, không phải bản kê suông.',
+      '> `docs/ASSET_CREDITS.md` mục Icosa trỏ về đây; nướng thêm model **không phải**',
+      '> sửa file khoá đó, chỉ cần chạy lại `npm run tai:icosa` cho bảng dưới tự cập nhật.',
+      '>',
+      '> **Toàn bộ là CC-BY:** cột *Tác giả* và cột *Trang* là nghĩa vụ ghi công, đừng cắt.',
+      '> Bản ND và SA đã bị `tai_icosa.mjs` loại từ đầu — ND cấm phái sinh, mà nướng sprite',
+      '> là phái sinh.',
       '',
-      '| Tên | File | Tác giả | License | Số tam |',
-      '|---|---|---|---|---:|',
+      '| Tên | File | Tác giả | License | Số tam | Trang gốc |',
+      '|---|---|---|---|---:|---|',
       ...dong,
       '',
       `**${dong.length} model.** Số này là số thật trên đĩa lúc chạy lệnh cuối cùng.`,
