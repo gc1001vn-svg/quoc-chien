@@ -120,9 +120,32 @@ function docAcc(j, dem, i) {
   const buoc = bv.byteStride ?? soPhan * coByte;
   const bin = dem[bv.buffer];
   const chia = a.normalized === true ? CHIA[a.componentType] : 0;
+  const dau = bin.byteOffset + goc;
+
+  // File that co cho KHONG CAN LE: `new Float32Array(buffer, offset)` doi offset chia het
+  // cho 4, lech mot byte la `RangeError: start offset of Float32Array should be a multiple
+  // of 4`. Do 16/09 tren kho Icosa: 5 model gay dung loi nay. glTF khong cam - `byteStride`
+  // va `byteOffset` chi phai chia het theo dinh nghia cua tung thuoc tinh, ma bo doc cu lai
+  // tin la luon can le. Lech thi doc tung so bang DataView, khong tao view can le nua.
+  const canLe = (dau % coByte === 0) && (buoc % coByte === 0);
+  const dv = canLe ? null : new DataView(bin.buffer);
+  const DOC = {
+    5120: (o) => dv.getInt8(o), 5121: (o) => dv.getUint8(o),
+    5122: (o) => dv.getInt16(o, true), 5123: (o) => dv.getUint16(o, true),
+    5125: (o) => dv.getUint32(o, true), 5126: (o) => dv.getFloat32(o, true),
+  };
+
   for (let k = 0; k < a.count; k += 1) {
-    const phan = new MANG[a.componentType](bin.buffer, bin.byteOffset + goc + k * buoc, soPhan);
-    for (let c = 0; c < soPhan; c += 1) ra[k * soPhan + c] = chia === 0 ? phan[c] : phan[c] / chia;
+    if (canLe) {
+      const phan = new MANG[a.componentType](bin.buffer, dau + k * buoc, soPhan);
+      for (let c = 0; c < soPhan; c += 1) ra[k * soPhan + c] = chia === 0 ? phan[c] : phan[c] / chia;
+    } else {
+      const doc = DOC[a.componentType];
+      for (let c = 0; c < soPhan; c += 1) {
+        const v = doc(dau + k * buoc + c * coByte);
+        ra[k * soPhan + c] = chia === 0 ? v : v / chia;
+      }
+    }
   }
   return ra;
 }

@@ -44,6 +44,8 @@ import {
 import { dirname, join } from 'node:path';
 import { promisify } from 'node:util';
 
+import { docGltf } from './lib/gltf.mjs';
+
 const chay_lenh = promisify(execFile);
 
 const API = 'https://api.icosa.gallery/v1/assets';
@@ -61,8 +63,13 @@ const SONG_SONG = 4;
 const MOI_TRANG = 100;
 const LICENSE_CAM = ['_ND', '_SA'];
 const LICENSE_NHAN = ['CREATIVE_COMMONS_BY', 'CREATIVE_COMMONS_0'];
-/** Thu tu uu tien format: GLB tu chua moi thu trong mot file nen de nhat. */
-const FORMAT_UU_TIEN = ['GLB', 'GLTF2', 'GLTF1'];
+/**
+ * Thu tu uu tien format: GLB tu chua moi thu trong mot file nen de nhat.
+ * **KHONG lay GLTF1**: bo doc cua repo chi hieu glTF 2.0 - ban 1.0 de `buffers` la OBJECT
+ * chu khong phai mang, gay `(j.buffers ?? []).map is not a function`. Do 16/09: 3 model
+ * lot vao kho vi truoc day co GLTF1 trong danh sach nay.
+ */
+const FORMAT_UU_TIEN = ['GLB', 'GLTF2'];
 
 const doi = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -166,51 +173,79 @@ async function taiMotBan(f, dich) {
   return false;
 }
 
+/**
+ * Keo file .bin va anh di kem cho ban `.gltf` tho.
+ *
+ * API KHONG LUON KHAI `resources`. Do 415 model tai lai: 20 cai co `.gltf` tro sang
+ * `model.bin` ma khong co file nao - `docGltf` gay ENOENT, va mat mot me moi lo. Nen doc
+ * thang `buffers`/`images` trong `.gltf` roi suy URL tu URL cua chinh no.
+ */
+async function taiFilePhu(f, dich, thuMuc) {
+  for (const r of f.resources || []) {
+    const rd = join(thuMuc, (r.relativePath || '').replace(/[^\w./-]/g, '_'));
+    if (existsSync(rd) && statSync(rd).size > 0) continue;
+    mkdirSync(dirname(rd), { recursive: true });
+    const rm = await mocThat(r.url);
+    if (rm) await curl(['-o', rd, rm]);
+  }
+  if (dich.toLowerCase().endsWith('.glb')) return;
+
+  const j = JSON.parse(readFileSync(dich, 'utf8'));
+  // glTF 1.0 de `buffers` la OBJECT chu khong phai mang - bo doc cua repo khong hieu ban
+  // do, va `docGltf` se bao loi ngay sau day, nen khong phai xu ly rieng o day.
+  const ds = [...(Array.isArray(j.buffers) ? j.buffers : Object.values(j.buffers || {})),
+    ...(Array.isArray(j.images) ? j.images : Object.values(j.images || {}))];
+  for (const uri of ds.map((x) => x.uri).filter(Boolean)) {
+    // `data:` nam san trong file. URL tuyet doi la tham chieu ngoai (model Tilt Brush tro
+    // sang shader o `tiltbrush.com`) - khong phai file phu, bo qua chu dung bao hong.
+    if (uri.startsWith('data:') || /^https?:\/\//i.test(uri)) continue;
+    const rd = join(thuMuc, decodeURIComponent(uri).replace(/[^\w./-]/g, '_'));
+    if (existsSync(rd) && statSync(rd).size > 0) continue;
+    mkdirSync(dirname(rd), { recursive: true });
+    const moc = await mocThat(f.root.url.replace(/[^/]*$/, encodeURI(uri)));
+    if (moc) await curl(['-o', rd, moc]);
+    if (!existsSync(rd) || statSync(rd).size === 0) {
+      rmSync(rd, { force: true });
+      throw new Error(`thieu file phu ${uri}`);
+    }
+  }
+}
+
 /** Tai mot asset ve `assets_source/icosa/<assetId>/`. Tra ve so byte, 0 la bo qua. */
 async function taiAsset(asset, ds) {
   const thuMuc = join(THU_MUC, asset.assetId);
   const cuDich = ds.map((x) => join(thuMuc, tenFile(x)));
   const daCo = cuDich.find((d) => existsSync(d) && statSync(d).size > 0);
-  if (daCo) return { byte: 0, bo_qua: true };
+  // File model co ma FILE PHU RONG thi coi nhu chua tai: bo qua kieu cu de sot 25 model
+  // `.gltf` tro sang `.bin` 0 byte, `docGltf` gay `Invalid typed array length: 3` va chi
+  // lo ra luc nuong. Xoa ca thu muc de tai lai sach.
+  if (daCo) {
+    const rong = readdirSync(thuMuc).some((x) => statSync(join(thuMuc, x)).size === 0);
+    if (!rong) return { byte: 0, bo_qua: true };
+    rmSync(thuMuc, { recursive: true, force: true });
+  }
   mkdirSync(thuMuc, { recursive: true });
 
-  // Thu lan luot cac ban: GLB truoc, roi GLTF2, GLTF1 - ban nay thieu thi con ban kia.
-  let f = null, dich = null;
+  // Thu lan luot cac ban: GLB truoc, roi GLTF2. Ban nao tai ve ma BO DOC CUA REPO khong
+  // mo duoc thi bo, thu ban ke - de kho khong chua model chi lo ra luc nuong.
+  let f = null, dich = null, loiCuoi = null;
   for (let i = 0; i < ds.length; i++) {
-    if (await taiMotBan(ds[i], cuDich[i])) { f = ds[i]; dich = cuDich[i]; break; }
-  }
-  if (f === null) throw new Error(`khong ban nao co luu (thu ${ds.length})`);
-
-  // GLTF tho: keo not file .bin va anh di kem, giu nguyen duong dan tuong doi.
-  for (const r of f.resources || []) {
-    const rd = join(thuMuc, (r.relativePath || '').replace(/[^\w./-]/g, '_'));
-    if (existsSync(rd)) continue;
-    mkdirSync(dirname(rd), { recursive: true });
-    const rm = await mocThat(r.url);
-    if (rm) await curl(['-o', rd, rm]);
-  }
-  // API KHONG LUON KHAI `resources`. Do 415 model tai lai: 20 cai co `.gltf` tro sang
-  // `model.bin` ma khong co file nao - `docGltf` gay ENOENT, va mat mot me moi lo. Nen
-  // doc thang `buffers`/`images` trong `.gltf` roi suy URL tu URL cua chinh no.
-  if (!dich.toLowerCase().endsWith('.glb')) {
-    const j = JSON.parse(readFileSync(dich, 'utf8'));
-    const can = [...(j.buffers || []), ...(j.images || [])].map((x) => x.uri).filter(Boolean);
-    for (const uri of can) {
-      // `data:` nam san trong file. URL tuyet doi la tham chieu ngoai (model Tilt Brush
-      // tro sang shader o `tiltbrush.com`) - khong phai file phu, bo qua chu dung bao hong.
-      if (uri.startsWith('data:') || /^https?:\/\//i.test(uri)) continue;
-      const rd = join(thuMuc, decodeURIComponent(uri).replace(/[^\w./-]/g, '_'));
-      if (existsSync(rd) && statSync(rd).size > 0) continue;
-      mkdirSync(dirname(rd), { recursive: true });
-      const goc = f.root.url.replace(/[^/]*$/, encodeURI(uri));
-      const rm = await mocThat(goc);
-      if (rm) await curl(['-o', rd, rm]);
-      if (!existsSync(rd) || statSync(rd).size === 0) {
-        rmSync(rd, { force: true });
-        rmSync(dich, { force: true });
-        throw new Error(`thieu file phu ${uri}`);
-      }
+    if (!(await taiMotBan(ds[i], cuDich[i]))) continue;
+    try {
+      await taiFilePhu(ds[i], cuDich[i], thuMuc);
+      docGltf(cuDich[i]);
+      f = ds[i];
+      dich = cuDich[i];
+      break;
+    } catch (loi) {
+      loiCuoi = loi;
+      rmSync(cuDich[i], { force: true });
     }
+  }
+  if (f === null) {
+    throw new Error(loiCuoi
+      ? `${ds.length} ban deu hong: ${String(loiCuoi.message).slice(0, 45)}`
+      : `khong ban nao co luu (thu ${ds.length})`);
   }
 
   writeFileSync(
