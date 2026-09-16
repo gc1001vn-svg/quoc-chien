@@ -70,3 +70,25 @@ kho chung `tayvuc` 1.310 · Poly Haven 521), cộng **215 gói Kenney** chưa k�
 
 Phần còn lại: âm thanh 28.740 · nhạc 6.825 · 2D 9.347 · hoạ tiết 3.497 · HDRI 996 ·
 font 1.941 · mã nguồn mở 10.
+
+## Vòng cuối — 2D, Kenney chia loại, kho asset đầy đủ trở lại
+
+Chủ dự án hỏi "model 2D đâu" — **có, nhưng mục lục không nói ra**. Ba sửa:
+
+1. **Kenney chia theo loại:** `2D 145 · 3D 50 · Audio 10 · Textures 9 · Other 1`. Trước
+   quét chung một danh sách nên 215 gói không ai biết `tiny-factory` là sprite hay model.
+   Lần quét đầu chỉ lấy `2D/3D/Audio` thì **mất 10 gói hoạ tiết** (`pattern-pack`,
+   `prototype-textures`, `road-textures`, `skyboxes`…) — phải thêm `Textures` và `Other`.
+2. **Thêm itch.io CC0: 525 gói** (`tag-2d 360` · `tag-3d 165`). Bước **quét** không cần
+   Chromium — trang duyệt ra ở máy chủ; chỉ bước **tải** mới cần (danh sách file nạp bằng
+   JS). Hai cảnh báo: license **tác giả tự khai**, itch không kiểm; và bộ lọc
+   `assets-cc0` lọc theo license **chứ không theo giá** nên gói $19.95 vẫn lọt vào.
+3. **Nợ `npm run kho` hết:** chạy `npm run tai:tatca` (2,1 GB, 17 gói) rồi `npm run kho` →
+   `KHO_ASSET.md` **2.164 model** (trước bị cắt còn 1.222 vì đĩa chỉ có `icosa` + 4 City
+   Kit). Mục lục nạp lại: 3.960 → **6.288 dòng**.
+
+**Chốt cuối phiên: 142.504 dòng · 11 nguồn · repo ~4,5 MB.** Tìm 2D thì có OpenGameArt
+9.347 mục · itch.io 360 gói · Kenney 145 gói.
+
+Nợ cố ý giữ: **tác giả OpenGameArt để `?`** — lấy lười bằng `cong-cu/tac_gia.mjs` đúng lúc
+dùng, quét sẵn 22.714 mục là 22.714 lượt gọi cho thứ 99% không đụng tới.
