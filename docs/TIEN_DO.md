@@ -321,6 +321,24 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0), rồi nối vào
 `ThoiDai.me` để lên đời là thành phố đổi mặt.
 
+### Đường thứ ba, đo 16/09: Kenney City Kit — ĐANG DẪN
+
+Tải và đo thật (`node tools/tai_asset.mjs city-kit-*`), **không phải ước**:
+
+| Gói | Dáng nhà | Khác | Cỡ |
+|---|---:|---|---:|
+| `city-kit-suburban` | **21** | hàng rào, lối đi, cây, bồn hoa | 8,3 MB |
+| `city-kit-commercial` | **19** | + 22 bản `low-detail`, mái hiên, dù | 12 MB |
+| `city-kit-industrial` | **20** | ống khói, bồn, container, pin mặt trời, tháp nước, cối xay | 12 MB |
+| `city-kit-roads` | — | 95 mảnh đường | 7,9 MB |
+
+**60 dáng nhà, cùng một tác giả.** Game cần 32 → dư gấp gần hai, mà **không vướng cái
+chặn phong cách** của Icosa. Cả bốn gói `License.txt` ghi `Creative Commons Zero, CC0`.
+`docObj` đọc **213/213 model, 0 lỗi**.
+
+So ba đường: `city-builder-bits` 8 dáng · **Kenney City Kit 60 dáng, đồng nhất** ·
+Icosa hàng trăm dáng nhưng nhiều tác giả nên lộn xộn.
+
 **Từ 15/09 (lần 3) có đường thứ hai:** kho Icosa trên đĩa có hàng trăm dáng nhà hiện đại
 (`grep -io '[a-z0-9_ -]*house[a-z0-9_ -]*' docs/KHO_ICOSA.md`). Đổi lại: **nhiều tác giả
 khác nhau nên phong cách lộn xộn** — đúng cái chặn đã ghi ở mục 4, và toàn bộ là CC-BY nên
