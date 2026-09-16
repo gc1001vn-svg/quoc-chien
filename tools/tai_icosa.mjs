@@ -189,6 +189,27 @@ async function taiAsset(asset, ds) {
     const rm = await mocThat(r.url);
     if (rm) await curl(['-o', rd, rm]);
   }
+  // API KHONG LUON KHAI `resources`. Do 415 model tai lai: 20 cai co `.gltf` tro sang
+  // `model.bin` ma khong co file nao - `docGltf` gay ENOENT, va mat mot me moi lo. Nen
+  // doc thang `buffers`/`images` trong `.gltf` roi suy URL tu URL cua chinh no.
+  if (!dich.toLowerCase().endsWith('.glb')) {
+    const j = JSON.parse(readFileSync(dich, 'utf8'));
+    const can = [...(j.buffers || []), ...(j.images || [])].map((x) => x.uri).filter(Boolean);
+    for (const uri of can) {
+      if (uri.startsWith('data:')) continue;
+      const rd = join(thuMuc, decodeURIComponent(uri).replace(/[^\w./-]/g, '_'));
+      if (existsSync(rd) && statSync(rd).size > 0) continue;
+      mkdirSync(dirname(rd), { recursive: true });
+      const goc = f.root.url.replace(/[^/]*$/, encodeURI(uri));
+      const rm = await mocThat(goc);
+      if (rm) await curl(['-o', rd, rm]);
+      if (!existsSync(rd) || statSync(rd).size === 0) {
+        rmSync(rd, { force: true });
+        rmSync(dich, { force: true });
+        throw new Error(`thieu file phu ${uri}`);
+      }
+    }
+  }
 
   writeFileSync(
     join(thuMuc, 'ghi_cong.json'),
