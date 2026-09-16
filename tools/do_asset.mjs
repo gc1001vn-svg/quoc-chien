@@ -33,6 +33,7 @@
  *   npm run do:asset nha hien_dai
  *   npm run do:asset chicken            # tu tieng Anh cung duoc
  */
+import { execFileSync } from 'node:child_process';
 import { readFileSync, existsSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -48,6 +49,13 @@ const BUOC_LOCAL = [
   { ten: '1. docs/KHO_ASSET.md  (kho da tai ve dia)', duong: 'docs/KHO_ASSET.md' },
   { ten: '1b. docs/KHO_CHUNG.md (kho chung repo tayvuc)', duong: 'docs/KHO_CHUNG.md' },
 ];
+
+/**
+ * Kho muc luc chung `kho-game` - do 16/09: 82.105 dong tren 5 nguon, gap 16 lan hai file
+ * ke o tren cong lai. Khong bat buoc phai co: repo do clone rieng, thieu thi bo qua chu
+ * khong lam hong lenh.
+ */
+const KHO_GAME = '/home/user/kho-game/cong-cu/do.mjs';
 
 /**
  * Dich tu khoa tieng Viet sang mang tu khoa tieng Anh.
@@ -179,6 +187,21 @@ const tu = dich(tuKhoa);
 console.log(`Tu khoa: ${tuKhoa.join(' ')}\nDo theo: ${tu.join(' ')}`);
 
 for (const b of BUOC_LOCAL) in_(b.ten, doFileKe(b.duong, tu));
+
+// Buoc 1c: kho muc luc chung. Goi lenh cua repo do thay vi chep logic sang day - no doi
+// khi nguon moi duoc nap, chep la lech.
+if (existsSync(KHO_GAME)) {
+  console.log('\n--- 1c. kho-game (muc luc chung, 5 nguon) ---');
+  try {
+    console.log(execFileSync('node', [KHO_GAME, ...tuKhoa], { encoding: 'utf8' }).trim());
+  } catch (e) {
+    console.log(`  hong: ${String(e.message).slice(0, 80)}`);
+  }
+} else {
+  console.log('\n--- 1c. kho-game --- CHUA CLONE.'
+    + '\n  git clone --depth 1 https://github.com/gc1001vn-svg/kho-game /home/user/kho-game');
+}
+
 in_('2. docs/NGUON_MO.md  (nguon da tra, van xuoi)', doNguonMo(tu));
 
 try {

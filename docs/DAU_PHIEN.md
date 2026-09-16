@@ -49,6 +49,16 @@ npm run do:asset ga            # tiếng Việt cũng được, có từ điển
 npm run do:asset hien_dai nha
 ```
 
+**Từ 16/09 có thêm bước 1c: kho mục lục chung `kho-game`** — 82.105 dòng trên 5 nguồn,
+gấp 16 lần hai file kê cũ cộng lại. Lệnh trên tự gọi nó nếu repo đã clone:
+
+```bash
+git clone --depth 1 https://github.com/gc1001vn-svg/kho-game /home/user/kho-game
+```
+
+Chưa clone thì lệnh vẫn chạy, chỉ in dòng nhắc — không hỏng.
+Thấy model cần thì lấy: `node /home/user/kho-game/cong-cu/lay.mjs icosa --loc <từ khoá>`.
+
 Nó chạy `KHO_ASSET.md` → `KHO_CHUNG.md` → `NGUON_MO.md`, cộng **Poly Haven**
 (521 model, toàn bộ CC0, API mở không cần khoá) và **Poly Pizza** (10.400+ model, cần khoá
 — xem hai mục dưới). Chỉ in **tên model** trúng, không in cả dòng — chính là bẫy token ở mục D.
