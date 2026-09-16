@@ -196,7 +196,9 @@ async function taiAsset(asset, ds) {
     const j = JSON.parse(readFileSync(dich, 'utf8'));
     const can = [...(j.buffers || []), ...(j.images || [])].map((x) => x.uri).filter(Boolean);
     for (const uri of can) {
-      if (uri.startsWith('data:')) continue;
+      // `data:` nam san trong file. URL tuyet doi la tham chieu ngoai (model Tilt Brush
+      // tro sang shader o `tiltbrush.com`) - khong phai file phu, bo qua chu dung bao hong.
+      if (uri.startsWith('data:') || /^https?:\/\//i.test(uri)) continue;
       const rd = join(thuMuc, decodeURIComponent(uri).replace(/[^\w./-]/g, '_'));
       if (existsSync(rd) && statSync(rd).size > 0) continue;
       mkdirSync(dirname(rd), { recursive: true });
