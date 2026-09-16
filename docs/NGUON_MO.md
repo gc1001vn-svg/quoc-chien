@@ -178,12 +178,37 @@ chính là phái sinh.
 | `fetch` của Node không tải được wayback | `403 Blocked by egress policy` | Gọi `curl` (nó đi CONNECT qua proxy phiên) |
 | HTTP/2 đứt giữa chừng | `ws_closed_mid_exchange` sau ~11 giây | Thêm `--http1.1` |
 | Tải thẳng URL API trả về | Mốc giả `20250101010101id_/…` trả 302, chờ `cdx.remote` ~16 giây rồi đứt | `curl -I` lấy `location` mốc thật rồi mới GET (11s đứt → 2,4s xong) |
-| Host thứ hai của Icosa | `s3.us-east-005.backblazeb2.com` → `000 connect_rejected` | Chưa trong allowlist. Không chặn đường chính: 778/788 model nhà có bản GLB/GLTF2 trên wayback |
+| Host thứ hai của Icosa | `s3.us-east-005.backblazeb2.com` → từng `000 connect_rejected` | Chủ dự án mở allowlist 15/09 → `200`. Nó vớt đúng những model wayback hỏng |
+| Wayback thiếu bản lưu dù CDX bảo có | `aqgXtgV8xVy`: CDX ghi `200 model/gltf-binary 1661644`, replay trả 404 cả bốn lần | Thử lần lượt GLB → GLTF2, rồi sang host backblaze |
+| Bản GLTF1 lọt vào | `(j.buffers ?? []).map is not a function` | Bộ đọc chỉ hiểu glTF 2.0 — đã bỏ GLTF1 khỏi danh sách ưu tiên |
 
-Số model tải được thật nằm ở `docs/KHO_ASSET.md` — **đừng chép số về đây**.
+**Số model KHÔNG ghi ở đây.** Ba chỗ có số thật, mỗi chỗ một việc:
+
+| Cần biết | Xem ở |
+|---|---|
+| Model Icosa **đã tải về đĩa** | dòng cuối `docs/KHO_ICOSA.md` |
+| Toàn bộ model **dò được**, mọi nguồn | `kho-game/README.md` + `node cong-cu/do.mjs <từ khoá>` |
+| Model trong `assets_source/` | dòng cuối `docs/KHO_ASSET.md` |
+
+Mục 9 này từng gõ tay một con số kiểm kê và lạc hậu sau đúng một phiên —
+`tests/TaiLieu.test.ts` giữ cho khỏi tái phát.
+
+## 10. Kho mục lục chung `kho-game` — dò ở đây TRƯỚC
+
+<https://github.com/gc1001vn-svg/kho-game> — mục lục nhiều nguồn, **không chứa file**;
+dò thấy cái nào cần mới tải cái đó. Bước 1c của `npm run do:asset` tự gọi nó.
+
+```bash
+git clone --depth 1 https://github.com/gc1001vn-svg/kho-game /home/user/kho-game
+node /home/user/kho-game/cong-cu/do.mjs ga --tam 8000
+node /home/user/kho-game/cong-cu/lay.mjs icosa --loc chicken
+```
+
+Nguồn nào trong đó, bao nhiêu dòng, lấy bằng cách gì: `README.md` của repo đó.
+**Đừng chép số về đây** — nó đổi mỗi lần quét lại.
 
 ---
 
-Tra ngày 10/09/2026, thêm mục 9 ngày 15/09/2026.
+Tra ngày 10/09/2026, thêm mục 9 ngày 15/09/2026, thêm mục 10 ngày 16/09/2026.
 Danh sách gộp thêm từ <https://github.com/madjin/awesome-cc0>.
 Thêm nguồn mới thì thêm dòng vào đây, đừng viết ra chỗ khác.
