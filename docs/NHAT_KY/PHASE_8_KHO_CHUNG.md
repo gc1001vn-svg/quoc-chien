@@ -92,3 +92,19 @@ Chủ dự án hỏi "model 2D đâu" — **có, nhưng mục lục không nói 
 
 Nợ cố ý giữ: **tác giả OpenGameArt để `?`** — lấy lười bằng `cong-cu/tac_gia.mjs` đúng lúc
 dùng, quét sẵn 22.714 mục là 22.714 lượt gọi cho thứ 99% không đụng tới.
+
+## Đo lại hai nguồn 2D còn thiếu — allowlist chứ không phải đích chặn
+
+`game-icons.net` và `craftpix.net` đều `000`, dấu vết proxy:
+`connect_rejected — gateway answered 403 to CONNECT (policy denial)`. Tức **allowlist môi
+trường chặn, request chưa ra khỏi máy ảo** — chủ dự án mở được.
+
+Đừng lẫn với Poly Pizza: ở đó `403` kèm `server: cloudflare` và `cf-mitigated: challenge`,
+tức request **tới nơi rồi mới bị đích đuổi** — thêm allowlist vô ích. Hai dấu vết này phân
+biệt được ai chặn, đã ghi ở `TIEN_DO.md` từ 15/09.
+
+**CraftPix cân nhắc trước khi mở:** phần "freebies" dùng *license riêng của CraftPix*,
+không phải CC0/CC-BY, và **cấm phát tán lại** — không lọt luật kho.
+
+`do.mjs` thêm cờ **`--tac-gia`**: dò xong tự gọi `tac_gia.mjs` cho 8 mục OpenGameArt đầu,
+khỏi gõ tay từng đường dẫn. Chặn ở 8 vì mỗi mục là một lượt gọi mạng.
