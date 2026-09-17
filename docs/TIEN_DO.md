@@ -240,30 +240,29 @@ Khoá cũ hết hạn hay muốn đổi thì lấy lại ở <https://freesound.
 
 ### Đặt khoá vào môi trường — khỏi dán lại mỗi phiên
 
-Khoá dán trong phiên chỉ sống hết phiên đó. Đặt vào môi trường thì **mọi phiên sau tự có**,
-và khoá **không bao giờ đi qua cửa sổ chat** — proxy gắn nó sau khi request rời máy ảo.
+**Giao diện thật chỉ có `Environment variables`. KHÔNG có mục "API credentials".**
+Tài liệu của repo từng ghi có — sai, chép lại từ ghi chép cũ mà không mở ra xem (17/09).
+Hộp thoại tên **Edit cloud environment**, gồm: `Name` · `Network access` ·
+`Allowed domains` · `Environment variables`. Hết.
 
-1. Mở <https://claude.ai/code> (Safari trên iPhone được).
-2. Đầu trang có nút tên môi trường đang dùng — bấm vào nó.
-3. Chọn **Update cloud environment**.
-4. Kéo xuống mục **API credentials** → bấm **Add credential**.
-5. Điền bốn ô:
-   - **Host**: `freesound.org`
-   - **Header name**: `Authorization`
-   - **Prefix**: `Token ` — **có một dấu cách ở cuối**, đây là chỗ hay sai nhất
-   - **Value** (hay **Secret**): chuỗi **Api key** lấy ở bước trên
-6. Bấm **Save** / **Add**.
+1. Mở <https://claude.ai/code> → bấm nút tên môi trường ở đầu trang.
+2. Ô **Environment variables**, thêm một dòng (dạng `.env`, mỗi khoá một dòng):
 
-**Phiên đang mở không nhận khoá mới** — phải mở phiên mới. Kiểm bằng:
+   ```
+   FREESOUND_KEY=<chuỗi Api key>
+   ```
+
+3. Save.
+
+**Phiên đang mở không nhận** — phải mở phiên mới. Kiểm:
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" "https://freesound.org/apiv2/search/text/?query=sword&page_size=1"
+node -e "console.log(process.env.FREESOUND_KEY ? 'co khoa' : 'chua co')"
 ```
 
-`200` là xong. `401` là chưa ăn — soát lại dấu cách cuối ô **Prefix**.
-
-Đặt xong thì **không cần `FREESOUND_KEY` nữa**: `quet_freesound.mjs` luôn gọi thử trước rồi
-mới kết luận, gặp `401` mới báo thiếu khoá.
+**Cảnh báo của chính trang đó:** *"These are visible to anyone using this environment —
+don't add secrets or credentials."* Khoá để đây ai dùng môi trường này cũng xem được. Môi
+trường riêng thì rủi ro thấp, nhưng chia cho người khác thì **xoay khoá trước**.
 
 ### Việc mới 15/09 (lần 3)
 

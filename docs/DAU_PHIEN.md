@@ -125,17 +125,22 @@ và **thoát mã 1** khi vượt. Đo 15/09: **15 file · 4,2 MB**.
 ### Poly Pizza — hình dạng dữ liệu, đo 15/09
 
 Khoá API đã có (chủ dự án lấy 15/09). **Không bao giờ vào git** — repo này Public.
-Hai đường cấp khoá, `do_asset.mjs` chịu được cả hai:
 
-- **`POLY_PIZZA_KEY`** — biến môi trường, file tự đặt header `x-auth-token`.
-- **API credential của môi trường đám mây** — proxy gắn header **sau khi request rời máy ảo**,
-  khoá không bao giờ vào phiên. An toàn hơn. Đặt ở `claude.ai/code` → bộ chọn môi trường →
-  **Update cloud environment** → **API credentials** → host `api.poly.pizza`, header
-  `x-auth-token`, **xoá ô Prefix**.
+**Chỉ có MỘT đường cấp khoá: biến môi trường `POLY_PIZZA_KEY`**, file tự đặt header
+`x-auth-token`. Chủ dự án đặt ở `claude.ai/code` → bấm nút tên môi trường → hộp thoại
+**Edit cloud environment** → ô **Environment variables**, mỗi khoá một dòng dạng `.env`.
 
-Vì đường thứ hai **không để lại dấu vết nào trong phiên**, lệnh luôn gọi thử rồi mới kết
-luận — gặp `HTTP 401` mới báo là chưa có khoá. Đừng "tối ưu" thành kiểm biến môi trường
-trước rồi bỏ qua: làm vậy là mù với đường an toàn hơn.
+> **Sửa 17/09:** mục này từng ghi có đường thứ hai — "API credentials" của môi trường,
+> proxy gắn header sau khi request rời máy ảo. **Không có mục đó.** Hộp thoại chỉ gồm
+> `Name` · `Network access` · `Allowed domains` · `Environment variables`. Chủ dự án mở ra
+> xem mới lộ. Bài học: **đừng mô tả giao diện mình chưa nhìn thấy.**
+>
+> Trang đó tự cảnh báo: *"These are visible to anyone using this environment — don't add
+> secrets or credentials."* Môi trường riêng thì rủi ro thấp; chia cho người khác thì xoay
+> khoá trước.
+
+Lệnh vẫn **gọi thử rồi mới kết luận** — gặp `HTTP 401` mới báo thiếu khoá. Giữ nguyên cách
+đó: nó đúng cả khi sau này có thêm đường cấp khoá khác.
 
 Biến môi trường chỉ áp cho **phiên mở sau khi đặt**; phiên đang chạy giữ giá trị cũ.
 
