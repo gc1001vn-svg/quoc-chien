@@ -108,3 +108,24 @@ không phải CC0/CC-BY, và **cấm phát tán lại** — không lọt luật 
 
 `do.mjs` thêm cờ **`--tac-gia`**: dò xong tự gọi `tac_gia.mjs` cho 8 mục OpenGameArt đầu,
 khỏi gõ tay từng đường dẫn. Chặn ở 8 vì mỗi mục là một lượt gọi mạng.
+
+## 17/09 — game-icons.net vào kho, 12 nguồn
+
+Chủ dự án mở allowlist → `game-icons.net` từ `000` thành `200`. Quét ra **3.658 icon
+CC-BY 3.0** (`delapouite 2022 · lorc 1429 · skoll 172 · cathelineau 29 · felbrigg 5 ·
+john-colburn 1`). Tải thử `broadsword.svg`: `200`, 1.281 byte, SVG hợp lệ.
+
+**Đường đi không hiển nhiên:** trang là SPA React nên `curl` chỉ thấy khung;
+`/icons.json`, `/data/icons.json`, `/static/icons.json` đều `404`; bundle JS không chứa
+danh sách. Đường chạy được là **sitemap**: `/sitemap.xml` → `/sitemaps/1x1/<tác-giả>.xml`.
+Chia sẵn theo tác giả nên **tên người vẽ đi kèm** — đúng thứ CC-BY đòi. Không cần Chromium.
+
+**CraftPix: bỏ khỏi danh sách muốn mở.** Cũng bị allowlist chặn như game-icons, nhưng phần
+"freebies" dùng *license riêng của CraftPix*, cấm phát tán lại — không lọt luật CC0 ·
+CC-BY · MIT. Đã ghi vào `ghi-nho/du-an.md` để phiên sau khỏi xin mở.
+
+Nhân tiện sửa một dòng sai ở kho: `api.github.com` **không phải** "hết lượt gọi" mà là
+**chặn theo repo của phiên** — `403 GitHub access to this repository is not enabled for
+this session`, kể cả khi đính `GITHUB_TOKEN`.
+
+**Kho chốt: 146.163 dòng · 12 nguồn.**
