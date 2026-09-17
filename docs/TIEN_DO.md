@@ -3,22 +3,35 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 16/09/2026 (phiên kho mục lục chung 9 nguồn + sửa bộ đọc glTF — **không đụng màn hình game**).
+Cập nhật: 17/09/2026 (phiên dò API/MCP mở + hai nguồn mới cho `kho-game` — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Tám phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2) không
-đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
+**Game vẫn ở Phase 8A.** Mười phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
+17/09 ×2) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
 nghề cho cả bốn repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng
 rào tất định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09
 (lần 3) đo kho gương Icosa, 16/09 tách kho chung, 16/09 (lần 2) mở kho lên 9 nguồn và sửa
 bộ đọc glTF. Chi tiết:
 `docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
 `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`,
-`PHASE_8_KHO_CHUNG.md`.
+`PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn. Ba đường chọn dáng nhà, số đo ở
 mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
+
+### Phiên 17/09 (lần 2) đã đổi gì
+
+Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_KY/PHASE_8_API_MCP.md`.
+
+- **Hai nguồn 2D mới, tổng 104.080 mục**: `ke/openclipart.tsv` **101.536 mục CC0** và
+  `ke/openverse.tsv` **2.544 mục** (CC0 1.708 · CC-BY 836). Trước đó nguồn 2D lớn nhất là
+  OpenGameArt 9.347 mục — nay gấp hơn mười lần.
+- **Ba công cụ mới**: `quet_openclipart.mjs`, `quet_openverse.mjs`, `lay_openverse.mjs`.
+- **Dò 24 host, soi 4 mục lục** (`public-apis` 1.827 API...). **MCP: không thêm cái nào** —
+  5 cái đã cân và loại.
+- **Openclipart còn thiếu 249/5.820 sitemap** vì họ chặn IP khi quét lâu. Chạy lại
+  `node cong-cu/quet_openclipart.mjs` khi hết chặn; **đừng `--lam-lai`**.
 
 ### Phiên 16/09 (lần 2) đã đổi gì
 
@@ -237,6 +250,27 @@ FREESOUND_KEY=<khoá> node cong-cu/quet_freesound.mjs ga chim
 
 Khoá cũ hết hạn hay muốn đổi thì lấy lại ở <https://freesound.org/apiv2/apply/> — lấy dòng
 **Api key**, không phải **Client id**.
+
+### ⚠️ Ô "Allowed domains" GHI ĐÈ, không cộng dồn (17/09)
+
+Đo thật: xin thêm 3 host, sau đó **6 host cũ biến mất** (`connect_rejected` cho cả 6, trong
+khi 3 host mới `200`). Nên khi xin mở host, trợ lý **phải đưa danh sách ĐẦY ĐỦ** để dán.
+
+Chín host đang cần, dán nguyên khối vào ô **Allowed domains**:
+
+```
+api.openverse.org
+openclipart.org
+api.iconify.design
+lospec.com
+api.sketchfab.com
+gameasset.net
+upload.wikimedia.org
+images.rawpixel.com
+svgsilh.com
+```
+
+`svgsilh.com` giữ hay bỏ đều được — Cloudflare đuổi, mở cũng không tải được.
 
 ### Đặt khoá vào môi trường — khỏi dán lại mỗi phiên
 
