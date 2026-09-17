@@ -236,9 +236,34 @@ FREESOUND_KEY=<khoá> node cong-cu/quet_freesound.mjs ga chim
 ```
 
 Khoá cũ hết hạn hay muốn đổi thì lấy lại ở <https://freesound.org/apiv2/apply/> — lấy dòng
-**Api key**, không phải **Client id**. Muốn khoá không bao giờ đi qua phiên: đặt ở
-`claude.ai/code` → bộ chọn môi trường → **Update cloud environment** → **API credentials**
-→ host `freesound.org` · header `Authorization` · prefix `Token ` (có dấu cách cuối).
+**Api key**, không phải **Client id**.
+
+### Đặt khoá vào môi trường — khỏi dán lại mỗi phiên
+
+Khoá dán trong phiên chỉ sống hết phiên đó. Đặt vào môi trường thì **mọi phiên sau tự có**,
+và khoá **không bao giờ đi qua cửa sổ chat** — proxy gắn nó sau khi request rời máy ảo.
+
+1. Mở <https://claude.ai/code> (Safari trên iPhone được).
+2. Đầu trang có nút tên môi trường đang dùng — bấm vào nó.
+3. Chọn **Update cloud environment**.
+4. Kéo xuống mục **API credentials** → bấm **Add credential**.
+5. Điền bốn ô:
+   - **Host**: `freesound.org`
+   - **Header name**: `Authorization`
+   - **Prefix**: `Token ` — **có một dấu cách ở cuối**, đây là chỗ hay sai nhất
+   - **Value** (hay **Secret**): chuỗi **Api key** lấy ở bước trên
+6. Bấm **Save** / **Add**.
+
+**Phiên đang mở không nhận khoá mới** — phải mở phiên mới. Kiểm bằng:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" "https://freesound.org/apiv2/search/text/?query=sword&page_size=1"
+```
+
+`200` là xong. `401` là chưa ăn — soát lại dấu cách cuối ô **Prefix**.
+
+Đặt xong thì **không cần `FREESOUND_KEY` nữa**: `quet_freesound.mjs` luôn gọi thử trước rồi
+mới kết luận, gặp `401` mới báo thiếu khoá.
 
 ### Việc mới 15/09 (lần 3)
 
