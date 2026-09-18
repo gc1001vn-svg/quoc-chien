@@ -20,6 +20,10 @@ sang cả dự án.
 | `hex_1_2x_0.png` | KayKit Medieval Hexagon Pack 1.0 FREE — ô lục giác, bờ biển, núi, rừng, công trình bốn màu phe, cờ hiệu (mẻ bản đồ tỉnh, Phase 7), <https://kaylousberg.itch.io/kaykit-medieval-hexagon-pack> | Kay Lousberg | CC0 1.0 | 11/09/2026 |
 | `hex_1_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 11/09/2026 |
 | `hex_1_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 11/09/2026 |
+| `hien_dai_1x_0.png` | Kenney City Kit Suburban + Commercial + Industrial + Roads (32 loại nhà, hàng rào, thùng hàng, bồn, tháp nước, cối xay gió) + Kenney Mini Characters (người đi đường) + Quaternius Stylized Nature MegaKit (cây cỏ đá) + hoạ tiết Poly Haven, <https://kenney.nl> · <https://quaternius.com> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 18/09/2026 |
+| `hien_dai_2x_0.png` | Kenney City Kit Suburban + Commercial + Industrial + Roads (32 loại nhà, hàng rào, thùng hàng, bồn, tháp nước, cối xay gió) + Kenney Mini Characters (người đi đường) + Quaternius Stylized Nature MegaKit (cây cỏ đá) + hoạ tiết Poly Haven, <https://kenney.nl> · <https://quaternius.com> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 18/09/2026 |
+| `hien_dai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
+| `hien_dai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
 
 
 Atlas là ảnh **nướng lại** từ model 3D CC0 bằng `tools/nuong_sprite.mjs`, không phải bản
@@ -40,6 +44,15 @@ Gói nguồn đang dùng, **tất cả CC0 1.0**, license đọc thẳng trong `
 | Fantasy Town Kit 2.0 · Tower Defense Kit · Castle Kit · Nature Kit | Kenney | `npm run tai:asset` |
 | KayKit Medieval Builder Pack 1.0 | Kay Lousberg | `npm run tai:itch` |
 | KayKit City Builder Bits 1.0 (để dành thời hiện đại, Phase 8) | Kay Lousberg | `npm run tai:itch` |
+| **City Kit (Suburban)** — 21 dáng nhà ở, hàng rào, lối đi, bồn hoa, cây (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-suburban` |
+| **City Kit (Commercial)** — 19 dáng nhà phố, mái hiên, dù che (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-commercial` |
+| **City Kit (Industrial)** — 20 dáng nhà xưởng, ống khói, bồn, thùng hàng, tháp nước, cối xay gió (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-industrial` |
+| **City Kit (Roads)** — thùng rác, rào công trường, đèn công trường (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-roads` |
+| **Mini Characters** — 6 nam + 6 nữ thời hiện đại, khung xương 7 khớp (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs mini-characters` |
+
+**Từ 18/09/2026 game chạy HAI mẻ:** `trung_co_2` cho đời 1–4 và `hien_dai` cho đời 5–6
+(`data/balance.json > thoiDai`). Lên đời là `CityScene` đổi cả bộ atlas và nhả bộ cũ bằng
+`gl.deleteTexture`, nên chỉ một mẻ nằm trên GPU cùng lúc.
 
 **Từ 07/09/2026 game chạy mẻ `trung_co_2` (Quaternius).** Mẻ Kenney/KayKit cũ
 (`trung_co_1x*`, `trung_co_2x*`) đã **xoá khỏi `public/`** — bớt 5,0 MB PWA phải tải về
