@@ -33,6 +33,10 @@ Toàn bộ ở `kho-game`, **không chạm mã game**. Chi tiết: `docs/NHAT_KY
 - **Chốt một cách đếm model: `node cong-cu/dem_model.mjs`.** Đo 18/09: **41.543 model lẻ
   nướng được** (Icosa 41.333/73.626 · Poly Haven 210/521) + **215 gói** Kenney/itch chưa
   kê lẻ. Loại Poly Pizza 5.274 vì tải không được. **Đừng chép số này đi đâu — chạy lệnh.**
+- **Kiểm kê cả kho: `node cong-cu/kiem_ke.mjs`.** **260.273 mục lẻ + 740 gói.** Ảnh 2D
+  129.556 · model 3D 89.704 · âm thanh 28.740 · nhạc 6.825 · hoạ tiết/HDRI 3.497 · font
+  1.941. Model 3D theo chủ đề: nhà cửa 8.172 · nhân vật 5.159 · cây cối 5.272 · con vật
+  4.792. **Kho đủ cho mọi phase còn lại của game.**
 - **Sửa luôn bộ sinh bản kê.** `kho-game/cong-cu/nap_ke_cu.mjs` tra bảng thay vì regex
   đoán: thêm cột `tac_gia`, `cach_lay` đúng từng gói, bỏ 1.679 dòng Icosa nằm nhầm.
   **license `?` 4.497 → 1.562**; 1.562 còn lại cố ý để `?` — mục 4.

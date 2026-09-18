@@ -77,3 +77,27 @@ Bẫy vừa sập và tự sửa: lần sinh đầu bỏ tham số thứ ba nên
 
 **`ke/icosa.md` xoá được** bằng GitHub MCP `delete_file` — đường vòng qua chỗ `git rm` bị
 bộ lọc chặn.
+
+## Kiểm kê cả kho — `kho-game/cong-cu/kiem_ke.mjs`
+
+**260.273 mục lẻ** + **740 gói** kê riêng (Kenney 215 · itch.io CC0 525). Hai cách đếm
+khác nhau, **không cộng chung**: một gói Kenney là hàng chục đến hàng trăm file.
+
+```
+Anh 2D · bieu tuong  129.556   Model 3D   89.704   Am thanh  28.740
+Nhac                   6.825   Hoa tiet · HDRI 3.497   Font 1.941   Ma nguon 10
+```
+
+Model 3D theo chủ đề (dò tên, một model trúng nhiều chủ đề nên **cộng không ra tổng**):
+nhà cửa **8.172** · nhân vật **5.159** · cây cối **5.272** · con vật **4.792** · đồ dùng
+**4.123** · xe cộ **2.595** · đồ ăn **2.458** · vũ khí **1.458**.
+
+Icosa có tag thật: `objects 7835 · art 4946 · architecture 3686 · people 2934 · animals
+2798`. Nhưng **43.370/73.626 model không mang tag nào trong mười tag chính** — mục lục của
+họ gắn tag rất thưa, nên số tag là **sàn**, không phải trần.
+
+## Kiểm xoá nhầm — không có
+
+`git log --diff-filter=D` trên cả hai repo: `kho-game` đúng **một** commit xoá (`c9a02e9`,
+chính là `ke/icosa.md` tôi xoá); `quoc-chien` **không** commit xoá nào trong 30 commit gần
+đây. Chủ dự án xoá nhánh chứ không xoá file — nhánh chỉ là con trỏ, `main` giữ đủ lịch sử.
