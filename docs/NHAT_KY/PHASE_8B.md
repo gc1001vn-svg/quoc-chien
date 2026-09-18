@@ -37,3 +37,8 @@ Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**.
 - **"Cối xay không quay nhỉ"** → đúng, và **chưa bao giờ quay**, kể cả mẻ trung cổ: sprite
   công trình chỉ một khung, chỉ người đi đường có hai. Chủ dự án chốt **làm ở phiên sau** —
   ba bước ghi ở `docs/TIEN_DO.md` mục 5.
+- **"Nhà xám xanh quá, đổi màu sáng hơn"** → 28 mảnh nhà (kc, ki, ks) thêm
+  `"mau": [1.9, 1.85, 1.7]`. Phải dùng `mau` (nhân, giữ vân hoạ tiết) chứ **không phải
+  `mau_vl`**: cả gói City Kit chỉ có **đúng một** material tên `colormap`, nên `mau_vl`
+  sơn hết cả nhà lẫn mái lẫn cửa sổ, không tách được. Ba số lệch nhau để kéo màu khỏi
+  phía xanh lam. Atlas 2× vẫn **74,1 %**, một trang — nhân màu không đổi kích thước.
