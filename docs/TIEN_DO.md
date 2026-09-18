@@ -3,22 +3,45 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 18/09/2026 (phiên rà soát và chốt `kho-game` — **không đụng màn hình game**).
+Cập nhật: 18/09/2026 (phiên cắm `open-code-review` — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Mười hai phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
-17/09 ×2, 18/09 ×2) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
+**Game vẫn ở Phase 8A.** Mười ba phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
+17/09 ×2, 18/09 ×3) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
 nghề cho cả bốn repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng
 rào tất định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09
 (lần 3) đo kho gương Icosa, 16/09 tách kho chung, 16/09 (lần 2) mở kho lên 9 nguồn và sửa
 bộ đọc glTF, 18/09 chốt `kho-game`. Chi tiết:
 `docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
 `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`,
-`PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`, `PHASE_8_VET_KHO.md`.
+`PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`, `PHASE_8_VET_KHO.md`, `PHASE_8_OCR.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn. Ba đường chọn dáng nhà, số đo ở
 mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
+
+### Phiên 18/09 (lần 3) đã đổi gì
+
+Đồ nghề, **không chạm mã game**. Chi tiết: `docs/NHAT_KY/PHASE_8_OCR.md`.
+
+Cắm `alibaba/open-code-review` (Apache-2.0, npm `@alibaba-group/open-code-review` 1.12.5)
+ở **Delegation Mode** — `ocr` lo chọn file và khớp luật, Claude tự đọc code. Không cần
+API key.
+
+- **`.opencodereview/rule.json`** (tầng 2, đè luật hệ thống, lên git): bảy nhóm —
+  `src/sim` · `src/render` · `src/ui` · `src/{core,bench}` · `src/**/*.ts` ·
+  `data/**/*.json` · `{scripts,tools}/**`. Nội dung từ `CLAUDE.md` mục Ba luật và
+  `TECH_SPEC` mục 1–2. **Thêm nhóm mới phải đặt trước `src/**/*.ts`.**
+- **Thay hẳn luật hệ thống, cố ý** — luật đó cho `.ts` toàn React Hooks, `useMemo`, XSS;
+  repo này không có React. Sau khi thay: `grep -ciE 'react|hooks|useMemo|innerHTML|XSS'`
+  còn **1** hit, là dòng `innerHTML` cố ý cho `src/ui/`.
+- `npm run soat` · `npm run soat:luat`. Cách dùng và ba bẫy: `DAU_PHIEN.md` mục I.
+- **`ocr review` và `ocr scan` không chạy được ở máy ảo** — không có API key, trả
+  `Error: resolve LLM endpoint: no valid LLM endpoint configured; ...`.
+  `open-codereview.ai` chặn egress; đọc tài liệu phải clone repo họ.
+
+**Chưa đo được nó bắt thêm lỗi nào** so với soát tay — cần diff thật của Phase 8B.
+Luật là chữ nhắc, **không phải thước chặn**; hàng rào thật vẫn là ESLint + `npm run do`.
 
 ### Phiên 18/09 (lần 2) đã đổi gì
 
@@ -279,13 +302,14 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc mới 18/09 (lần 2) — mở trang xem game còn chạy không
+### Việc mới 18/09 (lần 2 và 3) — mở trang xem game còn chạy không
 
 https://gc1001vn-svg.github.io/quoc-chien/
 
-Phiên 18/09 lần 2 **không chạm mã game**, nhưng có đổi `.claude/settings.json`,
-`package.json` và bảy script. Bước **E** đòi xác nhận trên máy thật trước khi mở phase
-mới, nên cần anh liếc một lượt: game mở lên, chạy bình thường là đủ.
+Hai phiên 18/09 lần 2 và lần 3 **không chạm mã game**, nhưng có đổi
+`.claude/settings.json`, `package.json` (hai lần) và bảy script. Bước **E** đòi xác nhận
+trên máy thật trước khi mở phase mới, nên cần anh liếc một lượt: game mở lên, chạy bình
+thường là đủ.
 
 Máy ảo chặn `github.io` (`000`) nên tôi **không tự xem được** — xem `du-an.md` mục
 "Giới hạn mạng máy ảo".
