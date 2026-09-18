@@ -48,3 +48,10 @@ Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**.
   `ki:building-a` tách được: cột 9 · 11 · 15 là ba mảng khác nhau. Nhưng
   `ks:building-type-a` thì **cột 1 ôm cả mái lẫn tường** nên model đó vẫn không tách được.
   Bốn test ở `tests/Obj.test.ts` dựng file OBJ tí hon, không cần `assets_source/`.
+- **"Mái nhà phố mỗi cái một màu"** → 8 nhà phố (`kc:building-a..h`) thêm
+  `"mau_cot": { "3": [...] }`, mỗi cái một sắc: đỏ ngói · xanh dương · xanh lá · vàng ·
+  nâu · tím · cam · xanh ngọc. **Cột 3 của gói `kc` không chỉ là mái** — nó ôm cả mái lẫn
+  một băng tường tầng trệt, nên màu ăn ra thân nhà; nhìn ở cỡ sprite thì đọc thành "mỗi
+  nhà một màu nhấn", chấp nhận được. Lần đầu để hệ số quanh 0,7–1,2 thì mái ra **tối
+  quá** vì thân nhà đã nhân sẵn 1,9; kéo lên sao cho thành phần lớn nhất ≈ 1,35 mới ra
+  màu sáng. Atlas 2× vẫn **74,1 %**, một trang.
