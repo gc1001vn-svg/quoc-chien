@@ -3,22 +3,39 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 17/09/2026 (phiên dò API/MCP mở + hai nguồn mới cho `kho-game` — **không đụng màn hình game**).
+Cập nhật: 18/09/2026 (phiên rà soát và chốt `kho-game` — **không đụng màn hình game**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Mười phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
-17/09 ×2) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
+**Game vẫn ở Phase 8A.** Mười một phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
+17/09 ×2, 18/09) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
 nghề cho cả bốn repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng
 rào tất định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09
 (lần 3) đo kho gương Icosa, 16/09 tách kho chung, 16/09 (lần 2) mở kho lên 9 nguồn và sửa
-bộ đọc glTF. Chi tiết:
+bộ đọc glTF, 18/09 chốt `kho-game`. Chi tiết:
 `docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
 `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`,
-`PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`.
+`PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`, `PHASE_8_VET_KHO.md`.
 
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn. Ba đường chọn dáng nhà, số đo ở
 mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
+
+### Phiên 18/09 đã đổi gì
+
+Toàn bộ ở `kho-game`, **không chạm mã game**. Chi tiết: `docs/NHAT_KY/PHASE_8_VET_KHO.md`.
+
+- **Kho đã tự đủ cho MỌI dự án.** `do.mjs` từng đọc từ điển Việt→Anh ở
+  `quoc-chien/tools/tu_dien_asset.json` — repo nào không clone `quoc-chien` nằm cạnh thì
+  `ga` ra **1 trúng** (font `Ga Maamli`) thay vì **306**, **không báo gì**. Bản gốc nay ở
+  `kho-game/cong-cu/tu_dien.json`.
+- **Bản kê có thước giữ: `vet:kho`.** Trước đó `kho-game` chỉ có 2 thước mặc định của
+  `cai_dat.mjs`, không thước nào đụng bản kê. Nay `bash scripts/do.sh` ra **3/3**.
+- **Chốt một cách đếm model: `node cong-cu/dem_model.mjs`.** Đo 18/09: **41.543 model lẻ
+  nướng được** (Icosa 41.333/73.626 · Poly Haven 210/521) + **215 gói** Kenney/itch chưa
+  kê lẻ. Loại Poly Pizza 5.274 vì tải không được. **Đừng chép số này đi đâu — chạy lệnh.**
+- **Nợ để lại:** `ke/quoc-chien-assets.tsv` thiếu cột `tac_gia`, license `?` 4.497/6.288,
+  `cach_lay` sai cho cả 6.288 dòng, và 1.689 dòng Icosa nằm nhầm. Sửa ở **gốc** là
+  `tools/kho_asset.mjs` của repo này — mục 4.
 
 ### Phiên 17/09 (lần 2) đã đổi gì
 
@@ -394,6 +411,14 @@ quyền hạn và giới hạn máy ảo.
   **Còn lại là việc nướng**, không còn việc tìm. Nợ mở 06/09, chặn suốt vì tải.
   **Chưa có `ChickenCoop`** — chuồng vẫn là thứ phải dò tiếp hoặc giữ cách phân biệt
   bằng màu nền.
+- **`tools/kho_asset.mjs` sinh bản kê không đủ tư cách ghi công** (rà 18/09). Bản chép sang
+  `kho-game/ke/quoc-chien-assets.tsv`: 6.288 dòng, **không có cột `tac_gia`**, license `?`
+  **4.497/6.288**, `cach_lay` chỉ đúng **một** chuỗi `tai_itch.mjs` cho cả 6.288 dòng —
+  sai với 4 gói Kenney (`tai_asset.mjs`) và sai với **1.689 dòng Icosa** (lấy qua wayback,
+  lại trùng `kho-game/ke/icosa.tsv` nơi đã đủ tác giả + số tam). 13/15 nhóm lấp được
+  license từ `kho-game/ke/kenney.tsv` + `ke/itch.tsv`; chỉ `lowpoly-animated-animals` và
+  `kaykit-medieval-builder-pack` chưa có nguồn đối chiếu. **Sửa ở bộ sinh, không sửa tay
+  bản kê.** Chạy được cùng phiên Phase 8B vì lúc đó kho đã tải.
 - **Người vác hàng đi tay không** — để Phase 10.
 - **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
   `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
