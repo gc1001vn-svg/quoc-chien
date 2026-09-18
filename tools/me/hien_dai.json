@@ -1,0 +1,138 @@
+{
+  "ghi_chu": "Me thoi hien dai (Phase 8B). Thuoc cua manh city-kit: ti_le = min(1.53, 1.9/day, 2.33/cao) - 1.53 la thuoc chung (o luoi Kenney rong 1 don vi, o luoi game rong 2, da tru hao cho vua MOT trang atlas 2x), hai ve sau chi chan cai qua kho. CAM chuan hoa tung model ve cung mot day: lam vay thi thung rac to bang can nha. Nguoi cua Kenney mini-characters la kieu dau to (chibi) cao 0.67 don vi; ti_le 1.25 cho ra sprite 2x co 131x113 diem anh, xap xi 116x107 cua nguoi me trung co. De 1.5 thi dau chiem het khung, nguoi to hon nha. Cay coi va da lay nguyen phan qn cua trung_co_2: rung khong doi theo thoi dai. Nguon: Kenney City Kit Suburban/Commercial/Industrial/Roads + Kenney Mini Characters (CC0) - tien to ks/kc/ki/kr/mn. Trang atlas 2x la thu bi chan: me trung co lap day 84,4% mot trang, me nay phai o duoi muc do.",
+  "kit": {
+    "ks": {
+      "duong": "assets_source/city-kit-suburban/Models/OBJ format",
+      "gamma": true
+    },
+    "kc": {
+      "duong": "assets_source/city-kit-commercial/Models/OBJ format",
+      "gamma": true
+    },
+    "ki": {
+      "duong": "assets_source/city-kit-industrial/Models/OBJ format",
+      "gamma": true
+    },
+    "kr": {
+      "duong": "assets_source/city-kit-roads/Models/OBJ format",
+      "gamma": true
+    },
+    "qn": {
+      "duong": "assets_source/stylized-nature-megakit/OBJ",
+      "anh": "mtl",
+      "thu_muc_anh": "../Textures",
+      "gamma": true
+    },
+    "mn": {
+      "duong": "assets_source/mini-characters/Models/GLB format",
+      "loai": "glb",
+      "thu_muc_anh": "Textures"
+    }
+  },
+  "ghi_chu_dang": "Bang dang cho khung xuong 7 khop cua Kenney mini-characters: root, torso, head, arm-left, arm-right, leg-left, leg-right. Model goc o tu the chu T nen phai ha hai tay xuong (xoay quanh z) va buoc mot chan ra truoc (xoay quanh x). Khung thu hai la ban guong - `doiDang` trong tools/lib/gltf.mjs hieu ca duoi `-left`/`-right` tu 18/09, truoc do no chi hieu `_l`/`_r` nen guong nguoi Kenney KHONG doi chan.",
+  "dang": {
+    "di": {
+      "arm-left": [0, 0, 78],
+      "arm-right": [0, 0, -78],
+      "leg-left": [22, 0, 0],
+      "leg-right": [-20, 0, 0]
+    }
+  },
+  "sprite": {
+    "o_co": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/leafy_grass.jpg", "lap": 1, "mau": [0.86, 1, 0.8] }],
+    "o_dat": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg", "lap": 1, "mau": [1.35, 1.35, 1.35] }],
+    "o_duong": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg", "lap": 1, "mau": [0.78, 0.78, 0.84] }],
+    "o_duong_lat": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/cobblestone_01.jpg", "lap": 1, "mau": [1.2, 1.2, 1.26] }],
+    "o_cat": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/coast_sand_01.jpg", "lap": 1, "mau": [1.3, 1.3, 1.3] }],
+    "o_da": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg", "lap": 1, "mau": [1.35, 1.35, 1.35] }],
+    "o_ruong": [{ "phang": 1.05, "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg", "lap": 1, "mau": [1.05, 0.92, 0.72] }],
+
+    "cay_soi": [{ "m": "qn:CommonTree_1", "ti_le": 0.32, "mau_vl": { "Leaves_NormalTree": [0.95, 1.1, 1], "Bark_NormalTree": [1.28, 1.28, 1.28] } }],
+    "cay_soi_2": [{ "m": "qn:CommonTree_4", "ti_le": 0.32, "mau_vl": { "Leaves_NormalTree": [0.95, 1.1, 1], "Bark_NormalTree": [1.28, 1.28, 1.28] } }],
+    "cay_thong": [{ "m": "qn:Pine_1", "ti_le": 0.34, "mau_vl": { "Leaves_Pine": [1.05, 1.25, 1.05], "Bark_NormalTree": [1.28, 1.28, 1.28] } }],
+    "cay_kho": [{ "m": "qn:DeadTree_2", "ti_le": 0.3, "mau_vl": { "Bark_DeadTree": [1.15, 1.08, 0.98] } }],
+    "bui": [{ "m": "qn:Bush_Common_Flowers", "ti_le": 0.24, "mau_vl": { "Leaves_NormalTree": [0.95, 1.1, 1], "Flowers": [1.15, 1.35, 1.05] } }],
+    "bui_hoa": [{ "m": "qn:Bush_Common_Flowers", "ti_le": 0.24, "mau_vl": { "Leaves_NormalTree": [0.95, 1.1, 1], "Flowers": [1.9, 1.7, 1.7] } }],
+    "da_lon": [{ "m": "qn:Rock_Medium_1", "ti_le": 0.26, "mau_vl": { "Rocks": [1.45, 1.45, 1.45] } }],
+    "da_nho": [{ "m": "qn:Pebble_Round_3", "ti_le": 0.22, "mau_vl": { "PathRocks": [1.45, 1.45, 1.45] } }],
+    "co_cao": [{ "m": "qn:Grass_Common_Tall", "ti_le": 0.22, "mau_vl": { "Grass": [1.1, 1.28, 1.05] } }],
+    "hoa": [{ "m": "qn:Flower_3_Group", "ti_le": 0.22, "mau_vl": { "Flowers": [1.6, 1.6, 1.6], "Leaves": [1.05, 1.18, 1.02] } }],
+    "nam": [{ "m": "qn:Mushroom_Common", "ti_le": 0.2, "mau_vl": { "Mushrooms": [1.5, 1.5, 1.5] } }],
+
+    "quay_hang": [{ "m": "kc:detail-awning-wide", "ti_le": 1.53 }],
+    "quay_xe": [{ "m": "kr:dumpster", "ti_le": 1.53 }],
+    "dong_thung": [{ "m": "ki:shipping-container-a", "ti_le": 1.53 }],
+    "thung_ruou": [{ "m": "ki:shipping-container-b", "ti_le": 1.53 }],
+    "ghe_bang": [{ "m": "kc:detail-parasol-a", "ti_le": 1.53 }],
+    "noi_lo": [{ "m": "ki:detail-tank", "ti_le": 1.53 }],
+    "xe_keo": [{ "m": "kr:construction-barrier", "ti_le": 1.53 }],
+    "hang_rao": [{ "m": "ks:fence-1x3", "ti_le": 1.5 }],
+
+    "nguoi_nam_1_0": [{ "m": "mn:character-male-a", "dang": "di", "ti_le": 1.25 }],
+    "nguoi_nam_1_1": [{ "m": "mn:character-male-a", "dang": "di", "guong": true, "ti_le": 1.25 }],
+    "nguoi_nu_1_0": [{ "m": "mn:character-female-a", "dang": "di", "ti_le": 1.25 }],
+    "nguoi_nu_1_1": [{ "m": "mn:character-female-a", "dang": "di", "guong": true, "ti_le": 1.25 }],
+    "nguoi_nam_0_0": { "nhu": "nguoi_nam_1_0", "xoay": 90 },
+    "nguoi_nam_0_1": { "nhu": "nguoi_nam_1_1", "xoay": 90 },
+    "nguoi_nam_2_0": { "nhu": "nguoi_nam_1_0", "xoay": 270 },
+    "nguoi_nam_2_1": { "nhu": "nguoi_nam_1_1", "xoay": 270 },
+    "nguoi_nam_3_0": { "nhu": "nguoi_nam_1_0", "xoay": 180 },
+    "nguoi_nam_3_1": { "nhu": "nguoi_nam_1_1", "xoay": 180 },
+    "nguoi_nu_0_0": { "nhu": "nguoi_nu_1_0", "xoay": 90 },
+    "nguoi_nu_0_1": { "nhu": "nguoi_nu_1_1", "xoay": 90 },
+    "nguoi_nu_2_0": { "nhu": "nguoi_nu_1_0", "xoay": 270 },
+    "nguoi_nu_2_1": { "nhu": "nguoi_nu_1_1", "xoay": 270 },
+    "nguoi_nu_3_0": { "nhu": "nguoi_nu_1_0", "xoay": 180 },
+    "nguoi_nu_3_1": { "nhu": "nguoi_nu_1_1", "xoay": 180 },
+
+    "mo_da": [{ "m": "ki:building-t", "ti_le": 1.11 }],
+    "mo_than": [{ "m": "ki:building-c", "ti_le": 0.9 }],
+    "mo_muoi": [{ "m": "ki:building-p", "ti_le": 1.13 }],
+    "mo_dat_set": [{ "m": "ki:building-q", "ti_le": 0.89 }],
+    "mo_da_voi": [{ "m": "ki:building-s", "ti_le": 0.9 }],
+    "mo_quang": [{ "m": "ki:building-r", "ti_le": 0.77 }],
+
+    "xuong_cua": [{ "m": "kc:building-h", "ti_le": 1.53 }],
+    "xuong_ruou": [{ "m": "kc:building-c", "ti_le": 1.53 }],
+    "nha_bia": [{ "m": "kc:building-d", "ti_le": 1.53 }],
+    "xuong_vu_khi": [{ "m": "ki:building-m", "ti_le": 1.13 }],
+    "xuong_det": [{ "m": "kc:building-f", "ti_le": 1.38 }],
+    "xuong_thuoc": [{ "m": "kc:building-e", "ti_le": 1.16 }],
+    "lo_ren": [{ "m": "ki:building-g", "ti_le": 1.13 }],
+    "lo_thep": [{ "m": "ki:building-f", "ti_le": 1.07 }],
+    "lo_nung": [{ "m": "ki:building-e", "ti_le": 1.13 }],
+    "lo_mo": [{ "m": "ki:building-d", "ti_le": 1.34 }],
+    "lo_banh": [{ "m": "kc:building-a", "ti_le": 1.53 }],
+    "lo_uop": [{ "m": "kc:building-b", "ti_le": 1.53 }],
+    "lo_gom": [{ "m": "kc:building-g", "ti_le": 1.38 }],
+    "lo_voi": [{ "m": "ki:chimney-large", "ti_le": 1.37 }],
+
+    "trai_lon": [{ "m": "ki:building-h", "ti_le": 1.44 }],
+    "trai_ga": [{ "m": "ki:building-i", "ti_le": 1.47 }],
+    "trai_cuu": [{ "m": "ki:building-j", "ti_le": 1.47 }],
+    "nha_dan": [{ "m": "ks:building-type-a", "ti_le": 1.47 }],
+    "trai_linh": [{ "m": "ki:building-n", "ti_le": 1.22 }],
+    "cong_truong": [
+      { "m": "ki:building-o", "ti_le": 1.53 },
+      { "m": "kr:construction-light", "ti_le": 1.53, "x": 0.95, "z": -0.8 },
+      { "m": "kr:construction-fence", "ti_le": 1.53, "x": 0.95, "z": 0.4 }
+    ],
+    "nha_chai": [{ "m": "ks:building-type-g", "ti_le": 1.31 }],
+    "trai_go": [
+      { "m": "ki:building-k", "ti_le": 1.46 },
+      { "m": "ks:tree-large", "ti_le": 1.53, "x": 1.3, "z": -1 }
+    ],
+    "gieng": [{ "m": "ki:water-tower", "ti_le": 1.09 }],
+    "coi_xay": [{ "m": "ki:windmill", "ti_le": 1 }],
+    "ruong": [
+      { "m": "ks:planter", "ti_le": 1.53, "x": -0.7 },
+      { "m": "ks:planter", "ti_le": 1.53 },
+      { "m": "ks:planter", "ti_le": 1.53, "x": 0.7 }
+    ],
+    "vuon_nho": [
+      { "m": "ks:tree-small", "ti_le": 1.53, "x": -0.7, "z": -0.4 },
+      { "m": "ks:tree-small", "ti_le": 1.53, "x": 0.5, "z": -0.2 },
+      { "m": "ks:tree-small", "ti_le": 1.53, "x": -0.1, "z": 0.6 }
+    ]
+  }
+}
