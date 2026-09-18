@@ -1,5 +1,5 @@
 {
-  "ghi_chu": "Me thoi hien dai (Phase 8B). Thuoc cua manh city-kit: ti_le = min(1.53, 1.9/day, 2.33/cao) - 1.53 la thuoc chung (o luoi Kenney rong 1 don vi, o luoi game rong 2, da tru hao cho vua MOT trang atlas 2x), hai ve sau chi chan cai qua kho. CAM chuan hoa tung model ve cung mot day: lam vay thi thung rac to bang can nha. Nguoi cua Kenney mini-characters la kieu dau to (chibi) cao 0.67 don vi; ti_le 1.25 cho ra sprite 2x co 131x113 diem anh, xap xi 116x107 cua nguoi me trung co. De 1.5 thi dau chiem het khung, nguoi to hon nha. Cay coi va da lay nguyen phan qn cua trung_co_2: rung khong doi theo thoi dai. Nguon: Kenney City Kit Suburban/Commercial/Industrial/Roads + Kenney Mini Characters (CC0) - tien to ks/kc/ki/kr/mn. Trang atlas 2x la thu bi chan: me trung co lap day 84,4% mot trang, me nay phai o duoi muc do.",
+  "ghi_chu": "Me thoi hien dai (Phase 8B). Thuoc cua manh city-kit: ti_le = min(1.53, 1.9/day, 2.33/cao) - 1.53 la thuoc chung (o luoi Kenney rong 1 don vi, o luoi game rong 2, da tru hao cho vua MOT trang atlas 2x), hai ve sau chi chan cai qua kho. CAM chuan hoa tung model ve cung mot day: lam vay thi thung rac to bang can nha. Nguoi cua Kenney mini-characters la kieu dau to (chibi) cao 0.67 don vi. Ti_le 1.0 cho sprite 2x co 111x92 diem anh; nguoi me trung co la 116x107. Nho hon MOT CHUT la co y: dau chibi lam nguoi trong to hon so do thuc, chu du an bao \"nguoi to qua\" o ti_le 1.25 (131x113). Cay coi va da lay nguyen phan qn cua trung_co_2: rung khong doi theo thoi dai. Nguon: Kenney City Kit Suburban/Commercial/Industrial/Roads + Kenney Mini Characters (CC0) - tien to ks/kc/ki/kr/mn. Trang atlas 2x la thu bi chan: me trung co lap day 84,4% mot trang, me nay phai o duoi muc do.",
   "kit": {
     "ks": {
       "duong": "assets_source/city-kit-suburban/Models/OBJ format",
@@ -68,10 +68,10 @@
     "xe_keo": [{ "m": "kr:construction-barrier", "ti_le": 1.53 }],
     "hang_rao": [{ "m": "ks:fence-1x3", "ti_le": 1.5 }],
 
-    "nguoi_nam_1_0": [{ "m": "mn:character-male-a", "dang": "di", "ti_le": 1.25 }],
-    "nguoi_nam_1_1": [{ "m": "mn:character-male-a", "dang": "di", "guong": true, "ti_le": 1.25 }],
-    "nguoi_nu_1_0": [{ "m": "mn:character-female-a", "dang": "di", "ti_le": 1.25 }],
-    "nguoi_nu_1_1": [{ "m": "mn:character-female-a", "dang": "di", "guong": true, "ti_le": 1.25 }],
+    "nguoi_nam_1_0": [{ "m": "mn:character-male-a", "dang": "di", "ti_le": 1 }],
+    "nguoi_nam_1_1": [{ "m": "mn:character-male-a", "dang": "di", "guong": true, "ti_le": 1 }],
+    "nguoi_nu_1_0": [{ "m": "mn:character-female-a", "dang": "di", "ti_le": 1 }],
+    "nguoi_nu_1_1": [{ "m": "mn:character-female-a", "dang": "di", "guong": true, "ti_le": 1 }],
     "nguoi_nam_0_0": { "nhu": "nguoi_nam_1_0", "xoay": 90 },
     "nguoi_nam_0_1": { "nhu": "nguoi_nam_1_1", "xoay": 90 },
     "nguoi_nam_2_0": { "nhu": "nguoi_nam_1_0", "xoay": 270 },
