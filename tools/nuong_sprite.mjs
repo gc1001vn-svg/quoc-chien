@@ -74,6 +74,8 @@ function doiKit(khai) {
         : null,
       anh: theoMtl || o.anh === false ? null : join(o.duong, o.anh ?? 'Textures/colormap.png'),
       gamma: o.gamma === true,
+      // So cot cua bang mau `colormap.png`, cho `mau_cot` cua tung manh. Kenney chia 16.
+      soCot: o.so_cot ?? 16,
     };
   }
   return ra;
@@ -249,7 +251,10 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
         traAnh,
         mau_vl: p.mau_vl ?? {},
       })
-      : docObj(join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh);
+      : docObj(
+        join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh,
+        p.mau_cot === undefined ? null : { so: k.soCot, mau: p.mau_cot },
+      );
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
     // di, son de mot mau phang - can the moi doi duoc mai ngoi xanh thanh mai ngoi do,
     // vi mau nhan khong bao gio keo mot mau xanh sang mau do duoc.

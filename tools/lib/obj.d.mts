@@ -1,0 +1,34 @@
+/** Khai bao kieu cho `obj.mjs`, de bai test bang TypeScript goi thang duoc bo doc. */
+
+export interface KetQuaObj {
+  /** Dinh phang [x,y,z, u,v, nx,ny,nz, r,g,b, anh] * 3 dinh moi tam giac. */
+  readonly dinh: Float32Array;
+  readonly min: number[];
+  readonly max: number[];
+  readonly soTamGiac: number;
+}
+
+/**
+ * Mau nhan theo COT cua bang mau `colormap.png`.
+ *
+ * Can the nay vi ca goi City Kit cua Kenney chi co DUNG MOT material ten `colormap`, nen
+ * mau theo ten material khong tach duoc tuong voi mai. Cho ngoi trong bang mau moi la
+ * cai phan biet that su.
+ */
+export interface SonCot {
+  /** So cot cua bang mau. Mac dinh 16 - Kenney chia vay. */
+  readonly so?: number;
+  /** Chi so cot -> mau nhan. */
+  readonly mau: Record<string, number[]>;
+}
+
+/** So o mot dinh chiem trong mang dinh phang. */
+export const BUOC: number;
+
+export function docObj(
+  duong: string,
+  sonVl?: Record<string, number[]>,
+  gamma?: boolean,
+  traAnh?: ((tenAnh: string) => number) | null,
+  sonCot?: SonCot | null,
+): KetQuaObj;

@@ -64,9 +64,19 @@ function docMtl(duong) {
  * @param {(tenAnh: string) => number} [traAnh] Doi TEN FILE anh cua material thanh chi so
  *   anh toan cuc (>= 0), hay -1 neu khong tim ra. Bo trong thi moi material co anh deu
  *   dung anh so 0 - dung cho cac goi Kenney chi co mot `colormap.png`.
+ * @param {{so?: number, mau: Record<string, number[]>} | null} [sonCot] Mau nhan theo COT
+ *   cua bang mau. `so` la so cot cua `colormap.png` (mac dinh 16), `mau` la chi so cot ->
+ *   mau nhan.
+ *
+ *   VI SAO CAN: ca goi City Kit cua Kenney chi co DUNG MOT material ten `colormap`, nen
+ *   `sonVl` son het ca tuong lan mai lan cua so - khong tach duoc. Nhung `colormap.png`
+ *   la bang mau chia cot, moi cot mot mau (toa do `u` chon cot, `v` chon do dam trong
+ *   dai chuyen sac cua cot do). Nen COT chinh la cai "material" that su cua goi nay.
+ *   Do 18/09: `ks:building-type-a` dung cot 1, 3, 7, 9, 11; `ki:building-a` dung 9, 11, 15.
  * @returns {{dinh: Float32Array, min: number[], max: number[], soTamGiac: number}}
  */
-export function docObj(duong, sonVl = {}, gamma = false, traAnh = null) {
+export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot = null) {
+  const soCot = sonCot?.so ?? 16;
   const mtl = docMtl(join(dirname(duong), `${duong.split('/').pop().replace(/\.obj$/, '')}.mtl`));
   let vatLieu = { kd: [1, 1, 1], anh: 1 };
   const v = [];
@@ -115,9 +125,14 @@ export function docObj(duong, sonVl = {}, gamma = false, traAnh = null) {
           const toaDo = v[chiSo(a, v.length)] ?? [0, 0, 0];
           const anh = b === undefined || b === '' ? [0, 0] : (vt[chiSo(b, vt.length)] ?? [0, 0]);
           const phap = c === undefined || c === '' ? [0, 1, 0] : (vn[chiSo(c, vn.length)] ?? [0, 1, 0]);
+          // Mau theo cot bang mau: `u` cho biet dinh nay lay mau o cot nao.
+          const cot = sonCot === null ? undefined : sonCot.mau[String(Math.floor(anh[0] * soCot))];
           ra.push(
             toaDo[0], toaDo[1], toaDo[2], anh[0], anh[1], phap[0], phap[1], phap[2],
-            vatLieu.kd[0], vatLieu.kd[1], vatLieu.kd[2], vatLieu.anh,
+            cot === undefined ? vatLieu.kd[0] : vatLieu.kd[0] * cot[0],
+            cot === undefined ? vatLieu.kd[1] : vatLieu.kd[1] * cot[1],
+            cot === undefined ? vatLieu.kd[2] : vatLieu.kd[2] * cot[2],
+            vatLieu.anh,
           );
         }
       }

@@ -42,3 +42,9 @@ Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**.
   `mau_vl`**: cả gói City Kit chỉ có **đúng một** material tên `colormap`, nên `mau_vl`
   sơn hết cả nhà lẫn mái lẫn cửa sổ, không tách được. Ba số lệch nhau để kéo màu khỏi
   phía xanh lam. Atlas 2× vẫn **74,1 %**, một trang — nhân màu không đổi kích thước.
+- **"Xem có sửa được điều đáng ghi không"** → **sửa được một nửa**, đo thật. `docObj` thêm
+  tham số `sonCot`, mẻ khai `"mau_cot"`: bảng màu `colormap.png` chia **16 cột**, toạ độ
+  `u` của đỉnh cho biết nó lấy màu ở cột nào — **cột mới là "material" thật của gói này**.
+  `ki:building-a` tách được: cột 9 · 11 · 15 là ba mảng khác nhau. Nhưng
+  `ks:building-type-a` thì **cột 1 ôm cả mái lẫn tường** nên model đó vẫn không tách được.
+  Bốn test ở `tests/Obj.test.ts` dựng file OBJ tí hon, không cần `assets_source/`.
