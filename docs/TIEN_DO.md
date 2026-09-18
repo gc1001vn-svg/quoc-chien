@@ -302,19 +302,16 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc mới 18/09 (lần 2 và 3) — mở trang xem game còn chạy không
+### ✅ Việc 18/09 (lần 2 và 3) — XONG, chủ dự án xác nhận "chạy được"
 
-https://gc1001vn-svg.github.io/quoc-chien/
+https://gc1001vn-svg.github.io/quoc-chien/ — mở trên iPhone 18/09, game chạy bình thường.
 
-Hai phiên 18/09 lần 2 và lần 3 **không chạm mã game**, nhưng có đổi
-`.claude/settings.json`, `package.json` (hai lần) và bảy script. Bước **E** đòi xác nhận
-trên máy thật trước khi mở phase mới, nên cần anh liếc một lượt: game mở lên, chạy bình
-thường là đủ.
+Hai phiên đó **không chạm mã game**, nhưng có đổi `.claude/settings.json`, `package.json`
+(hai lần) và bảy script; bước **E** đòi xác nhận trên máy thật trước khi mở phase mới.
+**Bước E đã qua — phiên sau mở thẳng Phase 8B, không phải hỏi lại.**
 
 Máy ảo chặn `github.io` (`000`) nên tôi **không tự xem được** — xem `du-an.md` mục
 "Giới hạn mạng máy ảo".
-
-Xong rồi báo một câu, phiên sau mở **Phase 8B**.
 
 ### ✅ Việc 16/09 — khoá Freesound: XONG
 
