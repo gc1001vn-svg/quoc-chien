@@ -7,8 +7,8 @@ Cập nhật: 18/09/2026 (phiên rà soát và chốt `kho-game` — **không đ
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Mười một phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
-17/09 ×2, 18/09) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
+**Game vẫn ở Phase 8A.** Mười hai phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
+17/09 ×2, 18/09 ×2) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
 nghề cho cả bốn repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng
 rào tất định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09
 (lần 3) đo kho gương Icosa, 16/09 tách kho chung, 16/09 (lần 2) mở kho lên 9 nguồn và sửa
@@ -20,7 +20,24 @@ bộ đọc glTF, 18/09 chốt `kho-game`. Chi tiết:
 **Phase 8B làm được ngay phiên sau** — không còn gì chặn. Ba đường chọn dáng nhà, số đo ở
 mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
 
-### Phiên 18/09 đã đổi gì
+### Phiên 18/09 (lần 2) đã đổi gì
+
+Đồ nghề, **không chạm mã game**. Chi tiết: `docs/NHAT_KY/PHASE_8_HOOK_CO.md`.
+
+Đọc `affaan-m/ECC` (MIT, v2.2.1), lấy hai cơ chế, bỏ phần còn lại. Thêm
+`scripts/hook_chung.mjs` (cờ tắt hook ba tầng · `thoat()` chống mất chữ trên **146.176
+byte** · `cat_tran()` · `uoc_tok()`) và thước thứ mười `check_hook`. Cả bốn repo giờ cùng
+5 hook. `.claude/settings.json` **không đổi một byte** — cờ nằm trong script.
+
+Sáu lỗi đang chạy im lặng, bắt được bằng cách đo: `cai_dat` tạo `do.sh` thừa · `--vsp`
+gỡ khoá mà không ghi vé miễn · `check_kho` in "ký tự" trong khi đếm **byte** · `ký tự/4`
+ước token sai **−26,5%** (mỏ neo `repomix`: thật 134.317, `byte/3` 132.023) · `so-thich.md`
+ghi "bốn hook" khi đã năm · `dau_phien` không quét skill nằm ngoài `synced/`.
+
+Kho ghi nhớ 22.843 → 21.088 byte, đối chiếu 142 dòng cũ, **0 dòng mất**.
+Đo hiện trạng khoá skill: 17 skill có file, **0 cái chạy loạn**, đang chặn 2.600 tok/phiên.
+
+### Phiên 18/09 (lần 1) đã đổi gì
 
 Toàn bộ ở `kho-game`, **không chạm mã game**. Chi tiết: `docs/NHAT_KY/PHASE_8_VET_KHO.md`.
 
@@ -261,6 +278,19 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### Việc mới 18/09 (lần 2) — mở trang xem game còn chạy không
+
+https://gc1001vn-svg.github.io/quoc-chien/
+
+Phiên 18/09 lần 2 **không chạm mã game**, nhưng có đổi `.claude/settings.json`,
+`package.json` và bảy script. Bước **E** đòi xác nhận trên máy thật trước khi mở phase
+mới, nên cần anh liếc một lượt: game mở lên, chạy bình thường là đủ.
+
+Máy ảo chặn `github.io` (`000`) nên tôi **không tự xem được** — xem `du-an.md` mục
+"Giới hạn mạng máy ảo".
+
+Xong rồi báo một câu, phiên sau mở **Phase 8B**.
 
 ### ✅ Việc 16/09 — khoá Freesound: XONG
 
