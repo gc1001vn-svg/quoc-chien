@@ -33,6 +33,7 @@ import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './At
 import type { Man } from './Man';
 import { Camera } from './Camera';
 import { Gl } from './Gl';
+import { DoiMeAtlas } from './DoiMeAtlas';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { doMuc, veLopNen, veLopVat, type Muc, type Ve } from './VeCanh';
 import { noiChamChon } from './ChamChon';
@@ -61,7 +62,8 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   const perf: Perf = new Perf(goc);
 
   // Nap JSON atlas TRUOC: so trang quyet dinh shader, phai biet roi moi dung duoc `Gl`.
-  const bo: BoAtlas = await taiBoAtlas(CAU_HINH.me, coTheoDpr(window.devicePixelRatio));
+  const co: '1x' | '2x' = coTheoDpr(window.devicePixelRatio);
+  const bo: BoAtlas = await taiBoAtlas(CAU_HINH.me, co);
   const gl: Gl = new Gl(canvas, SUC_CHUA, bo.trang.length);
   const atlas: Atlas = new Atlas(bo, await napTrangLenGpu(bo, gl));
   gl.datTrang(atlas.cacTrang());
@@ -99,7 +101,10 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   cam.noiVao(canvas);
   const ghim: Ghim = new Ghim(goc);
   // Atlas lech ban voi code thi bao ngay bang chu do, khong de `datSprite` nuot im lang.
-  baoThieuHinh(goc, atlas.thieu(tenSpriteCanCo(banDo)));
+  const soatThieu = (a: Atlas): void => { baoThieuHinh(goc, a.thieu(tenSpriteCanCo(banDo))); };
+  soatThieu(atlas);
+  // Len doi la doi ca bo atlas - `DoiMeAtlas` lo phan nap va nha.
+  const boMe: DoiMeAtlas = new DoiMeAtlas(gl, co, CAU_HINH.me, atlas, soatThieu);
 
   let rongCss = 1;
   let caoCss = 1;
@@ -159,6 +164,11 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
     truoc = now;
     thanhPho.chay(nhipKe.tien(giay));
 
+    // Len doi thi `Meta` doi `thoiDai.doi`, ma moi doi khai mot ten me atlas trong
+    // `data/balance.json > thoiDai`. O day chi DOC mot chuoi - `src/sim/` khong biet gi
+    // ve atlas hay WebGL (luat 1 cua CLAUDE.md).
+    boMe.theoDoi(meta.thoiDai.doi.me);
+
     const the = van.the;
     if (the !== undefined && !theUi.hien) {
       // The quyet dinh chiem 46 % man tu duoi len - dong bang nghien cuu de hai cai khong
@@ -177,8 +187,13 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
     hangTocDo.capNhat();
     bangMeta.capNhat();
 
+    // Doc lai moi khung: len doi thi `boMe` da thay ca bo atlas, giu ban sao la ve bo cu.
+    const dangVe: Atlas = boMe.atlas();
     const ve: Ve = {
-      gl, atlas, rongDev: rongCss * gl.tiLeDiemAnh(), caoDev: caoCss * gl.tiLeDiemAnh(),
+      gl,
+      atlas: dangVe,
+      rongDev: rongCss * gl.tiLeDiemAnh(),
+      caoDev: caoCss * gl.tiLeDiemAnh(),
       tiLe: gl.tiLeDiemAnh() * cam.cssTrenWorld(),
       camX: 0, camY: 0, dem: 0,
     };
@@ -186,7 +201,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
     ve.camX = (khung.x0 + khung.x1) / 2;
     ve.camY = (khung.y0 + khung.y1) / 2;
     veCuoi = ve;
-    const vung: VungO = vungONhinThay(khung, atlas.oPx(), banDo.canh, atlas.bienDo());
+    const vung: VungO = vungONhinThay(khung, dangVe.oPx(), banDo.canh, dangVe.bienDo());
     const oGhim: O | undefined = ghim.layMuc();
     const muc: Muc | undefined = oGhim === undefined ? undefined : doMuc(ve, banDo, oGhim);
     if (muc !== undefined) {

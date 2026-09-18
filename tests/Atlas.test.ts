@@ -40,10 +40,22 @@ function doc(f: string): Atlas {
 }
 
 describe('atlas da nuong', () => {
-  it('co it nhat mot atlas, va tong so trang khong vuot tran', () => {
+  it('co it nhat mot atlas, va so trang NAM TREN GPU CUNG LUC khong vuot tran', () => {
     expect(ten.length).toBeGreaterThan(0);
-    const tong = ten.reduce((n, f) => n + doc(f).trang.length, 0);
-    expect(tong).toBeLessThanOrEqual(TRAN_TRANG);
+    // Tran 4 trang la tran cua thu nam tren GPU CUNG LUC, khong phai tong moi file trong
+    // `public/atlas`. Mot van chi giu: mot bo cua man ban do (`hex_*`) va mot bo cua man
+    // thanh pho - doi thoi dai thi `DoiMeAtlas` nha bo cu truoc khi gan bo moi. Va chi
+    // mot co duoc nap: `coTheoDpr` chon `1x` hay `2x` theo may, khong bao gio ca hai.
+    // Truoc 18/09 test nay cong het moi file, nen them mot me la do du khong ai giu hai
+    // me cung luc.
+    for (const co of ['_1x.json', '_2x.json']) {
+      const cung = ten.filter((f) => f.endsWith(co));
+      if (cung.length === 0) continue;
+      const banDo = cung.filter((f) => f.startsWith('hex_'));
+      const thanhPho = cung.filter((f) => !f.startsWith('hex_'));
+      const nhieuNhat = (ds: string[]): number => Math.max(0, ...ds.map((f) => doc(f).trang.length));
+      expect(nhieuNhat(banDo) + nhieuNhat(thanhPho), `co ${co}`).toBeLessThanOrEqual(TRAN_TRANG);
+    }
   });
 
   it.each(ten)('%s: moi o nam gon trong canh atlas', (f) => {

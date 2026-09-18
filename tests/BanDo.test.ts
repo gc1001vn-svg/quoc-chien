@@ -8,6 +8,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import cauHinhTho from '../data/thanh_pho_demo.json';
+import canBangTho from '../data/balance.json';
 import { docQuyHoach, laVien } from '../src/sim/city/QuyHoach.ts';
 import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/sim/city/BanDo.ts';
 import { docBoAtlas } from '../src/render/Atlas';
@@ -122,19 +123,47 @@ describe('sinh ban do trung bay', () => {
   });
 });
 
+/**
+ * Moi me ma `data/balance.json > thoiDai` tro toi, khong chi me mo dau. Len doi la
+ * `CityScene` doi sang me cua doi moi; me do thieu mot ten sprite thi cai nha bien mat
+ * NGAY LUC LEN DOI - loi chi hien sau hang chuc phut choi, khong ai bat kip bang tay.
+ */
+const ME_CAN_CO: string[] = [
+  ...new Set([CAU_HINH.me, ...(canBangTho.thoiDai as { me: string }[]).map((d) => d.me)]),
+];
+
 describe('ten sprite khai trong JSON phai co that trong atlas', () => {
+  for (const me of ME_CAN_CO) {
+    for (const co of ['1x', '2x']) {
+      it(`du ten cho me ${me} bo ${co}`, () => {
+        const bo = doc(`${me}_${co}`);
+        const thieu: string[] = [];
+        const kiem = (ten: string): void => {
+          if (bo.sprite[ten] === undefined) thieu.push(ten);
+        };
+        kiem(CAU_HINH.nen.duong);
+        kiem(CAU_HINH.nen.ngaTu);
+        for (const t of CAU_HINH.nen.thuong) kiem(t.ten);
+        for (const v of CAU_HINH.vat) kiem(v.ten);
+        expect(thieu).toEqual([]);
+      });
+    }
+  }
+
+  /**
+   * `DoiMeAtlas` nem loi khi me moi lech so trang, `o_px` hay `heSo` voi me dang chay -
+   * co y, vi `Gl` dich shader theo so trang va `Camera` nhan `o_px`/`heSo` luc dung. Bat
+   * o day thi biet ngay luc nuong, khong phai doi toi luc chu du an len doi tren iPhone.
+   */
   for (const co of ['1x', '2x']) {
-    it(`du ten cho bo ${co}`, () => {
-      const bo = doc(`${CAU_HINH.me}_${co}`);
-      const thieu: string[] = [];
-      const kiem = (ten: string): void => {
-        if (bo.sprite[ten] === undefined) thieu.push(ten);
-      };
-      kiem(CAU_HINH.nen.duong);
-      kiem(CAU_HINH.nen.ngaTu);
-      for (const t of CAU_HINH.nen.thuong) kiem(t.ten);
-      for (const v of CAU_HINH.vat) kiem(v.ten);
-      expect(thieu).toEqual([]);
+    it(`moi me deu doi qua lai duoc o bo ${co}`, () => {
+      const dau = doc(`${ME_CAN_CO[0] ?? ''}_${co}`);
+      for (const me of ME_CAN_CO) {
+        const bo = doc(`${me}_${co}`);
+        expect(bo.trang.length, `${me} so trang`).toBe(dau.trang.length);
+        expect(bo.o_px, `${me} o_px`).toBe(dau.o_px);
+        expect(bo.heSo, `${me} heSo`).toBe(dau.heSo);
+      }
     });
   }
 });

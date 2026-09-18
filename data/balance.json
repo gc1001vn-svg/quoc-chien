@@ -11,7 +11,7 @@
   "toiDaMotVan": 40,
 
   "_thoiDai": "Sau thoi dai (Phase 8, GAME_SPEC muc 9). `soO` la so o chinh phu lap the chinh sach duoc. `len` la dieu kien len doi KE TIEP: `soCongNghe` la tong so cong nghe da hoc ca van, `soNha` la so cong trinh dang co. `len: null` la chua mo duong len.",
-  "_me": "Ten me atlas cua doi do. Doi doi la doi atlas - TECH_SPEC muc 2: nha atlas cu bang gl.deleteTexture, khong giu lai 'phong khi can'. Phase 8A chua nuong me hien dai nen ca sau doi cung tro `trung_co_2`; Phase 8B chi sua dung cot nay.",
+  "_me": "Ten me atlas cua doi do. Doi doi la doi atlas - TECH_SPEC muc 2: nha atlas cu bang gl.deleteTexture, khong giu lai 'phong khi can'. Tu Phase 8B: doi 1-4 dung `trung_co_2`, doi 5-6 dung `hien_dai`. Doi mot ten o day la doi mat thanh pho, KHONG phai sua code - `CityScene` doc thang cot nay moi khung. Me moi phai nuong cung so trang atlas, cung `o_px` va cung `heSo` voi me dang chay, khong thi `CityScene` nem loi chu khong ve bay.",
   "_gioChoDoiThe": "Doi mot the chinh sach xong thi phai cho ngan nay gio game moi duoc doi tiep. Chua co vang nen phi doi the tinh bang thoi gian.",
   "_khoa_doi_4": "Doi 4 tro di chua co cong nghe rieng (tech.json moi co ba doi dau) nen `len` de null - len toi doi 4 la het duong, dung nhu KE_HOACH Phase 12. Them cong nghe cho ba doi sau thi mo lai.",
 
@@ -21,7 +21,7 @@
     { "so": 2, "hien": "Trung cổ", "soO": 3, "me": "trung_co_2", "len": { "soCongNghe": 13, "soNha": 230 } },
     { "so": 3, "hien": "Súng ống", "soO": 4, "me": "trung_co_2", "len": { "soCongNghe": 20, "soNha": 270 } },
     { "so": 4, "hien": "Công nghiệp", "soO": 5, "me": "trung_co_2", "len": null },
-    { "so": 5, "hien": "Hiện đại", "soO": 6, "me": "trung_co_2", "len": null },
-    { "so": 6, "hien": "Tương lai", "soO": 7, "me": "trung_co_2", "len": null }
+    { "so": 5, "hien": "Hiện đại", "soO": 6, "me": "hien_dai", "len": null },
+    { "so": 6, "hien": "Tương lai", "soO": 7, "me": "hien_dai", "len": null }
   ]
 }
