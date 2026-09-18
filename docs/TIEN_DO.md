@@ -3,22 +3,41 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 18/09/2026 (phiên cắm `open-code-review` — **không đụng màn hình game**).
+Cập nhật: 18/09/2026 (phiên Phase 8B — **nướng mẻ hiện đại và nối đổi atlas theo đời**).
 
 ## 1. Đang ở đâu
 
-**Game vẫn ở Phase 8A.** Mười ba phiên liền (12/09, 13/09, 14/09 ×2, 15/09 ×3, 16/09 ×2,
-17/09 ×2, 18/09 ×3) không đụng gì màn hình game: 12/09 gỡ 11/11 xung đột tài liệu, 13/09 rà soát và đồng bộ bộ đồ
-nghề cho cả bốn repo, 14/09 thêm hook `UserPromptSubmit` nhắc kho, 14/09 (lần 2) dựng hàng
-rào tất định và thước `khoi:dong`, 15/09 dựng bản duyệt Artifact và lệnh dò asset, 15/09
-(lần 3) đo kho gương Icosa, 16/09 tách kho chung, 16/09 (lần 2) mở kho lên 9 nguồn và sửa
-bộ đọc glTF, 18/09 chốt `kho-game`. Chi tiết:
-`docs/NHAT_KY/PHASE_8_RA_SOAT.md`, `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`,
-`PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`, `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`,
-`PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`, `PHASE_8_VET_KHO.md`, `PHASE_8_OCR.md`.
+**Phase 8B XONG. Game ở Phase 8B/13.** Chuỗi mười bốn phiên không chạm màn hình game đã
+đứt: phiên này nướng mẻ `hien_dai` (74 sprite, Kenney City Kit + Mini Characters, CC0) và
+nối `ThoiDai.me` vào `CityScene` — lên đời là cả bộ atlas đổi, bộ cũ nhả bằng
+`gl.deleteTexture`. Chi tiết: `docs/NHAT_KY/PHASE_8B.md`.
 
-**Phase 8B làm được ngay phiên sau** — không còn gì chặn. Ba đường chọn dáng nhà, số đo ở
-mục 5; **Kenney City Kit đang dẫn** (60 dáng, một tác giả, CC0).
+**Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế thành phố, và mở đường lên
+đời 4–6 (mục 5). **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
+
+Mười bốn phiên đồ nghề trước đó (12/09 → 18/09 ×3): `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
+`PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`,
+`PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`, `PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`,
+`PHASE_8_VET_KHO.md`, `PHASE_8_OCR.md`, `PHASE_8_HOOK_CO.md`.
+
+### Phiên 18/09 (lần 4) đã đổi gì — Phase 8B
+
+- **`tools/me/hien_dai.json`, 74 sprite**, cùng bộ tên với `trung_co_2`. 32 loại nhà mỗi
+  loại một dáng riêng từ **Kenney City Kit** (suburban 21 + commercial 19 + industrial 20,
+  một tác giả, CC0); người từ **Kenney Mini Characters** (khung xương 7 khớp); cây cỏ đá
+  giữ nguyên phần Quaternius của mẻ trung cổ.
+- **Trần thật là trang atlas 2×.** `ti_le` đồng loạt 2,0 → 3 trang; 1,65 → 2 trang;
+  **1,53 vừa một trang, lấp đầy 76,1 %**. Công thức chốt: `min(1.53, 1.9/đáy, 2.33/cao)`.
+  **Cấm chuẩn hoá từng model về cùng một đáy** — làm vậy thùng rác to bằng căn nhà.
+- **`ThoiDai.me` hết là chữ chết.** Đời 5–6 trỏ `hien_dai`; `src/render/DoiMeAtlas.ts` lo
+  nạp và nhả, `CityScene` chỉ đọc một chuỗi mỗi khung. `src/sim/` không biết gì (luật 1).
+- **`?me=<tên>` ép một mẻ bất kỳ.** Cần thật, không phải đồ chơi — xem mục 4.
+- **Máy nướng sửa gốc:** `doiDang` chỉ biết đuôi `_l`/`_r` của Quaternius nên gương một
+  người Kenney (`leg-left`) **không đổi chân**, hai khung bước ra y hệt nhau.
+- **Thước `Atlas.test.ts` đếm sai bản chất** — cộng số trang của mọi file trong
+  `public/atlas`, nên thêm một mẻ là đỏ dù không ai giữ hai mẻ cùng lúc.
+- Hai bộ nhân vật đã cân rồi loại: `animated-characters-survivors` **chỉ có FBX**;
+  `blocky-characters` **không có skin** nên không đặt dáng được.
 
 ### Phiên 18/09 (lần 3) đã đổi gì
 
@@ -236,6 +255,11 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
+**Atlas, đo 18/09 (lần 4):** `hien_dai` **1 trang mỗi cỡ** — 1× lấp đầy 19,5 %,
+2× lấp đầy **76,1 %** (mẻ `trung_co_2` 2× lấp 84,4 %). 16,8 MB GPU / trần 67,1 MB.
+Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**. **Đừng chép số này đi đâu** —
+`node tools/nuong_sprite.mjs hien_dai 2` in lại.
+
 | Thước | Trước | Sau |
 |---|---:|---:|
 | `npm run do` | 6/6 | **9/9** (thêm `check:token`, `check:kehoach`, `khoi:dong`) |
@@ -301,6 +325,24 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ⬜ Việc 18/09 (lần 4) — xem mẻ hiện đại trên iPhone
+
+Mở bản duyệt rồi **thêm `?me=hien_dai` vào cuối địa chỉ** là thấy thành phố thời hiện đại.
+Bỏ đuôi đó đi là về mẻ trung cổ như cũ. Hai việc cần anh nhìn:
+
+1. **Phong cách có chấp nhận được không** — nhà Kenney City Kit phần lớn xám xanh, chỉ
+   nhà dân và nhà chài là mái xanh lá. Không ưng thì phiên sau đổi màu bằng `mau_vl`.
+2. **Người có quá to hay quá bé không** — Kenney Mini Characters là kiểu đầu to (chibi),
+   khác hẳn người thời trung cổ. Tỉ lệ đang để 1,25.
+
+Máy ảo chặn `github.io` (`000`) nên tôi **không tự xem trang thật được** — xem `du-an.md`
+mục "Giới hạn mạng máy ảo".
+
+### ✅ Việc 18/09 (lần 4) — sửa `docs/ASSET_CREDITS.md`: XONG
+
+Anh đồng ý trong phiên; đã thêm 5 gói CC0 (4 gói Kenney City Kit + Kenney Mini Characters)
+và 4 file atlas `hien_dai_*`. `check:credits` xanh lại.
 
 ### ✅ Việc 18/09 (lần 2 và 3) — XONG, chủ dự án xác nhận "chạy được"
 
@@ -421,14 +463,18 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Phase 8B chưa làm: chưa có mẻ sprite hiện đại.** Khớp nối dựng sẵn. Việc khó **không
-  còn là thiếu model**: Poly Pizza đo 15/09 cho **127 dáng nhà duy nhất** (`Category`
-  bắt đầu bằng `Buildings`), **103 dáng ≤ 8.000 tam** tức nướng được, trong đó **52 dáng
-  CC0**. Game cần 32 → dư. `city-builder-bits` chỉ 8 dáng nên **không còn là cái chặn**.
-  Cái chặn mới là **phong cách**: 127 dáng đó của nhiều tác giả khác nhau, ghép vào một
-  thành phố có thể nhìn lộn xộn. Phải nướng thử vài dáng rồi gửi ảnh chủ dự án so.
+- **✅ Phase 8B XONG 18/09 — mẻ `hien_dai` đã nướng và đã nối vào `ThoiDai`.**
+- **NỢ MỚI, NẶNG NHẤT: đời 5 chưa tới được bằng cách chơi.** Đời 4 trở đi còn `len: null`
+  trong `data/balance.json` (chưa có công nghệ riêng — `tech.json` mới có ba đời đầu), và
+  đời 3 đòi **270 nhà** mà thành phố mới tới **241**. Tức mẻ hiện đại nướng xong vẫn không
+  hiện ra trong một ván chơi thật. Đường tạm: `?me=hien_dai` ép mẻ. **Mở đường lên đời là
+  việc Phase 9**, đi cùng nợ "thưởng công nghệ chưa đổi được thành phố" ngay dưới.
 - **Thưởng công nghệ chưa đổi được thành phố.** Trần nhà 398 mà thành phố chỉ tới 241 —
   trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
+  **Đây chính là cái chặn đời 3 → đời 4** (đòi 270 nhà).
+- **Mẻ `hien_dai` còn hai chỗ tạm, chờ chủ dự án xem ảnh rồi quyết** (mục 3):
+  Kenney City Kit **không có xe cộ** nên `xe_keo` đang là `construction-barrier` và
+  `quay_xe` là `dumpster`; người là kiểu đầu to (chibi), khác hẳn người mẻ trung cổ.
 - **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra đúng bằng cái đã
   lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
 - **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
@@ -520,57 +566,40 @@ quyền hạn và giới hạn máy ảo.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
-## 5. Phase 8B — nướng mẻ hiện đại (làm được ngay)
 
-Nướng mẻ sprite thời hiện đại từ `city-builder-bits` (KayKit, CC0), rồi nối vào
-`ThoiDai.me` để lên đời là thành phố đổi mặt.
+## 5. Phase 9 — nối lớp chiến dịch vào kinh tế, và mở đường lên đời
 
-### Đường thứ ba, đo 16/09: Kenney City Kit — ĐANG DẪN
+Phase 8B xong thì cái chặn to nhất không còn là hình, mà là **luật lên đời**.
 
-Tải và đo thật (`node tools/tai_asset.mjs city-kit-*`), **không phải ước**:
+### Việc 1 — mở đường lên đời 4, rồi 5 (ưu tiên, vì nó mở khoá mẻ vừa nướng)
 
-| Gói | Dáng nhà | Khác | Cỡ |
-|---|---:|---|---:|
-| `city-kit-suburban` | **21** | hàng rào, lối đi, cây, bồn hoa | 8,3 MB |
-| `city-kit-commercial` | **19** | + 22 bản `low-detail`, mái hiên, dù | 12 MB |
-| `city-kit-industrial` | **20** | ống khói, bồn, container, pin mặt trời, tháp nước, cối xay | 12 MB |
-| `city-kit-roads` | — | 95 mảnh đường | 7,9 MB |
+Hai chỗ chặn, đo được chứ không phải đoán:
 
-**60 dáng nhà, cùng một tác giả.** Game cần 32 → dư gấp gần hai, mà **không vướng cái
-chặn phong cách** của Icosa. Cả bốn gói `License.txt` ghi `Creative Commons Zero, CC0`.
-`docObj` đọc **213/213 model, 0 lỗi**.
+- `data/balance.json > thoiDai[2].len.soNha` = **270**, mà `npm run sim:thu` cho thành phố
+  chạm trần **241 nhà** trong 120 giờ. Hạ ngưỡng chờ 40→28 cũng vẫn 241 → **cái thiếu là
+  nhu cầu, không phải trần** (trần nhà 398).
+- `thoiDai[3..5].len` = `null` vì `data/tech.json` mới có công nghệ của ba đời đầu.
 
-So ba đường: `city-builder-bits` 8 dáng · **Kenney City Kit 60 dáng, đồng nhất** ·
-Icosa hàng trăm dáng nhưng nhiều tác giả nên lộn xộn.
+Làm theo thứ tự: chạy `npm run sim:congnghe` đo lại, rồi hoặc hạ `soNha` cho khớp thực tế,
+hoặc thêm nhu cầu để thành phố mọc quá 241. **Số vào `data/*.json`, không vào `.ts`**
+(luật 2). Xong mới mở `len` cho đời 4 và 5.
 
-**Từ 15/09 (lần 3) có đường thứ hai:** kho Icosa trên đĩa có hàng trăm dáng nhà hiện đại
-(`grep -io '[a-z0-9_ -]*house[a-z0-9_ -]*' docs/KHO_ICOSA.md`). Đổi lại: **nhiều tác giả
-khác nhau nên phong cách lộn xộn** — đúng cái chặn đã ghi ở mục 4, và toàn bộ là CC-BY nên
-phải ghi công. `city-builder-bits` một tác giả, đồng nhất, nhưng chỉ 8 dáng.
-**Nướng thử cả hai rồi gửi ảnh cho anh so.**
+### Việc 2 — lớp chiến dịch nối vào kinh tế thành phố
 
-**Việc phải quyết trước khi nướng:** gói chỉ có **8 dáng nhà** (`building_A`…`building_H`)
-cộng đường, xe, cột đèn — mà game có **32 loại nhà**. Hai đường: ghép 32 về 8 dáng, phân
-biệt bằng màu và vật trang trí (mọi nhà đổi mặt, nhưng nhà khác chức năng trông giống
-nhau), hay chỉ đổi mặt nhóm `do_thi` (không nhà nào sai chức năng, nhưng thành phố lẫn lộn
-hai thời). **Nướng xong gửi ảnh cho anh chọn.**
+Thẻ chính sách chưa đụng được kinh tế (cố ý, để hiệu ứng tháo ra đúng bằng cái đã lắp
+vào). Thẻ "+15 % lương thực" của `GAME_SPEC` mục 7 chờ đúng phase này.
 
-**Rủi ro phải đo trước khi hứa:** mẻ hiện đại là **bộ atlas thứ ba**. Hai màn hiện giữ 2
-trang cùng lúc, trần là 4 — còn đúng 2 trang để tiêu. Đo số trang trước khi nướng cả mẻ.
-TECH_SPEC mục 2 đã chốt cách lùi: đổi đời thì `gl.deleteTexture` nhả atlas cũ.
+### Việc 3 — hai chỗ tạm của mẻ hiện đại, chỉ làm khi chủ dự án đã xem ảnh
 
-**Asset — KHÔNG cần `npm run tai:tatca` (~1 GB).** Mẻ hiện đại chỉ cần **một gói**:
+Kenney City Kit **không có xe cộ**: `xe_keo` đang là `construction-barrier`, `quay_xe` là
+`dumpster`. Muốn đúng thì dò `kho-game` tìm gói xe CC0 — `npm run do:asset xe hien_dai`.
 
-```bash
-node tools/tai_itch.mjs kaylousberg/city-builder-bits
-```
+### Nhắc trước khi nướng thêm mẻ
 
-**Tải lẻ thì CẤM chạy `npm run kho`** — nó ghi đè `docs/KHO_ASSET.md` bằng đúng những gì
-đang có trên đĩa, mà lúc đó kho chỉ có một gói. `KHO_ASSET.md` đã có sẵn mục
-`city-builder-bits` từ 10/09.
-
-`city-builder-bits` **không có** trong kho chung của `tayvuc` → vẫn phải tải từ itch.
-Luật dò và cách lấy từ kho chung: `docs/DAU_PHIEN.md` mục F.
+Mẻ mới **phải nướng ra cùng số trang atlas, cùng `o_px`, cùng `heSo`** với mẻ đang chạy,
+không thì `DoiMeAtlas` ném lỗi chứ không vẽ bậy — `tests/BanDo.test.ts` bắt trước ở máy.
+Trần thật là **trang atlas cỡ 2×**, không phải số model: xem công thức `ti_le` ở đầu
+`tools/me/hien_dai.json`.
 
 **Mở phiên mới rồi hãy bắt đầu** — mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G ở kho, không bỏ bước nào.
