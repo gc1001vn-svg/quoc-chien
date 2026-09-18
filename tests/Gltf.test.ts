@@ -20,7 +20,7 @@ import { docGltf } from '../tools/lib/gltf.mjs';
  *   dinh 1 (0,1,0) bam xuong `canh` - dung ngay tai goc cua xuong do
  *   dinh 2 (1,1,0) bam xuong `canh` - cach goc xuong mot don vi theo truc x
  */
-function taoFileGltf(): string {
+function taoFileGltf(tenXuong = 'canh'): string {
   const viTri = new Float32Array([0, 0, 0, 0, 1, 0, 1, 1, 0]);
   const phap = new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1]);
   const uv = new Float32Array([0, 0, 0, 0.25, 1, 1]);
@@ -61,7 +61,7 @@ function taoFileGltf(): string {
     scenes: [{ nodes: [0, 3] }],
     nodes: [
       { name: 'root', children: [1] },
-      { name: 'canh', translation: [0, 1, 0] },
+      { name: tenXuong, translation: [0, 1, 0] },
       { name: 'khong_dung' },
       { name: 'luoi', mesh: 0, skin: 0 },
     ],
@@ -175,6 +175,26 @@ describe('docGltf', () => {
     // cung khong the tu bia ra xuong moi.
     const r = docGltf(duong, { dang: { canh_l: [0, 0, 90] }, guong: true });
     expect(dinhThu(r.dinh, 2)).toEqual([1, 1, 0]);
+  });
+
+  it('guong hieu ca loi dat ten "-left"/"-right" cua Kenney', () => {
+    // Quaternius viet `thigh_l`, Kenney viet `leg-left`. Truoc 18/09 `doiDang` chi biet
+    // duoi `_l`/`_r`, nen guong mot nguoi Kenney chi doi dau goc ma KHONG doi chan -
+    // hai khung buoc ra y het nhau, nguoi di bo khong nhac chan.
+    const canhPhai: string = taoFileGltf('canh-right');
+    const r = docGltf(canhPhai, { dang: { 'canh-left': [0, 0, 90] }, guong: true });
+    const d2 = dinhThu(r.dinh, 2);
+    expect(d2[0]).toBeCloseTo(0);
+    expect(d2[1]).toBeCloseTo(0);
+  });
+
+  it('guong giu nguyen ten xuong khong co ben, chi doi dau goc', () => {
+    const than: string = taoFileGltf('than');
+    const r = docGltf(than, { dang: { than: [0, 0, 90] }, guong: true });
+    // Doi dau z: 90 -> -90, nen dinh cach goc mot don vi theo x quay XUONG chu khong len.
+    const d2 = dinhThu(r.dinh, 2);
+    expect(d2[0]).toBeCloseTo(0);
+    expect(d2[1]).toBeCloseTo(0);
   });
 
   it('loc theo xuong: tam giac nao co mot dinh bam xuong bi loai thi bo ca tam giac', () => {

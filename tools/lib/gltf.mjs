@@ -196,18 +196,33 @@ function tachGlb(duong) {
 }
 
 /**
+ * Hai loi dat ten trai/phai ma cac goi asset dung. Quaternius va Unreal viet `thigh_l`;
+ * Kenney viet `leg-left`. Doi mot ten sang ben kia, hay tra `null` neu ten khong co ben.
+ */
+const BEN = [['_l', '_r'], ['-left', '-right']];
+
+function doiBen(ten) {
+  for (const [trai, phai] of BEN) {
+    if (ten.endsWith(trai)) return `${ten.slice(0, -trai.length)}${phai}`;
+    if (ten.endsWith(phai)) return `${ten.slice(0, -phai.length)}${trai}`;
+  }
+  return ten;
+}
+
+/**
  * Bang dang: ten xuong -> ba goc xoay (do). `guong` doi ben trai voi ben phai, nho vay
  * dang "chan trai buoc truoc" dung lai duoc lam dang "chan phai buoc truoc" ma khong
  * phai chep so lan hai.
+ *
+ * Ten xuong khong mang duoi trai/phai (`torso`, `head`) thi giu nguyen ten, chi doi dau
+ * goc - guong mot khung xuong doi xung thi phan giua khong doi cho.
  */
 function doiDang(dang, guong) {
   if (!guong) return dang;
   const ra = {};
   for (const [ten, goc] of Object.entries(dang)) {
-    const doi = ten.endsWith('_l') ? `${ten.slice(0, -2)}_r`
-      : ten.endsWith('_r') ? `${ten.slice(0, -2)}_l` : ten;
     // Guong qua mat phang doc: goc quanh truc x giu nguyen, quanh y va z doi dau.
-    ra[doi] = [goc[0] ?? 0, -(goc[1] ?? 0), -(goc[2] ?? 0)];
+    ra[doiBen(ten)] = [goc[0] ?? 0, -(goc[1] ?? 0), -(goc[2] ?? 0)];
   }
   return ra;
 }
