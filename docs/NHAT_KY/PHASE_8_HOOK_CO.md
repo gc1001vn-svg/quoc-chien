@@ -43,3 +43,29 @@ năm hook nằm ở năm sự kiện khác nhau, mỗi sự kiện chỉ có đ�
 
 Vì sao + đánh đổi: `ghi-nho/quyet-dinh/2026-09-18-co-bat-tat-hook-va-tran-ghi.md`.
 Cách tắt hook: `ghi-nho/cong-cu/luat-chi-tiet.md` mục "Hook".
+
+---
+
+## Phần sau cùng phiên 18/09
+
+**Đồng bộ nốt hai repo còn lại.** `vsp-fleet-safety` (`--vsp`) và `tayvuc` giờ cũng
+5 hook + `hook_chung` + thước `check_hook`. Số đo: vsp **6/6 mục đạt** · tayvuc
+`npm run do` **mã thoát 0**. Cả bốn repo `check_hook` 5 hook, 0 lỗi.
+
+Bắt được lỗi trong `cai_dat.mjs`: `tayvuc` có sẵn script `do` trong `package.json`
+là chuỗi `npm run …`, không gọi `scripts/do.sh` — bản cũ chỉ nhìn `do.sh` nên tạo
+thêm một lệnh đo thứ hai không ai gọi. Sửa gốc: xét cả hai trước khi tạo.
+
+**Cắt kho ghi nhớ.** `du-an.md` 5.567 → 4.090 byte (trần 4.800). Mục "Giới hạn mạng
+máy ảo" chuyển sang `ghi-nho/cong-cu/luat-chi-tiet.md`. Kiểm mất mát: đối chiếu 142
+dòng cũ với cả kho, **0 dòng mất**.
+
+**Không cắt `so-thich.md`** — đo trước, kết quả nói đừng cắt. Hook `nhac_kho` tra được
+90% với luật có câu hỏi rõ, nhưng chỉ **30%** với luật chạy ngầm và **0%** với luật cần
+ở lượt 0 (`UserPromptSubmit` chưa chạy). Bằng chứng lượt 0 lấy từ nhật ký phiên này.
+
+**Ước token: cả kho một công thức `byte/3`.** Hiệu chuẩn bằng `repomix` trên 84 file
+`src`+`tests`: thật 134.317 · `byte/3` 132.023 (−1,7%) · `ký tự/4` 98.721 (−26,5%).
+Bỏ `ký tự/4`. `check_kho` in rõ ngưỡng là **byte**, không đổi ngưỡng.
+Chốt: **không mở `api.anthropic.com`** để đo token thật — `byte/3` đủ dùng.
+`ghi-nho/quyet-dinh/2026-09-18-uoc-token-bang-byte-3.md`.
