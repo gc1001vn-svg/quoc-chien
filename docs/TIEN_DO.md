@@ -12,8 +12,12 @@ Cập nhật: 18/09/2026 (phiên Phase 8B — **nướng mẻ hiện đại và 
 nối `ThoiDai.me` vào `CityScene` — lên đời là cả bộ atlas đổi, bộ cũ nhả bằng
 `gl.deleteTexture`. Chi tiết: `docs/NHAT_KY/PHASE_8B.md`.
 
-**Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế thành phố, và mở đường lên
-đời 4–6 (mục 5). **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
+**Việc phiên sau: cối xay quay** — sprite công trình nhiều khung, chủ dự án chốt 18/09.
+Chi tiết ba bước ở mục 5. **Rồi mới tới Phase 9** (nối lớp chiến dịch vào kinh tế, mở
+đường lên đời 4–6). **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
+
+**Hạ cỡ người mẻ hiện đại 18/09:** `ti_le` 1,25 → 1,0, sprite 2× **131×113 → 111×92**
+(người mẻ trung cổ 116×107). Chủ dự án bảo "người to quá".
 
 Mười bốn phiên đồ nghề trước đó (12/09 → 18/09 ×3): `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
 `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`,
@@ -567,7 +571,32 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phase 9 — nối lớp chiến dịch vào kinh tế, và mở đường lên đời
+## 5. Phiên sau — cối xay quay (chủ dự án chốt 18/09), rồi mới tới Phase 9
+
+### Việc phiên sau: sprite công trình nhiều khung
+
+**Hiện KHÔNG công trình nào động**, kể cả mẻ trung cổ — chỉ người đi đường có hai khung
+(`nguoi_<kiểu>_<hướng>_0` / `_1`, `VeCanh.spriteWalker`). Công trình vẽ thẳng bằng một tên
+trong `data/buildings.json`, không có chỗ cắm khung thứ hai. Chủ dự án hỏi "cối xay không
+quay nhỉ" ngày 18/09 và chốt làm ở phiên sau.
+
+Ba việc, theo thứ tự:
+
+1. **`tools/lib/obj.mjs` lọc theo nhóm OBJ.** `assets_source/city-kit-industrial/Models/OBJ
+   format/windmill.obj` có sẵn hai nhóm `g windmill` và `g blades` — cắt được cánh ra khỏi
+   thân. `docObj` hiện đọc cả file, chưa có tuỳ chọn nhóm. Mẻ trung cổ cũng cần: kiểm
+   `kk:windmill` có tách nhóm không trước khi hứa.
+2. **Mẻ nướng thêm `coi_xay_k0` `coi_xay_k1` `coi_xay_k2`** — thân đứng yên, cánh xoay
+   0° / 30° / 60° bằng `rz` (đã có sẵn trong `ghep`, xoay quanh trục dựng màn hình, áp
+   trước `ry` — đúng cái cần cho cánh nằm trong mặt phẳng thẳng đứng).
+3. **`VeCanh` chọn khung theo `DongHo`** nếu atlas có `<tên>_k0`; công trình nào không có
+   thì vẽ một khung như cũ. Đi qua `DongHo` chứ đừng tự làm tròn — luật đã ghi ở
+   `CityScene`.
+
+**Cái phải đo trước khi nướng cả mẻ:** mỗi công trình động ăn thêm 2 sprite, mà atlas 2×
+đang lấp **74,1 %** một trang. Nướng thử đúng `coi_xay` rồi xem số trang trước đã.
+
+## Phase 9 — nối lớp chiến dịch vào kinh tế, và mở đường lên đời
 
 Phase 8B xong thì cái chặn to nhất không còn là hình, mà là **luật lên đời**.
 

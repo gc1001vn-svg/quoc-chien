@@ -29,3 +29,11 @@
 
 Số đo: **10/10 thước**. Atlas `hien_dai` 1 trang mỗi cỡ, 16,8 MB GPU / trần 67,1 MB.
 Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**.
+
+## Chủ dự án xem xong (18/09, cùng phiên)
+
+- **"Người to quá"** → `ti_le` 1,25 → 1,0, sprite 2× **131×113 → 111×92** (người mẻ trung
+  cổ 116×107). Atlas 2× 76,1 % → **74,1 %**, vẫn một trang.
+- **"Cối xay không quay nhỉ"** → đúng, và **chưa bao giờ quay**, kể cả mẻ trung cổ: sprite
+  công trình chỉ một khung, chỉ người đi đường có hai. Chủ dự án chốt **làm ở phiên sau** —
+  ba bước ghi ở `docs/TIEN_DO.md` mục 5.
