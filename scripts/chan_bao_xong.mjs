@@ -26,6 +26,9 @@
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { bat, thoat } from './hook_chung.mjs';
+
+const ID = 'dung:chan-bao-xong';
 
 /** Tu phu dinh dung ngay truoc "xong" -> khong tinh la bao xong. */
 const PHU_DINH = 'chưa|chua|không|khong|sắp|sap|gần|gan|nếu|neu|khi nào|khi nao';
@@ -41,6 +44,10 @@ let raw = '';
 process.on('uncaughtException', () => process.exit(0));
 process.on('unhandledRejection', () => process.exit(0));
 process.stdin.on('error', () => process.exit(0));
+
+// Muc `nhe` bo hook nay: no la hook DUY NHAT chan mot cau tra loi da viet xong.
+// Phien nao dang go mot loi gap ma no chan nham thi ha muc, dung go khoi settings.
+if (!bat(ID, ['thuong', 'chat'])) process.exit(0);
 
 process.stdin.on('data', (c) => { raw += c; });
 process.stdin.on('end', () => {
@@ -83,22 +90,22 @@ process.stdin.on('end', () => {
 
   const dongSoDo = msg.split('\n').find((l) => CO_SO_DO.test(l));
   if (!dongSoDo) {
-    console.error(
-      'Cau tra loi noi "xong" nhung khong co dong "So do:". ' +
-      'Chua do duoc thi khong duoc bao xong — hay dua so do that, ' +
-      'hoac ghi mot dong "So do: khong can - <ly do>".',
-    );
-    process.exit(2);
+    thoat(2, {
+      loi: 'Cau tra loi noi "xong" nhung khong co dong "So do:". ' +
+        'Chua do duoc thi khong duoc bao xong — hay dua so do that, ' +
+        'hoac ghi mot dong "So do: khong can - <ly do>".',
+    });
+    return;
   }
 
   // Bao xong ma khong noi buoc ke -> chu du an phai tu nghi ra viec.
   if (!CO_DE_XUAT.test(msg)) {
-    console.error(
-      'Cau tra loi noi "xong" nhung khong co dong "De xuat:". Xong mot viec thi '
-      + 'phai noi buoc ke - viec gi, vi sao, ton bao lau. That su het viec thi ghi '
-      + '"De xuat: khong co - <ly do>".',
-    );
-    process.exit(2);
+    thoat(2, {
+      loi: 'Cau tra loi noi "xong" nhung khong co dong "De xuat:". Xong mot viec thi '
+        + 'phai noi buoc ke - viec gi, vi sao, ton bao lau. That su het viec thi ghi '
+        + '"De xuat: khong co - <ly do>".',
+    });
+    return;
   }
 
   // Ghi "khong can" thi cho qua, da noi ro ly do la du.
@@ -121,12 +128,12 @@ process.stdin.on('end', () => {
   }
 
   if (!daChayLenh) {
-    console.error(
-      'Cau tra loi dua "So do:" nhung so lenh cua luot nay khong ghi nhan ' +
-      'lenh Bash nao da chay. So do phai chep tu ket qua that. ' +
-      'Hay chay lenh do that, hoac sua thanh "So do: khong can - <ly do>".',
-    );
-    process.exit(2);
+    thoat(2, {
+      loi: 'Cau tra loi dua "So do:" nhung so lenh cua luot nay khong ghi nhan ' +
+        'lenh Bash nao da chay. So do phai chep tu ket qua that. ' +
+        'Hay chay lenh do that, hoac sua thanh "So do: khong can - <ly do>".',
+    });
+    return;
   }
   process.exit(0);
 });

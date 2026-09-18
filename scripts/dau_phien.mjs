@@ -13,11 +13,18 @@
 
 import { existsSync, readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
+import { bat, thoat, cat_tran } from './hook_chung.mjs';
+
+const ID = 'phien:dau-phien';
 
 // Hook nay chi BAO CAO. No hong thi phien van phai chay binh thuong — khong co
 // luoi nay thi mot loi khong ai ngo do ra ca vet stack vao ngu canh moi phien.
 process.on('uncaughtException', () => process.exit(0));
 process.on('unhandledRejection', () => process.exit(0));
+
+// Muc `nhe` bo khoi nay: no la thu DUY NHAT o day chen chu vao ngu canh moi
+// phien. Can mot phien that re thi ha muc, khong phai go hook ra khoi settings.
+if (!bat(ID, ['thuong', 'chat'])) process.exit(0);
 
 const chay = (c) => { try { return execSync(c, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }).trim(); } catch { return ''; } };
 const d = [];
@@ -103,5 +110,6 @@ d.push(lenhDo ? `lenh do: ${lenhDo}` : 'repo CHUA co lenh do — dung mot cai tr
 // ngu canh moi phien ma truoc gio khong ai biet no ton bao nhieu — tran "duoi
 // ~10 dong" la uoc bang mat. In ra thi lan sau cat hay giu deu co so ma cai.
 // ~4 ky tu/token, du de thay xu huong.
-const ra = `[dau phien] ${d.join('\n[dau phien] ')}`;
-console.log(`${ra}\n[dau phien] khoi nay: ${d.length} dong · ~${Math.round(ra.length / 4)} tok`);
+const tho = `[dau phien] ${d.join('\n[dau phien] ')}`;
+const { van, tok, cat } = cat_tran(tho);
+thoat(0, { ra: `${van}\n[dau phien] khoi nay: ${d.length} dong · ~${tok} tok${cat ? ' (DA CAT)' : ''}\n` });
