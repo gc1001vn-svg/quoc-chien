@@ -542,29 +542,18 @@ quyền hạn và giới hạn máy ảo.
   Một ngoại lệ đáng ghi, vì đọc `--merged` sẽ ra kết luận sai: `caveman-mode-tetfj7` git
   báo **chưa gộp** nhưng đừng tưởng là việc còn treo — `main` đã có cả Phase 2B và đi xa
   hơn; nhánh chỉ còn bản công thức mẻ CŨ đã bị thay. Giữ hay xoá đều được.
-- **Hook `chan_bao_xong` lọt dạng báo xong hay gặp nhất — đo 18/09 (lần 3).**
-  Nó chỉ tính là báo xong khi `xong` nằm **đầu dòng** hoặc **ngay sau dấu chấm câu**:
-  `RAC = [\s>*_\-#\d.)\]]*` chỉ nuốt khoảng trắng, ký tự Markdown, chữ số — gặp chữ cái
-  là hỏng khớp. Dạng `<việc> xong` lọt sạch, mà đó là dạng hay dùng nhất.
-  Đo thật, năm câu qua chính hook đó:
-
-  ```
-  Bước 1 và 2 xong, đã gộp main.     -> ma thoat 0   LOT
-  Đóng phiên xong.                   -> ma thoat 0   LOT
-  Xong rồi.                          -> ma thoat 2   bat
-  Em làm rồi. Xong, đã gộp main.     -> ma thoat 2   bat
-  Việc này hoàn thành rồi nhé.       -> ma thoat 0   LOT
-  ```
-
-  Hệ quả: chính phiên 18/09 lần 3 báo xong hai lần **không có dòng `Đề xuất:`** mà hook
-  không kêu. Chặn đầu dòng là **cố ý** (comment trong file ghi rõ: tránh bắt nhầm khi chỉ
-  nhắc tới chữ "xong"), nhưng nó cắt luôn dạng báo xong thật.
-  **Hook dùng chung bốn repo** — bản gốc `ghi-nho/cong-cu/chan_bao_xong.mjs`,
-  `md5 66d836b2` khớp với bản ở đây. Sửa riêng repo này là lệch, thước `check_hook` đỏ;
-  phải sửa bản gốc rồi `node /home/user/ghi-nho/cong-cu/cai_dat.mjs <repo>` cho cả bốn.
-  **Viết test trước khi sửa** — đây là hook duy nhất chặn một câu trả lời đã viết xong,
-  bắt nhầm là phiền giữa lúc làm việc. `TIEP` sẵn có lo được `"đợi nướng xong thì gửi"`
-  (theo sau là `thì`) và `"xong chụp bảng gửi em"`.
+- **✅ Hook `chan_bao_xong` lọt dạng `<việc> xong`: SỬA XONG 18/09 (lần 4).**
+  Bản cũ chỉ tính là báo xong khi từ `xong` nằm **đầu dòng** hoặc ngay sau dấu chấm câu,
+  vì `RAC` chỉ nuốt khoảng trắng, ký tự Markdown và chữ số — gặp chữ cái là hỏng khớp.
+  Đo thật năm câu: **ba lọt, hai bắt**. Bỏ neo đầu dòng; cái giữ cho khỏi bắt nhầm là
+  `TIEP` (sau cụm từ phải là dấu câu, hết dòng, hay một từ chốt câu) cộng thêm `NOI_TOI`
+  (đợi · chờ · khi · báo · dạng · kiểu · lúc · chữ) cho `"đợi nướng xong thì gửi"` và
+  `"dạng báo xong"` vẫn lọt lưới.
+  **30 test ở `tests/ChanBaoXong.test.ts`, viết TRƯỚC khi sửa** — chạy ra 10 đỏ rồi mới
+  động vào hook. Bản gốc `ghi-nho/cong-cu/chan_bao_xong.mjs` nay `md5 d8781f8f`.
+- **`tayvuc` lệch bản `chan_bao_xong.mjs`, cố ý.** Ba repo kia đã đồng bộ `md5 d8781f8f`;
+  `tayvuc` dừng hẳn 05/09 nên không tự mở. Mở lại thì chạy
+  `node /home/user/ghi-nho/cong-cu/cai_dat.mjs <repo>` trước hết.
 - **`tayvuc`: `CLAUDE.md` 2.322 token**, vượt ngưỡng chung 1.600. Không cắt vì repo dừng
   hẳn; đặt ngưỡng tạm 2.400 kèm lý do trong `.claude/nguong_token.txt`, cắt khi mở lại.
 

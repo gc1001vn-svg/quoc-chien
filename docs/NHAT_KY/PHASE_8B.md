@@ -55,3 +55,12 @@ Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**.
   nhà một màu nhấn", chấp nhận được. Lần đầu để hệ số quanh 0,7–1,2 thì mái ra **tối
   quá** vì thân nhà đã nhân sẵn 1,9; kéo lên sao cho thành phần lớn nhất ≈ 1,35 mới ra
   màu sáng. Atlas 2× vẫn **74,1 %**, một trang.
+- **"Lại mất đề xuất"** → hook `chan_bao_xong` **sửa xong**, nợ ghi 18/09 (lần 3) đóng.
+  Bỏ neo đầu dòng nên bắt được dạng `<việc> xong`; giữ `TIEP` và thêm `NOI_TOI`
+  (đợi · chờ · khi · báo · dạng · kiểu · lúc · chữ) cho `"đợi nướng xong thì gửi"` và
+  `"dạng báo xong"` vẫn lọt lưới. **30 test ở `tests/ChanBaoXong.test.ts` viết TRƯỚC khi
+  sửa** — chạy ra **10 đỏ** rồi mới động vào hook, đúng luật của hook này.
+  Bản gốc `ghi-nho/cong-cu/chan_bao_xong.mjs` `md5 66d836b2 → d8781f8f`; đã chạy
+  `cai_dat.mjs` cho `quoc-chien` và `vsp-fleet-safety` (`bash scripts/do.sh` **6/6** sau
+  khi `pip install -r requirements.txt` — thiếu `fastapi`/`sqlalchemy` thì ra 4/6, không
+  liên quan thay đổi này). **`tayvuc` cố ý để lệch** vì repo dừng hẳn 05/09.
