@@ -83,9 +83,16 @@ curl -s -H "x-goog-api-key: $GEMINI_API_KEY" \
 Đo 19/09: `HTTP 200`, **50 model**. Gọi thử `gemini-3.5-flash` ra kết quả, 11 token vào /
 2 token ra.
 
-**Bẫy: tên model cũ đã chết.** `gemini-2.5-flash-lite` trả
-`404 NOT_FOUND - This model models/gemini-2.5-flash-lite is no longer available to new users.`
+**Bẫy: tên model cũ đã chết.** `gemini-2.5-flash-lite` và `gemini-2.5-pro` đều trả
+`404 NOT_FOUND - ... is no longer available to new users.`
 Đừng chép tên model từ tài liệu cũ — liệt kê `/v1beta/models` rồi chọn.
+
+**Bẫy nặng hơn: model Pro KHÔNG gọi được, dù chủ dự án có gói Google AI Pro.** Đo 19/09,
+`gemini-pro-latest` và `gemini-3.1-pro-preview` đều trả
+`429 RESOURCE_EXHAUSTED - You exceeded your current quota, please check your plan and billing details.`
+— free tier có hạn mức Pro bằng **0**. Gói Google AI Pro là gói dùng app, **không cấp
+quota API**; muốn Pro thì phải bật Cloud Billing. Chạy được trên free tier: dòng Flash
+(đo `gemini-3.5-flash`). **Đừng thử lại Pro rồi tưởng hỏng khoá.**
 
 **Truyền khoá bằng HEADER `x-goog-api-key`, đừng nhét vào URL** (`?key=…`): mọi lệnh Bash
 đều bị hook `ghi_so_lenh.mjs` chép 200 ký tự đầu vào `.claude/so_lenh.log`.
