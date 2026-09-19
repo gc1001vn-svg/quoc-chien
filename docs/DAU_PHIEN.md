@@ -22,7 +22,7 @@ tưởng chưa tắt skill nào.
 | `npm ci` | **luôn luôn** | `node_modules` không bao giờ có sẵn |
 | `npm run do` | **luôn luôn** | phải **đủ thước** trước khi động vào code — đừng chép số vào đây, lệnh in ra |
 | `npm i -g @alibaba-group/open-code-review` | chỉ khi phiên có **soát code** | ~2 giây. Cài toàn máy, mất theo container. Xem mục I |
-| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB (**ước, chưa đo lại**), 9 gói itch + 2 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
+| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB (**ước, chưa đo lại**), 9 gói itch + 7 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
 
 **Cỡ kho chỉ ghi ở đúng dòng trên** — `tests/TaiLieu.test.ts` giữ luật này. Trước 12/09
 nó ghi hai nơi, hai số khác nhau (440 MB và 1 GB) và không ai biết cái nào đúng. Đo được
@@ -30,6 +30,12 @@ số thật thì sửa dòng này và bỏ chữ "ước".
 
 `assets_source/` **không lên git** (đúng luật). Không nướng sprite thì đừng tải —
 mất 5–10 phút và không dùng tới.
+
+**`npm run tai:tatca` KHÔNG tải `assets_source/icosa`** (~1 GB, lấy riêng bằng
+`npm run tai:icosa <từ khoá>`; số model thật ở dòng cuối `docs/KHO_ICOSA.md`). Nên chạy
+`tai:tatca` xong thì `npm run kho` vẫn dừng ở `tut qua 20%` — **đúng, không phải lỗi**:
+bản kê cũ đếm cả phần Icosa. Chỉ nướng mẻ trung cổ / hiện đại thì không cần Icosa; đừng
+`KHO_EP=1` để ép qua, bản kê sẽ mất sạch phần đó (đo 19/09).
 
 **Cấm chạy `npm run kho` khi kho chưa tải đủ** — nó ghi đè `docs/KHO_ASSET.md`.
 Từ 11/09 `kho_asset.mjs` tự chặn khi số model tụt quá 20% so với bản đang có; ép ghi
