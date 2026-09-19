@@ -1,5 +1,7 @@
 {
   "ghi_chu": "Me thoi hien dai (Phase 8B). Thuoc cua manh city-kit: ti_le = min(1.53, 1.9/day, 2.33/cao) - 1.53 la thuoc chung (o luoi Kenney rong 1 don vi, o luoi game rong 2, da tru hao cho vua MOT trang atlas 2x), hai ve sau chi chan cai qua kho. CAM chuan hoa tung model ve cung mot day: lam vay thi thung rac to bang can nha. Nguoi cua Kenney mini-characters la kieu dau to (chibi) cao 0.67 don vi. Ti_le 1.0 cho sprite 2x co 111x92 diem anh; nguoi me trung co la 116x107. Nho hon MOT CHUT la co y: dau chibi lam nguoi trong to hon so do thuc, chu du an bao \"nguoi to qua\" o ti_le 1.25 (131x113). Cay coi va da lay nguyen phan qn cua trung_co_2: rung khong doi theo thoi dai. Nguon: Kenney City Kit Suburban/Commercial/Industrial/Roads + Kenney Mini Characters (CC0) - tien to ks/kc/ki/kr/mn. Trang atlas 2x la thu bi chan: me trung co lap day 84,4% mot trang, me nay phai o duoi muc do. MOI manh nha deu co \"mau\": [1.9, 1.85, 1.7] - chu du an bao \"nha xam xanh qua\" ngay 18/09. Phai dung `mau` (nhan, giu van hoa tiet) chu KHONG phai `mau_vl`: ca goi City Kit chi co DUNG MOT material ten `colormap`, nen `mau_vl` son het ca nha lan mai lan cua so, khong tach duoc. Ba so lech nhau la co y: keo mau khoi phia xanh lam.",
+  "ghi_chu_trang": "Me nay xep gon hon me trung co (77,3% mot trang o co 2x) nhung PHAI ra dung so trang nhu no, khong thi `DoiMeAtlas` nem loi luc len doi. Tu 19/09 me trung co can hai trang o 2x vi ba khung coi xay, nen o day dem mot trang rong. Trang dem ghi 1x1 trong suot - khong ton bo nho GPU, khong sprite nao tro vao.",
+  "trang_it_nhat": { "2": 2 },
   "kit": {
     "ks": {
       "duong": "assets_source/city-kit-suburban/Models/OBJ format",
@@ -123,7 +125,18 @@
       { "m": "ks:tree-large", "ti_le": 1.53, "x": 1.3, "z": -1 }
     ],
     "gieng": [{ "m": "ki:water-tower", "ti_le": 1.09 }],
-    "coi_xay": [{ "m": "ki:windmill", "ti_le": 1 }],
+    "coi_xay_k0": [
+      { "m": "ki:windmill", "nhom": "windmill", "ti_le": 1 },
+      { "m": "ki:windmill", "nhom": "blades", "ti_le": 1 }
+    ],
+    "coi_xay_k1": {
+      "nhu": "coi_xay_k0",
+      "khung": { "ki:windmill#blades": { "rx": 40, "tam": [0, 1.8154, -0.0032] } }
+    },
+    "coi_xay_k2": {
+      "nhu": "coi_xay_k0",
+      "khung": { "ki:windmill#blades": { "rx": 80, "tam": [0, 1.8154, -0.0032] } }
+    },
     "ruong": [
       { "m": "ks:planter", "ti_le": 1.53, "x": -0.7 },
       { "m": "ks:planter", "ti_le": 1.53 },

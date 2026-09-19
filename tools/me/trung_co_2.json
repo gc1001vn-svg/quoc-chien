@@ -1,5 +1,7 @@
 {
   "ghi_chu": "Me trung co ban 2. Thuoc: 2 don vi model = 1 o luoi (ti_le 0.5 cho Quaternius, ~0.8-1.9 cho KayKit). Dinh tuong o y=1.56 - MOI mai neo o do. 10/09 vong ba: 32 loai nha moi loai MOT DANG rieng, khong con nhom nao chi khac mau. Nguon: KayKit Medieval Hexagon Pack (CC0) - tien to kh/khg/khb/khy/khn/khp/khw.",
+  "ghi_chu_trang": "Tu 19/09 me nay can HAI trang atlas o co 2x: ba khung coi xay (`coi_xay_k0/k1/k2`) day tong dien tich sprite tu 84,4% len 90,2% mot trang, khong xep vua nua. Moi me phai ra cung so trang nen `hien_dai` dem mot trang rong 1x1 cho bang.",
+  "trang_it_nhat": { "2": 2 },
   "kit": {
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
@@ -601,7 +603,7 @@
         "ti_le": 1.3
       }
     ],
-    "coi_xay": [
+    "coi_xay_k0": [
       {
         "m": "kk:mill",
         "ti_le": 1.25
@@ -611,6 +613,14 @@
         "ti_le": 1.25
       }
     ],
+    "coi_xay_k1": {
+      "nhu": "coi_xay_k0",
+      "khung": { "kk:mill_blades": { "rz": 30, "tam": [0, 1.2678, 0] } }
+    },
+    "coi_xay_k2": {
+      "nhu": "coi_xay_k0",
+      "khung": { "kk:mill_blades": { "rz": 60, "tam": [0, 1.2678, 0] } }
+    },
     "ruong": [
       {
         "m": "kk:farm_plot",
