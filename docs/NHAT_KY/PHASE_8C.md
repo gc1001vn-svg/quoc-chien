@@ -23,3 +23,16 @@ Sprite công trình nhiều khung, chủ dự án chốt 18/09. Làm đúng ba b
   `mini-characters` mà mẻ hiện đại đang dùng từ 18/09 — máy ảo sạch không nướng lại được
   mẻ đó. Vá `tai:asset`. `npm run kho` vẫn dừng ở "tụt quá 20 %" vì `assets_source/icosa`
   đi đường riêng — đúng, không phải lỗi; ghi vào `DAU_PHIEN.md`.
+
+## Phụ lục 19/09 — phong cách mẻ hiện đại, chủ dự án giao tự quyết
+
+- **Mái `nha_dan` xanh neon: đổi.** Gốc là màu mái xanh lá của `ks:building-type-a` nhân
+  `mau` 1,9 → sáng hơn mọi thứ khác trong game, mà `nha_dan` lại là nhà đông nhất.
+- **Màu nhân không đổi được sắc.** Đo tám bộ nhân trên cột mái: tất cả vẫn ra xanh hoặc
+  vàng. Thêm `mau_cot` dạng `{ "thay": [r,g,b] }` (thay hẳn, bỏ luôn ảnh cột đó) mới ra
+  được ngói xám, nâu, đỏ.
+- **Dò cột bằng cách sơn đỏ từng cột.** Cột 1 = mái + khung cửa + chân tường; cột 3 = cửa
+  ra vào; cột 7 = tường; cột 11 = kính. Trước đó tám sprite thương mại đang sơn cột 3 —
+  tức chúng đổi màu **cửa**, không phải mái, suốt từ 18/09.
+- **Người chibi: giữ.** Hai mẻ không bao giờ cùng trên màn; ở mức thu phóng chơi thật
+  người cao khoảng 45 điểm ảnh CSS nên tỉ lệ đầu không đọc ra được.

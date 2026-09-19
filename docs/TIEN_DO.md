@@ -31,6 +31,8 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
   số trang lệch.
 - **Vá `tai:asset`:** nó thiếu bốn gói City Kit và `mini-characters` mà mẻ hiện đại đang
   dùng, nên máy ảo sạch không nướng lại được mẻ đó.
+- **`mau_cot` thêm dạng `{ "thay": [r,g,b] }`** — thay hẳn màu một cột và bỏ luôn ảnh cột
+  đó. Mái mẻ hiện đại hết xanh neon; chi tiết và vì sao màu nhân không đủ: mục 3.
 
 Mười bốn phiên đồ nghề trước Phase 8B (12/09 → 18/09 ×3): `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
 `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`,
@@ -362,15 +364,19 @@ mỗi khung 30° — khoảng 25 vòng/phút ở tốc độ thường. Muốn n
 
 Thêm `?me=hien_dai` vào cuối địa chỉ là thấy cối xay gió thời hiện đại (ba cánh).
 
-### ⬜ Việc 18/09 (lần 4) — xem mẻ hiện đại trên iPhone (VẪN CHƯA CÓ XÁC NHẬN)
+### ✅ Việc 18/09 (lần 4) — phong cách mẻ hiện đại: TỰ QUYẾT 19/09
 
-Mở bản duyệt rồi **thêm `?me=hien_dai` vào cuối địa chỉ** là thấy thành phố thời hiện đại.
-Bỏ đuôi đó đi là về mẻ trung cổ như cũ. Hai việc cần anh nhìn:
+Chủ dự án giao cho tự quyết. Chốt hai điều, có ảnh chụp đối chiếu:
 
-1. **Phong cách có chấp nhận được không** — nhà Kenney City Kit phần lớn xám xanh, chỉ
-   nhà dân và nhà chài là mái xanh lá. Không ưng thì phiên sau đổi màu bằng `mau_vl`.
-2. **Người có quá to hay quá bé không** — Kenney Mini Characters là kiểu đầu to (chibi),
-   khác hẳn người thời trung cổ. Tỉ lệ đang để 1,25.
+1. **Mái xanh neon: ĐỔI.** `nha_dan` là nhà đông nhất thành phố mà mái nó xanh lá, nhân
+   thêm `mau` 1,9 nên sáng hơn mọi thứ khác trong game. Nay mái ngói xám ấm; `nha_chai`
+   mái xám lam. Phải thêm `mau_cot` dạng `{ "thay": … }` mới đổi được — **màu nhân không
+   bao giờ kéo một màu ra khỏi sắc của nó**, đo tám bộ nhân đều vẫn ra xanh hoặc vàng.
+2. **Người chibi: GIỮ.** Hai mẻ **không bao giờ cùng trên màn** — lên đời là đổi cả bộ
+   atlas. Ở mức thu phóng chơi thật người cao khoảng 45 điểm ảnh CSS, tỉ lệ đầu không đọc
+   ra được; cái đọc ra được là người Kenney khớp với nhà Kenney, tức trong một màn hình
+   vẫn đồng nhất. Đổi sang bộ người tỉ lệ thật là thêm gói mới và nướng lại, mà atlas 2×
+   của mẻ trung cổ đã hết chỗ.
 
 Máy ảo chặn `github.io` (`000`) nên tôi **không tự xem trang thật được** — xem `du-an.md`
 mục "Giới hạn mạng máy ảo".
