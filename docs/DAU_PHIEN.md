@@ -70,6 +70,30 @@ commit được.
 **Đừng lấy token đăng nhập của Claude Code đắp vào `api.anthropic.com`** — sai mục đích
 cấp quyền. Muốn dùng host đó phải là khoá API anh tự mua.
 
+### Khoá Gemini — đã có từ 19/09, đo thật
+
+`GEMINI_API_KEY` chủ dự án đặt 19/09. Kiểm bằng một lệnh, **không in khoá ra**:
+
+```bash
+node -e "console.log(process.env.GEMINI_API_KEY ? 'co khoa' : 'chua co')"
+curl -s -H "x-goog-api-key: $GEMINI_API_KEY" \
+  https://generativelanguage.googleapis.com/v1beta/models -o /tmp/m.json -w '%{http_code}\n'
+```
+
+Đo 19/09: `HTTP 200`, **50 model**. Gọi thử `gemini-3.5-flash` ra kết quả, 11 token vào /
+2 token ra.
+
+**Bẫy: tên model cũ đã chết.** `gemini-2.5-flash-lite` trả
+`404 NOT_FOUND - This model models/gemini-2.5-flash-lite is no longer available to new users.`
+Đừng chép tên model từ tài liệu cũ — liệt kê `/v1beta/models` rồi chọn.
+
+**Truyền khoá bằng HEADER `x-goog-api-key`, đừng nhét vào URL** (`?key=…`): mọi lệnh Bash
+đều bị hook `ghi_so_lenh.mjs` chép 200 ký tự đầu vào `.claude/so_lenh.log`.
+
+**Biến môi trường có thể hiện ra ngay giữa phiên**, không phải lúc nào cũng đợi phiên mới
+— 19/09 khoá thấy được ngay sau khi chủ dự án bấm Save (phiên có nhận một lần nạp lại môi
+trường). Cứ chạy lệnh kiểm rồi mới kết luận, đừng đoán theo chiều nào.
+
 ## D. Chi phí token — phần riêng repo này
 
 Dò `KHO_ASSET.md` phải dùng `grep -io ... | sort -u`, **cấm `grep -i` trần**: dòng dài
