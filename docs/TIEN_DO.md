@@ -3,28 +3,44 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 18/09/2026 (phiên Phase 8B — **nướng mẻ hiện đại và nối đổi atlas theo đời**).
+Cập nhật: 19/09/2026 (phiên Phase 8C — **cối xay quay, sprite công trình nhiều khung**).
 
 ## 1. Đang ở đâu
 
-**Phase 8B XONG. Game ở Phase 8B/13.** Chuỗi mười bốn phiên không chạm màn hình game đã
-đứt: phiên này nướng mẻ `hien_dai` (74 sprite, Kenney City Kit + Mini Characters, CC0) và
-nối `ThoiDai.me` vào `CityScene` — lên đời là cả bộ atlas đổi, bộ cũ nhả bằng
-`gl.deleteTexture`. Chi tiết: `docs/NHAT_KY/PHASE_8B.md`.
+**Phase 8C XONG. Game ở Phase 8C/13.** Cối xay đã quay ở **cả hai mẻ**: máy nướng biết
+tách nhóm trong một file OBJ, biết xoay một mảnh quanh tâm riêng của nó, và `VeCanh` chọn
+khung theo `DongHo` — dừng hình thì cánh dừng theo, chạy nhanh 3× thì quay nhanh 3×.
+Chi tiết: `docs/NHAT_KY/PHASE_8C.md`.
 
-**Việc phiên sau: cối xay quay** — sprite công trình nhiều khung, chủ dự án chốt 18/09.
-Chi tiết ba bước ở mục 5. **Rồi mới tới Phase 9** (nối lớp chiến dịch vào kinh tế, mở
-đường lên đời 4–6). **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
+**Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế, và **mở đường lên đời 4–6**.
+Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
 
-**Hạ cỡ người mẻ hiện đại 18/09:** `ti_le` 1,25 → 1,0, sprite 2× **131×113 → 111×92**
-(người mẻ trung cổ 116×107). Chủ dự án bảo "người to quá".
+### Phiên 19/09 đã đổi gì — Phase 8C
 
-Mười bốn phiên đồ nghề trước đó (12/09 → 18/09 ×3): `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
+- **`docObj` lọc theo nhóm `g`.** `ki:windmill` gói cả tháp lẫn cánh vào một file; lọc thì
+  hộp bao tính lại theo đỉnh **còn dùng**. KayKit thì tách sẵn hai file, không cần bước này.
+- **Máy nướng thêm `tam` · `rx` · `khung` · `trang_it_nhat`.** Trục cánh không ở gốc toạ
+  độ nên phải có tâm quay; `rx` cho cánh nằm trong mặt phẳng y-z; `khung` đè lên **đúng
+  một mảnh** của bản sao `nhu`, tra theo `m` hay `m#nhom`.
+- **Đếm cánh bằng số chứ không đoán** — gom góc đỉnh xa tâm: KayKit **4 cánh** (khung
+  0/30/60), Kenney **3 cánh** (0/40/80).
+- **`VeCanh.tenKhung`** chọn `<tên>_k<số>`, hai nhịp một khung. `hopSprite` đổi tên cùng
+  chỗ với `datSprite`, không thì chạm vào cánh quạt không trúng.
+- **Mẻ trung cổ 2× hết chỗ:** 84,4 % → **90,2 %** một trang, nay **hai trang**. Mẻ hiện
+  đại vẫn một trang thật, đệm một trang **rỗng 1×1** cho khớp — `DoiMeAtlas` ném lỗi khi
+  số trang lệch.
+- **Vá `tai:asset`:** nó thiếu bốn gói City Kit và `mini-characters` mà mẻ hiện đại đang
+  dùng, nên máy ảo sạch không nướng lại được mẻ đó.
+
+Mười bốn phiên đồ nghề trước Phase 8B (12/09 → 18/09 ×3): `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
 `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`,
 `PHASE_8_TAI_POLY.md`, `PHASE_8_ICOSA.md`, `PHASE_8_KHO_CHUNG.md`, `PHASE_8_API_MCP.md`,
 `PHASE_8_VET_KHO.md`, `PHASE_8_OCR.md`, `PHASE_8_HOOK_CO.md`.
 
 ### Phiên 18/09 (lần 4) đã đổi gì — Phase 8B
+
+**Hạ cỡ người mẻ hiện đại 18/09:** `ti_le` 1,25 → 1,0, sprite 2× **131×113 → 111×92**
+(người mẻ trung cổ 116×107). Chủ dự án bảo "người to quá".
 
 - **`tools/me/hien_dai.json`, 74 sprite**, cùng bộ tên với `trung_co_2`. 32 loại nhà mỗi
   loại một dáng riêng từ **Kenney City Kit** (suburban 21 + commercial 19 + industrial 20,
@@ -259,10 +275,15 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
-**Atlas, đo 18/09 (lần 4):** `hien_dai` **1 trang mỗi cỡ** — 1× lấp đầy 19,5 %,
-2× lấp đầy **76,1 %** (mẻ `trung_co_2` 2× lấp 84,4 %). 16,8 MB GPU / trần 67,1 MB.
-Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**. **Đừng chép số này đi đâu** —
-`node tools/nuong_sprite.mjs hien_dai 2` in lại.
+**Atlas, đo 19/09 (Phase 8C):** thêm hai khung cối xay vào mỗi mẻ. `trung_co_2` 2× từ
+84,4 % **một** trang lên **hai** trang (85,8 % + 4,5 %, GPU 33,6 MB / trần 67,1 MB);
+`hien_dai` 2× lấp **77,3 %** một trang thật + một trang **rỗng 1×1** đệm cho khớp số
+trang. Cả hai 1× vẫn một trang. **Đừng chép số này đi đâu** —
+`node tools/nuong_sprite.mjs <mẻ> 2` in lại.
+
+**Mẻ trung cổ 2× coi như HẾT CHỖ.** Đo 19/09: tổng diện tích sprite 90,2 % một trang, mà
+84,4 % là mức cuối còn xếp vừa — thêm **một** sprite cỡ căn nhà là tràn trang. Mẻ mới hay
+sprite mới thì tính trước chỗ, đừng nướng rồi mới xem.
 
 | Thước | Trước | Sau |
 |---|---:|---:|
@@ -330,7 +351,18 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⬜ Việc 18/09 (lần 4) — xem mẻ hiện đại trên iPhone
+### ⬜ Việc 19/09 — xem cối xay quay trên iPhone
+
+Bản duyệt phiên này: https://claude.ai/artifact/WQgP5d2dMEeaeaapWPzLGL
+
+Mở ra, tìm cái cối xay (bấm một dòng trong bảng công trình là bay tới), xem **cánh có
+quay không** và **quay có nhanh quá hay chậm quá không**. Đang để hai nhịp một khung,
+mỗi khung 30° — khoảng 25 vòng/phút ở tốc độ thường. Muốn nhanh chậm khác thì bảo tôi
+đổi một số ở `NHIP_MOI_KHUNG`.
+
+Thêm `?me=hien_dai` vào cuối địa chỉ là thấy cối xay gió thời hiện đại (ba cánh).
+
+### ⬜ Việc 18/09 (lần 4) — xem mẻ hiện đại trên iPhone (VẪN CHƯA CÓ XÁC NHẬN)
 
 Mở bản duyệt rồi **thêm `?me=hien_dai` vào cuối địa chỉ** là thấy thành phố thời hiện đại.
 Bỏ đuôi đó đi là về mẻ trung cổ như cũ. Hai việc cần anh nhìn:
@@ -467,7 +499,14 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **✅ Phase 8C XONG 19/09 — cối xay quay ở cả hai mẻ.**
 - **✅ Phase 8B XONG 18/09 — mẻ `hien_dai` đã nướng và đã nối vào `ThoiDai`.**
+- **MỚI: mẻ trung cổ 2× hết chỗ trên một trang atlas** (mục 2). Thêm sprite cỡ căn nhà là
+  tràn trang, mà mẻ nào tràn thì **mọi** mẻ phải đệm cho bằng (`trang_it_nhat`). Chưa chặn
+  việc gì, nhưng phase sau thêm công trình thì tính chỗ trước.
+- **`npm run kho` chưa chạy lại được từ máy ảo sạch** — `tai:tatca` không kéo
+  `assets_source/icosa` nên bản kê tụt quá 20 % và công cụ tự dừng. `docs/KHO_ASSET.md`
+  vì thế **vẫn còn con số đếm kiểu cũ**; muốn sửa thì phải `npm run tai:icosa` trước.
 - **NỢ MỚI, NẶNG NHẤT: đời 5 chưa tới được bằng cách chơi.** Đời 4 trở đi còn `len: null`
   trong `data/balance.json` (chưa có công nghệ riêng — `tech.json` mới có ba đời đầu), và
   đời 3 đòi **270 nhà** mà thành phố mới tới **241**. Tức mẻ hiện đại nướng xong vẫn không
@@ -560,34 +599,14 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — cối xay quay (chủ dự án chốt 18/09), rồi mới tới Phase 9
+## 5. Phiên sau — Phase 9
 
-### Việc phiên sau: sprite công trình nhiều khung
+Cối xay đã quay (Phase 8C, mục 1). Cái chặn to nhất bây giờ không còn là hình, mà là
+**luật lên đời**.
 
-**Hiện KHÔNG công trình nào động**, kể cả mẻ trung cổ — chỉ người đi đường có hai khung
-(`nguoi_<kiểu>_<hướng>_0` / `_1`, `VeCanh.spriteWalker`). Công trình vẽ thẳng bằng một tên
-trong `data/buildings.json`, không có chỗ cắm khung thứ hai. Chủ dự án hỏi "cối xay không
-quay nhỉ" ngày 18/09 và chốt làm ở phiên sau.
-
-Ba việc, theo thứ tự:
-
-1. **`tools/lib/obj.mjs` lọc theo nhóm OBJ.** `assets_source/city-kit-industrial/Models/OBJ
-   format/windmill.obj` có sẵn hai nhóm `g windmill` và `g blades` — cắt được cánh ra khỏi
-   thân. `docObj` hiện đọc cả file, chưa có tuỳ chọn nhóm. Mẻ trung cổ cũng cần: kiểm
-   `kk:windmill` có tách nhóm không trước khi hứa.
-2. **Mẻ nướng thêm `coi_xay_k0` `coi_xay_k1` `coi_xay_k2`** — thân đứng yên, cánh xoay
-   0° / 30° / 60° bằng `rz` (đã có sẵn trong `ghep`, xoay quanh trục dựng màn hình, áp
-   trước `ry` — đúng cái cần cho cánh nằm trong mặt phẳng thẳng đứng).
-3. **`VeCanh` chọn khung theo `DongHo`** nếu atlas có `<tên>_k0`; công trình nào không có
-   thì vẽ một khung như cũ. Đi qua `DongHo` chứ đừng tự làm tròn — luật đã ghi ở
-   `CityScene`.
-
-**Cái phải đo trước khi nướng cả mẻ:** mỗi công trình động ăn thêm 2 sprite, mà atlas 2×
-đang lấp **74,1 %** một trang. Nướng thử đúng `coi_xay` rồi xem số trang trước đã.
-
-## Phase 9 — nối lớp chiến dịch vào kinh tế, và mở đường lên đời
-
-Phase 8B xong thì cái chặn to nhất không còn là hình, mà là **luật lên đời**.
+**Muốn cho công trình khác động** thì đường đã mở sẵn: nướng thêm `<tên>_k0` `_k1` `_k2`
+vào mẻ, `VeCanh` tự chọn khung, không phải sửa dòng mã nào. **Nhưng mẻ trung cổ 2× đã hết
+chỗ** (mục 2) — thêm công trình động là phải tính lại số trang atlas cho cả hai mẻ.
 
 ### Việc 1 — mở đường lên đời 4, rồi 5 (ưu tiên, vì nó mở khoá mẻ vừa nướng)
 
@@ -618,6 +637,10 @@ Mẻ mới **phải nướng ra cùng số trang atlas, cùng `o_px`, cùng `heS
 không thì `DoiMeAtlas` ném lỗi chứ không vẽ bậy — `tests/BanDo.test.ts` bắt trước ở máy.
 Trần thật là **trang atlas cỡ 2×**, không phải số model: xem công thức `ti_le` ở đầu
 `tools/me/hien_dai.json`.
+
+Từ 19/09 mẻ nào xếp gọn hơn thì khai `"trang_it_nhat": { "2": <số> }`, máy nướng đệm
+trang **rỗng 1×1** cho đủ — không tốn bộ nhớ GPU, không sprite nào trỏ vào. Hiện cả hai
+mẻ đang khai `2`.
 
 **Mở phiên mới rồi hãy bắt đầu** — mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G ở kho, không bỏ bước nào.
