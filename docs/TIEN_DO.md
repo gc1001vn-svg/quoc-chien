@@ -86,7 +86,8 @@ API key.
 
 **ĐÃ ĐO 19/09 trên diff thật của Phase 8C** (`fd4e7e2..97a831e`, 20 file, +508/−99 bỏ
 atlas). Kết quả: **bắt thêm 0 lỗi** — `ocr delegate` không đọc code, nó chỉ chọn file và
-in luật. Chi tiết và đề xuất bỏ: mục 4, dòng "`open-code-review`".
+in luật. **Đã gỡ sạch cùng ngày** — mục 4, dòng "`open-code-review`". Phần trên giữ nguyên
+làm sổ, đừng cài lại.
 Luật là chữ nhắc, **không phải thước chặn**; hàng rào thật vẫn là ESLint + `npm run do`.
 
 ### Phiên 18/09 (lần 2) đã đổi gì
@@ -515,7 +516,10 @@ quyền hạn và giới hạn máy ảo.
 - **MỚI: mẻ trung cổ 2× hết chỗ trên một trang atlas** (mục 2). Thêm sprite cỡ căn nhà là
   tràn trang, mà mẻ nào tràn thì **mọi** mẻ phải đệm cho bằng (`trang_it_nhat`). Chưa chặn
   việc gì, nhưng phase sau thêm công trình thì tính chỗ trước.
-- **`open-code-review`: đo xong 19/09, ĐỀ XUẤT BỎ, chờ chủ dự án chốt.** Đo trên diff
+- **✅ `open-code-review`: ĐÃ GỠ 19/09.** Xoá `.opencodereview/`, hai script
+  `soat` / `soat:luat`, và mục I của `DAU_PHIEN.md`. Luật soát về lại đúng một chỗ:
+  `CLAUDE.md` mục Ba luật + `TECH_SPEC.md` mục 1–2. Số đo dưới đây giữ lại để khỏi ai
+  cài lại. Đo trên diff
   thật của Phase 8C: bắt thêm **0 lỗi** (nó không đọc code — `ocr review`/`ocr scan` vẫn
   chết vì không có API key). Ba chỗ hỏng: `tools/lib/obj.d.mts` bị loại
   `unsupported_ext` và `ocr rules check` cho nó rơi về **System built-in** (React, XSS —

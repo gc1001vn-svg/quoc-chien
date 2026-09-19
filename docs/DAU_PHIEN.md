@@ -21,7 +21,6 @@ tưởng chưa tắt skill nào.
 |---|---|---|
 | `npm ci` | **luôn luôn** | `node_modules` không bao giờ có sẵn |
 | `npm run do` | **luôn luôn** | phải **đủ thước** trước khi động vào code — đừng chép số vào đây, lệnh in ra |
-| `npm i -g @alibaba-group/open-code-review` | chỉ khi phiên có **soát code** | ~2 giây. Cài toàn máy, mất theo container. Xem mục I |
 | `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | ~1 GB (**ước, chưa đo lại**), 9 gói itch + 7 gói Kenney + 6 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối |
 
 **Cỡ kho chỉ ghi ở đúng dòng trên** — `tests/TaiLieu.test.ts` giữ luật này. Trước 12/09
@@ -263,58 +262,20 @@ nó nhận ra IP trung tâm dữ liệu. Đã thử thêm: User-Agent thật tha
 
 ---
 
-## I. Soát code bằng `ocr` — chạy ở chế độ uỷ nhiệm, không cần API key
+## I. Soát code — KHÔNG dùng công cụ ngoài nữa
 
-`open-code-review` (Alibaba, Apache-2.0, Go). Ở repo này **chỉ dùng Delegation Mode**:
-`ocr` lo phần máy móc — chọn file, gom file, khớp luật — còn phần đọc code và tìm lỗi
-thì **Claude tự làm**. Không gọi LLM, không cần key.
+`alibaba/open-code-review` gỡ ngày 19/09 sau khi đo trên diff thật của Phase 8C:
+bắt thêm **0 lỗi** (`ocr delegate` không đọc code), `ocr review` và `ocr scan` chết vì
+máy ảo không có API key, và nó loại đúng hai chỗ cần soát nhất — `tests/**`
+(`default_path`) và `.d.mts` (`unsupported_ext`, lại rơi về luật React/XSS của hệ thống).
+Số đo và bốn lý do: `docs/TIEN_DO.md` mục 4.
 
-```bash
-npm i -g @alibaba-group/open-code-review   # ~2 giây, mất theo container
-npm run soat                               # diff đang sửa, ra JSON
-ocr delegate preview --commit <hash>
-ocr delegate preview --from main --to <nhánh>
-ocr delegate rule src/sim/Clock.ts src/render/Atlas.ts   # luật cho từng file
-npm run soat:luat src/sim/Clock.ts         # luật nào thắng, tầng nào
-```
-
-### Luật soát nằm ở `.opencodereview/rule.json` — lên git, đừng sửa lung tung
-
-Bốn tầng, tầng trên đè tầng dưới: `--rule` → **`<repo>/.opencodereview/rule.json`** →
-`~/.opencodereview/rule.json` → luật nhúng trong binary.
-
-Luật của repo này **thay hẳn** luật hệ thống (không đặt `merge_system_rule`) — **cố ý**:
-luật hệ thống cho `.ts` toàn React Hooks, `useMemo`, XSS, `innerHTML`; repo này không có
-React, nhét vào là nhiễu gần nửa. Bảy nhóm, xét **theo thứ tự khai báo, khớp đầu tiên
-thắng** — thêm nhóm mới phải đặt **trước** `src/**/*.ts`, không thì bị nhóm đó nuốt.
-
-Nội dung luật lấy từ `CLAUDE.md` mục "Ba luật không được phá" và `TECH_SPEC.md` mục 1–2:
-`src/sim/` TypeScript thuần · cấm số cân bằng trong `.ts` · trần hiệu năng · đủ đuôi `.ts`
-· cấm `constructor(readonly x: T)` · 300 dòng mỗi file.
-
-Sửa xong **phải kiểm lại đường đi**, đừng đoán:
+Thay bằng thứ đã có, không tốn thêm lượt gọi nào:
 
 ```bash
-for f in src/sim/Clock.ts src/render/Atlas.ts src/ui/TocDo.ts src/main.ts \
-         data/balance.json scripts/dau_phien.mjs; do
-  printf '%-32s ' "$f"; ocr rules check "$f" | sed -n '2,3p' | tr '\n' ' '; echo
-done
+git diff --stat <từ>..<đến> -- . ':!public/atlas'   # danh sách file, 1.012 byte
+npm run do                                          # 10 thước, hàng rào thật
 ```
 
-Mọi dòng phải ra `Source: Project (.opencodereview/rule.json)`. Ra `System built-in` là
-lọt lưới.
-
-### Bẫy
-
-- **`ocr review` và `ocr scan` chạy không được ở máy ảo**, cả hai trả:
-  `Error: resolve LLM endpoint: no valid LLM endpoint configured; one of OCR_LLM_URL/OCR_LLM_TOKEN/OCR_LLM_MODEL, ~/.opencodereview/config.json, or ANTHROPIC_BASE_URL/ANTHROPIC_AUTH_TOKEN/ANTHROPIC_MODEL must be set`
-  Máy ảo không có key. **Đừng lấy token đăng nhập của Claude Code đắp vào** — sai mục đích
-  cấp quyền. Chỉ dùng `ocr delegate`.
-- **`open-codereview.ai` bị chặn egress.** Muốn đọc tài liệu thì clone repo mà đọc:
-  `git clone --depth 1 https://github.com/alibaba/open-code-review` rồi mở
-  `pages/src/content/docs/en/review-rules.md`.
-- `docs/**`, `dist/**`, `public/**`, `package-lock.json` nằm trong `exclude` — `ocr` báo
-  `(excluded: user_exclude)`, đúng ý, không phải lỗi.
-- Test bị bộ lọc mặc định loại (`**/*.test.ts`). Muốn soát test phải thêm vào `include`.
-- **Luật là chữ, không phải thước.** Nó nhắc Claude, không chặn được gì. Thước thật vẫn là
-  `npm run do`.
+Luật soát nằm ở `CLAUDE.md` mục "Ba luật không được phá" và `docs/TECH_SPEC.md` mục 1–2 —
+**một chỗ duy nhất**, đọc thẳng ở đó.

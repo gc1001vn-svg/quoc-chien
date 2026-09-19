@@ -44,3 +44,23 @@ Sprite công trình nhiều khung, chủ dự án chốt 18/09. Làm đúng ba b
   Nay mỗi xưởng một màu viền quấn quanh mặt tiền, đọc ra được loại nhà từ xa.
 - **Người chibi: giữ.** Hai mẻ không bao giờ cùng trên màn; ở mức thu phóng chơi thật
   người cao khoảng 45 điểm ảnh CSS nên tỉ lệ đầu không đọc ra được.
+
+## Phụ lục 19/09 (2) — đo rồi gỡ `alibaba/open-code-review`
+
+Cắm 18/09, gỡ 19/09. Đo trên diff thật `fd4e7e2..97a831e`.
+
+- **Bắt thêm 0 lỗi.** `ocr delegate` không đọc code — nó chỉ in danh sách file và luật
+  theo đường dẫn. `ocr review` và `ocr scan` vẫn trả
+  `Error: resolve LLM endpoint: no valid LLM endpoint configured; ...`.
+- **Loại đúng hai chỗ cần soát nhất.** `tests/**` bị loại `default_path`; `.d.mts` bị loại
+  `unsupported_ext` và `ocr rules check tools/lib/obj.d.mts` cho nó rơi về
+  `Source: System built-in` — đúng bộ luật React/XSS mà repo này cố ý thay. Mà `obj.d.mts`
+  là **chỗ duy nhất hỏng trong phiên** (`TS2554: Expected 1-5 arguments, but got 6`).
+- **Token: tăng, không giảm.** Nó in ra 5.881 byte (preview 2.170 + rule 3.711), trong khi
+  `git diff --stat` cho cùng danh sách file hết **1.012 byte**. Phần tốn thật — đọc diff —
+  không giảm chút nào. Cộng thêm 2–3 **lượt gọi**, thứ đắt nhất (kho đo 13/09).
+- **Luật nằm hai nơi.** `rule.json` 10.160 byte chép lại `TECH_SPEC` mục 1–2 và `CLAUDE.md`
+  mục Ba luật. Chưa lệch, nhưng sửa trần một lần là lệch.
+
+Bài học giữ lại: **luật theo đường dẫn là ý hay, công cụ ngoài để chở nó thì không đáng.**
+Luật đã nằm sẵn ở hai file đọc mỗi phiên.
