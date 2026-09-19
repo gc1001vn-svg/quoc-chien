@@ -30,6 +30,16 @@ const O_PX = 64;
 const PPU_1X = O_PX / Math.SQRT2;
 /** Vien trong moi o atlas, tranh cat cut net khu rang cua. */
 const LE = 1;
+/**
+ * Trang atlas RONG, 1x1 trong suot - dung de dem cho du so trang (`trang_it_nhat`).
+ *
+ * Ghi 1x1 chu khong 2048x2048: khong sprite nao tro vao trang nay nen kich thuoc that
+ * khong anh huong gi, ma mot trang 2048 rong van ngon 16,8 MB bo nho GPU o may nguoi choi.
+ */
+const PNG_RONG = Buffer.from(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR4nGNgAAIAAAUAAXpeqz8AAAAASUVORK5CYII=',
+  'base64',
+);
 
 /** Toa do the gioi -> toa do may anh (van tinh bang don vi o luoi). */
 function chieu(x, y, z) {
@@ -193,6 +203,12 @@ function timAnh(thuMuc, tenAnh) {
  *
  *   `mau_vl` tron VAO tung manh, khoa trung thi ban sao thang.
  *   `xoay`   quay ca sprite quanh truc dung; manh tu quay theo va vi tri x/z quay theo.
+ *   `khung`  de len MOT manh, tra theo khoa `m` (hay `m#nhom` khi manh co loc nhom):
+ *            `{ "kk:mill_blades": { "rz": 30 } }`, `{ "ki:windmill#blades": {...} }`.
+ *            Day la duong lam cong trinh nhieu khung - `coi_xay_k1` chi khac `coi_xay_k0`
+ *            o goc quay cua dung mot manh canh quat, chep ca sprite ra thi sua mot cho
+ *            phai sua ba cho. Phai co `nhom` trong khoa vi than va canh cua
+ *            `ki:windmill` nam trong CUNG MOT file, hai manh cung `m`.
  *
  * Goc phai la sprite thuong (mang manh) - khong nhan ban chong nhau, de doc me.
  */
@@ -206,6 +222,13 @@ function noiBanSao(sprite) {
     const cung = ((v.xoay ?? 0) * Math.PI) / 180;
     const c = Math.cos(cung);
     const s = Math.sin(cung);
+    // Go sai ten manh trong `khung` thi ban sao ra Y HET goc, khong bao gi - ma no se
+    // hien len thanh "coi xay khong quay", dung loai loi ngoi mo ca buoi.
+    for (const m of Object.keys(v.khung ?? {})) {
+      if (!goc.some((p) => khoaManh(p) === m)) {
+        throw new Error(`sprite "${ten}": goc "${v.nhu}" khong co manh "${m}"`);
+      }
+    }
     ra[ten] = goc.map((p) => {
       if (p.phang !== undefined) return p;
       const x = p.x ?? 0;
@@ -216,10 +239,16 @@ function noiBanSao(sprite) {
         z: -x * s + z * c,
         ry: (p.ry ?? 0) + (v.xoay ?? 0),
         mau_vl: { ...(p.mau_vl ?? {}), ...(v.mau_vl ?? {}) },
+        ...(v.khung?.[khoaManh(p)] ?? {}),
       };
     });
   }
   return ra;
+}
+
+/** Khoa goi mot manh trong `khung`: `m`, hay `m#nhom` khi manh chi lay mot nhom cua file. */
+function khoaManh(p) {
+  return p.nhom === undefined ? p.m : `${p.m}#${p.nhom}`;
 }
 
 /**
@@ -254,6 +283,7 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
       : docObj(
         join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh,
         p.mau_cot === undefined ? null : { so: k.soCot, mau: p.mau_cot },
+        p.nhom ?? null,
       );
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh
     // di, son de mot mau phang - can the moi doi duoc mai ngoi xanh thanh mai ngoi do,
@@ -272,17 +302,33 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
     const gocZ = ((p.rz ?? 0) * Math.PI) / 180;
     const cz = Math.cos(gocZ);
     const sz = Math.sin(gocZ);
+    // `rx` quay quanh truc DAM VAO MAN HINH. Canh quat cua Kenney (`ki:windmill`) nam
+    // trong mat phang y-z, mong theo x - `rz` khong dung duoc, phai la `rx`.
+    const gocX = ((p.rx ?? 0) * Math.PI) / 180;
+    const cx = Math.cos(gocX);
+    const sx = Math.sin(gocX);
+    // Tam quay cua `rx` va `rz`, trong toa do model. Mac dinh la goc toa do.
+    //
+    // VI SAO CAN: truc canh quat khong nam o goc toa do - `kk:mill_blades` co tam o
+    // (0, 1.268), canh cua `ki:windmill` o (_, 1.816, -0.003). Quay quanh goc toa do thi
+    // ca cum canh VONG QUANH chan thap chu khong xoay tai cho.
+    const [tamX, tamY, tamZ] = p.tam ?? [0, 0, 0];
     for (let i = 0; i < dinh.length; i += BUOC) {
-      const x0 = dinh[i];
-      const y0 = dinh[i + 1];
+      const x0 = dinh[i] - tamX;
+      const y0 = dinh[i + 1] - tamY;
+      const z0 = dinh[i + 2] - tamZ;
       const nx0 = dinh[i + 5];
       const ny0 = dinh[i + 6];
-      const x = x0 * cz - y0 * sz;
-      const y = x0 * sz + y0 * cz;
-      const z = dinh[i + 2];
+      const nz0 = dinh[i + 7];
+      // `rz` truoc, roi `rx`, ca hai quanh `tam`; `ry` ben duoi ap sau cung.
+      const y1 = x0 * sz + y0 * cz;
+      const x = x0 * cz - y0 * sz + tamX;
+      const y = y1 * cx - z0 * sx + tamY;
+      const z = y1 * sx + z0 * cx + tamZ;
+      const ny1 = nx0 * sz + ny0 * cz;
       const nx = nx0 * cz - ny0 * sz;
-      const ny = nx0 * sz + ny0 * cz;
-      const nz = dinh[i + 7];
+      const ny = ny1 * cx - nz0 * sx;
+      const nz = ny1 * sx + nz0 * cx;
       ra.push(
         (x * c + z * s) * tiLe + (p.x ?? 0),
         y * tiLe + (p.y ?? 0),
@@ -470,6 +516,13 @@ async function nuong(tenMe, heSo) {
     may.close();
   }
 
+  // MOI me phai ra CUNG so trang atlas: shader duoc dich cho dung so trang dang nap, nen
+  // `DoiMeAtlas` nem loi khi len doi ma so trang lech (xem ghi chu o file do). Me nao xep
+  // gon hon thi dem cho bang bang trang RONG - va trang do ghi 1x1 chu khong 2048x2048,
+  // nen no khong ton bo nho GPU, khong ton duong truyen, va khong sprite nao tro vao.
+  const canTrang = me.trang_it_nhat?.[String(heSo)] ?? 1;
+  while (raPng.length < canTrang) raPng.push(PNG_RONG);
+
   const thuMuc = 'public/atlas';
   mkdirSync(thuMuc, { recursive: true });
   const dau = `${tenMe}_${heSo}x`;
@@ -496,11 +549,12 @@ async function nuong(tenMe, heSo) {
   };
   writeFileSync(join(thuMuc, `${dau}.json`), `${JSON.stringify(json, null, 1)}\n`);
 
-  console.log(`\n== ${dau}: ${sprite.length} sprite, ${xong.soTrang} trang atlas ${CANH}x${CANH}`);
+  console.log(`\n== ${dau}: ${sprite.length} sprite, ${raPng.length} trang atlas ${CANH}x${CANH}`);
   xong.lapDay.forEach((d, i) => console.log(`   trang ${i}: lap day ${d.toFixed(1)}%`));
+  for (let i = xong.soTrang; i < raPng.length; i += 1) console.log(`   trang ${i}: RONG 1x1 (dem cho du so trang)`);
   const mb = (xong.soTrang * CANH * CANH * 4) / 1e6;
   console.log(`   bo nho GPU ${mb.toFixed(1)} MB / tran 4 trang = ${((4 * CANH * CANH * 4) / 1e6).toFixed(1)} MB`);
-  return xong.soTrang;
+  return raPng.length;
 }
 
 const tenMe = process.argv[2] ?? 'trung_co';
