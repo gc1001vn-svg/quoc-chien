@@ -72,6 +72,32 @@ describe('docObj', () => {
   });
 
   /**
+   * Mau NHAN khong bao gio keo mot mau ra khoi sac cua no: mai xanh la nhan kieu gi cung
+   * ra xanh hay vang. Do 19/09 tren `ks:building-type-a` voi tam bo nhan khac nhau, ca
+   * tam deu van xanh. `thay` la duong duy nhat doi duoc sac.
+   */
+  describe('mau_cot dang `thay`', () => {
+    it('thay han mau cua cot, khong nhan vao mau cu', () => {
+      const r = docObj(duong, {}, false, null, { mau: { 1: { thay: [0.25, 0.5, 0.75] } } });
+      expect(mauDinh(r.dinh, 0)).toEqual([0.25, 0.5, 0.75]);
+      // Tam giac sau o cot 7, khong khai gi -> giu nguyen mau material.
+      expect(mauDinh(r.dinh, 3)).toEqual([1, 1, 1]);
+    });
+
+    it('thay han thi bo luon anh, khong thi toa do anh keo mau cot cu ve', () => {
+      const r = docObj(duong, {}, false, null, { mau: { 1: { thay: [0.25, 0.5, 0.75] } } });
+      expect(r.dinh[0 * BUOC + 11]).toBe(0);
+      expect(r.dinh[3 * BUOC + 11]).toBe(1);
+    });
+
+    it('dang mang van la mau nhan nhu cu, van giu anh', () => {
+      const r = docObj(duong, { colormap: [0.5, 0.5, 0.5] }, false, null, { mau: { 1: [2, 2, 2] } });
+      expect(mauDinh(r.dinh, 0)).toEqual([1, 1, 1]);
+      expect(r.dinh[0 * BUOC + 11]).toBe(1);
+    });
+  });
+
+  /**
    * `ki:windmill` cua Kenney la MOT file chua ca thap (`g windmill`) lan canh quat
    * (`g blades`). Khong tach duoc nhom thi coi xay khong the quay canh ma dung yen than.
    */

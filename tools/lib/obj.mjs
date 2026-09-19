@@ -64,9 +64,14 @@ function docMtl(duong) {
  * @param {(tenAnh: string) => number} [traAnh] Doi TEN FILE anh cua material thanh chi so
  *   anh toan cuc (>= 0), hay -1 neu khong tim ra. Bo trong thi moi material co anh deu
  *   dung anh so 0 - dung cho cac goi Kenney chi co mot `colormap.png`.
- * @param {{so?: number, mau: Record<string, number[]>} | null} [sonCot] Mau nhan theo COT
- *   cua bang mau. `so` la so cot cua `colormap.png` (mac dinh 16), `mau` la chi so cot ->
- *   mau nhan.
+ * @param {{so?: number, mau: Record<string, number[] | {thay: number[]}>} | null} [sonCot]
+ *   Mau theo COT cua bang mau. `so` la so cot cua `colormap.png` (mac dinh 16), `mau` la
+ *   chi so cot -> mau. Gia tri la mang ba so thi NHAN vao mau san co; la
+ *   `{ "thay": [r,g,b] }` thi THAY han, bo luon anh cua cot do.
+ *
+ *   Vi sao can ca hai: mau nhan giu duoc van chuyen sac trong cot, nhung khong bao gio
+ *   keo duoc mot mau ra khoi sac cua no - mai xanh la nhan kieu gi cung ra xanh hay vang,
+ *   khong bao gio ra do. Do 19/09 tren `ks:building-type-a` voi tam bo nhan khac nhau.
  *
  *   VI SAO CAN: ca goi City Kit cua Kenney chi co DUNG MOT material ten `colormap`, nen
  *   `sonVl` son het ca tuong lan mai lan cua so - khong tach duoc. Nhung `colormap.png`
@@ -144,12 +149,15 @@ export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot =
           const phap = c === undefined || c === '' ? [0, 1, 0] : (vn[chiSo(c, vn.length)] ?? [0, 1, 0]);
           // Mau theo cot bang mau: `u` cho biet dinh nay lay mau o cot nao.
           const cot = sonCot === null ? undefined : sonCot.mau[String(Math.floor(anh[0] * soCot))];
+          const thay = Array.isArray(cot) ? null : (cot?.thay ?? null);
+          const nhan = Array.isArray(cot) ? cot : null;
           ra.push(
             toaDo[0], toaDo[1], toaDo[2], anh[0], anh[1], phap[0], phap[1], phap[2],
-            cot === undefined ? vatLieu.kd[0] : vatLieu.kd[0] * cot[0],
-            cot === undefined ? vatLieu.kd[1] : vatLieu.kd[1] * cot[1],
-            cot === undefined ? vatLieu.kd[2] : vatLieu.kd[2] * cot[2],
-            vatLieu.anh,
+            thay === null ? vatLieu.kd[0] * (nhan?.[0] ?? 1) : thay[0],
+            thay === null ? vatLieu.kd[1] * (nhan?.[1] ?? 1) : thay[1],
+            thay === null ? vatLieu.kd[2] * (nhan?.[2] ?? 1) : thay[2],
+            // Thay han thi bo hoc anh di, khong thi toa do anh keo mau cua cot cu ve.
+            thay === null ? vatLieu.anh : 0,
           );
         }
       }

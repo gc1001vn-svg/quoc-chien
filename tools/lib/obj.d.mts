@@ -18,8 +18,12 @@ export interface KetQuaObj {
 export interface SonCot {
   /** So cot cua bang mau. Mac dinh 16 - Kenney chia vay. */
   readonly so?: number;
-  /** Chi so cot -> mau nhan. */
-  readonly mau: Record<string, number[]>;
+  /**
+   * Chi so cot -> mau. Mang ba so thi NHAN vao mau san co; `{ thay }` thi THAY han va bo
+   * luon anh cua cot do - duong duy nhat doi duoc SAC, vi mau nhan khong keo noi mai
+   * xanh la sang mau do.
+   */
+  readonly mau: Record<string, number[] | { readonly thay: number[] }>;
 }
 
 /** So o mot dinh chiem trong mang dinh phang. */
