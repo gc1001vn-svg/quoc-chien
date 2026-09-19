@@ -22,6 +22,7 @@ sang cả dự án.
 | `hex_1_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 11/09/2026 |
 | `hien_dai_1x_0.png` | Kenney City Kit Suburban + Commercial + Industrial + Roads (32 loại nhà, hàng rào, thùng hàng, bồn, tháp nước, cối xay gió) + Kenney Mini Characters (người đi đường) + Quaternius Stylized Nature MegaKit (cây cỏ đá) + hoạ tiết Poly Haven, <https://kenney.nl> · <https://quaternius.com> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 18/09/2026 |
 | `hien_dai_2x_0.png` | Kenney City Kit Suburban + Commercial + Industrial + Roads (32 loại nhà, hàng rào, thùng hàng, bồn, tháp nước, cối xay gió) + Kenney Mini Characters (người đi đường) + Quaternius Stylized Nature MegaKit (cây cỏ đá) + hoạ tiết Poly Haven, <https://kenney.nl> · <https://quaternius.com> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 18/09/2026 |
+| `hien_dai_2x_1.png` | Trang atlas **trống** 1×1 trong suốt, do `tools/nuong_sprite.mjs` sinh ra để đệm cho đủ số trang bằng mẻ trung cổ — không chứa hình của ai | Dự án | MIT | 19/09/2026 |
 | `hien_dai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
 | `hien_dai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
 
