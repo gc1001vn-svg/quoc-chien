@@ -18,6 +18,11 @@ jobs:
 
       - run: npm ci
 
+      # Chay TRUOC moi thu: repo nay Public va lich su git khong sua duoc tu may ao,
+      # nen mot khoa lot vao la lo vinh vien. Hong o day thi dung luon, khoi chay tiep.
+      - name: Khoa API lot vao git
+        run: npm run check:khoa
+
       - name: Lint
         run: npm run lint
 
