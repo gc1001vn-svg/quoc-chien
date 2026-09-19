@@ -94,3 +94,35 @@ describe('chan_bao_xong KHONG bat nham', () => {
     expect(chan(msg)).toBe(false);
   });
 });
+
+/**
+ * Cau chao dong phien. Do do that 19/09: hook chan `Xong. Hen phien sau.` - so do da dua
+ * o luot TRUOC, day chi la cau chao, ma may khong nhin thay luot truoc.
+ *
+ * Hai dieu kien phai dung CUNG luc (ngan va co tu chao), khong thi `Xong roi.` cung lot -
+ * ma cau do chu du an muon bat.
+ */
+describe('chan_bao_xong cho qua cau chao dong phien', () => {
+  it.each([
+    'Xong. Hẹn phiên sau.',
+    'Xong rồi, hẹn gặp anh phiên sau.',
+    'Hoàn thành. Chào anh.',
+  ])('cho qua: %s', (msg) => {
+    expect(chan(msg)).toBe(false);
+  });
+
+  it('cau ngan bao xong ma KHONG co tu chao thi van chan', () => {
+    expect(chan('Xong rồi.')).toBe(true);
+    expect(chan('Đóng phiên xong.')).toBe(true);
+  });
+
+  it('bao cao dai ma cuoi cau chao thi van chan - khong muon tu chao thanh cua thoat', () => {
+    const dai = [
+      'Nướng mẻ hiện đại xong, đã đẩy main.',
+      'Atlas 2× một trang, lấp đầy 74,1 %.',
+      'Ba repo đồng bộ hook, tayvuc cố ý để lệch.',
+      'Hẹn phiên sau.',
+    ].join('\n');
+    expect(chan(dai)).toBe(true);
+  });
+});

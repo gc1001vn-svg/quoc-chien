@@ -64,3 +64,8 @@ Màn thật ở `?me=hien_dai`: **501 sprite · 1 lệnh vẽ**.
   `cai_dat.mjs` cho `quoc-chien` và `vsp-fleet-safety` (`bash scripts/do.sh` **6/6** sau
   khi `pip install -r requirements.txt` — thiếu `fastapi`/`sqlalchemy` thì ra 4/6, không
   liên quan thay đổi này). **`tayvuc` cố ý để lệch** vì repo dừng hẳn 05/09.
+- **"Hook bắt nhầm câu chào"** (19/09) → `Xong. Hẹn phiên sau.` bị chặn, vì số đo đã đưa ở
+  lượt **trước** mà hook chỉ nhìn thấy một lượt. Cho qua khi **NGẮN** (một đoạn, dưới 120
+  ký tự) **VÀ** có từ chào — hai điều kiện cùng lúc. Chỉ một trong hai thì `Xong rồi.`
+  cũng lọt (câu đó phải bắt), còn một báo cáo dài kết bằng "Hẹn phiên sau" thì từ chào
+  thành cửa thoát cho mọi lần báo xong. 35 test, `md5 d8781f8f → ed437b28`, ba repo đồng bộ.
