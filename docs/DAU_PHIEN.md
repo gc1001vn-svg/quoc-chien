@@ -40,6 +40,36 @@ bản kê cũ đếm cả phần Icosa. Chỉ nướng mẻ trung cổ / hiện 
 Từ 11/09 `kho_asset.mjs` tự chặn khi số model tụt quá 20% so với bản đang có; ép ghi
 đè phải `KHO_EP=1 npm run kho`, và chỉ làm khi biết chắc kho đã đủ.
 
+## C. Khoá API — repo này Public, lộ một lần là lộ vĩnh viễn
+
+**Khoá chỉ đi qua biến môi trường. Không bao giờ vào git, không bao giờ gõ vào chat.**
+Ba khoá đã đi qua dự án: `POLY_PIZZA_KEY`, `FREESOUND_KEY`, và từ 19/09 có thể thêm khoá
+Gemini. Cách đặt: `claude.ai/code` → nút tên môi trường → ô **Environment variables**.
+
+Thước `check:khoa` (trong `npm run do`) quét **mọi file git đang theo dõi** tìm hình dạng
+khoá: `AIza…` · `sk-ant-…` · `sk-…` · `ghp_…` · `AKIA…` · `api_key: "…"`. Đỏ là không
+commit được.
+
+**Lộ rồi thì XOAY KHOÁ trước, xoá sau.** Máy ảo không sửa được lịch sử git
+(`git push --force` và xoá nhánh đều bị chặn), nên xoá file không cứu được gì.
+
+**Host LLM nào máy ảo với tới được — đo 19/09, 20 host:**
+
+| Host | Kết quả |
+|---|---|
+| `generativelanguage.googleapis.com` | **404** (thông, chỉ thiếu khoá) |
+| `api.anthropic.com` | **404** (thông) |
+| 18 host còn lại | `000` — allowlist môi trường chặn |
+
+`000` gồm `api.openai.com` · `openrouter.ai` · `api.groq.com` · `api.deepseek.com` ·
+`api.mistral.ai` · `api.x.ai` · `api.moonshot.ai` · `api.together.xyz` · `api.cerebras.ai`
+· `dashscope.aliyuncs.com` · `huggingface.co` … Muốn mở thêm thì xin vào ô
+**Allowed domains** — nhớ ô đó **ghi đè**, phải dán lại danh sách đầy đủ ở
+`docs/TIEN_DO.md` mục 3.
+
+**Đừng lấy token đăng nhập của Claude Code đắp vào `api.anthropic.com`** — sai mục đích
+cấp quyền. Muốn dùng host đó phải là khoá API anh tự mua.
+
 ## D. Chi phí token — phần riêng repo này
 
 Dò `KHO_ASSET.md` phải dùng `grep -io ... | sort -u`, **cấm `grep -i` trần**: dòng dài

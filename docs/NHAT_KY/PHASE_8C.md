@@ -64,3 +64,26 @@ Cắm 18/09, gỡ 19/09. Đo trên diff thật `fd4e7e2..97a831e`.
 
 Bài học giữ lại: **luật theo đường dẫn là ý hay, công cụ ngoài để chở nó thì không đáng.**
 Luật đã nằm sẵn ở hai file đọc mỗi phiên.
+
+## Phụ lục 19/09 (3) — kiểm soát khoá API, và đo host nào với tới được
+
+Chủ dự án hỏi nối API vào máy ảo được gì mất gì. Đo trước, rồi dựng hàng rào.
+
+- **Chỉ HAI host LLM thông, trên 20 host đo:** `generativelanguage.googleapis.com` và
+  `api.anthropic.com` đều trả `404` (tới nơi, thiếu khoá). Mười tám host còn lại `000` —
+  allowlist môi trường chặn, kể cả `api.openai.com`, `openrouter.ai`, `api.groq.com`.
+  Tức câu "tìm nguồn API tốt hơn" **đã bị môi trường trả lời hộ**: không có lựa chọn nào
+  khác ngoài Google, trừ khi chủ dự án sửa ô **Allowed domains** (ô đó **ghi đè**).
+- **`generativelanguage.googleapis.com` trả đúng chữ**
+  `{"error":{"code":400,"message":"Please pass a valid API key","status":"INVALID_ARGUMENT"}}`
+  cho một POST không khoá — nên chỉ thiếu mỗi khoá, không phải mở đường mạng.
+- **`ocr` có sẵn provider `gemini`** trỏ đúng URL đó, protocol `openai`. Nhưng free tier
+  từ tháng 5/2026 chỉ còn Flash và Flash-Lite (Pro đã sang trả tiền), và dữ liệu free
+  tier bị dùng để huấn luyện.
+- **Thước thứ mười một: `check:khoa`.** Quét mọi file `git ls-files` tìm hình dạng khoá
+  (`AIza…` · `sk-ant-…` · `sk-…` · `ghp_…` · `AKIA…` · `api_key: "…"`). Thử bằng một khoá
+  giả: bắt 2/2. Bỏ qua file nhị phân và chính nó.
+- **Luật khoá gom về `DAU_PHIEN.md` mục C** — trước đó nằm rải trong phần Poly Pizza.
+
+Chỗ nguy hiểm nhất không phải khoá lọt vào code mà là **repo này Public và máy ảo không
+sửa được lịch sử git**: lộ rồi thì xoá file không cứu được gì, phải xoay khoá.

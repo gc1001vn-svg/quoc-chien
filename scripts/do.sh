@@ -28,6 +28,7 @@ chay "check:credits" "npm run check:credits"
 chay "check:token" "npm run check:token"
 chay "check:kehoach" "npm run check:kehoach"
 chay "check:hook" "node scripts/check_hook.mjs"
+chay "check:khoa" "npm run check:khoa"
 
 rm -f /tmp/do_$$.log
 echo "Số đo: ${dat}/${tong} thước đạt"
