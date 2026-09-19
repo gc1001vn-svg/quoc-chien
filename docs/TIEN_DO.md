@@ -84,7 +84,9 @@ API key.
   `Error: resolve LLM endpoint: no valid LLM endpoint configured; ...`.
   `open-codereview.ai` chặn egress; đọc tài liệu phải clone repo họ.
 
-**Chưa đo được nó bắt thêm lỗi nào** so với soát tay — cần diff thật của Phase 8B.
+**ĐÃ ĐO 19/09 trên diff thật của Phase 8C** (`fd4e7e2..97a831e`, 20 file, +508/−99 bỏ
+atlas). Kết quả: **bắt thêm 0 lỗi** — `ocr delegate` không đọc code, nó chỉ chọn file và
+in luật. Chi tiết và đề xuất bỏ: mục 4, dòng "`open-code-review`".
 Luật là chữ nhắc, **không phải thước chặn**; hàng rào thật vẫn là ESLint + `npm run do`.
 
 ### Phiên 18/09 (lần 2) đã đổi gì
@@ -513,6 +515,18 @@ quyền hạn và giới hạn máy ảo.
 - **MỚI: mẻ trung cổ 2× hết chỗ trên một trang atlas** (mục 2). Thêm sprite cỡ căn nhà là
   tràn trang, mà mẻ nào tràn thì **mọi** mẻ phải đệm cho bằng (`trang_it_nhat`). Chưa chặn
   việc gì, nhưng phase sau thêm công trình thì tính chỗ trước.
+- **`open-code-review`: đo xong 19/09, ĐỀ XUẤT BỎ, chờ chủ dự án chốt.** Đo trên diff
+  thật của Phase 8C: bắt thêm **0 lỗi** (nó không đọc code — `ocr review`/`ocr scan` vẫn
+  chết vì không có API key). Ba chỗ hỏng: `tools/lib/obj.d.mts` bị loại
+  `unsupported_ext` và `ocr rules check` cho nó rơi về **System built-in** (React, XSS —
+  đúng bộ luật repo này cố ý thay), mà **đúng file đó là chỗ duy nhất hỏng trong phiên**
+  (`TS2554: Expected 1-5 arguments, but got 6`); `tests/**` cũng bị loại `default_path`;
+  và `.opencodereview/rule.json` (10.160 byte) là **bản chép thứ hai** của `TECH_SPEC`
+  mục 1–2 + `CLAUDE.md` mục Ba luật — trái luật kho "mỗi luật đúng một chỗ".
+  Token: phần nó in ra 5.881 byte, mà `git diff --stat` cho cùng danh sách file hết
+  **1.012 byte**; đổi lại tốn thêm 2–3 **lượt gọi**, thứ đắt nhất.
+  Bỏ thì xoá `.opencodereview/`, hai script `soat` / `soat:luat`, và mục I của
+  `DAU_PHIEN.md`.
 - **`npm run kho` chưa chạy lại được từ máy ảo sạch** — `tai:tatca` không kéo
   `assets_source/icosa` nên bản kê tụt quá 20 % và công cụ tự dừng. `docs/KHO_ASSET.md`
   vì thế **vẫn còn con số đếm kiểu cũ**; muốn sửa thì phải `npm run tai:icosa` trước.
