@@ -33,6 +33,9 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
   dùng, nên máy ảo sạch không nướng lại được mẻ đó.
 - **`mau_cot` thêm dạng `{ "thay": [r,g,b] }`** — thay hẳn màu một cột và bỏ luôn ảnh cột
   đó. Mái mẻ hiện đại hết xanh neon; chi tiết và vì sao màu nhân không đủ: mục 3.
+- **Tám nhà phố `kc:building-*` thêm màu viền (cột 1)** cùng sắc với mái, nên mỗi xưởng
+  đọc ra được từ xa thay vì tám hộp trắng giống nhau. **Bản đồ cột của mỗi gói MỘT KIỂU** —
+  ghi đủ ở `tools/me/hien_dai.json > ghi_chu_cot`; đọc nhầm một lần trong phiên 19/09.
 
 Mười bốn phiên đồ nghề trước Phase 8B (12/09 → 18/09 ×3): `docs/NHAT_KY/PHASE_8_RA_SOAT.md`,
 `PHASE_8_DO_NGHE.md`, `PHASE_8_NHAC_KHO.md`, `PHASE_8_TAT_DINH.md`, `PHASE_8_BAN_DUYET.md`,

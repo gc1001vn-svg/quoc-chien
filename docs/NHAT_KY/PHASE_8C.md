@@ -31,8 +31,16 @@ Sprite công trình nhiều khung, chủ dự án chốt 18/09. Làm đúng ba b
 - **Màu nhân không đổi được sắc.** Đo tám bộ nhân trên cột mái: tất cả vẫn ra xanh hoặc
   vàng. Thêm `mau_cot` dạng `{ "thay": [r,g,b] }` (thay hẳn, bỏ luôn ảnh cột đó) mới ra
   được ngói xám, nâu, đỏ.
-- **Dò cột bằng cách sơn đỏ từng cột.** Cột 1 = mái + khung cửa + chân tường; cột 3 = cửa
-  ra vào; cột 7 = tường; cột 11 = kính. Trước đó tám sprite thương mại đang sơn cột 3 —
-  tức chúng đổi màu **cửa**, không phải mái, suốt từ 18/09.
+- **Dò cột bằng cách sơn đỏ từng cột. MỖI GÓI MỘT KIỂU — đừng suy từ gói này sang gói kia.**
+  `ks:building-type-a` (nhà mái dốc): cột 1 = mái + khung cửa + chân tường, 3 = cửa ra vào,
+  7 = tường, 11 = kính. `kc:building-*` (nhà mái bằng): cột 1 = viền trang trí quanh từng
+  tầng + gờ mái, 3 = **mặt mái và tầng trệt**, 7 = tường, 11 = kính.
+  > **Sửa lại điều đã ghi sai trong chính phiên này:** tôi đọc cột 3 của `nha_dan` ra cửa
+  > rồi kết luận tám sprite thương mại "sơn nhầm cột", và báo vậy với chủ dự án. **Sai** —
+  > ở `kc:building-*` cột 3 đúng là mặt mái, tám sprite đó vẫn đang sơn mái. Cùng một con
+  > số cột mà hai gói hiểu khác nhau.
+- **Tám nhà phố: thêm màu viền (cột 1) cùng sắc với mái.** Không phải sửa lỗi mà là thêm:
+  trước đó thân nhà trắng, chỉ mái có màu, nhìn từ trên xuống ra tám hộp trắng giống nhau.
+  Nay mỗi xưởng một màu viền quấn quanh mặt tiền, đọc ra được loại nhà từ xa.
 - **Người chibi: giữ.** Hai mẻ không bao giờ cùng trên màn; ở mức thu phóng chơi thật
   người cao khoảng 45 điểm ảnh CSS nên tỉ lệ đầu không đọc ra được.
