@@ -70,4 +70,52 @@ describe('docObj', () => {
     expect(mauDinh(r.dinh, 0)).toEqual([3, 0, 0]);
     expect(mauDinh(r.dinh, 3)).toEqual([0, 3, 0]);
   });
+
+  /**
+   * `ki:windmill` cua Kenney la MOT file chua ca thap (`g windmill`) lan canh quat
+   * (`g blades`). Khong tach duoc nhom thi coi xay khong the quay canh ma dung yen than.
+   */
+  describe('loc theo nhom `g`', () => {
+    const hai: string = taoFileObjHaiNhom();
+
+    it('chi lay mat cua nhom da khai', () => {
+      expect(docObj(hai).soTamGiac).toBe(2);
+      expect(docObj(hai, {}, false, null, null, 'than').soTamGiac).toBe(1);
+      expect(docObj(hai, {}, false, null, null, 'canh').soTamGiac).toBe(1);
+    });
+
+    it('nhom khong co that thi ra rong, khong nem loi', () => {
+      expect(docObj(hai, {}, false, null, null, 'khong_co').soTamGiac).toBe(0);
+    });
+
+    /**
+     * Hop bao PHAI tinh lai theo dinh con dung. Giu hop bao cua ca file thi tam sprite
+     * canh quat nhay ve giua can nha, va goc xoay `rz`/`rx` quay quanh dung cho do.
+     */
+    it('hop bao tinh theo dinh CON DUNG, khong phai ca file', () => {
+      expect(docObj(hai).max[0]).toBe(9);
+      expect(docObj(hai, {}, false, null, null, 'than').max[0]).toBe(1);
+    });
+  });
 });
+
+/** Hai tam giac o hai nhom `g` tach biet; nhom `canh` nam xa han ve phia +x. */
+function taoFileObjHaiNhom(): string {
+  const noi = [
+    'mtllib thu.mtl',
+    'v 0 0 0', 'v 1 0 0', 'v 0 1 0',
+    'v 9 0 0', 'v 9 1 0', 'v 8 0 0',
+    'vt 0.0938 0.3',
+    'vn 0 1 0',
+    'usemtl colormap',
+    'g than',
+    'f 1/1/1 2/1/1 3/1/1',
+    'g canh',
+    'f 4/1/1 5/1/1 6/1/1',
+  ].join('\n');
+  const thuMuc: string = mkdtempSync(join(tmpdir(), 'obj-nhom-'));
+  const duong: string = join(thuMuc, 'thu.obj');
+  writeFileSync(duong, noi);
+  writeFileSync(join(thuMuc, 'thu.mtl'), 'newmtl colormap\nKd 1 1 1\nmap_Kd Textures/colormap.png\n');
+  return duong;
+}

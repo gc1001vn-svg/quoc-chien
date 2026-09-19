@@ -73,9 +73,15 @@ function docMtl(duong) {
  *   la bang mau chia cot, moi cot mot mau (toa do `u` chon cot, `v` chon do dam trong
  *   dai chuyen sac cua cot do). Nen COT chinh la cai "material" that su cua goi nay.
  *   Do 18/09: `ks:building-type-a` dung cot 1, 3, 7, 9, 11; `ki:building-a` dung 9, 11, 15.
+ * @param {string | null} [nhom] Chi lay mat cua NHOM `g <ten>` nay, bo het phan con lai.
+ *
+ *   VI SAO CAN: `ki:windmill` cua Kenney la MOT file chua ca thap lan canh quat
+ *   (`g windmill` hai lan, roi `g blades`). Muon canh quay thi phai tach no ra khoi than -
+ *   khong tach thi moi khung xoay ca can nha. Loc thi hop bao cung phai tinh lai theo
+ *   dinh CON DUNG, khong thi tam sprite nhay ve giua can nha.
  * @returns {{dinh: Float32Array, min: number[], max: number[], soTamGiac: number}}
  */
-export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot = null) {
+export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot = null, nhom = null) {
   const soCot = sonCot?.so ?? 16;
   const mtl = docMtl(join(dirname(duong), `${duong.split('/').pop().replace(/\.obj$/, '')}.mtl`));
   let vatLieu = { kd: [1, 1, 1], anh: 1 };
@@ -85,6 +91,17 @@ export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot =
   const ra = [];
   const min = [Infinity, Infinity, Infinity];
   const max = [-Infinity, -Infinity, -Infinity];
+  let nhomNay = '';
+
+  /** Noi rong hop bao ra cho vua mot dinh. */
+  const om = (x, y, z) => {
+    if (x < min[0]) min[0] = x;
+    if (y < min[1]) min[1] = y;
+    if (z < min[2]) min[2] = z;
+    if (x > max[0]) max[0] = x;
+    if (y > max[1]) max[1] = y;
+    if (z > max[2]) max[2] = z;
+  };
 
   for (const dong of readFileSync(duong, 'utf8').split('\n')) {
     const p = dong.trim().split(/\s+/);
@@ -93,12 +110,10 @@ export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot =
       const y = Number(p[2]);
       const z = Number(p[3]);
       v.push([x, y, z]);
-      if (x < min[0]) min[0] = x;
-      if (y < min[1]) min[1] = y;
-      if (z < min[2]) min[2] = z;
-      if (x > max[0]) max[0] = x;
-      if (y > max[1]) max[1] = y;
-      if (z > max[2]) max[2] = z;
+      // Loc nhom thi hop bao tinh o vong `f` ben duoi, tu dinh THAT SU duoc dung.
+      if (nhom === null) om(x, y, z);
+    } else if (p[0] === 'g') {
+      nhomNay = p.slice(1).join(' ');
     } else if (p[0] === 'vt') {
       vt.push([Number(p[1]), Number(p[2])]);
     } else if (p[0] === 'vn') {
@@ -117,12 +132,14 @@ export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot =
         ? { anh: khe, kd }
         : { anh: khe, kd: kd.map((v, k) => v * son[k]) };
     } else if (p[0] === 'f') {
+      if (nhom !== null && nhomNay !== nhom) continue;
       // Mat co the 3, 4 hay nhieu canh -> chia thanh quat tam giac.
       const goc = p.slice(1);
       for (let i = 1; i + 1 < goc.length; i += 1) {
         for (const ten of [goc[0], goc[i], goc[i + 1]]) {
           const [a, b, c] = ten.split('/');
           const toaDo = v[chiSo(a, v.length)] ?? [0, 0, 0];
+          if (nhom !== null) om(toaDo[0], toaDo[1], toaDo[2]);
           const anh = b === undefined || b === '' ? [0, 0] : (vt[chiSo(b, vt.length)] ?? [0, 0]);
           const phap = c === undefined || c === '' ? [0, 1, 0] : (vn[chiSo(c, vn.length)] ?? [0, 1, 0]);
           // Mau theo cot bang mau: `u` cho biet dinh nay lay mau o cot nao.

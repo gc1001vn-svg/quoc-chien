@@ -31,4 +31,6 @@ export function docObj(
   gamma?: boolean,
   traAnh?: ((tenAnh: string) => number) | null,
   sonCot?: SonCot | null,
+  /** Chi lay mat cua nhom `g <ten>` nay. `null` la lay het ca file. */
+  nhom?: string | null,
 ): KetQuaObj;
