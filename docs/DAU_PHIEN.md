@@ -47,8 +47,23 @@ Ba khoá đã đi qua dự án: `POLY_PIZZA_KEY`, `FREESOUND_KEY`, và từ 19/0
 Gemini. Cách đặt: `claude.ai/code` → nút tên môi trường → ô **Environment variables**.
 
 Thước `check:khoa` (trong `npm run do`) quét **mọi file git đang theo dõi** tìm hình dạng
-khoá: `AIza…` · `sk-ant-…` · `sk-…` · `ghp_…` · `AKIA…` · `api_key: "…"`. Đỏ là không
-commit được.
+khoá: `AIza…` · **`AQ.…`** · `sk-ant-…` · `sk-…` · `ghp_…` · `AKIA…` · `api_key: "…"`.
+Đỏ là không commit được.
+
+**Khoá AI Studio kiểu MỚI bắt đầu bằng `AQ.`, không phải `AIza`** (khoá gắn service
+account, dài 53 ký tự — đo trên khoá thật 19/09). Chỉ bắt mẫu `AIza` là lọt sạch.
+
+**Chỗ đúng để cất khoá là ô `API credentials`, KHÔNG phải `Environment variables`.**
+Hộp thoại **Edit cloud environment** có cả hai. `Environment variables` tự cảnh báo:
+*"These are visible to anyone using this environment — don't add secrets or credentials."*
+Còn `API credentials` ghi: *"Let sessions call APIs without seeing the credentials.
+Values can't be viewed after saving."* — phiên gọi được API mà không đọc được chuỗi.
+
+> **Sửa lại 19/09:** tài liệu này ghi 17/09 rằng **không có** mục `API credentials`.
+> **Sai.** Hộp thoại có đủ: `Name` · `Network access` · `Allowed domains` ·
+> `Add Artifact content domains` · `Environment variables` · `API credentials` ·
+> `Setup script` · `Archive`. Lần đó mô tả giao diện qua lời kể, không mở ra xem —
+> đúng cái bẫy mà chính dòng dưới đã cảnh báo.
 
 **Lộ rồi thì XOAY KHOÁ trước, xoá sau.** Máy ảo không sửa được lịch sử git
 (`git push --force` và xoá nhánh đều bị chặn), nên xoá file không cứu được gì.
@@ -97,9 +112,14 @@ quota API**; muốn Pro thì phải bật Cloud Billing. Chạy được trên f
 **Truyền khoá bằng HEADER `x-goog-api-key`, đừng nhét vào URL** (`?key=…`): mọi lệnh Bash
 đều bị hook `ghi_so_lenh.mjs` chép 200 ký tự đầu vào `.claude/so_lenh.log`.
 
-**Biến môi trường có thể hiện ra ngay giữa phiên**, không phải lúc nào cũng đợi phiên mới
-— 19/09 khoá thấy được ngay sau khi chủ dự án bấm Save (phiên có nhận một lần nạp lại môi
-trường). Cứ chạy lệnh kiểm rồi mới kết luận, đừng đoán theo chiều nào.
+**Biến môi trường: MẶC ĐỊNH phải mở phiên mới.** Đo 19/09 hai lần, hai kết quả khác
+nhau — một lần thấy ngay giữa phiên (container tình cờ nạp lại môi trường), một lần bấm
+Save xong vẫn `-` cho tới hết phiên. Cứ chạy lệnh kiểm rồi mới kết luận, đừng đoán theo
+chiều nào. Chưa thấy thì gọi API ra `403 PERMISSION_DENIED - Method doesn't allow
+unregistered callers (callers without established identity)`, không phải khoá hỏng.
+
+**Đừng bấm Save khi ô `Environment variables` đang hiện rỗng** — lưu lúc đó là xoá sạch
+mấy khoá cũ.
 
 ## D. Chi phí token — phần riêng repo này
 

@@ -438,10 +438,18 @@ svgsilh.com
 
 ### Đặt khoá vào môi trường — khỏi dán lại mỗi phiên
 
-**Giao diện thật chỉ có `Environment variables`. KHÔNG có mục "API credentials".**
-Tài liệu của repo từng ghi có — sai, chép lại từ ghi chép cũ mà không mở ra xem (17/09).
-Hộp thoại tên **Edit cloud environment**, gồm: `Name` · `Network access` ·
-`Allowed domains` · `Environment variables`. Hết.
+**Sửa 19/09 — CÓ mục `API credentials`.** Ghi chép 17/09 nói không có; sai, và lần đó
+cũng mô tả giao diện qua lời kể chứ không nhìn ảnh. Chủ dự án gửi ảnh chụp 19/09: hộp
+thoại **Edit cloud environment** gồm `Name` · `Network access` · `Allowed domains` ·
+`Add Artifact content domains` · `Environment variables` · **`API credentials`** ·
+`Setup script` · `Archive`.
+
+**`API credentials` mới là chỗ đúng để cất khoá:** *"Let sessions call APIs without seeing
+the credentials. Values can't be viewed after saving."* Còn `Environment variables` tự
+cảnh báo *"These are visible to anyone using this environment — don't add secrets or
+credentials."* Cách dùng `API credentials` **chưa đo** — đo trước khi hứa.
+
+**Luật đã hai lần sai vì cùng một thói quen: đừng mô tả giao diện mình chưa nhìn thấy.**
 
 1. Mở <https://claude.ai/code> → bấm nút tên môi trường ở đầu trang.
 2. Ô **Environment variables**, thêm một dòng (dạng `.env`, mỗi khoá một dòng):

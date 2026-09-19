@@ -24,6 +24,9 @@ import { readFileSync, statSync } from 'node:fs';
  */
 const MAU = [
   ['khoa Google (AIza…)', new RegExp(`${'AIza'}[0-9A-Za-z_-]{35}`)],
+  // Khoa AI Studio kieu MOI, gan voi service account. Do 19/09 tren khoa that: no bat dau
+  // bang `AQ.` chu KHONG phai `AIza`, dai 53 ky tu. Chi bat mau `AIza` la lot sach.
+  ['khoa Google kieu moi (AQ.…)', new RegExp(`${'AQ'}\\.[0-9A-Za-z_-]{30,}`)],
   ['khoa Anthropic (sk-ant-…)', new RegExp(`${'sk'}-ant-[0-9A-Za-z_-]{20,}`)],
   ['khoa OpenAI (sk-…)', new RegExp(`${'sk'}-[A-Za-z0-9]{32,}`)],
   ['token GitHub (ghp_/gho_/ghs_…)', new RegExp(`${'gh'}[pousr]_[0-9A-Za-z]{36}`)],
