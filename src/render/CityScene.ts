@@ -196,6 +196,8 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
       caoDev: caoCss * gl.tiLeDiemAnh(),
       tiLe: gl.tiLeDiemAnh() * cam.cssTrenWorld(),
       camX: 0, camY: 0, dem: 0,
+      // Cong trinh nhieu khung (coi xay) chon khung theo day: dung hinh thi canh dung theo.
+      khung: nhipKe.soNhip,
     };
     const khung = cam.khung();
     ve.camX = (khung.x0 + khung.x1) / 2;

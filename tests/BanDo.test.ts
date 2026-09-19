@@ -11,7 +11,7 @@ import cauHinhTho from '../data/thanh_pho_demo.json';
 import canBangTho from '../data/balance.json';
 import { docQuyHoach, laVien } from '../src/sim/city/QuyHoach.ts';
 import { sinhBanDo, type BanDo, type CauHinhBanDo } from '../src/sim/city/BanDo.ts';
-import { docBoAtlas } from '../src/render/Atlas';
+import { coHinh, docBoAtlas } from '../src/render/Atlas';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
 
@@ -138,8 +138,10 @@ describe('ten sprite khai trong JSON phai co that trong atlas', () => {
       it(`du ten cho me ${me} bo ${co}`, () => {
         const bo = doc(`${me}_${co}`);
         const thieu: string[] = [];
+        // `coHinh` chu khong `bo.sprite[ten]`: cong trinh nhieu khung chi co `<ten>_k0`,
+        // `_k1`... trong atlas, khong co o nao mang dung ten goc.
         const kiem = (ten: string): void => {
-          if (bo.sprite[ten] === undefined) thieu.push(ten);
+          if (!coHinh(bo, ten)) thieu.push(ten);
         };
         kiem(CAU_HINH.nen.duong);
         kiem(CAU_HINH.nen.ngaTu);

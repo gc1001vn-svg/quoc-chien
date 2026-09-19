@@ -83,6 +83,17 @@ export function docBoAtlas(tho: unknown): BoAtlas {
 }
 
 /** Bo atlas da nap len GPU, san sang ve. */
+/**
+ * Bo atlas co phu duoc ten sprite nay khong - KE CA khi no la cong trinh nhieu khung.
+ *
+ * Cong trinh dong (coi xay) khong co o nao ten `coi_xay`; no co `coi_xay_k0`, `_k1`, ...
+ * va `VeCanh.tenKhung` chon mot cai moi khung. Ham nay de cho hai cho doi chieu -
+ * `Atlas.thieu` va `tests/BanDo.test.ts` - khong bao thieu nham cong trinh do.
+ */
+export function coHinh(bo: BoAtlas, ten: string): boolean {
+  return bo.sprite[ten] !== undefined || bo.sprite[`${ten}_k0`] !== undefined;
+}
+
 export class Atlas {
   private readonly bo: BoAtlas;
   private readonly texs: readonly WebGLTexture[];
@@ -131,7 +142,7 @@ export class Atlas {
    */
   public thieu(can: Iterable<string>): string[] {
     const ra: string[] = [];
-    for (const ten of can) if (!this.co(ten)) ra.push(ten);
+    for (const ten of can) if (!coHinh(this.bo, ten)) ra.push(ten);
     return ra;
   }
 

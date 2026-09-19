@@ -28,6 +28,7 @@ function veGia(): Ve {
     camX: 0,
     camY: 0,
     dem: 0,
+    khung: 0,
   };
 }
 

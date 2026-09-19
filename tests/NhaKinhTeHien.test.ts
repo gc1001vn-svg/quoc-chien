@@ -40,8 +40,9 @@ describe('nha kinh te hien ra ban do', () => {
       sprite: Record<string, unknown>;
     };
     for (const def of docNha(nha)) {
+      // Cong trinh nhieu khung khai `<ten>_k0`, `_k1`... chu khong khai ten goc.
       expect(
-        Object.hasOwn(me.sprite, def.sprite),
+        Object.hasOwn(me.sprite, def.sprite) || Object.hasOwn(me.sprite, `${def.sprite}_k0`),
         `sprite "${def.sprite}" cua nha "${def.ten}" khong co trong me atlas`,
       ).toBe(true);
     }
@@ -69,7 +70,11 @@ describe('nha kinh te hien ra ban do', () => {
       const at = JSON.parse(
         readFileSync(`public/atlas/${cauHinh.me}_${co}.json`, 'utf8'),
       ) as { sprite: Record<string, unknown> };
-      const thieu: string[] = [...can].filter((t) => !Object.hasOwn(at.sprite, t));
+      // `_k0` cung tinh la co: cong trinh nhieu khung (coi xay) khong co o nao mang dung
+      // ten goc, no co `coi_xay_k0`, `_k1`... va `VeCanh` chon mot cai moi khung.
+      const thieu: string[] = [...can].filter(
+        (t) => !Object.hasOwn(at.sprite, t) && !Object.hasOwn(at.sprite, `${t}_k0`),
+      );
       expect(thieu, `atlas ${co} thieu: ${thieu.join(' ')}`).toEqual([]);
     }
   });

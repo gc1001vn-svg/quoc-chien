@@ -166,6 +166,8 @@ export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
       camX: (khungNhin.x0 + khungNhin.x1) / 2 - lechX,
       camY: (khungNhin.y0 + khungNhin.y1) / 2 - lechY,
       dem: 0,
+      // Ban do chien dich khong co cong trinh nhieu khung.
+      khung: 0,
     };
 
     gl.batDauKhung();

@@ -27,6 +27,41 @@ export interface Ve {
   camX: number;
   camY: number;
   dem: number;
+  /**
+   * So nhip mo phong da chay, lay thang tu `DongHo`. Dung de chon khung cua cong trinh
+   * nhieu khung - xem `tenKhung`.
+   *
+   * PHAI di qua `DongHo` chu dung lay `performance.now()`: dung hinh thi canh coi xay
+   * phai dung theo, va chay nhanh 3x thi no phai quay nhanh 3x. Luat da ghi o `CityScene`.
+   */
+  readonly khung: number;
+}
+
+/**
+ * So nhip mo phong cho MOI khung hinh cua cong trinh nhieu khung.
+ *
+ * Mo phong chay 10 nhip/giay; doi khung moi nhip thi canh quat nhay loang loang. Hai nhip
+ * mot khung, moi khung 30 do, ra 150 do/giay ~ 25 vong/phut o toc do thuong - dung tam
+ * coi xay that. Day la so cua LOP VE, khong phai so can bang, nen no o day chu khong o
+ * `data/*.json` (luat 2 cua CLAUDE.md).
+ */
+const NHIP_MOI_KHUNG = 2;
+
+/**
+ * Ten sprite that su phai ve cho `ten` o khung hien tai.
+ *
+ * Cong trinh DONG khai trong atlas thanh `<ten>_k0`, `<ten>_k1`, ... Cong trinh thuong
+ * khong co `_k0` nao nen tra ve dung ten cu - khong co buoc do thi ca tram cong trinh
+ * tinh cung phai tra gia cho mot cai coi xay.
+ *
+ * Moi cho doc hop bao deu goi qua day: ve mot khung ma do hop bao cua khung khac thi cham
+ * vao canh quat lai khong trung, va lo soi cat theo hop sai.
+ */
+function tenKhung(ve: Ve, ten: string): string {
+  if (!ve.atlas.co(`${ten}_k0`)) return ten;
+  let so = 1;
+  while (ve.atlas.co(`${ten}_k${String(so)}`)) so += 1;
+  return `${ten}_k${String(Math.floor(ve.khung / NHIP_MOI_KHUNG) % so)}`;
 }
 
 /** Hop bao cua mot sprite tren man, tinh bang diem anh khung ve. */
@@ -45,7 +80,8 @@ export interface Muc {
 }
 
 /** Hop bao cua sprite `ten` dat tai o `(a,b)`. `undefined` neu atlas khong co sprite do. */
-function hopSprite(ve: Ve, a: number, b: number, ten: string): Hop | undefined {
+function hopSprite(ve: Ve, a: number, b: number, tenGoc: string): Hop | undefined {
+  const ten: string = tenKhung(ve, tenGoc);
   if (!ve.atlas.co(ten)) return undefined;
   const s = ve.atlas.o(ten);
   const oPx: number = ve.atlas.oPx();
@@ -181,11 +217,11 @@ function spriteWalker(w: Walker): string {
  * Loai o day chu khong o cho khac vi toa do man hinh dang sao cung phai tinh - phep so
  * sanh them gan nhu khong ton gi, ma cat duoc mot nua so sprite.
  */
-function datSprite(ve: Ve, a: number, b: number, ten: string): void {
-  const hop: Hop | undefined = hopSprite(ve, a, b, ten);
+function datSprite(ve: Ve, a: number, b: number, tenGoc: string): void {
+  const hop: Hop | undefined = hopSprite(ve, a, b, tenGoc);
   if (hop === undefined) return;
   if (hop.x1 < 0 || hop.x0 > ve.rongDev || hop.y1 < 0 || hop.y0 > ve.caoDev) return;
-  const s = ve.atlas.o(ten);
+  const s = ve.atlas.o(tenKhung(ve, tenGoc));
   const [u0, v0, u1, v1] = ve.atlas.uv(s);
   ve.gl.them(s.trang, hop.x0, hop.y0, hop.x1 - hop.x0, hop.y1 - hop.y0, u0, v0, u1, v1);
   ve.dem += 1;
