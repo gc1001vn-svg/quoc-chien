@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 20/09/2026 (phiên ngắn lần 2 — **kiểm 7 khoá, sửa mồi đầu phiên, không chạm mã game**).
+Cập nhật: 20/09/2026 (phiên ngắn lần 3 — **kiểm 7 khoá sau khi xoay, không chạm mã game**).
 
 ## 1. Đang ở đâu
 
@@ -15,7 +15,19 @@ Chi tiết: `docs/NHAT_KY/PHASE_8C.md`.
 **Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế, và **mở đường lên đời 4–6**.
 Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
 
-### Phiên 20/09 đã đổi gì — không chạm mã game
+### Phiên 20/09 (lần 3) đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_KIEM_KHOA.md`. **Không mở phase mới** — bước E còn treo.
+
+- **Khoá Gemini đã xoay thật:** đuôi `mVEA`, khác `ICfQ`. Đủ **7 khoá**, gọi thật cả 7 —
+  bảng ở mục 3. Chỉ `XAI_API_KEY` trả `403` vì hết credit, khoá vẫn đúng.
+- **Ô `Setup script` của môi trường đang RỖNG** — chữ `#!/bin/bash` / `npm install` trong
+  ô là **chữ gợi ý màu xám**, không phải script đã lưu. Nên `npm ci` không tự chạy, mỗi
+  phiên mất một lượt gọi chạy tay. Cách điền: mục 3.
+- **Khoá lộ lần hai, lần này bằng ẢNH CHỤP** ô `Environment variables`: `XAI_API_KEY` và
+  `FREESOUND_KEY` đọc được trọn. Cần xoay — mục 3.
+
+### Phiên 20/09 (lần 2) đã đổi gì — không chạm mã game
 
 Chi tiết: `docs/NHAT_KY/PHASE_8_KHOA_GEMINI.md`. **Không mở phase mới** — bước E còn treo.
 
@@ -373,6 +385,49 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Việc 20/09 (lần 3) — XOAY `XAI_API_KEY` VÀ `FREESOUND_KEY`: khoá lộ qua ảnh chụp
+
+Chủ dự án chụp nguyên ô `Environment variables` gửi vào phiên. Ảnh nằm trong lịch sử hội
+thoại trên server Anthropic, **không xoá chọn lọc được**. Đọc được trọn:
+
+| Khoá | Mức lộ |
+|---|---|
+| `XAI_API_KEY` | **trọn 84 ký tự** |
+| `FREESOUND_KEY` | **trọn 40 ký tự** |
+| `GEMINI_API_KEY` | bị cắt giữa dòng, lộ phần đầu — xoay luôn cho chắc |
+
+- xAI: <https://console.x.ai> → `API keys` → xoá khoá cũ, tạo mới
+- Freesound: <https://freesound.org/apiv2/apply/> → lấy dòng **Api key** (không phải
+  **Client id**)
+
+Rồi dán lại vào ô `Environment variables` theo cách ở cuối mục này, **mở phiên mới** mới
+nhận.
+
+**LUẬT MỚI — luật cũ chưa đủ.** Cũ chỉ cấm *gõ* khoá vào chat và *đặt* khoá vào thân lệnh
+Bash. Nay thêm: **cấm chụp ảnh ô `Environment variables`**. Muốn cho trợ lý xem hộp thoại
+đó thì che ô này, hoặc chỉ chụp từ `API credentials` trở xuống.
+
+### ⬜ Việc 20/09 (lần 3) — ĐIỀN Ô `Setup script`, khỏi chạy `npm ci` tay mỗi phiên
+
+Ô đó **đang rỗng**. Chữ `#!/bin/bash` / `npm install` anh thấy trong ô là **chữ gợi ý màu
+xám**, cùng sắc với `No credentials yet.` ở ô trên — chữ thật thì đen như khối khoá ở ô
+`Environment variables`. Vì rỗng nên dòng `Run setup script` là vòng tròn xám (bỏ qua),
+không phải chạy lỗi.
+
+1. Mở <https://claude.ai/code> → bấm nút tên môi trường ở đầu trang
+2. Kéo xuống ô **`Setup script`**, gõ hai dòng (phải thành chữ đen):
+
+   ```bash
+   #!/bin/bash
+   npm ci
+   ```
+
+3. **Save**, rồi mở phiên mới
+
+`npm ci` chứ không `npm install`: cài đúng theo `package-lock.json`, nhanh hơn, không tự
+sửa lock file. Script chạy **trước khi Claude Code khởi động**, nên phiên sau `node_modules`
+đã sẵn — tiết kiệm một lượt gọi mỗi phiên.
 
 ### ✅ Việc 20/09 — XOAY KHOÁ GEMINI: XONG, đã kiểm ở phiên mới 20/09 (lần 3)
 
