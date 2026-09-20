@@ -14,6 +14,22 @@ Chi tiết: `docs/NHAT_KY/PHASE_8C.md`.
 
 **Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế, và **mở đường lên đời 4–6**.
 Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
+**Bước E hết treo** — chủ dự án xác nhận việc 19/09 (cối xay quay trên iPhone) chạy OK,
+20/09 (lần 4). Phiên sau mở thẳng Phase 9.
+
+### Phiên 20/09 (lần 4) đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_LLM_NGOAI.md`. **Không mở phase mới** — phiên đo LLM ngoài.
+
+- **Ba khoá LLM: chỉ Gemini flash dùng được.** DeepSeek `402 Insufficient Balance`
+  (số dư `0.00`), xAI `403` (`team_blocked:true`) — **LOẠI**, bảng mục 3 đã sửa.
+- **Bẫy đã sập ở phiên trước:** `/models` của DeepSeek trả `200` khi hết tiền. Phải gọi
+  endpoint **TÍNH TIỀN** (`/chat/completions`) mới biết dùng được hay không.
+- **Công cụ mới `ghi-nho/cong-cu/hoi_gemini.mjs`** — ném file lớn sang Gemini lấy đáp
+  ngắn. `NO_KY_THUAT.md` 34 KB = 11.437 tok nếu Claude tự đọc, qua Gemini ~222 tok.
+- **Trần free tier, API tự khai:** `GenerateRequestsPerMinutePerProjectPerModel-FreeTier
+  (5)` — 5 req/phút **riêng từng model**, nên script tụt bậc `3.7-flash` → `3.5-flash` →
+  `3.1-flash-lite`. Nhịp gọi thật của Claude không chạm trần.
 
 ### Phiên 20/09 (lần 3) đã đổi gì — không chạm mã game
 
@@ -476,7 +492,10 @@ thực tế thấp (free tier, quota Pro bằng 0), nhưng ai đọc được tr
 
 </details>
 
-### ⬜ Việc 19/09 — xem cối xay quay trên iPhone
+### ✅ Việc 19/09 — xem cối xay quay trên iPhone: XONG, chủ dự án xác nhận 20/09 (lần 4)
+
+Chủ dự án xem trên iPhone, báo **chạy OK**. Nhịp `NHIP_MOI_KHUNG` giữ nguyên.
+
 
 Bản duyệt phiên này: https://claude.ai/artifact/WQgP5d2dMEeaeaapWPzLGL
 
@@ -608,11 +627,15 @@ Tên biến dùng tên chuẩn để SDK tự nhận: `GEMINI_API_KEY` · `DEEPS
 | Biến | Gọi thử | Kết quả |
 |---|---|---|
 | `GEMINI_API_KEY` | `/v1beta/models` | `200` — khoá mới đuôi `mVEA`, len 53 |
-| `DEEPSEEK_API_KEY` | `api.deepseek.com/models` | `200` |
-| `XAI_API_KEY` | `api.x.ai/v1/models` | **`403`** `permission-denied` — hết credit / chạm trần chi tiêu, **khoá vẫn đúng** |
+| `DEEPSEEK_API_KEY` | `api.deepseek.com/chat/completions` | **`402`** `Insufficient Balance` — số dư `0.00`, **LOẠI** (sửa 20/09 lần 4: `/models` trả `200` nhưng **không tính tiền**, đo bằng nó là sai) |
+| `XAI_API_KEY` | `api.x.ai/v1/chat/completions` | **`403`** `permission-denied` — `/v1/api-key` báo `team_blocked:true`, `api_key_blocked:false` (khoá đúng, team hết credit), **LOẠI** |
 | `FREESOUND_KEY` | `freesound.org/apiv2/search/text/` | `200` |
 | `POLY_PIZZA_KEY` | `api.poly.pizza/v1.1/search/<q>` | `200` |
 | `OPENVERSE_CLIENT_ID` + `OPENVERSE_CLIENT_SECRET` | `api.openverse.org/v1/auth_tokens/token/` | `200` (cặp, tính một khoá đôi) |
+
+**Bẫy đo khoá LLM (20/09 lần 4):** endpoint liệt kê model **không tính tiền** nên vẫn trả
+`200` khi tài khoản cạn — DeepSeek `/models` `200` mà `/chat/completions` `402`. Đo khoá
+LLM **phải gọi endpoint tính tiền**. Số dư DeepSeek tra thẳng: `GET /user/balance`.
 
 **Bẫy khi liệt kê:** `OPENVERSE_CLIENT_ID` **không khớp** regex `/KEY|TOKEN|SECRET|_API/i`
 ở lệnh liệt kê bên dưới — đếm bằng regex đó ra 6, thiếu một. Phải hỏi thẳng tên biến này.
