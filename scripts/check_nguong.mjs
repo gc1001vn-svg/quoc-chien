@@ -79,6 +79,24 @@ if (ghi) {
     );
     process.exit(1);
   }
+  // BAY do duoc o `tayvuc` 20/09: repo do da noi nguong token 1600 -> 2400 tu
+  // 13/09 va chua cat. `--ghi` doc gia tri DANG CHAY, nen no se dong bang 2400
+  // lam moc goc — tuc la bien mot mon no thanh muc chuan, roi thuoc nay quay
+  // sang bao ve chinh cho noi. Dung huong. Gap no cu thi TU CHOI dung moc.
+  const rieng = '.claude/nguong_token.txt';
+  if (existsSync(rieng)) {
+    const noi = Number(readFileSync(rieng, 'utf8').split('\n')[0].trim());
+    const macDinh = doSoMacDinh('scripts/check_token.mjs');
+    if (Number.isFinite(noi) && Number.isFinite(macDinh) && noi > macDinh) {
+      console.error(
+        `HONG: ${rieng} dang noi nguong ${macDinh} -> ${noi}. Khong dung moc tu so da noi.\n` +
+          '  Dung moc bay gio la bien mon no thanh muc chuan, roi thuoc nay di bao ve cho noi.\n' +
+          '  Cach dung: CAT cho ve duoi nguong mac dinh, xoa file do, roi chay lai --ghi.\n' +
+          '  Chua cat duoc (repo dang dung) thi DUNG cai thuoc nay vao repo do.',
+      );
+      process.exit(1);
+    }
+  }
   const dong = THEO_DOI.map((m) => {
     const so = m.doc();
     if (so === null || !Number.isFinite(so)) {
