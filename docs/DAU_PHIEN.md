@@ -122,9 +122,9 @@ unregistered callers (callers without established identity)`, không phải kho�
 20/09: ô trông như rỗng mà máy ảo vẫn đọc được khoá). **Đừng bấm Save khi ô đó đang hiện
 rỗng** — lưu lúc đó là xoá sạch mấy khoá cũ. Mở ra thấy rỗng thì đóng, đừng Save.
 
-**Cấm đặt chuỗi khoá vào thân lệnh Bash, kể cả để so sánh** — chỉ tham chiếu `$BIEN` hay
-`process.env`. Hook `ghi_so_lenh.mjs` chép 200 ký tự đầu **mọi** lệnh vào
-`.claude/so_lenh.log`; một lệnh `node -e` so chuỗi đã đẩy khoá vào sổ đó (20/09, đã xoá).
+**Cấm đặt chuỗi khoá vào thân lệnh Bash, kể cả để so sánh** — luật chung mọi repo, đủ chi
+tiết và lệnh dọn ở `ghi-nho/cong-cu/luat-chi-tiet.md` mục *"Khoá và bí mật"*. Lọt một lần
+20/09, đã xoá.
 
 ## D. Chi phí token — phần riêng repo này
 
