@@ -1,6 +1,7 @@
 # File phai hoi chu du an truoc khi sua. Dong ket thuc bang "/" la khoa ca thu muc.
 # Luat nay o CLAUDE.md muc "Hoi chu du an truoc khi dung vao".
 
+AGENTS.md
 CLAUDE.md
 vite.config.ts
 vercel.json
