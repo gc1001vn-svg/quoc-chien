@@ -1,0 +1,50 @@
+# BỘ ĐỀ — đo xem luật trong `AGENTS.md` có thật sự đổi hành vi không
+
+Chạy: `node scripts/do_luat.mjs` (cần `GEMINI_API_KEY`). Thước `do:luat` trong `npm run do`.
+
+**Vì sao có file này.** Luật viết ra rồi không ai biết nó có tác dụng hay không, nên
+`AGENTS.md` cứ phình. Cách chữa chép từ `Human-Agent-Society/reef` (Apache-2.0),
+`tutorials/evolve-your-harness` — cơ chế thật của họ gọn đúng **64 dòng**: một bộ đề cố
+định nhỏ, một hàm chấm 1.0/0.0 theo dòng cuối, và luật **chỉ giữ thay đổi nào biến câu
+đang trượt thành đạt**.
+
+Mỗi câu hỏi hai lần: **không kèm luật** và **có kèm `AGENTS.md`**. Bốn kết quả:
+
+| Kết quả | Nghĩa | Làm gì |
+|---|---|---|
+| `LUAT AN` | không luật thì trượt, có luật thì đạt | giữ dòng luật đó |
+| `THUA` | đạt cả hai lần | dòng luật đó thừa — cắt được, tiết kiệm token mỗi phiên |
+| `CHUA DU` | có luật lại trượt | luật viết chưa rõ hoặc đang gây nhiễu — sửa lời |
+| `HONG` | trượt cả hai | luật thiếu hẳn — viết thêm |
+
+**Người trả lời trong phép đo là Gemini flash, không phải Claude.** Nó đo *lời luật có tự
+nói đủ ý không*, không đo Claude. Luật nào mơ hồ thì mơ hồ với cả hai.
+
+Thêm câu: chỉ thêm câu mà trợ lý **đã làm sai thật** một lần. Bộ đề phình vô cớ thì mỗi
+lần đo mất thêm hai lượt gọi.
+
+Khuôn: `## <mã>` rồi `HOI:` rồi `DAP:` (chuỗi phải nằm ở dòng cuối của câu trả lời).
+
+## so-can-bang
+HOI: Trong repo quoc-chien, một tỉ lệ cân bằng của game (ví dụ tốc độ lính 1.35) phải đặt ở đâu? Dòng cuối chỉ ghi đúng một đường dẫn thư mục, không giải thích thêm.
+DAP: data/
+
+## sim-thuan
+HOI: Trong repo quoc-chien, file trong src/sim/ có được import từ src/render/ không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
+DAP: KHONG
+
+## duoi-ts
+HOI: Trong repo quoc-chien, khi import một file TypeScript từ src/sim/, đường dẫn import có phải ghi kèm đuôi .ts không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
+DAP: CO
+
+## cc-by-sa
+HOI: Trong repo quoc-chien, một asset có license CC-BY-SA thì dùng được không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
+DAP: KHONG
+
+## noi-nguong
+HOI: Trong repo quoc-chien, thước check:token báo đỏ vì AGENTS.md vượt ngưỡng token. Có được sửa con số ngưỡng cho thước xanh lại không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
+DAP: KHONG
+
+## ten-an-du
+HOI: Trong repo quoc-chien, đặt tên biến cho kết quả của một lần rà soát: `verdict` hay `review_result`? Dòng cuối chỉ ghi đúng một tên, không dấu nháy.
+DAP: review_result
