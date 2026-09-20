@@ -16,9 +16,13 @@
 // Noi len thi thuoc do — muon noi that phai hoi chu du an, roi sua moc goc va
 // ghi ly do vao chinh file do.
 //
-// Chay: `node scripts/check_nguong.mjs`
+//   node scripts/check_nguong.mjs         # do
+//   node scripts/check_nguong.mjs --ghi   # dung moc lan dau tu gia tri dang chay
+//
+// `--ghi` CHI dung khi chua co moc (repo moi). Da co moc roi thi no tu choi —
+// khong thi luat "cam noi" tu vo hieu bang mot lenh.
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 
 const MOC = '.claude/nguong_goc.txt';
 
@@ -64,8 +68,45 @@ function doSoMacDinh(duongDan) {
   return khop ? Number(khop[1]) : null;
 }
 
+const ghi = process.argv.includes('--ghi');
+
+if (ghi) {
+  if (existsSync(MOC)) {
+    console.error(
+      `HONG: ${MOC} da co — khong ghi de.\n` +
+        '  Cho phep ghi de la cho phep noi nguong bang mot lenh, tuc la bo han luat nay.\n' +
+        '  Muon doi moc: hoi chu du an, roi sua tay va ghi LY DO ngay trong file.',
+    );
+    process.exit(1);
+  }
+  const dong = THEO_DOI.map((m) => {
+    const so = m.doc();
+    if (so === null || !Number.isFinite(so)) {
+      console.error(`HONG: khong doc duoc gia tri that cua ${m.ten}.`);
+      process.exit(1);
+    }
+    return `${m.ten}=${so}`;
+  });
+  const homNay = new Date().toISOString().slice(0, 10);
+  writeFileSync(
+    MOC,
+    '# Moc goc cua cac nguong va danh sach mien. Thuoc `check:nguong` doc file nay.\n' +
+      '#\n' +
+      '# CAM tu sua de cho mot thuoc khac xanh. Muon noi that su: hoi chu du an truoc,\n' +
+      '# roi sua so o day VA ghi ngay duoi mot dong ly do co ngay thang.\n' +
+      '# Tut xuong (that chat hon) thi lam thang, khong can hoi.\n\n' +
+      dong.join('\n') +
+      `\n\n# ${homNay} dung moc dau tien, lay dung so dang chay. Chua noi lan nao.\n`,
+  );
+  console.log(`Da dung moc dau tien o ${MOC}:\n  ${dong.join('\n  ')}`);
+  process.exit(0);
+}
+
 if (!existsSync(MOC)) {
-  console.error(`HONG: thieu ${MOC} — khong co moc goc thi thuoc nay vo nghia.`);
+  console.error(
+    `HONG: thieu ${MOC} — khong co moc goc thi thuoc nay vo nghia.\n` +
+      '  Repo moi: node scripts/check_nguong.mjs --ghi',
+  );
   process.exit(1);
 }
 

@@ -27,7 +27,7 @@ const CAM = new Map([
 ]);
 
 /** File tu ke cac tu tren — bo qua, khong thi thuoc tu bao chinh no. */
-const BO_QUA = new Set(['scripts/check_ten.mjs', 'AGENTS.md']);
+const BO_QUA = new Set(['scripts/check_ten.mjs']);
 
 const DUOI = /\.(ts|tsx|mjs|js)$/;
 
