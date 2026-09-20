@@ -386,7 +386,14 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 20/09 (lần 3) — XOAY `XAI_API_KEY` VÀ `FREESOUND_KEY`: khoá lộ qua ảnh chụp
+### 🚫 Việc 20/09 (lần 3) — XOAY `XAI_API_KEY` + `FREESOUND_KEY`: CHỦ DỰ ÁN QUYẾT KHÔNG XOAY
+
+**Đừng nhắc lại việc này ở phiên sau.** Chủ dự án đã nghe cảnh báo và chọn giữ nguyên
+(20/09). Rủi ro thực tế thấp: `XAI_API_KEY` đã `403` hết credit nên gọi cũng không ra gì,
+`FREESOUND_KEY` là khoá free tier chỉ đọc. Ghi lại phần dưới để biết **đã lộ cái gì**, khi
+nào hai khoá đó bắt đầu tính tiền hay đổi quyền thì xoay.
+
+<details><summary>Đã lộ những gì (giữ lại để tra)</summary>
 
 Chủ dự án chụp nguyên ô `Environment variables` gửi vào phiên. Ảnh nằm trong lịch sử hội
 thoại trên server Anthropic, **không xoá chọn lọc được**. Đọc được trọn:
@@ -404,11 +411,19 @@ thoại trên server Anthropic, **không xoá chọn lọc được**. Đọc đ
 Rồi dán lại vào ô `Environment variables` theo cách ở cuối mục này, **mở phiên mới** mới
 nhận.
 
-**LUẬT MỚI — luật cũ chưa đủ.** Cũ chỉ cấm *gõ* khoá vào chat và *đặt* khoá vào thân lệnh
-Bash. Nay thêm: **cấm chụp ảnh ô `Environment variables`**. Muốn cho trợ lý xem hộp thoại
-đó thì che ô này, hoặc chỉ chụp từ `API credentials` trở xuống.
+</details>
 
-### ⬜ Việc 20/09 (lần 3) — ĐIỀN Ô `Setup script`, khỏi chạy `npm ci` tay mỗi phiên
+**LUẬT MỚI — luật cũ chưa đủ, luật này VẪN ÁP dù không xoay khoá.** Cũ chỉ cấm *gõ* khoá
+vào chat và *đặt* khoá vào thân lệnh Bash. Nay thêm: **cấm chụp ảnh ô
+`Environment variables`**. Muốn cho trợ lý xem hộp thoại đó thì che ô này, hoặc chỉ chụp
+từ `API credentials` trở xuống. Chủ dự án đã nắm 20/09.
+
+### 🚫 Việc 20/09 (lần 3) — ĐIỀN Ô `Setup script`: CHỦ DỰ ÁN QUYẾT BỎ QUA
+
+**Đừng nhắc lại.** Đã hiểu ô đó rỗng và vì sao; chọn cứ để trợ lý chạy `npm ci` tay mỗi
+phiên. Cách điền giữ dưới đây, cần thì tra.
+
+<details><summary>Cách điền (giữ lại để tra)</summary>
 
 Ô đó **đang rỗng**. Chữ `#!/bin/bash` / `npm install` anh thấy trong ô là **chữ gợi ý màu
 xám**, cùng sắc với `No credentials yet.` ở ô trên — chữ thật thì đen như khối khoá ở ô
@@ -428,6 +443,8 @@ không phải chạy lỗi.
 `npm ci` chứ không `npm install`: cài đúng theo `package-lock.json`, nhanh hơn, không tự
 sửa lock file. Script chạy **trước khi Claude Code khởi động**, nên phiên sau `node_modules`
 đã sẵn — tiết kiệm một lượt gọi mỗi phiên.
+
+</details>
 
 ### ✅ Việc 20/09 — XOAY KHOÁ GEMINI: XONG, đã kiểm ở phiên mới 20/09 (lần 3)
 

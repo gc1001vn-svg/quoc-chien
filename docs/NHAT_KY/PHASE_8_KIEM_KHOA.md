@@ -29,6 +29,12 @@ Chủ dự án hỏi: đủ 7 khoá chưa, `GEMINI_API_KEY` còn đuôi `ICfQ` k
   `XAI_API_KEY` (84 ký tự) và `FREESOUND_KEY` (40 ký tự); `GEMINI_API_KEY` bị cắt, lộ một
   phần đầu. Luật cũ "không gõ khoá vào chat" **chưa đủ** — phải thêm: **không chụp ô đó**.
 
+## Chủ dự án quyết cuối phiên
+
+Nghe cảnh báo rồi **chọn KHÔNG xoay** `XAI_API_KEY` và `FREESOUND_KEY`, và **bỏ qua** ô
+`Setup script`. Cả hai đã ghi 🚫 ở `docs/TIEN_DO.md` mục 3 — **phiên sau đừng nhắc lại**.
+Luật cấm chụp ô `Environment variables` thì vẫn áp.
+
 ## Số đo
 
 `npm run do`: 11/11 thước đạt. Commit `3f136d8`, đã gộp `main`.
