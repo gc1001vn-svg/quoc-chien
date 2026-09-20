@@ -380,7 +380,8 @@ thực tế thấp (free tier, quota Pro bằng 0), nhưng ai đọc được tr
 
 1. Vào <https://aistudio.google.com/apikey> → xoá khoá hiện tại → tạo khoá mới.
 2. Vào <https://claude.ai/code> → bấm nút tên môi trường → dán khoá mới vào ô
-   **`API credentials`** (**không** phải `Environment variables`).
+   **`Environment variables`**, dạng `GEMINI_API_KEY=<khoá mới>`.
+   (Bước này trước ghi `API credentials`; **sai** — đo 20/09, xem mục dưới cùng mục 3.)
 3. Mở phiên mới rồi kiểm — không in khoá ra:
 
    ```bash

@@ -216,10 +216,10 @@ if (pizza === null) {
   console.log('  Lay khoa: https://poly.pizza/ -> dang nhap -> Settings -> tao app -> copy key');
   console.log('  Roi mot trong hai:');
   console.log('    a) POLY_PIZZA_KEY=<khoa> npm run do:asset ...   (tam, het khi dong phien)');
-  console.log('    b) API credential cua moi truong (ben, khoa khong vao phien)');
-  console.log('       claude.ai/code -> bo chon moi truong -> Update cloud environment');
-  console.log('       -> API credentials -> Add credential -> host api.poly.pizza,');
-  console.log('          header x-auth-token, xoa trong o Prefix');
+  console.log('    b) BEN: claude.ai/code -> nut ten moi truong -> Edit cloud environment');
+  console.log('       -> o Environment variables -> them dong POLY_PIZZA_KEY=<khoa>');
+  console.log('       Chi ap cho phien mo SAU khi Save. Vi sao KHONG dung o');
+  console.log('       "API credentials": docs/TIEN_DO.md muc 3 (do 20/09).');
   console.log('  KHOA LA MAT KHAU - repo nay Public, KHONG commit khoa vao git.');
 } else {
   in_('4. Poly Pizza  (10.400+ model, CC0 + CC-BY)', pizza);
