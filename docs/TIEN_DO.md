@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 19/09/2026 (phiên Phase 8C — **cối xay quay, sprite công trình nhiều khung**).
+Cập nhật: 20/09/2026 (phiên ngắn — **kiểm khoá Gemini, không chạm mã game**).
 
 ## 1. Đang ở đâu
 
@@ -14,6 +14,19 @@ Chi tiết: `docs/NHAT_KY/PHASE_8C.md`.
 
 **Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế, và **mở đường lên đời 4–6**.
 Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
+
+### Phiên 20/09 đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_KHOA_GEMINI.md`. **Không mở phase mới** — bước E còn treo.
+
+- **Khoá Gemini chạy thật, đo lại 20/09:** `GET /v1beta/models` `HTTP 200`, **50 model**;
+  `gemini-3.5-flash` trả kết quả, 11 token vào / 2 ra (+861 thought). Dòng Pro vẫn
+  `429 RESOURCE_EXHAUSTED`.
+- **Ô `Environment variables` KHÔNG hiện lại giá trị đã lưu khi mở lại hộp thoại** — không
+  phải mất khoá. Càng phải nhớ: **đừng Save khi ô đó đang hiện rỗng**.
+- **Luật mới: không đặt chuỗi khoá vào thân lệnh Bash**, chỉ `$BIEN`. Hook
+  `ghi_so_lenh.mjs` chép 200 ký tự đầu mọi lệnh vào `.claude/so_lenh.log`; một lệnh
+  `node -e` so chuỗi đã đẩy khoá vào đó. Đã xoá dòng đó; file `.gitignore`, không lên git.
 
 ### Phiên 19/09 đã đổi gì — Phase 8C
 
@@ -358,6 +371,23 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ⬜ Việc 20/09 — XOAY KHOÁ GEMINI
+
+Khoá `GEMINI_API_KEY` đã bị **dán thẳng vào chat** phiên 19/09, nên nó nằm trong lịch sử
+hội thoại trên server Anthropic — không xoá chọn lọc được. Khoá vẫn chạy (mục 1), rủi ro
+thực tế thấp (free tier, quota Pro bằng 0), nhưng ai đọc được transcript là gọi được API.
+
+1. Vào <https://aistudio.google.com/apikey> → xoá khoá hiện tại → tạo khoá mới.
+2. Vào <https://claude.ai/code> → bấm nút tên môi trường → dán khoá mới vào ô
+   **`API credentials`** (**không** phải `Environment variables`).
+3. Mở phiên mới rồi kiểm — không in khoá ra:
+
+   ```bash
+   node -e "console.log(process.env.GEMINI_API_KEY ? 'co khoa' : 'chua co')"
+   ```
+
+**Khoá không bao giờ gõ vào chat, không bao giờ vào thân lệnh Bash.**
 
 ### ⬜ Việc 19/09 — xem cối xay quay trên iPhone
 

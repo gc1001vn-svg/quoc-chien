@@ -118,8 +118,13 @@ Save xong vẫn `-` cho tới hết phiên. Cứ chạy lệnh kiểm rồi mớ
 chiều nào. Chưa thấy thì gọi API ra `403 PERMISSION_DENIED - Method doesn't allow
 unregistered callers (callers without established identity)`, không phải khoá hỏng.
 
-**Đừng bấm Save khi ô `Environment variables` đang hiện rỗng** — lưu lúc đó là xoá sạch
-mấy khoá cũ.
+**Ô `Environment variables` KHÔNG hiện lại giá trị đã lưu khi mở lại hộp thoại** (đo
+20/09: ô trông như rỗng mà máy ảo vẫn đọc được khoá). **Đừng bấm Save khi ô đó đang hiện
+rỗng** — lưu lúc đó là xoá sạch mấy khoá cũ. Mở ra thấy rỗng thì đóng, đừng Save.
+
+**Cấm đặt chuỗi khoá vào thân lệnh Bash, kể cả để so sánh** — chỉ tham chiếu `$BIEN` hay
+`process.env`. Hook `ghi_so_lenh.mjs` chép 200 ký tự đầu **mọi** lệnh vào
+`.claude/so_lenh.log`; một lệnh `node -e` so chuỗi đã đẩy khoá vào sổ đó (20/09, đã xoá).
 
 ## D. Chi phí token — phần riêng repo này
 
