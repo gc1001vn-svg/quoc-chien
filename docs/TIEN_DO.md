@@ -466,6 +466,23 @@ svgsilh.com
 
 `svgsilh.com` giữ hay bỏ đều được — Cloudflare đuổi, mở cũng không tải được.
 
+**Đo lại 20/09 — khối chín host trên là ẢNH CŨ, ô thật đã có thêm host.** Đừng dán khối đó
+đè lên ô hiện tại, sẽ mất phần mới. Số đo (`curl -o /dev/null -w '%{http_code}'`):
+
+```
+api.openverse.org 302 · openclipart.org 200 · api.iconify.design 301 · lospec.com 200
+api.sketchfab.com 301 · gameasset.net 200 · upload.wikimedia.org 301
+images.rawpixel.com 403 · svgsilh.com 403          (403 = host mở, bên kia đuổi)
+generativelanguage.googleapis.com 404 · api.deepseek.com 401 · api.x.ai 421
+api.poly.pizza 401 · freesound.org 200
+api.openai.com 000 · openrouter.ai 000 · api.groq.com 000 · api.mistral.ai 000
+```
+
+`api.deepseek.com` và `api.x.ai` **đổi từ `000` (đo 19/09) sang `401`/`421`** — chủ dự án đã
+mở hai host đó. `000` là allowlist chặn; mọi mã HTTP khác là host đã mở.
+
+Cần dán lại ô thì **xin chủ dự án chụp ô hiện tại trước**, đừng dựng lại danh sách từ tài liệu.
+
 ### Đặt khoá vào môi trường — khỏi dán lại mỗi phiên
 
 **Sửa 19/09 — CÓ mục `API credentials`.** Ghi chép 17/09 nói không có; sai, và lần đó
@@ -474,10 +491,32 @@ thoại **Edit cloud environment** gồm `Name` · `Network access` · `Allowed 
 `Add Artifact content domains` · `Environment variables` · **`API credentials`** ·
 `Setup script` · `Archive`.
 
-**`API credentials` mới là chỗ đúng để cất khoá:** *"Let sessions call APIs without seeing
-the credentials. Values can't be viewed after saving."* Còn `Environment variables` tự
-cảnh báo *"These are visible to anyone using this environment — don't add secrets or
-credentials."* Cách dùng `API credentials` **chưa đo** — đo trước khi hứa.
+**Sửa 20/09 — ĐO XONG, chỗ đúng cho repo này là `Environment variables`.** Ghi chép 19/09
+khuyên ngược lại khi chưa đo; dưới đây là số đo thật.
+
+| Ô | Phiên đọc được chuỗi? | Đo 20/09 |
+|---|---|---|
+| `Environment variables` | có, `process.env.GEMINI_API_KEY` | 5 khoá có mặt, gọi API `200` |
+| `API credentials` | **không** — proxy chèn header hộ | **proxy KHÔNG chèn gì**: Gemini không header trả `403 PERMISSION_DENIED`, Grok trả `{"code":"unauthenticated:no-credentials","error":"No credentials presented."}` |
+
+Vì sao chọn `Environment variables`, dù trang cảnh báo *"These are visible to anyone using
+this environment — don't add secrets or credentials."*:
+
+1. **SDK và tool đọc env var** (`@google/genai`, `openai`, mọi script `node` của repo này).
+   Khoá nằm ở `API credentials` thì chúng thấy rỗng và **chết lúc khởi tạo**, chưa kịp gọi
+   mạng để proxy chèn header.
+2. `API credentials` phải khai **từng host** + tên header + prefix (ví dụ Grok:
+   host `api.x.ai`, header `Authorization`, prefix `Bearer ` có dấu cách cuối). Host mới,
+   khoá mới → khai lại.
+3. Đổi sang `API credentials` là phải sửa mã mọi tool đang đọc env var.
+
+**Đừng dán cả hai ô.** Proxy xử lý thế nào khi request đã tự mang header — **chưa đo**.
+
+Tên biến dùng tên chuẩn để SDK tự nhận: `GEMINI_API_KEY` · `DEEPSEEK_API_KEY` ·
+`XAI_API_KEY` (xAI, **không** phải `GROK_`).
+
+Rủi ro đã nhận: ai dùng môi trường này đọc được chuỗi khoá. Môi trường riêng thì thấp;
+chia cho người khác hoặc nghi lộ thì **xoay khoá ở nhà cấp**, xoá không cứu được.
 
 **Luật đã hai lần sai vì cùng một thói quen: đừng mô tả giao diện mình chưa nhìn thấy.**
 

@@ -53,17 +53,17 @@ khoá: `AIza…` · **`AQ.…`** · `sk-ant-…` · `sk-…` · `ghp_…` · `AK
 **Khoá AI Studio kiểu MỚI bắt đầu bằng `AQ.`, không phải `AIza`** (khoá gắn service
 account, dài 53 ký tự — đo trên khoá thật 19/09). Chỉ bắt mẫu `AIza` là lọt sạch.
 
-**Chỗ đúng để cất khoá là ô `API credentials`, KHÔNG phải `Environment variables`.**
-Hộp thoại **Edit cloud environment** có cả hai. `Environment variables` tự cảnh báo:
-*"These are visible to anyone using this environment — don't add secrets or credentials."*
-Còn `API credentials` ghi: *"Let sessions call APIs without seeing the credentials.
-Values can't be viewed after saving."* — phiên gọi được API mà không đọc được chuỗi.
+**Chỗ đúng để cất khoá: ô `Environment variables`** — chốt 20/09 sau khi đo, vì SDK và mọi
+tool của repo đọc `process.env`. Ô `API credentials` giấu được chuỗi nhưng **proxy không
+chèn header** khi chưa khai host (đo 20/09) và để `process.env` rỗng → tool chết lúc khởi
+tạo. **Lý do đầy đủ, bảng so hai ô, tên biến chuẩn: `docs/TIEN_DO.md` mục 3** — một chỗ
+duy nhất, đừng chép về đây.
 
-> **Sửa lại 19/09:** tài liệu này ghi 17/09 rằng **không có** mục `API credentials`.
-> **Sai.** Hộp thoại có đủ: `Name` · `Network access` · `Allowed domains` ·
+> **Hai lần sai cùng một thói quen.** 17/09 ghi *không có* mục `API credentials` (mô tả
+> giao diện qua lời kể). 19/09 ghi nó *là chỗ đúng* (chưa đo cách dùng). Hộp thoại
+> **Edit cloud environment** thật gồm: `Name` · `Network access` · `Allowed domains` ·
 > `Add Artifact content domains` · `Environment variables` · `API credentials` ·
-> `Setup script` · `Archive`. Lần đó mô tả giao diện qua lời kể, không mở ra xem —
-> đúng cái bẫy mà chính dòng dưới đã cảnh báo.
+> `Setup script` · `Archive`. **Đo rồi hãy hứa.**
 
 **Lộ rồi thì XOAY KHOÁ trước, xoá sau.** Máy ảo không sửa được lịch sử git
 (`git push --force` và xoá nhánh đều bị chặn), nên xoá file không cứu được gì.
@@ -76,8 +76,11 @@ Values can't be viewed after saving."* — phiên gọi được API mà không 
 | `api.anthropic.com` | **404** (thông) |
 | 18 host còn lại | `000` — allowlist môi trường chặn |
 
-`000` gồm `api.openai.com` · `openrouter.ai` · `api.groq.com` · `api.deepseek.com` ·
-`api.mistral.ai` · `api.x.ai` · `api.moonshot.ai` · `api.together.xyz` · `api.cerebras.ai`
+**Đo lại 20/09: `api.deepseek.com` → `401`, `api.x.ai` → `421`** — chủ dự án đã mở hai host
+đó, không còn `000`. Bảng đo đủ 18 host: `docs/TIEN_DO.md` mục 3.
+
+`000` (đo 19/09) gồm `api.openai.com` · `openrouter.ai` · `api.groq.com` ·
+`api.mistral.ai` · `api.moonshot.ai` · `api.together.xyz` · `api.cerebras.ai`
 · `dashscope.aliyuncs.com` · `huggingface.co` … Muốn mở thêm thì xin vào ô
 **Allowed domains** — nhớ ô đó **ghi đè**, phải dán lại danh sách đầy đủ ở
 `docs/TIEN_DO.md` mục 3.
