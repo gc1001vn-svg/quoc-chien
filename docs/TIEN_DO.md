@@ -498,6 +498,7 @@ khuyên ngược lại khi chưa đo; dưới đây là số đo thật.
 | Ô | Phiên đọc được chuỗi? | Đo 20/09 |
 |---|---|---|
 | `Environment variables` | có, `process.env.GEMINI_API_KEY` | 5 khoá có mặt, gọi API `200` |
+| ↑ đo lại 20/09 (phiên sau) | — | **7 khoá**, đo thật từng cái: bảng ngay dưới |
 | `API credentials` | **không** — proxy chèn header hộ | **proxy KHÔNG chèn gì**: Gemini không header trả `403 PERMISSION_DENIED`, Grok trả `{"code":"unauthenticated:no-credentials","error":"No credentials presented."}` |
 
 Vì sao chọn `Environment variables`, dù trang cảnh báo *"These are visible to anyone using
@@ -515,6 +516,29 @@ this environment — don't add secrets or credentials."*:
 
 Tên biến dùng tên chuẩn để SDK tự nhận: `GEMINI_API_KEY` · `DEEPSEEK_API_KEY` ·
 `XAI_API_KEY` (xAI, **không** phải `GROK_`).
+
+#### Bảy khoá đang có — đo 20/09, gọi thật, không in chuỗi
+
+| Biến | Gọi thử | Kết quả |
+|---|---|---|
+| `GEMINI_API_KEY` | `/v1beta/models` | `200` |
+| `DEEPSEEK_API_KEY` | `api.deepseek.com/models` | `200` |
+| `XAI_API_KEY` | `api.x.ai/v1/models` | **`403`** `permission-denied` — hết credit / chạm trần chi tiêu, **khoá vẫn đúng** |
+| `FREESOUND_KEY` | `freesound.org/apiv2/search/text/` | `200` |
+| `POLY_PIZZA_KEY` | `api.poly.pizza/v1.1/search/<q>` | `200` |
+| `OPENVERSE_CLIENT_ID` + `OPENVERSE_CLIENT_SECRET` | `api.openverse.org/v1/auth_tokens/token/` | `200` (cặp, tính một khoá đôi) |
+
+**Bẫy Poly Pizza:** `?q=` trả `400 {"error":"No query parameters, must have License,
+Animated, or Category"}` — từ khoá đi trong **đường dẫn**: `/v1.1/search/house`.
+
+Liệt kê tên khoá không in giá trị:
+
+```bash
+node -e "const r=/KEY|TOKEN|SECRET|_API/i;console.log(Object.keys(process.env).filter(n=>r.test(n)).join('\n'))"
+```
+
+`AWS_*` · `GH_TOKEN` · `GITHUB_TOKEN` · `CLOUDSDK_AUTH_ACCESS_TOKEN` (đều `len=14`) là của
+harness, **không phải khoá chủ dự án** — đừng đếm vào.
 
 Rủi ro đã nhận: ai dùng môi trường này đọc được chuỗi khoá. Môi trường riêng thì thấp;
 chia cho người khác hoặc nghi lộ thì **xoay khoá ở nhà cấp**, xoá không cứu được.
