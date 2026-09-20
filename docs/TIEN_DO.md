@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 20/09/2026 (phiên ngắn — **kiểm khoá Gemini, không chạm mã game**).
+Cập nhật: 20/09/2026 (phiên ngắn lần 2 — **kiểm 7 khoá, sửa mồi đầu phiên, không chạm mã game**).
 
 ## 1. Đang ở đâu
 
@@ -372,7 +372,26 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⬜ Việc 20/09 — XOAY KHOÁ GEMINI
+### ⏳ Việc 20/09 — XOAY KHOÁ GEMINI: chủ dự án báo đã làm, CHỜ KIỂM Ở PHIÊN MỚI
+
+Phiên 20/09 (lần 2) đo: khoá máy ảo đang dùng đuôi **`ICfQ`**, đúng khoá nhãn `game`
+(project `Gemini Project 2`) **tạo 19/09** trong ảnh chụp `aistudio.google.com/apikey` —
+tức khoá lộ vẫn sống lúc đó. Chủ dự án xoay sau đó, **phiên đang chạy không nạp lại biến
+môi trường** nên chưa kiểm được.
+
+**Phiên sau kiểm bằng một lệnh** (không in trọn khoá):
+
+```bash
+node -e "const k=process.env.GEMINI_API_KEY||'';console.log(k?('co khoa, duoi '+k.slice(-4)):'chua co')"
+```
+
+Đuôi **khác `ICfQ`** → xoay rồi, gạch việc này. Vẫn `ICfQ` → chưa ăn: hoặc chưa Save,
+hoặc Save nhầm ô. Gọi thử lại `/v1beta/models` phải ra `200`.
+
+Hai khoá trong tài khoản đều **`Free tier`** → model Pro vẫn `429 RESOURCE_EXHAUSTED`.
+Muốn Pro qua API phải bấm **Set up billing** cho project đó.
+
+<details><summary>Cách xoay (giữ lại cho lần sau)</summary>
 
 Khoá `GEMINI_API_KEY` đã bị **dán thẳng vào chat** phiên 19/09, nên nó nằm trong lịch sử
 hội thoại trên server Anthropic — không xoá chọn lọc được. Khoá vẫn chạy (mục 1), rủi ro
@@ -389,6 +408,8 @@ thực tế thấp (free tier, quota Pro bằng 0), nhưng ai đọc được tr
    ```
 
 **Khoá không bao giờ gõ vào chat, không bao giờ vào thân lệnh Bash.**
+
+</details>
 
 ### ⬜ Việc 19/09 — xem cối xay quay trên iPhone
 
