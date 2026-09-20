@@ -19,7 +19,9 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
 
 Chi tiết: `docs/NHAT_KY/PHASE_8_KHOA_GEMINI.md`. **Không mở phase mới** — bước E còn treo.
 
-- **Khoá Gemini chạy thật, đo lại 20/09:** `GET /v1beta/models` `HTTP 200`, **50 model**;
+- **Khoá Gemini chạy thật, đo lại 20/09:** `GET /v1beta/models` `HTTP 200`, **58 model**
+  (số cũ "50" là do trang mặc định `pageSize=50` cắt bớt, không phải tổng — phải thêm
+  `?pageSize=200`);
   `gemini-3.5-flash` trả kết quả, 11 token vào / 2 ra (+861 thought). Dòng Pro vẫn
   `429 RESOURCE_EXHAUSTED`.
 - **Ô `Environment variables` KHÔNG hiện lại giá trị đã lưu khi mở lại hộp thoại** — không
@@ -372,21 +374,12 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 20/09 — XOAY KHOÁ GEMINI: chủ dự án báo đã làm, CHỜ KIỂM Ở PHIÊN MỚI
+### ✅ Việc 20/09 — XOAY KHOÁ GEMINI: XONG, đã kiểm ở phiên mới 20/09 (lần 3)
 
-Phiên 20/09 (lần 2) đo: khoá máy ảo đang dùng đuôi **`ICfQ`**, đúng khoá nhãn `game`
-(project `Gemini Project 2`) **tạo 19/09** trong ảnh chụp `aistudio.google.com/apikey` —
-tức khoá lộ vẫn sống lúc đó. Chủ dự án xoay sau đó, **phiên đang chạy không nạp lại biến
-môi trường** nên chưa kiểm được.
+Đuôi khoá nay là **`mVEA`** (dài 53 ký tự), **khác `ICfQ`** → khoá lộ đã bị xoay, khoá cũ
+không còn trong môi trường. `GET /v1beta/models` trả **`200`**.
 
-**Phiên sau kiểm bằng một lệnh** (không in trọn khoá):
-
-```bash
-node -e "const k=process.env.GEMINI_API_KEY||'';console.log(k?('co khoa, duoi '+k.slice(-4)):'chua co')"
-```
-
-Đuôi **khác `ICfQ`** → xoay rồi, gạch việc này. Vẫn `ICfQ` → chưa ăn: hoặc chưa Save,
-hoặc Save nhầm ô. Gọi thử lại `/v1beta/models` phải ra `200`.
+Đếm lại: **đủ 7 khoá của chủ dự án**, gọi thật từng cái, xem bảng "Bảy khoá đang có" dưới.
 
 Hai khoá trong tài khoản đều **`Free tier`** → model Pro vẫn `429 RESOURCE_EXHAUSTED`.
 Muốn Pro qua API phải bấm **Set up billing** cho project đó.
@@ -538,16 +531,19 @@ this environment — don't add secrets or credentials."*:
 Tên biến dùng tên chuẩn để SDK tự nhận: `GEMINI_API_KEY` · `DEEPSEEK_API_KEY` ·
 `XAI_API_KEY` (xAI, **không** phải `GROK_`).
 
-#### Bảy khoá đang có — đo 20/09, gọi thật, không in chuỗi
+#### Bảy khoá đang có — đo lại 20/09 (lần 3), gọi thật, không in chuỗi
 
 | Biến | Gọi thử | Kết quả |
 |---|---|---|
-| `GEMINI_API_KEY` | `/v1beta/models` | `200` |
+| `GEMINI_API_KEY` | `/v1beta/models` | `200` — khoá mới đuôi `mVEA`, len 53 |
 | `DEEPSEEK_API_KEY` | `api.deepseek.com/models` | `200` |
 | `XAI_API_KEY` | `api.x.ai/v1/models` | **`403`** `permission-denied` — hết credit / chạm trần chi tiêu, **khoá vẫn đúng** |
 | `FREESOUND_KEY` | `freesound.org/apiv2/search/text/` | `200` |
 | `POLY_PIZZA_KEY` | `api.poly.pizza/v1.1/search/<q>` | `200` |
 | `OPENVERSE_CLIENT_ID` + `OPENVERSE_CLIENT_SECRET` | `api.openverse.org/v1/auth_tokens/token/` | `200` (cặp, tính một khoá đôi) |
+
+**Bẫy khi liệt kê:** `OPENVERSE_CLIENT_ID` **không khớp** regex `/KEY|TOKEN|SECRET|_API/i`
+ở lệnh liệt kê bên dưới — đếm bằng regex đó ra 6, thiếu một. Phải hỏi thẳng tên biến này.
 
 **Bẫy Poly Pizza:** `?q=` trả `400 {"error":"No query parameters, must have License,
 Animated, or Category"}` — từ khoá đi trong **đường dẫn**: `/v1.1/search/house`.
