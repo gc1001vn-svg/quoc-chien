@@ -44,7 +44,11 @@
     "duyet": "node scripts/duyet.mjs",
     "do:asset": "node tools/do_asset.mjs",
     "tai:icosa": "node tools/tai_icosa.mjs",
-    "mo:mang": "node scripts/mo_mang_chromium.mjs"
+    "mo:mang": "node scripts/mo_mang_chromium.mjs",
+    "check:nguong": "node scripts/check_nguong.mjs",
+    "check:cap": "node scripts/check_cap.mjs",
+    "check:ten": "node scripts/check_ten.mjs",
+    "do:luat": "node scripts/do_luat.mjs"
   },
   "repository": {
     "type": "git",

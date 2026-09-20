@@ -363,8 +363,23 @@ Thay bằng thứ đã có, không tốn thêm lượt gọi nào:
 
 ```bash
 git diff --stat <từ>..<đến> -- . ':!public/atlas'   # danh sách file, 1.012 byte
-npm run do                                          # 10 thước, hàng rào thật
+npm run do                                          # hàng rào thật, số thước lệnh tự in
 ```
 
-Luật soát nằm ở `CLAUDE.md` mục "Ba luật không được phá" và `docs/TECH_SPEC.md` mục 1–2 —
+Luật soát nằm ở `AGENTS.md` mục "Ba luật không được phá" và `docs/TECH_SPEC.md` mục 1–2 —
 **một chỗ duy nhất**, đọc thẳng ở đó.
+
+## J. Bốn thước thêm 20/09 — chép cách làm từ `Human-Agent-Society/reef`
+
+`AGENTS.md` là **bản gốc**, `CLAUDE.md` là symlink trỏ vào nó. Sửa `AGENTS.md`.
+
+| Thước | Giữ cái gì | Sửa khi đỏ |
+|---|---|---|
+| `check:nguong` | cấm nới ngưỡng / phình danh sách miễn cho thước khác xanh | **cắt cho vừa mốc**, không sửa mốc. Mốc: `.claude/nguong_goc.txt` |
+| `check:cap` | cặp file phụ thuộc nhau không được sửa một bên rồi quên bên kia | đọc lại **cả hai**, khớp rồi thì `node scripts/check_cap.mjs --ghi`. Danh sách cặp: `.claude/cap_file.txt` |
+| `check:ten` | cấm tên ẩn dụ (`gate` `verdict` `ledger` `sidecar` `provenance` `evidence`) | đổi tên trong mã. Chỉ quét định danh, comment tiếng Việt không dính |
+| `do:luat` | đo xem luật trong `AGENTS.md` có thật sự đổi hành vi không | sửa **lời luật**, đừng sửa bộ đề cho vừa câu trả lời. Bộ đề: `docs/BO_DE.md` |
+
+`do:luat` cần `GEMINI_API_KEY`; thiếu thì `npm run do` in `BO QUA` chứ không lờ đi.
+Nó chạy ~2 phút (mỗi câu hai lượt gọi, nghỉ 8s tránh trần 5 req/phút) — đo tay bằng
+`node scripts/do_luat.mjs`, hoặc `--nhanh` để chỉ đo lần có luật.
