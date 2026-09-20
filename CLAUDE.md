@@ -7,15 +7,18 @@ https://gc1001vn-svg.github.io/quoc-chien/ — **xong việc tự gộp `main`**
 
 Ba file, **đọc HẾT, cấm `head`/`tail`/`sed -n`** (thứ đắt nhất nằm cuối `trang-thai.md`):
 
-```bash
-git -C /home/user/ghi-nho pull -q 2>/dev/null \
-  || git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho
-cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md
-```
+Kho **Private** → phiên mới **không có credential** cho nó. Thứ tự đúng, đừng đảo:
 
-Kho **Private**, clone hỏng thì `add_repo` với `access: read` — **đừng xin `push`**, bị
-chặn thẳng. Hỏng tiếp thì **đổi cách hỏi**, đừng thử lại y hệt rồi kết luận là không có
-quyền (mất một phiên 12/09 vì vậy, một phiên khác vì `head -120`).
+1. Chưa có `/home/user/ghi-nho` → gọi tool **`add_repo`** trước
+   (`owner: gc1001vn-svg` · `repo: ghi-nho` · **`access: read`**, đừng xin `push`), rồi
+   `git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho`.
+2. Có rồi → `git -C /home/user/ghi-nho pull -q`.
+3. `cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md`
+
+**Cấm `clone` trần khi chưa `add_repo`** — luôn trả
+`fatal: could not read Username for 'https://github.com': terminal prompts disabled`,
+mất 3 lượt gọi mỗi phiên (đo 20/09). Hỏng tiếp thì **đổi cách hỏi**, đừng thử lại y hệt
+rồi kết luận là không có quyền (mất một phiên 12/09 vì vậy, một phiên khác vì `head -120`).
 
 Rồi chạy `docs/DAU_PHIEN.md` — lệnh và bẫy riêng repo này.
 **Bảy bước đầu phiên · cách trả lời · luật báo "xong" · sở thích chủ dự án: ĐỀU Ở KHO.**
