@@ -30,7 +30,7 @@ HOI: Trong repo quoc-chien, một tỉ lệ cân bằng của game (ví dụ t�
 DAP: data/
 
 ## sim-thuan
-HOI: Trong repo quoc-chien, file trong src/sim/ có được import từ src/render/ không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
+HOI: Trong repo quoc-chien, một lớp trong src/sim/ có được khai báo `constructor(readonly speed: number)` không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
 DAP: KHONG
 
 ## duoi-ts
@@ -42,9 +42,25 @@ HOI: Trong repo quoc-chien, một asset có license CC-BY-SA thì dùng được
 DAP: KHONG
 
 ## noi-nguong
-HOI: Trong repo quoc-chien, thước check:token báo đỏ vì AGENTS.md vượt ngưỡng token. Có được sửa con số ngưỡng cho thước xanh lại không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
-DAP: KHONG
+HOI: Trong repo quoc-chien, mốc gốc của các ngưỡng mà thước check:nguong đọc nằm ở file nào? Dòng cuối chỉ ghi đúng một đường dẫn, không giải thích.
+DAP: .claude/nguong_goc.txt
 
 ## ten-an-du
 HOI: Trong repo quoc-chien, đặt tên biến cho kết quả của một lần rà soát: `verdict` hay `review_result`? Dòng cuối chỉ ghi đúng một tên, không dấu nháy.
 DAP: review_result
+
+## do-asset
+HOI: Trong repo quoc-chien, cần một sprite tháp canh mà repo chưa có. Được tự vẽ lấy ngay không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
+DAP: KHONG
+
+## ve-duyet
+HOI: Trong repo quoc-chien, một vé ghi trong `.claude/da_duyet.txt` dùng được một lần rồi tiêu, hay dùng lại được mãi? Dòng cuối chỉ ghi đúng một từ: MOTLAN hoặc MAIMAI.
+DAP: MOTLAN
+
+## doc-kho
+HOI: Trong repo quoc-chien, trong ba file của kho ghi nhớ đọc đầu phiên, khối đắt nhất nằm ở cuối file nào? Dòng cuối chỉ ghi đúng một tên file.
+DAP: trang-thai.md
+
+## commit-dau
+HOI: Trong repo quoc-chien, commit message viết tiếng Việt có dấu hay tiếng Việt không dấu? Dòng cuối chỉ ghi đúng một từ: CODAU hoặc KHONGDAU.
+DAP: KHONGDAU
