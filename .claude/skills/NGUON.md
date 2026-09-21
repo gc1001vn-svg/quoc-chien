@@ -13,8 +13,24 @@ la tao cho lech — luat kho: **moi luat dung mot cho**.
 | Skill | Lay vi | Trung voi cai da co |
 |---|---|---|
 | `doubt-driven-development` | Ra soat quyet dinh bang ngu canh moi: CLAIM → EXTRACT → DOUBT → RECONCILE → STOP. Khong repo nao co thu tuong duong | khong |
-| `constraint-driven-development` | Bat tro ly khong tat thuoc de lay xanh: bat `@ts-ignore`, `eslint-disable`, test bi skip/xoa, nguong bi ha | MOT PHAN: `check_nguong` + `.claude/nguong_goc.txt` da chan noi nguong. Skill nay rong hon (bat ca suppression trong ma) nhung **doi tao `CONSTRAINTS.md`** — `quoc-chien` da co `docs/TECH_SPEC.md` muc 2. Goi thi phai bao no ghi vao cho da co, dung tao file thu hai |
+| `constraint-driven-development` | Bat tro ly khong tat thuoc de lay xanh: bat `@ts-ignore`, `eslint-disable`, test bi skip/xoa, nguong bi ha | MOT PHAN: `check_nguong` + `.claude/nguong_goc.txt` da chan noi nguong. Skill nay rong hon (bat ca suppression trong ma). Xem muc duoi ve `CONSTRAINTS.md` |
 | `code-simplification` | Chesterton's Fence, Rule of 500, giam phuc tap ma giu nguyen hanh vi | khong |
+
+## `constraint-driven-development` doi tao `CONSTRAINTS.md` — chan truoc
+
+Skill nay, Step 3, ghi mot `CONSTRAINTS.md` o goc repo roi them mot dong vao `AGENTS.md`
+va `CLAUDE.md`. Repo nao da co cho chua nguong roi thi do la bo thu hai — dung thu luat
+kho cam.
+
+Chinh skill co duong ra, muc **When NOT to use**: *"The project already has a
+`CONSTRAINTS.md` and the user isn't changing it — read it and follow it instead."*
+
+**Cach dung:** repo nao cai skill nay thi dat mot `CONSTRAINTS.md` **mong** o goc, chi
+la bang chi duong sang cho da co (file nao giu so, thuoc nao bat), **cam chep so vao do**.
+Ban mau: `quoc-chien/CONSTRAINTS.md` (21/09).
+
+Lam bang tay tung repo — `cai_dat.mjs` KHONG sinh file nay: bang chi duong phai tro dung
+file that cua repo do, doan ho thi ra mot bang sai, te hon khong co.
 
 ## Ca ba deu `user-invocable-only`
 
