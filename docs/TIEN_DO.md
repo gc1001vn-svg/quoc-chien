@@ -17,6 +17,22 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
 **Bước E hết treo** — chủ dự án xác nhận việc 19/09 (cối xay quay trên iPhone) chạy OK,
 20/09 (lần 4). Phiên sau mở thẳng Phase 9.
 
+### Phiên 21/09 (lần 6) đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_SKILL_NGOAI.md`. **Không mở phase mới** — phiên đồ nghề.
+
+- **Ba skill ngoài vào `.claude/skills/`**, lấy từ `addyosmani/agent-skills` (MIT):
+  `doubt-driven-development` · `constraint-driven-development` · `code-simplification`.
+  Bộ gốc 25 skill, 22 cái kia trùng hoặc mâu thuẫn luật đã chốt. Nguồn, số đo token,
+  cách cập nhật: `.claude/skills/NGUON.md`.
+- **Nghiệm thu đường đi:** `.claude/skills/` trong repo **được harness nạp thật** —
+  `Skill(code-simplification)` trả `disabled for model invocation in skillOverrides`,
+  tức nó biết tên. Cả ba khoá `user-invocable-only`, chủ dự án gõ `/tên` thì vào.
+- **`CONSTRAINTS.md` mới** — bảng chỉ đường sang chỗ đã giữ ngưỡng, chặn trước việc
+  `constraint-driven-development` đẻ ra bộ ngưỡng thứ hai.
+- **Đo được khi lập bảng đó:** trần hiệu năng ở `TECH_SPEC.md` mục 2 **phần lớn không có
+  thước nào đọc** — chỉ cỡ bản build bị `ci.yml` chặn. Nợ mới, xem mục 4.
+
 ### Phiên 20–21/09 (lần 5) đã đổi gì — không chạm mã game
 
 Chi tiết: `docs/NHAT_KY/PHASE_8_DO_NGHE_REEF.md`. **Không mở phase mới** — phiên đồ nghề.
