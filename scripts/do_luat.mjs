@@ -81,6 +81,11 @@ function cham(dap, traLoi) {
     .filter((d) => d && !(d.startsWith('[') && d.endsWith(']')));
   if (!dong.length) return 0;
   const cuoi = chuanHoa(dong[dong.length - 1]);
+  // Dap NHIEU PHAN (`render, ui, bench`): doi du ca ba co mat, khong doi dung thu
+  // tu va tu noi. Do 21/09: cung cau nay dat mot luot roi truot luot sau chi vi
+  // model viet "render, ui va bench" — do la cham sai, khong phai luat sai.
+  const phan = dap.includes(',') ? dap.split(',').map(chuanHoa).filter(Boolean) : null;
+  if (phan) return phan.every((x) => cuoi.includes(x)) ? 1 : 0;
   const mong = chuanHoa(dap);
   return cuoi === mong || cuoi.includes(mong) ? 1 : 0;
 }

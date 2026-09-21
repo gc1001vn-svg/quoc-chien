@@ -30,8 +30,8 @@ HOI: Trong repo quoc-chien, một tỉ lệ cân bằng của game (ví dụ t�
 DAP: data/
 
 ## sim-thuan
-HOI: Trong repo quoc-chien, một lớp trong src/sim/ có được khai báo `constructor(readonly speed: number)` không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
-DAP: KHONG
+HOI: Trong repo quoc-chien, src/sim/ bị cấm import ba thư mục nào? Dòng cuối chỉ ghi đúng ba tên thư mục, cách nhau bằng dấu phẩy, không giải thích.
+DAP: render, ui, bench
 
 ## duoi-ts
 HOI: Trong repo quoc-chien, khi import một file TypeScript từ src/sim/, đường dẫn import có phải ghi kèm đuôi .ts không? Dòng cuối chỉ ghi đúng một từ: CO hoặc KHONG.
@@ -54,8 +54,8 @@ HOI: Trong repo quoc-chien, cần một sprite tháp canh mà repo chưa có. Đ
 DAP: KHONG
 
 ## ve-duyet
-HOI: Trong repo quoc-chien, một vé ghi trong `.claude/da_duyet.txt` dùng được một lần rồi tiêu, hay dùng lại được mãi? Dòng cuối chỉ ghi đúng một từ: MOTLAN hoặc MAIMAI.
-DAP: MOTLAN
+HOI: Trong repo quoc-chien, được chủ dự án đồng ý cho sửa một file khoá rồi thì phải ghi đường dẫn vào file nào để Edit đi qua? Dòng cuối chỉ ghi đúng một đường dẫn.
+DAP: .claude/da_duyet.txt
 
 ## doc-kho
 HOI: Trong repo quoc-chien, trong ba file của kho ghi nhớ đọc đầu phiên, khối đắt nhất nằm ở cuối file nào? Dòng cuối chỉ ghi đúng một tên file.
