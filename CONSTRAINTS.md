@@ -12,7 +12,8 @@ tự tạo chỗ lệch. Mọi con số nằm ở bảng dưới, trong file g�
 | Ràng buộc | Số gốc nằm ở | Máy bắt bằng |
 |---|---|---|
 | Cỡ bản build | `docs/TECH_SPEC.md` mục 2 | `.github/workflows/ci.yml` (CI, không phải `npm run do`) |
-| Trần hiệu năng còn lại: lệnh vẽ mỗi khung, sprite động, atlas trong bộ nhớ, `setPixelRatio`, nhịp mô phỏng, dòng mỗi `.ts` | `docs/TECH_SPEC.md` mục 2 | **chưa có** — đo 21/09, xem mục "Sàn" dưới |
+| Lệnh vẽ mỗi khung, thư viện đồ hoạ ngoài, atlas trong bộ nhớ, `setPixelRatio`, nhịp mô phỏng, dòng mỗi `.ts` | `docs/TECH_SPEC.md` mục 2 | `check:tran` — đọc thẳng số từ bảng đó, không gõ cứng |
+| Sprite động mỗi khung | `docs/TECH_SPEC.md` mục 2 | **máy ảo không đo được** — phải chạy `?do=sprite` trên iPhone thật. `check:tran` khai `BO QUA`, không im |
 | Ngưỡng token `CLAUDE.md`, trần dòng kế hoạch, danh sách miễn | `.claude/nguong_goc.txt` | `check:nguong` |
 | Cặp file phải đọc lại cùng nhau | `.claude/cap_file.txt` | `check:cap` |
 | Tên biến: cấm ẩn dụ, tên mang đại lượng phải có đơn vị | `AGENTS.md` mục Quy ước | `check:ten` |
@@ -38,9 +39,10 @@ mới canh được nước thứ nhất:
 mẫu (diff-scoped, đổi ba regex theo ngôn ngữ) có sẵn ở
 `.claude/skills/constraint-driven-development/references/floor-guard.md`.
 
-Cùng loại nợ, đo cùng ngày: **trần hiệu năng ở `TECH_SPEC.md` mục 2 phần lớn không có
-thước nào đọc** — chỉ cỡ bản build bị CI chặn. Số có mà không có máy bắt là đúng thứ
-skill này gọi là mùi hỏng (`SKILL.md` mục Red Flags).
+Cùng loại nợ, đo cùng ngày, **đã bịt 21/09**: trần hiệu năng ở `TECH_SPEC.md` mục 2 khi
+đó chỉ có cỡ bản build bị CI chặn — số có mà không có máy bắt, đúng thứ skill này gọi là
+mùi hỏng (`SKILL.md` mục Red Flags). Nay `check:tran` đọc sáu dòng trong bảng đó và đối
+chiếu với mã thật; hai dòng không kiểm tĩnh được thì nó khai `BO QUA` chứ không im.
 
-Muốn bịt thì thêm thước vào `scripts/do.sh` — **việc riêng, hỏi chủ dự án trước**,
-đừng tiện tay làm khi đang làm việc khác.
+Muốn bịt bốn nước còn lại của sàn thì thêm thước vào `scripts/do.sh` — **việc riêng,
+hỏi chủ dự án trước**, đừng tiện tay làm khi đang làm việc khác.

@@ -41,4 +41,22 @@ Chưa chạy lên `tayvuc` (kho cấm — rửa nợ ngưỡng token) và `vsp-f
    build bị `ci.yml` chặn. `check:base` đọc `dist/`, `khoi:dong` mở Chromium, không cái
    nào bắt trần. Bắt được vì phải lập bảng "máy bắt bằng" trong `CONSTRAINTS.md`. Nợ mới.
 
-Số đo: 15/15 thước · `ghi-nho` 36/36 mẫu · `cai_dat.mjs` chạy lần hai 0 thay đổi.
+## Bịt cả hai nợ ngay trong phiên
+
+**Thước `check:tran`** (`scripts/check_tran.mjs`, `npm run do` giờ 16 thước). Đọc số
+thẳng từ bảng `TECH_SPEC.md` mục 2 — không gõ cứng, sửa trần thì sửa một chỗ. Sáu dòng
+kiểm tĩnh: dòng mỗi `.ts` · thư viện đồ hoạ ngoài (`dependencies` rỗng) · `Math.min(dpr, 2)`
+trong `Gl.datKichThuoc` · `NHIP_MOI_GIAY` khớp Hz trong spec · số trang và cạnh atlas ·
+số lớp trong `Perf.LayerName` (chặn trên của số lệnh vẽ mỗi khung). Hai dòng khai
+`BO QUA`: sprite động (phải đo `?do=sprite` trên iPhone) và cỡ bản build (`ci.yml` chặn).
+Thử âm: hạ trần dòng xuống 250 và đổi `NHIP_MOI_GIAY` thành 12 → thước bắt cả hai, `exit=1`.
+
+**Hook `chan_vong_vo_han.mjs`** vào móc `PreToolUse` của bộ đồ nghề mọi repo. Vòng
+`while`/`until` có chờ (`sleep` `curl` `wget` `git fetch`) mà không có trần — `timeout`
+bọc ngoài, hoặc `for i in $(seq 1 N)` / `{1..N}` — thì chặn, kèm ba cách thay. Tám mẫu
+thử trong `ghi-nho/scripts/do.sh` (`thu_vong`), 9/9 ca đúng.
+
+Vì sao là hook chứ không phải thêm một dòng tài liệu: cùng lỗi đã ghi vào kho trước đó
+mà vẫn tái diễn. Chữ không chặn được cái mình quên.
+
+Số đo: 16/16 thước · `ghi-nho` 45/45 mẫu · `cai_dat.mjs` chạy lần hai 0 thay đổi.

@@ -31,7 +31,12 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_SKILL_NGOAI.md`. **Không mở phase mới** �
 - **`CONSTRAINTS.md` mới** — bảng chỉ đường sang chỗ đã giữ ngưỡng, chặn trước việc
   `constraint-driven-development` đẻ ra bộ ngưỡng thứ hai.
 - **Đo được khi lập bảng đó:** trần hiệu năng ở `TECH_SPEC.md` mục 2 **phần lớn không có
-  thước nào đọc** — chỉ cỡ bản build bị `ci.yml` chặn. Nợ mới, xem mục 4.
+  thước nào đọc** — chỉ cỡ bản build bị `ci.yml` chặn. **Đã bịt trong cùng phiên:**
+  thước mới `check:tran` đọc thẳng số từ bảng đó (không gõ cứng), kiểm sáu dòng, khai
+  `BO QUA` hai dòng cần máy thật. `npm run do` giờ **16 thước**.
+- **Hook `chan_vong_vo_han.mjs`** vào bộ đồ nghề mọi repo — chặn vòng `while`/`until`
+  có chờ mà không có trần. Một vòng như vậy treo 40 phút trong phiên này, và đó là lần
+  **tái diễn**; luật đã ghi vào kho trước đó mà vẫn lặp lại, nên chuyển sang chặn bằng máy.
 
 ### Phiên 20–21/09 (lần 5) đã đổi gì — không chạm mã game
 
