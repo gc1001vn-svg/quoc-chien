@@ -49,6 +49,7 @@
     "check:cap": "node scripts/check_cap.mjs",
     "check:ten": "node scripts/check_ten.mjs",
     "check:tran": "node scripts/check_tran.mjs",
+    "check:san": "node scripts/check_san.mjs",
     "do:luat": "node scripts/do_luat.mjs"
   },
   "repository": {

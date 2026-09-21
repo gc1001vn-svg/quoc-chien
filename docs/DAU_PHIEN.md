@@ -369,7 +369,7 @@ npm run do                                          # hàng rào thật, số th
 Luật soát nằm ở `AGENTS.md` mục "Ba luật không được phá" và `docs/TECH_SPEC.md` mục 1–2 —
 **một chỗ duy nhất**, đọc thẳng ở đó.
 
-## J. Bốn thước thêm 20/09 — chép cách làm từ `Human-Agent-Society/reef`
+## J. Thước cấm lách — bốn cái thêm 20/09 (cách làm từ `Human-Agent-Society/reef`), hai cái thêm 21/09
 
 `AGENTS.md` là **bản gốc**, `CLAUDE.md` là symlink trỏ vào nó. Sửa `AGENTS.md`.
 
@@ -379,6 +379,8 @@ Luật soát nằm ở `AGENTS.md` mục "Ba luật không được phá" và `d
 | `check:cap` | cặp file phụ thuộc nhau không được sửa một bên rồi quên bên kia | đọc lại **cả hai**, khớp rồi thì `node scripts/check_cap.mjs --ghi`. Danh sách cặp: `.claude/cap_file.txt` |
 | `check:ten` | cấm tên ẩn dụ (`gate` `verdict` `ledger` `sidecar` `provenance` `evidence`) | đổi tên trong mã. Chỉ quét định danh, comment tiếng Việt không dính |
 | `do:luat` | đo xem luật trong `AGENTS.md` có thật sự đổi hành vi không | sửa **lời luật**, đừng sửa bộ đề cho vừa câu trả lời. Bộ đề: `docs/BO_DE.md` |
+| `check:tran` (21/09) | trần hiệu năng `TECH_SPEC.md` mục 2 phải có máy đọc, không chỉ nằm trên giấy | **cắt cho vừa trần**. Số đọc thẳng từ bảng đó — sửa trần là sửa bảng, thước theo ngay |
+| `check:san` (21/09) | cấm tắt kiểm tại chỗ (`@ts-ignore`, `eslint-disable`), tắt test (`it.skip`, `describe.only`), để hàm rỗng (`catch {}` rỗng hẳn, `Not implemented`) | sửa gốc. Nuốt lỗi có chủ đích thì viết lý do vào trong ngoặc: `catch { /* vì sao bỏ qua */ }` — có lý do là qua |
 
 `do:luat` cần `GEMINI_API_KEY`; thiếu thì `npm run do` in `BO QUA` chứ không lờ đi.
 Nó chạy ~2 phút (mỗi câu hai lượt gọi, nghỉ 8s tránh trần 5 req/phút) — đo tay bằng

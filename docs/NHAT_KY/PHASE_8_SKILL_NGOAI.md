@@ -59,4 +59,26 @@ thử trong `ghi-nho/scripts/do.sh` (`thu_vong`), 9/9 ca đúng.
 Vì sao là hook chứ không phải thêm một dòng tài liệu: cùng lỗi đã ghi vào kho trước đó
 mà vẫn tái diễn. Chữ không chặn được cái mình quên.
 
-Số đo: 16/16 thước · `ghi-nho` 45/45 mẫu · `cai_dat.mjs` chạy lần hai 0 thay đổi.
+## Thước `check:san` — bịt nốt sàn
+
+Chủ dự án chốt làm ngay. `scripts/check_san.mjs`, thước thứ 17. Ba mẫu: tắt kiểm tại chỗ
+(`@ts-ignore` `@ts-expect-error` `eslint-disable` `# noqa`) · test bị tắt (`it.skip`
+`describe.only` `xit`) · hàm rỗng (`catch {}` rỗng hẳn, `throw new Error("Not implemented")`).
+
+Đo trước khi dựng: cả ba **0 lần** trong `src/` `scripts/` `tools/` `tests/`. Nhưng
+`catch { /* lý do */ }` có **8 chỗ** ở `scripts/` — fail-open cố ý của hook. Nên luật là
+cấm `catch` **rỗng hẳn**, có comment thì qua: ai nuốt lỗi phải viết ra vì sao. Nước thứ
+năm của skill (thêm dòng ngoại lệ) **không cài** — repo không có bảng ngoại lệ nào.
+
+Hai bẫy tự gây, sửa ngay trong phiên:
+- Bộ thử `tests/CheckSan.test.ts` chứa đúng các dấu nó thử → thước bắt chính nó. Thêm
+  file đó và `check_san.mjs` vào `BO_QUA`.
+- `import { MAU }` trong test chạy luôn thân thước rồi `process.exit(0)` giữa bộ test.
+  Bọc thân trong `do_repo()` và chỉ chạy khi `pathToFileURL(process.argv[1]).href ===
+  import.meta.url`. Kèm `scripts/check_san.d.ts` để test import không phải dùng
+  `@ts-expect-error` — chính dấu mà thước cấm.
+
+Thử âm 10/10 ca (6 ca phải bắt, 4 ca phải cho qua: `catch` có lý do, `disableTypeChecked`
+của `eslint.config.js`, `mang.skip(2)`, mã sạch). `tests/CheckSan.test.ts` 13 test xanh.
+
+Số đo: 17/17 thước · `ghi-nho` 47/47 mẫu · `cai_dat.mjs` chạy lần hai 0 thay đổi.

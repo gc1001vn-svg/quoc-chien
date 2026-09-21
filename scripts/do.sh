@@ -51,6 +51,7 @@ chay "check:nguong" "node scripts/check_nguong.mjs"
 chay "check:cap" "node scripts/check_cap.mjs"
 chay "check:ten" "node scripts/check_ten.mjs"
 chay "check:tran" "node scripts/check_tran.mjs"
+chay "check:san" "node scripts/check_san.mjs"
 bo_qua_neu_thieu "do:luat" '[ -n "${GEMINI_API_KEY:-}" ]' \
   "node scripts/do_luat.mjs" "thieu GEMINI_API_KEY"
 

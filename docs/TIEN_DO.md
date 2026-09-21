@@ -37,6 +37,11 @@ Chi tiết: `docs/NHAT_KY/PHASE_8_SKILL_NGOAI.md`. **Không mở phase mới** �
 - **Hook `chan_vong_vo_han.mjs`** vào bộ đồ nghề mọi repo — chặn vòng `while`/`until`
   có chờ mà không có trần. Một vòng như vậy treo 40 phút trong phiên này, và đó là lần
   **tái diễn**; luật đã ghi vào kho trước đó mà vẫn lặp lại, nên chuyển sang chặn bằng máy.
+- **Thước `check:san`** (thước thứ 17) — cấm tắt kiểm tại chỗ (`@ts-ignore`,
+  `eslint-disable`), tắt test (`it.skip`, `describe.only`), để hàm rỗng (`catch {}` rỗng
+  hẳn, `Not implemented`). `catch { /* lý do */ }` qua được — 8 chỗ như vậy trong
+  `scripts/` là fail-open cố ý. Đo lúc dựng: cả ba dấu **0 lần**, nên đây là lưới dựng
+  trước. Regex có hàng rào riêng ở `tests/CheckSan.test.ts`.
 
 ### Phiên 20–21/09 (lần 5) đã đổi gì — không chạm mã game
 
