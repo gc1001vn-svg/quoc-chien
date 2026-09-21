@@ -71,7 +71,14 @@ function chuanHoa(s) {
 /** Cham 1 khi DONG CUOI khong rong khop dap an, 0 khi khong. */
 function cham(dap, traLoi) {
   if (!traLoi) return 0;
-  const dong = traLoi.split('\n').map((d) => d.trim()).filter(Boolean);
+  // `hoi_gemini.mjs` tu 21/09 in them dong `[nguon: …]` cuoi dap (duong ve).
+  // Khong bo dong do thi ham nay cham NHAM chinh cai dong ay: do 21/09 ca 10 cau
+  // tut ve 0 ngay sau khi them. Bo moi dong `[…]` — chung la sieu du lieu, khong
+  // phai dap.
+  const dong = traLoi
+    .split('\n')
+    .map((d) => d.trim())
+    .filter((d) => d && !(d.startsWith('[') && d.endsWith(']')));
   if (!dong.length) return 0;
   const cuoi = chuanHoa(dong[dong.length - 1]);
   const mong = chuanHoa(dap);
