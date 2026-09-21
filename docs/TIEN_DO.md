@@ -17,6 +17,21 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
 **Bước E hết treo** — chủ dự án xác nhận việc 19/09 (cối xay quay trên iPhone) chạy OK,
 20/09 (lần 4). Phiên sau mở thẳng Phase 9.
 
+### Phiên 20–21/09 (lần 5) đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_DO_NGHE_REEF.md`. **Không mở phase mới** — phiên đồ nghề.
+
+- **Bốn thước mới**, cách làm chép từ `Human-Agent-Society/reef` (Apache-2.0):
+  `check:nguong` (cấm nới ngưỡng) · `check:cap` (cặp file không lệch) · `check:ten`
+  (cấm tên ẩn dụ, bắt tên đại lượng thiếu đơn vị) · `do:luat` (đo luật có đổi hành vi không).
+  `npm run do` giờ **15 thước**, và khai `BO QUA` trung thực khi thiếu `GEMINI_API_KEY`.
+- **`AGENTS.md` là bản gốc, `CLAUDE.md` là symlink** trỏ vào nó.
+- **Loại hai công cụ ngoài** sau khi đo thật: Headroom (nén token — xoá sạch nội dung
+  `KHO_ICOSA.md`, văn xuôi Việt giảm 0%) và Reef (cần máy chạy thường trực + endpoint
+  trả tiền). Giữ cách làm, bỏ công cụ.
+- **`do:luat` 10/10 câu luật ăn.** Hai câu từng ra `THUA` là do câu hỏi dở, không phải
+  luật thừa — sửa câu hỏi sang phần không đoán được thì cả hai thành `LUAT AN`.
+
 ### Phiên 20/09 (lần 4) đã đổi gì — không chạm mã game
 
 Chi tiết: `docs/NHAT_KY/PHASE_8_LLM_NGOAI.md`. **Không mở phase mới** — phiên đo LLM ngoài.
