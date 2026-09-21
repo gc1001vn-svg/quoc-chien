@@ -50,6 +50,8 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
   Lệnh, cách `grep`, và bẫy từng bước: `docs/DAU_PHIEN.md` mục F.
 - Thư viện ngoài: đề xuất tên + license + lý do, **chờ đồng ý**.
 - **Trước mỗi commit `npm run do`**. Sửa bằng Edit, đừng `python`/`sed` — tốn token.
+- **Mỗi dòng đổi phải truy được về việc được giao.** Cấm tiện tay sửa code, comment, format
+  bên cạnh. Code chết có sẵn thì báo, đừng xoá.
 - **Thước đỏ thì CẮT, cấm nới ngưỡng** — mốc gốc `.claude/nguong_goc.txt`, `check:nguong`
   bắt. Thước không chạy được thì
   khai `BO QUA`, cấm lờ. Cặp file phải khớp: `check:cap`. Chi tiết: `DAU_PHIEN.md` mục J.
