@@ -32,6 +32,26 @@ Ban mau: `quoc-chien/CONSTRAINTS.md` (21/09).
 Lam bang tay tung repo — `cai_dat.mjs` KHONG sinh file nay: bang chi duong phai tro dung
 file that cua repo do, doan ho thi ra mot bang sai, te hon khong co.
 
+**San (Step 6, "the five moves") thi DANG cai, va cai bang thuoc rieng cua repo.**
+`quoc-chien` 21/09: `scripts/check_san.mjs` bat ba nuoc — tat kiem tai cho
+(`@ts-ignore` `eslint-disable` `# noqa`) · test bi tat (`it.skip` `describe.only` `xit`) ·
+ham rong (`catch {}` RONG HAN, `throw new Error("Not implemented")`). Nuoc thu tu (ha
+nguong) da co `check_nguong`; nuoc thu nam (them dong ngoai le) khong cai — repo do khong
+co bang ngoai le nao, chan mot thu khong ton tai la them ma chet.
+
+Ba diem dat gia khi lam, repo khac lam thi khoi va lai:
+- **`catch { /* ly do */ }` phai cho qua.** Dem duoc 8 cho nhu vay trong `scripts/`, deu
+  la fail-open CO Y cua hook. Cam `catch` rong han thoi; ai nuot loi phai viet ra vi sao.
+- **Bo thu cua thuoc chua dung cac dau no cam** -> thuoc bat chinh no. Cho file thuoc va
+  file thu vao `BO_QUA`.
+- **`import` tu file thuoc se chay ca than thuoc** roi `process.exit(0)` giua bo test.
+  Boc than trong mot ham, chi chay khi
+  `pathToFileURL(process.argv[1]).href === import.meta.url`. Khai bao kieu cho module
+  `.mjs` phai dat duoi `.d.mts`, khong TS bao `TS7016`.
+
+**Khong dung ban `floor-guard.mjs` mau cua ho** (`references/floor-guard.md`): diff-scoped,
+can moc nhanh goc, regex viet cho JS/Python. Quet toan repo don gian hon khi ma dang sach.
+
 ## Ca ba deu `user-invocable-only`
 
 Khoa nam trong `skill_overrides.json`. Ly do: **chi phi nap moi phien**.
