@@ -17,6 +17,20 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
 **Bước E hết treo** — chủ dự án xác nhận việc 19/09 (cối xay quay trên iPhone) chạy OK,
 20/09 (lần 4). Phiên sau mở thẳng Phase 9.
 
+### Phiên 22/09 (lần 7) đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_AI_GOI.md`. **Không mở phase mới** — phiên đồ nghề.
+
+- **Tra `@nanonets/graft` bằng cách chạy thật**, không đọc quảng cáo. Kết luận: công cụ
+  thật, phần `callers` tốt, nhưng 392 MB mỗi phiên và **nhét chỉ thị quảng cáo vào ngữ
+  cảnh trợ lý** mỗi lệnh (`dist/context/savings.js`). Số đo đầy đủ ở kho `ghi-nho`,
+  `quyet-dinh/2026-09-22-graft-chua-dung.md`.
+- **`scripts/ai_goi.mjs` mới** — tìm caller thật bằng TypeScript Compiler API, không thêm
+  phụ thuộc (`typescript` đã có). `node scripts/ai_goi.mjs <ten> [<ten>...]`.
+  Token: `ve` **190** · `nhip` **192** · `doi` **110** · `xayNha` **93**, so `grep -rn`
+  11.125 / 2.049 / 8.623 / 128. Rẻ hơn Graft cả bốn ca.
+- Vào `cai_dat.mjs` mục **1a** cho mọi repo TypeScript, chép có điều kiện.
+
 ### Phiên 21/09 (lần 6) đã đổi gì — không chạm mã game
 
 Chi tiết: `docs/NHAT_KY/PHASE_8_SKILL_NGOAI.md`. **Không mở phase mới** — phiên đồ nghề.
