@@ -48,7 +48,8 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - **Dò asset ba bước, cấm bỏ bước:** `KHO_ASSET.md` → `KHO_CHUNG.md` → `NGUON_MO.md` →
   báo chủ dự án quyết. **Cấm tự vẽ, tự ghép khi chưa đi hết ba bước.**
   Lệnh, cách `grep`, và bẫy từng bước: `docs/DAU_PHIEN.md` mục F.
-- Thư viện ngoài: đề xuất tên + license + lý do, **chờ đồng ý**.
+- Thư viện ngoài: đề xuất tên + license + lý do + độ tin (sao, lượt cài, ai làm) + telemetry
+  (bật sẵn? gửi gì? tắt sao?), **chờ đồng ý**.
 - **Trước mỗi commit `npm run do`**. Sửa bằng Edit, đừng `python`/`sed` — tốn token.
 - **Mỗi dòng đổi phải truy được về việc được giao.** Cấm tiện tay sửa code, comment, format
   bên cạnh. Code chết có sẵn thì báo, đừng xoá.
