@@ -17,6 +17,13 @@ Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơ
 **Bước E hết treo** — chủ dự án xác nhận việc 19/09 (cối xay quay trên iPhone) chạy OK,
 20/09 (lần 4). Phiên sau mở thẳng Phase 9.
 
+### Phiên 23/09 (lần 8) đã đổi gì — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_DO_NGOAI.md`. **Không mở phase mới** — phiên đồ nghề.
+
+- Tra ScrapeGraphAI, autoskill, find-skills: **không cài cái nào**.
+- `AGENTS.md` luật "Thư viện ngoài" thêm **độ tin** và **telemetry** (commit `24e08f7`).
+
 ### Phiên 22/09 (lần 7) đã đổi gì — không chạm mã game
 
 Chi tiết: `docs/NHAT_KY/PHASE_8_AI_GOI.md`. **Không mở phase mới** — phiên đồ nghề.
