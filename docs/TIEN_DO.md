@@ -3,19 +3,26 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 20/09/2026 (phiên ngắn lần 3 — **kiểm 7 khoá sau khi xoay, không chạm mã game**).
+Cập nhật: 23/09/2026 (lần 9 — **Phase 8D: mở đường lên đời 4 và 5**).
 
 ## 1. Đang ở đâu
 
-**Phase 8C XONG. Game ở Phase 8C/13.** Cối xay đã quay ở **cả hai mẻ**: máy nướng biết
-tách nhóm trong một file OBJ, biết xoay một mảnh quanh tâm riêng của nó, và `VeCanh` chọn
-khung theo `DongHo` — dừng hình thì cánh dừng theo, chạy nhanh 3× thì quay nhanh 3×.
-Chi tiết: `docs/NHAT_KY/PHASE_8C.md`.
+**Phase 8D XONG. Game ở Phase 8D/13.** Đời 5 (Hiện đại, mẻ `hien_dai`) nay **tới được
+bằng cách chơi**: 120 giờ lên đời 4, 240 giờ lên đời 5 — trước kẹt đời 3. Chi tiết:
+`docs/NHAT_KY/PHASE_8D.md`.
 
-**Việc phiên sau: Phase 9** — nối lớp chiến dịch vào kinh tế, và **mở đường lên đời 4–6**.
-Chi tiết ở mục 5. **Đời 5 hiện CHƯA TỚI ĐƯỢC bằng cách chơi**, xem mục 4.
-**Bước E hết treo** — chủ dự án xác nhận việc 19/09 (cối xay quay trên iPhone) chạy OK,
-20/09 (lần 4). Phiên sau mở thẳng Phase 9.
+**Việc phiên sau: Phase 9 — trận đánh chạy ngầm, đúng `KE_HOACH.md`** (mục 5).
+Chủ dự án chốt 23/09: bản "Phase 9 = lên đời + nối chiến dịch" mà `TIEN_DO` cũ ghi là
+lệch kế hoạch gốc; phần lên đời làm thành 8D, phần nối chiến dịch vào kinh tế về nợ (mục 4).
+**Bước E đang treo:** anh đo fps iPhone với thành phố to hơn (mục 3) trước khi mở Phase 9.
+
+### Phiên 23/09 (lần 9) đã đổi gì — Phase 8D
+
+- `Governor`: luật **dân kéo về** — đủ ăn `gioNoDu` giờ liền thì xây nhà tiêu thụ
+  (`data/policy.json > gioNoDu, nhaDanMoi`). Gốc chặn 241 nhà là nhu cầu đứng yên.
+- `data/tech.json`: 24 → **40** công nghệ (8 đời 4, 8 đời 5). `balance.json`: mở `len`
+  đời 4 → 5 (30 công nghệ, 330 công trình). Đời 6 vẫn khoá.
+- `sim:congnghe` nhận `-- <giờ> <đời>`, in đỉnh walker, mặc định đòi đời 4.
 
 ### Phiên 23/09 (lần 8) đã đổi gì — không chạm mã game
 
@@ -464,6 +471,12 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### ⏳ Việc 23/09 (lần 9) — đo fps với thành phố to hơn (Phase 8D)
+
+Thành phố nay mọc tới ~380 công trình (trước 241). Mở game, **chạy nhanh 3× khoảng 10
+phút**, thu nhỏ hết cỡ, đọc nhãn fps góc màn hình, nhắn con số thấp nhất.
+https://gc1001vn-svg.github.io/quoc-chien/ — nhớ kéo trang xuống để tải bản mới.
+
 ### 🚫 Việc 20/09 (lần 3) — XOAY `XAI_API_KEY` + `FREESOUND_KEY`: CHỦ DỰ ÁN QUYẾT KHÔNG XOAY
 
 **Đừng nhắc lại việc này ở phiên sau.** Chủ dự án đã nghe cảnh báo và chọn giữ nguyên
@@ -810,12 +823,13 @@ quyền hạn và giới hạn máy ảo.
 - **`npm run kho` chưa chạy lại được từ máy ảo sạch** — `tai:tatca` không kéo
   `assets_source/icosa` nên bản kê tụt quá 20 % và công cụ tự dừng. `docs/KHO_ASSET.md`
   vì thế **vẫn còn con số đếm kiểu cũ**; muốn sửa thì phải `npm run tai:icosa` trước.
-- **NỢ MỚI, NẶNG NHẤT: đời 5 chưa tới được bằng cách chơi.** Đời 4 trở đi còn `len: null`
+- **✅ Đời 5 tới được bằng cách chơi: SỬA XONG 23/09 (Phase 8D).** Nguyên văn nợ cũ:
+- ~~Đời 5 chưa tới được bằng cách chơi.~~ Đời 4 trở đi còn `len: null`
   trong `data/balance.json` (chưa có công nghệ riêng — `tech.json` mới có ba đời đầu), và
   đời 3 đòi **270 nhà** mà thành phố mới tới **241**. Tức mẻ hiện đại nướng xong vẫn không
   hiện ra trong một ván chơi thật. Đường tạm: `?me=hien_dai` ép mẻ. **Mở đường lên đời là
   việc Phase 9**, đi cùng nợ "thưởng công nghệ chưa đổi được thành phố" ngay dưới.
-- **Thưởng công nghệ chưa đổi được thành phố.** Trần nhà 398 mà thành phố chỉ tới 241 —
+- ~~Thưởng công nghệ chưa đổi được thành phố.~~ (hết 23/09 — luật dân kéo về) Trần nhà 398 mà thành phố chỉ tới 241 —
   trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
   **Đây chính là cái chặn đời 3 → đời 4** (đòi 270 nhà).
 - **Mẻ `hien_dai` còn hai chỗ tạm, chờ chủ dự án xem ảnh rồi quyết** (mục 3):
@@ -823,7 +837,10 @@ quyền hạn và giới hạn máy ảo.
   `quay_xe` là `dumpster`; người là kiểu đầu to (chibi), khác hẳn người mẻ trung cổ.
 - **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra đúng bằng cái đã
   lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
-- **Lớp chiến dịch chưa nối vào kinh tế thành phố** — việc Phase 9.
+- **Lớp chiến dịch chưa nối vào kinh tế thành phố.** Chưa có phase nào nhận — hỏi anh
+  xếp vào đâu (Phase 9 hay 11) trước khi làm.
+- **Đời 4–5 chưa có thẻ chính sách riêng** (`moThe: []` ở 16 công nghệ mới) và **đời 6
+  chưa có đường lên** (`len: null`, chờ Phase 12).
 - **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
 - **NỢ CHẶN NẶNG NHẤT ĐÃ HẾT CHẶN — có nguồn thay, chờ anh chốt đóng.** Điều kiện anh đặt
   ("giữ nợ mở tới khi phiên sau đo xong kho gương Icosa") **đã làm xong 15/09 lần 3**:
@@ -902,48 +919,22 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 9
+## 5. Phiên sau — Phase 9: trận đánh chạy ngầm
 
-Cối xay đã quay (Phase 8C, mục 1). Cái chặn to nhất bây giờ không còn là hình, mà là
-**luật lên đời**.
+Đúng `KE_HOACH.md` mục 2: `sim/campaign/Battle.ts` + `BattleScript.ts` — bảng giáp × đạn
+kiểu OpenRA, quân đi trên bản đồ, headless. Thước: `npm run sim:tran` chạy **1000 trận**,
+tỉ lệ thắng thật khớp dự đoán (`KE_HOACH` mục 3). Thiết kế: `GAME_SPEC.md` mục 6.
 
-**Muốn cho công trình khác động** thì đường đã mở sẵn: nướng thêm `<tên>_k0` `_k1` `_k2`
-vào mẻ, `VeCanh` tự chọn khung, không phải sửa dòng mã nào. **Nhưng mẻ trung cổ 2× đã hết
-chỗ** (mục 2) — thêm công trình động là phải tính lại số trang atlas cho cả hai mẻ.
-
-### Việc 1 — mở đường lên đời 4, rồi 5 (ưu tiên, vì nó mở khoá mẻ vừa nướng)
-
-Hai chỗ chặn, đo được chứ không phải đoán:
-
-- `data/balance.json > thoiDai[2].len.soNha` = **270**, mà `npm run sim:thu` cho thành phố
-  chạm trần **241 nhà** trong 120 giờ. Hạ ngưỡng chờ 40→28 cũng vẫn 241 → **cái thiếu là
-  nhu cầu, không phải trần** (trần nhà 398).
-- `thoiDai[3..5].len` = `null` vì `data/tech.json` mới có công nghệ của ba đời đầu.
-
-Làm theo thứ tự: chạy `npm run sim:congnghe` đo lại, rồi hoặc hạ `soNha` cho khớp thực tế,
-hoặc thêm nhu cầu để thành phố mọc quá 241. **Số vào `data/*.json`, không vào `.ts`**
-(luật 2). Xong mới mở `len` cho đời 4 và 5.
-
-### Việc 2 — lớp chiến dịch nối vào kinh tế thành phố
-
-Thẻ chính sách chưa đụng được kinh tế (cố ý, để hiệu ứng tháo ra đúng bằng cái đã lắp
-vào). Thẻ "+15 % lương thực" của `GAME_SPEC` mục 7 chờ đúng phase này.
-
-### Việc 3 — hai chỗ tạm của mẻ hiện đại, chỉ làm khi chủ dự án đã xem ảnh
-
-Kenney City Kit **không có xe cộ**: `xe_keo` đang là `construction-barrier`, `quay_xe` là
-`dumpster`. Muốn đúng thì dò `kho-game` tìm gói xe CC0 — `npm run do:asset xe hien_dai`.
+**Trước khi mở:** anh xác nhận fps iPhone với thành phố to (mục 3). Rớt fps thì sửa ngay
+trong 8D: **tăng** `gioNoDu` trong `data/policy.json` (dân về chậm hơn, thành phố nhỏ
+hơn), không đụng mã.
 
 ### Nhắc trước khi nướng thêm mẻ
 
 Mẻ mới **phải nướng ra cùng số trang atlas, cùng `o_px`, cùng `heSo`** với mẻ đang chạy,
 không thì `DoiMeAtlas` ném lỗi chứ không vẽ bậy — `tests/BanDo.test.ts` bắt trước ở máy.
-Trần thật là **trang atlas cỡ 2×**, không phải số model: xem công thức `ti_le` ở đầu
-`tools/me/hien_dai.json`.
-
-Từ 19/09 mẻ nào xếp gọn hơn thì khai `"trang_it_nhat": { "2": <số> }`, máy nướng đệm
-trang **rỗng 1×1** cho đủ — không tốn bộ nhớ GPU, không sprite nào trỏ vào. Hiện cả hai
-mẻ đang khai `2`.
+Mẻ trung cổ 2× đã hết chỗ (mục 2). Muốn công trình khác động: nướng `<tên>_k0` `_k1`
+`_k2`, `VeCanh` tự chọn khung.
 
 **Mở phiên mới rồi hãy bắt đầu** — mỗi phiên một phase.
 Đầu phiên chạy `docs/DAU_PHIEN.md`, bảy bước A–G ở kho, không bỏ bước nào.
