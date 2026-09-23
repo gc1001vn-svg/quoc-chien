@@ -52,6 +52,16 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $CLAUDE_PROJECT_DIR/scripts/chan_doc_lon.mjs",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "PostToolUse": [
