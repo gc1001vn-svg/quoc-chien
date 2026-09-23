@@ -66,6 +66,21 @@ describe('thong doc tu xay', () => {
     expect(tong).toBe(tp.soNha - xayGioCuoi);
   }, 20000);
 
+  it('du an lien tuc thi dan keo ve: thong doc xay nha tieu thu', () => {
+    const tp = new ThanhPho({ hang, nha, chuoi, banDo, walker });
+    // `gioNoDu` 1 cho thay luat trong 10 gio; so that o `data/policy.json` do bang sim.
+    const td = new Governor(tp, docChinhSach({ ...chinhSach, gioNoDu: 1 }));
+    tp.datThongDoc(td);
+    tp.chay(NHIP_MOI_GIO * 10);
+    expect(td.daLam.some((v) => chinhSach.nhaDanMoi.includes(v.viec))).toBe(true);
+  }, 20000);
+
+  it('nem loi khi nhaDanMoi co ten nha khong ton tai', () => {
+    const tp = new ThanhPho({ hang, nha, chuoi, banDo, walker });
+    expect(() => new Governor(tp, docChinhSach({ ...chinhSach, nhaDanMoi: ['khong_co'] })))
+      .toThrow();
+  });
+
   it('khong dat thong doc thi thanh pho dung yen nhu Phase 4', () => {
     const tp = new ThanhPho({ hang, nha, chuoi, banDo, walker });
     const nhaDau: number = tp.soNha;
@@ -94,8 +109,8 @@ describe('chinh sach', () => {
 
   it('nem loi khi thieu cap tuNha = 0', () => {
     expect(() => docChinhSach({
-      gioMoiLan: 1, nguongBoCuoc: 1, nguongDinh: 1, nguongCho: 1,
-      cap: [{ ten: 'x', tuNha: 5, tranNha: 10, tranKho: 2 }],
+      gioMoiLan: 1, nguongBoCuoc: 1, nguongDinh: 1, nguongCho: 1, gioNoDu: 1,
+      nhaDanMoi: ['nha_dan'], cap: [{ ten: 'x', tuNha: 5, tranNha: 10, tranKho: 2 }],
     })).toThrow();
   });
 });

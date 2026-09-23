@@ -9,6 +9,10 @@
   "nguongBoCuoc": 2,
   "nguongDinh": 600,
   "nguongCho": 40,
+  "_gioNoDu": "Bao nhieu gio LIEN TUC khong thieu mon nao thi coi la thanh pho du an, dan noi khac keo ve - xay mot nha trong `nhaDanMoi`. Khong co luat nay thi nhu cau dung yen tu ban do dau va thanh pho can bang o 241 nha, khong len duoc doi 4 (do 23/09, Phase 8D). Dat rat lon la tat luat.",
+  "gioNoDu": 3,
+  "_nhaDanMoi": "Loai nha TIEU THU thong doc xay khi du an, xoay vong theo thu tu. Them nha tieu thu la them nhu cau - day chuyen thieu hang tro lai, thong doc lai xay nha san xuat.",
+  "nhaDanMoi": ["nha_dan"],
   "cap": [
     {
       "ten": "ly truong",

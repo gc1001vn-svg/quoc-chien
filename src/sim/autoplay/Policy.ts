@@ -21,6 +21,10 @@ export interface ChinhSach {
   readonly nguongBoCuoc: number;
   readonly nguongDinh: number;
   readonly nguongCho: number;
+  /** So gio lien tuc khong thieu mon nao thi xay mot nha trong `nhaDanMoi`. */
+  readonly gioNoDu: number;
+  /** Loai nha tieu thu xay khi du an, xoay vong theo thu tu. */
+  readonly nhaDanMoi: readonly string[];
   /** Xep theo `tuNha` tang dan. */
   readonly cap: readonly Cap[];
 }
@@ -51,6 +55,9 @@ export function docChinhSach(tho: unknown): ChinhSach {
     nguongBoCuoc: laySoNguyen(goc['nguongBoCuoc'], 'policy.json > nguongBoCuoc', 0),
     nguongDinh: laySoNguyen(goc['nguongDinh'], 'policy.json > nguongDinh', 0),
     nguongCho: laySoNguyen(goc['nguongCho'], 'policy.json > nguongCho', 0),
+    gioNoDu: laySoNguyen(goc['gioNoDu'], 'policy.json > gioNoDu', 1),
+    nhaDanMoi: layMang(goc['nhaDanMoi'], 'policy.json > nhaDanMoi')
+      .map((t, i) => layChuoi(t, `policy.json > nhaDanMoi[${String(i)}]`)),
     cap,
   };
 }

@@ -19,10 +19,11 @@ beforeAll(() => {
 }, 60_000);
 
 describe('ai_goi — cho goi that', () => {
-  it('xayNha: du bon cho goi, mot khai bao', () => {
+  it('xayNha: du nam cho goi, mot khai bao', () => {
     const kq = timCaller(program, 'xayNha');
     expect(kq.khai_bao.map((k) => k.file)).toEqual(['src/sim/city/City.ts']);
     expect(kq.cho.map((c) => c.file)).toEqual([
+      'src/sim/autoplay/Governor.ts',
       'src/sim/autoplay/Governor.ts',
       'src/sim/decision/HauQua.ts',
       'tests/NhaKinhTeHien.test.ts',
@@ -33,6 +34,7 @@ describe('ai_goi — cho goi that', () => {
   it('ghi ten ham bao, khong chi ghi so dong', () => {
     const kq = timCaller(program, 'xayNha');
     expect(kq.cho.map((c) => c.trong)).toEqual([
+      'moiGio',
       'moiGio',
       'apHauQua',
       '<muc file>',

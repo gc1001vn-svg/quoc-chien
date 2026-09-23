@@ -7,6 +7,9 @@
  *   hang kip phuc vu, va nhin bang so khong con biet viec nao gay ra thay doi nao.
  * - **Kho truoc, nha sau.** Duong tac ma xay them nha thi chi them nguoi vao cho dong;
  *   phai no duong ra da roi moi them mieng an.
+ * - **Thieu thi xay nha lam ra, du an thi dan keo ve.** Chi xay nha san xuat thi nhu cau
+ *   dung yen tu ban do dau va thanh pho can bang som (241 nha, do 23/09). Du an lien tuc
+ *   `gioNoDu` gio thi xay mot nha tieu thu - them mieng an, lai thieu, lai xay.
  *
  * TypeScript thuan (luat 1). Moi con so nam trong `data/policy.json` (luat 2).
  */
@@ -36,10 +39,19 @@ export class Governor {
   /** The quyet dinh da noi tran them bao nhieu, cong vao tran cua cap hien tai. */
   private themTranNha = 0;
   private themTranKho = 0;
+  /** So gio lien tiep khong thieu mon nao. */
+  private gioDu = 0;
+  /** Lan xay nha tieu thu ke tiep lay `nhaDanMoi[soDanMoi % do dai]`. */
+  private soDanMoi = 0;
 
   constructor(tp: ThanhPho, cs: ChinhSach) {
     this.tp = tp;
     this.cs = cs;
+    for (const ten of cs.nhaDanMoi) {
+      if (!tp.dsNha.some((n) => n.ten === ten)) {
+        throw new Error(`policy.json > nhaDanMoi: khong co loai nha "${ten}"`);
+      }
+    }
     this.nguong = new Map([
       ['nguongBoCuoc', cs.nguongBoCuoc],
       ['nguongDinh', cs.nguongDinh],
@@ -94,7 +106,19 @@ export class Governor {
     }
     if (this.tp.soNha >= cap.tranNha) return;
     const ten: string | undefined = this.nhaCanXay(tk);
-    if (ten !== undefined && this.tp.xayNha(ten)) this.ghi(tk.gio, ten, cap);
+    if (ten !== undefined) {
+      this.gioDu = 0;
+      if (this.tp.xayNha(ten)) this.ghi(tk.gio, ten, cap);
+      return;
+    }
+    this.gioDu += 1;
+    const dan: string | undefined = this.cs.nhaDanMoi[this.soDanMoi % this.cs.nhaDanMoi.length];
+    if (this.gioDu < this.cs.gioNoDu || dan === undefined) return;
+    this.gioDu = 0;
+    if (this.tp.xayNha(dan)) {
+      this.soDanMoi += 1;
+      this.ghi(tk.gio, dan, cap);
+    }
   }
 
   /** Duong da qua tai chua: co nguoi bo cuoc, hoac so nguoi cung luc sat tran. */
