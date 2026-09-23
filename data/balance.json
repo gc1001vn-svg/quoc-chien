@@ -20,7 +20,7 @@
     { "so": 1, "hien": "Cổ đại", "soO": 2, "me": "trung_co_2", "len": { "soCongNghe": 6, "soNha": 200 } },
     { "so": 2, "hien": "Trung cổ", "soO": 3, "me": "trung_co_2", "len": { "soCongNghe": 13, "soNha": 230 } },
     { "so": 3, "hien": "Súng ống", "soO": 4, "me": "trung_co_2", "len": { "soCongNghe": 20, "soNha": 270 } },
-    { "so": 4, "hien": "Công nghiệp", "soO": 5, "me": "trung_co_2", "len": null },
+    { "so": 4, "hien": "Công nghiệp", "soO": 5, "me": "trung_co_2", "len": { "soCongNghe": 30, "soNha": 330 } },
     { "so": 5, "hien": "Hiện đại", "soO": 6, "me": "hien_dai", "len": null },
     { "so": 6, "hien": "Tương lai", "soO": 7, "me": "hien_dai", "len": null }
   ]

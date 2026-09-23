@@ -6,7 +6,7 @@
   "_doiNguong": "`nguongCho` thap di la thong doc xay som hon khi thieu hang - day moi la thu doi THAT trong mot van 120 gio. Da do 11/09: chi noi tran thoi thi gan nhu vo tac dung, vi tran (398) khong phai cai chan thanh pho lai, nhu cau moi la. Tong ca cay tru 12 tren `nguongCho` (40 -> 28) va 60 tren `nguongDinh` (600 -> 540) - khong duoc tru sau hon, ngưỡng ve 0 la thong doc xay khong nghi.",
   "_loi": "Chu hien tren bang cong nghe cho nguoi choi doc. KHONG phai khoa nha: moi loai nha van xay duoc tu dau van. Khoa nha theo thoi dai la viec Phase 9, luc lop chien dich noi vao kinh te thanh pho.",
   "_moThe": "Id the chinh sach mo ra khi hoc xong - cai nay CO hieu luc that, xem data/the_chinh_sach.json.",
-  "_gia": "Diem nghien cuu phai dong. Doi 1 la 30-48, doi 2 la 55-75, doi 3 la 85-120 - hoc cang sau cang lau.",
+  "_gia": "Diem nghien cuu phai dong. Doi 1 la 30-48, doi 2 la 55-75, doi 3 la 85-120, doi 4 la 130-170, doi 5 la 185-230 - hoc cang sau cang lau.",
   "nghienCuu": {
     "_": "Diem nghien cuu moi gio game = coBan + floor(soNha / moiNhaMotDiem), roi nhan he so cua the chinh sach. Thanh pho cang lon nghien cuu cang nhanh - dan dong thi nhieu nguoi nghi ra cai moi.",
     "_nhip_do": "Do 11/09 tren `npm run sim:congnghe`: voi coBan 2 va moiNhaMotDiem 40 thi chi duoc ~5 diem/gio, va khi Eureka thoi khong con dat san nua thi 120 gio KHONG toi noi thoi dai 3. Nang len 3 va 30 cho ~11 diem/gio o thanh pho 241 nha.",
@@ -252,6 +252,166 @@
       "tienDe": ["dong_co_hoi_nuoc", "ke_toan_kep"],
       "loi": "Gom thợ về một mái nhà, chia việc ra từng khâu.",
       "moThe": ["vien_han_lam", "cong_nghiep_hoa", "tu_dong_hoa"],
+      "thuong": { "noiTran": { "nha": 6, "kho": 2 } }
+    },
+    {
+      "id": "duong_ray",
+      "hien": "Đường sắt",
+      "thoiDai": 4,
+      "gia": 130,
+      "tienDe": ["dong_co_hoi_nuoc", "xe_goong"],
+      "loi": "Đầu máy kéo cả chục toa: hàng đi một ngày bằng xe ngựa đi một tuần.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "dien_bao",
+      "hien": "Điện báo",
+      "thoiDai": 4,
+      "gia": 135,
+      "tienDe": ["cong_xuong", "hai_do"],
+      "loi": "Tin đi theo dây đồng, nhanh hơn ngựa trạm cả trăm lần.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 5 } }
+    },
+    {
+      "id": "luyen_coc",
+      "hien": "Luyện than cốc",
+      "thoiDai": 4,
+      "gia": 140,
+      "tienDe": ["luyen_thep", "xe_goong"],
+      "loi": "Than cốc thay than củi: lò cao ra gang cả trăm tấn một mẻ.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 5, "kho": 2 } }
+    },
+    {
+      "id": "may_det",
+      "hien": "Máy dệt cơ khí",
+      "thoiDai": 4,
+      "gia": 145,
+      "tienDe": ["cong_xuong"],
+      "loi": "Một thợ trông mười khung dệt chạy bằng hơi nước.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "khai_mo_sau",
+      "hien": "Khai mỏ sâu",
+      "thoiDai": 4,
+      "gia": 150,
+      "tienDe": ["luyen_coc"],
+      "loi": "Máy bơm hơi nước hút nước ngầm: mỏ than xuống sâu gấp mấy lần.",
+      "moThe": [],
+      "thuong": { "noiTran": { "kho": 3 } }
+    },
+    {
+      "id": "phao_nong_xoan",
+      "hien": "Pháo nòng xoắn",
+      "thoiDai": 4,
+      "gia": 155,
+      "tienDe": ["luyen_coc", "thanh_sao"],
+      "loi": "Rãnh xoắn trong nòng làm đạn bay thẳng và xa gấp đôi.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 5 } }
+    },
+    {
+      "id": "tau_hoi_nuoc",
+      "hien": "Tàu hơi nước",
+      "thoiDai": 4,
+      "gia": 160,
+      "tienDe": ["dong_co_hoi_nuoc", "hai_do"],
+      "loi": "Tàu không còn chờ gió, đi ngược dòng cũng được.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "hoa_hoc",
+      "hien": "Hoá học",
+      "thoiDai": 4,
+      "gia": 170,
+      "tienDe": ["cong_xuong", "luyen_coc"],
+      "loi": "Phân bón, thuốc nhuộm, thuốc nổ ra từ phòng thí nghiệm.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7 } }
+    },
+    {
+      "id": "dien",
+      "hien": "Điện",
+      "thoiDai": 5,
+      "gia": 185,
+      "tienDe": ["dien_bao", "hoa_hoc"],
+      "loi": "Máy phát điện: sức kéo đi theo dây đồng tới từng xưởng.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7 } }
+    },
+    {
+      "id": "dong_co_dot_trong",
+      "hien": "Động cơ đốt trong",
+      "thoiDai": 5,
+      "gia": 190,
+      "tienDe": ["duong_ray", "hoa_hoc"],
+      "loi": "Xăng nổ trong xi-lanh: máy nhỏ mà khoẻ, lắp được lên xe.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6, "kho": 2 } }
+    },
+    {
+      "id": "vo_tuyen",
+      "hien": "Vô tuyến",
+      "thoiDai": 5,
+      "gia": 195,
+      "tienDe": ["dien"],
+      "loi": "Sóng điện truyền tin không cần dây, xa tới bên kia biển.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "day_chuyen",
+      "hien": "Dây chuyền",
+      "thoiDai": 5,
+      "gia": 200,
+      "tienDe": ["dien", "may_det"],
+      "loi": "Băng chuyền đưa việc tới người: một xưởng làm bằng mười xưởng cũ.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7 } }
+    },
+    {
+      "id": "khang_sinh",
+      "hien": "Kháng sinh",
+      "thoiDai": 5,
+      "gia": 205,
+      "tienDe": ["hoa_hoc"],
+      "loi": "Nấm penicillin cứu người khỏi vết thương nhiễm trùng.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7 } }
+    },
+    {
+      "id": "hang_khong",
+      "hien": "Hàng không",
+      "thoiDai": 5,
+      "gia": 210,
+      "tienDe": ["dong_co_dot_trong"],
+      "loi": "Máy nặng hơn không khí mà bay được.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "xe_tang",
+      "hien": "Xe tăng",
+      "thoiDai": 5,
+      "gia": 220,
+      "tienDe": ["dong_co_dot_trong", "phao_nong_xoan"],
+      "loi": "Pháo lắp trên xích sắt, bọc thép, vượt được hào.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "tuyen_truyen",
+      "hien": "Tuyên truyền",
+      "thoiDai": 5,
+      "gia": 230,
+      "tienDe": ["vo_tuyen", "in_an"],
+      "loi": "Một giọng nói tới cả nước cùng lúc.",
+      "moThe": [],
       "thuong": { "noiTran": { "nha": 6, "kho": 2 } }
     }
   ]
