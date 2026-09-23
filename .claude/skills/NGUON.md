@@ -111,9 +111,10 @@ cho) · `PHASE_2B.md` "bon lan sua moi ra" · `PHASE_2B_2.md` ba vong chinh mau 
 **Mo o che do MAC DINH (model tu goi), khac ba cai tren.** Khoa `user-invocable-only`
 thi model khong goi duoc; chu du an go "LOI" chu khong go `/diagnosing-bugs`. Chi phi:
 dong `description:` **170 byte ~ 45 token/phien**; than 8.529 byte (~2.100 token) chi
-vao khi goi. **Chua chac** mo ta tieng Anh ("broken/failing") bat duoc chu "LOI" tieng
-Viet — muon chac thi them con tro vao dong **LOI** cua `quoc-chien/CLAUDE.md`
-(file khoa, can chu du an duyet).
+vao khi goi. Mo ta tieng Anh ("broken/failing") chua chac bat chu "LOI" tieng Viet,
+nen dong **LOI** cua `quoc-chien/CLAUDE.md` tro thang sang skill (chu du an duyet
+23/09; cau `loi-chan-doan` trong `docs/BO_DE.md` do no). Repo khac muon chac: them
+con tro tuong tu vao `CLAUDE.md` cua repo do.
 
 `hitl-loop.template.sh` can terminal — chu du an dung iPhone nen buoc 10 cua Phase 1
 thuc te la "xin anh chup man hinh/quay clip", nhu PHASE_6B vong bon da lam.
@@ -127,7 +128,7 @@ thuc te la "xin anh chup man hinh/quay clip", nhu PHASE_6B vong bon da lam.
 | `grill-me`/`grilling` | hoi nhieu vong; chu du an lam tren iPhone, luat kho: chi hoi thu khong tra duoc. Hoc cach trinh bay: **hoi ca loat mot vong, moi cau kem de xuat** |
 | `wait-what` | can `CONTEXT.md`; anh noi "noi lai de hieu" la du |
 | `to-spec` `to-tickets` `triage` `wayfinder` `implement` `setup-matt-pocock-skills` | day viec len issue tracker, tao `CONTEXT.md` + ADR — cho chua luat thu hai, trung `KE_HOACH.md` |
-| `writing-for-agents` | hoc, khong cai: `quoc-chien/CLAUDE.md` 21/52 dong la cau cam/dung — skill noi cam la **keo** hanh vi bi cam vao ngu canh, nen viet dang khang dinh. De xuat cho chu du an, chua sua |
+| `writing-for-agents` | hoc, khong cai: `quoc-chien/CLAUDE.md` 21/52 dong la cau cam/dung — skill noi cam la **keo** hanh vi bi cam vao ngu canh, nen viet dang khang dinh. **Da ap 23/09**: 21 -> 0 cau cam, rao cung gom mot dong "Cung:" canh viec can lam; `do_luat` giu 11/11 |
 | con lai | `tdd` `prototype` `research` `wizard` `teach`… — chua do duoc nhu cau o repo nao |
 
 Cap nhat: `curl` hai file tren (cung duong `main/skills/engineering/diagnosing-bugs/`).
