@@ -44,22 +44,22 @@ describe('docDieuKien', () => {
 
   it('nem loi neu khong biet do gi', () => {
     expect(() => docDieuKien({ do: 'sai', phep: '>', gia: 1 }, 't'))
-      .toThrowError(LoiDuLieu);
+      .toThrow(LoiDuLieu);
   });
 
   it('nem loi neu khong biet phep', () => {
     expect(() => docDieuKien({ do: 'soNha', phep: '===', gia: 1 }, 't'))
-      .toThrowError(LoiDuLieu);
+      .toThrow(LoiDuLieu);
   });
 
   it('nem loi neu thieu hang khi do can', () => {
     expect(() => docDieuKien({ do: 'ton', phep: '>=', gia: 10 }, 't'))
-      .toThrowError(LoiDuLieu);
+      .toThrow(LoiDuLieu);
   });
 
   it('nem loi neu gia khong dung chuan', () => {
     expect(() => docDieuKien({ do: 'soNha', phep: '>=', gia: '10' }, 't'))
-      .toThrowError(LoiDuLieu);
+      .toThrow(LoiDuLieu);
   });
 });
 
