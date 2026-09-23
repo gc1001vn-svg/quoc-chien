@@ -1,4 +1,6 @@
-# Skill ngoai — nguon va vi sao chi lay ba cai
+# Skill ngoai — nguon va vi sao chi lay bon cai
+
+Ba cai tu Addy Osmani (ngay duoi) + mot cai tu Matt Pocock (muc cuoi file).
 
 Lay tu `github.com/addyosmani/agent-skills` (MIT, Addy Osmani + 2 collaborator),
 ban tai ve 21/09/2026 tu `raw.githubusercontent.com/addyosmani/agent-skills/main/`.
@@ -92,3 +94,45 @@ Roi `node cong-cu/cai_dat.mjs <repo>` o tung repo de day ban moi xuong.
 **May ao chan `api.github.com` cho repo ngoai phien, chan ca HTML `github.com`,
 `codeload`, `img.shields.io`.** Chi `raw.githubusercontent.com` di duoc — do la ly do
 lenh tren dung `curl` tung file thay vi tai ca repo.
+
+## `diagnosing-bugs` — tu `mattpocock/skills` (lay 23/09)
+
+Nguon: `github.com/mattpocock/skills`, `skills/engineering/diagnosing-bugs/` (MIT,
+Matt Pocock). Tai 23/09/2026 tu `raw.githubusercontent.com/mattpocock/skills/main/`,
+**giu nguyen** `SKILL.md` + `scripts/hitl-loop.template.sh` (SKILL tro toi, thieu la
+tro treo). Giay phep: `LICENSE-mattpocock-skills.txt`.
+
+**Vi sao lay:** vong chan doan 6 buoc, cot loi la **dung vong kiem do-duoc truoc khi doan**
+(mot lenh chay duoc, bat do dung trieu chung) → thu nho → 3–5 gia thuyet co du doan →
+do tung bien → test hoi quy → don `[DEBUG-…]`. Benh no chua da do duoc o `quoc-chien`:
+`NHAT_KY/PHASE_6B.md` "nam vong doan mo va gan tron mot phien" (ba vong dau chua nham
+cho) · `PHASE_2B.md` "bon lan sua moi ra" · `PHASE_2B_2.md` ba vong chinh mau sai goc.
+
+**Mo o che do MAC DINH (model tu goi), khac ba cai tren.** Khoa `user-invocable-only`
+thi model khong goi duoc; chu du an go "LOI" chu khong go `/diagnosing-bugs`. Chi phi:
+dong `description:` **170 byte ~ 45 token/phien**; than 8.529 byte (~2.100 token) chi
+vao khi goi. **Chua chac** mo ta tieng Anh ("broken/failing") bat duoc chu "LOI" tieng
+Viet — muon chac thi them con tro vao dong **LOI** cua `quoc-chien/CLAUDE.md`
+(file khoa, can chu du an duyet).
+
+`hitl-loop.template.sh` can terminal — chu du an dung iPhone nen buoc 10 cua Phase 1
+thuc te la "xin anh chup man hinh/quay clip", nhu PHASE_6B vong bon da lam.
+
+### Da doc, KHONG lay (25 skill, do 23/09)
+
+| Skill | Vi sao khong |
+|---|---|
+| `code-review` | trung ten skill co san cua harness (dang khoa trong `skill_overrides.json`) |
+| `handoff` | ghi vao thu muc tam cua OS — may ao xoa het phien. `TIEN_DO.md` + `NHAT_KY/` da lam viec nay |
+| `grill-me`/`grilling` | hoi nhieu vong; chu du an lam tren iPhone, luat kho: chi hoi thu khong tra duoc. Hoc cach trinh bay: **hoi ca loat mot vong, moi cau kem de xuat** |
+| `wait-what` | can `CONTEXT.md`; anh noi "noi lai de hieu" la du |
+| `to-spec` `to-tickets` `triage` `wayfinder` `implement` `setup-matt-pocock-skills` | day viec len issue tracker, tao `CONTEXT.md` + ADR — cho chua luat thu hai, trung `KE_HOACH.md` |
+| `writing-for-agents` | hoc, khong cai: `quoc-chien/CLAUDE.md` 21/52 dong la cau cam/dung — skill noi cam la **keo** hanh vi bi cam vao ngu canh, nen viet dang khang dinh. De xuat cho chu du an, chua sua |
+| con lai | `tdd` `prototype` `research` `wizard` `teach`… — chua do duoc nhu cau o repo nao |
+
+Cap nhat: `curl` hai file tren (cung duong `main/skills/engineering/diagnosing-bugs/`).
+
+**Cung tra 23/09, khong lay gi:** `tigicion/dao-code` (tro ly terminal chay DeepSeek, thay
+Claude Code — y hay duy nhat: tu ra soat khi cung mot loi lap 2 lan / 3 luot hong lien,
+chua do duoc can o day) · `livxue/dsh-plugin-shop` (cho plugin cua DeepSeek Harness,
+khong chay voi Claude Code; `verified.yml` rong). **Dung tra lai.**
