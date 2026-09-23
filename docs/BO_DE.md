@@ -64,3 +64,7 @@ DAP: trang-thai.md
 ## commit-dau
 HOI: Trong repo quoc-chien, commit message viết tiếng Việt có dấu hay tiếng Việt không dấu? Dòng cuối chỉ ghi đúng một từ: CODAU hoặc KHONGDAU.
 DAP: KHONGDAU
+
+## loi-chan-doan
+HOI: Trong repo quoc-chien, chủ dự án báo LỖI. Theo luật repo, sửa lỗi theo skill nào? Dòng cuối chỉ ghi đúng tên skill, không dấu nháy.
+DAP: diagnosing-bugs

@@ -366,7 +366,7 @@ git diff --stat <từ>..<đến> -- . ':!public/atlas'   # danh sách file, 1.01
 npm run do                                          # hàng rào thật, số thước lệnh tự in
 ```
 
-Luật soát nằm ở `AGENTS.md` mục "Ba luật không được phá" và `docs/TECH_SPEC.md` mục 1–2 —
+Luật soát nằm ở `AGENTS.md` mục "Ba luật cứng" và `docs/TECH_SPEC.md` mục 1–2 —
 **một chỗ duy nhất**, đọc thẳng ở đó.
 
 ## J. Thước cấm lách — bốn cái thêm 20/09 (cách làm từ `Human-Agent-Society/reef`), hai cái thêm 21/09
