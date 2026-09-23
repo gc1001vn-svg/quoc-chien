@@ -4,7 +4,9 @@
  * Thuoc do cua Phase 8 (KE_HOACH.md muc 3). File nay **doc file va in ra man hinh** nen no
  * nam ngoai `src/sim/` - trong do la TypeScript thuan (TECH_SPEC muc 1, luat 1).
  *
- * DAT khi: toi duoc thoi dai 3, moi cong nghe deu co duong toi, khong cong nghe nao ket.
+ * DAT khi: toi duoc thoi dai 4 (mac dinh), moi cong nghe deu co duong toi, khong cong nghe nao ket.
+ *
+ * `npm run sim:congnghe -- <so gio> <doi phai toi>` doi hai so do, vd `-- 240 5`.
  */
 import { readFileSync } from 'node:fs';
 import { ThanhPho } from '../src/sim/city/City.ts';
@@ -17,9 +19,9 @@ import { Van } from '../src/sim/decision/Van.ts';
 import { docDuLieuMeta, Meta } from '../src/sim/meta/Meta.ts';
 import type { CongNghe } from '../src/sim/meta/CongNghe.ts';
 
-const SO_GIO = 120;
+const SO_GIO = Number(process.argv[2] ?? 120);
 /** Thoi dai toi thieu phai toi duoc trong `SO_GIO` gio thi moi coi la DAT. */
-const DOI_PHAI_TOI = 3;
+const DOI_PHAI_TOI = Number(process.argv[3] ?? 4);
 
 function doc(ten: string): unknown {
   return JSON.parse(readFileSync(new URL(`../data/${ten}`, import.meta.url), 'utf8')) as unknown;
@@ -64,8 +66,10 @@ console.log(
 // chinh sach - lap the la duong duy nhat de biet he so nghien cuu va noi tran co chay
 // khong. Lap vao o trong dau tien moi khi het thoi gian cho.
 const batDau = Date.now();
+let dinhWalker = 0;
 for (let gio = 1; gio <= SO_GIO; gio++) {
   tp.chay(NHIP_MOI_GIO);
+  dinhWalker = Math.max(dinhWalker, tp.gioVuaXong()?.walker.dinh ?? 0);
   const the = van.the;
   if (the !== undefined) van.traLoi(the.chon[0] as LuaChon);
   lapTheNeuDuoc();
@@ -105,7 +109,8 @@ console.log(
 console.log(`O CHINH PHU: ${lap.join(' · ')}`);
 console.log(
   `THONG DOC: cap ${thongDoc.cap.ten}, ${String(tp.soNha)} nha / tran ${String(thongDoc.cap.tranNha)}, ` +
-    `${String(tp.doiWalker.soKho)} kho / tran ${String(thongDoc.cap.tranKho)}.`,
+    `${String(tp.doiWalker.soKho)} kho / tran ${String(thongDoc.cap.tranKho)}, ` +
+    `walker dinh ${String(dinhWalker)}.`,
 );
 console.log(`Da chay ${String(SO_GIO)} gio game trong ${giay.toFixed(2)}s that.`);
 
