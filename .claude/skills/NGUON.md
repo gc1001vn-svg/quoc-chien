@@ -137,3 +137,19 @@ Cap nhat: `curl` hai file tren (cung duong `main/skills/engineering/diagnosing-b
 Claude Code — y hay duy nhat: tu ra soat khi cung mot loi lap 2 lan / 3 luot hong lien,
 chua do duoc can o day) · `livxue/dsh-plugin-shop` (cho plugin cua DeepSeek Harness,
 khong chay voi Claude Code; `verified.yml` rong). **Dung tra lai.**
+
+**Tra 24/09, chay thu, khong lay gi. Dung tra lai:**
+- `garrytan/gstack` (MIT, v1.89): 70+ skill, than **30–77 KB/cai** (~8–20k token), goi
+  `~/.claude/skills/gstack/bin/*` va trinh duyet rieng — may ao xoa `~/.claude` moi phien,
+  clone 61 MB + Bun. Cai dat doi chen khoi dai vao `CLAUDE.md` (vo `check:token`).
+  `/investigate` trung `diagnosing-bugs`; `/context-save` trung `TIEN_DO.md`; `/qa` trung
+  `chup:man`. `/careful` (chan `rm -rf`, `push -f`, `reset --hard`) nho (3,5 KB) nhung
+  `grep` lich su `quoc-chien` + kho: **0 su co** lenh pha, `push --force` may chu da chan
+  → them la ma chet. `ETHOS.md` "Search Before Building" = thang tra-truoc-khi-viet da co.
+- `666ghj/MiroFish` (**AGPL-3.0**): bat buoc **Zep Cloud** (`config.py` tu choi ca Zep tu
+  dung), may khong co khoa → khong chay duoc. Gui tai lieu len LLM + Zep; ket qua "du doan"
+  khong kem so do do chinh xac nao.
+- `mobile-next/mobile-mcp` (Apache-2.0, 1.0.5): build + goi qua stdio **chay duoc**
+  (32 tool), `mobile_list_available_devices` → `[]`: may ao khong `/dev/kvm`, khong USB.
+  Telemetry **BAT san** (PostHog + pixel Scarf); `MOBILEMCP_DISABLE_TELEMETRY=1` tat ca hai
+  (doc `src/server.ts`). Chi dung duoc khi chu du an co **Mac + Xcode** cam iPhone.
