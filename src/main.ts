@@ -7,12 +7,10 @@
  *
  * `?man=ban-do` mo thang man ban do - de may ao chup duoc no ma khong phai gia bo cham tay.
  * `?zoom=` dat muc thu phong mo man cho ca hai.
- * `?chinh=1` mo bang chinh so (`ui/BangChinh.ts`).
  */
 import { chayCanhThanhPho } from './render/CityScene';
 import { chayCanhBanDo } from './render/MapScene';
 import { chayDoSprite } from './bench/DoSprite';
-import { moBangChinh } from './ui/BangChinh';
 import type { Man } from './render/Man';
 import './style.css';
 
@@ -28,9 +26,6 @@ const cho: HTMLParagraphElement = document.createElement('p');
 cho.className = 'dang-nap';
 cho.textContent = 'Đang nạp atlas…';
 goc.appendChild(cho);
-
-// Phu so chinh TRUOC khi dung canh - canh doc data mot lan luc dung.
-if (!laTrangDo) moBangChinh(goc);
 
 const chay: Promise<void> = laTrangDo ? chayDoSprite(goc) : moHaiMan(goc);
 chay.then(
