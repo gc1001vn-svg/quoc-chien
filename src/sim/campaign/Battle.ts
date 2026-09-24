@@ -9,7 +9,7 @@
  * so do co khop ti le thang that khong (KE_HOACH muc 3, Phase 9).
  */
 import { Rng } from '../../core/Rng.ts';
-import { diaHinhCua, loai, type Ben, type DauVaoTran, type DiaHinhTran, type DuLieuTran, type LoaiDoi } from './BattleData.ts';
+import { kiemDauVao, loai, type Ben, type DauVaoTran, type DiaHinhTran, type DuLieuTran, type LoaiDoi } from './BattleData.ts';
 
 export { docDuLieuTran } from './BattleData.ts';
 export type { Ben, DauVaoTran, DiaHinhTran, DuLieuTran, LoaiDoi } from './BattleData.ts';
@@ -57,7 +57,7 @@ function sucManh(ben: Ben, dich: Ben, dichGiuDat: boolean, dh: DiaHinhTran, duLi
 
 /** Xac suat ben `a` thang, trong [0, 1]. Khong chay tran, khong dung so ngau nhien. */
 export function duDoan(vao: DauVaoTran, duLieu: DuLieuTran): number {
-  const dh: DiaHinhTran = diaHinhCua(duLieu, vao.diaHinh);
+  const dh: DiaHinhTran = kiemDauVao(vao, duLieu);
   const sucA: number = sucManh(vao.a, vao.b, true, dh, duLieu);
   const sucB: number = sucManh(vao.b, vao.a, false, dh, duLieu);
   if (sucA <= 0) return 0;
@@ -104,7 +104,7 @@ function ganNhat(d: DoiTran, ds: readonly DoiTran[]): DoiTran | undefined {
 
 /** Chay mot tran. Cung `hatGiong` thi cung ket qua (TECH_SPEC muc 8). */
 export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number): KetQuaTran {
-  const dh: DiaHinhTran = diaHinhCua(duLieu, vao.diaHinh);
+  const dh: DiaHinhTran = kiemDauVao(vao, duLieu);
   const rng = new Rng(hatGiong);
   const dt: number = duLieu.nhipGiay;
   const ds: DoiTran[] = [

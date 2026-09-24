@@ -7,6 +7,7 @@
   "nguong_vo": 0.25,
   "nhieu": 0.3,
   "he_so_tuong": 0.1,
+  "tuong_toi_da": 3,
   "_dia_hinh": "toc_do nhan toc do di. phong_thu nhan sat thuong ben b (giu dat) phai nhan.",
   "dia_hinh": {
     "dong_bang": { "toc_do": 1.0, "phong_thu": 1.0 },

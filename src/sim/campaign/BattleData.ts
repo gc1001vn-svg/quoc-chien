@@ -41,6 +41,7 @@ export interface DuLieuTran {
   readonly doDoc: number;
   readonly heSoTam: number;
   readonly muPhongThu: number;
+  readonly tuongToiDa: number;
   /** He so nhan sat thuong cua `dan` len `giap`. */
   heSo(giap: string, dan: string): number;
 }
@@ -86,6 +87,7 @@ interface CauHinhTran {
   readonly do_doc: number;
   readonly he_so_tam: number;
   readonly mu_phong_thu: number;
+  readonly tuong_toi_da: number;
   readonly dia_hinh: Readonly<Record<string, { readonly toc_do: number; readonly phong_thu: number }>>;
 }
 
@@ -122,6 +124,7 @@ export function docDuLieuTran(bangTho: unknown, doiTho: unknown, tranTho: unknow
     doDoc: t.do_doc,
     heSoTam: t.he_so_tam,
     muPhongThu: t.mu_phong_thu,
+    tuongToiDa: t.tuong_toi_da,
     heSo: (giap: string, dan: string): number => bang.dan[dan]?.[bang.giap.indexOf(giap)] ?? 0,
   };
 }
@@ -137,4 +140,19 @@ export function diaHinhCua(duLieu: DuLieuTran, id: string): DiaHinhTran {
   const d: DiaHinhTran | undefined = duLieu.diaHinh.get(id);
   if (d === undefined) throw new Error(`Khong co dia hinh "${id}" trong battle.json`);
   return d;
+}
+
+/**
+ * Kiem dau vao tran, tra ve dia hinh. Ben rong hay tuong ngoai [0, tuongToiDa] thi nem loi:
+ * do 24/09, ben b rong thi `duDoan` bao a thua 100 % ma `tinhTran` lai cho a thang.
+ */
+export function kiemDauVao(vao: { a: Ben; b: Ben; diaHinh: string }, duLieu: DuLieuTran): DiaHinhTran {
+  for (const [ten, ben] of [['a', vao.a], ['b', vao.b]] as const) {
+    if (ben.doi.length === 0) throw new Error(`Ben ${ten} khong co doi nao`);
+    if (!Number.isInteger(ben.tuong) || ben.tuong < 0 || ben.tuong > duLieu.tuongToiDa) {
+      throw new Error(`Ben ${ten}: tuong = ${String(ben.tuong)}, phai la so nguyen 0-${String(duLieu.tuongToiDa)}`);
+    }
+    for (const id of ben.doi) loai(duLieu, id);
+  }
+  return diaHinhCua(duLieu, vao.diaHinh);
 }

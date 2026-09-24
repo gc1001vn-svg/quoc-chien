@@ -45,7 +45,7 @@ function chon<T>(ds: readonly T[]): T {
 function benNgauNhien(cua: readonly LoaiDoi[]): { doi: string[]; tuong: number } {
   const [it, nhieu] = tho.doi_moi_ben;
   const n: number = it + rng.nguyen(nhieu - it + 1);
-  return { doi: Array.from({ length: n }, () => chon(cua).id), tuong: rng.nguyen(3) };
+  return { doi: Array.from({ length: n }, () => chon(cua).id), tuong: rng.nguyen(duLieu.tuongToiDa + 1) };
 }
 
 const batDau: number = performance.now();
