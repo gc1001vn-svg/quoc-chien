@@ -25,3 +25,14 @@ Kế hoạch: `docs/ke-hoach/2026-09-23-phase-8d-len-doi.md`.
 - Nhân đôi nghiên cứu (`coBan` 3→6, `moiNhaMotDiem` 30→15) thì cái chặn chuyển sang số nhà
   (199/200 ở giờ 12) → hạ `soNha` đời 1 200→195. Nay đời 2 ở **giờ 11 (~13 phút)**, đời 3
   giờ 45, đời 4 giờ 88.
+
+## Phụ lục 24/09 (lần 2) — thẻ chính sách "ô trống mà không lắp được"
+
+- **Vòng bắt:** Chromium thật (`?bang=meta`, 50×, tự trả lời thẻ quyết định): thẻ ĐẦU lắp
+  được. Test đơn vị: lắp thẻ thứ HAI vào ô trống ngay sau → `false`. Gốc: `BoChinhSach.lap`
+  bắt chờ `gioChoDoiThe` cả khi ô trống — trái chính ghi chú `_gioChoDoiThe` ("ĐỔI thẻ
+  xong mới chờ"). Test cũ ở `MetaEureka.test.ts` khẳng định đúng hành vi sai đó → sửa test.
+- Nay: ô trống lắp ngay; thay hay gỡ thẻ đang lắp vẫn chờ 8 giờ. Nhịp đổi theo: đời 2 giờ
+  11, đời 3 giờ 41, đời 4 giờ **70** (trước 88).
+- **Nhà không đổi khi lên Trung cổ: đúng thiết kế hiện tại, chưa phải lỗi** — đời 1–4 cùng
+  mẻ `trung_co_2` (`balance.json > _me`). Mẻ riêng cho cổ đại / cận đại là Phase 12.
