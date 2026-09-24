@@ -1,0 +1,29 @@
+{
+  "_": "Thong so tran danh chay ngam (GAME_SPEC muc 6). Ben a la ben danh toi, ben b giu dat.",
+  "chien_truong": 40,
+  "hang_xuat_phat": 4,
+  "nhip_giay": 0.5,
+  "tran_giay": 60,
+  "nguong_vo": 0.25,
+  "nhieu": 0.3,
+  "he_so_tuong": 0.1,
+  "_dia_hinh": "toc_do nhan toc do di. phong_thu nhan sat thuong ben b (giu dat) phai nhan.",
+  "dia_hinh": {
+    "dong_bang": { "toc_do": 1.0, "phong_thu": 1.0 },
+    "ven_bien":  { "toc_do": 0.9, "phong_thu": 0.95 },
+    "rung":      { "toc_do": 0.7, "phong_thu": 0.85 },
+    "nui":       { "toc_do": 0.6, "phong_thu": 0.75 }
+  },
+  "_du_doan": "P(a thang) = 1 / (1 + (suc_b / suc_a)^do_doc). suc = sat thuong hieu dung x mau (luat binh phuong Lanchester). he_so_tam cong them cho doi danh xa. phong_thu cua dia hinh vao du doan voi mu mu_phong_thu (do tu sim:tran).",
+  "do_doc": 8,
+  "he_so_tam": 0.0,
+  "mu_phong_thu": 1.1,
+  "_thuoc": "sim:tran: so tran, dung sai (diem %) moi khoang du doan, so mau toi thieu de mot khoang duoc tinh. Can bang: quan thuan mot loai gap quan hon hop cung ngan_sach, so_tran_can_bang tran moi phia, khong loai nao thang qua tran_thang_mot_loai.",
+  "so_tran": 1000,
+  "dung_sai": 0.1,
+  "mau_toi_thieu": 30,
+  "tran_thang_mot_loai": 0.65,
+  "ngan_sach": [500, 900],
+  "so_tran_can_bang": 50,
+  "doi_moi_ben": [6, 10]
+}

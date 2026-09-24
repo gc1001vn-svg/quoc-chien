@@ -34,6 +34,7 @@
     "sim:thu": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_thu.ts",
     "sim:bando": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_ban_do.ts",
     "sim:congnghe": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_cong_nghe.ts",
+    "sim:tran": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_tran.ts",
     "do": "bash scripts/do.sh",
     "check:sw": "node scripts/check_sw_atlas.mjs",
     "phien:ban": "node scripts/ghi_phien_ban.mjs",
