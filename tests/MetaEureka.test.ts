@@ -210,16 +210,33 @@ describe('the chinh sach', () => {
     expect(bo.heSoNghienCuu).toBe(100);
   });
 
-  it('chua het thoi gian cho thi khong doi duoc the', () => {
+  it('chua het thoi gian cho thi khong THAY, khong THAO duoc the', () => {
     const bo = new BoChinhSach(ds, 8);
-    bo.datSoO(2);
+    bo.datSoO(1);
     const a: string = ds[0]?.id ?? '';
     const b: string = ds[1]?.id ?? '';
     bo.mo(a);
     bo.mo(b);
     expect(bo.lap(0, a, 10)).toBe(true);
-    expect(bo.lap(1, b, 12)).toBe(false);
-    expect(bo.lap(1, b, 18)).toBe(true);
+    expect(bo.lap(0, b, 12)).toBe(false);
+    expect(bo.thao(0, 12)).toBe(false);
+    expect(bo.lap(0, b, 18)).toBe(true);
+  });
+
+  // Chu du an bao 24/09: "o ghi trong ma khong lap duoc". Phi cho la phi DOI the
+  // (`_gioChoDoiThe`); lap vao o trong khong doi gi ca nen khong phai cho.
+  it('lap vao o TRONG thi khong phai cho, ke ca ngay sau the truoc', () => {
+    const bo = new BoChinhSach(ds, 8);
+    bo.datSoO(3);
+    const a: string = ds[0]?.id ?? '';
+    const b: string = ds[1]?.id ?? '';
+    const c: string = ds[2]?.id ?? '';
+    bo.mo(a);
+    bo.mo(b);
+    bo.mo(c);
+    expect(bo.lap(0, a, 10)).toBe(true);
+    expect(bo.lap(1, b, 10)).toBe(true);
+    expect(bo.lap(2, c, 11)).toBe(true);
   });
 
   it('bot so o thi the o o do bi thao ra, khong con tinh vao he so', () => {

@@ -117,12 +117,14 @@ export class BoChinhSach {
    * the dang lap o o khac, hay chua het thoi gian cho.
    *
    * Lap de len mot o dang co the khac la thay - dung mot lan cho, khong phai hai.
+   * Lap vao o TRONG thi khong phai cho: phi cho la phi DOI the, o trong khong doi gi.
+   * Chu du an bao 24/09 "o ghi trong ma khong lap duoc" - ban cu bat cho ca o trong.
    */
   lap(chiSo: number, id: string, gio: number): boolean {
     if (chiSo < 0 || chiSo >= this.o.length) return false;
     if (!this.moKhoa.has(id)) return false;
     if (this.o.some((t, k) => k !== chiSo && t?.id === id)) return false;
-    if (this.conCho(gio) > 0) return false;
+    if (this.o[chiSo] !== undefined && this.conCho(gio) > 0) return false;
     const t: The | undefined = this.ds.find((x) => x.id === id);
     if (t === undefined) return false;
     this.o[chiSo] = t;
