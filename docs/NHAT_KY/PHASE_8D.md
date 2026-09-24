@@ -17,3 +17,11 @@ Kế hoạch: `docs/ke-hoach/2026-09-23-phase-8d-len-doi.md`.
   240 giờ → đời 5 ở giờ **212**, 380 nhà, 32/40 công nghệ. Walker đỉnh **657** / trần 1.200.
   Trước 8D: kẹt đời 3, 241 nhà. `sim:thu` ĐẠT.
 - **Chưa đo trên máy thật:** thành phố to hơn ~55 % → fps iPhone cần anh đo lại.
+
+## Phụ lục 24/09 — sửa nhịp lên đời (chủ dự án báo: 50× hơn 15 phút chưa lên Trung cổ)
+
+- **Không phải lỗi code, là nhịp.** 1 giờ game = 72 giây thật ở 50×; lên đời 2 cần 20 giờ
+  game = 24 phút (bản trước 8D: 21 giờ). Vòng bắt: `npm run sim:congnghe -- 12 2` → HONG.
+- Nhân đôi nghiên cứu (`coBan` 3→6, `moiNhaMotDiem` 30→15) thì cái chặn chuyển sang số nhà
+  (199/200 ở giờ 12) → hạ `soNha` đời 1 200→195. Nay đời 2 ở **giờ 11 (~13 phút)**, đời 3
+  giờ 45, đời 4 giờ 88.
