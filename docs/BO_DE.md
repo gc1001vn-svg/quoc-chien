@@ -8,7 +8,9 @@ Chạy: `node scripts/do_luat.mjs` (cần `GEMINI_API_KEY`). Thước `do:luat` 
 định nhỏ, một hàm chấm 1.0/0.0 theo dòng cuối, và luật **chỉ giữ thay đổi nào biến câu
 đang trượt thành đạt**.
 
-Mỗi câu hỏi hai lần: **không kèm luật** và **có kèm `AGENTS.md`**. Bốn kết quả:
+Mỗi câu hỏi hai lần: **không kèm luật** và **có kèm `AGENTS.md`**. Bốn kết quả, cộng
+`KHONG DO` khi model không trả lời (503, khoá sai) — không phải lỗi luật, chạy lại sau.
+Câu trượt in kèm **dòng cuối nguyên văn** của model ở mục `Vet truot` — sửa luật theo đó:
 
 | Kết quả | Nghĩa | Làm gì |
 |---|---|---|

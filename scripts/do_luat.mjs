@@ -106,24 +106,40 @@ if (!de.length) {
 
 console.log(`${BO_DE}: ${de.length} cau${nhanh ? ' (che do --nhanh: chi do lan CO luat)' : ''}`);
 
-const dem = { 'LUAT AN': 0, THUA: 0, 'CHUA DU': 0, HONG: 0 };
+const dem = { 'LUAT AN': 0, THUA: 0, 'CHUA DU': 0, HONG: 0, 'KHONG DO': 0 };
 const loi = [];
+// Vet truot that: dong cuoi model tra loi o lan CO luat. Nguoi sua luat can doc
+// nguyen van, khong doc diem 0/1 — y chep tu Meta-Harness (arXiv 2603.28052).
+const vet = [];
+
+/** Dong cuoi cua cau tra loi, bo dong `[…]` nhu `cham()`. */
+function dongCuoi(ra) {
+  const dong = ra.split('\n').map((x) => x.trim()).filter((x) => x && !(x.startsWith('[') && x.endsWith(']')));
+  return dong.length ? dong[dong.length - 1] : '(rong)';
+}
 
 for (const d of de) {
   let diemKhong = null;
+  let loiGoi = false;
   if (!nhanh) {
     const a = hoi(d.hoi, false);
     if (a.loi) loi.push(`${d.ma} (khong luat): ${a.loi}`);
+    loiGoi ||= Boolean(a.loi);
     diemKhong = cham(d.dap, a.ra);
     spawnSync('sleep', [String(NGHI_GIAY)]);
   }
   const b = hoi(d.hoi, true);
   if (b.loi) loi.push(`${d.ma} (co luat): ${b.loi}`);
+  loiGoi ||= Boolean(b.loi);
   const diemCo = cham(d.dap, b.ra);
   spawnSync('sleep', [String(NGHI_GIAY)]);
 
   let ket;
-  if (nhanh) ket = diemCo ? 'LUAT AN' : 'HONG';
+  // Model khong tra loi (503, khoa sai…) thi cau nay KHONG DO duoc — khong duoc
+  // tinh la luat truot. Luat Linux `coding-assistants.rst` buoc 8: noi ro phan
+  // chua lam duoc.
+  if (loiGoi) ket = 'KHONG DO';
+  else if (nhanh) ket = diemCo ? 'LUAT AN' : 'HONG';
   else if (!diemKhong && diemCo) ket = 'LUAT AN';
   else if (diemKhong && diemCo) ket = 'THUA';
   else if (diemKhong && !diemCo) ket = 'CHUA DU';
@@ -132,15 +148,21 @@ for (const d of de) {
 
   const cot = nhanh ? `co luat ${diemCo}` : `khong luat ${diemKhong} -> co luat ${diemCo}`;
   console.log(`  ${d.ma.padEnd(14)} ${ket.padEnd(8)}  ${cot}`);
+  if (ket === 'CHUA DU' || ket === 'HONG') vet.push(`${d.ma}: can "${d.dap}", model ghi "${dongCuoi(b.ra)}"`);
 }
 
 if (loi.length) {
   console.log('Loi goi model:');
   for (const l of loi) console.log(`  ${l}`);
 }
+if (vet.length) {
+  console.log('Vet truot (dong cuoi, lan co luat):');
+  for (const v of vet) console.log(`  ${v}`);
+}
 
 console.log(
-  `Luat an ${dem['LUAT AN']} · thua ${dem.THUA} · chua du ${dem['CHUA DU']} · hong ${dem.HONG}`,
+  `Luat an ${dem['LUAT AN']} · thua ${dem.THUA} · chua du ${dem['CHUA DU']} · hong ${dem.HONG}` +
+    ` · khong do ${dem['KHONG DO']}`,
 );
 
 // Thuoc do khi con cau nao KHONG dat o lan CO luat. Cau `THUA` khong lam do
@@ -152,5 +174,12 @@ if (truot) {
       `  Sua LOI LUAT cho ro, dung sua bo de cho vua cau tra loi.\n` +
       `  Chi tiet cach doc bon ket qua: ${BO_DE}`,
   );
-  process.exit(1);
 }
+// Cau KHONG DO van lam do thuoc: chua do tron thi khong duoc bao dat.
+if (dem['KHONG DO']) {
+  console.error(
+    `KHONG DO: ${dem['KHONG DO']} cau — model khong tra loi (xem "Loi goi model").\n` +
+      `  Khong phai loi luat. Chay lai sau: node scripts/do_luat.mjs`,
+  );
+}
+if (truot || dem['KHONG DO']) process.exit(1);
