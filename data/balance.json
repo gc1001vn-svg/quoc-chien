@@ -17,7 +17,7 @@
 
   "gioChoDoiThe": 8,
   "thoiDai": [
-    { "so": 1, "hien": "Cổ đại", "soO": 2, "me": "trung_co_2", "len": { "soCongNghe": 6, "soNha": 200 } },
+    { "so": 1, "hien": "Cổ đại", "soO": 2, "me": "trung_co_2", "len": { "soCongNghe": 6, "soNha": 195 } },
     { "so": 2, "hien": "Trung cổ", "soO": 3, "me": "trung_co_2", "len": { "soCongNghe": 13, "soNha": 230 } },
     { "so": 3, "hien": "Súng ống", "soO": 4, "me": "trung_co_2", "len": { "soCongNghe": 20, "soNha": 270 } },
     { "so": 4, "hien": "Công nghiệp", "soO": 5, "me": "trung_co_2", "len": { "soCongNghe": 30, "soNha": 330 } },
