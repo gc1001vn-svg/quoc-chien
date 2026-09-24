@@ -7,9 +7,10 @@ Cập nhật: 24/09/2026 (lần 12 — **Phase 9 trận đánh chạy ngầm**).
 
 ## 1. Đang ở đâu
 
-**Phase 9 XONG. Game ở Phase 9/13.** Trận đánh tính trong Node, chưa nhìn thấy gì:
-`npm run sim:tran` 1000 trận **ĐẠT** — % dự đoán khớp tỉ lệ thắng thật (lệch ≤ 10 điểm
-mỗi khoảng, Brier 0,076). Chi tiết: `docs/NHAT_KY/PHASE_9.md`.
+**Phase 9 CHƯA CHỐT — soát lại 24/09 ra thước `sim:tran` không tin được.** Dự đoán %
+thắng đúng (20.000 trận lệch ≤ 3,2 điểm), nhưng thước chỉ ĐẠT **4/10 hạt giống** — nhiễu
+mẫu, không phải lỗi mô phỏng. Chờ anh chọn cách đo (mục 3). Chi tiết + phụ lục soát:
+`docs/NHAT_KY/PHASE_9.md`.
 
 **Việc phiên sau: Phase 10 — nướng sprite lính + `render/BattleScene.ts`** (mục 5).
 **Bước E: không cần anh xác nhận trên iPhone** — Phase 9 không đổi gì trên màn hình, bản
@@ -499,6 +500,14 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ❓ Việc 24/09 (lần 12) — chốt hai điều cho Phase 9
+
+1. **Thước `sim:tran`**: đề xuất đổi "±10 điểm từng khoảng" sang **lệch trung bình có
+   trọng số ≤ 4 điểm** trên đúng 1000 trận (đo 12 hạt giống: 1,3–2,3 — ổn định). Không
+   nới: cách cũ đạt hay hỏng tuỳ hạt giống, không phân biệt được dự đoán tốt hay xấu.
+2. **Đại bác, xe tăng 3 lính/đội** trái `GAME_SPEC` mục 6 (8–12). Giữ (ghi ngoại lệ vào spec
+   — file khoá) hay nâng lên 8 lính (phải cân lại)?
 
 ### ✅ Việc 23/09 (lần 9) — đo fps với thành phố to hơn: XONG 24/09, 59 fps
 
