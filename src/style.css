@@ -578,3 +578,33 @@ html, body {
     top: calc(env(safe-area-inset-top) + 92px);
   }
 }
+
+/* ---- Bang chinh so (`?chinh=1`) ------------------------------------------------------ */
+
+.bang-chinh {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 10px);
+  left: calc(env(safe-area-inset-left) + 10px);
+  right: calc(env(safe-area-inset-right) + 10px);
+  max-width: 420px;
+  z-index: 20;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.82);
+  color: var(--chu);
+  font-size: 13px;
+}
+.bang-chinh h2 { margin: 0 0 8px; font-size: 14px; color: var(--nhan); }
+.bang-chinh label { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; margin-bottom: 8px; }
+.bang-chinh input[type='range'] { grid-column: 1 / -1; width: 100%; }
+.bang-chinh output { grid-row: 1; grid-column: 2; font-variant-numeric: tabular-nums; }
+.bang-chinh-nut { display: flex; flex-wrap: wrap; gap: 6px; }
+.bang-chinh-nut button {
+  padding: 6px 11px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--chu);
+}
+.bang-chinh textarea { width: 100%; margin-top: 8px; min-height: 64px; font-size: 12px; box-sizing: border-box; }

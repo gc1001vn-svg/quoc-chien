@@ -1,0 +1,11 @@
+{
+  "_": "Bang chinh so tren may that (mo bang `?chinh=1`). Moi num keo la mot so trong data/*.json. So chinh chi song trong trinh duyet cua nguoi dang xem, chi ap khi URL co `?chinh=1`; muon giu thi bam `Chep so` roi dan cho tro ly ghi vao file goc.",
+  "_num": "`tep` la ten file data khong duoi, `truong` la khoa cap ngoai cung. `min` `max` `buoc` la gioi han thanh keo - so ngoai khoang bi bo qua, khong ap.",
+  "num": [
+    { "tep": "policy", "truong": "gioNoDu", "nhan": "Giờ no đủ thì dân kéo về", "min": 1, "max": 24, "buoc": 1 },
+    { "tep": "walkers", "truong": "nhipMoiBuoc", "nhan": "Nhịp mỗi bước chân (lớn = đi chậm)", "min": 1, "max": 10, "buoc": 1 },
+    { "tep": "walkers", "truong": "moiChuyen", "nhan": "Món mỗi chuyến vác", "min": 4, "max": 48, "buoc": 4 },
+    { "tep": "balance", "truong": "gioGianCach", "nhan": "Giờ tối thiểu giữa hai thẻ", "min": 0, "max": 12, "buoc": 1 },
+    { "tep": "balance", "truong": "gioChoDoiThe", "nhan": "Giờ chờ đổi thẻ chính sách", "min": 0, "max": 24, "buoc": 1 }
+  ]
+}
