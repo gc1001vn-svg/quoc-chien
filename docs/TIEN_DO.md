@@ -3,19 +3,25 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 24/09/2026 (lần 11 — **bảng chỉnh số làm rồi gỡ, rà ba repo ngoài**).
+Cập nhật: 24/09/2026 (lần 12 — **Phase 9 trận đánh chạy ngầm**).
 
 ## 1. Đang ở đâu
 
-**Phase 8D XONG. Game ở Phase 8D/13.** Đời 5 (Hiện đại, mẻ `hien_dai`) nay **tới được
-bằng cách chơi**: 120 giờ lên đời 4, 240 giờ lên đời 5 — trước kẹt đời 3. Chi tiết:
-`docs/NHAT_KY/PHASE_8D.md`.
+**Phase 9 XONG. Game ở Phase 9/13.** Trận đánh tính trong Node, chưa nhìn thấy gì:
+`npm run sim:tran` 1000 trận **ĐẠT** — % dự đoán khớp tỉ lệ thắng thật (lệch ≤ 10 điểm
+mỗi khoảng, Brier 0,076). Chi tiết: `docs/NHAT_KY/PHASE_9.md`.
 
-**Việc phiên sau: Phase 9 — trận đánh chạy ngầm, đúng `KE_HOACH.md`** (mục 5).
-Chủ dự án chốt 23/09: bản "Phase 9 = lên đời + nối chiến dịch" mà `TIEN_DO` cũ ghi là
-lệch kế hoạch gốc; phần lên đời làm thành 8D, phần nối chiến dịch vào kinh tế về nợ (mục 4).
-**Bước E hết treo:** ảnh iPhone 24/09 (bản 08:44, 50×, 0,35×) **59 fps · 17 ms · 3.547
-sprite**. Phiên sau mở thẳng Phase 9.
+**Việc phiên sau: Phase 10 — nướng sprite lính + `render/BattleScene.ts`** (mục 5).
+**Bước E: không cần anh xác nhận trên iPhone** — Phase 9 không đổi gì trên màn hình, bản
+Pages không khác trước. Phiên sau mở thẳng Phase 10.
+
+### Phiên 24/09 (lần 12) đã đổi gì — Phase 9
+
+- Mới: `src/sim/campaign/Battle.ts` · `BattleData.ts` · `BattleScript.ts` ·
+  `data/armor_table.json` · `units.json` · `battle.json` · `scripts/sim_tran.ts` ·
+  `tests/Battle.test.ts` (10 ca). Không sửa mã game đang chạy.
+- `npm run do` đầu phiên **16/17**: `do:luat` hỏng vì Gemini trả `503 UNAVAILABLE` (máy chủ
+  quá tải) — lỗi bên ngoài, không phải lỗi repo.
 
 ### Phiên 24/09 (lần 11) — bảng chỉnh số: làm rồi GỠ, không đổi gì trong game
 
@@ -939,14 +945,31 @@ quyền hạn và giới hạn máy ảo.
 - **`tayvuc`: `CLAUDE.md` 2.322 token**, vượt ngưỡng chung 1.600. Không cắt vì repo dừng
   hẳn; đặt ngưỡng tạm 2.400 kèm lý do trong `.claude/nguong_token.txt`, cắt khi mở lại.
 
+- **MỚI 24/09 (Phase 9): quân chưa đi giữa các tỉnh, trận chưa nối vào `ChienDich.ts`.**
+  Phase 9 chỉ có quân đi trên chiến trường 40×40. Cùng nhóm với nợ "chiến dịch chưa nối
+  kinh tế" ở trên — hỏi anh xếp vào phase nào.
+- **MỚI 24/09: cung thủ thuần yếu** — thắng quân hỗn hợp cùng tiền chỉ 7 % (`sim:tran`).
+  Thước chỉ cấm loại quá mạnh (> 65 %), không cấm loại yếu. Xem lại khi Phase 10 xem được trận.
+- **MỚI 24/09: đời 4 và đời 5 chung nhóm `hien_dai`** trong `data/units.json`; chưa có
+  lính đời 1/6 riêng và chưa nối lính với cây công nghệ (`tech.json` chưa mở lính nào).
+
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 9: trận đánh chạy ngầm
+## 5. Phiên sau — Phase 10: xem được trận đánh
 
-Đúng `KE_HOACH.md` mục 2: `sim/campaign/Battle.ts` + `BattleScript.ts` — bảng giáp × đạn
-kiểu OpenRA, quân đi trên bản đồ, headless. Thước: `npm run sim:tran` chạy **1000 trận**,
-tỉ lệ thắng thật khớp dự đoán (`KE_HOACH` mục 3). Thiết kế: `GAME_SPEC.md` mục 6.
+Đúng `KE_HOACH.md` mục 2: nướng sprite lính **8 hướng × 4 dáng** (đi, đánh, trúng đòn,
+chết) + `render/BattleScene.ts` phát kịch bản của `sim/campaign/BattleScript.ts`
+(`sinhKichBan`), có nút tăng tốc và bỏ qua. Thước (`KE_HOACH` mục 3): Claude tự xem trận
+trong máy ảo, chủ dự án đo fps lúc đánh. Quy mô: `GAME_SPEC.md` mục 6 (150–250 sprite động).
+
+**Việc đầu tiên: dò asset lính** — `npm run do:asset linh` (và `soldier`, `knight`,
+`archer`, `tank`), đủ ba bước + `kho-game`. Mẻ trung cổ 2× **hết chỗ atlas** (mục 2):
+lính phải vào atlas riêng, tính chỗ trước khi nướng (trần 4 trang, `TECH_SPEC` mục 2).
+
+**Kịch bản hiện chỉ có sự kiện cấp đội** (tiến · bắn loạt đầu · giáp lá cà · vỡ · kết
+thúc), chưa có vị trí từng nhịp. Phase 10 muốn diễn quân đi thì cho `tinhTran` ghi thêm vị
+trí đội theo giây — vẫn tính trước, không mô phỏng lại lúc vẽ.
 
 fps đã xác nhận 24/09 (59 fps). Rớt fps về sau thì **tăng** `gioNoDu` trong
 `data/policy.json` (dân về chậm hơn, thành phố nhỏ hơn), không đụng mã.
