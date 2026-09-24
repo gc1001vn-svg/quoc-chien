@@ -13,10 +13,10 @@
  * Sau khi chay: do 15/09, Chromium mo duoc `kenney.nl` `polyhaven.com` `itch.io`
  * `quaternius.com` — 4/4.
  *
- * CHU DU AN PHAI DOI CHE DO QUYEN TRUOC. O che do `Auto`, `apt-get update` bi bo loc
- * chan `[Containment Escape]` **du da co luat trong `.claude/settings.json`** — do 15/09,
- * ba bien the deu chan. Doi sang `Accept edits` o nut che do canh o soan tin thi qua.
- * Bang day du sau cach da thu: `docs/DAU_PHIEN.md`.
+ * CHE DO QUYEN. Do 24/09 o `Auto`: qua ngay lan dau, Chromium mo 4/4. Do 15/09 thi
+ * `apt-get update` bi bo loc chan `[Containment Escape]` du da co luat trong
+ * `.claude/settings.json`. Bi chan thi nho chu du an doi sang `Accept edits` o nut che do
+ * canh o soan tin, chay lai, xong doi ve `Auto`. Bang day du: `docs/DAU_PHIEN.md`.
  *
  * KHONG lam yeu TLS. No them dung mot CA — cua chinh proxy phien nay — vao kho tin cay
  * cua trinh duyet. Dung cach ma README cua proxy doi. Tuyet doi khong dung

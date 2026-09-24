@@ -320,10 +320,11 @@ mà không `apt-get update` được, **đường nạp CA vào NSS coi như t�
 npm run mo:mang
 ```
 
-**Chủ dự án phải đổi chế độ quyền sang `Accept edits` trước** (nút chế độ cạnh ô soạn tin,
-mặc định `Auto`). Ở `Auto`, `apt-get update` bị chặn `[Containment Escape]` **dù đã có luật
-trong `.claude/settings.json`** — đo 15/09, ba biến thể đều chặn. Đổi chế độ xong thì qua
-ngay, không cần mở phiên mới. Xong việc đổi lại `Auto`.
+**Chạy thẳng ở `Auto` trước.** Đo 24/09 ở `Auto`: chạy một lần là qua, Chromium mở được
+**4/4** (trước khi chạy: 0/4, `ERR_CERT_AUTHORITY_INVALID`). Đo 15/09 thì `apt-get update`
+bị chặn `[Containment Escape]` dù đã có luật trong `.claude/settings.json`, ba biến thể —
+bộ lọc đổi theo thời gian. **Bị chặn thì đừng mò đường vòng** (`[Auto-Mode Bypass]`): nhờ
+chủ dự án đổi nút chế độ cạnh ô soạn tin sang `Accept edits`, chạy lại, xong đổi về `Auto`.
 
 **Nguyên nhân gốc, tìm ra 15/09:** kho NSS của trình duyệt (`~/.pki/nssdb`) **RỖNG HOÀN
 TOÀN**, dù README của proxy (`/root/.ccr/README.md`) viết *"the browser NSS store ...
