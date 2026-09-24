@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 23/09/2026 (lần 9 — **Phase 8D: mở đường lên đời 4 và 5**).
+Cập nhật: 24/09/2026 (lần 10 — **8D vá: nhịp lên đời, lắp thẻ ô trống, đồ nghề Jules**).
 
 ## 1. Đang ở đâu
 
@@ -14,7 +14,18 @@ bằng cách chơi**: 120 giờ lên đời 4, 240 giờ lên đời 5 — trư�
 **Việc phiên sau: Phase 9 — trận đánh chạy ngầm, đúng `KE_HOACH.md`** (mục 5).
 Chủ dự án chốt 23/09: bản "Phase 9 = lên đời + nối chiến dịch" mà `TIEN_DO` cũ ghi là
 lệch kế hoạch gốc; phần lên đời làm thành 8D, phần nối chiến dịch vào kinh tế về nợ (mục 4).
-**Bước E đang treo:** anh đo fps iPhone với thành phố to hơn (mục 3) trước khi mở Phase 9.
+**Bước E hết treo:** ảnh iPhone 24/09 (bản 08:44, 50×, 0,35×) **59 fps · 17 ms · 3.547
+sprite**. Phiên sau mở thẳng Phase 9.
+
+### Phiên 24/09 (lần 10) đã đổi gì — vá 8D theo báo lỗi trên iPhone
+
+Chi tiết: hai phụ lục cuối `docs/NHAT_KY/PHASE_8D.md`.
+- Nhịp: nghiên cứu ×2, `soNha` đời 1 200→195 → Trung cổ ~13 phút ở 50× (trước 24).
+- **Lỗi thật:** lắp thẻ chính sách vào ô TRỐNG bị bắt chờ 8 giờ → nay lắp ngay.
+- Test `DieuKien` (Jules viết) vá: bắt 7/7 lỗi cài thử (trước 3/6).
+- Đồ nghề Jules ở kho: `ghi-nho/cong-cu/jules/` (`PHAN_VIEC.md` · `QUY_TAC.md` · `giao_jules.mjs`).
+- Chủ dự án hỏi "lên Trung cổ nhà không đổi": đúng thiết kế (đời 1–4 chung mẻ). Đề xuất
+  đổi màu mái/nền theo đời — **anh từ chối 24/09**, đừng đề xuất lại.
 
 ### Phiên 23/09 (lần 9) đã đổi gì — Phase 8D
 
@@ -471,7 +482,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 23/09 (lần 9) — đo fps với thành phố to hơn (Phase 8D)
+### ✅ Việc 23/09 (lần 9) — đo fps với thành phố to hơn: XONG 24/09, 59 fps
 
 Thành phố nay mọc tới ~380 công trình (trước 241). Mở game, **chạy nhanh 3× khoảng 10
 phút**, thu nhỏ hết cỡ, đọc nhãn fps góc màn hình, nhắn con số thấp nhất.
@@ -925,9 +936,8 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 kiểu OpenRA, quân đi trên bản đồ, headless. Thước: `npm run sim:tran` chạy **1000 trận**,
 tỉ lệ thắng thật khớp dự đoán (`KE_HOACH` mục 3). Thiết kế: `GAME_SPEC.md` mục 6.
 
-**Trước khi mở:** anh xác nhận fps iPhone với thành phố to (mục 3). Rớt fps thì sửa ngay
-trong 8D: **tăng** `gioNoDu` trong `data/policy.json` (dân về chậm hơn, thành phố nhỏ
-hơn), không đụng mã.
+fps đã xác nhận 24/09 (59 fps). Rớt fps về sau thì **tăng** `gioNoDu` trong
+`data/policy.json` (dân về chậm hơn, thành phố nhỏ hơn), không đụng mã.
 
 ### Nhắc trước khi nướng thêm mẻ
 
