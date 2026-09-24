@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 24/09/2026 (lần 11 — **bảng chỉnh số `?chinh=1`, học từ ba repo ngoài**).
+Cập nhật: 24/09/2026 (lần 11 — **bảng chỉnh số làm rồi gỡ, rà ba repo ngoài**).
 
 ## 1. Đang ở đâu
 
@@ -17,14 +17,12 @@ lệch kế hoạch gốc; phần lên đời làm thành 8D, phần nối chi�
 **Bước E hết treo:** ảnh iPhone 24/09 (bản 08:44, 50×, 0,35×) **59 fps · 17 ms · 3.547
 sprite**. Phiên sau mở thẳng Phase 9.
 
-### Phiên 24/09 (lần 11) đã đổi gì — bảng chỉnh số, không đổi số cân bằng nào
+### Phiên 24/09 (lần 11) — bảng chỉnh số: làm rồi GỠ, không đổi gì trong game
 
-Chi tiết: `docs/NHAT_KY/PHASE_8_BANG_CHINH.md`.
-- **`?chinh=1`**: bảng kéo năm số (`data/bang_chinh.json`) ngay trên máy, `Áp dụng` tải
-  lại trang với số mới, `Chép số` in dòng `data/<tệp>.json > <trường>: cũ → mới` để dán
-  cho trợ lý ghi vào file gốc. Link thường **luôn chạy số gốc**. Ý lấy từ
-  `jimliu/baoyu-design` (`make-tweakable`) — chữa bệnh "sáu vòng chỉnh" 19/09.
-- Rà `XiaomiMiMo/MiMo-code`, `mlc-ai/web-llm`: không lấy gì — lý do trong nhật ký.
+Chi tiết: `docs/NHAT_KY/PHASE_8_BANG_CHINH.md`. Làm bảng `?chinh=1` rồi đẩy `main`; chủ dự án
+thử xong thấy không cần → revert. Bài học chung ghi ở kho:
+`quyet-dinh/2026-09-24-cong-cu-chua-xin-thi-lam-ban-nhap.md`.
+Rà `XiaomiMiMo/MiMo-code`, `mlc-ai/web-llm`, 13 skill Matt Pocock chưa đọc: không lấy gì.
 
 ### Phiên 24/09 (lần 10) đã đổi gì — vá 8D theo báo lỗi trên iPhone
 
@@ -495,12 +493,6 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
-
-### Việc 24/09 (lần 11) — thử bảng chỉnh số trên iPhone (không gấp)
-
-Mở https://gc1001vn-svg.github.io/quoc-chien/?chinh=1 → kéo một thanh → bấm **Áp dụng**
-→ trang tải lại, tiêu đề ghi "đang chạy 1 số chỉnh". Bấm **Chép số** rồi dán cho trợ lý
-nếu muốn giữ số đó. **Về gốc** xoá hết. Không có `?chinh=1` là game chạy số gốc.
 
 ### ✅ Việc 23/09 (lần 9) — đo fps với thành phố to hơn: XONG 24/09, 59 fps
 

@@ -15,3 +15,11 @@ Chủ dự án giao: rà `XiaomiMiMo/MiMo-code`, `jimliu/baoyu-design`, `mlc-ai/
 - **Không lấy web-llm:** model nhỏ nhất dùng được cần 376 MB bộ nhớ đồ hoạ (SmolLM2-360M, chỉ tiếng Anh), biết tiếng Việt
   (Qwen3-0.6B) cần 1.403 MB — trần GPU cả game ~67 MB. AI của game chạy bằng luật trong `data/`, không cần mô hình ngôn ngữ.
 - **Không lấy prompt baoyu-design:** là prompt Claude Design chép lại, rủi ro bản quyền trong repo Public.
+
+## Phụ lục cùng ngày — GỠ bảng
+
+- Chủ dự án thử trên iPhone: "không biết nó dùng làm gì" → "gỡ đi, không cần". Revert commit `805bd5f`.
+- Gốc lỗi: năm num là số tính theo giờ game — đổi xong phải chơi lâu mới thấy khác; và đẩy thẳng `main` thay vì `npm run duyet`
+  (`DAU_PHIEN.md` mục G). Bài học chung: kho `quyet-dinh/2026-09-24-cong-cu-chua-xin-thi-lam-ban-nhap.md`.
+- Rà thêm 13 skill Matt Pocock chưa đọc 23/09. Chỉ `prototype` có ý dùng được (đã gộp vào bài học trên);
+  `retro` trùng việc `NHAT_KY` + thước đang làm; `to-questionnaire` dành cho hỏi người thứ ba, repo này chỉ có một chủ.
