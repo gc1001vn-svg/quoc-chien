@@ -2,11 +2,14 @@
  * Kiem tra viec doc va so sanh cac dieu kien kich hoat the/eureka.
  */
 import { describe, expect, it } from 'vitest';
-import { docDieuKien, dung, type SoThanhPho } from '../src/sim/decision/DieuKien.ts';
+import { docDieuKien, dung, type DieuKien, type SoThanhPho } from '../src/sim/decision/DieuKien.ts';
 import type { ThongKe } from '../src/sim/city/Cham.ts';
 import { LoiDuLieu } from '../src/sim/city/DocJson.ts';
 
-/** Tao bang thong ke gia de kiem tra. */
+/**
+ * Tao bang thong ke gia de kiem tra. MOI truong mot so KHAC NHAU: trung so thi doc nham
+ * truong nay sang truong kia van xanh (cai loi 24/09 do ra: 3/6 loi lot).
+ */
 function createMockStats(): ThongKe {
   return {
     gio: 10,
@@ -14,11 +17,11 @@ function createMockStats(): ThongKe {
     hang: [
       {
         ten: 'thep', hien: 'Thép',
-        ton: 40, tran: 100, lamRa: 5, dungHet: 3, cho: 0, day: 1, hong: 0
+        ton: 40, tran: 100, lamRa: 7, dungHet: 3, cho: 0, day: 1, hong: 4
       },
       {
         ten: 'gao', hien: 'Gạo',
-        ton: 10, tran: 50, lamRa: 0, dungHet: 10, cho: 20, day: 0, hong: 2
+        ton: 10, tran: 50, lamRa: 12, dungHet: 11, cho: 21, day: 13, hong: 2
       }
     ],
     walker: { chuyen: 100, boCuoc: 5, dinh: 20 }
@@ -57,6 +60,11 @@ describe('docDieuKien', () => {
       .toThrow(LoiDuLieu);
   });
 
+  it('nem loi neu gia am', () => {
+    expect(() => docDieuKien({ do: 'soNha', phep: '>=', gia: -1 }, 't'))
+      .toThrow(LoiDuLieu);
+  });
+
   it('nem loi neu gia khong dung chuan', () => {
     expect(() => docDieuKien({ do: 'soNha', phep: '>=', gia: '10' }, 't'))
       .toThrow(LoiDuLieu);
@@ -87,24 +95,34 @@ describe('dung', () => {
     expect(dung({ do: 'soNha', phep: '<', gia: 150 }, stats, cityStats)).toBe(false);
   });
 
+  /**
+   * Truong doc ra phai BANG dung `so`: `>= so` dung va `> so` sai. Chi kiem ve dung thi
+   * doc nham sang truong lon hon van xanh.
+   */
+  function docRa(dk: { do: DieuKien['do']; hang?: string }, so: number): void {
+    expect(dung({ ...dk, phep: '>=', gia: so }, stats, cityStats)).toBe(true);
+    expect(dung({ ...dk, phep: '>', gia: so }, stats, cityStats)).toBe(false);
+  }
+
   it('doc so walker', () => {
-    expect(dung({ do: 'dinh', phep: '>=', gia: 20 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'boCuoc', phep: '>=', gia: 5 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'chuyen', phep: '>=', gia: 100 }, stats, cityStats)).toBe(true);
+    docRa({ do: 'dinh' }, 20);
+    docRa({ do: 'boCuoc' }, 5);
+    docRa({ do: 'chuyen' }, 100);
   });
 
   it('doc so thanh pho', () => {
-    expect(dung({ do: 'soNha', phep: '>=', gia: 150 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'soKho', phep: '>=', gia: 3 }, stats, cityStats)).toBe(true);
+    docRa({ do: 'soNha' }, 150);
+    docRa({ do: 'soKho' }, 3);
   });
 
   it('doc so tung mat hang', () => {
-    expect(dung({ do: 'ton', hang: 'gao', phep: '>=', gia: 10 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'cho', hang: 'gao', phep: '>=', gia: 20 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'day', hang: 'thep', phep: '>=', gia: 1 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'hong', hang: 'gao', phep: '>=', gia: 2 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'lamRa', hang: 'thep', phep: '>=', gia: 5 }, stats, cityStats)).toBe(true);
-    expect(dung({ do: 'dungHet', hang: 'gao', phep: '>=', gia: 10 }, stats, cityStats)).toBe(true);
+    docRa({ do: 'ton', hang: 'gao' }, 10);
+    docRa({ do: 'cho', hang: 'gao' }, 21);
+    docRa({ do: 'day', hang: 'gao' }, 13);
+    docRa({ do: 'hong', hang: 'gao' }, 2);
+    docRa({ do: 'lamRa', hang: 'gao' }, 12);
+    docRa({ do: 'dungHet', hang: 'gao' }, 11);
+    docRa({ do: 'hong', hang: 'thep' }, 4);
   });
 
   it('sai khi khong co mat hang do trong bang thong ke', () => {
