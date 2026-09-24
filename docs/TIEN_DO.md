@@ -27,6 +27,11 @@ Chi tiết: hai phụ lục cuối `docs/NHAT_KY/PHASE_8D.md`.
 - Chủ dự án hỏi "lên Trung cổ nhà không đổi": đúng thiết kế (đời 1–4 chung mẻ). Đề xuất
   đổi màu mái/nền theo đời — **anh từ chối 24/09**, đừng đề xuất lại.
 
+### Phiên 23–24/09 (song song lần 8–10) — không chạm mã game
+
+Chi tiết: `docs/NHAT_KY/PHASE_8_DOC_LON.md`. Hook `chan_doc_lon` chặn `Read` trọn file
+quá ~10.000 token · `hoi_gemini.mjs --anh` · chọn Jules thay đường Gemini API trả phí.
+
 ### Phiên 23/09 (lần 9) đã đổi gì — Phase 8D
 
 - `Governor`: luật **dân kéo về** — đủ ăn `gioNoDu` giờ liền thì xây nhà tiêu thụ
