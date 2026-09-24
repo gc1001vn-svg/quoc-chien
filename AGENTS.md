@@ -14,6 +14,7 @@ Kho **Private** → phiên mới chưa có credential cho nó. Làm đúng thứ
 1. Chưa có `/home/user/ghi-nho` → gọi tool **`add_repo`** trước
    (`owner: gc1001vn-svg` · `repo: ghi-nho` · **`access: read`** là đủ), rồi
    `git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho`.
+   **Không gọi `register_repo_root`** — nạp thừa `CLAUDE.md` của kho, thêm một hộp thoại.
 2. Có rồi → `git -C /home/user/ghi-nho pull -q`.
 3. `cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md`
 
