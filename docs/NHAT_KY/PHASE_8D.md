@@ -36,3 +36,11 @@ Kế hoạch: `docs/ke-hoach/2026-09-23-phase-8d-len-doi.md`.
   11, đời 3 giờ 41, đời 4 giờ **70** (trước 88).
 - **Nhà không đổi khi lên Trung cổ: đúng thiết kế hiện tại, chưa phải lỗi** — đời 1–4 cùng
   mẻ `trung_co_2` (`balance.json > _me`). Mẻ riêng cho cổ đại / cận đại là Phase 12.
+
+## Phụ lục 24/09 (lần 3) — thước `do:luat` báo nhầm lỗi mạng thành luật trượt
+
+- **Vòng bắt:** `GEMINI_API_KEY=sai node scripts/do_luat.mjs --nhanh` → "11 câu vẫn trượt,
+  sửa LỜI LUẬT". Lần 503 trước cũng bị báo y vậy.
+- Nay: model không trả lời → `KHONG DO` (thước vẫn đỏ, ghi "không phải lỗi luật"); câu trượt
+  in dòng cuối nguyên văn ở `Vet truot`. Ý lấy từ Linux `coding-assistants.rst` bước 8 và
+  Meta-Harness. Đo trộn 3 loại (đạt · sai · 503 giả): đúng cả ba. `npm run do` 17/17.
