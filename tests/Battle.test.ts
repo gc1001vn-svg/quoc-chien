@@ -82,6 +82,18 @@ describe('tinhTran', () => {
   });
 });
 
+describe('do dai tran - GAME_SPEC muc 6: 30-60 giay', () => {
+  // Jules viet (soat 25/09): truoc khi giam sat thuong, tran guong 6 kiem si het trong 23,5 giay.
+  it('tran guong 6 kiem si keo dai tu 30 den tran giay', () => {
+    const vao: DauVaoTran = { a: { doi: Array<string>(6).fill('kiem_si'), tuong: 1 }, b: { doi: Array<string>(6).fill('kiem_si'), tuong: 1 }, diaHinh: 'dong_bang' };
+    for (let hat = 0; hat < 10; hat += 1) {
+      const kq = tinhTran(vao, duLieu, hat);
+      expect(kq.giayKetThuc).toBeGreaterThanOrEqual(30);
+      expect(kq.giayKetThuc).toBeLessThanOrEqual(duLieu.tranGiay);
+    }
+  });
+});
+
 describe('sinhKichBan', () => {
   it('mo bang hai ben tien o giay 0, dong bang ket thuc dung giay da tinh', () => {
     const kq = tinhTran(CAN, duLieu, 3);

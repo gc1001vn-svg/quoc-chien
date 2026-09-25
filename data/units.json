@@ -1,15 +1,15 @@
 {
   "_": "Cac loai doi trong tran (GAME_SPEC muc 6). Moi so mot linh: mau, sat_thuong moi giay. tam va toc_do tinh bang o chien truong. nhom = nhom can bang, `sim:tran` chi dem can tien trong cung nhom.",
   "doi": [
-    { "id": "giao_thu", "hien": "Giáo thủ", "nhom": "co", "doi": 1, "gia": 75,  "linh": 12, "mau": 10, "sat_thuong": 1, "tam": 1,  "toc_do": 3,   "giap": "da",    "dan": "dam" },
-    { "id": "kiem_si",  "hien": "Kiếm sĩ",  "nhom": "co", "doi": 2, "gia": 90,  "linh": 10, "mau": 12, "sat_thuong": 1.6, "tam": 1,  "toc_do": 3,   "giap": "xich",  "dan": "chem" },
-    { "id": "cung_thu", "hien": "Cung thủ", "nhom": "co", "doi": 1, "gia": 60,  "linh": 10, "mau": 8,  "sat_thuong": 0.9, "tam": 7,  "toc_do": 3,   "giap": "khong", "dan": "xuyen" },
-    { "id": "ky_binh",  "hien": "Kỵ binh",  "nhom": "co", "doi": 2, "gia": 105, "linh": 8,  "mau": 16, "sat_thuong": 1.5, "tam": 1,  "toc_do": 6,   "giap": "tam",   "dan": "chem" },
-    { "id": "hoa_mai",  "hien": "Lính hoả mai", "nhom": "sung", "doi": 3, "gia": 120,  "linh": 12, "mau": 10, "sat_thuong": 1.2, "tam": 6,  "toc_do": 3,   "giap": "da",    "dan": "xuyen" },
-    { "id": "dai_bac",  "hien": "Đại bác",  "nhom": "sung", "doi": 3, "gia": 150, "linh": 3,  "mau": 20, "sat_thuong": 6,   "tam": 12, "toc_do": 1.5, "giap": "khong", "dan": "no" },
-    { "id": "ky_sung",  "hien": "Kỵ súng",  "nhom": "sung", "doi": 3, "gia": 125, "linh": 8,  "mau": 18, "sat_thuong": 1.6, "tam": 1,  "toc_do": 6,   "giap": "da",    "dan": "chem" },
-    { "id": "bo_binh",  "hien": "Bộ binh",  "nhom": "hien_dai", "doi": 4, "gia": 60, "linh": 10, "mau": 10, "sat_thuong": 1.5, "tam": 8, "toc_do": 3,   "giap": "da",    "dan": "xuyen" },
-    { "id": "chong_tang", "hien": "Pháo chống tăng", "nhom": "hien_dai", "doi": 5, "gia": 95, "linh": 8, "mau": 12, "sat_thuong": 2.5, "tam": 10, "toc_do": 2.5, "giap": "da", "dan": "xuyen_giap" },
-    { "id": "xe_tang",  "hien": "Xe tăng",  "nhom": "hien_dai", "doi": 5, "gia": 150, "linh": 3,  "mau": 80, "sat_thuong": 8,   "tam": 9,  "toc_do": 4,   "giap": "xe",    "dan": "no" }
+    { "id": "giao_thu", "hien": "Giáo thủ", "nhom": "co", "doi": 1, "gia": 75,  "linh": 12, "mau": 10, "sat_thuong": 0.45, "tam": 1,  "toc_do": 1.35,   "giap": "da",    "dan": "dam" },
+    { "id": "kiem_si",  "hien": "Kiếm sĩ",  "nhom": "co", "doi": 2, "gia": 90,  "linh": 10, "mau": 12, "sat_thuong": 0.72, "tam": 1,  "toc_do": 1.35,   "giap": "xich",  "dan": "chem" },
+    { "id": "cung_thu", "hien": "Cung thủ", "nhom": "co", "doi": 1, "gia": 60,  "linh": 10, "mau": 8,  "sat_thuong": 0.405, "tam": 7,  "toc_do": 1.35,   "giap": "khong", "dan": "xuyen" },
+    { "id": "ky_binh",  "hien": "Kỵ binh",  "nhom": "co", "doi": 2, "gia": 105, "linh": 8,  "mau": 16, "sat_thuong": 0.675, "tam": 1,  "toc_do": 2.7,   "giap": "tam",   "dan": "chem" },
+    { "id": "hoa_mai",  "hien": "Lính hoả mai", "nhom": "sung", "doi": 3, "gia": 130,  "linh": 12, "mau": 10, "sat_thuong": 0.54, "tam": 6,  "toc_do": 1.35,   "giap": "da",    "dan": "xuyen" },
+    { "id": "dai_bac",  "hien": "Đại bác",  "nhom": "sung", "doi": 3, "gia": 150, "linh": 8,  "mau": 7.5, "sat_thuong": 1.013,   "tam": 12, "toc_do": 0.675, "giap": "khong", "dan": "no" },
+    { "id": "ky_sung",  "hien": "Kỵ súng",  "nhom": "sung", "doi": 3, "gia": 125, "linh": 8,  "mau": 18, "sat_thuong": 0.72, "tam": 1,  "toc_do": 2.7,   "giap": "da",    "dan": "chem" },
+    { "id": "bo_binh",  "hien": "Bộ binh",  "nhom": "hien_dai", "doi": 4, "gia": 60, "linh": 10, "mau": 10, "sat_thuong": 0.675, "tam": 8, "toc_do": 1.35,   "giap": "da",    "dan": "xuyen" },
+    { "id": "chong_tang", "hien": "Pháo chống tăng", "nhom": "hien_dai", "doi": 5, "gia": 95, "linh": 8, "mau": 12, "sat_thuong": 1.125, "tam": 10, "toc_do": 1.125, "giap": "da", "dan": "xuyen_giap" },
+    { "id": "xe_tang",  "hien": "Xe tăng",  "nhom": "hien_dai", "doi": 5, "gia": 150, "linh": 8,  "mau": 30, "sat_thuong": 1.35,   "tam": 9,  "toc_do": 1.8,   "giap": "xe",    "dan": "no" }
   ]
 }
