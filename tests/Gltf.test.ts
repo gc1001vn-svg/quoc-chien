@@ -236,19 +236,9 @@ function taoFileClip(): string {
   const j = {
     asset: { version: '2.0' },
     nodes: [{ name: 'canh' }],
-    animations: [{
-      name: 'quay',
-      channels: [{ sampler: 0, target: { node: 0, path: 'rotation' } }],
-      samplers: [{ input: 0, output: 1, interpolation: 'LINEAR' }],
-    }],
-    accessors: [
-      { bufferView: 0, componentType: 5126, count: 2, type: 'SCALAR' },
-      { bufferView: 1, componentType: 5126, count: 2, type: 'VEC4' },
-    ],
-    bufferViews: [
-      { buffer: 0, byteOffset: 0, byteLength: 8 },
-      { buffer: 0, byteOffset: 8, byteLength: 32 },
-    ],
+    animations: [{ name: 'quay', channels: [{ sampler: 0, target: { node: 0, path: 'rotation' } }], samplers: [{ input: 0, output: 1 }] }],
+    accessors: [['SCALAR', 0], ['VEC4', 1]].map(([type, bufferView]) => ({ bufferView, componentType: 5126, count: 2, type })),
+    bufferViews: [[0, 8], [8, 32]].map(([byteOffset, byteLength]) => ({ buffer: 0, byteOffset, byteLength })),
     buffers: [{ byteLength: dem.length, uri: `data:application/octet-stream;base64,${dem.toString('base64')}` }],
   };
   const duong: string = join(mkdtempSync(join(tmpdir(), 'clip-')), 'clip.gltf');
@@ -287,6 +277,17 @@ describe('docGltf hoat anh va gan xuong', () => {
     const d = dinhThu(q.dinh, 5);
     expect(d[0]).toBeCloseTo(-1);
     expect(d[1]).toBeCloseTo(2);
+  });
+
+  it('chiViTri: xuong quay thi model phu van dung thang, dich cong sau cung', () => {
+    const q = docGltf(duong, {
+      hoatAnh: { duong: clip, ten: 'quay', phan: 1 },
+      gan: [{ xuong: 'canh', duong, chiViTri: true, dich: [0, 0, 3] }],
+    });
+    const d = dinhThu(q.dinh, 5);
+    expect(d[0]).toBeCloseTo(1);
+    expect(d[1]).toBeCloseTo(2);
+    expect(d[2]).toBeCloseTo(3);
   });
 
   it('xuong gan khong ton tai thi bao loi', () => {

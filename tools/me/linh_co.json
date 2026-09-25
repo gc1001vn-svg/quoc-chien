@@ -1,0 +1,79 @@
+{
+  "ghi_chu": "Me linh thoi co (Phase 10A): giao thu, kiem si, cung thu, ky binh. Nguoi + cu dong KayKit (CC0), ngua Quaternius (CC0). Atlas RIENG, khong chung trang voi thanh pho - me trung co 2x da het cho. Sprite sinh tu `linh` (ham moRongLinh trong nuong_sprite.mjs), ten <doi>_<dang>_h<huong>_k<khung>.",
+  "kit": {
+    "ka": { "duong": "assets_source/adventurers", "loai": "glb" },
+    "kg": { "duong": "assets_source/adventurers", "loai": "gltf" },
+    "kv": { "duong": "assets_source/fantasy-weapons", "loai": "gltf" },
+    "an": { "duong": "assets_source/character-animations", "loai": "glb" },
+    "kq": { "duong": "assets_source/animals", "loai": "glb", "gamma": true }
+  },
+  "ghi_chu_bong": "Bong gon cho linh: so mac dinh (nga 0.55, no_them 0.1) la cho nha, voi linh cao 0,6 o no chiem gan nua o sprite.",
+  "bong": { "nga": 0.3, "no_cao": 0.1, "no_them": 0.02 },
+  "linh": {
+    "huong": 8,
+    "ghi_chu_khung": "Thoi diem lay mau trong clip, tinh bang phan do dai clip. Hai khung moi dang.",
+    "khung": {
+      "di": [0.25, 0.75],
+      "danh": [0.3, 0.6],
+      "trung": [0.25, 0.5],
+      "chet": [0.45, 1]
+    },
+    "doi": {
+      "giao_thu": {
+        "manh": {
+          "m": "ka:Barbarian", "ti_le": 0.25,
+          "gan": [{ "xuong": "handslot.r", "m": "kv:spear_A" }]
+        },
+        "dang": {
+          "di": { "m": "an:Rig_Medium_MovementBasic", "ten": "Walking_A" },
+          "danh": { "m": "an:Rig_Medium_CombatMelee", "ten": "Melee_2H_Attack_Stab" },
+          "trung": { "m": "an:Rig_Medium_General", "ten": "Hit_A" },
+          "chet": { "m": "an:Rig_Medium_General", "ten": "Death_A" }
+        }
+      },
+      "kiem_si": {
+        "manh": {
+          "m": "ka:Knight", "ti_le": 0.25,
+          "gan": [
+            { "xuong": "handslot.r", "m": "kg:sword_1handed" },
+            { "xuong": "handslot.l", "m": "kg:shield_badge_color" }
+          ]
+        },
+        "dang": {
+          "di": { "m": "an:Rig_Medium_MovementBasic", "ten": "Walking_A" },
+          "danh": { "m": "an:Rig_Medium_CombatMelee", "ten": "Melee_1H_Attack_Chop" },
+          "trung": { "m": "an:Rig_Medium_General", "ten": "Hit_A" },
+          "chet": { "m": "an:Rig_Medium_General", "ten": "Death_A" }
+        }
+      },
+      "cung_thu": {
+        "manh": {
+          "m": "ka:Ranger", "ti_le": 0.25,
+          "gan": [{ "xuong": "handslot.l", "m": "kg:bow_withString" }]
+        },
+        "dang": {
+          "di": { "m": "an:Rig_Medium_MovementBasic", "ten": "Walking_A" },
+          "danh": { "m": "an:Rig_Medium_CombatRanged", "ten": "Ranged_Bow_Release" },
+          "trung": { "m": "an:Rig_Medium_General", "ten": "Hit_A" },
+          "chet": { "m": "an:Rig_Medium_General", "ten": "Death_B" }
+        }
+      },
+      "ky_binh": {
+        "manh": {
+          "m": "kq:Horse", "ti_le": 0.25,
+          "gan": [{
+            "xuong": "Torso2", "m": "ka:Knight", "chi_vi_tri": true, "dich": [0, -0.8, 0],
+            "hoat_anh": { "m": "an:Rig_Medium_Simulation", "ten": "Sit_Chair_Idle", "phan": 0 },
+            "gan": [{ "xuong": "handslot.r", "m": "kg:sword_1handed" }]
+          }]
+        },
+        "dang": {
+          "di": { "m": "kq:Horse", "ten": "AnimalArmature|Walk" },
+          "danh": { "m": "kq:Horse", "ten": "AnimalArmature|Attack_Kick" },
+          "trung": { "m": "kq:Horse", "ten": "AnimalArmature|Idle_HitReact_Left" },
+          "chet": { "m": "kq:Horse", "ten": "AnimalArmature|Death" }
+        }
+      }
+    }
+  }
+}

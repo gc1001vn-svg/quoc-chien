@@ -338,6 +338,7 @@ function boTiLe(m) {
  * @param {(tenAnh: string) => number} [tuyChon.traAnh] Doi ten file anh thanh chi so anh
  *   toan cuc (>= 0), hay -1 neu khong tim ra.
  * @param {Record<string, number[]>} [tuyChon.mau_vl] Ten material -> mau nhan rieng.
+ * @param {boolean} [tuyChon.gamma] Doi `baseColorFactor` tu tuyen tinh sang sRGB.
  * @param {{duong: string, ten: string, phan: number}} [tuyChon.hoatAnh] Dat tu the theo
  *   clip `ten` trong file `duong` (co the la file khac, khop xuong theo ten), tai `phan`
  *   (0..1) do dai clip. Ap TRUOC bang `dang`.
@@ -348,6 +349,7 @@ function boTiLe(m) {
  */
 export function docGltf(duong, tuyChon = {}) {
   const { dang = {}, guong = false, traAnh = null, mau_vl: mauVl = {}, xuong: locXuong = null } = tuyChon;
+  const gamma = tuyChon.gamma === true;
   const tuThe = tuyChon.hoatAnh === undefined ? null
     : mauClip(docClip(tuyChon.hoatAnh.duong, tuyChon.hoatAnh.ten), tuyChon.hoatAnh.phan);
   // Doc duoc ca `.gltf` (JSON + `.bin` roi) lan `.glb` (goi nhi phan mot file).
@@ -409,14 +411,21 @@ export function docGltf(duong, tuyChon = {}) {
     for (const p of j.meshes[n.mesh].primitives) {
       // Che do ve khac tam giac (diem, duong) khong dung de nuong.
       if ((p.mode ?? 4) !== 4) continue;
-      themPrim(j, dem, p, coXuong ? null : cuaNode, xuong, giu, traAnh, mauVl, ra, min, max);
+      themPrim(j, dem, p, coXuong ? null : cuaNode, xuong, giu, traAnh, mauVl, gamma, ra, min, max);
     }
   }
 
   for (const g of tuyChon.gan ?? []) {
     const k = nodes.findIndex((n) => n.name === g.xuong);
     if (k < 0) throw new Error(`${duong}: khong co xuong "${g.xuong}" de gan ${g.duong}`);
-    const m = boTiLe(theGioi[k] ?? donVi());
+    // `chiViTri`: lay moi vi tri xuong, giu model phu dung thang - nguoi cuoi ngua phai
+    // ngoi thang du xuong lung ngua nghieng theo buoc chay. `dich` cong them sau cung.
+    const tg = theGioi[k] ?? donVi();
+    const m = g.chiViTri === true ? tuTRS([tg[12], tg[13], tg[14]], [0, 0, 0, 1], [1, 1, 1]) : boTiLe(tg);
+    const [dx, dy, dz] = g.dich ?? [0, 0, 0];
+    m[12] += dx;
+    m[13] += dy;
+    m[14] += dz;
     const phu = docGltf(g.duong, g.tuyChon ?? {}).dinh;
     for (let i = 0; i < phu.length; i += BUOC) {
       const d = diem(m, phu[i], phu[i + 1], phu[i + 2]);
@@ -433,13 +442,15 @@ export function docGltf(duong, tuyChon = {}) {
 }
 
 /** Mau nhan va chi so anh cua mot material. O `anh` la CHI SO + 1; 0 nghia la khong anh. */
-function vatLieu(j, p, traAnh, mauVl) {
+function vatLieu(j, p, traAnh, mauVl, gamma) {
   const m = j.materials?.[p.material];
   if (m === undefined) return { kd: [1, 1, 1], anh: 0 };
   const pbr = m.pbrMetallicRoughness ?? {};
   const son = mauVl[m.name];
+  // `baseColorFactor` la mau TUYEN TINH (dac ta glTF); trang nuong hieu mau la sRGB.
+  // Quaternius to ngua bang mau phang nen khong doi thi ngua ra gan den - do 25/09.
   const kd = (pbr.baseColorFactor ?? [1, 1, 1]).slice(0, 3)
-    .map((v, k) => v * (son === undefined ? 1 : son[k]));
+    .map((v, k) => (gamma ? v ** (1 / 2.2) : v) * (son === undefined ? 1 : son[k]));
   const te = pbr.baseColorTexture;
   if (te === undefined) return { kd, anh: 0 };
   // Anh nhung trong GLB khong co `uri`; KayKit de ban PNG cung ten nam canh file.
@@ -457,7 +468,7 @@ function vatLieu(j, p, traAnh, mauVl) {
  * Mot tam giac chi vao neu CA BA dinh deu bam vao xuong duoc giu, khong thi cat dau se
  * keo theo mot vanh tam giac noi sang co va vai.
  */
-function themPrim(j, dem, p, cuaNode, xuong, giu, traAnh, mauVl, ra, min, max) {
+function themPrim(j, dem, p, cuaNode, xuong, giu, traAnh, mauVl, gamma, ra, min, max) {
   const vt = docAcc(j, dem, p.attributes.POSITION);
   const so = vt.length / 3;
   const pt = p.attributes.NORMAL === undefined ? null : docAcc(j, dem, p.attributes.NORMAL);
@@ -467,7 +478,7 @@ function themPrim(j, dem, p, cuaNode, xuong, giu, traAnh, mauVl, ra, min, max) {
   const chiSo = p.indices === undefined
     ? Array.from({ length: so }, (_, i) => i)
     : docAcc(j, dem, p.indices);
-  const vl = vatLieu(j, p, traAnh, mauVl);
+  const vl = vatLieu(j, p, traAnh, mauVl, gamma);
 
   // Tron da: moi dinh chiu tu mot toi bon xuong, cong lai theo trong so.
   const viTri = new Float64Array(so * 3);

@@ -25,6 +25,10 @@ sang cả dự án.
 | `hien_dai_2x_1.png` | Trang atlas **trống** 1×1 trong suốt, do `tools/nuong_sprite.mjs` sinh ra để đệm cho đủ số trang bằng mẻ trung cổ — không chứa hình của ai | Dự án | MIT | 19/09/2026 |
 | `hien_dai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
 | `hien_dai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
+| `linh_co_1x_0.png` | KayKit Adventurers 2.0 (lính, kiếm, khiên, cung) + KayKit Character Animations (đi, đánh, trúng đòn, chết) + KayKit Fantasy Weapons (giáo) + Quaternius Animals (ngựa) — mẻ lính thời cổ, Phase 10A, <https://kaylousberg.itch.io> · <https://quaternius.com> | Kay Lousberg · Quaternius (Tomás Laulhé) | CC0 1.0 | 25/09/2026 |
+| `linh_co_2x_0.png` | KayKit Adventurers 2.0 (lính, kiếm, khiên, cung) + KayKit Character Animations (đi, đánh, trúng đòn, chết) + KayKit Fantasy Weapons (giáo) + Quaternius Animals (ngựa) — mẻ lính thời cổ, Phase 10A, <https://kaylousberg.itch.io> · <https://quaternius.com> | Kay Lousberg · Quaternius (Tomás Laulhé) | CC0 1.0 | 25/09/2026 |
+| `linh_co_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 25/09/2026 |
+| `linh_co_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 25/09/2026 |
 
 
 Atlas là ảnh **nướng lại** từ model 3D CC0 bằng `tools/nuong_sprite.mjs`, không phải bản
@@ -44,6 +48,10 @@ Gói nguồn đang dùng, **tất cả CC0 1.0**, license đọc thẳng trong `
 | **LowPoly Animated Animals** — lợn và cừu cho trại chăn nuôi (thêm 11/09). 7 con: `Cow` `Horse` `Llama` `Pig` `Pug` `Sheep` `Zebra`, thư mục `lowpoly-animated-animals` | Quaternius | `node tools/tai_itch.mjs quaternius/lowpoly-animated-animals` |
 | Fantasy Town Kit 2.0 · Tower Defense Kit · Castle Kit · Nature Kit | Kenney | `npm run tai:asset` |
 | KayKit Medieval Builder Pack 1.0 | Kay Lousberg | `npm run tai:itch` |
+| **KayKit Adventurers 2.0** — hiệp sĩ, man binh, cung thủ + kiếm, khiên, cung (mẻ `linh_co`, thêm 25/09), thư mục `adventurers` | Kay Lousberg | `npm run kho:lay kaykit/adventurers` |
+| **KayKit Character Animations** — cử động đi, đánh, trúng đòn, chết, ngồi (mẻ `linh_co`, thêm 25/09), thư mục `character-animations` | Kay Lousberg | `npm run kho:lay kaykit/character-animations` |
+| **KayKit Fantasy Weapons** — cây giáo `spear_A` (mẻ `linh_co`, thêm 25/09), thư mục `fantasy-weapons` | Kay Lousberg | `npm run kho:lay kaykit/fantasy-weapons` |
+| **Quaternius Animals** — ngựa kỵ binh (mẻ `linh_co`, thêm 25/09), thư mục `animals` | Quaternius | `npm run kho:lay quaternius/animals` |
 | KayKit City Builder Bits 1.0 (để dành thời hiện đại, Phase 8) | Kay Lousberg | `npm run tai:itch` |
 | **City Kit (Suburban)** — 21 dáng nhà ở, hàng rào, lối đi, bồn hoa, cây (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-suburban` |
 | **City Kit (Commercial)** — 19 dáng nhà phố, mái hiên, dù che (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-commercial` |

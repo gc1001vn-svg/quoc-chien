@@ -252,6 +252,83 @@ function khoaManh(p) {
 }
 
 /**
+ * Kit dung chung mot anh -> moi material co anh deu tro ve dung anh do.
+ * Kit khai `"anh": "mtl"` -> tra ten file ghi trong .mtl, tim trong thu muc anh.
+ */
+function traAnhCua(k, soAnh) {
+  return k.theoMtl
+    ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(timAnh(k.thuMucAnh, tenAnh)))
+    : () => (k.anh === null ? -1 : soAnh.them(k.anh));
+}
+
+/** `"ma:ten"` -> duong file model cua kit do. */
+function duongModel(m, kit) {
+  const [ma, ten] = m.split(':');
+  const k = kit[ma];
+  if (k === undefined) throw new Error(`manh "${m}": khong co kit "${ma}"`);
+  return join(k.duong, `${ten}${k.duoiModel}`);
+}
+
+/**
+ * Tuy chon cho `docGltf` tu mot manh cua me. Doc de quy cho `gan`: vu khi gan vao tay,
+ * nguoi cuoi gan vao lung ngua, kiem gan vao tay nguoi cuoi.
+ *
+ *   `hoat_anh`  `{ "m": "an:Rig_Medium_General", "ten": "Death_A", "phan": 1 }`
+ *   `gan`       `[{ "xuong": "handslot.r", "m": "kv:spear_A", "chi_vi_tri", "dich", ... }]`
+ */
+function tuyChonGltf(p, kit, soAnh, bangDang) {
+  const ha = p.hoat_anh;
+  return {
+    dang: bangDang[p.dang] ?? {},
+    guong: p.guong === true,
+    xuong: p.xuong ?? null,
+    traAnh: traAnhCua(kit[p.m.split(':')[0]], soAnh),
+    mau_vl: p.mau_vl ?? {},
+    gamma: kit[p.m.split(':')[0]].gamma,
+    hoatAnh: ha === undefined ? undefined : { duong: duongModel(ha.m, kit), ten: ha.ten, phan: ha.phan },
+    gan: (p.gan ?? []).map((g) => ({
+      xuong: g.xuong,
+      duong: duongModel(g.m, kit),
+      chiViTri: g.chi_vi_tri === true,
+      dich: g.dich,
+      tuyChon: tuyChonGltf({ ...g, xuong: undefined }, kit, soAnh, bangDang),
+    })),
+  };
+}
+
+/**
+ * Sinh sprite linh tu khai bao gon `me.linh`: moi doi x `huong` huong x moi dang x moi
+ * khung. Ten ra `<doi>_<dang>_h<huong>_k<khung>`.
+ *
+ * VI SAO KHONG CHEP TAY: 4 doi x 8 huong x 4 dang x 2 khung = 256 sprite. Moi sprite
+ * khac nhau dung hai so (goc xoay, thoi diem trong clip) - chep ra 256 muc JSON thi sua
+ * mot cay giao phai sua 64 cho.
+ *
+ * Huong `h` xoay model `h * 360 / huong` do quanh truc dung: model nhin theo +z, xoay
+ * `a` do thi nhin theo (sin a, cos a) tren mat dat - `render/BattleScene.ts` chon huong
+ * theo dung cong thuc nay.
+ */
+function moRongLinh(linh) {
+  const ra = {};
+  if (linh === undefined) return ra;
+  for (const [doi, d] of Object.entries(linh.doi)) {
+    for (const [dang, clip] of Object.entries(d.dang)) {
+      const khung = clip.khung ?? linh.khung[dang];
+      for (let h = 0; h < linh.huong; h += 1) {
+        khung.forEach((phan, k) => {
+          ra[`${doi}_${dang}_h${h}_k${k}`] = [{
+            ...d.manh,
+            ry: (d.manh.ry ?? 0) + (h * 360) / linh.huong,
+            hoat_anh: { m: clip.m, ten: clip.ten, phan },
+          }];
+        });
+      }
+    }
+  }
+  return ra;
+}
+
+/**
  * Ghep cac manh cua mot sprite thanh mot mang dinh duy nhat, da xoay va da dich.
  *
  * `bangDang` la bang dang dung chung ca me (`me.dang`): ten dang -> ten xuong -> ba goc
@@ -267,19 +344,9 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
     }
     const [ma, ten] = p.m.split(':');
     const k = kit[ma];
-    // Kit dung chung mot anh -> moi material co anh deu tro ve dung anh do.
-    // Kit khai `"anh": "mtl"` -> tra ten file ghi trong .mtl, tim trong thu muc anh.
-    const traAnh = k.theoMtl
-      ? (tenAnh) => (tenAnh === '' ? -1 : soAnh.them(timAnh(k.thuMucAnh, tenAnh)))
-      : () => (k.anh === null ? -1 : soAnh.them(k.anh));
+    const traAnh = traAnhCua(k, soAnh);
     const { dinh } = k.laGltf
-      ? docGltf(join(k.duong, `${ten}${k.duoiModel}`), {
-        dang: bangDang[p.dang] ?? {},
-        guong: p.guong === true,
-        xuong: p.xuong ?? null,
-        traAnh,
-        mau_vl: p.mau_vl ?? {},
-      })
+      ? docGltf(duongModel(p.m, kit), tuyChonGltf(p, kit, soAnh, bangDang))
       : docObj(
         join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh,
         p.mau_cot === undefined ? null : { so: k.soCot, mau: p.mau_cot },
@@ -355,8 +422,14 @@ const DEN = (() => {
   return v.map((x) => x / d);
 })();
 
-/** Tam va ban kinh cua vet bong tren mat dat, do tu hop bao chan cua model. */
-function doBong(dinh) {
+/**
+ * Tam va ban kinh cua vet bong tren mat dat, do tu hop bao chan cua model.
+ *
+ * `hs` = `me.bong`: `nga` (bong dai bao nhieu lan chieu cao), `no_cao`, `no_them` (loang
+ * ra theo chieu cao va mot khoang co dinh, don vi o luoi). Mac dinh la so cua nha. Linh
+ * cao 0,6 o ma giu `no_them` 0,1 cua nha thi bong chiem gan nua o sprite - do 25/09.
+ */
+function doBong(dinh, hs = {}) {
   const lo = [Infinity, Infinity];
   const hi = [-Infinity, -Infinity];
   for (let i = 0; i < dinh.length; i += BUOC) {
@@ -368,10 +441,10 @@ function doBong(dinh) {
   }
   // Bong nga theo huong den, xa dan theo do cao cua vat.
   const cao = Math.max(...[...Array(dinh.length / BUOC)].map((_, i) => dinh[i * BUOC + 1]));
-  const nga = (cao * 0.55) / DEN[1];
+  const nga = (cao * (hs.nga ?? 0.55)) / DEN[1];
   // Vat cang cao bong cang loang ra - dung the that nhung o day chu yeu de bong tho ra
   // khoi bong dang vat, khong thi no nam gon duoi chan va coi nhu khong co.
-  const no = cao * 0.20 + 0.10;
+  const no = cao * (hs.no_cao ?? 0.20) + (hs.no_them ?? 0.10);
   return {
     cx: (lo[0] + hi[0]) / 2 - DEN[0] * nga,
     cz: (lo[1] + hi[1]) / 2 - DEN[2] * nga,
@@ -441,13 +514,13 @@ async function nuong(tenMe, heSo) {
   const dinhTheoTen = new Map();
   const oCanXep = [];
   const phu = new Map();
-  for (const [ten, phan] of Object.entries(noiBanSao(me.sprite))) {
+  for (const [ten, phan] of Object.entries(noiBanSao({ ...(me.sprite ?? {}), ...moRongLinh(me.linh) }))) {
     const dinh = ghep(phan, kit, soAnh, me.dang ?? {});
     // Sprite toan manh `phang` la o nen: KHONG co bong. Bong lam hai viec sai cung luc -
     // no nong hop bao them 15% (o nen ra 150 px thay vi dung 128), va mot o nen do bong
     // xuong chinh no thi vo nghia. Vat the dat tren tam phang van co bong nhu thuong.
     const chiPhang = phan.every((x) => x.phang !== undefined);
-    const bong = chiPhang ? null : doBong(dinh);
+    const bong = chiPhang ? null : doBong(dinh, me.bong);
     const o = doO(dinh, ppu, bong);
     dinhTheoTen.set(ten, Buffer.from(dinh.buffer));
     oCanXep.push({ ten, w: o.w, h: o.h });
