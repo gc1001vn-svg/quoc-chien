@@ -70,6 +70,8 @@ const LICENSE_NHAN = ['CREATIVE_COMMONS_BY', 'CREATIVE_COMMONS_0'];
  * lot vao kho vi truoc day co GLTF1 trong danh sach nay.
  */
 const FORMAT_UU_TIEN = ['GLB', 'GLTF2'];
+/** Host curl loi het luot thu trong lan chay nay - `mocThat` bo qua ngay. */
+const HOST_CHET = new Set();
 
 const doi = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -97,7 +99,17 @@ async function curl(args, lan = 4) {
  * URL cua host backblaze khong co chuyen huong - no ve thang qua nhanh 200.
  */
 async function mocThat(url) {
-  const dau = (await curl(['-I', url])).toString();
+  // Host da chet mot lan trong lan chay nay thi khong thu lai: moi lan thu mat ~30s
+  // (4 luot curl + cho), 55 model x vai file la hon mot tieng cho mot host khong song.
+  const host = new URL(url).host;
+  if (HOST_CHET.has(host)) throw new Error(`${host} da chet trong lan chay nay`);
+  let dau;
+  try {
+    dau = (await curl(['-I', url])).toString();
+  } catch (loi) {
+    HOST_CHET.add(host);
+    throw loi;
+  }
   const loc = (dau.match(/^location: (\S+)/im) || [])[1];
   if (loc) return loc;
   // Dong dau la `HTTP/1.1 200 Connection Established` cua proxy phien - lay ma CUOI cung,
@@ -163,9 +175,17 @@ function tenFile(f) {
 
 /** Tai mot ban (format) ve `dich`. Tra ve false khi wayback khong co ban luu tu te. */
 async function taiMotBan(f, dich) {
-  const moc = await mocThat(f.root.url);
-  if (!moc) return false;
-  await curl(['-o', dich, moc]);
+  // Host nay chet (curl loi het luot thu) thi coi nhu ban nay hong, de vong ngoai thu ban
+  // ke o host kia. Do 25/09: `web.archive.org` tra `Connection reset by peer` moi lan,
+  // loi nem thang ra ngoai lam hong ca model du ban backblaze van `200`.
+  try {
+    const moc = await mocThat(f.root.url);
+    if (!moc) return false;
+    await curl(['-o', dich, moc]);
+  } catch { /* host chet: tra false de thu ban ke */
+    rmSync(dich, { force: true });
+    return false;
+  }
   const dau = existsSync(dich) ? readFileSync(dich).subarray(0, 5).toString() : '';
   // Wayback tra trang HTML (hay rong) khi thieu ban luu - xoa, dung de file rac nam lai.
   if (dau.startsWith('glTF') || dau.trimStart().startsWith('{')) return true;
@@ -185,8 +205,12 @@ async function taiFilePhu(f, dich, thuMuc) {
     const rd = join(thuMuc, (r.relativePath || '').replace(/[^\w./-]/g, '_'));
     if (existsSync(rd) && statSync(rd).size > 0) continue;
     mkdirSync(dirname(rd), { recursive: true });
-    const rm = await mocThat(r.url);
-    if (rm) await curl(['-o', rd, rm]);
+    // Ban backblaze van khai `resources` tro sang wayback. Wayback chet thi bo qua: vong
+    // duoi suy URL tu chinh file `.gltf` (cung host backblaze) va lay duoc (do 25/09).
+    try {
+      const rm = await mocThat(r.url);
+      if (rm) await curl(['-o', rd, rm]);
+    } catch { /* host chet: vong suy URL duoi day lay thay */ }
   }
   if (dich.toLowerCase().endsWith('.glb')) return;
 
