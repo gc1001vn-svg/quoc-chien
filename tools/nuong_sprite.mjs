@@ -320,11 +320,13 @@ function moRongLinh(linh) {
       const khung = doan.flatMap((c) => (c.khung ?? linh.khung[dang]).map((phan) => ({ m: c.m, ten: c.ten, phan })));
       for (let h = 0; h < linh.huong; h += 1) {
         khung.forEach((ha, k) => {
-          ra[`${doi}_${dang}_h${h}_k${k}`] = [{
-            ...d.manh,
-            ry: (d.manh.ry ?? 0) + (h * 360) / linh.huong,
+          // `manh` mot manh hay nhieu manh (than + dau cat tu bo nguoi goc, nhu nguoi dan
+          // trong me thanh pho) - moi manh cung xoay, cung mot tu the.
+          ra[`${doi}_${dang}_h${h}_k${k}`] = (Array.isArray(d.manh) ? d.manh : [d.manh]).map((m) => ({
+            ...m,
+            ry: (m.ry ?? 0) + (h * 360) / linh.huong,
             hoat_anh: ha,
-          }];
+          }));
         });
       }
     }

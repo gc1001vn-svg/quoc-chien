@@ -136,26 +136,35 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
     };
 
     gl.batDauKhung();
-    // Lop nen truoc, roi de mau, roi linh - cung luat hai lop cua `VeCanh`.
-    for (let a = 0; a < canh; a += O_DAT) {
-      for (let b = 0; b < canh; b += O_DAT) {
-        datSprite(ve, neoX(a + O_DAT / 2, b + O_DAT / 2, oPx), neoY(a + O_DAT / 2, b + O_DAT / 2, oPx), `dat_${String(((a + b) / O_DAT) % 2)}`);
+    // Lop nen truoc, roi de mau, roi linh - cung luat hai lop cua `VeCanh`. Bon nut tat lop
+    // cua `Perf` (Nen · Nha=de phe · Nguoi · Hieu ung=mui ten + chu) de do tren iPhone xem
+    // lop nao an fps - 25/09 man tran 29-30 fps, CPU tinh linh chi 0,06 ms/khung.
+    if (perf.dangBat('nen')) {
+      for (let a = 0; a < canh; a += O_DAT) {
+        for (let b = 0; b < canh; b += O_DAT) {
+          datSprite(ve, neoX(a + O_DAT / 2, b + O_DAT / 2, oPx), neoY(a + O_DAT / 2, b + O_DAT / 2, oPx), `dat_${String(((a + b) / O_DAT) % 2)}`);
+        }
       }
     }
     const linh: LinhVe[] = dien.linhLuc(giay);
-    for (const l of linh) {
-      if (!l.ten.includes('_chet_')) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), `de_${l.ben}`);
+    if (perf.dangBat('nha')) {
+      for (const l of linh) {
+        if (!l.ten.includes('_chet_')) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), `de_${l.ben}`);
+      }
     }
-    for (const l of linh) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), l.ten);
+    if (perf.dangBat('nguoi')) for (const l of linh) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), l.ten);
     // Mui ten ve sau cung, nang len theo do cao: mot o cao chieu len man bang `CAO_O * oPx`.
-    const muiTen: MuiTen[] = dien.muiTenLuc(giay);
+    const hieuUng: boolean = perf.dangBat('hieuUng');
+    const muiTen: MuiTen[] = hieuUng ? dien.muiTenLuc(giay) : [];
     for (const m of muiTen) datSprite(ve, neoX(m.a, m.b, oPx), neoY(m.a, m.b, oPx) - m.cao * CAO_O * oPx, m.ten);
     const lenhVe: number = gl.ketThucKhung();
 
     const xong: boolean = giay >= kq.giayKetThuc;
-    dau.textContent = `Dự đoán ta thắng ${String(phanTram)}% · giây ${String(Math.floor(Math.min(giay, kq.giayKetThuc)))}/${String(Math.round(kq.giayKetThuc))}`
+    dau.hidden = !hieuUng;
+    nhatKy.hidden = !hieuUng;
+    if (hieuUng) dau.textContent = `Dự đoán ta thắng ${String(phanTram)}% · giây ${String(Math.floor(Math.min(giay, kq.giayKetThuc)))}/${String(Math.round(kq.giayKetThuc))}`
       + (xong ? ` · ${kq.thang === 'a' ? 'TA THẮNG' : 'TA THUA'} · ta mất ${String(kq.chetA)}/${String(kq.linhA)}, địch mất ${String(kq.chetB)}/${String(kq.linhB)}` : '');
-    veNhatKy(nhatKy, kichBan, giay);
+    if (hieuUng) veNhatKy(nhatKy, kichBan, giay);
     perf.datGhiChu(`${PHIEN_BAN} · trận · ${String(ve.dem)} sprite · ${String(lenhVe)} lệnh vẽ · ${cam.zoom().toFixed(2)}×`);
     requestAnimationFrame(veMotKhung);
   };
