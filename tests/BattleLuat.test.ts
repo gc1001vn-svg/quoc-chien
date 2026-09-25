@@ -126,6 +126,56 @@ describe('tinhTran - tung luat', () => {
   });
 });
 
+describe('doc du lieu hong - soat 24/09 (Jules + Claude)', () => {
+  const doiSai = (khac: Record<string, unknown>): { doi: Record<string, unknown>[] } => ({ doi: [taoDoi('loi', khac)] });
+
+  it('so trong units.json phai la so huu han dung mien', () => {
+    for (const khac of [
+      { linh: Number.NaN }, { linh: 2.5 }, { mau: '10' }, { mau: Number.NaN }, { sat_thuong: -1 },
+      { sat_thuong: Number.NaN }, { tam: 0 }, { toc_do: -1 }, { gia: 0 }, { linh: undefined },
+    ]) {
+      expect(() => docDuLieuTran(BANG, doiSai(khac), TRAN), JSON.stringify(khac)).toThrow(/loi/);
+    }
+  });
+
+  it('bien dung mien van nhan: sat thuong 0, toc do 0', () => {
+    expect(() => docDuLieuTran(BANG, doiSai({ sat_thuong: 0, toc_do: 0 }), TRAN)).not.toThrow();
+  });
+
+  it('trung ma doi thi nem loi, khong ghi de im lang', () => {
+    expect(() => docDuLieuTran(BANG, { doi: [taoDoi('kiem'), taoDoi('kiem', { gia: 1 })] }, TRAN)).toThrow(/kiem/);
+  });
+
+  it('he so giap x dan am hoac khong phai so thi nem loi', () => {
+    expect(() => docDuLieuTran({ giap: ['da', 'tam'], dan: { chem: [-1, 1] } }, DOI, TRAN)).toThrow(/chem/);
+    expect(() => docDuLieuTran({ giap: ['da', 'tam'], dan: { chem: [1, Number.NaN] } }, DOI, TRAN)).toThrow(/chem/);
+  });
+
+  it('nhip_giay <= 0 bi chan luc doc - khong thi tinhTran lap vo han', () => {
+    for (const v of [0, -0.5]) expect(() => docDuLieuTran(BANG, DOI, { ...TRAN, nhip_giay: v })).toThrow(/nhip_giay/);
+  });
+
+  it('thieu hay sai truong so trong battle.json thi nem loi dung ten truong', () => {
+    const thieu: Record<string, unknown> = { ...TRAN };
+    delete thieu.nguong_vo;
+    expect(() => docDuLieuTran(BANG, DOI, thieu)).toThrow(/nguong_vo/);
+    expect(() => docDuLieuTran(BANG, DOI, { ...TRAN, nguong_vo: 1 })).toThrow(/nguong_vo/);
+    expect(() => docDuLieuTran(BANG, DOI, { ...TRAN, tran_giay: -5 })).toThrow(/tran_giay/);
+    expect(() => docDuLieuTran(BANG, DOI, { ...TRAN, dia_hinh: { phang: { toc_do: -1, phong_thu: 1 } } })).toThrow(/phang/);
+  });
+});
+
+describe('hai ben cung vo trong mot nhip', () => {
+  it('ben giu dat (b) thang - cung luat voi het gio hoa nhau', () => {
+    // Tran guong, khong nhieu: hai ben vo dung cung nhip. Truoc 24/09 ben a luon thang.
+    const kq = tran(ben('bia_da', 2), ben('bia_da', 2));
+    const vo = (p: 'a' | 'b'): number => kq.suKien.filter((s) => s.loai === 'vo' && s.ben === p).length;
+    expect(vo('a')).toBe(2);
+    expect(vo('b')).toBe(2);
+    expect(kq.thang).toBe('b');
+  });
+});
+
 describe('kiem dau vao', () => {
   it('ben rong, tuong am, tuong vuot tran, tuong le thi nem loi ca o duDoan lan tinhTran', () => {
     const tot: Ben = ben('bia_da', 2);

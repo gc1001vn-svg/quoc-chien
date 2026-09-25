@@ -91,6 +91,36 @@ interface CauHinhTran {
   readonly dia_hinh: Readonly<Record<string, { readonly toc_do: number; readonly phong_thu: number }>>;
 }
 
+/**
+ * Kiem mot so doc tu JSON: phai la so huu han, >= `min` (hoac > `min` khi `bo_min`), va la
+ * so nguyen khi `nguyen`. So 24/09: NaN, chu "10", so am deu lot qua va cho tran vo nghia.
+ */
+function kiemSo(ten: string, v: unknown, min: number, boMin: boolean, nguyen = false): void {
+  const hong: boolean =
+    typeof v !== 'number' || !Number.isFinite(v) || (boMin ? v <= min : v < min) || (nguyen && !Number.isInteger(v));
+  if (hong) throw new Error(`${ten} = ${String(v)}: phai la so${nguyen ? ' nguyen' : ''} ${boMin ? '>' : '>='} ${String(min)}`);
+}
+
+/** Kiem `battle.json`. `nhip_giay` <= 0 thi `tinhTran` lap vo han (do 24/09) - chan tu luc doc. */
+function kiemTran(t: CauHinhTran): void {
+  kiemSo('battle: chien_truong', t.chien_truong, 0, true);
+  kiemSo('battle: hang_xuat_phat', t.hang_xuat_phat, 0, false);
+  kiemSo('battle: nhip_giay', t.nhip_giay, 0, true);
+  kiemSo('battle: tran_giay', t.tran_giay, 0, true);
+  kiemSo('battle: nguong_vo', t.nguong_vo, 0, false);
+  if (t.nguong_vo >= 1) throw new Error(`battle: nguong_vo = ${String(t.nguong_vo)}: phai < 1`);
+  kiemSo('battle: nhieu', t.nhieu, 0, false);
+  kiemSo('battle: he_so_tuong', t.he_so_tuong, 0, false);
+  kiemSo('battle: tuong_toi_da', t.tuong_toi_da, 0, false, true);
+  kiemSo('battle: do_doc', t.do_doc, 0, true);
+  kiemSo('battle: he_so_tam', t.he_so_tam, 0, false);
+  kiemSo('battle: mu_phong_thu', t.mu_phong_thu, 0, false);
+  for (const [k, v] of Object.entries(t.dia_hinh)) {
+    kiemSo(`battle: dia_hinh ${k} toc_do`, v.toc_do, 0, true);
+    kiemSo(`battle: dia_hinh ${k} phong_thu`, v.phong_thu, 0, true);
+  }
+}
+
 /** Doc va kiem ba file `armor_table.json`, `units.json`, `battle.json`. */
 export function docDuLieuTran(bangTho: unknown, doiTho: unknown, tranTho: unknown): DuLieuTran {
   const bang = bangTho as { giap: string[]; dan: Record<string, number[]> };
@@ -99,11 +129,21 @@ export function docDuLieuTran(bangTho: unknown, doiTho: unknown, tranTho: unknow
 
   for (const [dan, hang] of Object.entries(bang.dan)) {
     if (hang.length !== bang.giap.length) throw new Error(`armor_table: dan ${dan} co ${String(hang.length)} he so, can ${String(bang.giap.length)}`);
+    hang.forEach((v, i) => {
+      kiemSo(`armor_table: dan ${dan} x giap ${bang.giap[i] ?? '?'}`, v, 0, false);
+    });
   }
+  kiemTran(t);
   const doi = new Map<string, LoaiDoi>();
   for (const d of ds) {
     if (!bang.giap.includes(d.giap) || bang.dan[d.dan] === undefined) throw new Error(`units: doi ${d.id} dung giap/dan la`);
-    if (d.linh < 1 || d.mau <= 0) throw new Error(`units: doi ${d.id} phai co linh va mau duong`);
+    if (doi.has(d.id)) throw new Error(`units: trung ma doi ${d.id}`);
+    kiemSo(`units: doi ${d.id} linh`, d.linh, 1, false, true);
+    kiemSo(`units: doi ${d.id} mau`, d.mau, 0, true);
+    kiemSo(`units: doi ${d.id} gia`, d.gia, 0, true);
+    kiemSo(`units: doi ${d.id} sat_thuong`, d.sat_thuong, 0, false);
+    kiemSo(`units: doi ${d.id} tam`, d.tam, 0, true);
+    kiemSo(`units: doi ${d.id} toc_do`, d.toc_do, 0, false);
     doi.set(d.id, { id: d.id, hien: d.hien, nhom: d.nhom, doi: d.doi, gia: d.gia, linh: d.linh, mau: d.mau, satThuong: d.sat_thuong, tam: d.tam, tocDo: d.toc_do, giap: d.giap, dan: d.dan });
   }
   const diaHinh = new Map<string, DiaHinhTran>(

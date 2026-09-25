@@ -170,7 +170,9 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
     return cua.filter((d) => !d.vo).reduce((s, d) => s + d.mau, 0) / cua.reduce((s, d) => s + d.mauDau, 0);
   };
   // Het gio ma hai ben con dung: ben con nhieu phan mau hon thang; bang nhau thi ben giu dat.
-  const thang: Phe = !conDoi('b') ? 'a' : !conDoi('a') ? 'b' : phan('a') > phan('b') ? 'a' : 'b';
+  // Xet ben a het doi TRUOC: hai ben cung vo trong mot nhip thi ben giu dat (b) thang, cung
+  // luat voi het gio hoa nhau (soat 24/09: xet b truoc thi ben a luon thang).
+  const thang: Phe = !conDoi('a') ? 'b' : !conDoi('b') ? 'a' : phan('a') > phan('b') ? 'a' : 'b';
   const linh = (p: Phe): number => ds.filter((d) => d.ben === p).reduce((s, d) => s + d.loai.linh, 0);
   const chet = (p: Phe): number => ds.filter((d) => d.ben === p).reduce((s, d) => s + d.loai.linh - conSong(d), 0);
   return {
