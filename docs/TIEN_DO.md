@@ -3,20 +3,28 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 25/09/2026 (lần 13 — **Phase 9 chốt, quy trình Jules + kiểm chéo**).
+Cập nhật: 25/09/2026 (lần 14 — **Phase 10A xong: xem được trận, lính thời cổ**).
 
 ## 1. Đang ở đâu
 
-**Phase 9 XONG 25/09. Game ở Phase 9/13.** Trận đánh tính trong Node, chưa nhìn thấy gì.
-`npm run sim:tran` ĐẠT **11/11 hạt giống**: dự đoán lệch trung bình 1,4–3,0 điểm (trần 4),
-80,7–84,9 % trận dài 30–60 giây (cần ≥ 80 — sát ngưỡng), không loại đội nào thắng quá 61 %.
-Chi tiết + hai lượt soát: `docs/NHAT_KY/PHASE_9.md`.
-**Sau Phase 9 (25/09): quy trình Jules + kiểm chéo** — `npm run kiem:cheo`, `docs/JULES.md`.
-Chi tiết: `docs/NHAT_KY/PHASE_9_JULES.md`.
+**Phase 10A XONG 25/09. Game ở Phase 10A/13.** Mở `?tran=1` (hay nút "⚔ Xem trận" ở bản
+đồ tỉnh) là xem được một trận mẫu 6 đội mỗi bên: lính đi, giáp lá cà, trúng đòn, ngã, vỡ
+trận chạy về. Chỉ bốn đội thời cổ có hình (giáo · kiếm · cung · kỵ). Chi tiết:
+`docs/NHAT_KY/PHASE_10A.md`.
 
-**Việc phiên sau: Phase 10 — nướng sprite lính + `render/BattleScene.ts`** (mục 5).
-**Bước E: không cần anh xác nhận trên iPhone** — Phase 9 không đổi gì trên màn hình, bản
-Pages không khác trước. Phiên sau mở thẳng Phase 10.
+**Việc phiên sau: chờ anh xem trận trên iPhone (mục 3), rồi Phase 10B** (mục 5).
+**Bước E: CẦN anh xác nhận** — phase này đổi màn hình.
+
+### Phiên 25/09 (lần 14) đã đổi gì — Phase 10A
+
+- Mới: `tools/me/linh_co.json` · `public/atlas/linh_co_*` · `data/dien_tran.json` ·
+  `src/render/DienTran.ts` · `src/render/BattleScene.ts` · `tests/DienTran.test.ts` (Jules
+  viết) · `tests/KiemCheo.test.ts`. Sửa: `tools/lib/gltf.mjs` (clip, gắn xương, gamma) ·
+  `nuong_sprite.mjs` (sinh sprite lính, hệ số bóng) · `Battle.ts` (vết vị trí) ·
+  `kiem_cheo.mjs` (đọc số test khi có `expected fail`) · `ASSET_CREDITS.md` (anh cho sửa).
+- `npm run do` đầu phiên **16/17**: `do:luat` hỏng vì Gemini trả "retry in 55s" (hết lượt
+  phút) — lỗi bên ngoài. Các lần giữa phiên chạy với `do:luat` khai BỎ QUA (không đụng
+  `CLAUDE.md`).
 
 ### Phiên 24/09 (lần 12) đã đổi gì — Phase 9
 
@@ -427,6 +435,11 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
+**Phase 10A, đo 25/09:** atlas `linh_co` 260 sprite — 2× lấp **68,6 %** một trang, 1× 17,9 %
+(`node tools/nuong_sprite.mjs linh_co` in lại). Màn trận chụp trong máy ảo: **344 sprite ·
+1 lệnh vẽ**. `kiem:cheo` HEAD: **402/402 test**, `sim:tran` lệch 2,24 · 85,2 % trong khung ·
+Brier 0,075. Nướng mẻ lính mất ~2 phút 15 giây mỗi cỡ.
+
 **Atlas, đo 19/09 (Phase 8C):** thêm hai khung cối xay vào mỗi mẻ. `trung_co_2` 2× từ
 84,4 % **một** trang lên **hai** trang (85,8 % + 4,5 %, GPU 33,6 MB / trần 67,1 MB);
 `hien_dai` 2× lấp **77,3 %** một trang thật + một trang **rỗng 1×1** đệm cho khớp số
@@ -502,6 +515,15 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Việc 25/09 (lần 14) — xem trận trên iPhone, nhắn fps thấp nhất
+
+1. Mở bản duyệt: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng màn trận).
+   Hoặc bản thật sau khi Pages cập nhật: https://gc1001vn-svg.github.io/quoc-chien/?tran=1
+   — kéo trang xuống để tải bản mới.
+2. Bấm **×4** cho trận chạy nhanh, xem hết một trận (~15 giây ở ×4).
+3. Nhắn: **số fps thấp nhất** ở dòng trên cùng lúc hai bên giáp lá cà, và một câu: nhìn ra
+   lính nào là lính nào không (giáo, kiếm, cung, kỵ), phân biệt được phe xanh/đỏ không.
 
 ### ✅ Việc 24/09 (lần 12) — ba điều cho Phase 9: anh chốt 25/09
 
@@ -962,31 +984,27 @@ quyền hạn và giới hạn máy ảo.
 - **MỚI 24/09: đời 4 và đời 5 chung nhóm `hien_dai`** trong `data/units.json`; chưa có
   lính đời 1/6 riêng và chưa nối lính với cây công nghệ (`tech.json` chưa mở lính nào).
 
+- **MỚI 25/09 (Phase 10A):** 6 đội súng/hiện đại chưa có hình (Phase 10B) · ngựa to so
+  với người (người cưỡi gắn trong file ngựa nên không chỉnh tỉ lệ riêng được) · giáo cầm
+  ngang khi đi (dáng `Walking_A` của KayKit) · người cưỡi chỉ một dáng ngồi · cung thủ chưa
+  có mũi tên bay · trận mẫu cố định trong `data/dien_tran.json`, chưa nối bản đồ chiến dịch.
+
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 10: xem được trận đánh
+## 5. Phiên sau — Phase 10B: lính súng và xe
 
-Đúng `KE_HOACH.md` mục 2: nướng sprite lính **8 hướng × 4 dáng** (đi, đánh, trúng đòn,
-chết) + `render/BattleScene.ts` phát kịch bản của `sim/campaign/BattleScript.ts`
-(`sinhKichBan`), có nút tăng tốc và bỏ qua. Thước (`KE_HOACH` mục 3): Claude tự xem trận
-trong máy ảo, chủ dự án đo fps lúc đánh. Quy mô: `GAME_SPEC.md` mục 6 (150–250 sprite động).
+Chờ anh xác nhận 10A trên iPhone (mục 3) trước. Rồi thêm 6 đội nhóm `sung`/`hien_dai`
+(`data/units.json`): hoả mai, đại bác, kỵ súng, bộ binh, chống tăng, xe tăng.
 
-**Phase 10 là lần đầu dùng trọn quy trình Jules mới** (anh chốt 25/09): giao Jules viết test
-`BattleScene` (đề có `## Files`/`## Acceptance`/`## Not doing`, chạy thử đề trước) → Jules nộp
-`kiem_cheo.json` → Claude `--so-sanh` + cài lỗi thử → cuối phase Jules kiểm chéo số của Claude.
-Thêm test cho `scripts/kiem_cheo.mjs`. Quy trình: `ghi-nho/cong-cu/jules/PHAN_VIEC.md`.
-
-**Việc đầu tiên: dò asset lính** — `npm run do:asset linh` (và `soldier`, `knight`,
-`archer`, `tank`), đủ ba bước + `kho-game`. Mẻ trung cổ 2× **hết chỗ atlas** (mục 2):
-lính phải vào atlas riêng, tính chỗ trước khi nướng (trần 4 trang, `TECH_SPEC` mục 2).
-
-**Kịch bản hiện chỉ có sự kiện cấp đội** (tiến · bắn loạt đầu · giáp lá cà · vỡ · kết
-thúc), chưa có vị trí từng nhịp. Phase 10 muốn diễn quân đi thì cho `tinhTran` ghi thêm vị
-trí đội theo giây — vẫn tính trước, không mô phỏng lại lúc vẽ.
-
-fps đã xác nhận 24/09 (59 fps). Rớt fps về sau thì **tăng** `gioNoDu` trong
-`data/policy.json` (dân về chậm hơn, thành phố nhỏ hơn), không đụng mã.
+- **Dò asset trước** (`npm run do:asset`): lính cầm súng dùng lại bộ xương KayKit — gói
+  Character Animations có sẵn `Ranged_2H_Shoot`, `Running_HoldingRifle`; cần model súng
+  (Icosa CC-BY có `rifle`, `musket`) gắn vào `handslot.r` như cây giáo. Xe tăng, đại bác:
+  model tĩnh Icosa, không cần xương — 8 hướng, dáng "bắn" = khung giật lùi.
+- **Máy nướng đã sẵn** (`hoat_anh`, `gan`, `chi_vi_tri`, `dich` trong mẻ — xem đầu
+  `tools/me/linh_co.json`). Mẻ `linh_co` 2× còn ~31 % trang: 6 đội mới **không vừa** —
+  làm mẻ `linh_sung` riêng, `BattleScene` nạp theo nhóm đội.
+- Ngựa to: thử `ti_le` riêng cho người cưỡi trong `gan` (chưa có — phải thêm).
 
 ### Nhắc trước khi nướng thêm mẻ
 
