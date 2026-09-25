@@ -5,9 +5,12 @@
  * ngoai `src/sim/` (TECH_SPEC muc 1, luat 1). Moi nguong doc tu `data/battle.json`.
  *
  * DAT khi:
- * 1. Moi khoang du doan (0-10 %, ..., 90-100 %) du `mau_toi_thieu` tran thi ti le thang that
- *    lech trung binh du doan khong qua `dung_sai`.
- * 2. Danh can tien trong cung nhom, khong loai doi nao thang qua `tran_thang_mot_loai`.
+ * 1. Lech trung binh co trong so giua du doan va ti le thang that (chia 10 khoang, trong so =
+ *    so tran moi khoang) khong qua `lech_tb_toi_da`. Chu du an chot 25/09: bo kiem TUNG
+ *    khoang (30 mau thi nhieu ~8 diem, doi hat giong chi 4/10 lan dat).
+ * 2. Do dai tran (GAME_SPEC muc 6: 30-60 giay): it nhat `ti_le_trong_khung` so tran ket thuc
+ *    trong `khung_giay`, va khong qua `ti_le_het_gio` so tran cham tran giay.
+ * 3. Danh can tien trong cung nhom, khong loai doi nao thang qua `tran_thang_mot_loai`.
  */
 import { readFileSync } from 'node:fs';
 import { Rng } from '../src/core/Rng.ts';
@@ -20,8 +23,10 @@ function doc(ten: string): unknown {
 /** Cac truong cua thuoc do trong `data/battle.json`. */
 interface CauHinhThuoc {
   readonly so_tran: number;
-  readonly dung_sai: number;
-  readonly mau_toi_thieu: number;
+  readonly lech_tb_toi_da: number;
+  readonly khung_giay: readonly [number, number];
+  readonly ti_le_trong_khung: number;
+  readonly ti_le_het_gio: number;
   readonly tran_thang_mot_loai: number;
   readonly so_tran_can_bang: number;
   readonly doi_moi_ben: readonly [number, number];
@@ -53,11 +58,14 @@ const batDau: number = performance.now();
 // 1. Du doan <-> that, chia 10 khoang.
 const khoang = Array.from({ length: 10 }, () => ({ n: 0, duDoan: 0, thang: 0 }));
 let brier = 0;
+const giay: number[] = [];
 for (let i = 0; i < tho.so_tran; i += 1) {
   const cua: LoaiDoi[] = chon(dsNhom);
   const vao: DauVaoTran = { a: benNgauNhien(cua), b: benNgauNhien(cua), diaHinh: chon(dsDiaHinh) };
   const p: number = duDoan(vao, duLieu);
-  const thang: number = tinhTran(vao, duLieu, i).thang === 'a' ? 1 : 0;
+  const kq = tinhTran(vao, duLieu, i);
+  const thang: number = kq.thang === 'a' ? 1 : 0;
+  giay.push(kq.giayKetThuc);
   const k = khoang[Math.min(9, Math.floor(p * 10))];
   if (k === undefined) continue;
   k.n += 1;
@@ -67,6 +75,7 @@ for (let i = 0; i < tho.so_tran; i += 1) {
 }
 
 let dat = true;
+let lechTb = 0;
 console.log(`sim:tran - ${String(tho.so_tran)} tran ngau nhien\n`);
 console.log('Khoang   | So tran | Du doan | That   | Lech');
 for (const [i, k] of khoang.entries()) {
@@ -74,14 +83,31 @@ for (const [i, k] of khoang.entries()) {
   const dd: number = k.duDoan / k.n;
   const that: number = k.thang / k.n;
   const lech: number = Math.abs(that - dd);
-  const tinh: boolean = k.n >= tho.mau_toi_thieu;
-  const hong: boolean = tinh && lech > tho.dung_sai;
-  if (hong) dat = false;
+  lechTb += (lech * k.n) / tho.so_tran;
   console.log(
-    `${String(i * 10).padStart(3)}-${String(i * 10 + 10).padEnd(3)}% | ${String(k.n).padStart(7)} | ${(dd * 100).toFixed(1).padStart(6)}% | ${(that * 100).toFixed(1).padStart(5)}% | ${(lech * 100).toFixed(1).padStart(4)}${tinh ? '' : ' (it mau, khong tinh)'}${hong ? '  HONG' : ''}`,
+    `${String(i * 10).padStart(3)}-${String(i * 10 + 10).padEnd(3)}% | ${String(k.n).padStart(7)} | ${(dd * 100).toFixed(1).padStart(6)}% | ${(that * 100).toFixed(1).padStart(5)}% | ${(lech * 100).toFixed(1).padStart(4)}`,
   );
 }
-console.log(`\nBrier: ${(brier / tho.so_tran).toFixed(3)} (0 = doan dung het, 0.25 = tung dong xu)`);
+const hongLech: boolean = lechTb > tho.lech_tb_toi_da;
+if (hongLech) dat = false;
+console.log(
+  `\nLech trung binh: ${(lechTb * 100).toFixed(2)} diem (tran ${(tho.lech_tb_toi_da * 100).toFixed(0)})${hongLech ? '  HONG' : ''}`,
+);
+console.log(`Brier: ${(brier / tho.so_tran).toFixed(3)} (0 = doan dung het, 0.25 = tung dong xu)`);
+
+// Do dai tran.
+const [TU, DEN] = tho.khung_giay;
+giay.sort((x, y) => x - y);
+const phanVi = (p: number): number => giay[Math.floor(p * (giay.length - 1))] ?? 0;
+const trongKhung: number = giay.filter((g) => g >= TU && g <= DEN).length / giay.length;
+const hetGio: number = giay.filter((g) => g >= duLieu.tranGiay).length / giay.length;
+const hongGiay: boolean = trongKhung < tho.ti_le_trong_khung || hetGio > tho.ti_le_het_gio;
+if (hongGiay) dat = false;
+console.log(
+  `\nDo dai tran: p10 ${String(phanVi(0.1))} · p50 ${String(phanVi(0.5))} · p90 ${String(phanVi(0.9))} giay · ` +
+    `trong ${String(TU)}-${String(DEN)} s: ${(trongKhung * 100).toFixed(1)} % (can >= ${(tho.ti_le_trong_khung * 100).toFixed(0)}) · ` +
+    `het gio: ${(hetGio * 100).toFixed(1)} % (tran ${(tho.ti_le_het_gio * 100).toFixed(0)})${hongGiay ? '  HONG' : ''}`,
+);
 
 // 2. Can bang: quan THUAN mot loai doi gap quan HON HOP cung nhom, cung ngan sach, doi vai
 // ca hai phia. Loai nao thang qua nguong la loai "chi can xay moi no". Ngan sach doi moi tran
