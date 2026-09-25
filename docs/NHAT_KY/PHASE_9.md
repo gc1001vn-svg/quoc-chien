@@ -43,3 +43,18 @@ Kế hoạch: `docs/ke-hoach/2026-09-24-phase-9-tran-danh.md`. Headless, chưa n
   `kiemSo` / `kiemTran` ném lỗi kèm tên trường. 7 test mới, viết trước, đỏ 6 rồi mới sửa.
 - **Còn mở:** trận quá ngắn — 2000 trận ngẫu nhiên trung vị **18 giây**, 95,5 % dưới 30
   (`GAME_SPEC` mục 6: 30–60). Chờ anh chọn hướng.
+
+## Phụ lục 25/09 (lần 2) — ba quyết định của anh, Phase 9 chốt
+
+- **Thước:** bỏ "±10 điểm từng khoảng", thay **lệch trung bình có trọng số ≤ 4 điểm** trên
+  1000 trận. Thêm thước **độ dài trận**: ≥ 80 % trận trong 30–60 giây, chạm trần ≤ 10 %.
+- **Đại bác, xe tăng 3 → 8 lính/đội**, chia lại máu và sát thương mỗi lính cho tổng mỗi đội
+  không đổi (đại bác 8 × 7,5 máu; xe tăng 8 × 30).
+- **Giảm sát thương:** chỉ giảm sát thương thì **hỏng cân bằng và dự đoán** (hệ số 0,25: lệch
+  5,0 điểm, lính hoả mai thắng 86 %) — trận chậm thì bên bắn xa bắn được lâu hơn, luật đổi
+  theo. Giảm **cả sát thương lẫn tốc độ đi ×0,45** thì luật giữ nguyên, trận dài ra đều.
+  Hoả mai giá 120 → 130 (hạt 2 lên 66 %).
+- **Số đo 11 hạt giống:** ĐẠT 11/11 · lệch TB 1,42–2,99 · trong khung 80,7–84,9 % · chạm
+  trần 6,1–8,6 % · loại mạnh nhất 52–61 %. Trung vị trận 38–40 giây (trước 18).
+- **Sát ngưỡng:** tỉ lệ trong khung thấp nhất 80,7 % / cần 80. Trận chênh lệch lớn vẫn kết
+  thúc sớm (p10 ≈ 27 giây) — bản chất trận đè bẹp, không phải lỗi.

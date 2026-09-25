@@ -7,10 +7,10 @@ Cập nhật: 24/09/2026 (lần 12 — **Phase 9 trận đánh chạy ngầm**).
 
 ## 1. Đang ở đâu
 
-**Phase 9 CHƯA CHỐT — soát lại 24/09 ra thước `sim:tran` không tin được.** Dự đoán %
-thắng đúng (20.000 trận lệch ≤ 3,2 điểm), nhưng thước chỉ ĐẠT **4/10 hạt giống** — nhiễu
-mẫu, không phải lỗi mô phỏng. Chờ anh chọn cách đo (mục 3). Chi tiết + phụ lục soát:
-`docs/NHAT_KY/PHASE_9.md`.
+**Phase 9 XONG 25/09. Game ở Phase 9/13.** Trận đánh tính trong Node, chưa nhìn thấy gì.
+`npm run sim:tran` ĐẠT **11/11 hạt giống**: dự đoán lệch trung bình 1,4–3,0 điểm (trần 4),
+80,7–84,9 % trận dài 30–60 giây (cần ≥ 80 — sát ngưỡng), không loại đội nào thắng quá 61 %.
+Chi tiết + hai lượt soát: `docs/NHAT_KY/PHASE_9.md`.
 
 **Việc phiên sau: Phase 10 — nướng sprite lính + `render/BattleScene.ts`** (mục 5).
 **Bước E: không cần anh xác nhận trên iPhone** — Phase 9 không đổi gì trên màn hình, bản
@@ -501,15 +501,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ❓ Việc 24/09 (lần 12) — chốt hai điều cho Phase 9
+### ✅ Việc 24/09 (lần 12) — ba điều cho Phase 9: anh chốt 25/09
 
-1. **Thước `sim:tran`**: đề xuất đổi "±10 điểm từng khoảng" sang **lệch trung bình có
-   trọng số ≤ 4 điểm** trên đúng 1000 trận (đo 12 hạt giống: 1,3–2,3 — ổn định). Không
-   nới: cách cũ đạt hay hỏng tuỳ hạt giống, không phân biệt được dự đoán tốt hay xấu.
-2. **Đại bác, xe tăng 3 lính/đội** trái `GAME_SPEC` mục 6 (8–12). Giữ (ghi ngoại lệ vào spec
-   — file khoá) hay nâng lên 8 lính (phải cân lại)?
-3. **Trận quá ngắn** (soát 25/09): trung vị 18 giây, 95,5 % dưới 30; spec 30–60. Làm chậm
-   cả trận (giảm sát thương, cân lại) hay giữ số, Phase 10 phát chậm lại lúc diễn?
+1. Thước `sim:tran` đổi sang **lệch trung bình có trọng số ≤ 4 điểm** — có.
+2. Đại bác, xe tăng **nâng lên 8 lính/đội** (giữ tổng máu, tổng sát thương mỗi đội).
+3. Trận quá ngắn → **giảm sát thương** (làm cùng tốc độ đi, hệ số 0,45 — xem nhật ký).
 
 ### ✅ Việc 23/09 (lần 9) — đo fps với thành phố to hơn: XONG 24/09, 59 fps
 
