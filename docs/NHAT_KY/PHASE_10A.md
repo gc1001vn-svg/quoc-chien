@@ -38,3 +38,20 @@ Kế hoạch: `docs/ke-hoach/2026-09-25-phase-10a-linh-co.md` (anh duyệt 25/09
   **Mũi tên bay** vòng cung. Ngựa thu 0,17 (người cưỡi giữ cỡ nhờ `ti_le` riêng trong `gan`).
 - Atlas `linh_co` 396 sprite: 2× **76,6 %** một trang, 1× 20,2 %. Chỉ đổi lớp vẽ — kết quả
   trận không đổi (test so số lính, số xác với cách vẽ cũ).
+
+## Phụ lục 2 (25/09 chiều) — đổi lính sang Quaternius, dựng vòng đo fps
+
+- **Anh báo:** 29–30 fps (trần 60), vẫn đơn điệu, kỵ binh "chỉ thấy đầu".
+- **fps:** đo CPU phần tính lính mỗi khung = **0,06 ms p95** (ngân sách 16,7) → loại giả
+  thuyết CPU. Máy ảo vẽ phần mềm, không đo được GPU → nối 4 nút tắt lớp của `Perf` vào màn
+  trận (Nền · Nhà = đế phe · Người · Hiệu ứng = mũi tên + chữ) để anh bấm trên iPhone.
+  **Chưa sửa** — chờ số đo từng lớp.
+- **Kỵ binh chỉ thấy đầu:** đầu chibi KayKit che thân khi nhìn từ trên xuống — lỗi dáng
+  model, không chỉnh vị trí được. Nướng bảng so sánh 4 phương án, **anh chọn Quaternius**.
+- **Bộ mới (toàn Quaternius CC0):** quần áo Modular Outfits + đầu Universal Base Characters
+  (cùng lối người dân thành phố) + Universal Animation Library **bản Unreal** (bản Godot trong
+  kho chung đặt tên xương `DEF-*`, khớp 1/53; bản Unreal khớp **65/65**) + Medieval Weapons.
+  Giáo thủ đâm (`Punch_Jab`), kiếm sĩ chém qua đầu, cung thủ giương cung, người cưỡi ngồi
+  hẳn trên lưng ngựa (`Sitting_Idle_Loop`, yên ở xương `Torso2`). Atlas 2× 71 % một trang.
+- Loại vì chỉ có FBX: Fantasy Heroes, Villager NPC, 3D Animated Units. KayKit Series 4/5
+  tải lỗi. Mẻ thử không vào repo.

@@ -15,6 +15,9 @@ trận chạy về. Chỉ bốn đội thời cổ có hình (giáo · kiếm ·
 **Sửa cùng ngày theo anh chê "chỉ húc vào nhau":** giáp lá cà dàn hàng đối mặt, 4 khung
 đánh lệch pha, mũi tên bay, kỵ binh thu nhỏ — phụ lục cuối `docs/NHAT_KY/PHASE_10A.md`.
 
+**Chiều 25/09: đổi lính sang Quaternius tỉ lệ thật** (anh chọn từ bảng so sánh) + nút tắt
+lớp để đo fps (29–30, chưa sửa — chờ số từng lớp). Phụ lục 2 `docs/NHAT_KY/PHASE_10A.md`.
+
 **Việc phiên sau: chờ anh xem trận trên iPhone (mục 3), rồi Phase 10B** (mục 5).
 **Bước E: CẦN anh xác nhận** — phase này đổi màn hình.
 
