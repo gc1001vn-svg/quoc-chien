@@ -313,6 +313,29 @@ function mauClip(clip, phan) {
   return ra;
 }
 
+/**
+ * Chong nhieu lop clip thanh mot tu the: lop sau de len lop truoc. Lop co `tuXuong` chi de
+ * len xuong do va moi xuong con cua no - nguoi cuoi ngua giu dang NGOI o than duoi, than
+ * tren (tu `spine_01`) chay nhat chem. `hoatAnh` mot lop (doi tuong) hay mang nhieu lop.
+ */
+function chongLop(hoatAnh, nodes) {
+  if (hoatAnh === undefined) return null;
+  const ra = new Map();
+  for (const lop of Array.isArray(hoatAnh) ? hoatAnh : [hoatAnh]) {
+    const mau = mauClip(docClip(lop.duong, lop.ten), lop.phan);
+    let cho = null;
+    if (lop.tuXuong !== undefined) {
+      const goc = nodes.findIndex((n) => n.name === lop.tuXuong);
+      if (goc < 0) throw new Error(`lop "${lop.ten}": khong co xuong "${lop.tuXuong}"`);
+      cho = new Set();
+      const di = (i) => { cho.add(nodes[i].name); for (const c of nodes[i].children ?? []) di(c); };
+      di(goc);
+    }
+    for (const [ten, gt] of mau) if (cho === null || cho.has(ten)) ra.set(ten, gt);
+  }
+  return ra;
+}
+
 /** Bo phan phong to khoi ma tran, giu xoay va dich - de do gan vao xuong khong bi keo gian. */
 function boTiLe(m) {
   const r = Float64Array.from(m);
@@ -350,8 +373,6 @@ function boTiLe(m) {
 export function docGltf(duong, tuyChon = {}) {
   const { dang = {}, guong = false, traAnh = null, mau_vl: mauVl = {}, xuong: locXuong = null } = tuyChon;
   const gamma = tuyChon.gamma === true;
-  const tuThe = tuyChon.hoatAnh === undefined ? null
-    : mauClip(docClip(tuyChon.hoatAnh.duong, tuyChon.hoatAnh.ten), tuyChon.hoatAnh.phan);
   // Doc duoc ca `.gltf` (JSON + `.bin` roi) lan `.glb` (goi nhi phan mot file).
   const laGlb = duong.toLowerCase().endsWith('.glb');
   const glb = laGlb ? tachGlb(duong) : null;
@@ -360,6 +381,7 @@ export function docGltf(duong, tuyChon = {}) {
   const dem = (j.buffers ?? []).map((b) => docBuffer(b, thuMuc, glb?.dem ?? null));
   const nodes = j.nodes ?? [];
   const bangDang = doiDang(dang, guong);
+  const tuThe = chongLop(tuyChon.hoatAnh, nodes);
 
   // Ma tran rieng cua tung node, da cong them goc xoay cua dang.
   const rieng = nodes.map((n) => {

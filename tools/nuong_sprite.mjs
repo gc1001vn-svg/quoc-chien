@@ -285,7 +285,8 @@ function tuyChonGltf(p, kit, soAnh, bangDang) {
     traAnh: traAnhCua(kit[p.m.split(':')[0]], soAnh),
     mau_vl: p.mau_vl ?? {},
     gamma: kit[p.m.split(':')[0]].gamma,
-    hoatAnh: ha === undefined ? undefined : { duong: duongModel(ha.m, kit), ten: ha.ten, phan: ha.phan },
+    hoatAnh: ha === undefined ? undefined
+      : (Array.isArray(ha) ? ha : [ha]).map((l) => ({ duong: duongModel(l.m, kit), ten: l.ten, phan: l.phan, tuXuong: l.tu_xuong })),
     gan: (p.gan ?? []).map((g) => ({
       xuong: g.xuong,
       duong: duongModel(g.m, kit),
@@ -317,15 +318,23 @@ function moRongLinh(linh) {
       // Mot dang co the NOI nhieu doan clip: cung thu "danh" = giuong cung roi buong tay -
       // KayKit tach hai viec do thanh hai clip. Khung danh so lien tuc qua cac doan.
       const doan = Array.isArray(clip) ? clip : [clip];
-      const khung = doan.flatMap((c) => (c.khung ?? linh.khung[dang]).map((phan) => ({ m: c.m, ten: c.ten, phan })));
+      const khung = doan.flatMap((c) => (c.khung ?? linh.khung[dang]).map((phan) => ({ m: c.m, ten: c.ten, phan, cuoi: c.nguoi_cuoi })));
       for (let h = 0; h < linh.huong; h += 1) {
         khung.forEach((ha, k) => {
           // `manh` mot manh hay nhieu manh (than + dau cat tu bo nguoi goc, nhu nguoi dan
           // trong me thanh pho) - moi manh cung xoay, cung mot tu the.
+          const { cuoi, ...hoatAnh } = ha;
           ra[`${doi}_${dang}_h${h}_k${k}`] = (Array.isArray(d.manh) ? d.manh : [d.manh]).map((m) => ({
             ...m,
             ry: (m.ry ?? 0) + (h * 360) / linh.huong,
-            hoat_anh: ha,
+            hoat_anh: hoatAnh,
+            // `nguoi_cuoi` cua dang: chong them mot lop len model gan dau tien (nguoi tren
+            // ngua) cung thoi diem - ngua dung, nguoi vung kiem.
+            ...(cuoi === undefined || m.gan === undefined ? {} : {
+              gan: m.gan.map((g, i) => (i > 0 ? g : {
+                ...g, hoat_anh: [g.hoat_anh, { ...cuoi, phan: hoatAnh.phan }].filter((x) => x !== undefined),
+              })),
+            }),
           }));
         });
       }

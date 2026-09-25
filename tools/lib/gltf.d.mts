@@ -8,6 +8,14 @@ export interface KetQuaGltf {
   readonly soTamGiac: number;
 }
 
+/** Mot lop clip. `tuXuong`: chi de len xuong nay va xuong con (than tren nguoi cuoi). */
+export interface LopHoatAnh {
+  readonly duong: string;
+  readonly ten: string;
+  readonly phan: number;
+  readonly tuXuong?: string;
+}
+
 export interface TuyChonGltf {
   /** Ten xuong -> ba goc xoay (do) cong them vao tu the goc. */
   readonly dang?: Record<string, number[]>;
@@ -22,7 +30,7 @@ export interface TuyChonGltf {
   /** Chi giu phan thit bam vao nhung xuong nay. */
   readonly xuong?: string[] | null;
   /** Dat tu the theo clip `ten` trong file `duong`, tai `phan` (0..1) do dai clip. */
-  readonly hoatAnh?: { readonly duong: string; readonly ten: string; readonly phan: number };
+  readonly hoatAnh?: LopHoatAnh | readonly LopHoatAnh[];
   /** Model phu gan vao xuong, doc de quy voi `tuyChon` rieng. */
   readonly gan?: readonly {
     readonly xuong: string;
