@@ -222,3 +222,74 @@ describe('docGltf doc file .glb', () => {
     expect(() => docGltf(duong, {})).toThrow(/chu ky/);
   });
 });
+
+/**
+ * File chi co MOT clip, khong co thit: xuong `canh` quay tu 0 toi 90 do quanh truc z
+ * trong mot giay. Tach rieng file nhu KayKit tach `Knight.glb` voi `Rig_Medium_*.glb` -
+ * khop voi file nguoi bang TEN xuong.
+ */
+function taoFileClip(): string {
+  const t = new Float32Array([0, 1]);
+  const s = Math.SQRT1_2;
+  const q = new Float32Array([0, 0, 0, 1, 0, 0, s, s]);
+  const dem = Buffer.concat([Buffer.from(t.buffer), Buffer.from(q.buffer)]);
+  const j = {
+    asset: { version: '2.0' },
+    nodes: [{ name: 'canh' }],
+    animations: [{
+      name: 'quay',
+      channels: [{ sampler: 0, target: { node: 0, path: 'rotation' } }],
+      samplers: [{ input: 0, output: 1, interpolation: 'LINEAR' }],
+    }],
+    accessors: [
+      { bufferView: 0, componentType: 5126, count: 2, type: 'SCALAR' },
+      { bufferView: 1, componentType: 5126, count: 2, type: 'VEC4' },
+    ],
+    bufferViews: [
+      { buffer: 0, byteOffset: 0, byteLength: 8 },
+      { buffer: 0, byteOffset: 8, byteLength: 32 },
+    ],
+    buffers: [{ byteLength: dem.length, uri: `data:application/octet-stream;base64,${dem.toString('base64')}` }],
+  };
+  const duong: string = join(mkdtempSync(join(tmpdir(), 'clip-')), 'clip.gltf');
+  writeFileSync(duong, JSON.stringify(j));
+  return duong;
+}
+
+describe('docGltf hoat anh va gan xuong', () => {
+  const duong: string = taoFileGltf();
+  const clip: string = taoFileClip();
+
+  it('cuoi clip ra dung tu the nhu xoay tay 90 do', () => {
+    const a = docGltf(duong, { hoatAnh: { duong: clip, ten: 'quay', phan: 1 } });
+    const b = docGltf(duong, { dang: { canh: [0, 0, 90] } });
+    for (let i = 0; i < 3; i += 1) {
+      dinhThu(a.dinh, i).forEach((v, k) => { expect(v).toBeCloseTo(dinhThu(b.dinh, i)[k] ?? 0); });
+    }
+  });
+
+  it('giua clip noi ra 45 do', () => {
+    const d2 = dinhThu(docGltf(duong, { hoatAnh: { duong: clip, ten: 'quay', phan: 0.5 } }).dinh, 2);
+    expect(d2[0]).toBeCloseTo(Math.SQRT1_2);
+    expect(d2[1]).toBeCloseTo(1 + Math.SQRT1_2);
+  });
+
+  it('ten clip sai thi bao loi ke ra clip dang co', () => {
+    expect(() => docGltf(duong, { hoatAnh: { duong: clip, ten: 'di', phan: 0 } })).toThrow(/co: quay/);
+  });
+
+  it('gan model phu vao xuong: dich theo xuong, quay theo tu the', () => {
+    const r = docGltf(duong, { gan: [{ xuong: 'canh', duong }] });
+    expect(r.soTamGiac).toBe(2);
+    // Tam giac phu dat goc tai `canh` (0,1,0): dinh (1,1,0) cua no thanh (1,2,0).
+    expect(dinhThu(r.dinh, 5)).toEqual([1, 2, 0]);
+    const q = docGltf(duong, { hoatAnh: { duong: clip, ten: 'quay', phan: 1 }, gan: [{ xuong: 'canh', duong }] });
+    const d = dinhThu(q.dinh, 5);
+    expect(d[0]).toBeCloseTo(-1);
+    expect(d[1]).toBeCloseTo(2);
+  });
+
+  it('xuong gan khong ton tai thi bao loi', () => {
+    expect(() => docGltf(duong, { gan: [{ xuong: 'dau', duong }] })).toThrow(/khong co xuong "dau"/);
+  });
+});

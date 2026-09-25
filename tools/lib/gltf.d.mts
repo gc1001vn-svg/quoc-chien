@@ -19,6 +19,10 @@ export interface TuyChonGltf {
   readonly mau_vl?: Record<string, number[]>;
   /** Chi giu phan thit bam vao nhung xuong nay. */
   readonly xuong?: string[] | null;
+  /** Dat tu the theo clip `ten` trong file `duong`, tai `phan` (0..1) do dai clip. */
+  readonly hoatAnh?: { readonly duong: string; readonly ten: string; readonly phan: number };
+  /** Model phu gan vao xuong, doc de quy voi `tuyChon` rieng. */
+  readonly gan?: readonly { readonly xuong: string; readonly duong: string; readonly tuyChon?: TuyChonGltf }[];
 }
 
 export function docGltf(duong: string, tuyChon?: TuyChonGltf): KetQuaGltf;

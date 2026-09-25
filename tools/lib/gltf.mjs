@@ -228,6 +228,102 @@ function doiDang(dang, guong) {
 }
 
 /**
+ * Clip da doc, theo khoa `duong#ten`. Me linh nuong hang tram sprite tu vai clip - doc lai
+ * file rig 18 MB moi sprite thi nuong mat vai phut chi de parse JSON.
+ */
+const khoClip = new Map();
+
+/**
+ * Doc mot clip hoat anh ra danh sach kenh, moi kenh gan vao TEN node chu khong phai chi so.
+ *
+ * VI SAO THEO TEN: KayKit de nguoi (`Knight.glb`) va cu dong (`Rig_Medium_General.glb`) o
+ * HAI file khac nhau, cung mot bo xuong `Rig_Medium`. Chi so node lech nhau giua hai file,
+ * ten xuong (`hips`, `upperarm.l`) thi trung.
+ */
+function docClip(duong, ten) {
+  const khoa = `${duong}#${ten}`;
+  if (khoClip.has(khoa)) return khoClip.get(khoa);
+  const glb = duong.toLowerCase().endsWith('.glb') ? tachGlb(duong) : null;
+  const j = glb === null ? JSON.parse(readFileSync(duong, 'utf8')) : glb.json;
+  const a = (j.animations ?? []).find((x) => x.name === ten);
+  if (a === undefined) {
+    const co = (j.animations ?? []).map((x) => x.name).join(', ');
+    throw new Error(`${duong}: khong co clip "${ten}" (co: ${co})`);
+  }
+  const dem = (j.buffers ?? []).map((b) => docBuffer(b, dirname(duong), glb?.dem ?? null));
+  let thoiLuong = 0;
+  const kenh = [];
+  for (const c of a.channels) {
+    const s = a.samplers[c.sampler];
+    const t = docAcc(j, dem, s.input);
+    thoiLuong = Math.max(thoiLuong, t[t.length - 1] ?? 0);
+    kenh.push({
+      node: j.nodes[c.target.node].name,
+      loai: c.target.path,
+      t,
+      v: docAcc(j, dem, s.output),
+      soPhan: c.target.path === 'rotation' ? 4 : 3,
+      noi: s.interpolation ?? 'LINEAR',
+    });
+  }
+  const clip = { thoiLuong, kenh };
+  khoClip.set(khoa, clip);
+  return clip;
+}
+
+/** Gia tri khoa thu `i` cua mot kenh. CUBICSPLINE xep [tiep tuyen vao, gia tri, ra]. */
+function giaTriKhoa(k, i) {
+  const o = (k.noi === 'CUBICSPLINE' ? i * 3 + 1 : i) * k.soPhan;
+  return Array.from(k.v.subarray(o, o + k.soPhan));
+}
+
+/**
+ * Lay mau clip tai `phan` (0..1 cua do dai clip) -> ten node -> { translation, rotation,
+ * scale }. Noi tuyen tinh; bon-so noi tuyen tinh roi chuan hoa - hai khoa sat nhau thi
+ * sai khac voi slerp nho hon mot diem anh.
+ */
+function mauClip(clip, phan) {
+  const giay = clip.thoiLuong * phan;
+  const ra = new Map();
+  for (const k of clip.kenh) {
+    const n = k.t.length;
+    let gt;
+    if (n === 1 || giay <= k.t[0]) gt = giaTriKhoa(k, 0);
+    else if (giay >= k.t[n - 1]) gt = giaTriKhoa(k, n - 1);
+    else {
+      let i = 0;
+      while (k.t[i + 1] < giay) i += 1;
+      const a = giaTriKhoa(k, i);
+      const b = giaTriKhoa(k, i + 1);
+      if (k.noi === 'STEP') gt = a;
+      else {
+        const f = (giay - k.t[i]) / (k.t[i + 1] - k.t[i]);
+        // Bon-so q va -q la cung mot phep xoay; lat dau cho hai khoa cung phia moi noi dung.
+        const dau = k.soPhan === 4 && a.reduce((s, v, c) => s + v * b[c], 0) < 0 ? -1 : 1;
+        gt = a.map((v, c) => v + (b[c] * dau - v) * f);
+        if (k.soPhan === 4) {
+          const d = Math.hypot(...gt) || 1;
+          gt = gt.map((v) => v / d);
+        }
+      }
+    }
+    if (!ra.has(k.node)) ra.set(k.node, {});
+    ra.get(k.node)[k.loai] = gt;
+  }
+  return ra;
+}
+
+/** Bo phan phong to khoi ma tran, giu xoay va dich - de do gan vao xuong khong bi keo gian. */
+function boTiLe(m) {
+  const r = Float64Array.from(m);
+  for (let c = 0; c < 3; c += 1) {
+    const d = Math.hypot(r[c * 4], r[c * 4 + 1], r[c * 4 + 2]) || 1;
+    for (let k = 0; k < 3; k += 1) r[c * 4 + k] /= d;
+  }
+  return r;
+}
+
+/**
  * Doc mot file glTF thanh mang dinh de nuong.
  *
  * @param {string} duong Duong dan file `.gltf`.
@@ -242,10 +338,18 @@ function doiDang(dang, guong) {
  * @param {(tenAnh: string) => number} [tuyChon.traAnh] Doi ten file anh thanh chi so anh
  *   toan cuc (>= 0), hay -1 neu khong tim ra.
  * @param {Record<string, number[]>} [tuyChon.mau_vl] Ten material -> mau nhan rieng.
+ * @param {{duong: string, ten: string, phan: number}} [tuyChon.hoatAnh] Dat tu the theo
+ *   clip `ten` trong file `duong` (co the la file khac, khop xuong theo ten), tai `phan`
+ *   (0..1) do dai clip. Ap TRUOC bang `dang`.
+ * @param {{xuong: string, duong: string, tuyChon?: object}[]} [tuyChon.gan] Model phu gan
+ *   vao xuong: vu khi vao `handslot.r`, nguoi cuoi vao lung ngua. Doc de quy bang chinh
+ *   ham nay voi `tuyChon` rieng, roi dat theo ma tran the gioi cua xuong (bo phan phong to).
  * @returns {{dinh: Float32Array, min: number[], max: number[], soTamGiac: number}}
  */
 export function docGltf(duong, tuyChon = {}) {
   const { dang = {}, guong = false, traAnh = null, mau_vl: mauVl = {}, xuong: locXuong = null } = tuyChon;
+  const tuThe = tuyChon.hoatAnh === undefined ? null
+    : mauClip(docClip(tuyChon.hoatAnh.duong, tuyChon.hoatAnh.ten), tuyChon.hoatAnh.phan);
   // Doc duoc ca `.gltf` (JSON + `.bin` roi) lan `.glb` (goi nhi phan mot file).
   const laGlb = duong.toLowerCase().endsWith('.glb');
   const glb = laGlb ? tachGlb(duong) : null;
@@ -257,13 +361,16 @@ export function docGltf(duong, tuyChon = {}) {
 
   // Ma tran rieng cua tung node, da cong them goc xoay cua dang.
   const rieng = nodes.map((n) => {
-    if (n.matrix !== undefined && bangDang[n.name] === undefined) return Float64Array.from(n.matrix);
-    const q = n.rotation ?? [0, 0, 0, 1];
+    const hd = tuThe?.get(n.name);
+    if (n.matrix !== undefined && bangDang[n.name] === undefined && hd === undefined) {
+      return Float64Array.from(n.matrix);
+    }
+    const q = hd?.rotation ?? n.rotation ?? [0, 0, 0, 1];
     const them = bangDang[n.name];
     return tuTRS(
-      n.translation ?? [0, 0, 0],
+      hd?.translation ?? n.translation ?? [0, 0, 0],
       them === undefined ? q : nhanQ(q, tuGoc(them)),
-      n.scale ?? [1, 1, 1],
+      hd?.scale ?? n.scale ?? [1, 1, 1],
     );
   });
 
@@ -306,6 +413,22 @@ export function docGltf(duong, tuyChon = {}) {
     }
   }
 
+  for (const g of tuyChon.gan ?? []) {
+    const k = nodes.findIndex((n) => n.name === g.xuong);
+    if (k < 0) throw new Error(`${duong}: khong co xuong "${g.xuong}" de gan ${g.duong}`);
+    const m = boTiLe(theGioi[k] ?? donVi());
+    const phu = docGltf(g.duong, g.tuyChon ?? {}).dinh;
+    for (let i = 0; i < phu.length; i += BUOC) {
+      const d = diem(m, phu[i], phu[i + 1], phu[i + 2]);
+      const h = huong(m, phu[i + 5], phu[i + 6], phu[i + 7]);
+      for (let c = 0; c < 3; c += 1) {
+        if (d[c] < min[c]) min[c] = d[c];
+        if (d[c] > max[c]) max[c] = d[c];
+      }
+      ra.push(...d, phu[i + 3], phu[i + 4], ...h, ...phu.subarray(i + 8, i + BUOC));
+    }
+  }
+
   return { dinh: new Float32Array(ra), min, max, soTamGiac: ra.length / (BUOC * 3) };
 }
 
@@ -319,7 +442,9 @@ function vatLieu(j, p, traAnh, mauVl) {
     .map((v, k) => v * (son === undefined ? 1 : son[k]));
   const te = pbr.baseColorTexture;
   if (te === undefined) return { kd, anh: 0 };
-  const uri = j.images?.[j.textures[te.index].source]?.uri ?? '';
+  // Anh nhung trong GLB khong co `uri`; KayKit de ban PNG cung ten nam canh file.
+  const hinh = j.images?.[j.textures[te.index].source];
+  const uri = hinh?.uri ?? (hinh?.name === undefined ? '' : `${hinh.name}.png`);
   const ten = decodeURIComponent(uri).split('/').pop();
   const c = traAnh === null ? 0 : traAnh(ten);
   return { kd, anh: c < 0 ? 0 : c + 1 };
