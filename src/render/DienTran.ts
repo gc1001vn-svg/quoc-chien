@@ -10,28 +10,10 @@
  * `(sin, cos)` cua goc `h * 360 / soHuong` tren mat phang `(a, b)`.
  */
 import type { DauVaoTran, DiemDoi, KetQuaTran, KhungVet, Phe } from '../sim/campaign/Battle';
+import { bam, chonHuong, diem, oDoiHinh, timKhung, type CauHinhDien, type DangLinh, type LinhVe, type MuiTen } from './DienTranCoBan';
 
-/** Khuon `data/dien_tran.json` - chi cac truong lop dien dung. */
-export interface CauHinhDien {
-  readonly khoang_linh: number;
-  /** Khoang rieng theo loai doi (`ky_binh`), khong co thi dung `khoang_linh`. */
-  readonly khoang_rieng?: Readonly<Record<string, number>>;
-  readonly cot_toi_da: number;
-  readonly khung_moi_giay: number;
-  readonly giay_trung: number;
-  readonly toc_rut: number;
-  readonly huong: number;
-}
-
-export type DangLinh = 'di' | 'danh' | 'trung' | 'chet';
-
-/** Mot linh can ve. `ten` la ten sprite trong atlas `linh_co`. */
-export interface LinhVe {
-  readonly a: number;
-  readonly b: number;
-  readonly ten: string;
-  readonly ben: Phe;
-}
+export { chonHuong, oDoiHinh, timKhung } from './DienTranCoBan';
+export type { CauHinhDien, DangLinh, LinhVe, MuiTen } from './DienTranCoBan';
 
 /** Mot linh trong doi: chet luc nao, o dau, nhin huong nao luc chet. */
 interface Linh {
@@ -44,48 +26,6 @@ interface Linh {
   huongChet: number;
 }
 
-/**
- * Chon huong sprite cho vector di `(da, db)`. Vector 0 thi tra -1 - noi goi giu huong cu.
- * Goc `atan2(da, db)` vi huong 0 nhin theo +b (xem dau file).
- */
-export function chonHuong(da: number, db: number, soHuong: number): number {
-  if (da === 0 && db === 0) return -1;
-  const buoc: number = (2 * Math.PI) / soHuong;
-  const h: number = Math.round(Math.atan2(da, db) / buoc);
-  return ((h % soHuong) + soHuong) % soHuong;
-}
-
-/**
- * Cho dung cua linh thu `i` trong doi `n` nguoi, so voi tam doi: xep hang ngang toi da
- * `cot` nguoi, cac hang can giua.
- */
-export function oDoiHinh(i: number, n: number, cot: number, khoang: number): { da: number; db: number } {
-  const soCot: number = Math.min(cot, n);
-  const soHang: number = Math.ceil(n / soCot);
-  const hang: number = Math.floor(i / soCot);
-  // Hang cuoi thieu nguoi thi can giua rieng hang do.
-  const trongHang: number = hang === soHang - 1 ? n - hang * soCot : soCot;
-  const cotI: number = i % soCot;
-  return {
-    da: (hang - (soHang - 1) / 2) * khoang,
-    db: (cotI - (trongHang - 1) / 2) * khoang,
-  };
-}
-
-/** Chi so khung vet ngay truoc `giay` va phan noi `f` (0..1) sang khung sau. */
-export function timKhung(vet: readonly KhungVet[], giay: number): { i: number; f: number } {
-  if (vet.length === 0) throw new Error('vet rong: tinhTran luon ghi it nhat mot khung');
-  let i = 0;
-  while (i + 1 < vet.length && (vet[i + 1]?.giay ?? Infinity) <= giay) i += 1;
-  const dau: KhungVet = vet[i] as KhungVet;
-  const sau: KhungVet | undefined = vet[i + 1];
-  if (sau === undefined || sau.giay <= dau.giay) return { i, f: 0 };
-  return { i, f: Math.min(1, Math.max(0, (giay - dau.giay) / (sau.giay - dau.giay))) };
-}
-
-function diem(k: KhungVet | undefined, ben: Phe, doi: number): DiemDoi | undefined {
-  return k === undefined ? undefined : (ben === 'a' ? k.a : k.b)[doi];
-}
 
 /** Dien mot tran da tinh. Dung mot lan, hoi `linhLuc(giay)` moi khung hinh. */
 export class DienTran {
@@ -96,11 +36,48 @@ export class DienTran {
   /** Huong cuoi cung cua moi doi, khoa `a3` / `b0` - dung yen thi giu huong cu. */
   private readonly huongDoi = new Map<string, number>();
 
-  public constructor(kq: KetQuaTran, vao: DauVaoTran, ch: CauHinhDien) {
+  /** Tam danh theo loai doi (`units.json`). Doi co tam <= 1 la can chien. Bo trong = khong dan hang. */
+  private readonly tamDoi: ReadonlyMap<string, number>;
+
+  public constructor(kq: KetQuaTran, vao: DauVaoTran, ch: CauHinhDien, tamDoi: ReadonlyMap<string, number> = new Map()) {
     this.kq = kq;
     this.vao = vao;
     this.ch = ch;
+    this.tamDoi = tamDoi;
     this.dungLinh();
+  }
+
+  private idDoi(ben: Phe, doi: number): string {
+    return (ben === 'a' ? this.vao.a : this.vao.b).doi[doi] ?? '';
+  }
+
+  /** Giay doi bat dau danh (su kien `danh` dau tien), Infinity neu chua. */
+  private giayDanh(ben: Phe, doi: number): number {
+    return this.kq.suKien.find((s) => s.loai === 'danh' && s.ben === ben && s.doi === doi)?.giay ?? Infinity;
+  }
+
+  /** Tam doi o `giay` (noi giua hai khung vet, doi vo thi chay ve). */
+  private tamLuc(ben: Phe, doi: number, giay: number): { a: number; b: number } | undefined {
+    const { i, f } = timKhung(this.kq.vet, giay);
+    const p0 = diem(this.kq.vet[i], ben, doi);
+    const p1 = diem(this.kq.vet[i + 1], ben, doi) ?? p0;
+    return p0 === undefined || p1 === undefined ? undefined : this.viTri(ben, doi, p0, p1, f, giay);
+  }
+
+  /** Doi dich gan nhat con dung o giay `giay`, -1 neu het. */
+  private dichGan(ben: Phe, tam: { a: number; b: number }, giay: number): number {
+    const k: KhungVet = this.kq.vet[timKhung(this.kq.vet, giay).i] as KhungVet;
+    const dich: readonly DiemDoi[] = ben === 'a' ? k.b : k.a;
+    let tot = -1;
+    let kc = Infinity;
+    dich.forEach((e, j) => {
+      const d: number = Math.hypot(e.x - tam.a, e.y - tam.b);
+      if (!e.vo && d < kc) {
+        kc = d;
+        tot = j;
+      }
+    });
+    return tot;
   }
 
   /** Khoang giua hai linh cua doi `doi` ben `ben`. */
@@ -139,6 +116,7 @@ export class DienTran {
     const xac: LinhVe[] = [];
     const song: LinhVe[] = [];
     const khung: number = Math.floor(giay * this.ch.khung_moi_giay);
+    const soKhung = (d: DangLinh): number => this.ch.so_khung?.[d] ?? 2;
 
     for (const ben of ['a', 'b'] as const) {
       const ids: readonly string[] = (ben === 'a' ? this.vao.a : this.vao.b).doi;
@@ -153,23 +131,98 @@ export class DienTran {
         const n: number = cua.length;
         const conSong: number = cua.filter((l) => l.giayChet > giay).length;
         const trung: boolean = cua.some((l) => l.giayChet <= giay && giay - l.giayChet < this.ch.giay_trung);
+        const hang = this.hangGiap(ben, doi, id, tam, p0, giay);
+        let thu = 0;
         for (const l of cua) {
           if (l.giayChet <= giay) {
             // Hai khung chet: nga xuong roi nam han.
-            const k: number = giay - l.giayChet < 1 / this.ch.khung_moi_giay ? 0 : 1;
+            const k: number = giay - l.giayChet < 1 / this.ch.khung_moi_giay ? 0 : soKhung('chet') - 1;
             xac.push({ a: l.aChet, b: l.bChet, ben, ten: `${id}_chet_h${String(l.huongChet)}_k${String(k)}` });
             continue;
           }
           const o = oDoiHinh(l.chiSo, n, this.ch.cot_toi_da, this.khoang(ben, doi));
           // Nguoi sap chet ke tiep (con song co chi so lon nhat) hien trung don.
           const d: DangLinh = trung && l.chiSo === conSong - 1 && !p0.vo ? 'trung' : dang;
-          const k: number = (khung + l.chiSo) % 2;
-          song.push({ a: tam.a + o.da, b: tam.b + o.db, ben, ten: `${id}_${d}_h${String(huong)}_k${String(k)}` });
+          // Moi linh mot pha rieng - khong ca doi vung kiem cung mot nhip.
+          const pha: number = Math.floor(bam(l.chiSo, doi + (ben === 'a' ? 0 : 50)) * soKhung(d));
+          const k: number = (khung + pha) % soKhung(d);
+          let a: number = tam.a + o.da;
+          let b: number = tam.b + o.db;
+          if (hang !== undefined) {
+            // Linh con song thu `thu` dung o hang `thu / cot`, cot `thu % cot` cua tuyen giap.
+            const cot: number = Math.min(this.ch.cot_toi_da, conSong);
+            const r: number = Math.floor(thu / cot);
+            const trongHang: number = Math.min(cot, conSong - r * cot);
+            const ngang: number = ((thu % cot) - (trongHang - 1) / 2) * this.khoang(ben, doi);
+            const sau: number = (this.ch.khoang_giap ?? 0.45) / 2 + r * this.khoang(ben, doi)
+              - (this.ch.nhun ?? 0) * Math.sin(((k + 0.5) / soKhung(d)) * Math.PI);
+            const ga: number = hang.m.a - hang.u.a * sau - hang.u.b * ngang;
+            const gb: number = hang.m.b - hang.u.b * sau + hang.u.a * ngang;
+            a += (ga - a) * hang.w;
+            b += (gb - b) * hang.w;
+          }
+          thu += 1;
+          song.push({ a, b, ben, ten: `${id}_${d}_h${String(huong)}_k${String(k)}` });
         }
       });
     }
     song.sort((p, q) => p.a + p.b - (q.a + q.b));
     return [...xac, ...song];
+  }
+
+  /**
+   * Tuyen giap la ca cua doi can chien dang danh: diem giua `m` hai tam doi, huong `u` (don vi)
+   * tu doi minh sang doi dich, `w` (0..1) do da chay ra tuyen - tang dan trong `giay_vao_tran`.
+   * `undefined` khi doi khong can chien, khong danh, da vo, hay khong biet tam danh.
+   */
+  private hangGiap(
+    ben: Phe, doi: number, id: string, tam: { a: number; b: number }, p0: DiemDoi, giay: number,
+  ): { m: { a: number; b: number }; u: { a: number; b: number }; w: number } | undefined {
+    const tamDanh: number | undefined = this.tamDoi.get(id);
+    if (tamDanh === undefined || tamDanh > 1 || p0.vo || !p0.dangDanh) return undefined;
+    const e: number = this.dichGan(ben, tam, giay);
+    const te = e < 0 ? undefined : this.tamLuc(ben === 'a' ? 'b' : 'a', e, giay);
+    if (te === undefined) return undefined;
+    const kc: number = Math.hypot(te.a - tam.a, te.b - tam.b) || 1;
+    const w: number = Math.min(1, Math.max(0, (giay - this.giayDanh(ben, doi)) / (this.ch.giay_vao_tran ?? 0.6)));
+    return { m: { a: (tam.a + te.a) / 2, b: (tam.b + te.b) / 2 }, u: { a: (te.a - tam.a) / kc, b: (te.b - tam.b) / kc }, w };
+  }
+
+  /**
+   * Mui ten dang bay o `giay`. Moi cung thu con song cua doi danh xa dang danh ban mot mui
+   * moi `chu_ky_ban` giay (lech pha theo nguoi), bay `giay_bay` giay theo duong vong toi
+   * quanh tam doi dich gan nhat. Chi de nhin - sat thuong da tinh san trong ket qua.
+   */
+  public muiTenLuc(giay: number): MuiTen[] {
+    const ra: MuiTen[] = [];
+    const T: number = this.ch.chu_ky_ban ?? 1.6;
+    const F: number = Math.min(this.ch.giay_bay ?? 0.9, T);
+    for (const l of this.linh) {
+      const id: string = this.idDoi(l.ben, l.doi);
+      if ((this.tamDoi.get(id) ?? 0) <= 1) continue;
+      const lech: number = bam(l.chiSo, l.doi + 17) * T;
+      const ban: number = Math.floor((giay + lech) / T) * T - lech;
+      const f: number = (giay - ban) / F;
+      if (f < 0 || f >= 1 || l.giayChet <= ban) continue;
+      const tam = this.tamLuc(l.ben, l.doi, ban);
+      const p = diem(this.kq.vet[timKhung(this.kq.vet, ban).i], l.ben, l.doi);
+      if (tam === undefined || p === undefined || p.vo || !p.dangDanh) continue;
+      const e: number = this.dichGan(l.ben, tam, ban);
+      const te = e < 0 ? undefined : this.tamLuc(l.ben === 'a' ? 'b' : 'a', e, ban);
+      if (te === undefined) continue;
+      const tan: number = this.ch.tan_ban ?? 1.2;
+      const lot = Math.floor(ban / T);
+      const da: number = te.a + (bam(l.chiSo, lot) - 0.5) * tan - tam.a;
+      const db: number = te.b + (bam(lot, l.chiSo + 3) - 0.5) * tan - tam.b;
+      const h: number = chonHuong(da, db, this.ch.huong);
+      ra.push({
+        a: tam.a + da * f,
+        b: tam.b + db * f,
+        cao: 4 * (this.ch.do_vong ?? 0.22) * Math.hypot(da, db) * f * (1 - f),
+        ten: `mui_ten_h${String(Math.max(0, h))}`,
+      });
+    }
+    return ra;
   }
 
   /**

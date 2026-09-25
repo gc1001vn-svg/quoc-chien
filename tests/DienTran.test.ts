@@ -192,7 +192,7 @@ describe('DienTran - linhLuc', () => {
     expect(sprites.length).toBeGreaterThanOrEqual(kq.linhA + kq.linhB);
     expect(sprites.length).not.toBeGreaterThan(kq.linhA + kq.linhB);
 
-    const regex = /^[a-z_]+_(di|danh|trung|chet)_h[0-7]_k[01]$/;
+    const regex = /^[a-z_]+_(di|danh|trung|chet)_h[0-7]_k[0-3]$/;
     for (const sprite of sprites) {
       expect(regex.test(sprite.ten)).toBe(true);
       expect(sprite.a).toBeDefined();

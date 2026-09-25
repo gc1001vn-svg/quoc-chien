@@ -9,19 +9,27 @@
   },
   "ghi_chu_bong": "Bong gon cho linh: so mac dinh (nga 0.55, no_them 0.1) la cho nha, voi linh cao 0,6 o no chiem gan nua o sprite.",
   "bong": { "nga": 0.3, "no_cao": 0.1, "no_them": 0.02 },
-  "ghi_chu_dat": "Nen chien truong: hai o co phang 4x4 o luoi, hai sac xen ke cho khoi ra mot mang phang. `de_a`/`de_b`: de mau duoi chan linh de phan biet phe (xanh ta, do dich) - hai ben dung chung sprite linh. Tu sinh bang `phang`, khong can model.",
+  "ghi_chu_dat": "Nen chien truong: hai o co phang 4x4 o luoi, hai sac xen ke cho khoi ra mot mang phang. `de_a`/`de_b`: de mau duoi chan linh de phan biet phe (xanh ta, do dich) - hai ben dung chung sprite linh. `mui_ten_h*`: mui ten cung thu ban, 8 huong nhu linh. Tu sinh bang `phang`, khong can model.",
   "sprite": {
     "dat_0": [{ "phang": 4, "mau": [0.42, 0.56, 0.30] }],
     "dat_1": [{ "phang": 4, "mau": [0.46, 0.60, 0.32] }],
     "de_a": [{ "phang": 0.3, "mau": [0.20, 0.45, 0.95] }],
-    "de_b": [{ "phang": 0.3, "mau": [0.90, 0.22, 0.18] }]
+    "de_b": [{ "phang": 0.3, "mau": [0.90, 0.22, 0.18] }],
+    "mui_ten_h0": [{ "m": "kg:arrow_bow", "ti_le": 0.35 }],
+    "mui_ten_h1": { "nhu": "mui_ten_h0", "xoay": 45 },
+    "mui_ten_h2": { "nhu": "mui_ten_h0", "xoay": 90 },
+    "mui_ten_h3": { "nhu": "mui_ten_h0", "xoay": 135 },
+    "mui_ten_h4": { "nhu": "mui_ten_h0", "xoay": 180 },
+    "mui_ten_h5": { "nhu": "mui_ten_h0", "xoay": 225 },
+    "mui_ten_h6": { "nhu": "mui_ten_h0", "xoay": 270 },
+    "mui_ten_h7": { "nhu": "mui_ten_h0", "xoay": 315 }
   },
   "linh": {
     "huong": 8,
-    "ghi_chu_khung": "Thoi diem lay mau trong clip, tinh bang phan do dai clip. Hai khung moi dang.",
+    "ghi_chu_khung": "Thoi diem lay mau trong clip, tinh bang phan do dai clip. Di va danh 4 khung (2 khung nhin giat, anh bao 25/09), trung va chet 2. So khung phai khop `so_khung` cua data/dien_tran.json - test DienTran bat.",
     "khung": {
-      "di": [0.25, 0.75],
-      "danh": [0.3, 0.6],
+      "di": [0, 0.25, 0.5, 0.75],
+      "danh": [0.15, 0.35, 0.55, 0.8],
       "trung": [0.25, 0.5],
       "chet": [0.45, 1]
     },
@@ -49,7 +57,7 @@
         "dang": {
           "di": { "m": "an:Rig_Medium_MovementBasic", "ten": "Walking_A" },
           "danh": { "m": "an:Rig_Medium_CombatMelee", "ten": "Melee_1H_Attack_Chop" },
-          "trung": { "m": "an:Rig_Medium_General", "ten": "Hit_A" },
+          "trung": { "m": "an:Rig_Medium_CombatMelee", "ten": "Melee_Block_Hit" },
           "chet": { "m": "an:Rig_Medium_General", "ten": "Death_A" }
         }
       },
@@ -60,22 +68,26 @@
         },
         "dang": {
           "di": { "m": "an:Rig_Medium_MovementBasic", "ten": "Walking_A" },
-          "danh": { "m": "an:Rig_Medium_CombatRanged", "ten": "Ranged_Bow_Release" },
+          "danh": [
+            { "m": "an:Rig_Medium_CombatRanged", "ten": "Ranged_Bow_Draw", "khung": [0.3, 0.9] },
+            { "m": "an:Rig_Medium_CombatRanged", "ten": "Ranged_Bow_Release", "khung": [0.1, 0.5] }
+          ],
           "trung": { "m": "an:Rig_Medium_General", "ten": "Hit_A" },
           "chet": { "m": "an:Rig_Medium_General", "ten": "Death_B" }
         }
       },
       "ky_binh": {
         "manh": {
-          "m": "kq:Horse", "ti_le": 0.25,
+          "ghi_chu": "Ngua thu 0.17 (o 0.25 ngua cao gan gap doi nguoi, hai hang ky thanh mot dong - anh chup 25/09). Nguoi cuoi ti_le 1.47 = 0.25/0.17 de giu co bang linh bo; dich tinh o co ngua goc.",
+          "m": "kq:Horse", "ti_le": 0.17,
           "gan": [{
-            "xuong": "Torso2", "m": "ka:Knight", "chi_vi_tri": true, "dich": [0, -0.8, 0],
+            "xuong": "Torso2", "m": "ka:Knight", "chi_vi_tri": true, "dich": [0, -1.15, 0], "ti_le": 1.47,
             "hoat_anh": { "m": "an:Rig_Medium_Simulation", "ten": "Sit_Chair_Idle", "phan": 0 },
             "gan": [{ "xuong": "handslot.r", "m": "kg:sword_1handed" }]
           }]
         },
         "dang": {
-          "di": { "m": "kq:Horse", "ten": "AnimalArmature|Walk" },
+          "di": { "m": "kq:Horse", "ten": "AnimalArmature|Gallop" },
           "danh": { "m": "kq:Horse", "ten": "AnimalArmature|Attack_Kick" },
           "trung": { "m": "kq:Horse", "ten": "AnimalArmature|Idle_HitReact_Left" },
           "chet": { "m": "kq:Horse", "ten": "AnimalArmature|Death" }

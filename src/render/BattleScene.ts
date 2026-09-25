@@ -18,7 +18,7 @@ import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
 import { Camera } from './Camera';
-import { DienTran, type CauHinhDien, type LinhVe } from './DienTran';
+import { DienTran, type CauHinhDien, type LinhVe, type MuiTen } from './DienTran';
 import { Gl } from './Gl';
 import { neoX, neoY } from './IsoMath';
 import { datSprite } from './VeBanDo';
@@ -28,6 +28,11 @@ import type { Ve } from './VeCanh';
 const SUC_CHUA = 1024;
 /** Canh mot o dat trong atlas, tinh bang o chien truong (`dat_0` nuong `phang: 4`). */
 const O_DAT = 4;
+/**
+ * Mot o luoi chieu thang dung len man bao nhieu lan `oPx`: may nuong xem nghieng 30 do,
+ * mot don vi the gioi rong `oPx / sqrt(2)` diem anh, cao nhan `cos 30`.
+ */
+const CAO_O: number = Math.cos(Math.PI / 6) / Math.SQRT2;
 /** So dong nhat ky tran hien cung luc. */
 const SO_DONG = 4;
 
@@ -53,7 +58,8 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   const phanTram: number = Math.round(duDoan(vao, duLieu) * 100);
   const kichBan: Canh[] = sinhKichBan(kq, vao, duLieu);
   const cauHinh: CauHinhDien = dienTho;
-  const dien = new DienTran(kq, vao, cauHinh);
+  const tamDoi = new Map<string, number>([...duLieu.doi].map(([id, l]) => [id, l.tam]));
+  const dien = new DienTran(kq, vao, cauHinh, tamDoi);
 
   const canh: number = duLieu.chienTruong;
   const cam: Camera = new Camera(atlas.heSo(), canh + 1, atlas.oPx(), dienTho.zoom.min, dienTho.zoom.max, dienTho.zoom.dau);
@@ -81,6 +87,9 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   const caoHop: number = Math.max(...ys) - Math.min(...ys);
   cam.datZoom(atlas.heSo() * Math.min(rongCss / rongHop, caoCss / caoHop));
   cam.datTam((Math.max(...xs) + Math.min(...xs)) / 2, (Math.max(...ys) + Math.min(...ys)) / 2);
+  // `?zoom=` phong to tai tam tran - de may ao chup can canh giap la ca, giong hai man kia.
+  const zoomUrl: number = Number(new URLSearchParams(window.location.search).get('zoom') ?? 0);
+  if (zoomUrl > 0) cam.datZoom(zoomUrl);
 
   // Dong ho tran: giay da phat, toc do xem. `?giay=` mo thang giua tran - de may ao chup
   // duoc canh giap la ca ma khong phai ngoi cho, giong `?tinh=1` cua man ban do.
@@ -138,6 +147,9 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
       if (!l.ten.includes('_chet_')) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), `de_${l.ben}`);
     }
     for (const l of linh) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), l.ten);
+    // Mui ten ve sau cung, nang len theo do cao: mot o cao chieu len man bang `CAO_O * oPx`.
+    const muiTen: MuiTen[] = dien.muiTenLuc(giay);
+    for (const m of muiTen) datSprite(ve, neoX(m.a, m.b, oPx), neoY(m.a, m.b, oPx) - m.cao * CAO_O * oPx, m.ten);
     const lenhVe: number = gl.ketThucKhung();
 
     const xong: boolean = giay >= kq.giayKetThuc;
