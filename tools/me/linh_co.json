@@ -278,7 +278,12 @@
           },
           "danh": {
             "m": "kq:Horse",
-            "ten": "AnimalArmature|Attack_Kick"
+            "ten": "AnimalArmature|Idle",
+            "nguoi_cuoi": {
+              "m": "ua:UAL1_Standard",
+              "ten": "Sword_Attack",
+              "tu_xuong": "spine_01"
+            }
           },
           "trung": {
             "m": "kq:Horse",
@@ -288,7 +293,8 @@
             "m": "kq:Horse",
             "ten": "AnimalArmature|Death"
           }
-        }
+        },
+        "ghi_chu_danh": "Danh: ngua DUNG (Idle), nguoi cuoi chong lop Sword_Attack tu xuong spine_01 len tren len dang ngoi. Truoc do ngua 'da hau' Attack_Kick, anh bao 25/09 'nhu tong vao nhau chu khong phai danh nhau'."
       }
     }
   }

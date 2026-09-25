@@ -154,7 +154,7 @@ export class DienTran {
             const r: number = Math.floor(thu / cot);
             const trongHang: number = Math.min(cot, conSong - r * cot);
             const ngang: number = ((thu % cot) - (trongHang - 1) / 2) * this.khoang(ben, doi);
-            const sau: number = (this.ch.khoang_giap ?? 0.45) / 2 + r * this.khoang(ben, doi)
+            const sau: number = (this.ch.khoang_giap_rieng?.[id] ?? this.ch.khoang_giap ?? 0.45) / 2 + r * this.khoang(ben, doi)
               - (this.ch.nhun ?? 0) * Math.sin(((k + 0.5) / soKhung(d)) * Math.PI);
             const ga: number = hang.m.a - hang.u.a * sau - hang.u.b * ngang;
             const gb: number = hang.m.b - hang.u.b * sau + hang.u.a * ngang;

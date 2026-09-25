@@ -12,6 +12,7 @@
   "giay_trung": 0.5,
   "_giap_la_ca": "Hai doi can chien cham nhau thi linh roi doi hinh, xep hang o tuyen giua hai doi (cach nhau khoang_giap o), nhun toi lui nhun o theo nhat danh. giay_vao_tran: bao lau de tu doi hinh chay ra tuyen.",
   "khoang_giap": 0.45,
+  "khoang_giap_rieng": { "ky_binh": 1.3 },
   "nhun": 0.12,
   "giay_vao_tran": 0.6,
   "_ban": "Cung thu: moi nguoi ban mot mui moi chu_ky_ban giay, mui bay giay_bay giay, vong cao do_vong lan quang duong, roi lech toi da tan_ban o quanh tam doi dich.",

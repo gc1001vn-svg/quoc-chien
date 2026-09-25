@@ -17,6 +17,8 @@ export interface CauHinhDien {
   /** So khung moi dang, khop me `linh_co`. Thieu thi 2 (me cu). */
   readonly so_khung?: Readonly<Record<DangLinh, number>>;
   readonly khoang_giap?: number;
+  /** Khoang giap rieng theo loai doi - ngua dai, hai hang ky phai dung gian ra. */
+  readonly khoang_giap_rieng?: Readonly<Record<string, number>>;
   readonly nhun?: number;
   readonly giay_vao_tran?: number;
   readonly chu_ky_ban?: number;
