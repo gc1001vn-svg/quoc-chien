@@ -20,6 +20,7 @@ Kế hoạch: `docs/ke-hoach/2026-09-25-phase-10a-linh-co.md` (anh duyệt 25/09
   **5/7** lỗi cài thử → Claude thêm 2 test → 7/7. Jules đánh `it.fails` đúng chỗ **đề của
   Claude sai** (trọng tâm đội hình ≠ 0 khi hàng cuối thiếu người — đúng ý đồ). Lộ lỗi của
   `kiem_cheo`: gặp `expected fail` thì không đọc được số test, hai máy cùng `{}` mà báo KHỚP
-  — đã sửa + 6 test `--so-sanh` (bắt 4/4 lỗi cài thử).
+  — đã sửa + 6 test `--so-sanh` (bắt 4/4 lỗi cài thử). Cuối phase Jules kiểm chéo số của
+  Claude ở `903f09d` (17 phút): **KHỚP**, lần này có đối chiếu số test (402/402).
 - **Còn nợ:** 10B (6 đội súng/hiện đại) · ngựa to so với người · giáo cầm ngang khi đi ·
   người cưỡi một dáng ngồi · cung thủ chưa có mũi tên bay · trận chưa nối bản đồ chiến dịch.
