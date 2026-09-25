@@ -1,0 +1,23 @@
+{
+  "_": "So cua lop DIEN tran (Phase 10, render/BattleScene.ts) - khong anh huong ket qua tran, ket qua tinh xong tu truoc o sim/campaign/Battle.ts.",
+  "_doi_hinh": "khoang_linh: cach giua hai linh trong doi, tinh bang o chien truong. cot_toi_da: so linh moi hang ngang.",
+  "khoang_linh": 0.5,
+  "cot_toi_da": 4,
+  "_hoat_anh": "khung_moi_giay: toc do doi khung (moi dang co 2 khung). giay_trung: linh sap chet hien dang trung don trong bao lau sau khi doi mat nguoi.",
+  "khung_moi_giay": 4,
+  "giay_trung": 0.5,
+  "_rut": "toc_rut: doi vo tran chay ve phia minh bao nhieu o moi giay. Sim khong di chuyen doi da vo - chi lop dien cho no chay.",
+  "toc_rut": 3,
+  "huong": 8,
+  "toc_do_xem": [1, 4],
+  "zoom": { "min": 0.5, "max": 3, "dau": 1 },
+  "_tran_mau": "Tran mo bang ?tran=1 khi chua noi voi ban do chien dich. Chi dung doi nhom co (Phase 10A co sprite).",
+  "tran_mau": {
+    "a": ["giao_thu", "kiem_si", "cung_thu", "ky_binh", "giao_thu", "cung_thu"],
+    "b": ["kiem_si", "giao_thu", "cung_thu", "ky_binh", "kiem_si", "cung_thu"],
+    "tuong_a": 1,
+    "tuong_b": 1,
+    "dia_hinh": "dong_bang",
+    "hat_giong": 3
+  }
+}
