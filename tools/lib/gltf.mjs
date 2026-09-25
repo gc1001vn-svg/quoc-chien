@@ -499,6 +499,10 @@ function themPrim(j, dem, p, cuaNode, xuong, giu, traAnh, mauVl, gamma, ra, min,
   const uv = p.attributes.TEXCOORD_0 === undefined ? null : docAcc(j, dem, p.attributes.TEXCOORD_0);
   const kh = p.attributes.JOINTS_0 === undefined ? null : docAcc(j, dem, p.attributes.JOINTS_0);
   const na = p.attributes.WEIGHTS_0 === undefined ? null : docAcc(j, dem, p.attributes.WEIGHTS_0);
+  // Mau tung dinh (dac ta glTF: nhan voi `baseColorFactor`). Model Google Blocks tren Icosa
+  // to mau CHI bang cach nay, vat lieu de trang - bo qua thi ca xe tang ra trang (do 25/09).
+  const mau = p.attributes.COLOR_0 === undefined ? null : docAcc(j, dem, p.attributes.COLOR_0);
+  const soKenhMau = mau === null ? 0 : (j.accessors[p.attributes.COLOR_0].type === 'VEC4' ? 4 : 3);
   const chiSo = p.indices === undefined
     ? Array.from({ length: so }, (_, i) => i)
     : docAcc(j, dem, p.indices);
@@ -574,12 +578,14 @@ function themPrim(j, dem, p, cuaNode, xuong, giu, traAnh, mauVl, gamma, ra, min,
     if (y > max[1]) max[1] = y;
     if (z > max[2]) max[2] = z;
     const d = Math.hypot(phap[i * 3], phap[i * 3 + 1], phap[i * 3 + 2]) || 1;
+    const kd = mau === null ? vl.kd
+      : vl.kd.map((v, k) => v * (gamma ? mau[i * soKenhMau + k] ** (1 / 2.2) : mau[i * soKenhMau + k]));
     ra.push(
       x, y, z,
       // glTF dem `v` tu tren xuong, OBJ tu duoi len. Trang nuong theo loi OBJ nen lat lai.
       uv === null ? 0 : uv[i * 2], uv === null ? 0 : 1 - uv[i * 2 + 1],
       phap[i * 3] / d, phap[i * 3 + 1] / d, phap[i * 3 + 2] / d,
-      vl.kd[0], vl.kd[1], vl.kd[2], vl.anh,
+      kd[0], kd[1], kd[2], vl.anh,
     );
   }
 }
