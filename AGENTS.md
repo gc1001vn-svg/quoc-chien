@@ -5,6 +5,8 @@
 Game chiến thuật offline, 2D isometric, PWA. Đẩy `main` là tự lên
 https://gc1001vn-svg.github.io/quoc-chien/ — **xong việc tự gộp `main`** luôn, không PR.
 
+> **Jules:** skip "Đầu phiên", read `docs/JULES.md`.
+
 ## Đầu phiên — đọc kho ghi nhớ trước hết
 
 Ba file, **`cat` trọn từng file** — thứ đắt nhất nằm ở cuối `trang-thai.md`.
