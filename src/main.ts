@@ -5,12 +5,14 @@
  * `?do=sprite`. Hai man dau song cung luc va bam nut doi qua lai - giu ca hai song thi bam
  * "Về thành phố" la thay dung cho cu, khong phai dung lai van tu dau.
  *
+ * `?tran=1` mo man xem tran (Phase 10); nut "⚔ Xem trận" o man ban do dan toi day.
  * `?man=ban-do` mo thang man ban do - de may ao chup duoc no ma khong phai gia bo cham tay.
  * `?zoom=` dat muc thu phong mo man cho ca hai.
  */
 import { chayCanhThanhPho } from './render/CityScene';
 import { chayCanhBanDo } from './render/MapScene';
 import { chayDoSprite } from './bench/DoSprite';
+import { chayCanhTran } from './render/BattleScene';
 import type { Man } from './render/Man';
 import './style.css';
 
@@ -19,6 +21,7 @@ if (goc === null) throw new Error('Thieu the #app trong index.html');
 
 const thamSo = new URLSearchParams(window.location.search);
 const laTrangDo: boolean = thamSo.get('do') === 'sprite';
+const laTran: boolean = thamSo.get('tran') === '1';
 if (laTrangDo) goc.classList.add('trang-do');
 else goc.classList.add('trang-canh');
 
@@ -27,7 +30,7 @@ cho.className = 'dang-nap';
 cho.textContent = 'Đang nạp atlas…';
 goc.appendChild(cho);
 
-const chay: Promise<void> = laTrangDo ? chayDoSprite(goc) : moHaiMan(goc);
+const chay: Promise<void> = laTrangDo ? chayDoSprite(goc) : laTran ? moManTran(goc) : moHaiMan(goc);
 chay.then(
   () => {
     cho.remove();
@@ -56,9 +59,18 @@ async function moHaiMan(boc: HTMLElement): Promise<void> {
   nut(oThanhPho, 'nut-doi-man', '🗺 Bản đồ tỉnh', () => { sang(manBanDo, manThanhPho); });
   nut(oBanDo, 'nut-doi-man', '⌂ Về thành phố', () => { sang(manThanhPho, manBanDo); });
   nutDoTranSprite(oThanhPho);
+  nut(oBanDo, 'nut-xem-tran', '⚔ Xem trận', () => { window.location.search = '?tran=1'; });
 
   if (thamSo.get('man') === 'ban-do') manBanDo.hien();
   else manThanhPho.hien();
+}
+
+/** Man xem tran (Phase 10), kem nut quay ve thanh pho. */
+async function moManTran(boc: HTMLElement): Promise<void> {
+  const o: HTMLDivElement = taoMan(boc);
+  o.hidden = false;
+  await chayCanhTran(o);
+  nut(o, 'nut-doi-man', '⌂ Về thành phố', () => { window.location.search = ''; });
 }
 
 /** Mot lop man phu kin `#app`. Hai lop chong len nhau, moi luc chi mot cai hien. */

@@ -9,6 +9,13 @@
   },
   "ghi_chu_bong": "Bong gon cho linh: so mac dinh (nga 0.55, no_them 0.1) la cho nha, voi linh cao 0,6 o no chiem gan nua o sprite.",
   "bong": { "nga": 0.3, "no_cao": 0.1, "no_them": 0.02 },
+  "ghi_chu_dat": "Nen chien truong: hai o co phang 4x4 o luoi, hai sac xen ke cho khoi ra mot mang phang. `de_a`/`de_b`: de mau duoi chan linh de phan biet phe (xanh ta, do dich) - hai ben dung chung sprite linh. Tu sinh bang `phang`, khong can model.",
+  "sprite": {
+    "dat_0": [{ "phang": 4, "mau": [0.42, 0.56, 0.30] }],
+    "dat_1": [{ "phang": 4, "mau": [0.46, 0.60, 0.32] }],
+    "de_a": [{ "phang": 0.3, "mau": [0.20, 0.45, 0.95] }],
+    "de_b": [{ "phang": 0.3, "mau": [0.90, 0.22, 0.18] }]
+  },
   "linh": {
     "huong": 8,
     "ghi_chu_khung": "Thoi diem lay mau trong clip, tinh bang phan do dai clip. Hai khung moi dang.",

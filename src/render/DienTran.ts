@@ -14,6 +14,8 @@ import type { DauVaoTran, DiemDoi, KetQuaTran, KhungVet, Phe } from '../sim/camp
 /** Khuon `data/dien_tran.json` - chi cac truong lop dien dung. */
 export interface CauHinhDien {
   readonly khoang_linh: number;
+  /** Khoang rieng theo loai doi (`ky_binh`), khong co thi dung `khoang_linh`. */
+  readonly khoang_rieng?: Readonly<Record<string, number>>;
   readonly cot_toi_da: number;
   readonly khung_moi_giay: number;
   readonly giay_trung: number;
@@ -101,6 +103,29 @@ export class DienTran {
     this.dungLinh();
   }
 
+  /** Khoang giua hai linh cua doi `doi` ben `ben`. */
+  private khoang(ben: Phe, doi: number): number {
+    const id: string = (ben === 'a' ? this.vao.a : this.vao.b).doi[doi] ?? '';
+    return this.ch.khoang_rieng?.[id] ?? this.ch.khoang_linh;
+  }
+
+  /** Hop o luoi ma quan tung dung trong ca tran - de man mo ra zoom vua khit. */
+  public hopVet(): { a0: number; a1: number; b0: number; b1: number } {
+    let a0 = Infinity;
+    let a1 = -Infinity;
+    let b0 = Infinity;
+    let b1 = -Infinity;
+    for (const k of this.kq.vet) {
+      for (const p of [...k.a, ...k.b]) {
+        a0 = Math.min(a0, p.x);
+        a1 = Math.max(a1, p.x);
+        b0 = Math.min(b0, p.y);
+        b1 = Math.max(b1, p.y);
+      }
+    }
+    return { a0, a1, b0, b1 };
+  }
+
   /** Do dai tran, giay. */
   public giayKetThuc(): number {
     return this.kq.giayKetThuc;
@@ -135,7 +160,7 @@ export class DienTran {
             xac.push({ a: l.aChet, b: l.bChet, ben, ten: `${id}_chet_h${String(l.huongChet)}_k${String(k)}` });
             continue;
           }
-          const o = oDoiHinh(l.chiSo, n, this.ch.cot_toi_da, this.ch.khoang_linh);
+          const o = oDoiHinh(l.chiSo, n, this.ch.cot_toi_da, this.khoang(ben, doi));
           // Nguoi sap chet ke tiep (con song co chi so lon nhat) hien trung don.
           const d: DangLinh = trung && l.chiSo === conSong - 1 && !p0.vo ? 'trung' : dang;
           const k: number = (khung + l.chiSo) % 2;
@@ -200,7 +225,7 @@ export class DienTran {
         const p = diem(khung, l.ben, l.doi);
         if (p === undefined || l.chiSo < p.conSong) continue;
         const n: number = diem(dau, l.ben, l.doi)?.conSong ?? 0;
-        const o = oDoiHinh(l.chiSo, n, this.ch.cot_toi_da, this.ch.khoang_linh);
+        const o = oDoiHinh(l.chiSo, n, this.ch.cot_toi_da, this.khoang(l.ben, l.doi));
         const p0 = diem(truoc, l.ben, l.doi) ?? p;
         l.giayChet = khung.giay;
         l.aChet = p.x + o.da;

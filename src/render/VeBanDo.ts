@@ -82,7 +82,7 @@ function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): st
 }
 
 /** Xep mot sprite vao lo, neo tai toa do the gioi `(x, y)`. Ngoai man thi bo qua. */
-function datSprite(ve: Ve, x: number, y: number, ten: string): void {
+export function datSprite(ve: Ve, x: number, y: number, ten: string): void {
   if (!ve.atlas.co(ten)) return;
   const s = ve.atlas.o(ten);
   const x0: number = (x - s.ox - ve.camX) * ve.tiLe + ve.rongDev / 2;

@@ -324,6 +324,37 @@ html, body {
 /* Moi man phu kin `#app`. Canvas ben trong neo theo man, khong theo `#app`. */
 .man { position: absolute; inset: 0; }
 
+/* Nut mo man xem tran, ngay duoi nut doi man. */
+.nut-xem-tran {
+  position: absolute;
+  right: calc(env(safe-area-inset-right) + 10px);
+  top: calc(env(safe-area-inset-top) + 112px);
+  z-index: 4;
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.62);
+  color: var(--chu);
+}
+
+/* Phase 10: dong du doan + dong ho tran, giua tren man xem tran. */
+.tran-dau {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(env(safe-area-inset-top) + 110px);
+  z-index: 3;
+  margin: 0;
+  max-width: 92%;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 13px;
+  text-align: center;
+  pointer-events: none;
+}
+
 /* Nut doi man. Goc phai, nam NGAY DUOI hang nut tat lop cua `Perf`: de cung hang thi no
    de len nut "Hiệu ứng" (da chup thay 11/09), de goc duoi thi bang tinh trum len. */
 .nut-doi-man {
