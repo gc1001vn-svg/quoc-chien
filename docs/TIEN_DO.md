@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 24/09/2026 (lần 12 — **Phase 9 trận đánh chạy ngầm**).
+Cập nhật: 25/09/2026 (lần 13 — **Phase 9 chốt, quy trình Jules + kiểm chéo**).
 
 ## 1. Đang ở đâu
 
@@ -11,6 +11,8 @@ Cập nhật: 24/09/2026 (lần 12 — **Phase 9 trận đánh chạy ngầm**).
 `npm run sim:tran` ĐẠT **11/11 hạt giống**: dự đoán lệch trung bình 1,4–3,0 điểm (trần 4),
 80,7–84,9 % trận dài 30–60 giây (cần ≥ 80 — sát ngưỡng), không loại đội nào thắng quá 61 %.
 Chi tiết + hai lượt soát: `docs/NHAT_KY/PHASE_9.md`.
+**Sau Phase 9 (25/09): quy trình Jules + kiểm chéo** — `npm run kiem:cheo`, `docs/JULES.md`.
+Chi tiết: `docs/NHAT_KY/PHASE_9_JULES.md`.
 
 **Việc phiên sau: Phase 10 — nướng sprite lính + `render/BattleScene.ts`** (mục 5).
 **Bước E: không cần anh xác nhận trên iPhone** — Phase 9 không đổi gì trên màn hình, bản
@@ -969,6 +971,11 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 chết) + `render/BattleScene.ts` phát kịch bản của `sim/campaign/BattleScript.ts`
 (`sinhKichBan`), có nút tăng tốc và bỏ qua. Thước (`KE_HOACH` mục 3): Claude tự xem trận
 trong máy ảo, chủ dự án đo fps lúc đánh. Quy mô: `GAME_SPEC.md` mục 6 (150–250 sprite động).
+
+**Phase 10 là lần đầu dùng trọn quy trình Jules mới** (anh chốt 25/09): giao Jules viết test
+`BattleScene` (đề có `## Files`/`## Acceptance`/`## Not doing`, chạy thử đề trước) → Jules nộp
+`kiem_cheo.json` → Claude `--so-sanh` + cài lỗi thử → cuối phase Jules kiểm chéo số của Claude.
+Thêm test cho `scripts/kiem_cheo.mjs`. Quy trình: `ghi-nho/cong-cu/jules/PHAN_VIEC.md`.
 
 **Việc đầu tiên: dò asset lính** — `npm run do:asset linh` (và `soldier`, `knight`,
 `archer`, `tank`), đủ ba bước + `kho-game`. Mẻ trung cổ 2× **hết chỗ atlas** (mục 2):
