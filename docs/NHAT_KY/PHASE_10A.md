@@ -55,3 +55,12 @@ Kế hoạch: `docs/ke-hoach/2026-09-25-phase-10a-linh-co.md` (anh duyệt 25/09
   hẳn trên lưng ngựa (`Sitting_Idle_Loop`, yên ở xương `Torso2`). Atlas 2× 71 % một trang.
 - Loại vì chỉ có FBX: Fantasy Heroes, Villager NPC, 3D Animated Units. KayKit Series 4/5
   tải lỗi. Mẻ thử không vào repo.
+
+## Phụ lục 3 (25/09 tối) — kỵ binh "tông vào nhau", fps 50 mọi lớp
+
+- **Kỵ binh:** lúc đánh ngựa chạy clip đá hậu, người cưỡi ngồi im → nhìn như hai đàn ngựa
+  lao vào nhau. Nay ngựa **đứng** (`Idle`), người cưỡi **vung kiếm**: máy nướng chồng lớp clip
+  theo nhánh xương (`tuXuong: spine_01` — thân dưới giữ dáng ngồi). Hai hàng kỵ giãn 1,3 ô.
+- **fps:** anh tắt từng lớp đều **50** → không lớp vẽ nào là thủ phạm. Anh đo qua **bản duyệt
+  Artifact** (game trong khung lồng trang claude.ai), còn 59 fps thành phố đo trên **Pages**.
+  Giả thuyết đứng đầu: khung lồng. Chờ anh đo trên Pages — chưa sửa gì về fps.
