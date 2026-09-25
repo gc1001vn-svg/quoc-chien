@@ -106,3 +106,45 @@ describe('sinhKichBan', () => {
     expect(giay).toEqual([...giay].sort((x, y) => x - y));
   });
 });
+
+describe('vet vi tri (Phase 10: BattleScene dien quan di)', () => {
+  const kq = tinhTran(CAN, duLieu, 3);
+
+  it('khung dau o giay 0, dung hang xuat phat; khung cuoi o giay ket thuc', () => {
+    const dau = kq.vet[0];
+    expect(dau?.giay).toBe(0);
+    expect(dau?.a.every((d) => d.x === duLieu.hangXuatPhat)).toBe(true);
+    expect(dau?.b.every((d) => d.x === duLieu.chienTruong - duLieu.hangXuatPhat)).toBe(true);
+    expect(kq.vet.at(-1)?.giay).toBe(kq.giayKetThuc);
+  });
+
+  it('lay mau deu theo giay_mau_vet, giay tang dan', () => {
+    const giay: number[] = kq.vet.map((k) => k.giay);
+    for (let i = 1; i < giay.length - 1; i += 1) {
+      expect((giay[i] ?? 0) - (giay[i - 1] ?? 0)).toBeCloseTo(duLieu.giayMauVet);
+    }
+    expect(giay).toEqual([...giay].sort((x, y) => x - y));
+  });
+
+  it('khung cuoi khop so linh chet cua ket qua, moi doi nam trong chien truong', () => {
+    const cuoi = kq.vet.at(-1);
+    const song = (ds: readonly { conSong: number }[] | undefined): number => (ds ?? []).reduce((s, d) => s + d.conSong, 0);
+    expect(song(cuoi?.a)).toBe(kq.linhA - kq.chetA);
+    expect(song(cuoi?.b)).toBe(kq.linhB - kq.chetB);
+    for (const k of kq.vet) {
+      for (const d of [...k.a, ...k.b]) {
+        expect(d.x).toBeGreaterThanOrEqual(0);
+        expect(d.x).toBeLessThanOrEqual(duLieu.chienTruong);
+      }
+    }
+  });
+
+  it('doi da danh thi co khung dang danh; doi vo thi danh dau vo tu luc vo', () => {
+    const danh = kq.suKien.find((s) => s.loai === 'danh');
+    expect(kq.vet.some((k) => (danh?.ben === 'a' ? k.a : k.b)[danh?.doi ?? 0]?.dangDanh)).toBe(true);
+    for (const v of kq.suKien.filter((s) => s.loai === 'vo')) {
+      const sau = kq.vet.filter((k) => k.giay >= v.giay);
+      expect(sau.every((k) => (v.ben === 'a' ? k.a : k.b)[v.doi]?.vo)).toBe(true);
+    }
+  });
+});

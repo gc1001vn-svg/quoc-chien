@@ -25,6 +25,23 @@ export interface SuKienTran {
   readonly doi: number;
 }
 
+/** Mot doi trong mot khung vet. `x`,`y` tinh bang o chien truong. */
+export interface DiemDoi {
+  readonly x: number;
+  readonly y: number;
+  readonly conSong: number;
+  /** Nhip vua roi doi dung trong tam va gay sat thuong. */
+  readonly dangDanh: boolean;
+  readonly vo: boolean;
+}
+
+/** Vi tri moi doi tai mot thoi diem - `render/BattleScene.ts` noi giua hai khung. */
+export interface KhungVet {
+  readonly giay: number;
+  readonly a: readonly DiemDoi[];
+  readonly b: readonly DiemDoi[];
+}
+
 export interface KetQuaTran {
   readonly thang: Phe;
   readonly giayKetThuc: number;
@@ -33,6 +50,8 @@ export interface KetQuaTran {
   readonly chetA: number;
   readonly chetB: number;
   readonly suKien: readonly SuKienTran[];
+  /** Vet vi tri lay mau moi `giayMauVet` giay, khung dau o giay 0, khung cuoi o giay ket thuc. */
+  readonly vet: readonly KhungVet[];
 }
 
 
@@ -74,6 +93,7 @@ interface DoiTran {
   mau: number;
   vo: boolean;
   daDanh: boolean;
+  dangDanh: boolean;
 }
 
 function conSong(d: DoiTran): number {
@@ -84,7 +104,7 @@ function xepBen(ben: Ben, phe: Phe, x: number, duLieu: DuLieuTran): DoiTran[] {
   const buoc: number = duLieu.chienTruong / (ben.doi.length + 1);
   return ben.doi.map((id, i): DoiTran => {
     const l: LoaiDoi = loai(duLieu, id);
-    return { loai: l, ben: phe, chiSo: i, mauDau: l.linh * l.mau, x, y: buoc * (i + 1), mau: l.linh * l.mau, vo: false, daDanh: false };
+    return { loai: l, ben: phe, chiSo: i, mauDau: l.linh * l.mau, x, y: buoc * (i + 1), mau: l.linh * l.mau, vo: false, daDanh: false, dangDanh: false };
   });
 }
 
@@ -119,6 +139,13 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
   const tocHang: Record<Phe, number> = { a: hang('a'), b: hang('b') };
   const daCham: Record<Phe, boolean> = { a: false, b: false };
   let giay = 0;
+  const vet: KhungVet[] = [];
+  const ghiVet = (): void => {
+    const diem = (p: Phe): DiemDoi[] => ds.filter((d) => d.ben === p)
+      .map((d) => ({ x: d.x, y: d.y, conSong: conSong(d), dangDanh: d.dangDanh, vo: d.vo }));
+    vet.push({ giay: Math.min(giay, duLieu.tranGiay), a: diem('a'), b: diem('b') });
+  };
+  ghiVet();
 
   while (giay < duLieu.tranGiay && conDoi('a') && conDoi('b')) {
     giay += dt;
@@ -127,6 +154,7 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
     // danh sach khong duoc loi (do 24/09: di ngay tai cho thi tran guong ben a thua 100 %).
     const di: [DoiTran, number, number][] = [];
     for (const d of ds) {
+      d.dangDanh = false;
       if (d.vo) continue;
       const e: DoiTran | undefined = ganNhat(d, ds);
       if (e === undefined) continue;
@@ -146,6 +174,7 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
         (1 + ben.tuong * duLieu.heSoTuong) * (e.ben === 'b' ? dh.phongThu : 1) *
         (1 + duLieu.nhieu * (rng.so() * 2 - 1)) * dt;
       nhan.set(e, (nhan.get(e) ?? 0) + st);
+      d.dangDanh = true;
       if (!d.daDanh) {
         d.daDanh = true;
         daCham[d.ben] = true;
@@ -163,7 +192,10 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
         suKien.push({ giay, loai: 'vo', ben: e.ben, doi: e.chiSo });
       }
     }
+    // Sai so cong don cua `giay += dt`: so voi moc khung ke co dung sai, khong thi lech nhip.
+    if (giay >= (vet.at(-1)?.giay ?? 0) + duLieu.giayMauVet - 1e-9) ghiVet();
   }
+  if ((vet.at(-1)?.giay ?? -1) < Math.min(giay, duLieu.tranGiay)) ghiVet();
 
   const phan = (p: Phe): number => {
     const cua: DoiTran[] = ds.filter((d) => d.ben === p);
@@ -183,5 +215,6 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
     chetA: chet('a'),
     chetB: chet('b'),
     suKien,
+    vet,
   };
 }

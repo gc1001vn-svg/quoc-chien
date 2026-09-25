@@ -26,7 +26,7 @@ const DOI = {
 };
 
 const TRAN = {
-  chien_truong: 40, hang_xuat_phat: 4, nhip_giay: 0.5, tran_giay: 60, nguong_vo: 0.25,
+  chien_truong: 40, hang_xuat_phat: 4, nhip_giay: 0.5, tran_giay: 60, giay_mau_vet: 0.5, nguong_vo: 0.25,
   nhieu: 0, he_so_tuong: 0.1, tuong_toi_da: 3, do_doc: 8, he_so_tam: 0, mu_phong_thu: 1,
   dia_hinh: {
     phang: { toc_do: 1, phong_thu: 1 },

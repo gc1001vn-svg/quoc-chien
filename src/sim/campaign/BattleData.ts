@@ -35,6 +35,8 @@ export interface DuLieuTran {
   readonly hangXuatPhat: number;
   readonly nhipGiay: number;
   readonly tranGiay: number;
+  /** Cach bao nhieu giay ghi mot khung vet vi tri (Phase 10 dien quan di). */
+  readonly giayMauVet: number;
   readonly nguongVo: number;
   readonly nhieu: number;
   readonly heSoTuong: number;
@@ -81,6 +83,7 @@ interface CauHinhTran {
   readonly hang_xuat_phat: number;
   readonly nhip_giay: number;
   readonly tran_giay: number;
+  readonly giay_mau_vet: number;
   readonly nguong_vo: number;
   readonly nhieu: number;
   readonly he_so_tuong: number;
@@ -107,6 +110,7 @@ function kiemTran(t: CauHinhTran): void {
   kiemSo('battle: hang_xuat_phat', t.hang_xuat_phat, 0, false);
   kiemSo('battle: nhip_giay', t.nhip_giay, 0, true);
   kiemSo('battle: tran_giay', t.tran_giay, 0, true);
+  kiemSo('battle: giay_mau_vet', t.giay_mau_vet, 0, true);
   kiemSo('battle: nguong_vo', t.nguong_vo, 0, false);
   if (t.nguong_vo >= 1) throw new Error(`battle: nguong_vo = ${String(t.nguong_vo)}: phai < 1`);
   kiemSo('battle: nhieu', t.nhieu, 0, false);
@@ -158,6 +162,7 @@ export function docDuLieuTran(bangTho: unknown, doiTho: unknown, tranTho: unknow
     hangXuatPhat: t.hang_xuat_phat,
     nhipGiay: t.nhip_giay,
     tranGiay: t.tran_giay,
+    giayMauVet: t.giay_mau_vet,
     nguongVo: t.nguong_vo,
     nhieu: t.nhieu,
     heSoTuong: t.he_so_tuong,

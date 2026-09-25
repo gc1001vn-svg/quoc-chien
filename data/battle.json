@@ -4,6 +4,8 @@
   "hang_xuat_phat": 4,
   "nhip_giay": 0.5,
   "tran_giay": 60,
+  "_vet": "giay_mau_vet: cach bao nhieu giay ghi vi tri moi doi mot lan, de BattleScene dien quan di (Phase 10). Nho hon nhip_giay cung chi ghi moi nhip.",
+  "giay_mau_vet": 0.5,
   "nguong_vo": 0.25,
   "nhieu": 0.3,
   "he_so_tuong": 0.1,
