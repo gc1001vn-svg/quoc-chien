@@ -31,3 +31,15 @@ Kế hoạch: `docs/ke-hoach/2026-09-24-phase-9-tran-danh.md`. Headless, chưa n
   (script cũng hết viết cứng `nguyen(3)`).
 - **Báo sai trong tin cuối phiên:** "351/351 test" — thật là **341** (đã gồm 10 test mới).
 - **Lệch `GAME_SPEC` mục 6:** đại bác và xe tăng **3 lính/đội**, spec ghi 8–12. Chờ anh quyết.
+
+## Phụ lục 25/09 — soát lượt hai, có Jules, sửa ba lỗi
+
+- **Jules soát** (phiên `10068432338301936049`, test làm đỏ): 5 test, **4 đúng / 1 sai** (báo
+  "dự đoán lệch khi hết giờ" — chạy lại thì xanh, chú thích đoán sai kết quả). Không ra lỗi
+  mới ngoài lượt hai của Claude. Jules dừng hỏi xin phép lúc 23:01, đứng cả đêm.
+- **Sửa:** (1) `nhip_giay` ≤ 0 làm `tinhTran` **treo vô hạn** → chặn lúc đọc; (2) hai bên vỡ
+  cùng nhịp thì bên a luôn thắng (1,7 % trận gương) → bên giữ đất thắng, cùng luật hết giờ
+  hoà; (3) đọc dữ liệu nhận NaN, chữ `"10"`, số âm, trùng mã, thiếu trường, hệ số giáp âm →
+  `kiemSo` / `kiemTran` ném lỗi kèm tên trường. 7 test mới, viết trước, đỏ 6 rồi mới sửa.
+- **Còn mở:** trận quá ngắn — 2000 trận ngẫu nhiên trung vị **18 giây**, 95,5 % dưới 30
+  (`GAME_SPEC` mục 6: 30–60). Chờ anh chọn hướng.

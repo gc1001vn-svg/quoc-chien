@@ -508,6 +508,8 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
    nới: cách cũ đạt hay hỏng tuỳ hạt giống, không phân biệt được dự đoán tốt hay xấu.
 2. **Đại bác, xe tăng 3 lính/đội** trái `GAME_SPEC` mục 6 (8–12). Giữ (ghi ngoại lệ vào spec
    — file khoá) hay nâng lên 8 lính (phải cân lại)?
+3. **Trận quá ngắn** (soát 25/09): trung vị 18 giây, 95,5 % dưới 30; spec 30–60. Làm chậm
+   cả trận (giảm sát thương, cân lại) hay giữ số, Phase 10 phát chậm lại lúc diễn?
 
 ### ✅ Việc 23/09 (lần 9) — đo fps với thành phố to hơn: XONG 24/09, 59 fps
 
