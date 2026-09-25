@@ -384,5 +384,15 @@ Luật soát nằm ở `AGENTS.md` mục "Ba luật cứng" và `docs/TECH_SPEC.
 | `check:san` (21/09) | cấm tắt kiểm tại chỗ (`@ts-ignore`, `eslint-disable`), tắt test (`it.skip`, `describe.only`), để hàm rỗng (`catch {}` rỗng hẳn, `Not implemented`) | sửa gốc. Nuốt lỗi có chủ đích thì viết lý do vào trong ngoặc: `catch { /* vì sao bỏ qua */ }` — có lý do là qua |
 
 `do:luat` cần `GEMINI_API_KEY`; thiếu thì `npm run do` in `BO QUA` chứ không lờ đi.
-Nó chạy ~2 phút (mỗi câu hai lượt gọi, nghỉ 8s tránh trần 5 req/phút) — đo tay bằng
+Riêng tiền nghỉ đã **≥ 3 phút** (11 câu × 2 lượt × 8s) — đo tay bằng
 `node scripts/do_luat.mjs`, hoặc `--nhanh` để chỉ đo lần có luật.
+
+**Bẫy 25/09 (lần 15) — tưởng treo:** `npm run do` chạy >10 phút, màn app chỉ hiện
+"Running". Gốc: bậc `gemini-3.7-flash` và `3.5-flash` hết lượt (`429`), mỗi lần gọi
+tụt ba bậc, `503` còn chờ 15s ×2 — mà thước **không có trần** và lệnh ghép `| tail`
+nên không in gì tới lúc xong. Đã sửa: trần **90s mỗi lần gọi, 360s cả thước**
+(`DO_LUAT_TRAN_LAN`, `DO_LUAT_TRAN_TONG`), quá trần thì câu còn lại là `KHONG DO`.
+Phần còn lại của `npm run do` đo **3 phút 14 giây** (không Gemini). Nên:
+- chạy `npm run do > <scratchpad>/do.txt 2>&1` rồi `grep` — **đừng `| tail`**;
+- `do:luat` đỏ vì `KHONG DO` / `429` là **lỗi bên ngoài**, khai rõ trong tin báo,
+  chạy lại phần kia bằng `GEMINI_API_KEY= npm run do` (thước in `BO QUA`).

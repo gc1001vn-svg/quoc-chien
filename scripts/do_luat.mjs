@@ -26,6 +26,12 @@ const HOI_GEMINI = '/home/user/ghi-nho/cong-cu/hoi_gemini.mjs';
 // cac lan goi de khoi dot bac model vao 429 — `hoi_gemini.mjs` tut bac duoc
 // nhung tut roi la mat bac do cho ca phien.
 const NGHI_GIAY = Number(process.env.DO_LUAT_NGHI) || 8;
+// Tran thoi gian. Khong co hai tran nay thi thuoc chay >10 phut, khong in gi (do
+// 25/09 lan 15): het luot model nao cung 429, moi lan goi bo tut 3 bac, 503 con
+// cho 15s x2 va `curl -m 300`. Qua tran: cac cau con lai la KHONG DO, chu khong treo.
+const TRAN_MOI_LAN_GIAY = Number(process.env.DO_LUAT_TRAN_LAN) || 90;
+const TRAN_TONG_GIAY = Number(process.env.DO_LUAT_TRAN_TONG) || 360;
+const batDau = Date.now();
 
 const nhanh = process.argv.includes('--nhanh');
 
@@ -93,7 +99,8 @@ function cham(dap, traLoi) {
 /** Goi Gemini. `kemLuat` quyet dinh co gui `AGENTS.md` theo hay khong. */
 function hoi(cauHoi, kemLuat) {
   const dsoi = kemLuat ? [HOI_GEMINI, cauHoi, LUAT] : [HOI_GEMINI, cauHoi];
-  const r = spawnSync('node', dsoi, { encoding: 'utf8' });
+  const r = spawnSync('node', dsoi, { encoding: 'utf8', timeout: TRAN_MOI_LAN_GIAY * 1000 });
+  if (r.error) return { loi: `qua tran ${TRAN_MOI_LAN_GIAY}s moi lan goi`, ra: '' };
   if (r.status !== 0) return { loi: (r.stderr || '').trim().split('\n').slice(-1)[0], ra: '' };
   return { loi: '', ra: (r.stdout || '').trim() };
 }
@@ -119,6 +126,12 @@ function dongCuoi(ra) {
 }
 
 for (const d of de) {
+  if ((Date.now() - batDau) / 1000 > TRAN_TONG_GIAY) {
+    loi.push(`${d.ma}: qua tran tong ${TRAN_TONG_GIAY}s, khong goi`);
+    dem['KHONG DO'] += 1;
+    console.log(`  ${d.ma.padEnd(14)} KHONG DO  qua tran tong`);
+    continue;
+  }
   let diemKhong = null;
   let loiGoi = false;
   if (!nhanh) {
