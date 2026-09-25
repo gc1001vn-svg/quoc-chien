@@ -64,3 +64,9 @@ Kế hoạch: `docs/ke-hoach/2026-09-25-phase-10a-linh-co.md` (anh duyệt 25/09
 - **fps:** anh tắt từng lớp đều **50** → không lớp vẽ nào là thủ phạm. Anh đo qua **bản duyệt
   Artifact** (game trong khung lồng trang claude.ai), còn 59 fps thành phố đo trên **Pages**.
   Giả thuyết đứng đầu: khung lồng. Chờ anh đo trên Pages — chưa sửa gì về fps.
+- **Kết (25/09 tối, anh đo trên iPhone qua bản duyệt):** vào trận 30 fps vài giây đầu (đang
+  nạp atlas) rồi **59 fps**, bấm mọi nút vẫn 59. **Kỵ binh có đánh nhau.** Phase 10A ĐẠT.
+  Con số 50 fps lần trước không lặp lại — không sửa gì về fps.
+- **Nợ mới:** link Pages `?tran=1` trên iPhone anh vẫn ra thành phố, bản đồ tỉnh không có nút
+  "⚔ Xem trận" dù bản build có (`grep` đếm 1) và Deploy xanh → nghi bộ nhớ đệm PWA giữ bản cũ.
+  Máy ảo không vào được `github.io`, chưa kiểm chứng.

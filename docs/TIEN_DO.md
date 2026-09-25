@@ -18,7 +18,9 @@ trận chạy về. Chỉ bốn đội thời cổ có hình (giáo · kiếm ·
 **Chiều 25/09: đổi lính sang Quaternius tỉ lệ thật** (anh chọn từ bảng so sánh) + nút tắt
 lớp để đo fps (29–30, chưa sửa — chờ số từng lớp). Phụ lục 2 `docs/NHAT_KY/PHASE_10A.md`.
 
-**Việc phiên sau: chờ anh xem trận trên iPhone (mục 3), rồi Phase 10B** (mục 5).
+**Anh xác nhận 25/09 tối (bản duyệt): 59 fps, kỵ binh đánh nhau → Phase 10A ĐẠT.**
+
+**Việc phiên sau: (1) nợ Pages ra thành phố thay vì trận — mục 4; (2) Phase 10B** (mục 5).
 **Bước E: CẦN anh xác nhận** — phase này đổi màn hình.
 
 ### Phiên 25/09 (lần 14) đã đổi gì — Phase 10A
@@ -522,7 +524,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 25/09 (lần 14) — xem trận trên iPhone, nhắn fps thấp nhất
+### ✅ Việc 25/09 (lần 14) — xem trận trên iPhone: XONG 25/09 tối, 59 fps (bản duyệt)
 
 1. Mở bản duyệt: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng màn trận).
    Hoặc bản thật sau khi Pages cập nhật: https://gc1001vn-svg.github.io/quoc-chien/?tran=1
@@ -990,6 +992,10 @@ quyền hạn và giới hạn máy ảo.
 - **MỚI 24/09: đời 4 và đời 5 chung nhóm `hien_dai`** trong `data/units.json`; chưa có
   lính đời 1/6 riêng và chưa nối lính với cây công nghệ (`tech.json` chưa mở lính nào).
 
+- **MỚI 25/09 tối: Pages `?tran=1` ra thành phố trên iPhone anh**, bản đồ tỉnh không có nút
+  "⚔ Xem trận" — dù build có nút và Deploy xanh. Nghi bộ nhớ đệm PWA (`sw.js`, `autoUpdate`)
+  giữ bản 24/09. Máy ảo không vào `github.io`. Phiên sau: dựng vòng đo trước (skill
+  `diagnosing-bugs`), ví dụ in số phiên bản lên màn cho anh chụp.
 - **MỚI 25/09 (Phase 10A):** 6 đội súng/hiện đại chưa có hình (Phase 10B) · ngựa to so
   với người (người cưỡi gắn trong file ngựa nên không chỉnh tỉ lệ riêng được) · giáo cầm
   ngang khi đi (dáng `Walking_A` của KayKit) · người cưỡi chỉ một dáng ngồi · cung thủ chưa
