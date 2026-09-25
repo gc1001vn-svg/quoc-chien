@@ -35,8 +35,11 @@ function chay(lenh) {
 /** Rut so lieu doi chieu duoc tu output tung thuoc. */
 function rutSo(ten, chu) {
   if (ten === 'test') {
-    const t = chu.match(/Tests\s+(?:(\d+) failed \| )?(\d+) passed \((\d+)\)/);
-    return t ? { hong: Number(t[1] ?? 0), dat: Number(t[2]), tong: Number(t[3]) } : {};
+    // Vitest them `| 1 expected fail`, `| 2 skipped` sau so dat. Bieu thuc cu doi `passed (`
+    // lien nhau nen gap `it.fails` la tra `{}` - hai may deu `{}` va so sanh bao KHOP ma khong
+    // doi chieu so test nao (do 25/09, lan kiem cheo test DienTran cua Jules).
+    const t = chu.match(/Tests\s+(?:(\d+) failed \| )?(\d+) passed(?: \| (\d+) expected fail)?(?: \| (\d+) skipped)? \((\d+)\)/);
+    return t ? { hong: Number(t[1] ?? 0), dat: Number(t[2]), hongDuKien: Number(t[3] ?? 0), boQua: Number(t[4] ?? 0), tong: Number(t[5]) } : {};
   }
   if (ten === 'sim:tran') {
     const lech = chu.match(/Lech trung binh: ([\d.]+) diem/);
