@@ -32,6 +32,8 @@ export interface TuyChonGltf {
     readonly chiViTri?: boolean;
     /** Dich them (toa do the gioi) sau khi dat vao xuong. */
     readonly dich?: readonly number[];
+    /** Phong to rieng model phu truoc khi dat vao xuong. */
+    readonly tiLe?: number;
   }[];
 }
 

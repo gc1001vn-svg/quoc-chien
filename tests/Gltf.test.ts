@@ -279,14 +279,15 @@ describe('docGltf hoat anh va gan xuong', () => {
     expect(d[1]).toBeCloseTo(2);
   });
 
-  it('chiViTri: xuong quay thi model phu van dung thang, dich cong sau cung', () => {
+  it('chiViTri: xuong quay thi model phu van dung thang; tiLe truoc, dich cong sau cung', () => {
     const q = docGltf(duong, {
       hoatAnh: { duong: clip, ten: 'quay', phan: 1 },
-      gan: [{ xuong: 'canh', duong, chiViTri: true, dich: [0, 0, 3] }],
+      gan: [{ xuong: 'canh', duong, chiViTri: true, dich: [0, 0, 3], tiLe: 2 }],
     });
+    // tiLe 2: dinh (1,1,0) cua model phu thanh (2,2,0), dat tai `canh` (0,1,0), dich z 3.
     const d = dinhThu(q.dinh, 5);
-    expect(d[0]).toBeCloseTo(1);
-    expect(d[1]).toBeCloseTo(2);
+    expect(d[0]).toBeCloseTo(2);
+    expect(d[1]).toBeCloseTo(3);
     expect(d[2]).toBeCloseTo(3);
   });
 

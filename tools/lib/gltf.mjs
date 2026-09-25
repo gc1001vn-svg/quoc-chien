@@ -427,8 +427,10 @@ export function docGltf(duong, tuyChon = {}) {
     m[13] += dy;
     m[14] += dz;
     const phu = docGltf(g.duong, g.tuyChon ?? {}).dinh;
+    // `tiLe`: phong to rieng model phu - nguoi cuoi giu co bang linh bo khi ngua da thu nho.
+    const tl = g.tiLe ?? 1;
     for (let i = 0; i < phu.length; i += BUOC) {
-      const d = diem(m, phu[i], phu[i + 1], phu[i + 2]);
+      const d = diem(m, phu[i] * tl, phu[i + 1] * tl, phu[i + 2] * tl);
       const h = huong(m, phu[i + 5], phu[i + 6], phu[i + 7]);
       for (let c = 0; c < 3; c += 1) {
         if (d[c] < min[c]) min[c] = d[c];

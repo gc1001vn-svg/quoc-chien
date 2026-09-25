@@ -291,6 +291,7 @@ function tuyChonGltf(p, kit, soAnh, bangDang) {
       duong: duongModel(g.m, kit),
       chiViTri: g.chi_vi_tri === true,
       dich: g.dich,
+      tiLe: g.ti_le,
       tuyChon: tuyChonGltf({ ...g, xuong: undefined }, kit, soAnh, bangDang),
     })),
   };
@@ -313,13 +314,16 @@ function moRongLinh(linh) {
   if (linh === undefined) return ra;
   for (const [doi, d] of Object.entries(linh.doi)) {
     for (const [dang, clip] of Object.entries(d.dang)) {
-      const khung = clip.khung ?? linh.khung[dang];
+      // Mot dang co the NOI nhieu doan clip: cung thu "danh" = giuong cung roi buong tay -
+      // KayKit tach hai viec do thanh hai clip. Khung danh so lien tuc qua cac doan.
+      const doan = Array.isArray(clip) ? clip : [clip];
+      const khung = doan.flatMap((c) => (c.khung ?? linh.khung[dang]).map((phan) => ({ m: c.m, ten: c.ten, phan })));
       for (let h = 0; h < linh.huong; h += 1) {
-        khung.forEach((phan, k) => {
+        khung.forEach((ha, k) => {
           ra[`${doi}_${dang}_h${h}_k${k}`] = [{
             ...d.manh,
             ry: (d.manh.ry ?? 0) + (h * 360) / linh.huong,
-            hoat_anh: { m: clip.m, ten: clip.ten, phan },
+            hoat_anh: ha,
           }];
         });
       }
