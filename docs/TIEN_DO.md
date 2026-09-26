@@ -534,9 +534,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 1. Mở bản duyệt https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng trận súng). Chỉ
    gửi link bản duyệt — anh báo 26/09 link Pages không xài được.
-2. Dòng chữ nhỏ trên cùng phải ghi **26/09 12:13**.
-3. Ghi **fps** trận súng, rồi bấm "⚔ Trận cổ" ghi **fps** trận cổ — hai số trên cùng một lần mở.
-   Trận súng lên ~59 là đúng thủ phạm atlas 2 trang; cả hai cùng 30 là thủ phạm khác.
+2. Dòng chữ nhỏ trên cùng phải ghi **26/09 12:31**.
+3. Ghi fps ba chỗ: trận súng · bấm "⚔ Trận cổ" (góc trên phải) · bấm "⌂ Về thành phố". Và pin có
+   **vàng** không (Chế độ nguồn điện thấp khoá 30 fps). 26/09: atlas đã về 1 trang mà vẫn 30 đứng
+   yên — số đứng yên đúng 30 là dấu hiệu bị khoá trần, không phải máy yếu.
 
 ### ✅ Việc 25/09 (lần 14) — xem trận trên iPhone: XONG 25/09 tối, 59 fps (bản duyệt)
 
