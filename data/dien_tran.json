@@ -9,8 +9,13 @@
   "khung_moi_giay": 6,
   "_so_khung": "So khung moi dang - phai khop me tools/me/linh_co.json (khung cua linh).",
   "so_khung": { "di": 4, "danh": 4, "trung": 2, "chet": 2 },
-  "_so_khung_rieng": "Xe tang la model tinh - moi dang mot khung, khop me tools/me/linh_sung.json.",
-  "so_khung_rieng": { "xe_tang": { "di": 1, "danh": 1, "trung": 1, "chet": 1 } },
+  "_so_khung_rieng": "Khop me tools/me/linh_sung.json. Xe tang la model tinh - moi dang mot khung. Phao, chong tang, ky sung cat bot khung cho atlas 2x vua mot trang (26/09).",
+  "so_khung_rieng": {
+    "xe_tang": { "di": 1, "danh": 1, "trung": 1, "chet": 1 },
+    "dai_bac": { "di": 2, "danh": 2, "trung": 1, "chet": 1 },
+    "chong_tang": { "di": 2, "danh": 2, "trung": 1, "chet": 1 },
+    "ky_sung": { "trung": 1, "chet": 1 }
+  },
   "giay_trung": 0.5,
   "_giap_la_ca": "Hai doi can chien cham nhau thi linh roi doi hinh, xep hang o tuyen giua hai doi (cach nhau khoang_giap o), nhun toi lui nhun o theo nhat danh. giay_vao_tran: bao lau de tu doi hinh chay ra tuyen.",
   "khoang_giap": 0.45,

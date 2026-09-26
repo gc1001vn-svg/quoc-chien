@@ -1,5 +1,5 @@
 {
-  "ghi_chu": "Me linh doi sung + hien dai (Phase 10B): hoa mai, dai bac, ky sung, bo binh, chong tang, xe tang. Nguoi, ngua, vu khi lanh: Quaternius CC0 nhu me linh_co. Sung (low poly bolt rifle, Hell Houndz Productions), dai bac (Rev war cannon, Michael Pretz), xe tang (Tank, Veeranjay Singh): Icosa CC-BY 3.0 - lay bang `npm run tai:icosa <tu khoa>`. Atlas RIENG, cung khuon linh_co: dat, de phe, dan theo 8 huong. Xe tang chi 1 khung moi dang (model tinh) - so khung rieng o data/dien_tran.json.",
+  "ghi_chu": "Me linh doi sung + hien dai (Phase 10B): hoa mai, dai bac, ky sung, bo binh, chong tang, xe tang. Nguoi, ngua, vu khi lanh: Quaternius CC0 nhu me linh_co. Sung (low poly bolt rifle, Hell Houndz Productions), dai bac (Rev war cannon, Michael Pretz), xe tang (Tank, Nico _ - doi 26/09, anh che mau cu \"giong do choi\"): Icosa CC-BY 3.0 - lay bang `npm run tai:icosa <tu khoa>`. Atlas RIENG, cung khuon linh_co: dat, de phe, dan theo 8 huong. Xe tang chi 1 khung moi dang (model tinh) - so khung rieng o data/dien_tran.json.",
   "kit": {
     "nd": {
       "duong": "assets_source/modular-character-outfits-fantasy/Modular Character Outfits - Fantasy[Standard]/Exports/glTF (Godot-Unreal)/Outfits",
@@ -22,11 +22,6 @@
       "loai": "glb",
       "gamma": true
     },
-    "it": {
-      "duong": "assets_source/icosa/8LQYdoL4kmI",
-      "loai": "gltf",
-      "gamma": true
-    },
     "ip": {
       "duong": "assets_source/icosa/7pfX_iKfJyH",
       "loai": "gltf",
@@ -34,6 +29,11 @@
     },
     "ib": {
       "duong": "assets_source/icosa/epemCvhKIb0",
+      "loai": "gltf",
+      "gamma": true
+    },
+    "in": {
+      "duong": "assets_source/icosa/41Tq_Kf0Tui",
       "loai": "gltf",
       "gamma": true
     }
@@ -306,11 +306,17 @@
           },
           "trung": {
             "m": "kq:Horse",
-            "ten": "AnimalArmature|Idle_HitReact_Left"
+            "ten": "AnimalArmature|Idle_HitReact_Left",
+            "khung": [
+              0.5
+            ]
           },
           "chet": {
             "m": "kq:Horse",
-            "ten": "AnimalArmature|Death"
+            "ten": "AnimalArmature|Death",
+            "khung": [
+              1
+            ]
           }
         },
         "ghi_chu_danh": "Danh: ngua DUNG (Idle), nguoi cuoi chong lop Sword_Attack tu xuong spine_01 len tren len dang ngoi. Truoc do ngua 'da hau' Attack_Kick, anh bao 25/09 'nhu tong vao nhau chu khong phai danh nhau'."
@@ -319,11 +325,11 @@
         "manh": [
           {
             "m": "ip:model__GLTFupdated_",
-            "ti_le": 0.5,
-            "z": 0.267,
-            "ry": -90,
-            "x": 0.53,
-            "y": -1.105
+            "ti_le": 0.4145,
+            "z": 0.433,
+            "ry": 90,
+            "x": -0.441,
+            "y": -0.916
           },
           {
             "m": "nd:Male_Peasant",
@@ -349,19 +355,33 @@
         "dang": {
           "di": {
             "m": "ua:UAL1_Standard",
-            "ten": "Push_Loop"
+            "ten": "Push_Loop",
+            "khung": [
+              0.15,
+              0.55
+            ]
           },
           "danh": {
             "m": "ua:UAL1_Standard",
-            "ten": "Pistol_Aim_Neutral"
+            "ten": "Pistol_Aim_Neutral",
+            "khung": [
+              0.2,
+              0.6
+            ]
           },
           "trung": {
             "m": "ua:UAL1_Standard",
-            "ten": "Hit_Chest"
+            "ten": "Hit_Chest",
+            "khung": [
+              0.5
+            ]
           },
           "chet": {
             "m": "ua:UAL1_Standard",
-            "ten": "Death01"
+            "ten": "Death01",
+            "khung": [
+              1
+            ]
           }
         }
       },
@@ -369,9 +389,9 @@
         "manh": [
           {
             "m": "ip:model__GLTFupdated_",
-            "ti_le": 0.35,
-            "z": 0.272,
-            "ry": -90,
+            "ti_le": 0.2926,
+            "z": 0.328,
+            "ry": 90,
             "mau_vl": {
               "BlocksPaper": [
                 0.55,
@@ -379,8 +399,8 @@
                 0.5
               ]
             },
-            "x": 0.371,
-            "y": -0.773
+            "x": -0.311,
+            "y": -0.646
           },
           {
             "m": "nd:Male_Peasant",
@@ -406,30 +426,44 @@
         "dang": {
           "di": {
             "m": "ua:UAL1_Standard",
-            "ten": "Push_Loop"
+            "ten": "Push_Loop",
+            "khung": [
+              0.15,
+              0.55
+            ]
           },
           "danh": {
             "m": "ua:UAL1_Standard",
-            "ten": "Crouch_Idle_Loop"
+            "ten": "Crouch_Idle_Loop",
+            "khung": [
+              0.2,
+              0.6
+            ]
           },
           "trung": {
             "m": "ua:UAL1_Standard",
-            "ten": "Hit_Chest"
+            "ten": "Hit_Chest",
+            "khung": [
+              0.5
+            ]
           },
           "chet": {
             "m": "ua:UAL1_Standard",
-            "ten": "Death01"
+            "ten": "Death01",
+            "khung": [
+              1
+            ]
           }
         }
       },
       "xe_tang": {
         "manh": {
-          "m": "it:model",
-          "ti_le": 0.35,
-          "ry": -90,
-          "x": 0,
-          "y": 0.378,
-          "z": -0.133
+          "m": "in:model__GLTFupdated_",
+          "ti_le": 0.7341,
+          "ry": 90,
+          "x": 0.301,
+          "y": -0.949,
+          "z": -0.216
         },
         "dang": {
           "di": {
@@ -464,5 +498,6 @@
       }
     }
   },
-  "ghi_chu_dat_mo_hinh": "Model Icosa co goc toa do lech: x/y/z cua manh = dua tam khung bao ve chan (do bang docGltf, xem ghi chu trong linh_sung.json). ry -90: nong phao/xe nhin theo +z nhu linh. Sung: `giua` + `xoay` [0,0,90] cho nong theo tay."
+  "ghi_chu_dat_mo_hinh": "Model Icosa co goc toa do lech: x/y/z/ti_le cua manh = dua tam khung bao ve chan, do dai cho truoc (tinh bang docGltf luc sua me). ry 90: nong phao/xe nhin theo +z nhu linh - 26/09 anh bao phao thu \"dung phia truoc\" voi ry -90. Sung: `giua` + `xoay` [0,0,90] cho nong theo tay.",
+  "ghi_chu_khung_rieng": "Cat khung cho atlas 2x vua MOT trang (26/09: hai trang, anh do 30 fps suot tran - nghi shader chon trang). Phao, chong tang: di/danh 2 khung, trung/chet 1; ky sung: trung/chet 1. So khung phai khop so_khung_rieng cua data/dien_tran.json."
 }
