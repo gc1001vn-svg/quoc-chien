@@ -221,6 +221,8 @@ và **thoát mã 1** khi vượt. Đo 15/09: **15 file · 4,2 MB**.
 25/09 và 26/09 link Pages "không xài được" (nợ ở `TIEN_DO.md` mục 4). Đăng đè đúng link cũ
 `https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi` (đọc nó trước, rồi `url` + `root: .duyet`);
 muốn mở thẳng màn nào thì sửa `src` của iframe trong `.duyet/xem.html` (vd `?tran=2`).
+**Đo fps qua bản duyệt:** Safari khoá trang lồng khung ở **30 fps tới lần chạm đầu**, app Claude
+khoá 30 luôn (đo 26/09) — dặn anh mở bằng Safari và chạm vào game một lần rồi mới đọc số.
 
 ### Poly Pizza — hình dạng dữ liệu, đo 15/09
 

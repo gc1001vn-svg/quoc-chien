@@ -7,14 +7,13 @@ Cập nhật: 26/09/2026 (lần 15 — **Phase 10B xong: lính súng và xe có 
 
 ## 1. Đang ở đâu
 
-**Phase 10B: anh xem 26/09 — nhận ra mọi thứ, bắn súng ổn; chê 30 fps, pháo thủ đứng trước, xe tăng đồ chơi → đã sửa, chờ anh xem lại (phụ lục `PHASE_10B.md`). Game ở Phase 10B/13.** Màn trận có nút
+**Phase 10B ĐẠT 26/09 (anh "ok").** Anh chê pháo thủ đứng trước, xe tăng đồ chơi, 30 fps → đã sửa; 30 fps hoá ra là Safari khoá khung bản duyệt tới lần chạm đầu, game 59 (phụ lục `PHASE_10B.md`). Game ở Phase 10B/13.** Màn trận có nút
 "⚔ Trận súng" (hay mở thẳng `?tran=2`): trận mẫu 6 đội mỗi bên — hoả mai, đại bác, kỵ súng,
 bộ binh, chống tăng, xe tăng. Mẻ riêng `linh_sung`. Chi tiết: `docs/NHAT_KY/PHASE_10B.md`.
 
 Phase 10A (thời cổ, `?tran=1`) anh đã xác nhận 25/09: 59 fps.
 
-**Việc phiên sau: (1) anh xem trận súng trên iPhone (mục 3); (2) nợ Pages ra thành phố —
-mục 4, xem số phiên bản trước; (3) Phase 11** (mục 5). **Bước E: CẦN anh xác nhận 10B.**
+**Việc phiên sau: Phase 11** (mục 5). Bước E: 10B anh đã xác nhận 26/09.
 
 ### Phiên 26/09 (lần 15) đã đổi gì — Phase 10B
 
@@ -530,7 +529,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc 26/09 (lần 15) — xem trận súng trên iPhone
+### ✅ Việc 26/09 (lần 15) — xem trận súng trên iPhone: XONG, anh "ok" 26/09
 
 1. Mở bản duyệt https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng trận súng). Chỉ
    gửi link bản duyệt — anh báo 26/09 link Pages không xài được.
@@ -1028,7 +1027,7 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 ## 5. Phiên sau — Phase 11: chạy hết một ván tới lúc thắng
 
-Chờ anh xác nhận 10B trên iPhone (mục 3) trước. Phase 11 (`KE_HOACH.md`): cả bốn kiểu thắng
+Phase 11 (`KE_HOACH.md`): cả bốn kiểu thắng
 đều đến được. Trước khi bắt tay: nợ "lớp chiến dịch chưa nối vào kinh tế thành phố" và "chưa
 có AI nước khác" (mục 4) nằm đúng đường của Phase 11 — hỏi anh xếp vào đâu.
 
