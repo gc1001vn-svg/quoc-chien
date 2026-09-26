@@ -1,0 +1,468 @@
+{
+  "ghi_chu": "Me linh doi sung + hien dai (Phase 10B): hoa mai, dai bac, ky sung, bo binh, chong tang, xe tang. Nguoi, ngua, vu khi lanh: Quaternius CC0 nhu me linh_co. Sung (low poly bolt rifle, Hell Houndz Productions), dai bac (Rev war cannon, Michael Pretz), xe tang (Tank, Veeranjay Singh): Icosa CC-BY 3.0 - lay bang `npm run tai:icosa <tu khoa>`. Atlas RIENG, cung khuon linh_co: dat, de phe, dan theo 8 huong. Xe tang chi 1 khung moi dang (model tinh) - so khung rieng o data/dien_tran.json.",
+  "kit": {
+    "nd": {
+      "duong": "assets_source/modular-character-outfits-fantasy/Modular Character Outfits - Fantasy[Standard]/Exports/glTF (Godot-Unreal)/Outfits",
+      "loai": "gltf"
+    },
+    "nb": {
+      "duong": "assets_source/universal-base-characters/Universal Base Characters[Standard]/Base Characters/Godot - UE",
+      "loai": "gltf"
+    },
+    "ua": {
+      "duong": "assets_source/universal-animation-library/Universal Animation Library[Standard]/Unreal-Godot",
+      "loai": "glb"
+    },
+    "qw": {
+      "duong": "assets_source/medieval-weapons",
+      "loai": "glb"
+    },
+    "kq": {
+      "duong": "assets_source/animals",
+      "loai": "glb",
+      "gamma": true
+    },
+    "it": {
+      "duong": "assets_source/icosa/8LQYdoL4kmI",
+      "loai": "gltf",
+      "gamma": true
+    },
+    "ip": {
+      "duong": "assets_source/icosa/7pfX_iKfJyH",
+      "loai": "gltf",
+      "gamma": true
+    },
+    "ib": {
+      "duong": "assets_source/icosa/epemCvhKIb0",
+      "loai": "gltf",
+      "gamma": true
+    }
+  },
+  "ghi_chu_bong": "Bong gon cho linh: so mac dinh (nga 0.55, no_them 0.1) la cho nha, voi linh cao 0,6 o no chiem gan nua o sprite.",
+  "bong": {
+    "nga": 0.3,
+    "no_cao": 0.1,
+    "no_them": 0.02
+  },
+  "ghi_chu_dat": "Nen, de phe nhu linh_co. `dan_h*`: vet dan sang, 8 huong cho khop ten DienTran hoi.",
+  "sprite": {
+    "dat_0": [
+      {
+        "phang": 4,
+        "mau": [
+          0.42,
+          0.56,
+          0.3
+        ]
+      }
+    ],
+    "dat_1": [
+      {
+        "phang": 4,
+        "mau": [
+          0.46,
+          0.6,
+          0.32
+        ]
+      }
+    ],
+    "de_a": [
+      {
+        "phang": 0.3,
+        "mau": [
+          0.2,
+          0.45,
+          0.95
+        ]
+      }
+    ],
+    "de_b": [
+      {
+        "phang": 0.3,
+        "mau": [
+          0.9,
+          0.22,
+          0.18
+        ]
+      }
+    ],
+    "dan_h0": [
+      {
+        "phang": 0.06,
+        "mau": [
+          1,
+          0.85,
+          0.3
+        ]
+      }
+    ],
+    "dan_h1": {
+      "nhu": "dan_h0"
+    },
+    "dan_h2": {
+      "nhu": "dan_h0"
+    },
+    "dan_h3": {
+      "nhu": "dan_h0"
+    },
+    "dan_h4": {
+      "nhu": "dan_h0"
+    },
+    "dan_h5": {
+      "nhu": "dan_h0"
+    },
+    "dan_h6": {
+      "nhu": "dan_h0"
+    },
+    "dan_h7": {
+      "nhu": "dan_h0"
+    }
+  },
+  "linh": {
+    "huong": 8,
+    "ghi_chu_khung": "Thoi diem lay mau trong clip, tinh bang phan do dai clip. Di va danh 4 khung (2 khung nhin giat, anh bao 25/09), trung va chet 2. So khung phai khop `so_khung` cua data/dien_tran.json - test DienTran bat.",
+    "khung": {
+      "di": [
+        0,
+        0.25,
+        0.5,
+        0.75
+      ],
+      "danh": [
+        0.15,
+        0.35,
+        0.55,
+        0.8
+      ],
+      "trung": [
+        0.25,
+        0.5
+      ],
+      "chet": [
+        0.45,
+        1
+      ]
+    },
+    "doi": {
+      "hoa_mai": {
+        "manh": [
+          {
+            "m": "nd:Male_Ranger",
+            "ti_le": 0.34,
+            "mau_vl": {
+              "MI_Ranger": [
+                1,
+                0.55,
+                0.5
+              ]
+            },
+            "gan": [
+              {
+                "xuong": "hand_r",
+                "m": "ib:model__GLTFupdated_",
+                "ti_le": 0.6,
+                "xoay": [
+                  0,
+                  0,
+                  90
+                ],
+                "giua": true
+              }
+            ]
+          },
+          {
+            "m": "nb:Superhero_Male_FullBody",
+            "xuong": [
+              "Head",
+              "neck_01"
+            ],
+            "ti_le": 0.34
+          }
+        ],
+        "dang": {
+          "di": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Walk_Loop"
+          },
+          "danh": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Pistol_Shoot"
+          },
+          "trung": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Hit_Chest"
+          },
+          "chet": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Death01"
+          }
+        }
+      },
+      "bo_binh": {
+        "manh": [
+          {
+            "m": "nd:Male_Peasant",
+            "ti_le": 0.34,
+            "mau_vl": {
+              "MI_Peasant": [
+                0.6,
+                0.75,
+                0.45
+              ]
+            },
+            "gan": [
+              {
+                "xuong": "hand_r",
+                "m": "ib:model__GLTFupdated_",
+                "ti_le": 0.6,
+                "xoay": [
+                  0,
+                  0,
+                  90
+                ],
+                "giua": true
+              }
+            ]
+          },
+          {
+            "m": "nb:Superhero_Male_FullBody",
+            "xuong": [
+              "Head",
+              "neck_01"
+            ],
+            "ti_le": 0.34
+          }
+        ],
+        "dang": {
+          "di": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Jog_Fwd_Loop"
+          },
+          "danh": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Pistol_Shoot"
+          },
+          "trung": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Hit_Chest"
+          },
+          "chet": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Death01"
+          }
+        }
+      },
+      "ky_sung": {
+        "manh": {
+          "ghi_chu": "Ngua 0.17, nguoi cuoi ti_le 2.0 = 0.34/0.17 giu co bang linh bo. Ngoi o xuong Torso2 (yen), dich -0.35: tu the Sitting_Idle_Loop co mat ghe cao ~0.5.",
+          "m": "kq:Horse",
+          "ti_le": 0.17,
+          "gan": [
+            {
+              "xuong": "Torso2",
+              "m": "nd:Male_Ranger",
+              "chi_vi_tri": true,
+              "dich": [
+                0,
+                -0.35,
+                0
+              ],
+              "ti_le": 2,
+              "hoat_anh": {
+                "m": "ua:UAL1_Standard",
+                "ten": "Sitting_Idle_Loop",
+                "phan": 0
+              },
+              "gan": [
+                {
+                  "xuong": "hand_r",
+                  "m": "qw:Sword",
+                  "ti_le": 0.2
+                }
+              ],
+              "mau_vl": {
+                "MI_Ranger": [
+                  0.55,
+                  0.65,
+                  1
+                ]
+              }
+            }
+          ]
+        },
+        "dang": {
+          "di": {
+            "m": "kq:Horse",
+            "ten": "AnimalArmature|Gallop"
+          },
+          "danh": {
+            "m": "kq:Horse",
+            "ten": "AnimalArmature|Idle",
+            "nguoi_cuoi": {
+              "m": "ua:UAL1_Standard",
+              "ten": "Sword_Attack",
+              "tu_xuong": "spine_01"
+            }
+          },
+          "trung": {
+            "m": "kq:Horse",
+            "ten": "AnimalArmature|Idle_HitReact_Left"
+          },
+          "chet": {
+            "m": "kq:Horse",
+            "ten": "AnimalArmature|Death"
+          }
+        },
+        "ghi_chu_danh": "Danh: ngua DUNG (Idle), nguoi cuoi chong lop Sword_Attack tu xuong spine_01 len tren len dang ngoi. Truoc do ngua 'da hau' Attack_Kick, anh bao 25/09 'nhu tong vao nhau chu khong phai danh nhau'."
+      },
+      "dai_bac": {
+        "manh": [
+          {
+            "m": "ip:model__GLTFupdated_",
+            "ti_le": 0.5,
+            "z": 0.267,
+            "ry": -90,
+            "x": 0.53,
+            "y": -1.105
+          },
+          {
+            "m": "nd:Male_Peasant",
+            "ti_le": 0.34,
+            "mau_vl": {
+              "MI_Peasant": [
+                0.75,
+                0.6,
+                0.45
+              ]
+            },
+            "gan": []
+          },
+          {
+            "m": "nb:Superhero_Male_FullBody",
+            "xuong": [
+              "Head",
+              "neck_01"
+            ],
+            "ti_le": 0.34
+          }
+        ],
+        "dang": {
+          "di": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Push_Loop"
+          },
+          "danh": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Pistol_Aim_Neutral"
+          },
+          "trung": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Hit_Chest"
+          },
+          "chet": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Death01"
+          }
+        }
+      },
+      "chong_tang": {
+        "manh": [
+          {
+            "m": "ip:model__GLTFupdated_",
+            "ti_le": 0.35,
+            "z": 0.272,
+            "ry": -90,
+            "mau_vl": {
+              "BlocksPaper": [
+                0.55,
+                0.6,
+                0.5
+              ]
+            },
+            "x": 0.371,
+            "y": -0.773
+          },
+          {
+            "m": "nd:Male_Peasant",
+            "ti_le": 0.34,
+            "mau_vl": {
+              "MI_Peasant": [
+                0.6,
+                0.75,
+                0.45
+              ]
+            },
+            "gan": []
+          },
+          {
+            "m": "nb:Superhero_Male_FullBody",
+            "xuong": [
+              "Head",
+              "neck_01"
+            ],
+            "ti_le": 0.34
+          }
+        ],
+        "dang": {
+          "di": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Push_Loop"
+          },
+          "danh": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Crouch_Idle_Loop"
+          },
+          "trung": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Hit_Chest"
+          },
+          "chet": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Death01"
+          }
+        }
+      },
+      "xe_tang": {
+        "manh": {
+          "m": "it:model",
+          "ti_le": 0.35,
+          "ry": -90,
+          "x": 0,
+          "y": 0.378,
+          "z": -0.133
+        },
+        "dang": {
+          "di": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Walk_Loop",
+            "khung": [
+              0.5
+            ]
+          },
+          "danh": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Walk_Loop",
+            "khung": [
+              0.5
+            ]
+          },
+          "trung": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Walk_Loop",
+            "khung": [
+              0.5
+            ]
+          },
+          "chet": {
+            "m": "ua:UAL1_Standard",
+            "ten": "Walk_Loop",
+            "khung": [
+              0.5
+            ]
+          }
+        }
+      }
+    }
+  },
+  "ghi_chu_dat_mo_hinh": "Model Icosa co goc toa do lech: x/y/z cua manh = dua tam khung bao ve chan (do bang docGltf, xem ghi chu trong linh_sung.json). ry -90: nong phao/xe nhin theo +z nhu linh. Sung: `giua` + `xoay` [0,0,90] cho nong theo tay."
+}
