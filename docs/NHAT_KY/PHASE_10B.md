@@ -29,3 +29,7 @@
   anh đo 59. Cắt khung pháo/chống tăng (đi, đánh 2 · trúng, chết 1), kỵ súng (trúng, chết 1),
   thu pháo → 2× **một trang 76,0 %**, GPU 33,6 → 16,8 MB. **Chưa biết có đúng không** — chờ anh
   đo cả hai trận trên cùng bản duyệt.
+- **Kết đo 26/09 chiều:** atlas 1 trang vẫn 30; **trận súng · trận cổ · thành phố đều 30 đứng
+  yên**, không bật tiết kiệm pin. Thành phố từng 59 → **không phải lỗi game, bị khoá trần 30
+  ở chỗ xem** (khung xem bản duyệt / trình duyệt). Giả thuyết atlas 2 trang: SAI. Việc cắt khung
+  vẫn giữ (GPU giảm nửa, không mất gì anh chê). Chờ anh đo lại bằng Safari.

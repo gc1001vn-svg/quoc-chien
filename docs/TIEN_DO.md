@@ -883,7 +883,8 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **MỚI 26/09 (Phase 10B): fps 30** ở trận súng — đã ép atlas về 1 trang, chờ số đo (mục 3).
+- **MỚI 26/09 (Phase 10B): fps 30 đứng yên ở MỌI màn** (trận súng, trận cổ, thành phố) qua bản
+  duyệt, không tiết kiệm pin → khoá trần ở chỗ xem, không phải lỗi game. Chờ anh mở bằng Safari.
 - **MỚI 26/09 (Phase 10B):** chưa có **màn ghi công trong game** — CC-BY (3 model Icosa của
   `linh_sung`) đòi ghi tên tác giả ở chỗ người chơi thấy (`ASSET_CREDITS.md` mục Icosa) ·
   mỗi trận chỉ một mẻ, chưa trộn đội cổ với đội súng (hai atlas cùng màn) · xe tăng không có
