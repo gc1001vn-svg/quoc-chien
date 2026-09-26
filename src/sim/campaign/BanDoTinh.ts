@@ -7,7 +7,7 @@
  * Cung mot hat giong thi ra dung mot ban do - TECH_SPEC muc 8 bat buoc.
  */
 import { Rng } from '../../core/Rng.ts';
-import { cumBay, khoa, tamCum, type OHex } from './Hex.ts';
+import { cumBay, hangXom, khoa, tamCum, type OHex } from './Hex.ts';
 
 /** Mot nuoc trong `data/nations.json`. */
 export interface Nuoc {
@@ -168,4 +168,20 @@ function vat(tho: CauHinhBanDoTinh, diaHinh: string, oXay: number, i: number, rn
   const thu: number = ds.length === 0 ? 0 : rng.nguyen(ds.length);
   if (oXay >= 0 || i === 0 || ds.length === 0) return '';
   return boc < tho.vat_thua ? (ds[thu] as string) : '';
+}
+
+/** Bang tinh ke nhau: hai tinh ke khi co it nhat mot cap hex sat canh. Hai chieu. */
+export function tinhKe(banDo: BanDoTinh): Map<string, ReadonlySet<string>> {
+  const ra = new Map<string, ReadonlySet<string>>();
+  for (const t of banDo.tinh) {
+    const ke = new Set<string>();
+    for (const o of t.o) {
+      for (let h = 0; h < 6; h++) {
+        const k: string | undefined = banDo.theoHex.get(khoa(hangXom(o.hex, h)));
+        if (k !== undefined && k !== t.id) ke.add(k);
+      }
+    }
+    ra.set(t.id, ke);
+  }
+  return ra;
 }
