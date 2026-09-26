@@ -217,6 +217,11 @@ và **thoát mã 1** khi vượt. Đo 15/09: **15 file · 4,2 MB**.
 
 **Bản duyệt KHÔNG thay `main`.** Bản thật vẫn là GitHub Pages; `.duyet/` không lên git.
 
+**Việc cho anh xem trên iPhone: LUÔN đưa link bản duyệt**, không đưa link Pages — anh báo
+25/09 và 26/09 link Pages "không xài được" (nợ ở `TIEN_DO.md` mục 4). Đăng đè đúng link cũ
+`https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi` (đọc nó trước, rồi `url` + `root: .duyet`);
+muốn mở thẳng màn nào thì sửa `src` của iframe trong `.duyet/xem.html` (vd `?tran=2`).
+
 ### Poly Pizza — hình dạng dữ liệu, đo 15/09
 
 Khoá API đã có (chủ dự án lấy 15/09). **Không bao giờ vào git** — repo này Public.

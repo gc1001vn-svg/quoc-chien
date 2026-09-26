@@ -532,7 +532,8 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ### Việc 26/09 (lần 15) — xem trận súng trên iPhone
 
-1. Mở https://gc1001vn-svg.github.io/quoc-chien/?tran=2 — kéo trang xuống để tải bản mới.
+1. Mở bản duyệt https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng trận súng). Anh
+   báo 26/09 link Pages không xài được — xem mục 4.
 2. Nhìn dòng chữ nhỏ trên cùng: phải ghi ngày **26/09** (giờ chính xác: tin báo cuối phiên 15). Ngày cũ hơn là máy còn giữ bản
    cũ: tắt hẳn app, mở lại, đợi 1 phút (đây cũng là cách đo nợ "Pages ra thành phố", mục 4).
 3. Bấm **×4**, xem hết trận. Nhắn: **fps thấp nhất**, và nhận ra được lính súng · pháo · xe
