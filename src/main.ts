@@ -71,6 +71,10 @@ async function moManTran(boc: HTMLElement): Promise<void> {
   o.hidden = false;
   await chayCanhTran(o);
   nut(o, 'nut-doi-man', '⌂ Về thành phố', () => { window.location.search = ''; });
+  // Nut doi tran o goc TREN, duoi nut ve thanh pho: de o hang nut duoi thi khung ban duyet
+  // tren iPhone che mat - anh bao 26/09 "khong thay tran co".
+  const laSung: boolean = thamSo.get('tran') === '2';
+  nut(o, 'nut-xem-tran', laSung ? '⚔ Trận cổ' : '⚔ Trận súng', () => { window.location.search = laSung ? '?tran=1' : '?tran=2'; });
 }
 
 /** Mot lop man phu kin `#app`. Hai lop chong len nhau, moi luc chi mot cai hien. */

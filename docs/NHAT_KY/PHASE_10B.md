@@ -14,7 +14,7 @@
 - **Còn nợ:** chưa có màn ghi công trong game (CC-BY đòi) · trận chỉ một mẻ, chưa trộn cổ với
   súng · xe tăng không có khung giật · đạn là chấm vàng nhỏ · súng cầm một tay (dáng súng lục).
 - **Bẫy:** `pkill -f <mẫu>` giết luôn lệnh của chính mình vì mẫu nằm trong dòng lệnh — dùng
-  `pgrep` rồi `kill` theo PID. `tai_icosa` ghi đè `docs/KHO_ICOSA.md` bằng số model trên đĩa
+  `pkill -f "[v]ite preview"` (ngoặc vuông để mẫu không khớp chính dòng lệnh) — `pgrep -f "\.bin/vite"` trong cùng lệnh Bash cũng tự giết, mắc 3 lần 26/09. `tai_icosa` ghi đè `docs/KHO_ICOSA.md` bằng số model trên đĩa
   máy ảo — `git checkout docs/KHO_ICOSA.md` sau mỗi lần tải lẻ.
 
 ## Phụ lục 26/09 trưa — anh xem bản duyệt: 30 fps suốt trận, pháo thủ đứng trước, xe tăng đồ chơi

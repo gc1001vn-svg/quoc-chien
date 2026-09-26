@@ -132,7 +132,6 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   danhDauToc();
   nut(hang, '⏭ Bỏ qua', () => { giay = kq.giayKetThuc; });
   nut(hang, '↺ Xem lại', () => { giay = 0; });
-  nut(hang, soTran() === 2 ? '⚔ Trận cổ' : '⚔ Trận súng', () => { window.location.search = `?tran=${soTran() === 2 ? '1' : '2'}`; });
 
   const oPx: number = atlas.oPx();
 
