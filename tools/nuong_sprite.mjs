@@ -326,8 +326,18 @@ function moRongLinh(linh) {
           // `manh` mot manh hay nhieu manh (than + dau cat tu bo nguoi goc, nhu nguoi dan
           // trong me thanh pho) - moi manh cung xoay, cung mot tu the.
           const { cuoi, ...hoatAnh } = ha;
+          // Do doi `x`/`z` cua manh phai quay theo huong, cung cong thuc voi `ghep` - khong
+          // thi khau phao dung dung cho o huong 0, sang huong khac van ra canh hay ra truoc
+          // phao thu (anh bao 26/09 "nguoi day phao dung phia truoc").
+          const goc = (h * 2 * Math.PI) / linh.huong;
+          const c = Math.cos(goc);
+          const s = Math.sin(goc);
           ra[`${doi}_${dang}_h${h}_k${k}`] = (Array.isArray(d.manh) ? d.manh : [d.manh]).map((m) => ({
             ...m,
+            ...(m.x === undefined && m.z === undefined ? {} : {
+              x: (m.x ?? 0) * c + (m.z ?? 0) * s,
+              z: -(m.x ?? 0) * s + (m.z ?? 0) * c,
+            }),
             ry: (m.ry ?? 0) + (h * 360) / linh.huong,
             hoat_anh: hoatAnh,
             // `nguoi_cuoi` cua dang: chong them mot lop len model gan dau tien (nguoi tren
