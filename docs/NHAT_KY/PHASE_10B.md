@@ -33,3 +33,8 @@
   yên**, không bật tiết kiệm pin. Thành phố từng 59 → **không phải lỗi game, bị khoá trần 30
   ở chỗ xem** (khung xem bản duyệt / trình duyệt). Giả thuyết atlas 2 trang: SAI. Việc cắt khung
   vẫn giữ (GPU giảm nửa, không mất gì anh chê). Chờ anh đo lại bằng Safari.
+- **Kết thật (26/09 chiều, anh đo bằng Safari):** trận mở ra 30, **bấm ×4 lên 59 ngay**; thành
+  phố 59. Safari khoá trang lồng khung (bản duyệt) ở 30 fps tới lần chạm đầu; app Claude khoá 30
+  luôn. **Game 59 fps — không có lỗi hiệu năng.** `duyet.mjs`: dòng nhắc "mở Safari, chạm một
+  lần" + khung game tự lấp chiều cao (trước cố định `100dvh - 44px`, tiêu đề xuống hai dòng trên
+  iPhone đẩy hàng nút dưới ra ngoài — lý do anh "không thấy trận cổ").

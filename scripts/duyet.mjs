@@ -70,19 +70,19 @@ const XEM = `<title>Quốc Chiến — bản duyệt</title>
 <style>
   :root { --nen: #12100e; --chu: #efe7d8; --vien: #3a332b; }
   :root[data-theme="light"] { --nen: #efe7d8; --chu: #12100e; --vien: #c9bda6; }
-  body { margin: 0; background: var(--nen); color: var(--chu); font: 14px system-ui, sans-serif; }
+  /* Cot doc: iframe lap phan con lai. Truoc 26/09 iframe cao 100dvh - 44px co dinh, ma dong
+     tieu de xuong hai dong tren iPhone -> day iframe (hang nut duoi) bi day ra ngoai man. */
+  body { margin: 0; background: var(--nen); color: var(--chu); font: 14px system-ui, sans-serif;
+    display: flex; flex-direction: column; height: 100dvh; }
   header {
     padding: 8px 16px; padding-top: calc(8px + env(safe-area-inset-top, 0px));
     border-bottom: 1px solid var(--vien); display: flex; gap: 12px; flex-wrap: wrap;
   }
   header b { font-weight: 600; }
   header span { opacity: .65; }
-  iframe {
-    display: block; width: 100%; border: 0;
-    height: calc(100dvh - 44px - env(safe-area-inset-top, 0px));
-  }
+  iframe { display: block; width: 100%; border: 0; flex: 1; min-height: 0; }
 </style>
-<header><b>Quốc Chiến</b><span>bản duyệt — không phải bản trên GitHub Pages</span></header>
+<header><b>Quốc Chiến</b><span>bản duyệt — không phải bản trên GitHub Pages · đo fps: mở bằng Safari, chạm vào game một lần (chưa chạm Safari khoá 30)</span></header>
 <iframe src="game/index.html" title="Quốc Chiến"></iframe>
 `;
 
