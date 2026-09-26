@@ -3,25 +3,27 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 25/09/2026 (lần 14 — **Phase 10A xong: xem được trận, lính thời cổ**).
+Cập nhật: 26/09/2026 (lần 15 — **Phase 10B xong: lính súng và xe có hình**).
 
 ## 1. Đang ở đâu
 
-**Phase 10A XONG 25/09. Game ở Phase 10A/13.** Mở `?tran=1` (hay nút "⚔ Xem trận" ở bản
-đồ tỉnh) là xem được một trận mẫu 6 đội mỗi bên: lính đi, giáp lá cà, trúng đòn, ngã, vỡ
-trận chạy về. Chỉ bốn đội thời cổ có hình (giáo · kiếm · cung · kỵ). Chi tiết:
-`docs/NHAT_KY/PHASE_10A.md`.
+**Phase 10B XONG 26/09 (chờ anh xem trên iPhone). Game ở Phase 10B/13.** Màn trận có nút
+"⚔ Trận súng" (hay mở thẳng `?tran=2`): trận mẫu 6 đội mỗi bên — hoả mai, đại bác, kỵ súng,
+bộ binh, chống tăng, xe tăng. Mẻ riêng `linh_sung`. Chi tiết: `docs/NHAT_KY/PHASE_10B.md`.
 
-**Sửa cùng ngày theo anh chê "chỉ húc vào nhau":** giáp lá cà dàn hàng đối mặt, 4 khung
-đánh lệch pha, mũi tên bay, kỵ binh thu nhỏ — phụ lục cuối `docs/NHAT_KY/PHASE_10A.md`.
+Phase 10A (thời cổ, `?tran=1`) anh đã xác nhận 25/09: 59 fps.
 
-**Chiều 25/09: đổi lính sang Quaternius tỉ lệ thật** (anh chọn từ bảng so sánh) + nút tắt
-lớp để đo fps (29–30, chưa sửa — chờ số từng lớp). Phụ lục 2 `docs/NHAT_KY/PHASE_10A.md`.
+**Việc phiên sau: (1) anh xem trận súng trên iPhone (mục 3); (2) nợ Pages ra thành phố —
+mục 4, xem số phiên bản trước; (3) Phase 11** (mục 5). **Bước E: CẦN anh xác nhận 10B.**
 
-**Anh xác nhận 25/09 tối (bản duyệt): 59 fps, kỵ binh đánh nhau → Phase 10A ĐẠT.**
+### Phiên 26/09 (lần 15) đã đổi gì — Phase 10B
 
-**Việc phiên sau: (1) nợ Pages ra thành phố thay vì trận — mục 4; (2) Phase 10B** (mục 5).
-**Bước E: CẦN anh xác nhận** — phase này đổi màn hình.
+- Mới: `tools/me/linh_sung.json` · `public/atlas/linh_sung_*` · `tests/DienTranSung.test.ts` ·
+  `docs/NHAT_KY/PHASE_10B.md`. Sửa: `data/dien_tran.json` (trận mẫu súng, số khung riêng xe
+  tăng) · `BattleScene.ts` · `DienTran.ts` · `main.ts` · `tools/lib/gltf.mjs` (`COLOR_0`,
+  `gan` xoay/giữa) · `tai_icosa.mjs` (Backblaze khi wayback chết) · `do_luat.mjs` (trần thời
+  gian) · `DAU_PHIEN.md` (bẫy tưởng treo) · `ASSET_CREDITS.md` (anh cho sửa).
+- `npm run do` **16/16 · 1 bỏ qua** (`do:luat`: Gemini hết lượt, lỗi bên ngoài).
 
 ### Phiên 25/09 (lần 14) đã đổi gì — Phase 10A
 
@@ -443,6 +445,10 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
+**Phase 10B, đo 26/09:** atlas `linh_sung` 524 sprite — 1× 33,8 % một trang; 2× **hai trang**
+(87,9 % + 40,8 %, GPU 33,6 MB / trần 67,1 MB). Màn trận súng chụp máy ảo: **322 sprite ·
+1 lệnh vẽ**. Trận mẫu súng 48,5 giây, 54 lính mỗi bên. Nướng `linh_sung` cả hai cỡ ~7 phút.
+
 **Phase 10A, đo 25/09:** atlas `linh_co` 260 sprite — 2× lấp **68,6 %** một trang, 1× 17,9 %
 (`node tools/nuong_sprite.mjs linh_co` in lại). Màn trận chụp trong máy ảo: **344 sprite ·
 1 lệnh vẽ**. `kiem:cheo` HEAD: **402/402 test**, `sim:tran` lệch 2,24 · 85,2 % trong khung ·
@@ -523,6 +529,14 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### Việc 26/09 (lần 15) — xem trận súng trên iPhone
+
+1. Mở https://gc1001vn-svg.github.io/quoc-chien/?tran=2 — kéo trang xuống để tải bản mới.
+2. Nhìn dòng chữ nhỏ trên cùng: phải ghi ngày **26/09** (giờ chính xác: tin báo cuối phiên 15). Ngày cũ hơn là máy còn giữ bản
+   cũ: tắt hẳn app, mở lại, đợi 1 phút (đây cũng là cách đo nợ "Pages ra thành phố", mục 4).
+3. Bấm **×4**, xem hết trận. Nhắn: **fps thấp nhất**, và nhận ra được lính súng · pháo · xe
+   tăng · kỵ súng không.
 
 ### ✅ Việc 25/09 (lần 14) — xem trận trên iPhone: XONG 25/09 tối, 59 fps (bản duyệt)
 
@@ -868,6 +882,11 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 26/09 (Phase 10B):** chưa có **màn ghi công trong game** — CC-BY (3 model Icosa của
+  `linh_sung`) đòi ghi tên tác giả ở chỗ người chơi thấy (`ASSET_CREDITS.md` mục Icosa) ·
+  mỗi trận chỉ một mẻ, chưa trộn đội cổ với đội súng (hai atlas cùng màn) · xe tăng không có
+  khung giật · đạn là chấm vàng nhỏ · lính súng cầm súng một tay (dáng súng lục của bộ động tác).
+
 - **✅ Phase 8C XONG 19/09 — cối xay quay ở cả hai mẻ.**
 - **✅ Phase 8B XONG 18/09 — mẻ `hien_dai` đã nướng và đã nối vào `ThoiDai`.**
 - **MỚI: mẻ trung cổ 2× hết chỗ trên một trang atlas** (mục 2). Thêm sprite cỡ căn nhà là
@@ -1004,19 +1023,11 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 10B: lính súng và xe
+## 5. Phiên sau — Phase 11: chạy hết một ván tới lúc thắng
 
-Chờ anh xác nhận 10A trên iPhone (mục 3) trước. Rồi thêm 6 đội nhóm `sung`/`hien_dai`
-(`data/units.json`): hoả mai, đại bác, kỵ súng, bộ binh, chống tăng, xe tăng.
-
-- **Dò asset trước** (`npm run do:asset`): lính cầm súng dùng lại bộ xương KayKit — gói
-  Character Animations có sẵn `Ranged_2H_Shoot`, `Running_HoldingRifle`; cần model súng
-  (Icosa CC-BY có `rifle`, `musket`) gắn vào `handslot.r` như cây giáo. Xe tăng, đại bác:
-  model tĩnh Icosa, không cần xương — 8 hướng, dáng "bắn" = khung giật lùi.
-- **Máy nướng đã sẵn** (`hoat_anh`, `gan`, `chi_vi_tri`, `dich` trong mẻ — xem đầu
-  `tools/me/linh_co.json`). Mẻ `linh_co` 2× còn ~31 % trang: 6 đội mới **không vừa** —
-  làm mẻ `linh_sung` riêng, `BattleScene` nạp theo nhóm đội.
-- Ngựa to: thử `ti_le` riêng cho người cưỡi trong `gan` (chưa có — phải thêm).
+Chờ anh xác nhận 10B trên iPhone (mục 3) trước. Phase 11 (`KE_HOACH.md`): cả bốn kiểu thắng
+đều đến được. Trước khi bắt tay: nợ "lớp chiến dịch chưa nối vào kinh tế thành phố" và "chưa
+có AI nước khác" (mục 4) nằm đúng đường của Phase 11 — hỏi anh xếp vào đâu.
 
 ### Nhắc trước khi nướng thêm mẻ
 
