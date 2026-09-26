@@ -21,7 +21,7 @@ if (goc === null) throw new Error('Thieu the #app trong index.html');
 
 const thamSo = new URLSearchParams(window.location.search);
 const laTrangDo: boolean = thamSo.get('do') === 'sprite';
-const laTran: boolean = thamSo.get('tran') === '1';
+const laTran: boolean = thamSo.get('tran') === '1' || thamSo.get('tran') === '2';
 if (laTrangDo) goc.classList.add('trang-do');
 else goc.classList.add('trang-canh');
 

@@ -5,7 +5,7 @@
  * rieng chay tu 0 toi giay ket thuc, `DienTran` noi ra tung linh o moi giay. Tang toc, bo
  * qua, xem lai deu chi la doi dong ho - ket qua khong bao gio doi (GAME_SPEC muc 6).
  *
- * Mo bang `?tran=1`. Chua noi voi ban do chien dich (no Phase 9) - danh tran mau trong
+ * Mo bang `?tran=1` (thoi co, atlas `linh_co`) hay `?tran=2` (doi sung, atlas `linh_sung`). Chua noi voi ban do chien dich (no Phase 9) - danh tran mau trong
  * `data/dien_tran.json`.
  */
 import bangGiap from '../../data/armor_table.json';
@@ -36,19 +36,33 @@ const CAO_O: number = Math.cos(Math.PI / 6) / Math.SQRT2;
 /** So dong nhat ky tran hien cung luc. */
 const SO_DONG = 4;
 
+/** Mot tran mau trong `data/dien_tran.json`. `ban` ghi de so ban chung cua lop dien. */
+interface TranMau {
+  readonly me: string;
+  readonly ten_dan?: string;
+  readonly ban?: Partial<CauHinhDien>;
+  readonly a: string[];
+  readonly b: string[];
+  readonly tuong_a: number;
+  readonly tuong_b: number;
+  readonly dia_hinh: string;
+  readonly hat_giong: number;
+}
+
 /** Mo man xem tran trong `goc`. */
 export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   const canvas: HTMLCanvasElement = document.createElement('canvas');
   goc.appendChild(canvas);
   const perf: Perf = new Perf(goc);
 
-  const bo: BoAtlas = await taiBoAtlas('linh_co', coTheoDpr(window.devicePixelRatio));
+  // `?tran=2` la tran doi sung (Phase 10B), con lai la tran thoi co. Moi tran mot atlas.
+  const m: TranMau = soTran() === 2 ? dienTho.tran_mau_sung : dienTho.tran_mau;
+  const bo: BoAtlas = await taiBoAtlas(m.me, coTheoDpr(window.devicePixelRatio));
   const gl: Gl = new Gl(canvas, SUC_CHUA, bo.trang.length);
   const atlas: Atlas = new Atlas(bo, await napTrangLenGpu(bo, gl));
   gl.datTrang(atlas.cacTrang());
 
   const duLieu: DuLieuTran = docDuLieuTran(bangGiap, donVi, tranTho);
-  const m = dienTho.tran_mau;
   const vao: DauVaoTran = {
     a: { doi: m.a, tuong: m.tuong_a },
     b: { doi: m.b, tuong: m.tuong_b },
@@ -57,7 +71,8 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   const kq: KetQuaTran = tinhTran(vao, duLieu, m.hat_giong);
   const phanTram: number = Math.round(duDoan(vao, duLieu) * 100);
   const kichBan: Canh[] = sinhKichBan(kq, vao, duLieu);
-  const cauHinh: CauHinhDien = dienTho;
+  // Tran co `ban` rieng (dan sung bay thang) thi ghi de so ban chung.
+  const cauHinh: CauHinhDien = { ...dienTho, ...m.ban, ...(m.ten_dan === undefined ? {} : { ten_dan: m.ten_dan }) };
   const tamDoi = new Map<string, number>([...duLieu.doi].map(([id, l]) => [id, l.tam]));
   const dien = new DienTran(kq, vao, cauHinh, tamDoi);
 
@@ -117,6 +132,7 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   danhDauToc();
   nut(hang, '⏭ Bỏ qua', () => { giay = kq.giayKetThuc; });
   nut(hang, '↺ Xem lại', () => { giay = 0; });
+  nut(hang, soTran() === 2 ? '⚔ Trận cổ' : '⚔ Trận súng', () => { window.location.search = `?tran=${soTran() === 2 ? '1' : '2'}`; });
 
   const oPx: number = atlas.oPx();
 
@@ -169,6 +185,11 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
     requestAnimationFrame(veMotKhung);
   };
   requestAnimationFrame(veMotKhung);
+}
+
+/** So tran mau trong `?tran=`: 2 la tran doi sung, con lai la 1. */
+function soTran(): number {
+  return new URLSearchParams(window.location.search).get('tran') === '2' ? 2 : 1;
 }
 
 /** Hien `SO_DONG` canh gan nhat da dien toi. Chi dung lai DOM khi so dong doi. */

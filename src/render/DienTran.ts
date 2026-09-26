@@ -116,11 +116,10 @@ export class DienTran {
     const xac: LinhVe[] = [];
     const song: LinhVe[] = [];
     const khung: number = Math.floor(giay * this.ch.khung_moi_giay);
-    const soKhung = (d: DangLinh): number => this.ch.so_khung?.[d] ?? 2;
-
     for (const ben of ['a', 'b'] as const) {
       const ids: readonly string[] = (ben === 'a' ? this.vao.a : this.vao.b).doi;
       ids.forEach((id, doi) => {
+        const soKhung = (d: DangLinh): number => this.ch.so_khung_rieng?.[id]?.[d] ?? this.ch.so_khung?.[d] ?? 2;
         const p0 = diem(truoc, ben, doi);
         const p1 = diem(sau, ben, doi) ?? p0;
         if (p0 === undefined || p1 === undefined) return;
@@ -219,7 +218,7 @@ export class DienTran {
         a: tam.a + da * f,
         b: tam.b + db * f,
         cao: 4 * (this.ch.do_vong ?? 0.22) * Math.hypot(da, db) * f * (1 - f),
-        ten: `mui_ten_h${String(Math.max(0, h))}`,
+        ten: `${this.ch.ten_dan ?? 'mui_ten'}_h${String(Math.max(0, h))}`,
       });
     }
     return ra;

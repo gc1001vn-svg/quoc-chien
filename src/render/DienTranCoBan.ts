@@ -16,6 +16,10 @@ export interface CauHinhDien {
   readonly huong: number;
   /** So khung moi dang, khop me `linh_co`. Thieu thi 2 (me cu). */
   readonly so_khung?: Readonly<Record<DangLinh, number>>;
+  /** So khung rieng theo loai doi - xe tang la model tinh, moi dang mot khung (me `linh_sung`). */
+  readonly so_khung_rieng?: Readonly<Record<string, Readonly<Partial<Record<DangLinh, number>>>>>;
+  /** Tien to sprite dan bay: `mui_ten` (me `linh_co`), `dan` (me `linh_sung`). Thieu thi `mui_ten`. */
+  readonly ten_dan?: string;
   readonly khoang_giap?: number;
   /** Khoang giap rieng theo loai doi - ngua dai, hai hang ky phai dung gian ra. */
   readonly khoang_giap_rieng?: Readonly<Record<string, number>>;
@@ -37,7 +41,7 @@ export interface MuiTen {
 
 export type DangLinh = 'di' | 'danh' | 'trung' | 'chet';
 
-/** Mot linh can ve. `ten` la ten sprite trong atlas `linh_co`. */
+/** Mot linh can ve. `ten` la ten sprite trong atlas cua tran (`linh_co`, `linh_sung`). */
 export interface LinhVe {
   readonly a: number;
   readonly b: number;
