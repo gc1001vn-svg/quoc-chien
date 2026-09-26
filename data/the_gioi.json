@@ -1,0 +1,81 @@
+{
+  "_": "Lop the gioi cua Phase 11A: kinh te tung nuoc, quan, ngoai giao, bat on, AI nuoc khac. MOI so nam o day, .ts chi doc ra (luat 2). Don vi thoi gian: GIO GAME, cung nhip voi thanh pho.",
+  "hat_giong": 20260926,
+
+  "_kinh_te": "Vang moi gio. Nuoc nguoi choi lay tu thanh pho that (so nha) + so tinh; nuoc AI khong co thanh pho nen chi tinh theo so tinh. giam_thue_he_so nhan phan vang tu nha trong nhung gio dang giam thue (lua chon cua the bat on).",
+  "kinh_te": {
+    "vang_moi_nha": 0.1,
+    "vang_moi_tinh": 3,
+    "vang_moi_tinh_ai": 4,
+    "vang_thu_do_ai": 4,
+    "giam_thue_he_so": 0.6
+  },
+
+  "_quan": "Moi nuoc giu mot danh sach doi (khoa trong units.json). Moi gio chi ti_le_chi_quan so vang dang co de mua doi, toi da quan_co_ban + quan_moi_tinh x so tinh doi (nuoi quan bang dat). Doi mua duoc: nhom cua loai doi moi nhat da mo o thoi dai cua nuoc. doi_moi_tran = so doi moi ben dua vao mot tran (battle.json doi_moi_ben). tuong = cap tuong moi ben; tuong_thu_do = cap tuong ben giu thu do cua chinh minh (battle.json tuong_toi_da la tran). Doi giu mot tinh co chu = so doi x he_so_giu / so tinh (thu do nhan them he_so_thu_do), tran doi_moi_tran. quan_trung_lap = doi giu mot tinh trung lap.",
+  "quan": {
+    "ti_le_chi_quan": 0.6,
+    "quan_co_ban": 15,
+    "quan_moi_tinh": 3,
+    "doi_moi_tran": 10,
+    "tuong": 1,
+    "tuong_thu_do": 3,
+    "he_so_giu": 1.5,
+    "he_so_thu_do": 2,
+    "gio_nghi_tan_cong": 3,
+    "quan_trung_lap": ["giao_thu", "cung_thu", "giao_thu", "kiem_si"]
+  },
+
+  "_doi_ai": "Gio game ma nuoc AI len thoi dai thu i+1. Lay tu sim:congnghe 26/09 (thanh pho that len doi 2 o gio 21, doi 3 gio 65, doi 4 gio ~130, doi 5 gio ~185).",
+  "doi_ai_theo_gio": [0, 21, 65, 130, 185],
+
+  "_ngoai_giao": "Quan he -100..100, troi ve 0 moi gio. Bon trang thai: chien_tranh, ngung_ban, hoa_binh, lien_minh. Dam phan nang quan he roi len mot bac khi qua nguong. De doa: ti le suc quan >= ti_le_thang thi doi phuong cong nap, khong thi mat mat va quan he tut manh.",
+  "ngoai_giao": {
+    "trang_thai_dau": "hoa_binh",
+    "troi_moi_gio": 0.5,
+    "thuong_mai": { "vang_moi_gio": 2, "quan_he_moi_gio": 1.5 },
+    "dam_phan": { "vang": 20, "quan_he": 12 },
+    "de_doa": { "ti_le_thang": 1.5, "cong_nap": 25, "quan_he_thang": -10, "quan_he_thua": -25 },
+    "tuyen_chien_quan_he": -30,
+    "nguong": { "ngung_ban": -20, "hoa_binh": 10, "lien_minh": 60 },
+    "bau": { "gio_moi_lan": 24, "doi_toi_thieu": 4, "quan_he_bau": 50 }
+  },
+
+  "_ai": "AI nuoc khac theo luat, khong hoc. Tuyen chien khi manh hon ti_le_tuyen_chien lan va quan he duoi quan_he_tuyen_chien, moi gio mot lan tung xac suat xac_suat_tuyen_chien. Tan cong khi du doan thang (Battle.duDoan) tu xac_suat_tan_cong. Dang chien ma yeu hon ti_le_xin_hoa thi dam phan.",
+  "ai": {
+    "ti_le_tuyen_chien": 1.3,
+    "quan_he_tuyen_chien": 20,
+    "xac_suat_tuyen_chien": 0.02,
+    "xac_suat_tan_cong": 0.6,
+    "ti_le_xin_hoa": 0.7
+  },
+
+  "_van_hoa": "Anh huong van hoa cong don moi gio. Nguoi choi: nha + cong nghe da xong + tinh; dau tu vang thi doi thang ra anh huong. AI: tinh + thoi dai.",
+  "van_hoa": {
+    "moi_nha": 0.02,
+    "moi_cong_nghe": 0.3,
+    "moi_tinh": 0.5,
+    "moi_vang_dau_tu": 1.5,
+    "moi_tinh_ai": 0.8,
+    "moi_doi_ai": 1.5
+  },
+
+  "_bat_on": "Chi so bat on cua nuoc nguoi choi (GAME_SPEC muc 4). Moi gio: + thue (tru khi dang giam thue hay lap the trong the_giam) + thieu luong thuc + dang co chien tranh, - giam_moi_gio. Mat tinh cong mot lan. Vuot nguong_the thi hien the ba lua chon; ke no gio_noi_loan gio thi noi loan mat mot tinh (khong phai thu do). Het tinh de mat ma van noi loan, hay cham nguong_sup: sup do, thua.",
+  "bat_on": {
+    "thue_moi_gio": 2.5,
+    "thieu_luong_thuc": 3,
+    "chien_tranh_moi_gio": 0.5,
+    "mat_tinh": 15,
+    "giam_moi_gio": 1.5,
+    "the_giam": { "thue_thap": 1 },
+    "nguong_the": 40,
+    "gio_noi_loan": 12,
+    "noi_loan_giam": 30,
+    "nguong_sup": 100,
+    "hang_luong_thuc": ["banh_mi", "ca_muoi", "xuc_xich", "gia_cam"],
+    "lua_chon": {
+      "dan_ap": { "hien": "Đàn áp", "bat_on": -30, "mat_doi": 2, "vang": 0, "van_hoa": 0, "gio_giam_thue": 0 },
+      "giam_thue": { "hien": "Giảm thuế", "bat_on": -25, "mat_doi": 0, "vang": 0, "van_hoa": 0, "gio_giam_thue": 24 },
+      "nha_hat": { "hien": "Xây nhà hát", "bat_on": -20, "mat_doi": 0, "vang": -60, "van_hoa": 10, "gio_giam_thue": 0 }
+    }
+  }
+}

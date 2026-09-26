@@ -1,0 +1,12 @@
+{
+  "_": "Bon dieu kien thang va hai dieu kien thua (GAME_SPEC muc 11). Chi nguoi choi thang duoc; nuoc AI thang = nguoi choi thua (mat thu do).",
+  "_thong_tri": "Chiem thu do cua moi nuoc con lai. Khong co so nao de chinh.",
+  "_khoa_hoc": "Hoc xong MOI cong nghe tu doi 1 toi doi `doi`. GAME_SPEC doi doi 6; chu du an chot 26/09 tam lay doi 5 vi doi 6 de Phase 12 - mo doi 6 thi doi so nay, khong sua code.",
+  "khoa_hoc": { "doi": 5 },
+  "_van_hoa": "Anh huong cong don cua nguoi choi vuot `ti_le` lan tong cac nuoc khac - KE CA nuoc da mat, tinh anh huong dong bang luc mat (thon tinh khong duoc tinh la thang Van hoa), va toi thieu `toi_thieu` diem (khong thi gio dau da thang vi ai cung 0).",
+  "van_hoa": { "ti_le": 1.5, "toi_thieu": 2500 },
+  "_ngoai_giao": "Moi dot bau (the_gioi.json > ngoai_giao.bau), so nuoc con song bau nguoi choi lam minh chu phai VUOT `ti_le_phieu` so nuoc con song.",
+  "ngoai_giao": { "ti_le_phieu": 0.5 },
+  "_gio_toi_da": "Tran do dai mot van cho `sim:van`: qua gio nay chua ai thang thi coi la van treo - HONG.",
+  "gio_toi_da": 300
+}
