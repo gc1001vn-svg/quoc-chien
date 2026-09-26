@@ -16,3 +16,16 @@
 - **Bẫy:** `pkill -f <mẫu>` giết luôn lệnh của chính mình vì mẫu nằm trong dòng lệnh — dùng
   `pgrep` rồi `kill` theo PID. `tai_icosa` ghi đè `docs/KHO_ICOSA.md` bằng số model trên đĩa
   máy ảo — `git checkout docs/KHO_ICOSA.md` sau mỗi lần tải lẻ.
+
+## Phụ lục 26/09 trưa — anh xem bản duyệt: 30 fps suốt trận, pháo thủ đứng trước, xe tăng đồ chơi
+
+- **Pháo thủ đứng trước — lỗi máy nướng:** `moRongLinh` xoay model theo 8 hướng mà **không
+  xoay độ dời `x/z`** của mảnh. Hướng 0 đúng, hướng khác khẩu pháo văng ra cạnh / ra trước.
+  Sửa gốc trong `nuong_sprite.mjs`; `linh_co` (không có độ dời) nướng lại y hệt từng byte.
+- **Xe tăng:** đổi sang "Tank" của Nico _ (Icosa CC-BY, màu cát, dáng xe thật). Dò thêm OGA:
+  `heavy_tank00.glb` (CC0) dáng viễn tưởng; các gói khác chỉ có `.blend`/`.dae` — máy nướng
+  không đọc.
+- **fps 30 — giả thuyết: atlas 2 trang.** Shader chọn trang bằng chuỗi `if`; trận cổ 1 trang
+  anh đo 59. Cắt khung pháo/chống tăng (đi, đánh 2 · trúng, chết 1), kỵ súng (trúng, chết 1),
+  thu pháo → 2× **một trang 76,0 %**, GPU 33,6 → 16,8 MB. **Chưa biết có đúng không** — chờ anh
+  đo cả hai trận trên cùng bản duyệt.

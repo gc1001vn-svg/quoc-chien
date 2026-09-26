@@ -7,7 +7,7 @@ Cập nhật: 26/09/2026 (lần 15 — **Phase 10B xong: lính súng và xe có 
 
 ## 1. Đang ở đâu
 
-**Phase 10B XONG 26/09 (chờ anh xem trên iPhone). Game ở Phase 10B/13.** Màn trận có nút
+**Phase 10B: anh xem 26/09 — nhận ra mọi thứ, bắn súng ổn; chê 30 fps, pháo thủ đứng trước, xe tăng đồ chơi → đã sửa, chờ anh xem lại (phụ lục `PHASE_10B.md`). Game ở Phase 10B/13.** Màn trận có nút
 "⚔ Trận súng" (hay mở thẳng `?tran=2`): trận mẫu 6 đội mỗi bên — hoả mai, đại bác, kỵ súng,
 bộ binh, chống tăng, xe tăng. Mẻ riêng `linh_sung`. Chi tiết: `docs/NHAT_KY/PHASE_10B.md`.
 
@@ -445,8 +445,8 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
-**Phase 10B, đo 26/09:** atlas `linh_sung` 524 sprite — 1× 33,8 % một trang; 2× **hai trang**
-(87,9 % + 40,8 %, GPU 33,6 MB / trần 67,1 MB). Màn trận súng chụp máy ảo: **322 sprite ·
+**Phase 10B, đo 26/09 trưa:** atlas `linh_sung` 412 sprite — 1× 20,1 %; 2× **một trang 76,0 %**
+(GPU 16,8 MB). Trước khi cắt khung: 524 sprite, 2× hai trang, anh đo **30 fps** suốt trận. Màn trận súng chụp máy ảo: **322 sprite ·
 1 lệnh vẽ**. Trận mẫu súng 48,5 giây, 54 lính mỗi bên. Nướng `linh_sung` cả hai cỡ ~7 phút.
 
 **Phase 10A, đo 25/09:** atlas `linh_co` 260 sprite — 2× lấp **68,6 %** một trang, 1× 17,9 %
@@ -532,12 +532,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ### Việc 26/09 (lần 15) — xem trận súng trên iPhone
 
-1. Mở bản duyệt https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng trận súng). Anh
-   báo 26/09 link Pages không xài được — xem mục 4.
-2. Nhìn dòng chữ nhỏ trên cùng: phải ghi ngày **26/09** (giờ chính xác: tin báo cuối phiên 15). Ngày cũ hơn là máy còn giữ bản
-   cũ: tắt hẳn app, mở lại, đợi 1 phút (đây cũng là cách đo nợ "Pages ra thành phố", mục 4).
-3. Bấm **×4**, xem hết trận. Nhắn: **fps thấp nhất**, và nhận ra được lính súng · pháo · xe
-   tăng · kỵ súng không.
+1. Mở bản duyệt https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi (mở thẳng trận súng). Chỉ
+   gửi link bản duyệt — anh báo 26/09 link Pages không xài được.
+2. Dòng chữ nhỏ trên cùng phải ghi **26/09 12:13**.
+3. Ghi **fps** trận súng, rồi bấm "⚔ Trận cổ" ghi **fps** trận cổ — hai số trên cùng một lần mở.
+   Trận súng lên ~59 là đúng thủ phạm atlas 2 trang; cả hai cùng 30 là thủ phạm khác.
 
 ### ✅ Việc 25/09 (lần 14) — xem trận trên iPhone: XONG 25/09 tối, 59 fps (bản duyệt)
 
@@ -883,6 +882,7 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 26/09 (Phase 10B): fps 30** ở trận súng — đã ép atlas về 1 trang, chờ số đo (mục 3).
 - **MỚI 26/09 (Phase 10B):** chưa có **màn ghi công trong game** — CC-BY (3 model Icosa của
   `linh_sung`) đòi ghi tên tác giả ở chỗ người chơi thấy (`ASSET_CREDITS.md` mục Icosa) ·
   mỗi trận chỉ một mẻ, chưa trộn đội cổ với đội súng (hai atlas cùng màn) · xe tăng không có
