@@ -3,17 +3,28 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 26/09/2026 (lần 15 — **Phase 10B xong: lính súng và xe có hình**).
+Cập nhật: 26/09/2026 (lần 16 — **Phase 11A xong: thế giới chạy ngầm, ván có kết thúc**).
 
 ## 1. Đang ở đâu
 
-**Phase 10B ĐẠT 26/09 (anh "ok").** Anh chê pháo thủ đứng trước, xe tăng đồ chơi, 30 fps → đã sửa; 30 fps hoá ra là Safari khoá khung bản duyệt tới lần chạm đầu, game 59 (phụ lục `PHASE_10B.md`). Game ở Phase 10B/13.** Màn trận có nút
-"⚔ Trận súng" (hay mở thẳng `?tran=2`): trận mẫu 6 đội mỗi bên — hoả mai, đại bác, kỵ súng,
-bộ binh, chống tăng, xe tăng. Mẻ riêng `linh_sung`. Chi tiết: `docs/NHAT_KY/PHASE_10B.md`.
+**Phase 11A XONG 26/09 (chạy ngầm, chưa có màn hình).** Game ở Phase 11A/13. Bốn nước có
+kinh tế, quân, ngoại giao; AI nước khác tự đánh, tự tuyên chiến, tự xin hoà; bất ổn nổi loạn;
+bốn kiểu thắng và hai kiểu thua. `npm run sim:van` chạy trọn ván 4 chiến lược + bỏ mặc trên 5
+hạt giống: **ĐẠT**, riêng thống trị đúng kiểu **2/5**. Chi tiết: `docs/NHAT_KY/PHASE_11A.md`.
 
-Phase 10A (thời cổ, `?tran=1`) anh đã xác nhận 25/09: 59 fps.
+Phase 10B (trận súng, `?tran=2`) anh "ok" 26/09; 10A (`?tran=1`) 59 fps 25/09.
 
-**Việc phiên sau: Phase 11** (mục 5). Bước E: 10B anh đã xác nhận 26/09.
+**Việc phiên sau: Phase 11B** (mục 5). Bước E: 11A không đổi màn hình nào — không cần iPhone;
+còn một câu hỏi cho anh ở mục 3.
+
+### Phiên 26/09 (lần 16) đã đổi gì — Phase 11A
+
+- Mới: `src/sim/campaign/{TheGioi,TheGioiData,NgoaiGiao,BatOn,ChienTranh,AiNuoc,DieuKienThang,NoiThanhPho}.ts`
+  · `data/the_gioi.json` · `data/victory.json` · `scripts/sim_van.ts` (`npm run sim:van`) ·
+  `tests/TheGioi.test.ts` (18 ca, bắt 4/4 lỗi cài thử) · kế hoạch `docs/ke-hoach/2026-09-26-phase-11a-the-gioi.md`.
+  Sửa: `BanDoTinh.ts` (thêm `tinhKe()`). **Không chạm mã game đang chạy** (chưa ai import từ `render/`/`ui/`).
+- `npm run do` **16/16 · 1 bỏ qua** (`do:luat` cố ý bỏ qua — không đụng `AGENTS.md`).
+- `cai_dat.mjs` đầu phiên bị bộ lọc quyền chặn (`[Code from External]`) — không chạy.
 
 ### Phiên 26/09 (lần 15) đã đổi gì — Phase 10B
 
@@ -444,6 +455,12 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
+**Phase 11A, đo 26/09 tối:** `sim:van` — vết thành phố thật 300 giờ mất **389 s** (lưu
+`.cache/sim_van/`, lần sau đọc lại); mỗi ván thế giới **0,01–0,13 s**. Giờ thắng ở hạt giống
+gốc: ngoại giao **72** · văn hoá **167** · thống trị **171** · khoa học **190**; bỏ mặc sụp đổ
+giờ **111**. Đúng kiểu trên 5 hạt giống: thống trị 2/5, ba kiểu kia 5/5, bỏ mặc thua 5/5.
+Thành phố (không đổi): đời 5 ở giờ ~150, 449 nhà ở giờ 300.
+
 **Phase 10B, đo 26/09 trưa:** atlas `linh_sung` 412 sprite — 1× 20,1 %; 2× **một trang 76,0 %**
 (GPU 16,8 MB). Trước khi cắt khung: 524 sprite, 2× hai trang, anh đo **30 fps** suốt trận. Màn trận súng chụp máy ảo: **322 sprite ·
 1 lệnh vẽ**. Trận mẫu súng 48,5 giây, 54 lính mỗi bên. Nướng `linh_sung` cả hai cỡ ~7 phút.
@@ -528,6 +545,12 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### Việc 26/09 (lần 16) — một câu hỏi, không cần mở iPhone
+
+Thắng **thống trị** chỉ tới được ở 2/5 hạt giống (ba kiểu kia 5/5). Tôi đã chỉnh quá trần 3
+lần kế hoạch cho phép nên dừng. Anh chọn: (a) chấp nhận, cân tiếp khi 11B có màn cho anh chơi
+thật; (b) phiên sau dành riêng cân thống trị trước khi làm màn.
 
 ### ✅ Việc 26/09 (lần 15) — xem trận súng trên iPhone: XONG, anh "ok" 26/09
 
@@ -882,6 +905,13 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 26/09 (Phase 11A):** thống trị 2/5 hạt giống (mục 3) · thế giới **chưa tác động ngược**
+  vào thành phố (mất tỉnh, chiến tranh không làm thành phố nghèo đi) · bất ổn chưa tính dân bậc
+  cao (sim chưa có bậc dân) · AI không xây ô tỉnh, kinh tế AI rút gọn theo số tỉnh · quân chưa
+  đi giữa tỉnh theo thời gian (đánh tỉnh kề là tới ngay) · `TheGioi.ts` **299/300 dòng** —
+  thêm gì phải tách trước.
+- **✅ 26/09 (11A): "chưa có AI nước khác" và "chiến dịch chưa nối kinh tế" (chiều thành phố →
+  thế giới) — XONG.** Nguyên văn hai nợ cũ giữ dưới đây.
 - **✅ 26/09: fps 30 là Safari khoá khung lồng tới lần chạm đầu** — bấm ×4 lên 59. Game không
   lỗi. Đo fps qua bản duyệt: mở bằng Safari, chạm vào game một lần (dòng nhắc trên đầu trang).
 - **MỚI 26/09 (Phase 10B):** chưa có **màn ghi công trong game** — CC-BY (3 model Icosa của
@@ -1025,11 +1055,12 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 11: chạy hết một ván tới lúc thắng
+## 5. Phiên sau — Phase 11B: màn ngoại giao, thẻ bất ổn, màn thắng/thua
 
-Phase 11 (`KE_HOACH.md`): cả bốn kiểu thắng
-đều đến được. Trước khi bắt tay: nợ "lớp chiến dịch chưa nối vào kinh tế thành phố" và "chưa
-có AI nước khác" (mục 4) nằm đúng đường của Phase 11 — hỏi anh xếp vào đâu.
+Nối `TheGioi` vào game: chạy cùng nhịp giờ của thành phố (`NoiThanhPho.soNuocTa`), bảng ngoại
+giao (4 nước, trạng thái, quan hệ, 3 nút thương mại / đàm phán / đe doạ), thẻ bất ổn 3 lựa chọn,
+tấn công tỉnh từ bản đồ tỉnh, màn thắng/thua. Chờ câu trả lời của anh ở mục 3 trước. Đo bằng:
+anh chơi thật trên iPhone qua bản duyệt. `TheGioi.ts` đã 299 dòng — tách trước khi thêm.
 
 ### Nhắc trước khi nướng thêm mẻ
 
