@@ -293,6 +293,8 @@ function tuyChonGltf(p, kit, soAnh, bangDang) {
       chiViTri: g.chi_vi_tri === true,
       dich: g.dich,
       tiLe: g.ti_le,
+      xoay: g.xoay,
+      giua: g.giua === true,
       tuyChon: tuyChonGltf({ ...g, xuong: undefined }, kit, soAnh, bangDang),
     })),
   };

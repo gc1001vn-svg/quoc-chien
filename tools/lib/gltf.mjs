@@ -448,12 +448,23 @@ export function docGltf(duong, tuyChon = {}) {
     m[12] += dx;
     m[13] += dy;
     m[14] += dz;
-    const phu = docGltf(g.duong, g.tuyChon ?? {}).dinh;
+    const docPhu = docGltf(g.duong, g.tuyChon ?? {});
+    const phu = docPhu.dinh;
+    // `giua`: dat TAM khung bao cua model phu vao xuong. Model Icosa co goc toa do nam xa
+    // than model (sung lech 1 don vi) - khong dua ve tam thi sung bay lo lung canh tay.
+    const [gx, gy, gz] = g.giua === true
+      ? [0, 1, 2].map((c) => (docPhu.min[c] + docPhu.max[c]) / 2) : [0, 0, 0];
     // `tiLe`: phong to rieng model phu - nguoi cuoi giu co bang linh bo khi ngua da thu nho.
     const tl = g.tiLe ?? 1;
+    // `xoay` [x, y, z] do: xoay rieng model phu truoc khi gan - sung Icosa nong dai theo
+    // truc x, ma tay nhan vat cam theo truc khac; khong xoay thi sung chia ngang vai.
+    const q = tuGoc(g.xoay ?? [0, 0, 0]);
+    const rieng = tuTRS([0, 0, 0], q, [tl, tl, tl]);
+    // Phap tuyen chi xoay, khong phong to - giu do dai 1 nhu truoc.
+    const quay = tuTRS([0, 0, 0], q, [1, 1, 1]);
     for (let i = 0; i < phu.length; i += BUOC) {
-      const d = diem(m, phu[i] * tl, phu[i + 1] * tl, phu[i + 2] * tl);
-      const h = huong(m, phu[i + 5], phu[i + 6], phu[i + 7]);
+      const d = diem(m, ...diem(rieng, phu[i] - gx, phu[i + 1] - gy, phu[i + 2] - gz));
+      const h = huong(m, ...huong(quay, phu[i + 5], phu[i + 6], phu[i + 7]));
       for (let c = 0; c < 3; c += 1) {
         if (d[c] < min[c]) min[c] = d[c];
         if (d[c] > max[c]) max[c] = d[c];
