@@ -25,8 +25,12 @@ export const NHIP_MOI_GIO = NHIP_MOI_GIAY * 3600;
  * Nhanh deu chu khong rut ngan gio: rut gio thi moi nguong dem "moi gio" cua thong doc va
  * cua the (`nguongCho` 20 luot, `day` 20.000) nho theo va khong bao gio cham nua - da do
  * 10/09, thong doc dung xay han, the dau tien lui toi gio 23.
+ *
+ * `200` `500` them 27/09 (Phase 11B) de choi het mot van the gioi: van thang som nhat o
+ * gio ~70-190, o 50x la 1,5-4 tieng that; o 500x mot gio game con 7,2 giay. 500x o 60 fps
+ * la ~83 nhip moi khung, duoi `TRAN_NHIP_MOI_LAN`.
  */
-export const TOC_DO = [0, 1, 5, 10, 20, 30, 50] as const;
+export const TOC_DO = [0, 1, 5, 10, 20, 30, 50, 200, 500] as const;
 
 /**
  * Toc do luc mo van. Khong phai 1x: o 1x thanh pho gan nhu dung im voi mat nguoi choi,

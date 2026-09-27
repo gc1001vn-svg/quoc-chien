@@ -1,5 +1,5 @@
 /**
- * Nut toc do: dung · 1× · 5× · 10× · 20× · 30× · 50×.
+ * Nut toc do: dung · 1× · 5× · 10× · 20× · 30× · 50× · 200× · 500×.
  *
  * Khong co no thi mot gio game la mot gio THAT o 1x, ma the quyet dinh chi hoi o moc gio -
  * nguoi choi ngoi nhin 60 phut khong ai hoi gi. O 8x con 7,5 phut, o 30x con hai phut.
