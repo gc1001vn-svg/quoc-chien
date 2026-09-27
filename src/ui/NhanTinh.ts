@@ -2,12 +2,12 @@
  * Nhan ten tinh noi tren ban do, va mot dong nho noi ro NUOC TA la nuoc nao.
  *
  * VI SAO CAN: chu du an xem ban do tren iPhone 11/09 va bao "khong thay chu dat nuoc ta
- * dau". Mau mai thanh va manh dat nau co phan biet duoc bon nuoc, nhung khong ai doc ra
+ * dau". Mau mai thanh va manh dat nau co phan biet duoc sau nuoc, nhung khong ai doc ra
  * duoc cai nao la CUA MINH neu khong co chu.
  *
  * Nhan la the DOM nam tren canvas: khong bao gio bi cong trinh che, khong ton mot sprite
  * nao trong tran 5.000, va doc net o moi muc thu phong. Doi lai phai tu doi toa do the
- * gioi sang CSS px moi khung - 28 nhan, khong dang ke.
+ * gioi sang CSS px moi khung - 36 nhan, khong dang ke.
  */
 import type { BanDoTinh, Nuoc, Tinh } from '../sim/campaign/BanDoTinh.ts';
 
@@ -17,6 +17,8 @@ const MAU: Readonly<Record<string, string>> = {
   la: '#78c47c',
   lam: '#7ab0e8',
   vang: '#e5bc55',
+  tim: '#b48ae8',
+  cam: '#f0a050',
 };
 
 /** Nhan treo cao hon tam hex bao nhieu phan mot o nen - cho khoi de len mai thanh. */

@@ -1,9 +1,9 @@
 /**
- * Ve lop chien dich: 196 hex, vat dia hinh, cong trinh tinh va co hieu.
+ * Ve lop chien dich: 252 hex, vat dia hinh, cong trinh tinh va co hieu.
  *
  * Khac lop thanh pho o mot cho: luoi la LUC GIAC nen khong quet duoc theo duong cheo
- * `a + b`. Moi khung gom het muc ve vao mot mang roi xep theo truc sau `x + z` - 196 hex
- * cho khoang 400-600 muc, xep lai moi khung khong dang ke so voi vai tram walker cua
+ * `a + b`. Moi khung gom het muc ve vao mot mang roi xep theo truc sau `x + z` - 252 hex
+ * cho khoang 500-800 muc, xep lai moi khung khong dang ke so voi vai tram walker cua
  * `VeCanh.ts` da xep san.
  */
 import { hexX, hexY, truocSau } from './HexIso';
@@ -76,7 +76,7 @@ function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): st
     if (c === undefined || mau === '') return 'dat_trong';
     return `${c.sprite}_${mau}`;
   }
-  // O trong: chi ve manh dat o tinh CUA MINH. Ve het 143 o xay cua ca ban do thi ca vung
+  // O trong: chi ve manh dat o tinh CUA MINH. Ve het 185 o xay cua ca ban do thi ca vung
   // thanh mot mang nau, khong con nhin ra dau la dat minh xay duoc - da chup thu 11/09.
   if (cd.chu(t.id) !== cd.nuocCuaTa()) return '';
   return oChon === `${t.id}#${String(o.oXay)}` ? 'gian_giao' : 'dat_trong';

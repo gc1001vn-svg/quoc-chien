@@ -34,7 +34,7 @@ import { veBanDoTinh } from './VeBanDo';
 import type { Ve } from './VeCanh';
 
 const CAU_HINH: CauHinhBanDoTinh = tinhTho;
-/** Suc chua buffer. 196 hex cho khoang 600 muc ve, de rong ra cho thoai mai. */
+/** Suc chua buffer. 252 hex cho khoang 800 muc ve, de rong ra cho thoai mai. */
 const SUC_CHUA = 2048;
 /** Cham di qua bao nhieu diem anh thi tinh la KEO ban do chu khong phai chon o. */
 const NGUONG_CHAM = 10;

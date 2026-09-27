@@ -63,10 +63,10 @@ describe('toan luoi hex', () => {
 describe('ban do tinh', () => {
   const banDo: BanDoTinh = dungBanDoTinh(CAU_HINH, CAU_HINH_NUOC);
 
-  it('dung 28 tinh, 4 nuoc, 196 hex khong trung', () => {
-    expect(banDo.tinh).toHaveLength(28);
-    expect(banDo.nuoc).toHaveLength(4);
-    expect(banDo.theoHex.size).toBe(28 * 7);
+  it('dung 36 tinh, 6 nuoc, 252 hex khong trung', () => {
+    expect(banDo.tinh).toHaveLength(36);
+    expect(banDo.nuoc).toHaveLength(6);
+    expect(banDo.theoHex.size).toBe(36 * 7);
   });
 
   it('moi tinh 4-6 o xay dung, danh so lien tuc tu 0', () => {
@@ -85,13 +85,13 @@ describe('ban do tinh', () => {
     }
   });
 
-  it('moi nuoc co dung nam tinh va mot thu do, con lai tam tinh trung lap', () => {
+  it('moi nuoc co dung nam tinh va mot thu do, con lai sau tinh trung lap', () => {
     for (const n of banDo.nuoc) {
       const cua = banDo.tinh.filter((t: Tinh) => t.nuoc === n.id);
       expect(cua).toHaveLength(5);
       expect(cua.filter((t) => t.thuDo)).toHaveLength(1);
     }
-    expect(banDo.tinh.filter((t) => t.nuoc === '')).toHaveLength(8);
+    expect(banDo.tinh.filter((t) => t.nuoc === '')).toHaveLength(6);
   });
 
   it('cung hat giong thi ra dung mot ban do', () => {
@@ -99,6 +99,10 @@ describe('ban do tinh', () => {
     expect(lai.tinh.map((t) => t.o.map((o) => `${o.nen}/${o.vat}`).join(','))).toEqual(
       banDo.tinh.map((t) => t.o.map((o) => `${o.nen}/${o.vat}`).join(',')),
     );
+  });
+
+  it('sau nuoc sau mau phe khac nhau', () => {
+    expect(new Set(banDo.nuoc.map((n) => n.mau)).size).toBe(6);
   });
 
   it('moi nuoc co it nhat mot tinh nui - khong thi khong ai xay duoc mo', () => {

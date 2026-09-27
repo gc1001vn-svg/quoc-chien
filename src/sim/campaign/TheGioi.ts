@@ -1,5 +1,5 @@
 /**
- * Lop the gioi (Phase 11A): bon nuoc, tinh ai giu, quan, ngoai giao, bat on, dieu kien
+ * Lop the gioi (Phase 11A): sau nuoc tu 12B, tinh ai giu, quan, ngoai giao, bat on, dieu kien
  * thang thua. Chay theo GIO GAME, cung nhip voi thanh pho.
  *
  * Nuoc nguoi choi KHONG co kinh te rieng o day: moi gio nguoi goi dua vao so that cua

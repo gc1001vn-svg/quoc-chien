@@ -1,6 +1,6 @@
 {
-  "_": "Bon nuoc cua lop chien dich (GAME_SPEC muc 10). MOI so nam o day, khong nam trong .ts.",
-  "_mau": "Khoa mau trung voi duoi ten sprite trong me `tools/me/hex_1.json`: thanh_<mau>, nha_<mau>, co_<mau>. Goi KayKit chi co bon mau phe; tinh trung lap khong co mau, ve bang ruong va dat trong.",
+  "_": "Sau nuoc cua lop chien dich (bon tu Phase 7, them hai o Phase 12B) (GAME_SPEC muc 10). MOI so nam o day, khong nam trong .ts.",
+  "_mau": "Khoa mau trung voi duoi ten sprite trong me `tools/me/hex_1.json`: thanh_<mau>, nha_<mau>, co_<mau>. Goi KayKit chi co bon mau phe; `tim` va `cam` (Phase 12B) nhuom tu mau do luc nuong - xem ghi_chu me do. Tinh trung lap khong co mau, ve bang ruong va dat trong.",
   "_dac_tinh": "Hai dac tinh moi nuoc. Phase 7 chi HIEN chung ra bang tinh; so lieu an vao can bang thi Phase 9 va 11 moi dung toi.",
   "nuoc": [
     {
@@ -30,6 +30,20 @@
       "mau": "vang",
       "nguoi_choi": false,
       "dac_tinh": ["Mỏ cho nhiều quặng hơn", "Chợ thu thuế cao hơn"]
+    },
+    {
+      "id": "tu_van",
+      "hien": "Tử Vân",
+      "mau": "tim",
+      "nguoi_choi": false,
+      "dac_tinh": ["Đền miếu cho thêm văn hoá", "Được lòng nước khác khi đàm phán"]
+    },
+    {
+      "id": "dan_son",
+      "hien": "Đan Sơn",
+      "mau": "cam",
+      "nguoi_choi": false,
+      "dac_tinh": ["Lò nung tốn ít than hơn", "Quân đánh tỉnh mạnh hơn"]
     }
   ]
 }

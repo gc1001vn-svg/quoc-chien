@@ -1,5 +1,5 @@
 {
-  "_": "Ban do chien dich: 4 nuoc x 5 tinh + 8 tinh trung lap = 28 tinh, moi tinh 7 hex.",
+  "_": "Ban do chien dich: 6 nuoc x 5 tinh + 6 tinh trung lap = 36 tinh, moi tinh 7 hex. Luoi cum 9x4: sau khoi 3x2, moi khoi mot nuoc 5 tinh + 1 tinh trung lap o goc trong - sau tinh trung lap xep thanh dai giua ban do (Phase 12B; truoc do 4 nuoc tren luoi 7x4).",
   "_cum": "`m`/`n` la o trong LUOI CON cua cac tinh, doi ra tam hex bang `tamCum()` trong src/sim/campaign/Hex.ts. Luoi con sinh boi hai vecto (3,-1) va (1,2), dinh thuc = 7 nen cac cum 7 hex lat khit mat phang.",
   "_o_xay": "So o xay dung cua tinh, 4-6 (GAME_SPEC muc 5). Lay tu vanh 6 o theo dung thu tu HUONG; o thu phu o giua KHONG phai o xay.",
   "_dia_hinh": "dong_bang · rung · nui · ven_bien. Quyet dinh sprite nen, vat phu, va cong trinh nao xay duoc (data/prov_buildings.json).",
@@ -44,25 +44,35 @@
     { "id": "thao_nguyen", "hien": "Thảo Nguyên", "m": 1, "n": 3, "nuoc": "luc_khe", "dia_hinh": "dong_bang", "o_xay": 6 },
     { "id": "tung_khe", "hien": "Tùng Khê", "m": 2, "n": 3, "nuoc": "luc_khe", "dia_hinh": "nui", "o_xay": 4 },
 
-    { "id": "ngan_tuyen", "hien": "Ngân Tuyền", "m": 4, "n": 0, "nuoc": "thanh_hai", "dia_hinh": "nui", "o_xay": 4 },
-    { "id": "bich_ba", "hien": "Bích Ba", "m": 5, "n": 0, "nuoc": "thanh_hai", "dia_hinh": "ven_bien", "o_xay": 5 },
-    { "id": "hai_mon", "hien": "Hải Môn", "m": 6, "n": 0, "nuoc": "thanh_hai", "dia_hinh": "ven_bien", "o_xay": 5 },
-    { "id": "thuong_chau", "hien": "Thương Châu", "m": 5, "n": 1, "nuoc": "thanh_hai", "dia_hinh": "rung", "o_xay": 5 },
-    { "id": "lam_tan", "hien": "Lam Tân", "m": 6, "n": 1, "nuoc": "thanh_hai", "dia_hinh": "dong_bang", "o_xay": 6, "thu_do": true },
+    { "id": "ngan_tuyen", "hien": "Ngân Tuyền", "m": 6, "n": 0, "nuoc": "thanh_hai", "dia_hinh": "nui", "o_xay": 4 },
+    { "id": "bich_ba", "hien": "Bích Ba", "m": 7, "n": 0, "nuoc": "thanh_hai", "dia_hinh": "ven_bien", "o_xay": 5 },
+    { "id": "hai_mon", "hien": "Hải Môn", "m": 8, "n": 0, "nuoc": "thanh_hai", "dia_hinh": "ven_bien", "o_xay": 5 },
+    { "id": "thuong_chau", "hien": "Thương Châu", "m": 7, "n": 1, "nuoc": "thanh_hai", "dia_hinh": "rung", "o_xay": 5 },
+    { "id": "lam_tan", "hien": "Lam Tân", "m": 8, "n": 1, "nuoc": "thanh_hai", "dia_hinh": "dong_bang", "o_xay": 6, "thu_do": true },
 
-    { "id": "tho_nguyen", "hien": "Thổ Nguyên", "m": 5, "n": 2, "nuoc": "kim_coc", "dia_hinh": "dong_bang", "o_xay": 6 },
-    { "id": "cat_doi", "hien": "Cát Đồi", "m": 6, "n": 2, "nuoc": "kim_coc", "dia_hinh": "dong_bang", "o_xay": 6, "thu_do": true },
-    { "id": "mach_dien", "hien": "Mạch Điền", "m": 4, "n": 3, "nuoc": "kim_coc", "dia_hinh": "rung", "o_xay": 5 },
-    { "id": "kim_linh", "hien": "Kim Lĩnh", "m": 5, "n": 3, "nuoc": "kim_coc", "dia_hinh": "nui", "o_xay": 4 },
-    { "id": "hoang_sa", "hien": "Hoàng Sa", "m": 6, "n": 3, "nuoc": "kim_coc", "dia_hinh": "ven_bien", "o_xay": 5 },
+    { "id": "tho_nguyen", "hien": "Thổ Nguyên", "m": 7, "n": 2, "nuoc": "kim_coc", "dia_hinh": "dong_bang", "o_xay": 6 },
+    { "id": "cat_doi", "hien": "Cát Đồi", "m": 8, "n": 2, "nuoc": "kim_coc", "dia_hinh": "dong_bang", "o_xay": 6, "thu_do": true },
+    { "id": "mach_dien", "hien": "Mạch Điền", "m": 6, "n": 3, "nuoc": "kim_coc", "dia_hinh": "rung", "o_xay": 5 },
+    { "id": "kim_linh", "hien": "Kim Lĩnh", "m": 7, "n": 3, "nuoc": "kim_coc", "dia_hinh": "nui", "o_xay": 4 },
+    { "id": "hoang_sa", "hien": "Hoàng Sa", "m": 8, "n": 3, "nuoc": "kim_coc", "dia_hinh": "ven_bien", "o_xay": 5 },
 
-    { "id": "phong_ai", "hien": "Phong Ải", "m": 3, "n": 0, "nuoc": "", "dia_hinh": "nui", "o_xay": 4 },
+    { "id": "phong_ai", "hien": "Phong Ải", "m": 3, "n": 0, "nuoc": "tu_van", "dia_hinh": "nui", "o_xay": 4 },
+    { "id": "tu_kinh", "hien": "Tử Kinh", "m": 4, "n": 0, "nuoc": "tu_van", "dia_hinh": "dong_bang", "o_xay": 6, "thu_do": true },
+    { "id": "van_ha", "hien": "Vân Hạ", "m": 5, "n": 0, "nuoc": "tu_van", "dia_hinh": "ven_bien", "o_xay": 5 },
+    { "id": "tram_lam", "hien": "Trầm Lâm", "m": 3, "n": 1, "nuoc": "tu_van", "dia_hinh": "rung", "o_xay": 5 },
+    { "id": "linh_dai", "hien": "Linh Đài", "m": 5, "n": 1, "nuoc": "tu_van", "dia_hinh": "dong_bang", "o_xay": 6 },
+
+    { "id": "phong_lam", "hien": "Phong Lâm", "m": 3, "n": 2, "nuoc": "dan_son", "dia_hinh": "rung", "o_xay": 5 },
+    { "id": "ngoc_khe", "hien": "Ngọc Khê", "m": 5, "n": 2, "nuoc": "dan_son", "dia_hinh": "rung", "o_xay": 5 },
+    { "id": "lo_tran", "hien": "Lộ Trấn", "m": 3, "n": 3, "nuoc": "dan_son", "dia_hinh": "dong_bang", "o_xay": 6 },
+    { "id": "dan_do", "hien": "Đan Đô", "m": 4, "n": 3, "nuoc": "dan_son", "dia_hinh": "dong_bang", "o_xay": 6, "thu_do": true },
+    { "id": "hong_nham", "hien": "Hồng Nham", "m": 5, "n": 3, "nuoc": "dan_son", "dia_hinh": "nui", "o_xay": 4 },
+
     { "id": "cuu_khe", "hien": "Cửu Khê", "m": 2, "n": 1, "nuoc": "", "dia_hinh": "rung", "o_xay": 5 },
-    { "id": "bach_thach", "hien": "Bạch Thạch", "m": 3, "n": 1, "nuoc": "", "dia_hinh": "nui", "o_xay": 4 },
-    { "id": "tam_ky", "hien": "Tam Kỳ", "m": 4, "n": 1, "nuoc": "", "dia_hinh": "dong_bang", "o_xay": 6 },
     { "id": "han_giang", "hien": "Hàn Giang", "m": 2, "n": 2, "nuoc": "", "dia_hinh": "dong_bang", "o_xay": 6 },
-    { "id": "ma_son", "hien": "Mã Sơn", "m": 3, "n": 2, "nuoc": "", "dia_hinh": "nui", "o_xay": 4 },
+    { "id": "tam_ky", "hien": "Tam Kỳ", "m": 4, "n": 1, "nuoc": "", "dia_hinh": "dong_bang", "o_xay": 6 },
     { "id": "yen_doi", "hien": "Yên Đồi", "m": 4, "n": 2, "nuoc": "", "dia_hinh": "rung", "o_xay": 5 },
-    { "id": "lo_tran", "hien": "Lộ Trấn", "m": 3, "n": 3, "nuoc": "", "dia_hinh": "dong_bang", "o_xay": 6 }
+    { "id": "bach_thach", "hien": "Bạch Thạch", "m": 6, "n": 1, "nuoc": "", "dia_hinh": "nui", "o_xay": 4 },
+    { "id": "ma_son", "hien": "Mã Sơn", "m": 6, "n": 2, "nuoc": "", "dia_hinh": "nui", "o_xay": 4 }
   ]
 }
