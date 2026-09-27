@@ -62,6 +62,19 @@ export function docThoiDai(tho: unknown): Doi[] {
   return ds;
 }
 
+/**
+ * Chu cho the len doi: ten doi moi, so o chinh phu, va nha co doi kieu khong. Doi 1-2 va
+ * 3-4 dung chung me atlas nen phai noi thang - khong thi nguoi choi tuong chua len doi.
+ */
+export function moTaLenDoi(truoc: Doi, sau: Doi): string[] {
+  const dong: string[] = [
+    `Bước sang thời đại ${sau.hien}`,
+    `${String(sau.soO)} ô chính phủ (+${String(sau.soO - truoc.soO)})`,
+  ];
+  if (sau.me !== truoc.me) dong.push('Nhà cửa đổi kiểu mới');
+  return dong;
+}
+
 /** Thoi dai cua mot van dang choi. */
 export class ThoiDai {
   private readonly ds: readonly Doi[];

@@ -28,6 +28,7 @@ import { Ghim } from '../ui/Ghim';
 import { baoThieuHinh } from '../ui/BaoThieuHinh';
 import { HangTocDo } from '../ui/TocDo';
 import { noiTheGioi, type TheGioiGame } from '../ui/TheGioiThanhPho';
+import { TheLenDoi } from '../ui/TheLenDoi';
 import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
@@ -151,6 +152,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
   // xay giua gan tram cong trinh la khong bao gio tim ra.
   new BangCongTrinh(goc, thanhPho, bayToi);
   const bangMeta: BangMeta = new BangMeta(goc, meta);
+  const theLenDoi: TheLenDoi = new TheLenDoi(goc, canBangTho.giayTheLenDoi);
   // Cham vao mot cong trinh la hien ten no - xem `ChamChon.ts`.
   let veCuoi: Ve | undefined;
   noiChamChon(canvas, () => veCuoi, banDo, thanhPho, ghim, () => gl.tiLeDiemAnh());
@@ -171,6 +173,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
     // `data/balance.json > thoiDai`. O day chi DOC mot chuoi - `src/sim/` khong biet gi
     // ve atlas hay WebGL (luat 1 cua CLAUDE.md).
     boMe.theoDoi(meta.thoiDai.doi.me);
+    theLenDoi.theoDoi(meta.thoiDai.doi, meta.thoiDai.doiSau, now);
 
     const the = van.the;
     if (the !== undefined && !theUi.hien) {

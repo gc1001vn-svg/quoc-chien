@@ -198,6 +198,27 @@ html, body {
    dinh de doc luot qua biet ngay dong nao la viec minh phai bam, dong nao la tin bao. */
 .su-kien p[data-loai='meta'] { color: #8fc7a8; }
 
+/* Phase 12C: the len doi. Nua tren man, giua - the quyet dinh chiem 46 % duoi nen hai cai
+   khong de len nhau. Cham la tat. */
+.the-len-doi {
+  position: absolute;
+  top: 26%;
+  /* Khong dung `left: 50%` + `translateX`: be rong co lai con nua man, chu ngat ba dong. */
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+  z-index: 6;
+  max-width: 86%;
+  padding: 14px 22px;
+  border-radius: 12px;
+  border: 2px solid var(--nhan);
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+.the-len-doi b { display: block; font-size: 20px; color: var(--nhan); margin-bottom: 6px; }
+.the-len-doi span { display: block; font-size: 14px; color: #e8e2d6; }
+
 .toc-do {
   position: absolute;
   right: calc(env(safe-area-inset-right) + 10px);
