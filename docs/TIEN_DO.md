@@ -3,18 +3,30 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 27/09/2026 (lần 17 — **Phase 11B xong phần máy: thế giới lên màn hình, chờ anh chơi thật**).
+Cập nhật: 27/09/2026 (lần 18 — **Phase 12A xong phần máy: đường lên đời 6 + mẻ tương lai, chờ anh xem trên iPhone**).
 
 ## 1. Đang ở đâu
 
-**Phase 11B XONG 27/09, anh chơi trên iPhone: 59 fps mọi màn (kể cả 500×).** Game ở Phase 11B/13 — **mốc "trọn một vòng"**:
+**Phase 12A xong phần máy 27/09** — đời 6 "Tương lai" tới được bằng cách chơi (sim: giờ 249), có
+8 công nghệ riêng, đổi mặt thành phố sang mẻ `tuong_lai` (Kenney Space Kit). Thắng khoa học về đời 6.
+Chi tiết: `docs/NHAT_KY/PHASE_12A.md`. **Chờ anh xem mẻ tương lai trên iPhone** (mục 3).
+
+**Phase 11B XONG 27/09, anh chơi trên iPhone: 59 fps mọi màn (kể cả 500×).** Mốc "trọn một vòng":
 thành phố chạy thì thế giới chạy theo giờ; bảng ngoại giao, tấn công tỉnh, thẻ bất ổn, màn
 thắng/thua đều bấm được. Nút tốc độ thêm 200× và 500× (500× ≈ 7 giây một giờ game).
 Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: Phase 12** (mục 5).
+**Việc phiên sau: Phase 12B** (mục 5).
+
+### Phiên 27/09 (lần 18) đã đổi gì — Phase 12A
+
+- Mới: `tools/me/tuong_lai.json` · `public/atlas/tuong_lai_*` · `docs/NHAT_KY/PHASE_12A.md` · kế hoạch
+  `docs/ke-hoach/2026-09-27-phase-12a-doi-6-tuong-lai.md`. Sửa: `data/tech.json` (8 công nghệ đời 6) ·
+  `data/balance.json` (đời 5 `len`, đời 6 `me`) · `data/victory.json` (`khoa_hoc.doi` 6) · `package.json`
+  (`tai:asset` + `space-kit`) · `ASSET_CREDITS.md` (anh cho sửa) · hai file test.
+- `npm run do` **17/17** · **466 test**. Bản duyệt đăng đè, mở thẳng `?me=tuong_lai`, dòng chữ nhỏ ghi **27/09 19:59**.
 
 ### Phiên 27/09 (lần 17) đã đổi gì — Phase 11B
 
@@ -464,6 +476,10 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
+**Phase 12A, đo 27/09:** `sim:congnghe -- 320 6`: đời 5 giờ 147, **đời 6 giờ 249**, 48/48 công nghệ,
+451 nhà ở giờ 320. `sim:van`: khoa học **3/5** (trước 5/5, thắng ở giờ 265 thay vì 190), thống trị 2/5,
+văn hoá / ngoại giao / bỏ mặc 5/5 — ĐẠT. Mẻ `tuong_lai_2x`: 76 sprite, 2 trang (trang 0 đầy 65,7 %).
+
 **Phase 11B, đo 27/09:** Chromium máy ảo 393 px, 500×: **~7,5 s thật mỗi giờ game** (lý thuyết 7,2 s);
 chạy lâu cùng lúc `npm run do` thì tụt còn ~22 s/giờ (máy ảo vẽ bằng phần mềm — không phải số iPhone).
 Hàng 9 nút tốc độ trên màn 393 px: rộng 314 px, mép trái 69 px (trước khi thu nhỏ: 415 px, lọt −31 px).
@@ -559,6 +575,12 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Việc 27/09 (lần 18) — xem mẻ tương lai trên iPhone
+
+1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
+2. Dòng chữ nhỏ trên cùng phải ghi **27/09 19:59**. Thành phố hiện ra bằng nhà kiểu trạm vũ trụ.
+3. Nhắn: **fps** · nhìn có ra "thành phố tương lai" không · nhà nào to quá / lạc tông / khó phân biệt.
 
 ### ✅ Việc 27/09 (lần 17) — chơi thử một ván trên iPhone: XONG, anh báo 27/09 "tất cả đều 59 fps"
 
@@ -932,6 +954,11 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 27/09 (Phase 12A):** thắng khoa học **3/5** (trước 5/5) — đời 6 kéo dài ván tới giờ 265, AI kịp
+  chiếm thủ đô ở 2 hạt giống · đời 6 chưa có lính, thẻ chính sách, người đi đường riêng · mẻ `tuong_lai`
+  giữ cối xay (tuabin gió), đường, cây của mẻ hiện đại · chú thích `DoiMeAtlas.ts` còn ghi "đời 4 trở
+  đi `len: null`" — đã sai từ 12A (chưa sửa: ngoài việc giao).
+
 - **MỚI 27/09 (Phase 11B):** thẻ bất ổn chắn màn nên **không "kệ" được** — nổi loạn chỉ còn xảy ra
   nếu cả ba lựa chọn đều khoá (không bao giờ, "Đàn áp" không tốn vàng) · sang màn bản đồ thì thành
   phố dừng nên thế giới cũng dừng (bản đồ = tạm dừng) · kết quả đánh tỉnh chỉ hiện trong bảng tỉnh,
@@ -1089,11 +1116,12 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — sửa theo báo của anh, rồi Phase 12
+## 5. Phiên sau — Phase 12B
 
-1. Bước E: 11B anh xác nhận 27/09 (59 fps) — mở Phase 12 luôn, không hỏi thêm.
-2. **Phase 12** — `docs/KE_HOACH.md` mục 2: nướng nốt mẻ cổ đại / cận đại / tương lai +
-   thêm nước; kèm đường lên đời 6 và đổi `victory.json > khoa_hoc.doi` từ 5 (tạm, chốt 26/09) về 6.
+1. Bước E: hỏi anh kết quả xem mẻ tương lai (mục 3) trước khi mở 12B; anh chê chỗ nào thì sửa trước.
+2. **Phase 12B** — anh chốt 27/09: mẻ **cổ đại** (đời 1) + mẻ **cận đại** (đời 3–4) + **lên 6 nước**
+   (nhuộm thêm 2 màu cho thành/nhà/cờ KayKit, chia lại bản đồ tỉnh). Cổ đại: dò 27/09 chỉ thấy Icosa
+   (Temple, pyramid, greekbuilding — CC-BY, cần màn ghi công) → dò tiếp trước khi chọn.
 
 ### Nhắc trước khi nướng thêm mẻ
 
