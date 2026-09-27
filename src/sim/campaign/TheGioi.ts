@@ -140,17 +140,25 @@ export class TheGioi {
     return t !== undefined && t.thuDo && this.chu(tinhId) === t.nuoc ? this.du.quan.tuongThuDo : this.du.quan.tuong;
   }
 
-  /** Danh mot tinh. Dung chung cho nguoi choi va AI. */
-  public tanCong(nuoc: string, tinhId: string): LyDoTanCong {
-    const t = this.tinhTheoId.get(tinhId);
-    if (t === undefined) return 'khong-co-tinh';
+  /** Vi sao `nuoc` chua danh duoc `tinhId`; chuoi rong = danh duoc. Man hinh hoi truoc khi hien nut. */
+  public lyDoKhongDanh(nuoc: string, tinhId: string): LyDoTanCong {
+    if (!this.tinhTheoId.has(tinhId)) return 'khong-co-tinh';
     const n = this.nuoc(nuoc);
     const c = this.chu(tinhId);
     if (c === nuoc) return 'cua-minh';
     if (!this.tinhCua(nuoc).some((x) => this.keBen.get(x)?.has(tinhId))) return 'khong-ke';
     if (c !== '' && this.ngoaiGiao.trangThai(nuoc, c) !== 'chien_tranh') return 'khong-dang-chien';
     if (n.gioNghi > 0) return 'dang-nghi';
-    if (n.quan.length === 0) return 'het-quan';
+    return n.quan.length === 0 ? 'het-quan' : '';
+  }
+
+  /** Danh mot tinh. Dung chung cho nguoi choi va AI. */
+  public tanCong(nuoc: string, tinhId: string): LyDoTanCong {
+    const t = this.tinhTheoId.get(tinhId);
+    const ly = this.lyDoKhongDanh(nuoc, tinhId);
+    if (t === undefined || ly !== '') return ly;
+    const n = this.nuoc(nuoc);
+    const c = this.chu(tinhId);
     const di = n.quan.slice(0, this.du.quan.doiMoiTran);
     const hat = (this.du.hatGiong ^ Math.imul(++this.soTran, 2654435761)) >>> 0;
     const kq: KetQuaDanh = danh(di, this.quanThu(tinhId), t.diaHinh, this.du.quan.tuong, this.tuongThu(tinhId), this.tran, hat);
@@ -189,23 +197,6 @@ export class TheGioi {
       this.nuoc(a).vang += nop;
     }
     return thang;
-  }
-  /** Nguoi choi doi vang thang ra anh huong van hoa. */
-  public dauTuVanHoa(vang: number): void {
-    const ta = this.nuoc(this.ta);
-    const chi = Math.max(0, Math.min(vang, ta.vang));
-    ta.vang -= chi;
-    ta.vanHoa += chi * this.du.vanHoa.moiVangDauTu;
-  }
-  /** Chon mot lua chon cua the bat on. Khong du vang thi tu choi - tra ve false. */
-  public chonBatOn(id: string): boolean {
-    const ta = this.nuoc(this.ta);
-    const lc = this.batOn.luaChon.find((l) => l.id === id);
-    if (lc === undefined || ta.vang + lc.vang < 0 || this.batOn.chon(id) === undefined) return false;
-    ta.vang += lc.vang;
-    ta.vanHoa += lc.vanHoa;
-    ta.quan.splice(0, lc.matDoi);
-    return true;
   }
 
   /** Mot gio game troi qua. */

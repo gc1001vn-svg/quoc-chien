@@ -8,6 +8,7 @@ import { docDuLieuTran, type DuLieuTran } from '../src/sim/campaign/Battle';
 import { dungBanDoTinh, tinhKe, type BanDoTinh, type CauHinhBanDoTinh, type CauHinhNuoc } from '../src/sim/campaign/BanDoTinh';
 import { BatOn } from '../src/sim/campaign/BatOn';
 import { danh, doiMuaDuoc, muaQuan, sucQuan } from '../src/sim/campaign/ChienTranh';
+import { dauTuVanHoa } from '../src/sim/campaign/HanhDong';
 import { NgoaiGiao } from '../src/sim/campaign/NgoaiGiao';
 import { TheGioi, type SoNuocTa } from '../src/sim/campaign/TheGioi';
 import { docTheGioi, type DuLieuTheGioi } from '../src/sim/campaign/TheGioiData';
@@ -185,7 +186,7 @@ describe('TheGioi', () => {
     const vh = new TheGioi(du, banDo, tran);
     vh.tiLeChiQuanTa = 0;
     vh.nuoc(vh.ta).vang = 1e6;
-    vh.dauTuVanHoa(1e6);
+    dauTuVanHoa(vh, 1e6);
     vh.gioTiep(YEN);
     expect(vh.ketQua.kieu).toBe('van_hoa');
 

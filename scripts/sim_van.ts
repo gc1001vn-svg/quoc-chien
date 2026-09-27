@@ -29,6 +29,7 @@ import { docDuLieuMeta, Meta } from '../src/sim/meta/Meta.ts';
 import { docDuLieuTran } from '../src/sim/campaign/Battle.ts';
 import { dungBanDoTinh, type CauHinhBanDoTinh, type CauHinhNuoc } from '../src/sim/campaign/BanDoTinh.ts';
 import { xacSuatThang } from '../src/sim/campaign/ChienTranh.ts';
+import { chonBatOn, dauTuVanHoa } from '../src/sim/campaign/HanhDong.ts';
 import { soNuocTa } from '../src/sim/campaign/NoiThanhPho.ts';
 import { TheGioi, type SoNuocTa } from '../src/sim/campaign/TheGioi.ts';
 import { docTheGioi } from '../src/sim/campaign/TheGioiData.ts';
@@ -105,7 +106,7 @@ type ChienLuoc = (tg: TheGioi) => void;
 
 /** Tra loi the bat on: giam thue neu du vang, khong thi dan ap. */
 function giuYen(tg: TheGioi): void {
-  if (tg.batOn.theMo && !tg.chonBatOn('giam_thue')) tg.chonBatOn('dan_ap');
+  if (tg.batOn.theMo && !chonBatOn(tg, 'giam_thue')) chonBatOn(tg, 'dan_ap');
 }
 function khac(tg: TheGioi): string[] {
   return tg.conSong.filter((n) => n !== tg.ta);
@@ -147,7 +148,7 @@ const CHIEN_LUOC: Record<string, ChienLuoc> = {
     tg.tiLeChiQuanTa = 0.6;
     xinHoa(tg);
     // Du quan giu nha roi moi do vang vao van hoa - do het tu dau la mat thu do.
-    if (tg.nuoc(tg.ta).quan.length >= 2 * du.quan.doiMoiTran) tg.dauTuVanHoa(tg.nuoc(tg.ta).vang - 80);
+    if (tg.nuoc(tg.ta).quan.length >= 2 * du.quan.doiMoiTran) dauTuVanHoa(tg, tg.nuoc(tg.ta).vang - 80);
   },
   ngoai_giao: (tg) => {
     giuYen(tg);
