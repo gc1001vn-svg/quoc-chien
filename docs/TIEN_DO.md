@@ -3,19 +3,28 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 26/09/2026 (lần 16 — **Phase 11A xong: thế giới chạy ngầm, ván có kết thúc**).
+Cập nhật: 27/09/2026 (lần 17 — **Phase 11B xong phần máy: thế giới lên màn hình, chờ anh chơi thật**).
 
 ## 1. Đang ở đâu
 
-**Phase 11A XONG 26/09 (chạy ngầm, chưa có màn hình).** Game ở Phase 11A/13. Bốn nước có
-kinh tế, quân, ngoại giao; AI nước khác tự đánh, tự tuyên chiến, tự xin hoà; bất ổn nổi loạn;
-bốn kiểu thắng và hai kiểu thua. `npm run sim:van` chạy trọn ván 4 chiến lược + bỏ mặc trên 5
-hạt giống: **ĐẠT**, riêng thống trị đúng kiểu **2/5**. Chi tiết: `docs/NHAT_KY/PHASE_11A.md`.
+**Phase 11B XONG PHẦN MÁY 27/09, chờ anh chơi thật.** Game ở Phase 11B/13 — **mốc "trọn một vòng"**:
+thành phố chạy thì thế giới chạy theo giờ; bảng ngoại giao, tấn công tỉnh, thẻ bất ổn, màn
+thắng/thua đều bấm được. Nút tốc độ thêm 200× và 500× (500× ≈ 7 giây một giờ game).
+Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
-Phase 10B (trận súng, `?tran=2`) anh "ok" 26/09; 10A (`?tran=1`) 59 fps 25/09.
+11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: Phase 11B** (mục 5). Bước E: 11A không đổi màn hình nào — không cần iPhone;
-còn một câu hỏi cho anh ở mục 3.
+**Việc phiên sau: chờ anh chơi (mục 3) rồi sửa theo báo; xong thì Phase 12** (mục 5).
+
+### Phiên 27/09 (lần 17) đã đổi gì — Phase 11B
+
+- Mới: `src/sim/campaign/{HanhDong,HienTheGioi}.ts` · `src/ui/{DungTheGioi,TheGioiThanhPho,ThanhTheGioi}.ts`
+  · `src/render/ThamSoCanh.ts` · `tests/HienTheGioi.test.ts` (14 ca, bắt 7/7 lỗi cài thử).
+  Sửa: `TheGioi` (tách, `lyDoKhongDanh`) · `ChienDich` (`datTraChu/chu/mau`) · `VeBanDo` `BangTinh`
+  `NhanTinh` (chủ tỉnh động) · `DecisionCard` (nhận thẻ bất ổn, nút khoá) · `Clock` (200×, 500×) ·
+  `main` `CityScene` `MapScene` · `data/the_gioi.json` (`vang_moi_lan_dau_tu`) · CSS.
+- `npm run do` **16/16 · 1 bỏ qua** · **456 test**. Bản duyệt đăng đè, dòng chữ nhỏ ghi **27/09 15:01**.
+- Jules giao viết test, quá trần 30 phút → Claude tự viết (ghi ở `ghi-nho/cong-cu/jules/PHAN_VIEC.md`).
 
 ### Phiên 26/09 (lần 16) đã đổi gì — Phase 11A
 
@@ -455,6 +464,11 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 
 ## 2. Số đo mới nhất
 
+**Phase 11B, đo 27/09:** Chromium máy ảo 393 px, 500×: **~7,5 s thật mỗi giờ game** (lý thuyết 7,2 s);
+chạy lâu cùng lúc `npm run do` thì tụt còn ~22 s/giờ (máy ảo vẽ bằng phần mềm — không phải số iPhone).
+Hàng 9 nút tốc độ trên màn 393 px: rộng 314 px, mép trái 69 px (trước khi thu nhỏ: 415 px, lọt −31 px).
+`sim:van` sau khi tách `TheGioi`: y nguyên (thống trị 2/5, ba kiểu kia 5/5, bỏ mặc thua 5/5).
+
 **Phase 11A, đo 26/09 tối:** `sim:van` — vết thành phố thật 300 giờ mất **389 s** (lưu
 `.cache/sim_van/`, lần sau đọc lại); mỗi ván thế giới **0,01–0,13 s**. Giờ thắng ở hạt giống
 gốc: ngoại giao **72** · văn hoá **167** · thống trị **171** · khoa học **190**; bỏ mặc sụp đổ
@@ -545,6 +559,18 @@ Phase 0 ra đúng số này vì cùng thang — cả dự án hiểu nhầm là 
 bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Việc 27/09 (lần 17) — chơi thử một ván trên iPhone
+
+1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
+2. Dòng chữ nhỏ trên cùng phải ghi **27/09 15:01**.
+3. Bấm **500×** (góc dưới phải). Dòng số dưới đầu màn (💰 vàng · ⚠ bất ổn · ⚔ sức quân · số tỉnh ·
+   giờ) phải nhảy. Ghi fps ở 500×.
+4. Bấm **🤝 Ngoại giao**: thử Buôn bán, Tuyên chiến một nước. Sang **🗺 Bản đồ tỉnh**, chạm một tỉnh
+   giáp đất ta → nút **⚔ Tấn công**. Chiếm được thì tỉnh đổi màu.
+5. Khi hiện thẻ "Dân bất ổn" (~giờ 40): chọn một cách. Chơi tới khi ra màn **Chiến thắng / Thất bại**
+   (ngoại giao sớm nhất ~giờ 72 ≈ 9 phút ở 500×). **Chưa lưu ván — tải lại trang là mất.**
+6. Nhắn: fps · thắng/thua kiểu gì, giờ mấy · chỗ nào khó hiểu, nút nào che nút nào.
 
 ### ✅ Việc 26/09 (lần 16) — thống trị 2/5: anh chọn (a) ngày 27/09 ("làm đi")
 
@@ -903,6 +929,13 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 27/09 (Phase 11B):** thẻ bất ổn chắn màn nên **không "kệ" được** — nổi loạn chỉ còn xảy ra
+  nếu cả ba lựa chọn đều khoá (không bao giờ, "Đàn áp" không tốn vàng) · sang màn bản đồ thì thành
+  phố dừng nên thế giới cũng dừng (bản đồ = tạm dừng) · kết quả đánh tỉnh chỉ hiện trong bảng tỉnh,
+  không vào nhật ký sự kiện · "Ván mới" là tải lại trang (chưa lưu ván — Phase 13) · nhãn tỉnh vừa
+  chiếm vẫn có thể bị ẩn khi thu nhỏ (`luonHien` tính một lần lúc mở) · **có sẵn từ trước:** trên màn
+  bản đồ dọc 393 px nút "⌂ Về thành phố" và "⚔ Xem trận" đè lên nhau (chụp 27/09).
+
 - **MỚI 26/09 (Phase 11A):** thống trị 2/5 hạt giống (mục 3) · thế giới **chưa tác động ngược**
   vào thành phố (mất tỉnh, chiến tranh không làm thành phố nghèo đi) · bất ổn chưa tính dân bậc
   cao (sim chưa có bậc dân) · AI không xây ô tỉnh, kinh tế AI rút gọn theo số tỉnh · quân chưa
@@ -1053,17 +1086,11 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 11B: màn ngoại giao, thẻ bất ổn, màn thắng/thua
+## 5. Phiên sau — sửa theo báo của anh, rồi Phase 12
 
-Nối `TheGioi` vào game: chạy cùng nhịp giờ của thành phố (`NoiThanhPho.soNuocTa`), bảng ngoại
-giao (4 nước, trạng thái, quan hệ, 3 nút thương mại / đàm phán / đe doạ), thẻ bất ổn 3 lựa chọn,
-tấn công tỉnh từ bản đồ tỉnh, màn thắng/thua. Đo bằng:
-anh chơi thật trên iPhone qua bản duyệt. `TheGioi.ts` đã 299 dòng — tách trước khi thêm.
-
-**Giao Jules (anh cho tự quyết 26/09):** phần thuần của màn — hàm dựng số cho bảng ngoại giao /
-thẻ bất ổn / màn kết (vào: `TheGioi`, ra: object hiển thị) — Claude viết đặc tả + chữ ký hàm,
-Jules viết test (có thể cả hàm), Claude làm phần vẽ song song rồi cài lỗi thử để chấm.
-Quy trình: `ghi-nho/cong-cu/jules/PHAN_VIEC.md`; ghi số đo lần giao vào bảng ở đó.
+1. Đọc báo của anh (mục 3). Lỗi thì theo skill `diagnosing-bugs`; cân thống trị lại nếu anh thấy khó.
+2. Anh "ok" thì **Phase 12** — `docs/KE_HOACH.md` mục 2: nướng nốt mẻ cổ đại / cận đại / tương lai +
+   thêm nước; kèm đường lên đời 6 và đổi `victory.json > khoa_hoc.doi` từ 5 (tạm, chốt 26/09) về 6.
 
 ### Nhắc trước khi nướng thêm mẻ
 
