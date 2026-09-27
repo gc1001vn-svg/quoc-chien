@@ -591,7 +591,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 27/09 (lần 19) — xem 6 nước + mẻ cận đại trên iPhone
+### ✅ Việc 27/09 (lần 19) — xem 6 nước + mẻ cận đại trên iPhone: anh "ok" 27/09, 59 fps, tím/cam dễ phân biệt
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
 2. Dòng chữ nhỏ trên cùng phải ghi **27/09 23:09**. Thành phố hiện nhà gạch, nhà máy ống khói.
@@ -976,6 +976,10 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 27/09, anh báo sau khi xem 12B:** lên thời đại **không rõ ràng** — không biết đã lên hay chưa,
+  mô hình các thời đại giống nhau quá. Chưa tra gốc: đời 1–2 vẫn chung mẻ `trung_co_2`, và lúc đổi mẻ
+  chưa có báo hiệu gì trên màn (chưa kiểm).
+
 - **MỚI 27/09 (Phase 12B):** `sim:van` 6 nước: khoa học **2/5** (trước 3/5), ngoại giao **4/5** — hạt 3
   mất thủ đô giờ 14 vì Tử Vân giáp thẳng đất ta (bản đồ mới không còn tỉnh đệm hàng trên) · hai nước mới
   chỉ có đặc tính để HIỆN, chưa ăn vào số · `hex_nuoc` trong mẻ `hex_1` không ai dùng (280×202, báo — chưa
@@ -1145,7 +1149,8 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 ## 5. Phiên sau — Phase 12C
 
-1. Bước E: chờ anh xem 12B trên iPhone (mục 3). Anh "ok" rồi mới mở 12C.
+1. Bước E: 12B anh "ok" 27/09 (59 fps). Hỏi anh: nhận xét "lên đời không rõ" (mục 4) làm trong 12C
+   hay tách phase riêng.
 2. **Phase 12C** — mẻ **cổ đại** (đời 1). Dò 27/09: kho-game không có bộ CC0 cổ đại; Poly Pizza (6 đền
    Quaternius CC0) vẫn `403` Cloudflare. Anh chốt 27/09: không có thì chọn **Icosa CC-BY** (cần màn ghi công
    trong game) hoặc **Kenney gần giống** (Fantasy Town / Retro Fantasy Kit, CC0) — nướng bảng so hai bên rồi hỏi anh.
