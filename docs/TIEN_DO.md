@@ -562,7 +562,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ### ✅ Việc 27/09 (lần 17) — chơi thử một ván trên iPhone: XONG, anh báo 27/09 "tất cả đều 59 fps"
 
-Anh chưa báo thắng/thua kiểu gì — hỏi lại khi cân thống trị ở phase sau.
+Anh chốt 27/09: không cần báo thắng/thua — đừng hỏi lại.
 
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
@@ -1091,7 +1091,7 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 ## 5. Phiên sau — sửa theo báo của anh, rồi Phase 12
 
-1. Bước E: 11B anh xác nhận 27/09 (59 fps). Hỏi anh thắng/thua kiểu gì trước khi cân thống trị.
+1. Bước E: 11B anh xác nhận 27/09 (59 fps) — mở Phase 12 luôn, không hỏi thêm.
 2. **Phase 12** — `docs/KE_HOACH.md` mục 2: nướng nốt mẻ cổ đại / cận đại / tương lai +
    thêm nước; kèm đường lên đời 6 và đổi `victory.json > khoa_hoc.doi` từ 5 (tạm, chốt 26/09) về 6.
 
