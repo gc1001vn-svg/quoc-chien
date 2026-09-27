@@ -25,7 +25,7 @@ const YEN: SoNuocTa = { soNha: 200, doi: 1, soCongNgheXong: 0, doiXongHet: 0, th
 
 describe('docTheGioi', () => {
   it('doc duoc hai file that', () => {
-    expect(du.thang.khoaHocDoi).toBe(5);
+    expect(du.thang.khoaHocDoi).toBe(6);
     expect(du.batOn.luaChon.map((l) => l.id)).toEqual(['dan_ap', 'giam_thue', 'nha_hat']);
   });
 
@@ -178,7 +178,7 @@ describe('TheGioi', () => {
     const tg = new TheGioi(du, banDo, tran);
     tg.gioTiep(YEN);
     expect(tg.ketQua.trangThai).toBe('dang_choi');
-    tg.gioTiep({ ...YEN, doi: 5, doiXongHet: 5 });
+    tg.gioTiep({ ...YEN, doi: 6, doiXongHet: 6 });
     expect(tg.ketQua).toMatchObject({ trangThai: 'thang', kieu: 'khoa_hoc' });
   });
 

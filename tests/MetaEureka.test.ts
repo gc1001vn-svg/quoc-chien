@@ -155,6 +155,21 @@ describe('thoi dai', () => {
     expect(td.len(cn, nha)?.so).toBe(2);
   });
 
+  it('moi doi tru doi cuoi deu co duong len, va cay du cong nghe cho dieu kien do', () => {
+    // Phase 12A mo doi 5 -> 6: `len: null` giua chung la ket van, khong phai het game.
+    const tongCongNghe: number = docCongNghe(techTho).ds.length;
+    for (const d of ds.slice(0, -1)) {
+      expect(d.len, `doi ${String(d.so)}`).toBeDefined();
+      expect(d.len?.soCongNghe ?? 0).toBeLessThanOrEqual(tongCongNghe);
+    }
+    expect(ds.at(-1)?.len).toBeUndefined();
+  });
+
+  it('moi doi deu co cong nghe rieng', () => {
+    const cn = docCongNghe(techTho).ds;
+    for (const d of ds) expect(cn.some((c) => c.thoiDai === d.so), `doi ${String(d.so)}`).toBe(true);
+  });
+
   it('`len: null` la het duong - khong len qua doi do', () => {
     const td = new ThoiDai(ds);
     for (let i = 0; i < 20; i += 1) td.len(999, 9999);
