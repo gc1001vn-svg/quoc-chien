@@ -576,7 +576,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 27/09 (lần 18) — xem mẻ tương lai trên iPhone
+### ✅ Việc 27/09 (lần 18) — xem mẻ tương lai trên iPhone: anh "ok" 27/09 (chưa báo fps)
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
 2. Dòng chữ nhỏ trên cùng phải ghi **27/09 19:59**. Thành phố hiện ra bằng nhà kiểu trạm vũ trụ.
@@ -1118,7 +1118,7 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 ## 5. Phiên sau — Phase 12B
 
-1. Bước E: hỏi anh kết quả xem mẻ tương lai (mục 3) trước khi mở 12B; anh chê chỗ nào thì sửa trước.
+1. Bước E: 12A anh "ok" 27/09 — mở Phase 12B luôn, không hỏi thêm.
 2. **Phase 12B** — anh chốt 27/09: mẻ **cổ đại** (đời 1) + mẻ **cận đại** (đời 3–4) + **lên 6 nước**
    (nhuộm thêm 2 màu cho thành/nhà/cờ KayKit, chia lại bản đồ tỉnh). Cổ đại: dò 27/09 chỉ thấy Icosa
    (Temple, pyramid, greekbuilding — CC-BY, cần màn ghi công) → dò tiếp trước khi chọn.
