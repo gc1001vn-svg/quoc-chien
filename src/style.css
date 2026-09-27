@@ -216,6 +216,15 @@ html, body {
   color: var(--chu);
 }
 .toc-do button[data-bat='co'] { color: var(--nhan); border-color: var(--nhan); }
+/*
+ * 9 nut (them 200x 500x ngay 27/09) rong 415 px, man doc 393 px: nut dung hinh lot ra ngoai
+ * mep trai (do bang Chromium, left = -31 px). Xuong dong thi de len hang nut ben trai o
+ * +56 px - nen thu nho nut tren man hep, giu mot hang, chua cho nut do tran goc trai (~50 px).
+ */
+@media (max-width: 440px) {
+  .toc-do { gap: 3px; }
+  .toc-do button { min-width: 32px; padding: 0 2px; font-size: 12px; }
+}
 
 /*
  * Man hep - iPhone cam DUNG. Hai hang thi moi be ngang deu co san roi (xem `.perf-nhan`
@@ -613,11 +622,11 @@ html, body {
 /*
  * Lop the gioi (Phase 11B): dong so nuoc ta o goc tren trai, duoi dong so phien ban; bang
  * ngoai giao truot len tu day man nhu bang tinh.
- * Dong so o +76 px: dong phien ban tren man doc xuong hai dong, +30 la de len dong thu hai; man ket che kin ca man.
+ * Dong so o +86 px: dong phien ban tren man doc xuong hai dong va hang nut Nen/Nha toi +80; man ket che kin ca man.
  */
 .thanh-tg {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + 76px);
+  top: calc(env(safe-area-inset-top) + 86px);
   left: calc(env(safe-area-inset-left) + 10px);
   right: calc(env(safe-area-inset-right) + 150px);
   z-index: 4;
