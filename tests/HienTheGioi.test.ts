@@ -30,6 +30,13 @@ describe('thanhTren', () => {
     expect(s).toMatchObject({ vang: 12, gio: 0, nguongThe: du.batOn.nguongThe });
     expect(s.soTinh).toBe(tg.tinhCua(tg.ta).length);
   });
+
+  it('mang doi cua nuoc ta, theo so thanh pho day vao moi gio', () => {
+    const tg = moi();
+    expect(thanhTren(tg).doi).toBe(1);
+    tg.gioTiep({ ...YEN, doi: 3 });
+    expect(thanhTren(tg).doi).toBe(3);
+  });
 });
 
 describe('hangNgoaiGiao', () => {

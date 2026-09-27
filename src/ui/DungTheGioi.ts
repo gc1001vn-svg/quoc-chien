@@ -10,19 +10,24 @@ import donVi from '../../data/units.json';
 import tranTho from '../../data/battle.json';
 import tinhTho from '../../data/provinces.json';
 import nuocTho from '../../data/nations.json';
+import canBangTho from '../../data/balance.json';
 import { docDuLieuTran, type DuLieuTran } from '../sim/campaign/Battle';
 import { dungBanDoTinh, type BanDoTinh } from '../sim/campaign/BanDoTinh';
 import { TheGioi } from '../sim/campaign/TheGioi';
 import { docTheGioi } from '../sim/campaign/TheGioiData';
+import { docThoiDai } from '../sim/meta/ThoiDai';
 
 export interface TheGioiGame {
   readonly tg: TheGioi;
   readonly banDo: BanDoTinh;
+  /** Ten thoi dai theo so: `tenDoi[so - 1]`. Thanh tren cua moi man hien ten nay. */
+  readonly tenDoi: readonly string[];
 }
 
 export function dungTheGioi(): TheGioiGame {
   const tran: DuLieuTran = docDuLieuTran(bangGiap, donVi, tranTho);
   const banDo: BanDoTinh = dungBanDoTinh(tinhTho, nuocTho);
   const du = docTheGioi(theGioiTho, thangTho, new Set(tran.doi.keys()));
-  return { tg: new TheGioi(du, banDo, tran), banDo };
+  const tenDoi: string[] = docThoiDai(canBangTho).map((d) => d.hien);
+  return { tg: new TheGioi(du, banDo, tran), banDo, tenDoi };
 }

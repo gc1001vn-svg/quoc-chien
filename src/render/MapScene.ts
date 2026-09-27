@@ -73,7 +73,7 @@ export async function chayCanhBanDo(goc: HTMLElement, theGioi: TheGioiGame): Pro
   let oChon = '';
   const bang = new BangTinh(goc, cd, theGioi.tg, () => { oChon = ''; });
   const nhan = new NhanTinh(goc, banDo, cd.nuocCuaTa());
-  const thanhTG = new ThanhTheGioi(goc, theGioi.tg, banDo);
+  const thanhTG = new ThanhTheGioi(goc, theGioi.tg, banDo, theGioi.tenDoi);
 
   let rongCss = 1;
   let caoCss = 1;

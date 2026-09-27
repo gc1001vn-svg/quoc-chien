@@ -32,7 +32,7 @@ export function noiTheGioi(
       tg.gioTiep(soNuocTa(thanhPho, meta, tg.du.batOn.hangLuongThuc));
     },
   });
-  const thanh = new ThanhTheGioi(goc, tg, the.banDo);
+  const thanh = new ThanhTheGioi(goc, tg, the.banDo, the.tenDoi);
   return {
     capNhat: (): void => {
       // Het van thi dung han dong ho - man ket che ca man, chay tiep chi ton pin.

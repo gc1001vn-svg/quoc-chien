@@ -13,6 +13,7 @@ import type { TheGioi } from '../sim/campaign/TheGioi';
 export class ThanhTheGioi {
   private readonly tg: TheGioi;
   private readonly banDo: BanDoTinh;
+  private readonly tenDoi: readonly string[];
   private readonly dong: HTMLSpanElement;
   private readonly bang: HTMLDivElement;
   private readonly ket: HTMLDivElement;
@@ -20,9 +21,10 @@ export class ThanhTheGioi {
   /** Gio luc dung bang lan cuoi - sang gio moi thi dung lai cho so khop. */
   private gioBang = -1;
 
-  constructor(chaMe: HTMLElement, tg: TheGioi, banDo: BanDoTinh) {
+  constructor(chaMe: HTMLElement, tg: TheGioi, banDo: BanDoTinh, tenDoi: readonly string[]) {
     this.tg = tg;
     this.banDo = banDo;
+    this.tenDoi = tenDoi;
     const thanh: HTMLDivElement = document.createElement('div');
     thanh.className = 'thanh-tg';
     this.dong = document.createElement('span');
@@ -43,7 +45,7 @@ export class ThanhTheGioi {
   /** Goi moi khung. */
   public capNhat(): void {
     const s = thanhTren(this.tg);
-    const chu = `💰 ${String(s.vang)} · ⚠ ${String(s.batOn)}/${String(s.nguongThe)} · ⚔ ${String(s.suc)}`
+    const chu = `🏛 ${this.tenDoi[s.doi - 1] ?? String(s.doi)} · 💰 ${String(s.vang)} · ⚠ ${String(s.batOn)}/${String(s.nguongThe)} · ⚔ ${String(s.suc)}`
       + ` · ${String(s.soTinh)} tỉnh · giờ ${String(s.gio)}`;
     if (chu !== this.chuCu) {
       this.chuCu = chu;

@@ -29,6 +29,8 @@ export interface ThanhTren {
   readonly gio: number;
   readonly suc: number;
   readonly soTinh: number;
+  /** Thoi dai cua nuoc ta (so, tu 1). `ui/` doi ra ten bang `balance.json > thoiDai`. */
+  readonly doi: number;
 }
 
 export interface HangNuoc {
@@ -94,6 +96,7 @@ export function thanhTren(tg: TheGioi): ThanhTren {
     gio: tg.gio,
     suc: Math.round(tg.suc(tg.ta)),
     soTinh: tg.tinhCua(tg.ta).length,
+    doi: ta.doi,
   };
 }
 
