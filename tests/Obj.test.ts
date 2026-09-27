@@ -72,6 +72,19 @@ describe('docObj', () => {
   });
 
   /**
+   * KayKit Hexagon: mau phe nam o MOT O (cot + hang) cua bang mau, con cung cot do o hang
+   * khac la mau dung chung cua moi phe. Chon theo cot thoi thi son lan ca mau chung.
+   */
+  it('so_hang khai thi khoa "cot,hang" chi son dung o do, khoa cot tran lam du phong', () => {
+    // v = 0.3: chia 4 hang ra hang 1; chia 2 hang ra hang 0.
+    const r = docObj(duong, {}, false, null, { so: 8, hang: 4, mau: { '0,1': [3, 0, 0], '0,0': [0, 3, 0], 3: [0, 0, 3] } });
+    expect(mauDinh(r.dinh, 0)).toEqual([3, 0, 0]);
+    expect(mauDinh(r.dinh, 3)).toEqual([0, 0, 3]);
+    const r2 = docObj(duong, {}, false, null, { so: 8, hang: 2, mau: { '0,1': [3, 0, 0] } });
+    expect(mauDinh(r2.dinh, 0)).toEqual([1, 1, 1]);
+  });
+
+  /**
    * Mau NHAN khong bao gio keo mot mau ra khoi sac cua no: mai xanh la nhan kieu gi cung
    * ra xanh hay vang. Do 19/09 tren `ks:building-type-a` voi tam bo nhan khac nhau, ca
    * tam deu van xanh. `thay` la duong duy nhat doi duoc sac.

@@ -78,6 +78,10 @@ function docMtl(duong) {
  *   la bang mau chia cot, moi cot mot mau (toa do `u` chon cot, `v` chon do dam trong
  *   dai chuyen sac cua cot do). Nen COT chinh la cai "material" that su cua goi nay.
  *   Do 18/09: `ks:building-type-a` dung cot 1, 3, 7, 9, 11; `ki:building-a` dung 9, 11, 15.
+ *
+ *   `hang` (tuy chon) chia them theo `v` - khoa `"cot,hang"` thang khoa cot tran. KayKit
+ *   Hexagon can: mau phe chi nam o hang duoi cua cot (`v` < 0,25 khi chia 4), phan tren
+ *   cung cot la mau chung moi phe. Do 27/09: 367 toa do anh chung nam trong cot phe do.
  * @param {string | null} [nhom] Chi lay mat cua NHOM `g <ten>` nay, bo het phan con lai.
  *
  *   VI SAO CAN: `ki:windmill` cua Kenney la MOT file chua ca thap lan canh quat
@@ -88,6 +92,7 @@ function docMtl(duong) {
  */
 export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot = null, nhom = null) {
   const soCot = sonCot?.so ?? 16;
+  const soHang = sonCot?.hang ?? null;
   const mtl = docMtl(join(dirname(duong), `${duong.split('/').pop().replace(/\.obj$/, '')}.mtl`));
   let vatLieu = { kd: [1, 1, 1], anh: 1 };
   const v = [];
@@ -148,7 +153,10 @@ export function docObj(duong, sonVl = {}, gamma = false, traAnh = null, sonCot =
           const anh = b === undefined || b === '' ? [0, 0] : (vt[chiSo(b, vt.length)] ?? [0, 0]);
           const phap = c === undefined || c === '' ? [0, 1, 0] : (vn[chiSo(c, vn.length)] ?? [0, 1, 0]);
           // Mau theo cot bang mau: `u` cho biet dinh nay lay mau o cot nao.
-          const cot = sonCot === null ? undefined : sonCot.mau[String(Math.floor(anh[0] * soCot))];
+          const soCotNay = String(Math.floor(anh[0] * soCot));
+          const cot = sonCot === null ? undefined
+            : (soHang === null ? undefined : sonCot.mau[`${soCotNay},${String(Math.floor(anh[1] * soHang))}`])
+              ?? sonCot.mau[soCotNay];
           const thay = Array.isArray(cot) ? null : (cot?.thay ?? null);
           const nhan = Array.isArray(cot) ? cot : null;
           ra.push(

@@ -86,6 +86,8 @@ function doiKit(khai) {
       gamma: o.gamma === true,
       // So cot cua bang mau `colormap.png`, cho `mau_cot` cua tung manh. Kenney chia 16.
       soCot: o.so_cot ?? 16,
+      // So hang theo `v`, cho khoa `"cot,hang"` cua `mau_cot`. Bo trong = chi chon theo cot.
+      soHang: o.so_hang ?? null,
     };
   }
   return ra;
@@ -376,7 +378,7 @@ function ghep(phan, kit, soAnh, bangDang = {}) {
       ? docGltf(duongModel(p.m, kit), tuyChonGltf(p, kit, soAnh, bangDang))
       : docObj(
         join(k.duong, `${ten}.obj`), p.mau_vl ?? {}, k.gamma, traAnh,
-        p.mau_cot === undefined ? null : { so: k.soCot, mau: p.mau_cot },
+        p.mau_cot === undefined ? null : { so: k.soCot, hang: k.soHang ?? undefined, mau: p.mau_cot },
         p.nhom ?? null,
       );
     // Mau cua manh. `mau` la mau NHAN (giu van hoa tiet); them `thay_mau` thi bo hoc anh

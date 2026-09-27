@@ -18,6 +18,8 @@ export interface KetQuaObj {
 export interface SonCot {
   /** So cot cua bang mau. Mac dinh 16 - Kenney chia vay. */
   readonly so?: number;
+  /** So hang theo `v`. Khai thi khoa `"cot,hang"` dung duoc, thang khoa cot tran. */
+  readonly hang?: number;
   /**
    * Chi so cot -> mau. Mang ba so thi NHAN vao mau san co; `{ thay }` thi THAY han va bo
    * luon anh cua cot do - duong duy nhat doi duoc SAC, vi mau nhan khong keo noi mai
