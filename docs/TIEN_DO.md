@@ -546,11 +546,9 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc 26/09 (lần 16) — một câu hỏi, không cần mở iPhone
+### ✅ Việc 26/09 (lần 16) — thống trị 2/5: anh chọn (a) ngày 27/09 ("làm đi")
 
-Thắng **thống trị** chỉ tới được ở 2/5 hạt giống (ba kiểu kia 5/5). Tôi đã chỉnh quá trần 3
-lần kế hoạch cho phép nên dừng. Anh chọn: (a) chấp nhận, cân tiếp khi 11B có màn cho anh chơi
-thật; (b) phiên sau dành riêng cân thống trị trước khi làm màn.
+Chấp nhận thống trị 2/5 hạt giống, cân tiếp khi 11B có màn cho anh chơi thật.
 
 ### ✅ Việc 26/09 (lần 15) — xem trận súng trên iPhone: XONG, anh "ok" 26/09
 
@@ -1059,8 +1057,13 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 Nối `TheGioi` vào game: chạy cùng nhịp giờ của thành phố (`NoiThanhPho.soNuocTa`), bảng ngoại
 giao (4 nước, trạng thái, quan hệ, 3 nút thương mại / đàm phán / đe doạ), thẻ bất ổn 3 lựa chọn,
-tấn công tỉnh từ bản đồ tỉnh, màn thắng/thua. Chờ câu trả lời của anh ở mục 3 trước. Đo bằng:
+tấn công tỉnh từ bản đồ tỉnh, màn thắng/thua. Đo bằng:
 anh chơi thật trên iPhone qua bản duyệt. `TheGioi.ts` đã 299 dòng — tách trước khi thêm.
+
+**Giao Jules (anh cho tự quyết 26/09):** phần thuần của màn — hàm dựng số cho bảng ngoại giao /
+thẻ bất ổn / màn kết (vào: `TheGioi`, ra: object hiển thị) — Claude viết đặc tả + chữ ký hàm,
+Jules viết test (có thể cả hàm), Claude làm phần vẽ song song rồi cài lỗi thử để chấm.
+Quy trình: `ghi-nho/cong-cu/jules/PHAN_VIEC.md`; ghi số đo lần giao vào bảng ở đó.
 
 ### Nhắc trước khi nướng thêm mẻ
 
