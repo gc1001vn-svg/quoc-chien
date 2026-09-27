@@ -1,0 +1,961 @@
+{
+  "ghi_chu": "Me thoi tuong lai (Phase 12A, doi 6). CHEP KHUNG me `hien_dai`: dat, cay, nguoi, ruong, vuon, coi xay (tuabin gio) giu nguyen - chi thay nha, xuong, mo va do vat bang Kenney Space Kit (CC0, tien to sk). Thuoc giong me hien dai: ti_le = min(1.53, 1.9/day, 2.33/cao) tinh tu hop bao cua tung file .obj. Space Kit khong co anh - mau nam trong .mtl (metal, metalDark, metalRed, dark, rock, crystal) nen doi mau bang `mau_vl` theo TEN vat lieu: metalRed la vien nhan dien, moi loai nha mot mau de nguoi choi phan biet. Phai nuong cung so trang, `o_px`, `heSo` voi me hien dai, khong thi `DoiMeAtlas` nem loi luc len doi 6.",
+  "ghi_chu_trang": "Me nay xep gon hon me trung co (77,3% mot trang o co 2x) nhung PHAI ra dung so trang nhu no, khong thi `DoiMeAtlas` nem loi luc len doi. Tu 19/09 me trung co can hai trang o 2x vi ba khung coi xay, nen o day dem mot trang rong. Trang dem ghi 1x1 trong suot - khong ton bo nho GPU, khong sprite nao tro vao.",
+  "trang_it_nhat": {
+    "2": 2
+  },
+  "kit": {
+    "ks": {
+      "duong": "assets_source/city-kit-suburban/Models/OBJ format",
+      "gamma": true
+    },
+    "kc": {
+      "duong": "assets_source/city-kit-commercial/Models/OBJ format",
+      "gamma": true
+    },
+    "ki": {
+      "duong": "assets_source/city-kit-industrial/Models/OBJ format",
+      "gamma": true
+    },
+    "kr": {
+      "duong": "assets_source/city-kit-roads/Models/OBJ format",
+      "gamma": true
+    },
+    "qn": {
+      "duong": "assets_source/stylized-nature-megakit/OBJ",
+      "anh": "mtl",
+      "thu_muc_anh": "../Textures",
+      "gamma": true
+    },
+    "mn": {
+      "duong": "assets_source/mini-characters/Models/GLB format",
+      "loai": "glb",
+      "thu_muc_anh": "Textures"
+    },
+    "sk": {
+      "duong": "assets_source/space-kit/Models/OBJ format",
+      "anh": false
+    }
+  },
+  "ghi_chu_dang": "Bang dang cho khung xuong 7 khop cua Kenney mini-characters: root, torso, head, arm-left, arm-right, leg-left, leg-right. Model goc o tu the chu T nen phai ha hai tay xuong (xoay quanh z) va buoc mot chan ra truoc (xoay quanh x). Khung thu hai la ban guong - `doiDang` trong tools/lib/gltf.mjs hieu ca duoi `-left`/`-right` tu 18/09, truoc do no chi hieu `_l`/`_r` nen guong nguoi Kenney KHONG doi chan.",
+  "dang": {
+    "di": {
+      "arm-left": [
+        0,
+        0,
+        78
+      ],
+      "arm-right": [
+        0,
+        0,
+        -78
+      ],
+      "leg-left": [
+        22,
+        0,
+        0
+      ],
+      "leg-right": [
+        -20,
+        0,
+        0
+      ]
+    }
+  },
+  "sprite": {
+    "o_co": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
+        "lap": 1,
+        "mau": [
+          0.86,
+          1,
+          0.8
+        ]
+      }
+    ],
+    "o_dat": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          1.35,
+          1.35,
+          1.35
+        ]
+      }
+    ],
+    "o_duong": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
+        "lap": 1,
+        "mau": [
+          0.78,
+          0.78,
+          0.84
+        ]
+      }
+    ],
+    "o_duong_lat": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.2,
+          1.2,
+          1.26
+        ]
+      }
+    ],
+    "o_cat": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/coast_sand_01.jpg",
+        "lap": 1,
+        "mau": [
+          1.3,
+          1.3,
+          1.3
+        ]
+      }
+    ],
+    "o_da": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg",
+        "lap": 1,
+        "mau": [
+          1.35,
+          1.35,
+          1.35
+        ]
+      }
+    ],
+    "o_ruong": [
+      {
+        "phang": 1.05,
+        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
+        "lap": 1,
+        "mau": [
+          1.05,
+          0.92,
+          0.72
+        ]
+      }
+    ],
+    "cay_soi": [
+      {
+        "m": "qn:CommonTree_1",
+        "ti_le": 0.32,
+        "mau_vl": {
+          "Leaves_NormalTree": [
+            0.95,
+            1.1,
+            1
+          ],
+          "Bark_NormalTree": [
+            1.28,
+            1.28,
+            1.28
+          ]
+        }
+      }
+    ],
+    "cay_soi_2": [
+      {
+        "m": "qn:CommonTree_4",
+        "ti_le": 0.32,
+        "mau_vl": {
+          "Leaves_NormalTree": [
+            0.95,
+            1.1,
+            1
+          ],
+          "Bark_NormalTree": [
+            1.28,
+            1.28,
+            1.28
+          ]
+        }
+      }
+    ],
+    "cay_thong": [
+      {
+        "m": "qn:Pine_1",
+        "ti_le": 0.34,
+        "mau_vl": {
+          "Leaves_Pine": [
+            1.05,
+            1.25,
+            1.05
+          ],
+          "Bark_NormalTree": [
+            1.28,
+            1.28,
+            1.28
+          ]
+        }
+      }
+    ],
+    "cay_kho": [
+      {
+        "m": "qn:DeadTree_2",
+        "ti_le": 0.3,
+        "mau_vl": {
+          "Bark_DeadTree": [
+            1.15,
+            1.08,
+            0.98
+          ]
+        }
+      }
+    ],
+    "bui": [
+      {
+        "m": "qn:Bush_Common_Flowers",
+        "ti_le": 0.24,
+        "mau_vl": {
+          "Leaves_NormalTree": [
+            0.95,
+            1.1,
+            1
+          ],
+          "Flowers": [
+            1.15,
+            1.35,
+            1.05
+          ]
+        }
+      }
+    ],
+    "bui_hoa": [
+      {
+        "m": "qn:Bush_Common_Flowers",
+        "ti_le": 0.24,
+        "mau_vl": {
+          "Leaves_NormalTree": [
+            0.95,
+            1.1,
+            1
+          ],
+          "Flowers": [
+            1.9,
+            1.7,
+            1.7
+          ]
+        }
+      }
+    ],
+    "da_lon": [
+      {
+        "m": "qn:Rock_Medium_1",
+        "ti_le": 0.26,
+        "mau_vl": {
+          "Rocks": [
+            1.45,
+            1.45,
+            1.45
+          ]
+        }
+      }
+    ],
+    "da_nho": [
+      {
+        "m": "qn:Pebble_Round_3",
+        "ti_le": 0.22,
+        "mau_vl": {
+          "PathRocks": [
+            1.45,
+            1.45,
+            1.45
+          ]
+        }
+      }
+    ],
+    "co_cao": [
+      {
+        "m": "qn:Grass_Common_Tall",
+        "ti_le": 0.22,
+        "mau_vl": {
+          "Grass": [
+            1.1,
+            1.28,
+            1.05
+          ]
+        }
+      }
+    ],
+    "hoa": [
+      {
+        "m": "qn:Flower_3_Group",
+        "ti_le": 0.22,
+        "mau_vl": {
+          "Flowers": [
+            1.6,
+            1.6,
+            1.6
+          ],
+          "Leaves": [
+            1.05,
+            1.18,
+            1.02
+          ]
+        }
+      }
+    ],
+    "nam": [
+      {
+        "m": "qn:Mushroom_Common",
+        "ti_le": 0.2,
+        "mau_vl": {
+          "Mushrooms": [
+            1.5,
+            1.5,
+            1.5
+          ]
+        }
+      }
+    ],
+    "quay_hang": [
+      {
+        "m": "sk:desk_computerScreen",
+        "ti_le": 1.53
+      }
+    ],
+    "quay_xe": [
+      {
+        "m": "sk:craft_speederA",
+        "ti_le": 0.9,
+        "mau_vl": {
+          "metalRed": [
+            0.25,
+            0.95,
+            4.2
+          ]
+        }
+      }
+    ],
+    "dong_thung": [
+      {
+        "m": "sk:barrels",
+        "ti_le": 1.53
+      }
+    ],
+    "thung_ruou": [
+      {
+        "m": "sk:barrel",
+        "ti_le": 1.53
+      }
+    ],
+    "ghe_bang": [
+      {
+        "m": "kc:detail-parasol-a",
+        "ti_le": 1.53
+      }
+    ],
+    "noi_lo": [
+      {
+        "m": "sk:machine_barrel",
+        "ti_le": 1.53
+      }
+    ],
+    "xe_keo": [
+      {
+        "m": "sk:rover",
+        "ti_le": 1.53
+      }
+    ],
+    "hang_rao": [
+      {
+        "m": "sk:rail",
+        "ti_le": 1.53
+      }
+    ],
+    "nguoi_nam_1_0": [
+      {
+        "m": "mn:character-male-a",
+        "dang": "di",
+        "ti_le": 1
+      }
+    ],
+    "nguoi_nam_1_1": [
+      {
+        "m": "mn:character-male-a",
+        "dang": "di",
+        "guong": true,
+        "ti_le": 1
+      }
+    ],
+    "nguoi_nu_1_0": [
+      {
+        "m": "mn:character-female-a",
+        "dang": "di",
+        "ti_le": 1
+      }
+    ],
+    "nguoi_nu_1_1": [
+      {
+        "m": "mn:character-female-a",
+        "dang": "di",
+        "guong": true,
+        "ti_le": 1
+      }
+    ],
+    "nguoi_nam_0_0": {
+      "nhu": "nguoi_nam_1_0",
+      "xoay": 90
+    },
+    "nguoi_nam_0_1": {
+      "nhu": "nguoi_nam_1_1",
+      "xoay": 90
+    },
+    "nguoi_nam_2_0": {
+      "nhu": "nguoi_nam_1_0",
+      "xoay": 270
+    },
+    "nguoi_nam_2_1": {
+      "nhu": "nguoi_nam_1_1",
+      "xoay": 270
+    },
+    "nguoi_nam_3_0": {
+      "nhu": "nguoi_nam_1_0",
+      "xoay": 180
+    },
+    "nguoi_nam_3_1": {
+      "nhu": "nguoi_nam_1_1",
+      "xoay": 180
+    },
+    "nguoi_nu_0_0": {
+      "nhu": "nguoi_nu_1_0",
+      "xoay": 90
+    },
+    "nguoi_nu_0_1": {
+      "nhu": "nguoi_nu_1_1",
+      "xoay": 90
+    },
+    "nguoi_nu_2_0": {
+      "nhu": "nguoi_nu_1_0",
+      "xoay": 270
+    },
+    "nguoi_nu_2_1": {
+      "nhu": "nguoi_nu_1_1",
+      "xoay": 270
+    },
+    "nguoi_nu_3_0": {
+      "nhu": "nguoi_nu_1_0",
+      "xoay": 180
+    },
+    "nguoi_nu_3_1": {
+      "nhu": "nguoi_nu_1_1",
+      "xoay": 180
+    },
+    "mo_da": [
+      {
+        "m": "sk:rock_largeA",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "rock": [
+            0.95,
+            1.55,
+            2.1
+          ],
+          "rockTrack": [
+            0.95,
+            1.4,
+            1.85
+          ]
+        }
+      },
+      {
+        "m": "sk:machine_wireless",
+        "ti_le": 0.92,
+        "x": 0.55,
+        "z": 0.45,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            1.45,
+            0.5
+          ]
+        }
+      }
+    ],
+    "mo_than": [
+      {
+        "m": "sk:rock_largeB",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "rock": [
+            0.33,
+            0.5,
+            0.62
+          ],
+          "rockTrack": [
+            0.3,
+            0.45,
+            0.55
+          ]
+        }
+      },
+      {
+        "m": "sk:machine_barrel",
+        "ti_le": 0.77,
+        "x": 0.55,
+        "z": 0.5
+      }
+    ],
+    "mo_muoi": [
+      {
+        "m": "sk:rock_crystalsLargeA",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "crystal": [
+            4.5,
+            1.1,
+            1.6
+          ]
+        }
+      }
+    ],
+    "mo_dat_set": [
+      {
+        "m": "sk:rock_largeA",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "rock": [
+            1.05,
+            0.85,
+            0.75
+          ],
+          "rockTrack": [
+            1.05,
+            0.85,
+            0.75
+          ]
+        }
+      },
+      {
+        "m": "sk:pipe_supportHigh",
+        "ti_le": 0.92,
+        "x": 0.55,
+        "z": 0.45
+      }
+    ],
+    "mo_da_voi": [
+      {
+        "m": "sk:rock_largeB",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "rock": [
+            1.1,
+            1.85,
+            2.45
+          ],
+          "rockTrack": [
+            1.05,
+            1.65,
+            2.1
+          ]
+        }
+      }
+    ],
+    "mo_quang": [
+      {
+        "m": "sk:rock_crystalsLargeB",
+        "ti_le": 1.53
+      }
+    ],
+    "xuong_cua": [
+      {
+        "m": "sk:hangar_smallA",
+        "ti_le": 0.95,
+        "mau_vl": {
+          "metalRed": [
+            0.35,
+            1.35,
+            1.5
+          ]
+        }
+      }
+    ],
+    "xuong_ruou": [
+      {
+        "m": "sk:hangar_smallB",
+        "ti_le": 0.95,
+        "mau_vl": {
+          "metalRed": [
+            0.85,
+            0.5,
+            3.8
+          ]
+        }
+      }
+    ],
+    "nha_bia": [
+      {
+        "m": "sk:hangar_roundA",
+        "ti_le": 0.58,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            1.45,
+            0.5
+          ]
+        }
+      }
+    ],
+    "xuong_vu_khi": [
+      {
+        "m": "sk:hangar_largeA",
+        "ti_le": 0.63,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            0.45,
+            0.6
+          ]
+        }
+      },
+      {
+        "m": "sk:turret_single",
+        "ti_le": 0.69,
+        "x": 0.6,
+        "z": 0.7,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            0.45,
+            0.6
+          ]
+        }
+      }
+    ],
+    "xuong_det": [
+      {
+        "m": "sk:hangar_roundB",
+        "ti_le": 0.58,
+        "mau_vl": {
+          "metalRed": [
+            0.85,
+            0.5,
+            3.8
+          ]
+        }
+      }
+    ],
+    "xuong_thuoc": [
+      {
+        "m": "sk:hangar_roundGlass",
+        "ti_le": 0.58,
+        "mau_vl": {
+          "metalRed": [
+            0.2,
+            1.45,
+            4.2
+          ]
+        }
+      }
+    ],
+    "lo_ren": [
+      {
+        "m": "sk:machine_generatorLarge",
+        "ti_le": 1.46
+      }
+    ],
+    "lo_thep": [
+      {
+        "m": "sk:structure_detailed",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            0.45,
+            0.6
+          ]
+        }
+      },
+      {
+        "m": "sk:chimney_detailed",
+        "ti_le": 0.7,
+        "x": 0.55,
+        "z": -0.4
+      }
+    ],
+    "lo_nung": [
+      {
+        "m": "sk:structure_closed",
+        "ti_le": 1.53
+      },
+      {
+        "m": "sk:chimney",
+        "ti_le": 0.7,
+        "x": 0.55,
+        "z": -0.4
+      }
+    ],
+    "lo_mo": [
+      {
+        "m": "sk:machine_barrelLarge",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            1.45,
+            0.5
+          ]
+        }
+      }
+    ],
+    "lo_banh": [
+      {
+        "m": "sk:hangar_smallA",
+        "ti_le": 0.95
+      }
+    ],
+    "lo_uop": [
+      {
+        "m": "sk:hangar_smallB",
+        "ti_le": 0.95,
+        "mau_vl": {
+          "metalRed": [
+            0.25,
+            0.95,
+            4.2
+          ]
+        }
+      }
+    ],
+    "lo_gom": [
+      {
+        "m": "sk:hangar_roundA",
+        "ti_le": 0.58,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            0.45,
+            0.6
+          ]
+        }
+      }
+    ],
+    "lo_voi": [
+      {
+        "m": "sk:chimney_detailed",
+        "ti_le": 1.17
+      }
+    ],
+    "trai_lon": [
+      {
+        "m": "sk:structure_diagonal",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "metalRed": [
+            0.35,
+            1.35,
+            1.5
+          ]
+        }
+      }
+    ],
+    "trai_ga": [
+      {
+        "m": "sk:structure",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            1.45,
+            0.5
+          ]
+        }
+      }
+    ],
+    "trai_cuu": [
+      {
+        "m": "sk:hangar_largeB",
+        "ti_le": 0.63,
+        "mau_vl": {
+          "metalRed": [
+            0.35,
+            1.35,
+            1.5
+          ]
+        }
+      }
+    ],
+    "nha_dan": [
+      {
+        "m": "sk:structure_closed",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "metalRed": [
+            0.25,
+            0.95,
+            4.2
+          ]
+        }
+      }
+    ],
+    "trai_linh": [
+      {
+        "m": "sk:hangar_largeA",
+        "ti_le": 0.63,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            0.45,
+            0.6
+          ]
+        }
+      },
+      {
+        "m": "sk:turret_double",
+        "ti_le": 0.69,
+        "x": 0.6,
+        "z": 0.7,
+        "mau_vl": {
+          "metalRed": [
+            1,
+            0.45,
+            0.6
+          ]
+        }
+      }
+    ],
+    "cong_truong": [
+      {
+        "m": "sk:rocket_baseA",
+        "ti_le": 1.06
+      },
+      {
+        "m": "sk:supports_high",
+        "ti_le": 0.92,
+        "x": 0.8,
+        "z": -0.6
+      }
+    ],
+    "nha_chai": [
+      {
+        "m": "sk:hangar_roundGlass",
+        "ti_le": 0.58,
+        "mau_vl": {
+          "metalRed": [
+            0.25,
+            0.95,
+            4.2
+          ]
+        }
+      }
+    ],
+    "trai_go": [
+      {
+        "m": "sk:hangar_smallB",
+        "ti_le": 0.95,
+        "mau_vl": {
+          "metalRed": [
+            0.35,
+            1.35,
+            1.5
+          ]
+        }
+      },
+      {
+        "m": "ks:tree-large",
+        "ti_le": 1.53,
+        "x": 1.3,
+        "z": -1
+      }
+    ],
+    "gieng": [
+      {
+        "m": "sk:satelliteDish_large",
+        "ti_le": 1.53,
+        "mau_vl": {
+          "metalRed": [
+            0.9,
+            1.4,
+            4.5
+          ]
+        }
+      }
+    ],
+    "coi_xay_k0": [
+      {
+        "m": "ki:windmill",
+        "nhom": "windmill",
+        "ti_le": 1
+      },
+      {
+        "m": "ki:windmill",
+        "nhom": "blades",
+        "ti_le": 1
+      }
+    ],
+    "coi_xay_k1": {
+      "nhu": "coi_xay_k0",
+      "khung": {
+        "ki:windmill#blades": {
+          "rx": 40,
+          "tam": [
+            0,
+            1.8154,
+            -0.0032
+          ]
+        }
+      }
+    },
+    "coi_xay_k2": {
+      "nhu": "coi_xay_k0",
+      "khung": {
+        "ki:windmill#blades": {
+          "rx": 80,
+          "tam": [
+            0,
+            1.8154,
+            -0.0032
+          ]
+        }
+      }
+    },
+    "ruong": [
+      {
+        "m": "ks:planter",
+        "ti_le": 1.53,
+        "x": -0.7
+      },
+      {
+        "m": "ks:planter",
+        "ti_le": 1.53
+      },
+      {
+        "m": "ks:planter",
+        "ti_le": 1.53,
+        "x": 0.7
+      }
+    ],
+    "vuon_nho": [
+      {
+        "m": "ks:tree-small",
+        "ti_le": 1.53,
+        "x": -0.7,
+        "z": -0.4
+      },
+      {
+        "m": "ks:tree-small",
+        "ti_le": 1.53,
+        "x": 0.5,
+        "z": -0.2
+      },
+      {
+        "m": "ks:tree-small",
+        "ti_le": 1.53,
+        "x": -0.1,
+        "z": 0.6
+      }
+    ]
+  }
+}

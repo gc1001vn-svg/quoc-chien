@@ -25,6 +25,11 @@ sang cả dự án.
 | `hien_dai_2x_1.png` | Trang atlas **trống** 1×1 trong suốt, do `tools/nuong_sprite.mjs` sinh ra để đệm cho đủ số trang bằng mẻ trung cổ — không chứa hình của ai | Dự án | MIT | 19/09/2026 |
 | `hien_dai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
 | `hien_dai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 18/09/2026 |
+| `tuong_lai_1x_0.png` | Kenney Space Kit (hangar, trạm, máy phát, chảo vệ tinh, đá, xe, thùng) + khung mẻ `hien_dai` (Kenney City Kit, Mini Characters · Quaternius Stylized Nature MegaKit · hoạ tiết Poly Haven), <https://kenney.nl> · <https://quaternius.com> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 27/09/2026 |
+| `tuong_lai_2x_0.png` | Kenney Space Kit (hangar, trạm, máy phát, chảo vệ tinh, đá, xe, thùng) + khung mẻ `hien_dai` (Kenney City Kit, Mini Characters · Quaternius Stylized Nature MegaKit · hoạ tiết Poly Haven), <https://kenney.nl> · <https://quaternius.com> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Poly Haven | CC0 1.0 | 27/09/2026 |
+| `tuong_lai_2x_1.png` | Trang atlas **trống** 1×1 trong suốt, đệm cho đủ số trang bằng mẻ trung cổ — không chứa hình của ai | Dự án | MIT | 27/09/2026 |
+| `tuong_lai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 27/09/2026 |
+| `tuong_lai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 27/09/2026 |
 | `linh_co_1x_0.png` | Quaternius Modular Character Outfits – Fantasy (thân lính) + Universal Base Characters (đầu) + Universal Animation Library (đi, đánh, trúng đòn, chết, ngồi ngựa) + Medieval Weapons (giáo, kiếm, khiên, cung, mũi tên) + Animals (ngựa) — mẻ lính thời cổ, Phase 10A, <https://quaternius.com> | Quaternius (Tomás Laulhé) | CC0 1.0 | 25/09/2026, đổi từ KayKit cùng ngày |
 | `linh_co_2x_0.png` | Quaternius Modular Character Outfits – Fantasy (thân lính) + Universal Base Characters (đầu) + Universal Animation Library (đi, đánh, trúng đòn, chết, ngồi ngựa) + Medieval Weapons (giáo, kiếm, khiên, cung, mũi tên) + Animals (ngựa) — mẻ lính thời cổ, Phase 10A, <https://quaternius.com> | Quaternius (Tomás Laulhé) | CC0 1.0 | 25/09/2026, đổi từ KayKit cùng ngày |
 | `linh_co_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 25/09/2026 |
@@ -60,6 +65,7 @@ Gói nguồn đang dùng, **tất cả CC0 1.0**, license đọc thẳng trong `
 | **City Kit (Industrial)** — 20 dáng nhà xưởng, ống khói, bồn, thùng hàng, tháp nước, cối xay gió (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-industrial` |
 | **City Kit (Roads)** — thùng rác, rào công trường, đèn công trường (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-roads` |
 | **Mini Characters** — 6 nam + 6 nữ thời hiện đại, khung xương 7 khớp (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs mini-characters` |
+| **Space Kit** — hangar, trạm, máy phát, chảo vệ tinh, ống khói, đá, xe, thùng (mẻ `tuong_lai`, thêm 27/09) | Kenney | `node tools/tai_asset.mjs space-kit` |
 
 **Từ 18/09/2026 game chạy HAI mẻ:** `trung_co_2` cho đời 1–4 và `hien_dai` cho đời 5–6
 (`data/balance.json > thoiDai`). Lên đời là `CityScene` đổi cả bộ atlas và nhả bộ cũ bằng
