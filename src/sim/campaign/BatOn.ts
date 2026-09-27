@@ -48,6 +48,10 @@ export class BatOn {
     return this.gioGiamThueCon;
   }
 
+  /** So gio the da mo ma chua ai chon - toi `gio_noi_loan` thi noi loan. */
+  get gioDaKe(): number {
+    return this.gioKe;
+  }
   get luaChon(): readonly LuaChonBatOn[] {
     return this.so.luaChon;
   }
