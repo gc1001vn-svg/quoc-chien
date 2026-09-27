@@ -6,7 +6,7 @@
   "_doiNguong": "`nguongCho` thap di la thong doc xay som hon khi thieu hang - day moi la thu doi THAT trong mot van 120 gio. Da do 11/09: chi noi tran thoi thi gan nhu vo tac dung, vi tran (398) khong phai cai chan thanh pho lai, nhu cau moi la. Tong ca cay tru 12 tren `nguongCho` (40 -> 28) va 60 tren `nguongDinh` (600 -> 540) - khong duoc tru sau hon, ngưỡng ve 0 la thong doc xay khong nghi.",
   "_loi": "Chu hien tren bang cong nghe cho nguoi choi doc. KHONG phai khoa nha: moi loai nha van xay duoc tu dau van. Khoa nha theo thoi dai la viec Phase 9, luc lop chien dich noi vao kinh te thanh pho.",
   "_moThe": "Id the chinh sach mo ra khi hoc xong - cai nay CO hieu luc that, xem data/the_chinh_sach.json.",
-  "_gia": "Diem nghien cuu phai dong. Doi 1 la 30-48, doi 2 la 55-75, doi 3 la 85-120, doi 4 la 130-170, doi 5 la 185-230 - hoc cang sau cang lau.",
+  "_gia": "Diem nghien cuu phai dong. Doi 1 la 30-48, doi 2 la 55-75, doi 3 la 85-120, doi 4 la 130-170, doi 5 la 185-230, doi 6 la 250-320 - hoc cang sau cang lau.",
   "nghienCuu": {
     "_": "Diem nghien cuu moi gio game = coBan + floor(soNha / moiNhaMotDiem), roi nhan he so cua the chinh sach. Thanh pho cang lon nghien cuu cang nhanh - dan dong thi nhieu nguoi nghi ra cai moi.",
     "_nhip_do": "Do 11/09 tren `npm run sim:congnghe`: voi coBan 2 va moiNhaMotDiem 40 thi chi duoc ~5 diem/gio, va khi Eureka thoi khong con dat san nua thi 120 gio KHONG toi noi thoi dai 3. Nang len 3 va 30 cho ~11 diem/gio o thanh pho 241 nha. 24/09 chu du an bao chay 50x hon 15 phut chua len Trung co (do: 20 gio game = 24 phut o 50x) -> nhan doi: 6 va 15.",
@@ -413,6 +413,86 @@
       "loi": "Một giọng nói tới cả nước cùng lúc.",
       "moThe": [],
       "thuong": { "noiTran": { "nha": 6, "kho": 2 } }
+    },
+    {
+      "id": "ban_dan",
+      "hien": "Bán dẫn",
+      "thoiDai": 6,
+      "gia": 250,
+      "tienDe": ["dien", "hoa_hoc"],
+      "loi": "Tinh thể silic nhỏ bằng hạt gạo làm việc của cả tủ đèn điện tử.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7 } }
+    },
+    {
+      "id": "ten_lua",
+      "hien": "Tên lửa",
+      "thoiDai": 6,
+      "gia": 255,
+      "tienDe": ["hang_khong", "hoa_hoc"],
+      "loi": "Nhiên liệu tự mang theo ô-xy: bay được cả nơi không có không khí.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "may_tinh",
+      "hien": "Máy tính",
+      "thoiDai": 6,
+      "gia": 265,
+      "tienDe": ["ban_dan", "vo_tuyen"],
+      "loi": "Máy làm tính triệu phép một giây, không biết mỏi.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7, "kho": 2 } }
+    },
+    {
+      "id": "ve_tinh",
+      "hien": "Vệ tinh",
+      "thoiDai": 6,
+      "gia": 275,
+      "tienDe": ["ten_lua", "vo_tuyen"],
+      "loi": "Trạm bay quanh Trái Đất, chuyển tin nửa vòng địa cầu trong chớp mắt.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 6 } }
+    },
+    {
+      "id": "hat_nhan",
+      "hien": "Năng lượng hạt nhân",
+      "thoiDai": 6,
+      "gia": 285,
+      "tienDe": ["dien", "ten_lua"],
+      "loi": "Một nắm quặng cho điện bằng cả núi than.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7, "kho": 2 } }
+    },
+    {
+      "id": "mang_toan_cau",
+      "hien": "Mạng toàn cầu",
+      "thoiDai": 6,
+      "gia": 295,
+      "tienDe": ["may_tinh", "ve_tinh"],
+      "loi": "Mọi máy tính nối với nhau: thư đi khắp thế giới trong một giây.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7 } }
+    },
+    {
+      "id": "nguoi_may",
+      "hien": "Người máy",
+      "thoiDai": 6,
+      "gia": 305,
+      "tienDe": ["may_tinh", "day_chuyen"],
+      "loi": "Cánh tay thép làm ca đêm không cần nghỉ.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 7, "kho": 2 } }
+    },
+    {
+      "id": "hop_hach",
+      "hien": "Hợp hạch",
+      "thoiDai": 6,
+      "gia": 320,
+      "tienDe": ["hat_nhan", "mang_toan_cau"],
+      "loi": "Mặt trời nhỏ trong lồng từ trường: điện gần như vô tận.",
+      "moThe": [],
+      "thuong": { "noiTran": { "nha": 8 } }
     }
   ]
 }
