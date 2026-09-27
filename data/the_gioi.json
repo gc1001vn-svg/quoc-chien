@@ -49,12 +49,13 @@
     "ti_le_xin_hoa": 0.7
   },
 
-  "_van_hoa": "Anh huong van hoa cong don moi gio. Nguoi choi: nha + cong nghe da xong + tinh; dau tu vang thi doi thang ra anh huong. AI: tinh + thoi dai.",
+  "_van_hoa": "Anh huong van hoa cong don moi gio. Nguoi choi: nha + cong nghe da xong + tinh; dau tu vang thi doi thang ra anh huong (nut tren man doi `vang_moi_lan_dau_tu` vang moi lan bam). AI: tinh + thoi dai.",
   "van_hoa": {
     "moi_nha": 0.02,
     "moi_cong_nghe": 0.3,
     "moi_tinh": 0.5,
     "moi_vang_dau_tu": 1.5,
+    "vang_moi_lan_dau_tu": 50,
     "moi_tinh_ai": 0.8,
     "moi_doi_ai": 1.5
   },

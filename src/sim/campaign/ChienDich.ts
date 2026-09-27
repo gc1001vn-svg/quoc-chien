@@ -54,6 +54,8 @@ export class ChienDich {
   /** Khoa `<tinhId>#<oXay>` -> trang thai. O khong co trong bang la o trong. */
   private readonly o = new Map<string, TrangThaiO>();
   private soLuot = 0;
+  /** Tra chu hien tai cua tinh. Mac dinh: chu ghi trong `provinces.json`; co lop the gioi thi doc tu do. */
+  private traChu: (tinhId: string) => string = (id) => this.theoId.get(id)?.nuoc ?? '';
 
   constructor(banDo: BanDoTinh, congTrinh: readonly CongTrinh[]) {
     this.banDo = banDo;
@@ -69,6 +71,22 @@ export class ChienDich {
   /** Khoa nuoc cua nguoi choi; chuoi rong neu `nations.json` khong danh dau nuoc nao. */
   public nuocCuaTa(): string {
     return this.banDo.nuoc.find((n) => n.nguoi_choi)?.id ?? '';
+  }
+
+  /** Noi lop the gioi (Phase 11B): tinh chiem duoc thi xay duoc, mat thi thoi. */
+  public datTraChu(traChu: (tinhId: string) => string): void {
+    this.traChu = traChu;
+  }
+
+  /** Chu hien tai cua tinh; chuoi rong la trung lap. */
+  public chu(tinhId: string): string {
+    return this.traChu(tinhId);
+  }
+
+  /** Mau phe cua chu hien tai; chuoi rong la trung lap. */
+  public mau(tinhId: string): string {
+    const c: string = this.chu(tinhId);
+    return this.banDo.nuoc.find((n) => n.id === c)?.mau ?? '';
   }
 
   /** Ten mot nuoc de hien ra man; chuoi rong la tinh trung lap. */
@@ -98,7 +116,7 @@ export class ChienDich {
   public datLenhXay(tinhId: string, oXay: number, congTrinhId: string): LyDoTuChoi {
     const t: Tinh | undefined = this.theoId.get(tinhId);
     if (t === undefined || oXay < 0 || oXay >= t.soOXay) return 'khong-co-o';
-    if (t.nuoc !== this.nuocCuaTa()) return 'khong-phai-cua-ta';
+    if (this.chu(t.id) !== this.nuocCuaTa()) return 'khong-phai-cua-ta';
 
     const hien: TrangThaiO = this.oCua(tinhId, oXay);
     if (hien.congTrinh !== '' || hien.dangXay !== '') return 'o-da-co-chu';

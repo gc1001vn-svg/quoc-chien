@@ -14,6 +14,7 @@ import { chayCanhBanDo } from './render/MapScene';
 import { chayDoSprite } from './bench/DoSprite';
 import { chayCanhTran } from './render/BattleScene';
 import type { Man } from './render/Man';
+import { dungTheGioi, type TheGioiGame } from './ui/DungTheGioi';
 import './style.css';
 
 const goc: HTMLElement | null = document.getElementById('app');
@@ -49,8 +50,10 @@ async function moHaiMan(boc: HTMLElement): Promise<void> {
 
   // Nap TUAN TU, khong song song: hai `Gl` cung khoi tao mot luc tren cung mot trang thi
   // chiem hai context WebGL cung mot nhip, va may ao chi cho vai context.
-  const manThanhPho: Man = await chayCanhThanhPho(oThanhPho);
-  const manBanDo: Man = await chayCanhBanDo(oBanDo);
+  // Mot the gioi cho ca hai man (Phase 11B): thanh pho day gio, ban do tinh doc chu tinh.
+  const theGioi: TheGioiGame = dungTheGioi();
+  const manThanhPho: Man = await chayCanhThanhPho(oThanhPho, theGioi);
+  const manBanDo: Man = await chayCanhBanDo(oBanDo, theGioi);
 
   const sang = (toi: Man, roi: Man): void => {
     roi.an();

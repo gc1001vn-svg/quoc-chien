@@ -27,6 +27,7 @@ import { docDuLieuMeta, Meta } from '../sim/meta/Meta';
 import { Ghim } from '../ui/Ghim';
 import { baoThieuHinh } from '../ui/BaoThieuHinh';
 import { HangTocDo } from '../ui/TocDo';
+import { noiTheGioi, type TheGioiGame } from '../ui/TheGioiThanhPho';
 import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
@@ -37,6 +38,7 @@ import { DoiMeAtlas } from './DoiMeAtlas';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { doMuc, veLopNen, veLopVat, type Muc, type Ve } from './VeCanh';
 import { noiChamChon } from './ChamChon';
+import { oBanDau } from './ThamSoCanh';
 import type { BanDo, CauHinhBanDo, O } from '../sim/city/BanDo';
 import { ThanhPho } from '../sim/city/City';
 import { DongHo } from '../sim/Clock';
@@ -56,7 +58,7 @@ const SUC_CHUA = 6144;
 const CHO_SOI = 0.38;
 
 /** Mo canh thanh pho trong `goc`. */
-export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
+export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): Promise<Man> {
   const canvas: HTMLCanvasElement = document.createElement('canvas');
   goc.appendChild(canvas);
   const perf: Perf = new Perf(goc);
@@ -144,6 +146,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
   const theUi: TheQuyetDinh = new TheQuyetDinh(goc, nhipKe);
   const bangSuKien: BangSuKien = new BangSuKien(goc, nhatKy);
   const hangTocDo: HangTocDo = new HangTocDo(goc, nhipKe);
+  const tgTP = noiTheGioi(goc, theGioi, thanhPho, meta, van, nhipKe, theUi);
   // Bam mot dong trong bang la bay toi cong trinh do. Khong co duong den thi sau cai coi
   // xay giua gan tram cong trinh la khong bao gio tim ra.
   new BangCongTrinh(goc, thanhPho, bayToi);
@@ -183,6 +186,7 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
         if (o !== undefined) bayToi(o, 'vừa xây');
       });
     }
+    tgTP.capNhat();
     bangSuKien.capNhat();
     hangTocDo.capNhat();
     bangMeta.capNhat();
@@ -247,22 +251,6 @@ export async function chayCanhThanhPho(goc: HTMLElement): Promise<Man> {
       goc.hidden = true;
     },
   };
-}
-
-/**
- * O dat camera luc mo man, lay tu `?o=a,b`. `undefined` thi de camera o giua ban do.
- *
- * Co tham so nay de may ao chup duoc DUNG cho mot toa nha va kiem xem no co that su hien
- * ra khong - truoc do chi doan bang mat tren anh toan canh.
- */
-function oBanDau(): O | undefined {
-  const tho: string | null = new URLSearchParams(window.location.search).get('o');
-  if (tho === null) return undefined;
-  const [a, b] = tho.split(',').map(Number);
-  if (a === undefined || b === undefined || !Number.isFinite(a) || !Number.isFinite(b)) {
-    return undefined;
-  }
-  return { a, b };
 }
 
 /**

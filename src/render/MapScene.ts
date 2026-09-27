@@ -10,10 +10,8 @@
  * va viec cham chon o.
  */
 import tinhTho from '../../data/provinces.json';
-import nuocTho from '../../data/nations.json';
 import nhaTinhTho from '../../data/prov_buildings.json';
 import {
-  dungBanDoTinh,
   type BanDoTinh,
   type CauHinhBanDoTinh,
   type OTinh,
@@ -23,6 +21,8 @@ import { ChienDich, docCongTrinh } from '../sim/campaign/ChienDich';
 import { khoa, type OHex } from '../sim/campaign/Hex';
 import { BangTinh } from '../ui/BangTinh';
 import { NhanTinh } from '../ui/NhanTinh';
+import { ThanhTheGioi } from '../ui/ThanhTheGioi';
+import type { TheGioiGame } from '../ui/DungTheGioi';
 import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
@@ -42,7 +42,7 @@ const NGUONG_CHAM = 10;
 const NGUONG_GIAY = 500;
 
 /** Mo man ban do tinh trong `goc`. Man bat dau o trang thai AN. */
-export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
+export async function chayCanhBanDo(goc: HTMLElement, theGioi: TheGioiGame): Promise<Man> {
   const canvas: HTMLCanvasElement = document.createElement('canvas');
   goc.appendChild(canvas);
   const perf: Perf = new Perf(goc);
@@ -52,8 +52,10 @@ export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
   const atlas: Atlas = new Atlas(bo, await napTrangLenGpu(bo, gl));
   gl.datTrang(atlas.cacTrang());
 
-  const banDo: BanDoTinh = dungBanDoTinh(CAU_HINH, nuocTho);
+  // Ban do dung chung voi lop the gioi: tinh doi chu khi bi chiem thi ve, nhan, bang deu theo.
+  const banDo: BanDoTinh = theGioi.banDo;
   const cd = new ChienDich(banDo, docCongTrinh(nhaTinhTho));
+  cd.datTraChu((id) => theGioi.tg.chu(id));
 
   // Camera cua `Camera.ts` kep tam vao mot HINH THOI tam `(0, W/2)`, ban truc `W` va `W/2`.
   // Ban do hex khong nam san trong hinh thoi do, nen do hop bao that roi DICH ca ban do
@@ -69,8 +71,9 @@ export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
   cam.noiVao(canvas);
 
   let oChon = '';
-  const bang = new BangTinh(goc, cd, () => { oChon = ''; });
+  const bang = new BangTinh(goc, cd, theGioi.tg, () => { oChon = ''; });
   const nhan = new NhanTinh(goc, banDo, cd.nuocCuaTa());
+  const thanhTG = new ThanhTheGioi(goc, theGioi.tg, banDo);
 
   let rongCss = 1;
   let caoCss = 1;
@@ -176,6 +179,8 @@ export async function chayCanhBanDo(goc: HTMLElement): Promise<Man> {
 
     // Nhan ten tinh la the DOM nen dat theo CSS px, khong theo diem anh khung ve.
     const ti: number = cam.cssTrenWorld();
+    nhan.theoChu((id) => cd.mau(id), (id) => cd.chu(id) === cd.nuocCuaTa());
+    thanhTG.capNhat();
     nhan.ve(
       (t: Tinh) => ({
         x: (hexX(t.tam, atlas.oPx()) - ve.camX) * ti + rongCss / 2,

@@ -73,6 +73,8 @@ export interface DuLieuTheGioi {
     readonly moiCongNghe: number;
     readonly moiTinh: number;
     readonly moiVangDauTu: number;
+    /** Nut dau tu tren man: moi lan bam doi bay nhieu vang. */
+    readonly vangMoiLanDauTu: number;
     readonly moiTinhAi: number;
     readonly moiDoiAi: number;
   };
@@ -246,6 +248,7 @@ export function docTheGioi(tho: unknown, thoThang: unknown, loaiDoi: ReadonlySet
       moiCongNghe: so(vh, 'moi_cong_nghe', `${d}.van_hoa`),
       moiTinh: so(vh, 'moi_tinh', `${d}.van_hoa`),
       moiVangDauTu: so(vh, 'moi_vang_dau_tu', `${d}.van_hoa`),
+      vangMoiLanDauTu: so(vh, 'vang_moi_lan_dau_tu', `${d}.van_hoa`),
       moiTinhAi: so(vh, 'moi_tinh_ai', `${d}.van_hoa`),
       moiDoiAi: so(vh, 'moi_doi_ai', `${d}.van_hoa`),
     },

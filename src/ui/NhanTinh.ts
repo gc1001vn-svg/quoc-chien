@@ -49,6 +49,25 @@ export class NhanTinh {
   }
 
   /**
+   * Doi mau nhan theo chu hien tai (Phase 11B: tinh doi chu khi bi chiem, noi loan).
+   * Chi ghi DOM khi mau doi that - goi moi khung duoc.
+   */
+  public theoChu(mau: (tinhId: string) => string, cuaTa: (tinhId: string) => boolean): void {
+    for (const n of this.nhan) {
+      const m: string = MAU[mau(n.tinh.id)] ?? '#cfc6b4';
+      if (n.el.dataset['mau'] !== m) {
+        n.el.style.color = m;
+        n.el.dataset['mau'] = m;
+      }
+      const ta: boolean = cuaTa(n.tinh.id);
+      if ((n.el.dataset['cuaTa'] === 'co') !== ta) {
+        if (ta) n.el.dataset['cuaTa'] = 'co';
+        else delete n.el.dataset['cuaTa'];
+      }
+    }
+  }
+
+  /**
    * Dat lai cho cho tung nhan.
    *
    * Khi mot hex hep hon `HEX_HEP_NHAT` CSS px - iPhone cam DUNG o muc mo man roi vao

@@ -7,8 +7,18 @@
  * Dung MOT lan luc mo trang roi chi bat/tat `hidden`: dung lai DOM moi lan hien the thi
  * moi van vai chuc the la vai chuc cum nut mo coi con dinh listener.
  */
-import type { LuaChon, The } from '../sim/decision/Engine.ts';
 import { TOC_DO_MO_MAN, type DongHo, type TocDo } from '../sim/Clock.ts';
+
+/**
+ * Cai the can de hien: loi van + cac lua chon. `The` cua dong co quyet dinh va the bat on
+ * cua lop the gioi (Phase 11B) deu vua khuon nay - mot tam chan cho ca hai.
+ */
+interface LuaChonHien {
+  readonly van: string;
+  readonly loi: string;
+  /** Khoa nut (vd khong du vang) - nut van hien de nguoi choi thay lua chon co ton tai. */
+  readonly khoa?: boolean;
+}
 
 export class TheQuyetDinh {
   private readonly goc: HTMLDivElement;
@@ -42,7 +52,7 @@ export class TheQuyetDinh {
   /**
    * Hien mot the. `xong` duoc goi voi lua chon nguoi choi bam, sau khi sim da chay lai.
    */
-  hienThe(the: The, xong: (lc: LuaChon) => void): void {
+  hienThe<L extends LuaChonHien>(the: { readonly van: string; readonly chon: readonly L[] }, xong: (lc: L) => void): void {
     this.tieuDe.textContent = the.van;
     this.hangNut.replaceChildren();
     for (const lc of the.chon) {
@@ -54,9 +64,10 @@ export class TheQuyetDinh {
     this.goc.hidden = false;
   }
 
-  private dungNut(lc: LuaChon, xong: (lc: LuaChon) => void): HTMLButtonElement {
+  private dungNut<L extends LuaChonHien>(lc: L, xong: (lc: L) => void): HTMLButtonElement {
     const nut: HTMLButtonElement = document.createElement('button');
     nut.type = 'button';
+    nut.disabled = lc.khoa === true;
     const van: HTMLSpanElement = document.createElement('span');
     van.className = 'the-nut-van';
     van.textContent = lc.van;

@@ -43,8 +43,8 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
 
       const tren: string = tenTren(t, o, i, cd, oChon);
       if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren });
-      if (i === 0 && t.mau !== '') {
-        muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${t.mau}` });
+      if (i === 0 && cd.mau(t.id) !== '') {
+        muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${cd.mau(t.id)}` });
       }
     }
   }
@@ -62,9 +62,10 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
  * khong co nha mau trung lap, chi co tuong, cau, gian giao va ruong.
  */
 function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): string {
+  const mau: string = cd.mau(t.id);
   if (i === 0) {
-    if (t.mau === '') return 'ruong';
-    return t.thuDo ? `thanh_${t.mau}` : `nha_${t.mau}`;
+    if (mau === '') return 'ruong';
+    return t.thuDo ? `thanh_${mau}` : `nha_${mau}`;
   }
   if (o.oXay < 0) return '';
 
@@ -72,12 +73,12 @@ function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): st
   if (tt.dangXay !== '') return 'gian_giao';
   if (tt.congTrinh !== '') {
     const c: CongTrinh | undefined = cd.xayDuocGi(t.id).find((x) => x.id === tt.congTrinh);
-    if (c === undefined || t.mau === '') return 'dat_trong';
-    return `${c.sprite}_${t.mau}`;
+    if (c === undefined || mau === '') return 'dat_trong';
+    return `${c.sprite}_${mau}`;
   }
   // O trong: chi ve manh dat o tinh CUA MINH. Ve het 143 o xay cua ca ban do thi ca vung
   // thanh mot mang nau, khong con nhin ra dau la dat minh xay duoc - da chup thu 11/09.
-  if (t.nuoc !== cd.nuocCuaTa()) return '';
+  if (cd.chu(t.id) !== cd.nuocCuaTa()) return '';
   return oChon === `${t.id}#${String(o.oXay)}` ? 'gian_giao' : 'dat_trong';
 }
 

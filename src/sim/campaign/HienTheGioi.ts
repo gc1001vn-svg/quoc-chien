@@ -10,7 +10,7 @@
 import type { BanDoTinh } from './BanDoTinh.ts';
 import { xacSuatThang } from './ChienTranh.ts';
 import type { KetQuaVan, LyDoTanCong, TheGioi } from './TheGioi.ts';
-import type { TrangThaiNG } from './TheGioiData.ts';
+import type { LuaChonBatOn, TrangThaiNG } from './TheGioiData.ts';
 
 export const TEN_TRANG_THAI: Readonly<Record<TrangThaiNG, string>> = {
   chien_tranh: 'Chiến tranh', ngung_ban: 'Ngừng bắn', hoa_binh: 'Hoà bình', lien_minh: 'Liên minh',
@@ -55,6 +55,8 @@ export interface LuaChonHien {
   readonly id: string;
   readonly ten: string;
   readonly vang: number;
+  /** Hau qua viet ra chu, vd "−30 bất ổn · mất 2 đội". */
+  readonly moTa: string;
   readonly nut: Nut;
 }
 
@@ -143,9 +145,21 @@ export function theBatOn(tg: TheGioi): TheBatOnHien {
       id: l.id,
       ten: l.hien,
       vang: l.vang,
+      moTa: moTaLuaChon(l),
       nut: vangTa + l.vang < 0 ? khoa(`Cần ${String(-l.vang)} vàng`) : DUOC,
     })),
   };
+}
+
+/** Chu hau qua cua mot lua chon bat on: chi ghi cai khac 0. */
+function moTaLuaChon(l: LuaChonBatOn): string {
+  const so = (n: number): string => (n > 0 ? `+${String(n)}` : `−${String(-n)}`);
+  const ra: string[] = [`${so(l.batOn)} bất ổn`];
+  if (l.vang !== 0) ra.push(`${so(l.vang)} vàng`);
+  if (l.matDoi > 0) ra.push(`mất ${String(l.matDoi)} đội`);
+  if (l.vanHoa !== 0) ra.push(`${so(l.vanHoa)} văn hoá`);
+  if (l.gioGiamThue > 0) ra.push(`thu thuế ít đi ${String(l.gioGiamThue)} giờ`);
+  return ra.join(' · ');
 }
 
 const LY_DO_TAN_CONG: Readonly<Record<LyDoTanCong, string>> = {

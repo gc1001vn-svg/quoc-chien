@@ -609,3 +609,103 @@ html, body {
     top: calc(env(safe-area-inset-top) + 92px);
   }
 }
+
+/*
+ * Lop the gioi (Phase 11B): dong so nuoc ta o goc tren trai, duoi dong so phien ban; bang
+ * ngoai giao truot len tu day man nhu bang tinh.
+ * Dong so o +76 px: dong phien ban tren man doc xuong hai dong, +30 la de len dong thu hai; man ket che kin ca man.
+ */
+.thanh-tg {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 76px);
+  left: calc(env(safe-area-inset-left) + 10px);
+  right: calc(env(safe-area-inset-right) + 150px);
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--chu);
+  text-shadow: 0 1px 2px #000;
+}
+
+.thanh-tg button,
+.bang-ng button,
+.man-ket button {
+  min-height: 34px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--chu);
+  font-size: 13px;
+}
+
+.bang-ng button:disabled { opacity: 0.45; }
+
+.bang-ng {
+  position: absolute;
+  left: calc(env(safe-area-inset-left) + 8px);
+  right: calc(env(safe-area-inset-right) + 8px);
+  bottom: calc(env(safe-area-inset-bottom) + 8px);
+  z-index: 6;
+  max-height: 62%;
+  overflow-y: auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #55504a;
+  background: rgba(16, 14, 12, 0.94);
+  color: var(--chu);
+}
+
+.bang-ng-dau {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.bang-ng-dau .bang-ng-dong {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  min-height: 28px;
+  padding: 2px 8px;
+}
+
+.bang-ng-hang {
+  padding: 6px 0;
+  border-top: 1px solid #3a3632;
+}
+
+.bang-ng-hang p { margin: 2px 0; font-size: 13px; }
+.bang-ng-so { opacity: 0.72; font-size: 12px; }
+
+.bang-ng-nut {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.bang-ng-dau-tu { margin-top: 8px; width: 100%; }
+
+.man-ket {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  background: rgba(10, 8, 6, 0.9);
+  color: var(--chu);
+  text-align: center;
+}
+
+.man-ket[hidden] { display: none; }
+.man-ket b { font-size: 28px; }
+.man-ket[data-thang='co'] b { color: var(--nhan); }
+.man-ket p { margin: 0; font-size: 15px; }

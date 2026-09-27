@@ -153,6 +153,18 @@ describe('nhip xay cua lop chien dich', () => {
     expect(cd.datLenhXay(trungLap.id, 0, 'lang')).toBe('khong-phai-cua-ta');
   });
 
+  it('noi lop the gioi: tinh chiem duoc thi xay duoc, mat thi thoi, mau theo chu moi', () => {
+    const cd = new ChienDich(banDo, congTrinh);
+    const chiem: Tinh = banDo.tinh.find((t) => t.nuoc === 'luc_khe') as Tinh;
+    const mat: Tinh = cuaTa();
+    cd.datTraChu((id) => (id === chiem.id ? 'hoa_nguyen' : id === mat.id ? 'luc_khe' : (banDo.tinh.find((t) => t.id === id)?.nuoc ?? '')));
+    expect(cd.chu(chiem.id)).toBe('hoa_nguyen');
+    expect(cd.mau(chiem.id)).toBe(mat.mau);
+    expect(cd.datLenhXay(chiem.id, 0, 'lang')).toBe('');
+    expect(cd.datLenhXay(mat.id, 0, 'lang')).toBe('khong-phai-cua-ta');
+    expect(cd.mau(banDo.tinh.find((t) => t.nuoc === '')?.id ?? '')).toBe('');
+  });
+
   it('o xay ngoai khoang 0..soOXay-1 bi tu choi', () => {
     const cd = new ChienDich(banDo, congTrinh);
     const t: Tinh = cuaTa();

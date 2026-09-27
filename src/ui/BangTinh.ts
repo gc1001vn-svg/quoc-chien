@@ -10,6 +10,8 @@
  */
 import type { Tinh } from '../sim/campaign/BanDoTinh.ts';
 import type { ChienDich, CongTrinh, LyDoTuChoi } from '../sim/campaign/ChienDich.ts';
+import { tanCongTinh } from '../sim/campaign/HienTheGioi.ts';
+import type { TheGioi } from '../sim/campaign/TheGioi.ts';
 
 /** Cau chu giai thich vi sao khong xay duoc. */
 const LOI: Readonly<Record<string, string>> = {
@@ -24,9 +26,11 @@ export class BangTinh {
   private readonly cd: ChienDich;
   /** Goi lai sau khi dat duoc mot lenh xay, de man ban do ve lai ngay. */
   private readonly sauKhiXay: () => void;
+  private readonly tg: TheGioi;
 
-  constructor(chaMe: HTMLElement, cd: ChienDich, sauKhiXay: () => void) {
+  constructor(chaMe: HTMLElement, cd: ChienDich, tg: TheGioi, sauKhiXay: () => void) {
     this.cd = cd;
+    this.tg = tg;
     this.sauKhiXay = sauKhiXay;
     this.goc = document.createElement('div');
     this.goc.className = 'bang-tinh';
@@ -49,6 +53,7 @@ export class BangTinh {
     this.goc.replaceChildren();
     this.goc.hidden = false;
     this.goc.appendChild(this.dauBang(t));
+    if (this.cd.chu(t.id) !== this.cd.nuocCuaTa()) this.goc.appendChild(this.nutTanCong(t));
 
     const tt = oXay >= 0 ? this.cd.oCua(t.id, oXay) : undefined;
     if (tt !== undefined && tt.dangXay !== '') {
@@ -76,7 +81,7 @@ export class BangTinh {
     d.className = 'bang-tinh-dau';
     d.innerHTML =
       `<b>${t.hien}${t.thuDo ? ' ★' : ''}</b>` +
-      `<span>${this.cd.tenNuoc(t.nuoc)} · ${t.hienDiaHinh} · ${String(t.soOXay)} ô xây</span>`;
+      `<span>${this.cd.tenNuoc(this.cd.chu(t.id))} · ${t.hienDiaHinh} · ${String(t.soOXay)} ô xây</span>`;
     const x: HTMLButtonElement = document.createElement('button');
     x.type = 'button';
     x.className = 'bang-tinh-dong';
@@ -86,10 +91,35 @@ export class BangTinh {
     return d;
   }
 
+  /** Nut tan cong tinh khong phai cua ta (Phase 11B). Khoa thi ghi ly do ngay tren nut. */
+  private nutTanCong(t: Tinh): HTMLButtonElement {
+    const tc = tanCongTinh(this.tg, t.id);
+    const nut: HTMLButtonElement = document.createElement('button');
+    nut.type = 'button';
+    nut.className = 'bang-tinh-nut';
+    nut.disabled = !tc.nut.duoc;
+    nut.innerHTML = tc.nut.duoc
+      ? `<b>⚔ Tấn công</b><span>dự đoán thắng ~${String(Math.round(tc.xacSuat * 100))}%</span>`
+      : `<b>⚔ Tấn công</b><span>${tc.nut.lyDo}</span>`;
+    nut.addEventListener('click', () => { this.tanCong(t); });
+    return nut;
+  }
+
+  private tanCong(t: Tinh): void {
+    const ta = this.tg.ta;
+    const truoc: number = this.tg.nuoc(ta).quan.length;
+    if (this.tg.tanCong(ta, t.id) !== '') return;
+    const mat: number = truoc - this.tg.nuoc(ta).quan.length;
+    const chiem: boolean = this.tg.chu(t.id) === ta;
+    this.mo(t, -1);
+    this.goc.appendChild(dong(`${chiem ? `Chiếm được ${t.hien}!` : 'Đánh thua, phải rút.'} Ta mất ${String(mat)} đội.`));
+    this.sauKhiXay();
+  }
+
   /** Danh sach cong trinh xay duoc tren o nay, moi cai mot nut. */
   private chonCongTrinh(t: Tinh, oXay: number): void {
     const chon: readonly CongTrinh[] = this.cd.xayDuocGi(t.id);
-    if (t.nuoc !== this.cd.nuocCuaTa()) {
+    if (this.cd.chu(t.id) !== this.cd.nuocCuaTa()) {
       this.goc.appendChild(dong(LOI['khong-phai-cua-ta'] ?? ''));
       return;
     }
