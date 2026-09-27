@@ -3,11 +3,16 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 27/09/2026 (lần 18 — **Phase 12A xong phần máy: đường lên đời 6 + mẻ tương lai, chờ anh xem trên iPhone**).
+Cập nhật: 27/09/2026 (lần 19 — **Phase 12B xong phần máy: 6 nước + mẻ cận đại, chờ anh xem trên iPhone**).
 
 ## 1. Đang ở đâu
 
-**Phase 12A xong phần máy 27/09** — đời 6 "Tương lai" tới được bằng cách chơi (sim: giờ 249), có
+**Phase 12B xong phần máy 27/09** — **6 nước** (thêm Tử Vân tím, Đan Sơn cam) trên bản đồ **36 tỉnh**;
+đời 3–4 đổi mặt thành phố sang mẻ `can_dai` (nhà phố gạch Modular Buildings + nhà máy City Kit
+Industrial nhuộm gạch). Mốc thắng văn hoá hạ 1,5 → 0,9 cho khớp 6 nước. Chi tiết:
+`docs/NHAT_KY/PHASE_12B.md`. **Chờ anh xem trên iPhone** (mục 3).
+
+**Phase 12A xong 27/09, anh "ok"** — đời 6 "Tương lai" tới được bằng cách chơi (sim: giờ 249), có
 8 công nghệ riêng, đổi mặt thành phố sang mẻ `tuong_lai` (Kenney Space Kit). Thắng khoa học về đời 6.
 Chi tiết: `docs/NHAT_KY/PHASE_12A.md`. **Chờ anh xem mẻ tương lai trên iPhone** (mục 3).
 
@@ -18,7 +23,17 @@ Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: Phase 12B** (mục 5).
+**Việc phiên sau: Phase 12C** (mục 5).
+
+### Phiên 27/09 (lần 19) đã đổi gì — Phase 12B
+
+- Mới: `tools/me/can_dai.json` · `public/atlas/can_dai_*` · `tools/lib/xep.d.mts` · `tests/Xep.test.ts` ·
+  `docs/NHAT_KY/PHASE_12B.md` · kế hoạch `docs/ke-hoach/2026-09-27-phase-12b-6-nuoc-can-dai.md`. Sửa:
+  `data/nations.json` · `data/provinces.json` · `data/victory.json` · `data/balance.json` (đời 3–4 `me`) ·
+  `tools/me/hex_1.json` + atlas `hex_1_*` · `tools/lib/xep.mjs` · `tools/lib/obj.mjs` (`mau_cot` theo hàng) ·
+  `tools/nuong_sprite.mjs` · `src/ui/NhanTinh.ts` (màu chữ tím/cam) · `package.json` (`tai:asset` +
+  `modular-buildings`) · `ASSET_CREDITS.md` (anh cho sửa) · ba file test.
+- `npm run do` **17/17** · **484 test**. Bản duyệt đăng đè, mở thẳng `?me=can_dai`, dòng chữ nhỏ ghi **27/09 23:09**.
 
 ### Phiên 27/09 (lần 18) đã đổi gì — Phase 12A
 
@@ -576,6 +591,13 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### ⏳ Việc 27/09 (lần 19) — xem 6 nước + mẻ cận đại trên iPhone
+
+1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
+2. Dòng chữ nhỏ trên cùng phải ghi **27/09 23:09**. Thành phố hiện nhà gạch, nhà máy ống khói.
+3. Bấm **🗺 Bản đồ tỉnh**: phải thấy 6 màu cờ, thêm **tím** (Tử Vân, giữa trên) và **cam** (Đan Sơn, giữa dưới).
+4. Nhắn: **fps** ở thành phố và ở bản đồ · nhà nào to/nhỏ quá, lạc tông · tím/cam có dễ phân biệt không.
+
 ### ✅ Việc 27/09 (lần 18) — xem mẻ tương lai trên iPhone: anh "ok" 27/09 (chưa báo fps)
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
@@ -954,6 +976,11 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 27/09 (Phase 12B):** `sim:van` 6 nước: khoa học **2/5** (trước 3/5), ngoại giao **4/5** — hạt 3
+  mất thủ đô giờ 14 vì Tử Vân giáp thẳng đất ta (bản đồ mới không còn tỉnh đệm hàng trên) · hai nước mới
+  chỉ có đặc tính để HIỆN, chưa ăn vào số · `hex_nuoc` trong mẻ `hex_1` không ai dùng (280×202, báo — chưa
+  xoá) · mẻ `can_dai` giữ cối xay, ruộng, trại, người của trung cổ.
+
 - **MỚI 27/09 (Phase 12A):** thắng khoa học **3/5** (trước 5/5) — đời 6 kéo dài ván tới giờ 265, AI kịp
   chiếm thủ đô ở 2 hạt giống · đời 6 chưa có lính, thẻ chính sách, người đi đường riêng · mẻ `tuong_lai`
   giữ cối xay (tuabin gió), đường, cây của mẻ hiện đại · chú thích `DoiMeAtlas.ts` còn ghi "đời 4 trở
@@ -1116,12 +1143,12 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 12B
+## 5. Phiên sau — Phase 12C
 
-1. Bước E: 12A anh "ok" 27/09 — mở Phase 12B luôn, không hỏi thêm.
-2. **Phase 12B** — anh chốt 27/09: mẻ **cổ đại** (đời 1) + mẻ **cận đại** (đời 3–4) + **lên 6 nước**
-   (nhuộm thêm 2 màu cho thành/nhà/cờ KayKit, chia lại bản đồ tỉnh). Cổ đại: dò 27/09 chỉ thấy Icosa
-   (Temple, pyramid, greekbuilding — CC-BY, cần màn ghi công) → dò tiếp trước khi chọn.
+1. Bước E: chờ anh xem 12B trên iPhone (mục 3). Anh "ok" rồi mới mở 12C.
+2. **Phase 12C** — mẻ **cổ đại** (đời 1). Dò 27/09: kho-game không có bộ CC0 cổ đại; Poly Pizza (6 đền
+   Quaternius CC0) vẫn `403` Cloudflare. Anh chốt 27/09: không có thì chọn **Icosa CC-BY** (cần màn ghi công
+   trong game) hoặc **Kenney gần giống** (Fantasy Town / Retro Fantasy Kit, CC0) — nướng bảng so hai bên rồi hỏi anh.
 
 ### Nhắc trước khi nướng thêm mẻ
 
