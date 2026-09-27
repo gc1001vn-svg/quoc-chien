@@ -7,14 +7,14 @@ Cập nhật: 27/09/2026 (lần 17 — **Phase 11B xong phần máy: thế giớ
 
 ## 1. Đang ở đâu
 
-**Phase 11B XONG PHẦN MÁY 27/09, chờ anh chơi thật.** Game ở Phase 11B/13 — **mốc "trọn một vòng"**:
+**Phase 11B XONG 27/09, anh chơi trên iPhone: 59 fps mọi màn (kể cả 500×).** Game ở Phase 11B/13 — **mốc "trọn một vòng"**:
 thành phố chạy thì thế giới chạy theo giờ; bảng ngoại giao, tấn công tỉnh, thẻ bất ổn, màn
 thắng/thua đều bấm được. Nút tốc độ thêm 200× và 500× (500× ≈ 7 giây một giờ game).
 Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: chờ anh chơi (mục 3) rồi sửa theo báo; xong thì Phase 12** (mục 5).
+**Việc phiên sau: Phase 12** (mục 5).
 
 ### Phiên 27/09 (lần 17) đã đổi gì — Phase 11B
 
@@ -560,7 +560,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 27/09 (lần 17) — chơi thử một ván trên iPhone
+### ✅ Việc 27/09 (lần 17) — chơi thử một ván trên iPhone: XONG, anh báo 27/09 "tất cả đều 59 fps"
+
+Anh chưa báo thắng/thua kiểu gì — hỏi lại khi cân thống trị ở phase sau.
+
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
 2. Dòng chữ nhỏ trên cùng phải ghi **27/09 15:01**.
@@ -1088,8 +1091,8 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 ## 5. Phiên sau — sửa theo báo của anh, rồi Phase 12
 
-1. Đọc báo của anh (mục 3). Lỗi thì theo skill `diagnosing-bugs`; cân thống trị lại nếu anh thấy khó.
-2. Anh "ok" thì **Phase 12** — `docs/KE_HOACH.md` mục 2: nướng nốt mẻ cổ đại / cận đại / tương lai +
+1. Bước E: 11B anh xác nhận 27/09 (59 fps). Hỏi anh thắng/thua kiểu gì trước khi cân thống trị.
+2. **Phase 12** — `docs/KE_HOACH.md` mục 2: nướng nốt mẻ cổ đại / cận đại / tương lai +
    thêm nước; kèm đường lên đời 6 và đổi `victory.json > khoa_hoc.doi` từ 5 (tạm, chốt 26/09) về 6.
 
 ### Nhắc trước khi nướng thêm mẻ

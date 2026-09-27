@@ -17,4 +17,4 @@
   không vào `NhatKySuKien` (bảng đó chỉ ở màn thành phố).
 - **Bẫy:** 9 nút tốc độ rộng 415 px > 393 px, nút dừng lọt ngoài mép trái; xuống dòng thì đè hàng nút
   trái ở +56 px → thu nhỏ nút trên màn hẹp. `pkill -f <chuỗi>` giết luôn lệnh bash chứa chuỗi đó.
-- **Chờ anh:** chơi thật qua bản duyệt (mục 3 `TIEN_DO.md`).
+- **Anh xác nhận 27/09:** chơi qua bản duyệt, "tất cả đều 59 fps".
