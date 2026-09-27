@@ -30,6 +30,11 @@ sang cả dự án.
 | `tuong_lai_2x_1.png` | Trang atlas **trống** 1×1 trong suốt, đệm cho đủ số trang bằng mẻ trung cổ — không chứa hình của ai | Dự án | MIT | 27/09/2026 |
 | `tuong_lai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 27/09/2026 |
 | `tuong_lai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 27/09/2026 |
+| `can_dai_1x_0.png` | Kenney Modular Buildings (nhà phố gạch) + Kenney City Kit Industrial (nhà máy, lò, mỏ, tháp nước) + khung mẻ `trung_co_2` (Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters · KayKit Medieval Builder Pack · LowPoly Animated Animals · hoạ tiết Poly Haven), <https://kenney.nl> · <https://quaternius.com> · <https://kaylousberg.itch.io> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Kay Lousberg · Poly Haven | CC0 1.0 | 27/09/2026 |
+| `can_dai_2x_0.png` | Kenney Modular Buildings (nhà phố gạch) + Kenney City Kit Industrial (nhà máy, lò, mỏ, tháp nước) + khung mẻ `trung_co_2` (Quaternius Medieval Village + Stylized Nature + Fantasy Props MegaKit + Modular Character Outfits Fantasy + Universal Base Characters · KayKit Medieval Builder Pack · LowPoly Animated Animals · hoạ tiết Poly Haven), <https://kenney.nl> · <https://quaternius.com> · <https://kaylousberg.itch.io> · <https://polyhaven.com> | Kenney (Kenney Vleugels) · Quaternius (Tomás Laulhé) · Kay Lousberg · Poly Haven | CC0 1.0 | 27/09/2026 |
+| `can_dai_2x_1.png` | Trang atlas **trống** 1×1 trong suốt, đệm cho đủ số trang bằng mẻ trung cổ — không chứa hình của ai | Dự án | MIT | 27/09/2026 |
+| `can_dai_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 27/09/2026 |
+| `can_dai_2x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 27/09/2026 |
 | `linh_co_1x_0.png` | Quaternius Modular Character Outfits – Fantasy (thân lính) + Universal Base Characters (đầu) + Universal Animation Library (đi, đánh, trúng đòn, chết, ngồi ngựa) + Medieval Weapons (giáo, kiếm, khiên, cung, mũi tên) + Animals (ngựa) — mẻ lính thời cổ, Phase 10A, <https://quaternius.com> | Quaternius (Tomás Laulhé) | CC0 1.0 | 25/09/2026, đổi từ KayKit cùng ngày |
 | `linh_co_2x_0.png` | Quaternius Modular Character Outfits – Fantasy (thân lính) + Universal Base Characters (đầu) + Universal Animation Library (đi, đánh, trúng đòn, chết, ngồi ngựa) + Medieval Weapons (giáo, kiếm, khiên, cung, mũi tên) + Animals (ngựa) — mẻ lính thời cổ, Phase 10A, <https://quaternius.com> | Quaternius (Tomás Laulhé) | CC0 1.0 | 25/09/2026, đổi từ KayKit cùng ngày |
 | `linh_co_1x.json` | Toạ độ do `tools/nuong_sprite.mjs` sinh ra | Dự án | MIT | 25/09/2026 |
@@ -66,6 +71,7 @@ Gói nguồn đang dùng, **tất cả CC0 1.0**, license đọc thẳng trong `
 | **City Kit (Roads)** — thùng rác, rào công trường, đèn công trường (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs city-kit-roads` |
 | **Mini Characters** — 6 nam + 6 nữ thời hiện đại, khung xương 7 khớp (mẻ `hien_dai`, thêm 18/09) | Kenney | `node tools/tai_asset.mjs mini-characters` |
 | **Space Kit** — hangar, trạm, máy phát, chảo vệ tinh, ống khói, đá, xe, thùng (mẻ `tuong_lai`, thêm 27/09) | Kenney | `node tools/tai_asset.mjs space-kit` |
+| **Modular Buildings** — 7 nhà mẫu (nhà phố, tháp phố) cho nhà ở và xưởng nhỏ (mẻ `can_dai`, thêm 27/09) | Kenney | `node tools/tai_asset.mjs modular-buildings` |
 
 **Từ 18/09/2026 game chạy HAI mẻ:** `trung_co_2` cho đời 1–4 và `hien_dai` cho đời 5–6
 (`data/balance.json > thoiDai`). Lên đời là `CityScene` đổi cả bộ atlas và nhả bộ cũ bằng
