@@ -18,14 +18,24 @@ import { MA_DINH, SO_TRANG_TOI_DA, maManh, tenUniformTrang } from './Shader';
 const FLOAT_MOI_DINH = 5;
 /** Sau dinh moi sprite: hai tam giac. */
 const DINH_MOI_SPRITE = 6;
+/** Moi chuong trinh shader ghim thuoc tinh vao cung vi tri - doi chuong trinh khong noi lai buffer. */
+const VI_TRI_THUOC_TINH = { a_pos: 0, a_uv: 1, a_trang: 2 } as const;
 
 export class Gl {
   private readonly gl: WebGLRenderingContext;
   private readonly buffer: WebGLBuffer;
   private readonly dinh: Float32Array;
-  private readonly viTriRes: WebGLUniformLocation;
   private readonly sucChua: number;
   private readonly soTrang: number;
+  /**
+   * Mot chuong trinh shader cho moi so trang da gap. Binh thuong chi co mot; luc doi me
+   * dan (Phase 12D) them mot chuong trinh gap doi so trang, giu hai bo atlas vai giay.
+   * Duong ve thuong khong phai tra them nhanh `if` nao cho trang khong dung.
+   */
+  private readonly chuongTrinh = new Map<number, { ct: WebGLProgram; res: WebGLUniformLocation }>();
+  private dangDung: number;
+  private resRong = 1;
+  private resCao = 1;
 
   private tiLeThat = 1;
   private soSprite = 0;
@@ -53,18 +63,8 @@ export class Gl {
     this.soTrang = Math.min(Math.max(Math.trunc(soTrang), 1), SO_TRANG_TOI_DA);
     this.dinh = new Float32Array(sucChua * DINH_MOI_SPRITE * FLOAT_MOI_DINH);
 
-    const chuongTrinh: WebGLProgram = this.dungChuongTrinh();
-    this.gl.useProgram(chuongTrinh);
-    const res: WebGLUniformLocation | null = this.gl.getUniformLocation(chuongTrinh, 'u_res');
-    if (res === null) throw new Error('Shader thieu u_res');
-    this.viTriRes = res;
-    // Trang thu i luon doc tu don vi texture thu i. Gan mot lan, khong doi nua.
-    for (let i = 0; i < this.soTrang; i += 1) {
-      const noi: WebGLUniformLocation | null =
-        this.gl.getUniformLocation(chuongTrinh, tenUniformTrang(i));
-      if (noi === null) throw new Error(`Shader thieu ${tenUniformTrang(i)}`);
-      this.gl.uniform1i(noi, i);
-    }
+    this.dangDung = this.soTrang;
+    this.gl.useProgram(this.layChuongTrinh(this.soTrang).ct);
 
     const buf: WebGLBuffer | null = this.gl.createBuffer();
     if (buf === null) throw new Error('Khong xin duoc buffer dinh');
@@ -72,9 +72,11 @@ export class Gl {
 
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.buffer);
     this.gl.bufferData(this.gl.ARRAY_BUFFER, this.dinh.byteLength, this.gl.DYNAMIC_DRAW);
-    this.noiThuocTinh(chuongTrinh, 'a_pos', 2, 0);
-    this.noiThuocTinh(chuongTrinh, 'a_uv', 2, 8);
-    this.noiThuocTinh(chuongTrinh, 'a_trang', 1, 16);
+    // Vi tri thuoc tinh ghim co dinh luc noi shader (`dungChuongTrinh`), nen doi chuong
+    // trinh khong phai noi lai buffer.
+    this.noiThuocTinh(VI_TRI_THUOC_TINH.a_pos, 2, 0);
+    this.noiThuocTinh(VI_TRI_THUOC_TINH.a_uv, 2, 8);
+    this.noiThuocTinh(VI_TRI_THUOC_TINH.a_trang, 1, 16);
 
     this.gl.enable(this.gl.BLEND);
     this.gl.blendFunc(this.gl.ONE, this.gl.ONE_MINUS_SRC_ALPHA);
@@ -101,7 +103,9 @@ export class Gl {
     canvas.style.width = `${String(cssRong)}px`;
     canvas.style.height = `${String(cssCao)}px`;
     this.gl.viewport(0, 0, canvas.width, canvas.height);
-    this.gl.uniform2f(this.viTriRes, canvas.width, canvas.height);
+    this.resRong = canvas.width;
+    this.resCao = canvas.height;
+    this.gl.uniform2f(this.layChuongTrinh(this.dangDung).res, canvas.width, canvas.height);
   }
 
   /**
@@ -137,15 +141,22 @@ export class Gl {
    * Goi mot lan sau khi nap atlas, khong goi moi khung hinh. Doi bo trang la xa lo dang
    * gom - nen dung goi giua chung mot lop ve.
    *
+   * Nhan ca bo dai hon luc dung (toi {@link SO_TRANG_TOI_DA}): doi me dan giu hai bo atlas
+   * noi duoi nhau, trang cua bo moi danh so tiep sau bo cu.
+   *
    * @param trang Cac trang theo dung thu tu `trang` ghi trong file JSON cua atlas.
    */
   public datTrang(trang: readonly WebGLTexture[]): void {
-    if (trang.length !== this.soTrang) {
-      throw new Error(
-        `Bo ve dung cho ${String(this.soTrang)} trang, nhan duoc ${String(trang.length)}`,
-      );
+    if (trang.length < 1 || trang.length > SO_TRANG_TOI_DA) {
+      throw new Error(`Bo ve nhan 1..${String(SO_TRANG_TOI_DA)} trang, nhan duoc ${String(trang.length)}`);
     }
     this.xaLo();
+    if (trang.length !== this.dangDung) {
+      const ct = this.layChuongTrinh(trang.length);
+      this.gl.useProgram(ct.ct);
+      this.gl.uniform2f(ct.res, this.resRong, this.resCao);
+      this.dangDung = trang.length;
+    }
     for (let i = 0; i < trang.length; i += 1) {
       const tex: WebGLTexture | undefined = trang[i];
       if (tex === undefined) throw new Error(`Thieu trang atlas thu ${String(i)}`);
@@ -217,21 +228,42 @@ export class Gl {
     this.soSprite = 0;
   }
 
+  /** Chuong trinh shader cho `soTrang` trang - dung lan dau thi dich va gan sampler. */
+  private layChuongTrinh(soTrang: number): { ct: WebGLProgram; res: WebGLUniformLocation } {
+    const co = this.chuongTrinh.get(soTrang);
+    if (co !== undefined) return co;
+    const ct: WebGLProgram = this.dungChuongTrinh(soTrang);
+    const res: WebGLUniformLocation | null = this.gl.getUniformLocation(ct, 'u_res');
+    if (res === null) throw new Error('Shader thieu u_res');
+    this.gl.useProgram(ct);
+    // Trang thu i luon doc tu don vi texture thu i. Gan mot lan, khong doi nua.
+    for (let i = 0; i < soTrang; i += 1) {
+      const noi: WebGLUniformLocation | null = this.gl.getUniformLocation(ct, tenUniformTrang(i));
+      if (noi === null) throw new Error(`Shader thieu ${tenUniformTrang(i)}`);
+      this.gl.uniform1i(noi, i);
+    }
+    const moi = { ct, res };
+    this.chuongTrinh.set(soTrang, moi);
+    // Tra lai chuong trinh dang dung: ham nay chi dung san, khong doi cai dang ve.
+    const dang = this.chuongTrinh.get(this.dangDung);
+    if (dang !== undefined) this.gl.useProgram(dang.ct);
+    return moi;
+  }
+
   /** Noi mot thuoc tinh dinh vao buffer dang gan. `lech` tinh bang byte. */
-  private noiThuocTinh(ct: WebGLProgram, ten: string, soFloat: number, lech: number): void {
-    const noi: number = this.gl.getAttribLocation(ct, ten);
-    if (noi < 0) throw new Error(`Shader thieu thuoc tinh ${ten}`);
+  private noiThuocTinh(noi: number, soFloat: number, lech: number): void {
     this.gl.enableVertexAttribArray(noi);
     this.gl.vertexAttribPointer(
       noi, soFloat, this.gl.FLOAT, false, FLOAT_MOI_DINH * 4, lech,
     );
   }
 
-  private dungChuongTrinh(): WebGLProgram {
+  private dungChuongTrinh(soTrang: number): WebGLProgram {
     const ct: WebGLProgram | null = this.gl.createProgram();
     if (ct === null) throw new Error('Khong xin duoc chuong trinh shader');
     this.gl.attachShader(ct, this.dichShader(this.gl.VERTEX_SHADER, MA_DINH));
-    this.gl.attachShader(ct, this.dichShader(this.gl.FRAGMENT_SHADER, maManh(this.soTrang)));
+    this.gl.attachShader(ct, this.dichShader(this.gl.FRAGMENT_SHADER, maManh(soTrang)));
+    for (const [ten, noi] of Object.entries(VI_TRI_THUOC_TINH)) this.gl.bindAttribLocation(ct, noi, ten);
     this.gl.linkProgram(ct);
     if (this.gl.getProgramParameter(ct, this.gl.LINK_STATUS) !== true) {
       throw new Error(`Noi shader hong: ${this.gl.getProgramInfoLog(ct) ?? ''}`);

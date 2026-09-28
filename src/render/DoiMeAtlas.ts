@@ -5,11 +5,22 @@
  * `data/balance.json > thoiDai`; `CityScene` goi {@link DoiMeAtlas.theoDoi} moi khung voi
  * ten me cua doi hien tai, o day lo phan nap va nha.
  *
- * Nha atlas cu bang `gl.deleteTexture` NGAY khi bo moi len GPU, dung TECH_SPEC muc 2:
- * khong giu lai "phong khi can". Giu ca hai la 33,6 MB bo nho GPU khong ai dung.
+ * Nha atlas cu bang `gl.deleteTexture` NGAY khi lan song doi me chay xong (Phase 12D, vai
+ * giay), dung TECH_SPEC muc 2: khong giu lai "phong khi can". Trong luc song chay thi hai
+ * bo cung nam tren GPU (2 + 2 = tran 4 trang), vi o ngoai lan song van ve bo cu.
  */
 import { Atlas, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
 import type { Gl } from './Gl';
+import { SO_TRANG_TOI_DA } from './Shader';
+import { oTaiDiem } from './IsoMath';
+import type { Song } from './VeCanh';
+
+/** `data/thanh_pho_demo.json > songLenDoi` - y nghia tung so ghi o `_songLenDoi` ben do. */
+export interface CauHinhSong {
+  readonly giay: number;
+  readonly dayChop: number;
+  readonly sangToiDa: number;
+}
 
 /**
  * Me bi ep tu dia chi: `?me=hien_dai`.
@@ -35,9 +46,18 @@ export class DoiMeAtlas {
   private readonly hong = new Set<string>();
   /** Me ep tu dia chi. Khac `null` thi moi loi goi `theoDoi` deu ve day. */
   private readonly ep: string | null;
+  /**
+   * Bo atlas cu con giu trong luc song doi me. `batDau` la luc song bat dau chay
+   * (`undefined` = cho man len doi tat). `undefined` ca cai la khong co song.
+   */
+  private cu: { atlas: Atlas; batDau: number | undefined } | undefined;
+  private readonly cauHinhSong: CauHinhSong;
 
-  constructor(gl: Gl, co: '1x' | '2x', ten: string, bo: Atlas, xong: (a: Atlas) => void) {
+  constructor(
+    gl: Gl, co: '1x' | '2x', ten: string, bo: Atlas, xong: (a: Atlas) => void, cauHinhSong: CauHinhSong,
+  ) {
     this.gl = gl;
+    this.cauHinhSong = cauHinhSong;
     this.co = co;
     this.ten = ten;
     this.bo = bo;
@@ -66,7 +86,8 @@ export class DoiMeAtlas {
     // Co me ep thi moi loi goi deu ve no. Khong the chi ep mot lan luc mo man: vong ve
     // goi lai moi khung voi me cua doi hien tai, va no se keo nguoc ve me cua doi 1.
     const can: string = this.ep ?? me;
-    if (can === this.ten || this.dangDoi || this.hong.has(can)) return;
+    // Dang song thi doi xong song da - khong ai giu duoc ba bo atlas.
+    if (can === this.ten || this.dangDoi || this.hong.has(can) || this.cu !== undefined) return;
     this.dangDoi = true;
     this.doi(can)
       .catch((e: unknown) => {
@@ -100,9 +121,48 @@ export class DoiMeAtlas {
     const texs: WebGLTexture[] = await napTrangLenGpu(boMoi, this.gl);
     const cu: Atlas = this.bo;
     this.bo = new Atlas(boMoi, texs);
-    cu.nha(this.gl);
-    this.gl.datTrang(this.bo.cacTrang());
+    // Me ep tu dia chi thi doi mot phat: khong phai len doi, khong ai dang xem.
+    if (this.ep === null && cu.soTrang() + this.bo.soTrang() <= SO_TRANG_TOI_DA) {
+      this.cu = { atlas: cu, batDau: undefined };
+      this.gl.datTrang([...cu.cacTrang(), ...this.bo.cacTrang()]);
+    } else {
+      cu.nha(this.gl);
+      this.gl.datTrang(this.bo.cacTrang());
+    }
     this.ten = me;
     this.xong(this.bo);
+  }
+
+  /**
+   * Goi moi khung. Tra lan song cho `VeCanh` khi dang song, `undefined` khi khong.
+   *
+   * @param now Gio that (ms, `requestAnimationFrame`) - song chay theo giay that, khong
+   *   theo gio game: man len doi dung dong ho ve 0.
+   * @param duocChay `false` khi man len doi con phu: song cho, khong ai nhin thay no.
+   * @param camX Tam man, toa do the gioi - song lan tu day ra, nguoi choi thay no bat dau
+   *   ngay cho minh dang nhin.
+   */
+  public song(now: number, duocChay: boolean, camX: number, camY: number, canh: number): Song | undefined {
+    const c = this.cu;
+    if (c === undefined) return undefined;
+    if (c.batDau === undefined && duocChay) c.batDau = now;
+    const tienDo: number = c.batDau === undefined ? 0 : (now - c.batDau) / (this.cauHinhSong.giay * 1000);
+    if (tienDo < 1) {
+      const tam = oTaiDiem(camX, camY, this.bo.oPx());
+      return {
+        cu: c.atlas,
+        tamA: tam.a,
+        tamB: tam.b,
+        // Binh phuong thoi gian: phan dang nhin doi xong trong nua dau, phan con lai cua
+        // ban do (ngoai man) doi not trong nua sau.
+        banKinh: canh * Math.SQRT2 * tienDo * tienDo,
+        dayChop: this.cauHinhSong.dayChop,
+        sangToiDa: this.cauHinhSong.sangToiDa,
+      };
+    }
+    c.atlas.nha(this.gl);
+    this.gl.datTrang(this.bo.cacTrang());
+    this.cu = undefined;
+    return undefined;
   }
 }

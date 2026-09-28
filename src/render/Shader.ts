@@ -64,6 +64,10 @@ ${chon}
 void main() {
   vec4 c = layMau();
   if (c.a < 0.01) discard;
-  gl_FragColor = c;
+  // Phan le cua so trang la do chop sang luc doi me dan (Phase 12D), 0..0,45 - duoi 0,5
+  // nen cac phep so < i.5 o tren van chon dung trang. Cong 0,02 truoc floor: noi suy
+  // tra 0,9999 thay vi 1 thi khong bi doc thanh chop sang gan het.
+  float sang = max(v_trang - floor(v_trang + 0.02), 0.0);
+  gl_FragColor = vec4(c.rgb + c.a * sang * 2.0, c.a);
 }`;
 }

@@ -62,7 +62,7 @@ describe('ai_goi — loc khai bao', () => {
     expect(kq.cho.map((c) => `${c.file}:${String(c.dong)}`)).toEqual([
       'src/sim/city/Buildings.ts:224',
       'src/sim/city/Buildings.ts:241',
-      'src/render/DoiMeAtlas.ts:71',
+      'src/render/DoiMeAtlas.ts:92',
     ]);
   });
 });

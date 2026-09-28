@@ -35,6 +35,59 @@ export interface Ve {
    * phai dung theo, va chay nhanh 3x thi no phai quay nhanh 3x. Luat da ghi o `CityScene`.
    */
   readonly khung: number;
+  /** Dang doi me dan (Phase 12D): o ngoai lan song ve bang bo atlas cu. */
+  readonly song?: Song;
+}
+
+/**
+ * Lan song doi me (Phase 12D): thanh pho doi tu mot tam ra ngoai, moi o chop sang luc
+ * lan song di qua - thay vi doi mot phat ca man.
+ */
+export interface Song {
+  /** Bo atlas cua doi cu, trang danh so tu 0. Bo moi (`Ve.atlas`) danh so tiep sau. */
+  readonly cu: Atlas;
+  readonly tamA: number;
+  readonly tamB: number;
+  /** O cach tam trong ban kinh nay (tinh bang o) da doi sang bo moi. */
+  readonly banKinh: number;
+  /** Be day vanh chop sang sau mep song, tinh bang o. */
+  readonly dayChop: number;
+  /** Do chop sang ngay mep song, 0..0,45 (xem `Shader.ts`). */
+  readonly sangToiDa: number;
+}
+
+/** Bo atlas de ve mot o, so cong vao so trang, va do chop sang. */
+export interface Nguon {
+  readonly atlas: Atlas;
+  readonly lech: number;
+  readonly sang: number;
+}
+
+/**
+ * Chon bo atlas cho o `(a,b)`. Khong co song thi luon la bo dang chay.
+ *
+ * Bo duoc chon thieu sprite `ten` thi lay bo kia - hai me chua chac cung mot bo ten.
+ */
+export function chonNguon(ve: Ve, a: number, b: number, ten: string): Nguon {
+  const s: Song | undefined = ve.song;
+  if (s === undefined) {
+    // Duong thuong chay cho moi sprite moi khung - giu mot doi tuong, khong cap phat.
+    if (nguonThuong?.atlas !== ve.atlas) nguonThuong = { atlas: ve.atlas, lech: 0, sang: 0 };
+    return nguonThuong;
+  }
+  const moi: Nguon = { atlas: ve.atlas, lech: s.cu.soTrang(), sang: 0 };
+  const cu: Nguon = { atlas: s.cu, lech: 0, sang: 0 };
+  const d: number = Math.hypot(a - s.tamA, b - s.tamB);
+  if (d > s.banKinh) return coHinhGoc(s.cu, ten) ? cu : moi;
+  if (!coHinhGoc(ve.atlas, ten)) return cu;
+  const vao: number = s.banKinh - d;
+  return vao >= s.dayChop ? moi : { ...moi, sang: s.sangToiDa * (1 - vao / s.dayChop) };
+}
+
+let nguonThuong: Nguon | undefined;
+
+function coHinhGoc(atlas: Atlas, ten: string): boolean {
+  return atlas.co(ten) || atlas.co(`${ten}_k0`);
 }
 
 /**
@@ -57,10 +110,10 @@ const NHIP_MOI_KHUNG = 2;
  * Moi cho doc hop bao deu goi qua day: ve mot khung ma do hop bao cua khung khac thi cham
  * vao canh quat lai khong trung, va lo soi cat theo hop sai.
  */
-function tenKhung(ve: Ve, ten: string): string {
-  if (!ve.atlas.co(`${ten}_k0`)) return ten;
+function tenKhung(ve: Ve, atlas: Atlas, ten: string): string {
+  if (!atlas.co(`${ten}_k0`)) return ten;
   let so = 1;
-  while (ve.atlas.co(`${ten}_k${String(so)}`)) so += 1;
+  while (atlas.co(`${ten}_k${String(so)}`)) so += 1;
   return `${ten}_k${String(Math.floor(ve.khung / NHIP_MOI_KHUNG) % so)}`;
 }
 
@@ -80,11 +133,13 @@ export interface Muc {
 }
 
 /** Hop bao cua sprite `ten` dat tai o `(a,b)`. `undefined` neu atlas khong co sprite do. */
-function hopSprite(ve: Ve, a: number, b: number, tenGoc: string): Hop | undefined {
-  const ten: string = tenKhung(ve, tenGoc);
-  if (!ve.atlas.co(ten)) return undefined;
-  const s = ve.atlas.o(ten);
-  const oPx: number = ve.atlas.oPx();
+function hopSprite(
+  ve: Ve, a: number, b: number, tenGoc: string, nguon: Nguon = chonNguon(ve, a, b, tenGoc),
+): Hop | undefined {
+  const ten: string = tenKhung(ve, nguon.atlas, tenGoc);
+  if (!nguon.atlas.co(ten)) return undefined;
+  const s = nguon.atlas.o(ten);
+  const oPx: number = nguon.atlas.oPx();
   const x: number = (neoX(a, b, oPx) - s.ox - ve.camX) * ve.tiLe + ve.rongDev / 2;
   const y: number = (neoY(a, b, oPx) - s.oy - ve.camY) * ve.tiLe + ve.caoDev / 2;
   return { x0: x, y0: y, x1: x + s.w * ve.tiLe, y1: y + s.h * ve.tiLe };
@@ -218,11 +273,15 @@ function spriteWalker(w: Walker): string {
  * sanh them gan nhu khong ton gi, ma cat duoc mot nua so sprite.
  */
 function datSprite(ve: Ve, a: number, b: number, tenGoc: string): void {
-  const hop: Hop | undefined = hopSprite(ve, a, b, tenGoc);
+  const nguon: Nguon = chonNguon(ve, a, b, tenGoc);
+  const hop: Hop | undefined = hopSprite(ve, a, b, tenGoc, nguon);
   if (hop === undefined) return;
   if (hop.x1 < 0 || hop.x0 > ve.rongDev || hop.y1 < 0 || hop.y0 > ve.caoDev) return;
-  const s = ve.atlas.o(tenKhung(ve, tenGoc));
-  const [u0, v0, u1, v1] = ve.atlas.uv(s);
-  ve.gl.them(s.trang, hop.x0, hop.y0, hop.x1 - hop.x0, hop.y1 - hop.y0, u0, v0, u1, v1);
+  const s = nguon.atlas.o(tenKhung(ve, nguon.atlas, tenGoc));
+  const [u0, v0, u1, v1] = nguon.atlas.uv(s);
+  ve.gl.them(
+    s.trang + nguon.lech + nguon.sang,
+    hop.x0, hop.y0, hop.x1 - hop.x0, hop.y1 - hop.y0, u0, v0, u1, v1,
+  );
   ve.dem += 1;
 }

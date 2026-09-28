@@ -125,6 +125,8 @@
   "zoomMax": 2.0,
   "zoomDau": 1.0,
   "tranSprite": 5000,
+  "_songLenDoi": "Phase 12D: len doi thi thanh pho doi me dan tu tam man ra ngoai, moi o chop sang luc lan song di qua. `giay` la giay THAT tu luc cham tat man len doi toi luc song phu het ban do; ban kinh tang theo binh phuong thoi gian nen phan dang nhin doi xong trong khoang nua dau. `dayChop` (o) la be day vanh chop sang, `sangToiDa` 0..0,45 la do sang ngay mep song (tren 0,45 la sai trang atlas - xem Shader.ts). Trong luc song chay giu HAI bo atlas (2 + 2 = tran 4 trang cua TECH_SPEC muc 2); may 1 bo da 3-4 trang thi doi mot phat.",
+  "songLenDoi": { "giay": 4, "dayChop": 6, "sangToiDa": 0.2 },
   "_spriteKho": "Sprite danh dau kho hang, dat canh nga tu co kho. Bo trong thi kho vo hinh nhu truoc Phase 5.",
   "spriteKho": "dong_thung",
   "_vanh": "Bo cuc thanh pho, xet theo THU TU nen quan_su phai dung truoc. `tu`/`den` la khoang cach Chebyshev tu tam ban do (tam 47,5 nen `den` cuoi cung la 47). `goc` bat o phai nam gan mot goc ban do. `nen` la o nen trong RUOT vanh - moi khu mot chat rieng, day la 'thematic continuity' cua Kevin Lynch. `vienNen`/`vienVat` la duong vien day mot o chay quanh mep ngoai vanh. Sua bo cuc thanh pho = sua bang nay, khong dung toi code.",

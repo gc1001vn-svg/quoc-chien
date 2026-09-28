@@ -37,7 +37,7 @@ import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { DoiMeAtlas } from './DoiMeAtlas';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
-import { doMuc, veLopNen, veLopVat, type Muc, type Ve } from './VeCanh';
+import { doMuc, veLopNen, veLopVat, type Muc, type Song, type Ve } from './VeCanh';
 import { noiChamChon } from './ChamChon';
 import { oBanDau } from './ThamSoCanh';
 import type { BanDo, CauHinhBanDo, O } from '../sim/city/BanDo';
@@ -45,6 +45,8 @@ import { ThanhPho } from '../sim/city/City';
 import { DongHo } from '../sim/Clock';
 
 const CAU_HINH: CauHinhBanDo = cauHinhTho;
+/** `?song=hien_dai`: chay lan song doi me (Phase 12D) ngay khi mo man, de xem truoc. */
+const meSong: string | null = new URLSearchParams(window.location.search).get('song');
 
 /** Duoi muc thu nho nay thi khong ve nguoi nua. Duong lui khi iPhone rot fps. */
 const ZOOM_HIEN_WALKER = 0;
@@ -107,7 +109,9 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
   const soatThieu = (a: Atlas): void => { baoThieuHinh(goc, a.thieu(tenSpriteCanCo(banDo))); };
   soatThieu(atlas);
   // Len doi la doi ca bo atlas - `DoiMeAtlas` lo phan nap va nha.
-  const boMe: DoiMeAtlas = new DoiMeAtlas(gl, co, CAU_HINH.me, atlas, soatThieu);
+  const boMe: DoiMeAtlas = new DoiMeAtlas(
+    gl, co, CAU_HINH.me, atlas, soatThieu, cauHinhTho.songLenDoi,
+  );
 
   let rongCss = 1;
   let caoCss = 1;
@@ -174,7 +178,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
     // Len doi thi `Meta` doi `thoiDai.doi`, ma moi doi khai mot ten me atlas trong
     // `data/balance.json > thoiDai`. O day chi DOC mot chuoi - `src/sim/` khong biet gi
     // ve atlas hay WebGL (luat 1 cua CLAUDE.md).
-    boMe.theoDoi(meta.thoiDai.doi.me);
+    boMe.theoDoi(meSong ?? meta.thoiDai.doi.me);
     theLenDoi.theoDoi(meta.thoiDai.doi, meta.thoiDai.doiSau);
 
     const the = van.the;
@@ -198,6 +202,10 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
 
     // Doc lai moi khung: len doi thi `boMe` da thay ca bo atlas, giu ban sao la ve bo cu.
     const dangVe: Atlas = boMe.atlas();
+    const khung = cam.khung();
+    const camX: number = (khung.x0 + khung.x1) / 2;
+    const camY: number = (khung.y0 + khung.y1) / 2;
+    const song: Song | undefined = boMe.song(now, !theLenDoi.dangHien, camX, camY, banDo.canh);
     const ve: Ve = {
       gl,
       atlas: dangVe,
@@ -207,10 +215,10 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
       camX: 0, camY: 0, dem: 0,
       // Cong trinh nhieu khung (coi xay) chon khung theo day: dung hinh thi canh dung theo.
       khung: nhipKe.soNhip,
+      ...(song === undefined ? {} : { song }),
     };
-    const khung = cam.khung();
-    ve.camX = (khung.x0 + khung.x1) / 2;
-    ve.camY = (khung.y0 + khung.y1) / 2;
+    ve.camX = camX;
+    ve.camY = camY;
     veCuoi = ve;
     const vung: VungO = vungONhinThay(khung, dangVe.oPx(), banDo.canh, dangVe.bienDo());
     const oGhim: O | undefined = ghim.layMuc();
