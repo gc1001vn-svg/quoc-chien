@@ -19,3 +19,5 @@
 - **Bẫy:** `tests/AiGoi.test.ts` ghim số dòng nơi gọi `doi` — sửa `DoiMeAtlas.ts` là phải sửa số · Icosa lấy bằng
   `api.icosa.gallery` → bản `backblazeb2` + `buffers[].uri` (lệnh ở phiên này, `assets_source/icosa/<id>/`) ·
   chụp màn máy ảo chạy ~30 fps (phần mềm), không phải số iPhone.
+- **Anh xem trên iPhone 28/09: 59 fps**, lúc làn sóng chạy cũng 59 — giữ làn sóng. Cùng phiên: `check:san` vá lỗ lọt
+  `it.skip` gán qua biến (lỗi của chính test `DoiTheoDoi` bản đầu).
