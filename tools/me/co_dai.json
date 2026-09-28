@@ -163,90 +163,13 @@
     }
   },
   "sprite": {
-    "o_co": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
-        "lap": 1,
-        "mau": [
-          0.86,
-          1,
-          0.8
-        ]
-      }
-    ],
-    "o_dat": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
-        "lap": 1,
-        "mau": [
-          1.35,
-          1.35,
-          1.35
-        ]
-      }
-    ],
-    "o_duong": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg",
-        "lap": 1,
-        "mau": [
-          1.35,
-          1.35,
-          1.35
-        ]
-      }
-    ],
-    "o_duong_lat": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/cobblestone_01.jpg",
-        "lap": 1,
-        "mau": [
-          1.25,
-          1.25,
-          1.25
-        ]
-      }
-    ],
-    "o_cat": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/coast_sand_01.jpg",
-        "lap": 1,
-        "mau": [
-          1.3,
-          1.3,
-          1.3
-        ]
-      }
-    ],
-    "o_da": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg",
-        "lap": 1,
-        "mau": [
-          1.35,
-          1.35,
-          1.35
-        ]
-      }
-    ],
-    "o_ruong": [
-      {
-        "phang": 1.05,
-        "texture": "assets_source/hoa_tiet/brown_mud_dry.jpg",
-        "lap": 1,
-        "mau": [
-          1.05,
-          0.92,
-          0.72
-        ]
-      }
-    ],
+    "o_co": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/leafy_grass.jpg", "lap": 1, "mau": [0.98, 1, 0.66]}],
+    "o_dat": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/dirt.jpg", "lap": 1, "mau": [1.3, 1.25, 1.15]}],
+    "o_duong": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/stony_dirt_path.jpg", "lap": 1, "mau": [1.3, 1.3, 1.3]}],
+    "o_duong_lat": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/dry_river_pebbles.jpg", "lap": 1, "mau": [1.4, 1.3, 1.15]}],
+    "o_cat": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/sand_01.jpg", "lap": 1, "mau": [1.3, 1.3, 1.3]}],
+    "o_da": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/aerial_rocks_02.jpg", "lap": 1, "mau": [1.45, 1.32, 1.12]}],
+    "o_ruong": [{"phang": 1.05, "texture": "assets_source/hoa_tiet/dry_mud_field_001.jpg", "lap": 1, "mau": [1.3, 1.2, 1.0]}],
     "cay_soi": [
       {
         "m": "qn:CommonTree_1",
@@ -723,74 +646,10 @@
         ]
       }
     ],
-    "nguoi_nam_1_0": [
-      {
-        "m": "nd:Male_Peasant",
-        "dang": "di",
-        "ti_le": 0.5
-      },
-      {
-        "m": "nb:Superhero_Male_FullBody",
-        "xuong": [
-          "Head",
-          "neck_01"
-        ],
-        "dang": "di",
-        "ti_le": 0.5
-      }
-    ],
-    "nguoi_nam_1_1": [
-      {
-        "m": "nd:Male_Peasant",
-        "dang": "di",
-        "guong": true,
-        "ti_le": 0.5
-      },
-      {
-        "m": "nb:Superhero_Male_FullBody",
-        "xuong": [
-          "Head",
-          "neck_01"
-        ],
-        "dang": "di",
-        "guong": true,
-        "ti_le": 0.5
-      }
-    ],
-    "nguoi_nu_1_0": [
-      {
-        "m": "nd:Female_Peasant",
-        "dang": "di",
-        "ti_le": 0.5
-      },
-      {
-        "m": "nb:Superhero_Female_FullBody",
-        "xuong": [
-          "Head",
-          "neck_01"
-        ],
-        "dang": "di",
-        "ti_le": 0.5
-      }
-    ],
-    "nguoi_nu_1_1": [
-      {
-        "m": "nd:Female_Peasant",
-        "dang": "di",
-        "guong": true,
-        "ti_le": 0.5
-      },
-      {
-        "m": "nb:Superhero_Female_FullBody",
-        "xuong": [
-          "Head",
-          "neck_01"
-        ],
-        "dang": "di",
-        "guong": true,
-        "ti_le": 0.5
-      }
-    ],
+    "nguoi_nam_1_0": [{"m": "nd:Male_Peasant", "dang": "di", "mau_vl": {"MI_Peasant": [1.3, 1.12, 0.8]}, "ti_le": 0.5}, {"m": "nb:Superhero_Male_FullBody", "xuong": ["Head", "neck_01"], "dang": "di", "ti_le": 0.5}],
+    "nguoi_nam_1_1": [{"m": "nd:Male_Peasant", "dang": "di", "guong": true, "mau_vl": {"MI_Peasant": [1.3, 1.12, 0.8]}, "ti_le": 0.5}, {"m": "nb:Superhero_Male_FullBody", "xuong": ["Head", "neck_01"], "dang": "di", "guong": true, "ti_le": 0.5}],
+    "nguoi_nu_1_0": [{"m": "nd:Female_Peasant", "dang": "di", "mau_vl": {"MI_Peasant": [1.3, 1.12, 0.8]}, "ti_le": 0.5}, {"m": "nb:Superhero_Female_FullBody", "xuong": ["Head", "neck_01"], "dang": "di", "ti_le": 0.5}],
+    "nguoi_nu_1_1": [{"m": "nd:Female_Peasant", "dang": "di", "guong": true, "mau_vl": {"MI_Peasant": [1.3, 1.12, 0.8]}, "ti_le": 0.5}, {"m": "nb:Superhero_Female_FullBody", "xuong": ["Head", "neck_01"], "dang": "di", "guong": true, "ti_le": 0.5}],
     "nguoi_nam_0_0": {
       "nhu": "nguoi_nam_1_0",
       "xoay": 90
