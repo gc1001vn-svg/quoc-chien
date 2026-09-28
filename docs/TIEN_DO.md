@@ -977,8 +977,11 @@ quyền hạn và giới hạn máy ảo.
 ## 4. Nợ đang chặn phase kế tiếp
 
 - **MỚI 27/09, anh báo sau khi xem 12B:** lên thời đại **không rõ ràng** — không biết đã lên hay chưa,
-  mô hình các thời đại giống nhau quá. Chưa tra gốc: đời 1–2 vẫn chung mẻ `trung_co_2`, và lúc đổi mẻ
-  chưa có báo hiệu gì trên màn (chưa kiểm).
+  mô hình các thời đại giống nhau quá. **Tra gốc 27/09, hai chỗ:** (1) tin "Bước sang thời đại …" chỉ
+  là một dòng trong ô nhật ký 3 dòng (`src/sim/decision/Van.ts:71`), bị dòng "Thống đốc xây …" đẩy trôi;
+  không thẻ, không hiệu ứng; tên đời chỉ thấy trong `BangMeta`. (2) `balance.json`: đời 1–2 chung
+  `trung_co_2`, đời 3–4 chung `can_dai` — lên đời 2 và đời 4 thành phố y hệt; `can_dai` còn giữ nền,
+  đường, người trung cổ.
 
 - **MỚI 27/09 (Phase 12B):** `sim:van` 6 nước: khoa học **2/5** (trước 3/5), ngoại giao **4/5** — hạt 3
   mất thủ đô giờ 14 vì Tử Vân giáp thẳng đất ta (bản đồ mới không còn tỉnh đệm hàng trên) · hai nước mới
@@ -1149,8 +1152,9 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 ## 5. Phiên sau — Phase 12C
 
-1. Bước E: 12B anh "ok" 27/09 (59 fps). Hỏi anh: nhận xét "lên đời không rõ" (mục 4) làm trong 12C
-   hay tách phase riêng.
+1. Bước E: 12B anh "ok" 27/09 (59 fps). **Hỏi anh chọn** (đã đưa 27/09, chưa trả lời):
+   (a) 12C = thẻ báo lên đời + tên đời trên dòng số liệu **và** mẻ cổ đại · (b) 12C = thẻ báo lên đời
+   trước, mẻ cổ đại và tách đời 4 để sau · (c) 12C chỉ mẻ cổ đại. Gốc vấn đề: mục 4, dòng đầu.
 2. **Phase 12C** — mẻ **cổ đại** (đời 1). Dò 27/09: kho-game không có bộ CC0 cổ đại; Poly Pizza (6 đền
    Quaternius CC0) vẫn `403` Cloudflare. Anh chốt 27/09: không có thì chọn **Icosa CC-BY** (cần màn ghi công
    trong game) hoặc **Kenney gần giống** (Fantasy Town / Retro Fantasy Kit, CC0) — nướng bảng so hai bên rồi hỏi anh.
