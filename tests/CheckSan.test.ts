@@ -44,6 +44,21 @@ describe('check:san — test bi tat', () => {
   it('cho qua ten ham that co chu skip', () => {
     expect(re.test('const y = mang.skip(2);')).toBe(false);
   });
+
+  // 28/09: `const it12e = dk ? it.skip : it;` lot thuoc vi mau cu doi dau `(` ngay sau.
+  it.each([
+    'const it12e = truoc === sau ? it.skip : it;',
+    'const chay = dk ? it : describe.only;',
+    'it.skipIf(dk)("x", () => {});',
+    'const t = test.todo;',
+  ])('bat ca dang gan qua bien / co dieu kien: %s', (dong) => {
+    expect(re.test(dong)).toBe(true);
+  });
+
+  it('cho qua ten co chu skip nhung khong phai it/test/describe', () => {
+    expect(re.test('const n = split.skipped;')).toBe(false);
+    expect(re.test('bo.skip = true;')).toBe(false);
+  });
 });
 
 describe('check:san — ham rong de do', () => {

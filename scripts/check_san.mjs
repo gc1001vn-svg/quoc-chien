@@ -39,9 +39,10 @@ export const MAU = [
   },
   {
     ten: 'test bi tat',
-    // Chi bat dang `it.skip(`, `describe.only(`... Bat `.skip(` tran se dinh ten
-    // ham that cua nguoi khac.
-    re: /\b(it|test|describe|suite|bench)\.(skip|only|todo)\s*\(|\bx(it|describe)\s*\(/,
+    // Chi bat khi dang truoc la `it`/`test`/`describe`... Bat `.skip(` tran se dinh
+    // ten ham that cua nguoi khac. KHONG doi dau `(` ngay sau: 28/09 lot dang gan qua
+    // bien `const t = dk ? it.skip : it;`. `skipIf` cung la tat test co dieu kien.
+    re: /\b(it|test|describe|suite|bench)\.(skip|skipIf|only|todo)\b|\bx(it|describe)\s*\(/,
     vi_sao: 'test tat di la thuoc mat mot phan ma khong ai thay. Sua test cho ' +
       'dung, hoac xoa han va ghi ly do — dung de no nam do gia vo con chay.',
   },
