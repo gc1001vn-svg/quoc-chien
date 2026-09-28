@@ -3,6 +3,9 @@
   "ghi_chu_trang": "Tu 19/09 me nay can HAI trang atlas o co 2x: ba khung coi xay (`coi_xay_k0/k1/k2`) day tong dien tich sprite tu 84,4% len 90,2% mot trang, khong xep vua nua. Moi me phai ra cung so trang nen `hien_dai` dem mot trang rong 1x1 cho bang.",
   "trang_it_nhat": { "2": 2 },
   "kit": {
+    "ia": {"duong":"assets_source/icosa/1YE8U35HXsI","loai":"gltf","gamma":true},
+    "ih": {"duong":"assets_source/icosa/8Unya0rw9tR","loai":"gltf","gamma":true},
+    "iy": {"duong":"assets_source/icosa/6LeCqyw00RK","loai":"gltf","gamma":true},
     "ib": {"duong":"assets_source/icosa/2rqDANUhu7X","loai":"glb","gamma":true},
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
@@ -624,7 +627,7 @@
     },
     "ruong": [{"m":"kk:farm_plot","ti_le":1.35},
       {"m":"kk:farm_wheat","ti_le":1.2},
-      {"m":"ib:model","ti_le":0.445,"x":-0.049,"y":-0.67,"z":-0.221,"mau":[0.95,0.8,0.55]}],
+      {"m":"ib:model","ti_le":0.4449,"x":-0.049,"y":-0.67,"z":-0.221,"mau":[0.95,0.8,0.55]}],
     "vuon_nho": [
       {
         "phang": 1.02,
@@ -1397,90 +1400,18 @@
       {"m":"av:Pig","ti_le":0.075,"x":-0.1,"z":0.02,"ry":25,"mau":[1.15,1.02,0.98]},
       {"m":"av:Pig","ti_le":0.065,"x":0.14,"z":0.22,"ry":-60,"mau":[1.15,1.02,0.98]},
       {"m":"av:Pig","ti_le":0.06,"x":-0.05,"z":0.38,"ry":110,"mau":[1.15,1.02,0.98]}],
-    "trai_ga": [
-      {
-        "phang": 1.02,
-        "texture": "assets_source/hoa_tiet/leafy_grass.jpg",
-        "lap": 1,
-        "mau": [
-          1,
-          0.98,
-          0.6
-        ]
-      },
-      {
-        "m": "qv:Prop_WoodenFence_Single",
-        "ti_le": 0.5,
-        "z": -0.46,
-        "mau": [
-          1.32,
-          1.28,
-          1.22
-        ]
-      },
-      {
-        "m": "qv:Prop_WoodenFence_Single",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.46,
-        "mau": [
-          1.32,
-          1.28,
-          1.22
-        ]
-      },
-      {
-        "m": "qv:Prop_WoodenFence_Single",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": 0.46,
-        "mau": [
-          1.32,
-          1.28,
-          1.22
-        ]
-      },
-      {
-        "m": "qp:Cage_Small",
-        "ti_le": 0.6,
-        "x": 0.1,
-        "z": -0.12,
-        "mau": [
-          1.32,
-          1.28,
-          1.22
-        ]
-      },
-      {
-        "m": "qp:FarmCrate_Empty",
-        "ti_le": 0.7,
-        "x": -0.24,
-        "z": 0.24,
-        "mau": [
-          1.32,
-          1.28,
-          1.22
-        ]
-      },
-      {
-        "m": "khn:building_stage_B",
-        "ti_le": 1.3,
-        "x": 0.26,
-        "z": -0.3
-      },
-      {
-        "m": "qp:Cage_Small",
-        "ti_le": 0.55,
-        "x": -0.3,
-        "z": 0.3
-      },
-      {
-        "m": "qp:FarmCrate_Carrot",
-        "ti_le": 0.6,
-        "x": 0.3,
-        "z": 0.36
-      }
-    ],
+    "trai_ga": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[1,0.98,0.6]},
+      {"m":"qv:Prop_WoodenFence_Single","ti_le":0.5,"z":-0.46,"mau":[1.32,1.28,1.22]},
+      {"m":"qv:Prop_WoodenFence_Single","ti_le":0.5,"ry":90,"x":-0.46,"mau":[1.32,1.28,1.22]},
+      {"m":"qv:Prop_WoodenFence_Single","ti_le":0.5,"ry":90,"x":0.46,"mau":[1.32,1.28,1.22]},
+      {"m":"iy:HayStack","ti_le":0.03278,"x":-0.263,"y":0,"z":-0.217},
+      {"m":"qp:Cage_Small","ti_le":0.6,"x":0.2,"z":-0.25,"mau":[1.32,1.28,1.22]},
+      {"m":"qp:FarmCrate_Empty","ti_le":0.6,"x":-0.3,"z":0.15,"mau":[1.32,1.28,1.22]},
+      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":0.007,"y":0.125,"z":0.112,"ry":30},
+      {"m":"ia:Chicken_01","ti_le":0.001195,"x":0.203,"y":-0.002,"z":0.253,"ry":-40},
+      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.095,"y":0.125,"z":0.337,"ry":160},
+      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":0.337,"y":0.125,"z":0.045,"ry":250},
+      {"m":"ia:Chicken_01","ti_le":0.001195,"x":0.299,"y":-0.002,"z":0.376,"ry":100}],
     "trai_cuu": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[0.86,1,0.78]},
       {"m":"qv:Prop_WoodenFence_Single","ti_le":0.5,"z":-0.46,"mau":[1,1,1.05]},
       {"m":"qv:Prop_WoodenFence_Single","ti_le":0.5,"ry":90,"x":-0.46,"mau":[1,1,1.05]},

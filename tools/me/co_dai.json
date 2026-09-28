@@ -5,6 +5,10 @@
     "2": 2
   },
   "kit": {
+    "ia": {"duong":"assets_source/icosa/1YE8U35HXsI","loai":"gltf","gamma":true},
+    "ih": {"duong":"assets_source/icosa/8Unya0rw9tR","loai":"gltf","gamma":true},
+    "iy": {"duong":"assets_source/icosa/6LeCqyw00RK","loai":"gltf","gamma":true},
+    "ie": {"duong":"assets_source/icosa/bNYS7ETDNCt","loai":"gltf","gamma":true},
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
       "anh": "mtl",
@@ -588,7 +592,7 @@
       {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":-0.15,"z":0.2,"mau":[1.5,1.25,0.6]},
       {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":0.15,"z":0.32,"mau":[1.5,1.25,0.6]},
       {"m":"qp:Vase_4","ti_le":0.55,"x":-0.36,"z":0.34},
-      {"m":"khp:sack","ti_le":2.4,"x":-0.22,"z":0.4}],
+      {"m":"iy:HayStack","ti_le":0.03451,"x":0.235,"y":0,"z":0.303}],
     "vuon_nho": [{"phang":1.02,"texture":"assets_source/hoa_tiet/brown_mud_dry.jpg","lap":1,"mau":[1.1,0.95,0.72]},
       {"m":"qv:Prop_Vine9","ti_le":0.32,"y":0.05,"x":-0.1,"z":-0.3},
       {"m":"qv:Prop_Vine9","ti_le":0.32,"y":0.05,"x":-0.1,"z":0},
@@ -1479,10 +1483,12 @@
       {"m":"khn:fence_stone_straight","ti_le":0.55,"z":-0.46},
       {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":-0.46},
       {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":0.46},
-      {"m":"qp:Cage_Small","ti_le":0.6,"x":0.2,"z":-0.2},
-      {"m":"qp:Cage_Small","ti_le":0.5,"x":-0.25,"z":0.3},
-      {"m":"qp:Pot_1","ti_le":0.7,"x":0.3,"z":0.3},
-      {"m":"khp:sack","ti_le":2.4,"x":-0.3,"z":-0.1}],
+      {"m":"khp:tent","ti_le":1,"x":0.28,"z":-0.3},
+      {"m":"qp:Pot_1","ti_le":0.6,"x":-0.32,"z":-0.3},
+      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.145,"y":0.125,"z":0.063,"ry":20},
+      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":0.088,"y":0.125,"z":0.257,"ry":-60},
+      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.241,"y":0.125,"z":0.289,"ry":140},
+      {"m":"ia:Chicken_01","ti_le":0.001195,"x":0.246,"y":-0.002,"z":0.051,"ry":200}],
     "trai_cuu": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[0.9,1,0.75]},
       {"m":"khn:fence_stone_straight","ti_le":0.55,"z":-0.46},
       {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":-0.46},
@@ -1490,7 +1496,7 @@
       {"m":"khp:tent","ti_le":1.1,"x":0.28,"z":-0.3},
       {"m":"av:Sheep","ti_le":0.11,"x":-0.22,"z":-0.1,"ry":35,"mau":[1.25,1.2,1.02]},
       {"m":"av:Sheep","ti_le":0.1,"x":0.15,"z":0.22,"ry":-55,"mau":[1.25,1.2,1.02]},
-      {"m":"av:Sheep","ti_le":0.1,"x":-0.15,"z":0.3,"ry":150,"mau":[1.25,1.2,1.02]}],
+      {"m":"ie:Mesh_Goat","ti_le":0.001481,"x":0.1,"y":0.118,"z":0.36,"ry":150}],
     "nha_dan": [
       {
         "m": "kh:building_home_B_red",
