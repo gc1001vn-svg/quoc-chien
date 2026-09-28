@@ -21,3 +21,16 @@
   chụp màn máy ảo chạy ~30 fps (phần mềm), không phải số iPhone.
 - **Anh xem trên iPhone 28/09: 59 fps**, lúc làn sóng chạy cũng 59 — giữ làn sóng. Cùng phiên: `check:san` vá lỗ lọt
   `it.skip` gán qua biến (lỗi của chính test `DoiTheoDoi` bản đầu).
+
+## Khối 4 — ruộng, vườn, trại theo đời (28/09, lần 22)
+
+- 5 sprite `ruong` `vuon_nho` `trai_lon` `trai_ga` `trai_cuu` giờ khác nhau ở **mọi cặp đời kề** (3→4 vẫn chung mẻ, 12E).
+  Cổ đại: lúa hoang, vò sành, rào đá thấp, lều · Trung cổ: giữ, thêm bù nhìn, thêm lợn/cừu · Cận đại: ruộng cày +
+  máy kéo đỏ, rào ván trắng, máng nước/máng ăn, bò · Hiện đại: thêm máy kéo cam · Tương lai: vòm kính, vườn bồn cây + pin.
+- 5 model Icosa CC-BY mới (máy kéo ×2, máng ×2, bù nhìn), ghi ở `data/ghi_cong.json`. Bốn model 27/09 dò trước đó: nhà kính
+  `bKcTdPE3lyq` ra một khối xanh méo; `7qFs_DjjuVp` · `8yBTH_Bwfnn` · `eiXGnD1wN5q` đọc ra **hộp bao 0** (min = max) — bỏ.
+- Thước `DoiTheoDoi` thêm 5 sprite: đỏ 3/5 cặp trên công thức cũ, xanh trên mới. Mỗi mẻ vẫn 2× **2 trang**, 1x 1 trang.
+- **Bẫy:** `tai_icosa.mjs` **ghi đè `docs/KHO_ICOSA.md` chỉ còn model trên đĩa** (1.692 → 17 dòng) — chạy xong phải
+  `git checkout docs/KHO_ICOSA.md`. Mẻ `co_dai` trỏ bản `model_(GLTFupdated).gltf`, lệnh tải chỉ lấy `.glb` → lấy tay từ
+  `s3.us-east-005.backblazeb2.com/icosa-gallery/poly/<id>/` cả `.gltf` lẫn `model.bin`. Mặt trước sprite là góc **+x +z**.
+- Bảng chọn gửi anh: một ảnh 5 hàng × 5 đời. Bản duyệt đăng đè, dòng chữ nhỏ ghi **28/09 20:01**.

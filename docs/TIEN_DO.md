@@ -3,9 +3,14 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 28/09/2026 (lần 21 — **Phase 12D khối 1–3 xong: màn lên đời toàn màn, đổi dần như làn sóng, nền + người theo đời; khối 4 ruộng/trại chưa làm**).
+Cập nhật: 28/09/2026 (lần 22 — **Phase 12D xong phần máy: khối 4 ruộng, vườn, trại đổi theo đời; chờ anh chốt bảng + xem iPhone**).
 
 ## 1. Đang ở đâu
+
+**Phase 12D khối 4 xong phần máy 28/09 (lần 22)** — ruộng, vườn nho, trại lợn/gà/cừu **khác nhau ở mọi lần lên đời**
+(trừ 3→4, chung mẻ tới 12E): cổ đại lúa hoang + vò sành + rào đá · trung cổ thêm bù nhìn, thêm con vật · cận đại ruộng
+cày + máy kéo, rào ván, máng, bò · hiện đại thêm máy kéo · tương lai vòm kính, vườn bồn cây. Chi tiết:
+`docs/NHAT_KY/PHASE_12D.md`. **Chờ anh chốt bảng + xem trên iPhone** (mục 3).
 
 **Phase 12D khối 1–3 xong 28/09** — lên đời giờ là **màn phủ kín**, dừng game tới khi chạm (tên đời chữ to,
 "Cổ đại → Trung cổ", công nghệ mới của đời); chạm xong thành phố **đổi dần như làn sóng** từ giữa màn, ô vừa đổi
@@ -33,7 +38,14 @@ Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: Phase 12D khối 4 — ruộng, trại** (mục 5).
+**Việc phiên sau: Phase 12E — mọi công trình còn lại đổi theo đời** (mục 5).
+
+### Phiên 28/09 (lần 22) đã đổi gì — Phase 12D khối 4
+
+- Sửa: `tools/me/{co_dai,trung_co_2,can_dai,hien_dai,tuong_lai}.json` (5 sprite ruộng/trại + 5 kit Icosa) + atlas ·
+  `data/ghi_cong.json` (+5 CC-BY) · `tests/DoiTheoDoi.test.ts` (+5 sprite).
+- `npm run do` **16/17** (`do:luat` hỏng: Gemini `503` quá tải, bên ngoài — đầu phiên cũng 16/17). Bản duyệt **28/09 20:01**.
+- `cai_dat.mjs` đầu phiên **bị bộ lọc chặn** (`[Code from External]`) — không chạy; hook repo vẫn chạy bình thường.
 
 ### Phiên 28/09 (lần 21) đã đổi gì — Phase 12D khối 1–3
 
@@ -625,6 +637,13 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### ⏳ Việc 28/09 (lần 22) — chốt bảng ruộng/trại + xem trên iPhone
+
+1. Xem ảnh bảng Claude gửi trong chat: 5 hàng (ruộng · vườn nho · trại lợn · trại gà · trại cừu) × 5 cột đời.
+2. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần. Dòng chữ nhỏ trên
+   cùng phải ghi **28/09 20:01**. Chơi 500× qua vài lần lên đời, nhìn ô ruộng/trại.
+3. Nhắn: **"ok"** hoặc ô nào xấu (vd "trại gà cổ đại") · fps.
+
 ### ✅ Việc 28/09 (lần 21) — xem màn lên đời + làn sóng + nền theo đời: anh báo 28/09 59 fps, lúc làn sóng cũng 59
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
@@ -1026,7 +1045,11 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **MỚI 28/09 (Phase 12D):** khối 4 **ruộng, trại, vườn nho** vẫn y nguyên giữa các đời (trừ 4→5) — việc phiên sau ·
+- **MỚI 28/09 (lần 22, khối 4):** trại gà **không có con gà** (kho chưa có model gà tải được; `do:asset ga` trỏ `Chicken`
+  ở kho chung `tayvuc` — chưa lấy) · rào đá cổ đại và rào ván cận đại chỉ hiện 2 cạnh sau · `docs/ASSET_CREDITS.md`
+  (**file khoá**) chưa kê 5 model Icosa mới — trong game đã ghi công (`data/ghi_cong.json`); cần anh cho phép sửa ·
+  `tai_icosa.mjs` ghi đè `KHO_ICOSA.md` (bẫy, chưa sửa: ngoài việc giao).
+- **28/09 (Phase 12D):** ~~khối 4 ruộng, trại~~ xong lần 22 ·
   đời 3–4 vẫn chung `can_dai` (12E) · ✅ fps lúc giữ hai bộ atlas: anh đo iPhone 28/09 **59**, giữ làn sóng · `do:luat` hỏng cả phiên vì Gemini giới hạn tần suất (bên ngoài).
 
 - **MỚI 28/09, anh báo sau khi xem 12C:** lên đời "có chút biến chuyển nhưng vẫn không rõ, cần rõ hơn hẳn" ·
@@ -1205,14 +1228,13 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 12D khối 4 (ruộng, trại)
+## 5. Phiên sau — Phase 12E (mọi công trình còn lại đổi theo đời)
 
-1. Bước E: khối 1–3 anh xem 28/09, **59 fps** kể cả lúc làn sóng — vào làm thẳng khối 4.
-2. Khối 4 theo kế hoạch `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md`: ruộng, trại lợn/gà/cừu, vườn nho
-   cho 6 đời. Nguồn Icosa CC-BY đã dò: nhà kính `bKcTdPE3lyq` · máng ăn `8yBTH_Bwfnn` · bù nhìn `7qFs_DjjuVp` ·
-   máy kéo `2e7Mm2x_fSC` (tải: `api.icosa.gallery` → bản `backblazeb2`). Nướng nhiều biến thể một mẻ, **gửi một
-   bảng, anh chốt một lần**. Thêm 5 sprite đó vào `tests/DoiTheoDoi.test.ts`.
-3. Rồi 12E, rồi Phase 13.
+1. Bước E: anh chốt bảng ruộng/trại + xem iPhone (mục 3). Anh chê ô nào thì sửa ô đó trước, trong 12D.
+2. 12E theo kế hoạch `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6: mẻ riêng đời 4 "Công nghiệp"
+   (bỏ `CHUNG_ME_CHO_12E` trong `tests/DoiTheoDoi.test.ts`), rồi lấp mỏ, lò, cối xay, đồ vật; thước "không sprite công
+   trình nào y nguyên giữa hai đời kề".
+3. Rồi Phase 13.
 
 ### Nhắc trước khi nướng thêm mẻ
 
