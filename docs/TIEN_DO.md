@@ -1003,7 +1003,7 @@ quyền hạn và giới hạn máy ảo.
 - **MỚI 28/09, anh báo sau khi xem 12C:** lên đời "có chút biến chuyển nhưng vẫn không rõ, cần rõ hơn hẳn" ·
   "mọi công trình đều phải thay đổi khi lên đời" · "ruộng, chỗ chăn nuôi nhìn chán quá". Đo: 30/42 · 18/42 ·
   42/42 · 0/42 · 6/42 công trình y nguyên ở năm lần lên đời; nền và người y nguyên gần hết. Kế hoạch:
-  `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` (12D + 12E), **chờ anh duyệt**.
+  `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` (12D + 12E), **anh duyệt 28/09**.
 - **28/09 (Phase 12C):** tên đời + thẻ lên đời + mẻ `co_dai` đã lên — chưa đủ, xem dòng trên.
   Còn: đời 3–4 vẫn chung `can_dai` (lên 3→4 nhà không đổi) · tường ván xanh xám nhà `co_dai` chưa nhuộm được
   (chưa tìm ra ô màu) · nút "⌂ Về thành phố" đè "⚔ Xem trận" trên màn bản đồ dọc (có từ trước) ·
@@ -1179,7 +1179,7 @@ Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 ## 5. Phiên sau — Phase 12D
 
 1. Bước E: 12C anh xem 28/09 (59 fps) nhưng báo lên đời vẫn không rõ. Kế hoạch 12D + 12E:
-   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` — **anh duyệt rồi mới làm**.
+   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` — **anh duyệt 28/09 ("ok 12d")**, vào làm thẳng 12D.
 2. Phase 13 (âm thanh, lưu ván) lùi sau 12E.
 
 ### Nhắc trước khi nướng thêm mẻ
