@@ -117,7 +117,9 @@ function docAcc(j, dem, i) {
   const goc = (bv.byteOffset ?? 0) + (a.byteOffset ?? 0);
   const coByte = CO_BYTE[a.componentType];
   // `byteStride` khac 0 nghia la nhieu thuoc tinh xen ke nhau trong cung mot vung.
-  const buoc = bv.byteStride ?? soPhan * coByte;
+  // Bang 0 cung la xep khit: model Google tren Icosa ghi `"byteStride": 0`, doc thanh buoc 0
+  // thi moi dinh trung mot diem (do 28/09: 20/20 model tai tu kho-game ra hop bao 0).
+  const buoc = bv.byteStride || soPhan * coByte;
   const bin = dem[bv.buffer];
   const chia = a.normalized === true ? CHIA[a.componentType] : 0;
   const dau = bin.byteOffset + goc;
