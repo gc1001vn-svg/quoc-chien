@@ -3,9 +3,14 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 28/09/2026 (lần 20 — **Phase 12C xong phần máy: mẻ cổ đại + báo hiệu lên đời, chờ anh xem trên iPhone**).
+Cập nhật: 28/09/2026 (lần 21 — **Phase 12D khối 1–3 xong: màn lên đời toàn màn, đổi dần như làn sóng, nền + người theo đời; khối 4 ruộng/trại chưa làm**).
 
 ## 1. Đang ở đâu
+
+**Phase 12D khối 1–3 xong 28/09** — lên đời giờ là **màn phủ kín**, dừng game tới khi chạm (tên đời chữ to,
+"Cổ đại → Trung cổ", công nghệ mới của đời); chạm xong thành phố **đổi dần như làn sóng** từ giữa màn, ô vừa đổi
+chớp sáng; **nền, đường, người đổi theo từng đời** (đất → đá cuội → gạch → nhựa → kim loại). **Khối 4 (ruộng, trại
+cho 6 đời) chưa làm** — nguồn đã dò. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`. **Chờ anh xem trên iPhone** (mục 3).
 
 **Phase 12C xong phần máy 28/09** — lên đời giờ **thấy rõ**: tên đời đầu dòng số (`🏛 Cổ đại · 💰 …`), thẻ to
 giữa màn "Bước sang thời đại X" khi lên đời. Đời 1 có mẻ riêng **`co_dai`**: mái rơm, nền đất, và 3 công
@@ -606,6 +611,13 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### Việc 28/09 (lần 21) — xem màn lên đời + làn sóng + nền theo đời trên iPhone
+
+1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
+2. Dòng chữ nhỏ trên cùng phải ghi **28/09 14:29**. Chơi ở **500×** tới lúc lên đời: màn tối phủ kín, chữ vàng to **"Bước sang thời đại Trung cổ"**, game đứng yên.
+3. Chạm: thành phố đổi dần từ giữa màn ra, ô vừa đổi chớp sáng; đường và người đổi kiểu theo.
+4. Nhắn: **fps lúc làn sóng chạy** · đã rõ chưa · màu đường/sân đời nào xấu.
+
 ### ✅ Việc 28/09 (lần 20) — xem mẻ cổ đại + thẻ lên đời: anh xem 28/09, 59 fps mọi màn; lên đời VẪN KHÔNG RÕ (mục 4)
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
@@ -1000,6 +1012,10 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **MỚI 28/09 (Phase 12D):** khối 4 **ruộng, trại, vườn nho** vẫn y nguyên giữa các đời (trừ 4→5) — việc phiên sau ·
+  đời 3–4 vẫn chung `can_dai` (12E) · fps lúc giữ hai bộ atlas mới đo trên máy ảo (phần mềm ~30 fps), **chưa đo
+  iPhone** — tụt thì bỏ làn sóng, giữ màn toàn màn · `do:luat` hỏng cả phiên vì Gemini giới hạn tần suất (bên ngoài).
+
 - **MỚI 28/09, anh báo sau khi xem 12C:** lên đời "có chút biến chuyển nhưng vẫn không rõ, cần rõ hơn hẳn" ·
   "mọi công trình đều phải thay đổi khi lên đời" · "ruộng, chỗ chăn nuôi nhìn chán quá". Đo: 30/42 · 18/42 ·
   42/42 · 0/42 · 6/42 công trình y nguyên ở năm lần lên đời; nền và người y nguyên gần hết. Kế hoạch:
@@ -1176,11 +1192,14 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 12D
+## 5. Phiên sau — Phase 12D khối 4 (ruộng, trại)
 
-1. Bước E: 12C anh xem 28/09 (59 fps) nhưng báo lên đời vẫn không rõ. Kế hoạch 12D + 12E:
-   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` — **anh duyệt 28/09 ("ok 12d")**, vào làm thẳng 12D.
-2. Phase 13 (âm thanh, lưu ván) lùi sau 12E.
+1. Bước E: chờ anh xem khối 1–3 (mục 3). Anh báo fps tụt lúc làn sóng thì sửa trước.
+2. Khối 4 theo kế hoạch `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md`: ruộng, trại lợn/gà/cừu, vườn nho
+   cho 6 đời. Nguồn Icosa CC-BY đã dò: nhà kính `bKcTdPE3lyq` · máng ăn `8yBTH_Bwfnn` · bù nhìn `7qFs_DjjuVp` ·
+   máy kéo `2e7Mm2x_fSC` (tải: `api.icosa.gallery` → bản `backblazeb2`). Nướng nhiều biến thể một mẻ, **gửi một
+   bảng, anh chốt một lần**. Thêm 5 sprite đó vào `tests/DoiTheoDoi.test.ts`.
+3. Rồi 12E, rồi Phase 13.
 
 ### Nhắc trước khi nướng thêm mẻ
 
