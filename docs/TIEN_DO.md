@@ -3,9 +3,14 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 27/09/2026 (lần 19 — **Phase 12B xong phần máy: 6 nước + mẻ cận đại, chờ anh xem trên iPhone**).
+Cập nhật: 28/09/2026 (lần 20 — **Phase 12C xong phần máy: mẻ cổ đại + báo hiệu lên đời, chờ anh xem trên iPhone**).
 
 ## 1. Đang ở đâu
+
+**Phase 12C xong phần máy 28/09** — lên đời giờ **thấy rõ**: tên đời đầu dòng số (`🏛 Cổ đại · 💰 …`), thẻ to
+giữa màn "Bước sang thời đại X" khi lên đời. Đời 1 có mẻ riêng **`co_dai`**: mái rơm, nền đất, và 3 công
+trình Icosa (đấu trường, tháp Sumer, đền Hy Lạp). Nút **ⓘ Ghi công** trên bản đồ tỉnh. Chi tiết:
+`docs/NHAT_KY/PHASE_12C.md`. **Chờ anh xem trên iPhone** (mục 3).
 
 **Phase 12B xong phần máy 27/09** — **6 nước** (thêm Tử Vân tím, Đan Sơn cam) trên bản đồ **36 tỉnh**;
 đời 3–4 đổi mặt thành phố sang mẻ `can_dai` (nhà phố gạch Modular Buildings + nhà máy City Kit
@@ -23,7 +28,17 @@ Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: Phase 12C** (mục 5).
+**Việc phiên sau: Phase 13** (mục 5).
+
+### Phiên 27–28/09 (lần 20) đã đổi gì — Phase 12C
+
+- Mới: `src/ui/TheLenDoi.ts` · `src/ui/GhiCong.ts` · `data/ghi_cong.json` · `tools/me/co_dai.json` + atlas `co_dai_*` ·
+  `tests/TheLenDoi.test.ts` · `tests/GhiCong.test.ts` · `docs/NHAT_KY/PHASE_12C.md` · kế hoạch
+  `docs/ke-hoach/2026-09-27-phase-12c-co-dai-bao-len-doi.md`. Sửa: `data/balance.json` (đời 1 `co_dai`, `giayTheLenDoi`) ·
+  `data/thanh_pho_demo.json` (mẻ nạp đầu `co_dai`) · `src/sim/meta/ThoiDai.ts` (`moTaLenDoi`) ·
+  `src/sim/campaign/HienTheGioi.ts` (`doi`) · `ThanhTheGioi.ts` · `DungTheGioi.ts` · `CityScene.ts` · `MapScene.ts` ·
+  `main.ts` · `style.css` · `ASSET_CREDITS.md` (anh cho sửa) · hai file test.
+- `npm run do` **17/17** · **502 test**. Bản duyệt đăng đè, dòng chữ nhỏ ghi **28/09 09:48**.
 
 ### Phiên 27/09 (lần 19) đã đổi gì — Phase 12B
 
@@ -591,6 +606,15 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### ⏳ Việc 28/09 (lần 20) — xem mẻ cổ đại + thẻ lên đời trên iPhone
+
+1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
+2. Dòng chữ nhỏ trên cùng phải ghi **28/09 09:48**. Nhà mái **rơm vàng**, dòng số bắt đầu bằng **🏛 Cổ đại**.
+3. Bấm **500×**, chờ lên đời (sim: đời 2 cần 6 công nghệ + 195 công trình): phải hiện thẻ to **"Bước sang thời đại
+   Trung cổ"** giữa màn, nhà đổi sang mái đỏ.
+4. Sang **🗺 Bản đồ tỉnh** → **ⓘ Ghi công**: bảng tên 6 tác giả Icosa.
+5. Nhắn: **fps** · đã thấy rõ lên đời chưa · mái rơm có ra "cổ đại" không · đền/tháp/đấu trường to nhỏ ra sao.
+
 ### ✅ Việc 27/09 (lần 19) — xem 6 nước + mẻ cận đại trên iPhone: anh "ok" 27/09, 59 fps, tím/cam dễ phân biệt
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
@@ -976,9 +1000,10 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **MỚI 27/09, anh báo sau khi xem 12B:** lên thời đại **không rõ ràng** — không biết đã lên hay chưa,
-  mô hình các thời đại giống nhau quá. Chưa tra gốc: đời 1–2 vẫn chung mẻ `trung_co_2`, và lúc đổi mẻ
-  chưa có báo hiệu gì trên màn (chưa kiểm).
+- **MỚI 28/09 (Phase 12C):** "lên đời không rõ" đã sửa phần máy (tên đời + thẻ + mẻ `co_dai`), **chờ anh xác nhận**.
+  Còn: đời 3–4 vẫn chung `can_dai` (lên 3→4 nhà không đổi) · tường ván xanh xám nhà `co_dai` chưa nhuộm được
+  (chưa tìm ra ô màu) · nút "⌂ Về thành phố" đè "⚔ Xem trận" trên màn bản đồ dọc (có từ trước) ·
+  `npm run kho` sau `tai:tatca` ghi đè `KHO_ASSET.md` mất ~6.700 dòng, chốt 20 % không chặn (đã hoàn lại, chưa tra).
 
 - **MỚI 27/09 (Phase 12B):** `sim:van` 6 nước: khoa học **2/5** (trước 3/5), ngoại giao **4/5** — hạt 3
   mất thủ đô giờ 14 vì Tử Vân giáp thẳng đất ta (bản đồ mới không còn tỉnh đệm hàng trên) · hai nước mới
@@ -1147,13 +1172,11 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 12C
+## 5. Phiên sau — Phase 13
 
-1. Bước E: 12B anh "ok" 27/09 (59 fps). Hỏi anh: nhận xét "lên đời không rõ" (mục 4) làm trong 12C
-   hay tách phase riêng.
-2. **Phase 12C** — mẻ **cổ đại** (đời 1). Dò 27/09: kho-game không có bộ CC0 cổ đại; Poly Pizza (6 đền
-   Quaternius CC0) vẫn `403` Cloudflare. Anh chốt 27/09: không có thì chọn **Icosa CC-BY** (cần màn ghi công
-   trong game) hoặc **Kenney gần giống** (Fantasy Town / Retro Fantasy Kit, CC0) — nướng bảng so hai bên rồi hỏi anh.
+1. Bước E: chờ anh xem 12C trên iPhone (mục 3). Anh "ok" mới mở phase mới; anh báo lỗi thì sửa trước.
+2. Hỏi anh: nợ mục 4 của 12C (đời 3–4 chung mẻ, nút bản đồ đè nhau) làm trước hay vào thẳng **Phase 13** —
+   âm thanh (51 tiếng Kenney có sẵn), lưu ván, đánh bóng (`docs/KE_HOACH.md`).
 
 ### Nhắc trước khi nướng thêm mẻ
 
