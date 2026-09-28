@@ -30,13 +30,22 @@ function congThuc(bo: CongThuc, ten: string): string {
 
 const meCuaDoi: string[] = canBang.thoiDai.map((d) => d.me);
 
+/**
+ * Cap doi con CHUNG me - tach me rieng doi 4 la viec Phase 12E. Ghi ro o day thay vi bo qua
+ * test: them mot cap chung me moi ma khong ghi vao day la do.
+ */
+const CHUNG_ME_CHO_12E = ['3->4'];
+
 describe('len doi thay ro: nen va nguoi doi theo doi', () => {
   for (let i = 1; i < meCuaDoi.length; i += 1) {
     const truoc = meCuaDoi[i - 1] as string;
     const sau = meCuaDoi[i] as string;
-    // Doi 3-4 con chung me `can_dai` - tach me rieng doi 4 la viec Phase 12E.
-    const it12e = truoc === sau ? it.skip : it;
-    it12e(`doi ${String(i)} -> ${String(i + 1)} (${truoc} -> ${sau}): khong o nen, khong dang nguoi nao y nguyen`, () => {
+    const cap = `${String(i)}->${String(i + 1)}`;
+    it(`doi ${cap} (${truoc} -> ${sau}): khong o nen, khong dang nguoi nao y nguyen`, () => {
+      if (truoc === sau) {
+        expect(CHUNG_ME_CHO_12E).toContain(cap);
+        return;
+      }
       const a = docMe(truoc);
       const b = docMe(sau);
       const giong = [...NEN, ...NGUOI].filter((t) => congThuc(a, t) === congThuc(b, t));

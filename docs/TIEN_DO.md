@@ -33,7 +33,17 @@ Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 11A (luật chạy ngầm) xong 26/09 · 10B trận súng anh "ok" 26/09.
 
-**Việc phiên sau: Phase 13** (mục 5).
+**Việc phiên sau: Phase 12D khối 4 — ruộng, trại** (mục 5).
+
+### Phiên 28/09 (lần 21) đã đổi gì — Phase 12D khối 1–3
+
+- Mới: `tests/SongLenDoi.test.ts` · `tests/DoiTheoDoi.test.ts` · `docs/NHAT_KY/PHASE_12D.md`. Sửa: `src/ui/TheLenDoi.ts`
+  (màn toàn màn) · `src/sim/meta/ThoiDai.ts` (`moTaLenDoi` trả object) · `Gl.ts` (một chương trình shader mỗi số trang)
+  · `Shader.ts` (chớp sáng) · `VeCanh.ts` (`chonNguon`) · `DoiMeAtlas.ts` (giữ bộ cũ lúc sóng) · `CityScene.ts` ·
+  `style.css` · `data/balance.json` (bỏ `giayTheLenDoi`) · `data/thanh_pho_demo.json` (`songLenDoi`) · `tools/me/`
+  `co_dai` `can_dai` `hien_dai` `tuong_lai` + atlas · `package.json` (`tai:hoatiet` +17 hoạ tiết) · `tests/AiGoi.test.ts`.
+- `npm run do` **16/17** (`do:luat` hỏng: Gemini giới hạn tần suất, bên ngoài). Bản duyệt đăng đè, dòng chữ nhỏ ghi **28/09 14:29**.
+- 24/09 anh từ chối "đổi màu mái/nền theo đời"; 28/09 anh duyệt kế hoạch 12D có mục "nền và đường theo đời" — làm theo bản mới.
 
 ### Phiên 27–28/09 (lần 20) đã đổi gì — Phase 12C
 
@@ -510,6 +520,10 @@ Toàn bộ ở `kho-game`, **không chạm repo này**. Chi tiết: `docs/NHAT_K
 3. **`skillOverrides` khớp theo tên thư mục**, không theo `name:` trong frontmatter.
 
 ## 2. Số đo mới nhất
+
+**Phase 12D, đo 28/09:** 4 mẻ nướng lại, mỗi mẻ 2× **76 sprite · 2 trang** (trang 0: `co_dai` 88,7 % · `can_dai`
+83,2 % · `hien_dai` 77,3 % · `tuong_lai` 65,7 %), ~2,5 phút mỗi mẻ. Làn sóng: giữ 2 + 2 trang = 4 (trần), **1 lệnh vẽ**,
+máy ảo ~30 fps (phần mềm, không phải số iPhone). `DoiTheoDoi`: 0 ô nền / 0 dáng người y nguyên ở 4 cặp đời khác mẻ.
 
 **Phase 12A, đo 27/09:** `sim:congnghe -- 320 6`: đời 5 giờ 147, **đời 6 giờ 249**, 48/48 công nghệ,
 451 nhà ở giờ 320. `sim:van`: khoa học **3/5** (trước 5/5, thắng ở giờ 265 thay vì 190), thống trị 2/5,
