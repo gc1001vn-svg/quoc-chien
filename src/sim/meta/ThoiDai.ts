@@ -62,17 +62,27 @@ export function docThoiDai(tho: unknown): Doi[] {
   return ds;
 }
 
+/** Chu cho man len doi (Phase 12D): tieu de to, dong "cu -> moi", va nhung thu moi mo. */
+export interface MoTaLenDoi {
+  readonly tieuDe: string;
+  readonly tuDen: string;
+  readonly moi: readonly string[];
+}
+
 /**
- * Chu cho the len doi: ten doi moi, so o chinh phu, va nha co doi kieu khong. Doi 1-2 va
- * 3-4 dung chung me atlas nen phai noi thang - khong thi nguoi choi tuong chua len doi.
+ * Chu cho man len doi: ten doi moi, so o chinh phu, cong nghe moi mo, va nha co doi kieu
+ * khong. Doi 3-4 dung chung me atlas nen phai noi thang - khong thi nguoi choi tuong chua
+ * len doi.
+ *
+ * @param congNgheMoi Ten hien cua cac cong nghe thuoc doi `sau` - `Meta` loc tu cay.
  */
-export function moTaLenDoi(truoc: Doi, sau: Doi): string[] {
-  const dong: string[] = [
-    `Bước sang thời đại ${sau.hien}`,
-    `${String(sau.soO)} ô chính phủ (+${String(sau.soO - truoc.soO)})`,
-  ];
-  if (sau.me !== truoc.me) dong.push('Nhà cửa đổi kiểu mới');
-  return dong;
+export function moTaLenDoi(truoc: Doi, sau: Doi, congNgheMoi: readonly string[] = []): MoTaLenDoi {
+  const moi: string[] = [`${String(sau.soO)} ô chính phủ (+${String(sau.soO - truoc.soO)})`];
+  if (congNgheMoi.length > 0) {
+    moi.push(`${String(congNgheMoi.length)} công nghệ mới: ${congNgheMoi.join(' · ')}`);
+  }
+  if (sau.me !== truoc.me) moi.push('Nhà cửa, đường sá, người dân đổi kiểu mới');
+  return { tieuDe: `Bước sang thời đại ${sau.hien}`, tuDen: `${truoc.hien} → ${sau.hien}`, moi };
 }
 
 /** Thoi dai cua mot van dang choi. */

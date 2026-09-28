@@ -152,7 +152,9 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
   // xay giua gan tram cong trinh la khong bao gio tim ra.
   new BangCongTrinh(goc, thanhPho, bayToi);
   const bangMeta: BangMeta = new BangMeta(goc, meta);
-  const theLenDoi: TheLenDoi = new TheLenDoi(goc, canBangTho.giayTheLenDoi);
+  const theLenDoi: TheLenDoi = new TheLenDoi(
+    goc, nhipKe, (so) => meta.cay.toanBo.filter((c) => c.thoiDai === so).map((c) => c.hien),
+  );
   // Cham vao mot cong trinh la hien ten no - xem `ChamChon.ts`.
   let veCuoi: Ve | undefined;
   noiChamChon(canvas, () => veCuoi, banDo, thanhPho, ghim, () => gl.tiLeDiemAnh());
@@ -173,10 +175,10 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
     // `data/balance.json > thoiDai`. O day chi DOC mot chuoi - `src/sim/` khong biet gi
     // ve atlas hay WebGL (luat 1 cua CLAUDE.md).
     boMe.theoDoi(meta.thoiDai.doi.me);
-    theLenDoi.theoDoi(meta.thoiDai.doi, meta.thoiDai.doiSau, now);
+    theLenDoi.theoDoi(meta.thoiDai.doi, meta.thoiDai.doiSau);
 
     const the = van.the;
-    if (the !== undefined && !theUi.hien) {
+    if (the !== undefined && !theUi.hien && !theLenDoi.dangHien) {
       // The quyet dinh chiem 46 % man tu duoi len - dong bang nghien cuu de hai cai khong
       // de len nhau. Nguoi choi tra loi xong thi bam nut mo lai.
       bangMeta.dong();

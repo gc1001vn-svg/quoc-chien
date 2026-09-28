@@ -6,22 +6,22 @@ const ds: Doi[] = docThoiDai(canBang);
 const layDoi = (so: number): Doi => ds[so - 1] as Doi;
 
 describe('moTaLenDoi', () => {
-  it('dong dau la ten doi moi, dong sau ke so o chinh phu tang them', () => {
+  it('tieu de la ten doi moi, dong "cu -> moi", dong dau ke so o chinh phu tang them', () => {
     const d = moTaLenDoi(layDoi(1), layDoi(2));
-    expect(d[0]).toBe(`Bước sang thời đại ${layDoi(2).hien}`);
-    expect(d[1]).toBe(`${String(layDoi(2).soO)} ô chính phủ (+${String(layDoi(2).soO - layDoi(1).soO)})`);
+    expect(d.tieuDe).toBe(`Bước sang thời đại ${layDoi(2).hien}`);
+    expect(d.tuDen).toBe(`${layDoi(1).hien} → ${layDoi(2).hien}`);
+    expect(d.moi[0]).toBe(`${String(layDoi(2).soO)} ô chính phủ (+${String(layDoi(2).soO - layDoi(1).soO)})`);
+  });
+
+  it('ke cong nghe moi cua doi; khong co thi khong co dong do', () => {
+    expect(moTaLenDoi(layDoi(1), layDoi(2), ['A', 'B']).moi).toContain('2 công nghệ mới: A · B');
+    expect(moTaLenDoi(layDoi(1), layDoi(2)).moi.some((c) => c.includes('công nghệ'))).toBe(false);
   });
 
   it('doi me atlas thi bao nha doi kieu; cung me thi khong', () => {
     for (let so = 2; so <= ds.length; so += 1) {
       const d = moTaLenDoi(layDoi(so - 1), layDoi(so));
-      expect(d.includes('Nhà cửa đổi kiểu mới')).toBe(layDoi(so).me !== layDoi(so - 1).me);
+      expect(d.moi.includes('Nhà cửa, đường sá, người dân đổi kiểu mới')).toBe(layDoi(so).me !== layDoi(so - 1).me);
     }
-  });
-});
-
-describe('giayTheLenDoi', () => {
-  it('co trong balance.json, duong', () => {
-    expect(canBang.giayTheLenDoi).toBeGreaterThan(0);
   });
 });
