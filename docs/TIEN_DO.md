@@ -9,7 +9,8 @@ Cập nhật: 28/09/2026 (lần 22 — **Phase 12D xong phần máy: khối 4 ru
 
 **Phase 12D khối 4 xong phần máy 28/09 (lần 22)** — ruộng, vườn nho, trại lợn/gà/cừu **khác nhau ở mọi lần lên đời**
 (trừ 3→4, chung mẻ tới 12E): cổ đại lúa hoang + vò sành + rào đá · trung cổ thêm bù nhìn, thêm con vật · cận đại ruộng
-cày + máy kéo, rào ván, máng, bò · hiện đại thêm máy kéo · tương lai vòm kính, vườn bồn cây. Chi tiết:
+cày + máy kéo + xi-lô, rào ván, máng, bò, chuồng đỏ · hiện đại thêm máy kéo · tương lai vòm kính, vườn bồn cây.
+**Trại gà mọi đời có gà thật** (từ `kho-game`, sau khi sửa lỗi bộ đọc `byteStride: 0`). Chi tiết:
 `docs/NHAT_KY/PHASE_12D.md`. **Chờ anh chốt bảng + xem trên iPhone** (mục 3).
 
 **Phase 12D khối 1–3 xong 28/09** — lên đời giờ là **màn phủ kín**, dừng game tới khi chạm (tên đời chữ to,
@@ -44,7 +45,8 @@ Chi tiết: `docs/NHAT_KY/PHASE_11B.md`.
 
 - Sửa: `tools/me/{co_dai,trung_co_2,can_dai,hien_dai,tuong_lai}.json` (5 sprite ruộng/trại + 5 kit Icosa) + atlas ·
   `data/ghi_cong.json` (+5 CC-BY) · `tests/DoiTheoDoi.test.ts` (+5 sprite).
-- `npm run do` **16/17** (`do:luat` hỏng: Gemini `503` quá tải, bên ngoài — đầu phiên cũng 16/17). Bản duyệt **28/09 20:01**.
+- `npm run do` **16/17** (`do:luat` hỏng: Gemini `503` quá tải, bên ngoài — đầu phiên cũng 16/17). Bản duyệt **28/09 21:41**.
+- Sau khi anh nhắc: sửa `tools/lib/gltf.mjs` (`byteStride: 0`) + `tests/GltfBuoc.test.ts`; thêm gà, dê, rơm, chuồng, xi-lô.
 - `cai_dat.mjs` đầu phiên **bị bộ lọc chặn** (`[Code from External]`) — không chạy; hook repo vẫn chạy bình thường.
 
 ### Phiên 28/09 (lần 21) đã đổi gì — Phase 12D khối 1–3
@@ -641,7 +643,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 1. Xem ảnh bảng Claude gửi trong chat: 5 hàng (ruộng · vườn nho · trại lợn · trại gà · trại cừu) × 5 cột đời.
 2. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần. Dòng chữ nhỏ trên
-   cùng phải ghi **28/09 20:01**. Chơi 500× qua vài lần lên đời, nhìn ô ruộng/trại.
+   cùng phải ghi **28/09 21:41**. Chơi 500× qua vài lần lên đời, nhìn ô ruộng/trại.
 3. Nhắn: **"ok"** hoặc ô nào xấu (vd "trại gà cổ đại") · fps.
 
 ### ✅ Việc 28/09 (lần 21) — xem màn lên đời + làn sóng + nền theo đời: anh báo 28/09 59 fps, lúc làn sóng cũng 59
@@ -1045,9 +1047,9 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **MỚI 28/09 (lần 22, khối 4):** trại gà **không có con gà** (kho chưa có model gà tải được; `do:asset ga` trỏ `Chicken`
-  ở kho chung `tayvuc` — chưa lấy) · rào đá cổ đại và rào ván cận đại chỉ hiện 2 cạnh sau · `docs/ASSET_CREDITS.md`
-  (**file khoá**) chưa kê 5 model Icosa mới — trong game đã ghi công (`data/ghi_cong.json`); cần anh cho phép sửa ·
+- **MỚI 28/09 (lần 22, khối 4):** `kho-game/cong-cu/lay.mjs icosa --id` hỏng 21/21 (URL wayback) — lấy tay bản
+  backblaze · vườn nho vẫn chưa có dây nho thật (`Vine` Google thực ra là rong biển) · rào đá cổ đại và rào ván cận đại chỉ hiện 2 cạnh sau · `docs/ASSET_CREDITS.md`
+  (**file khoá**) chưa kê 11 model Icosa mới — trong game đã ghi công (`data/ghi_cong.json`); cần anh cho phép sửa ·
   `tai_icosa.mjs` ghi đè `KHO_ICOSA.md` (bẫy, chưa sửa: ngoài việc giao).
 - **28/09 (Phase 12D):** ~~khối 4 ruộng, trại~~ xong lần 22 ·
   đời 3–4 vẫn chung `can_dai` (12E) · ✅ fps lúc giữ hai bộ atlas: anh đo iPhone 28/09 **59**, giữ làn sóng · `do:luat` hỏng cả phiên vì Gemini giới hạn tần suất (bên ngoài).

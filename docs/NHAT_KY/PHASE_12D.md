@@ -34,3 +34,11 @@
   `git checkout docs/KHO_ICOSA.md`. Mẻ `co_dai` trỏ bản `model_(GLTFupdated).gltf`, lệnh tải chỉ lấy `.glb` → lấy tay từ
   `s3.us-east-005.backblazeb2.com/icosa-gallery/poly/<id>/` cả `.gltf` lẫn `model.bin`. Mặt trước sprite là góc **+x +z**.
 - Bảng chọn gửi anh: một ảnh 5 hàng × 5 đời. Bản duyệt đăng đè, dòng chữ nhỏ ghi **28/09 20:01**.
+- **Anh chỉ ra 28/09: "kho-game có gà"** — đúng, phiên này bỏ bước 1c (`kho-game`) nên kết luận sai "không có gà".
+  Dò lại: gà, gà mái, lợn, cừu, bò, dê, rơm, chuồng, xi-lô đều có (Icosa CC-BY, bản Google). Tải được 20/21.
+- **Lỗi thật của bộ đọc, sửa gốc:** model Google ghi `"byteStride": 0`; `tools/lib/gltf.mjs` dùng `??` nên đọc thành
+  bước 0 → mọi đỉnh trùng một điểm, sprite rỗng. Chính lỗi này làm hỏng 3 model hồi sáng. Sửa `||`, test
+  `tests/GltfBuoc.test.ts` đỏ trên bản cũ. Nướng lại `tuong_lai` ra y hệt từng byte — không đổi sprite nào khác.
+- Thêm vào trại: gà ở mọi đời (trung cổ làm lại trại gà), dê + đống rơm cổ đại, chuồng đỏ + xi-lô cận đại. +6 ghi công.
+- **Bẫy:** `kho-game/cong-cu/lay.mjs icosa --id` hỏng 21/21 (URL wayback trong manifest); lấy thẳng bản
+  `GLTF2` backblaze qua `api.icosa.gallery` thì được. Chưa sửa (repo khác). Bản duyệt đăng đè, ghi **28/09 21:41**.
