@@ -606,7 +606,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 28/09 (lần 20) — xem mẻ cổ đại + thẻ lên đời trên iPhone
+### ✅ Việc 28/09 (lần 20) — xem mẻ cổ đại + thẻ lên đời: anh xem 28/09, 59 fps mọi màn; lên đời VẪN KHÔNG RÕ (mục 4)
 
 1. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần.
 2. Dòng chữ nhỏ trên cùng phải ghi **28/09 09:48**. Nhà mái **rơm vàng**, dòng số bắt đầu bằng **🏛 Cổ đại**.
@@ -1000,7 +1000,11 @@ quyền hạn và giới hạn máy ảo.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **MỚI 28/09 (Phase 12C):** "lên đời không rõ" đã sửa phần máy (tên đời + thẻ + mẻ `co_dai`), **chờ anh xác nhận**.
+- **MỚI 28/09, anh báo sau khi xem 12C:** lên đời "có chút biến chuyển nhưng vẫn không rõ, cần rõ hơn hẳn" ·
+  "mọi công trình đều phải thay đổi khi lên đời" · "ruộng, chỗ chăn nuôi nhìn chán quá". Đo: 30/42 · 18/42 ·
+  42/42 · 0/42 · 6/42 công trình y nguyên ở năm lần lên đời; nền và người y nguyên gần hết. Kế hoạch:
+  `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` (12D + 12E), **chờ anh duyệt**.
+- **28/09 (Phase 12C):** tên đời + thẻ lên đời + mẻ `co_dai` đã lên — chưa đủ, xem dòng trên.
   Còn: đời 3–4 vẫn chung `can_dai` (lên 3→4 nhà không đổi) · tường ván xanh xám nhà `co_dai` chưa nhuộm được
   (chưa tìm ra ô màu) · nút "⌂ Về thành phố" đè "⚔ Xem trận" trên màn bản đồ dọc (có từ trước) ·
   `npm run kho` sau `tai:tatca` ghi đè `KHO_ASSET.md` mất ~6.700 dòng, chốt 20 % không chặn (đã hoàn lại, chưa tra).
@@ -1172,11 +1176,11 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 13
+## 5. Phiên sau — Phase 12D
 
-1. Bước E: chờ anh xem 12C trên iPhone (mục 3). Anh "ok" mới mở phase mới; anh báo lỗi thì sửa trước.
-2. Hỏi anh: nợ mục 4 của 12C (đời 3–4 chung mẻ, nút bản đồ đè nhau) làm trước hay vào thẳng **Phase 13** —
-   âm thanh (51 tiếng Kenney có sẵn), lưu ván, đánh bóng (`docs/KE_HOACH.md`).
+1. Bước E: 12C anh xem 28/09 (59 fps) nhưng báo lên đời vẫn không rõ. Kế hoạch 12D + 12E:
+   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` — **anh duyệt rồi mới làm**.
+2. Phase 13 (âm thanh, lưu ván) lùi sau 12E.
 
 ### Nhắc trước khi nướng thêm mẻ
 
