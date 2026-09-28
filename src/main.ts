@@ -15,6 +15,7 @@ import { chayDoSprite } from './bench/DoSprite';
 import { chayCanhTran } from './render/BattleScene';
 import type { Man } from './render/Man';
 import { dungTheGioi, type TheGioiGame } from './ui/DungTheGioi';
+import { dungGhiCong } from './ui/GhiCong';
 import './style.css';
 
 const goc: HTMLElement | null = document.getElementById('app');
@@ -63,6 +64,7 @@ async function moHaiMan(boc: HTMLElement): Promise<void> {
   nut(oBanDo, 'nut-doi-man', '⌂ Về thành phố', () => { sang(manThanhPho, manBanDo); });
   nutDoTranSprite(oThanhPho);
   nut(oBanDo, 'nut-xem-tran', '⚔ Xem trận', () => { window.location.search = '?tran=1'; });
+  nut(oBanDo, 'nut-ghi-cong', 'ⓘ Ghi công', dungGhiCong(oBanDo));
 
   if (thamSo.get('man') === 'ban-do') manBanDo.hien();
   else manThanhPho.hien();

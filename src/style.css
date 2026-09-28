@@ -368,6 +368,38 @@ html, body {
   color: var(--chu);
 }
 
+/* Phase 12C: nut va bang ghi cong CC-BY, man ban do - ngay duoi nut xem tran. */
+.nut-ghi-cong {
+  position: absolute;
+  right: calc(env(safe-area-inset-right) + 10px);
+  top: calc(env(safe-area-inset-top) + 154px);
+  z-index: 4;
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.62);
+  color: var(--chu);
+}
+.ghi-cong {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: calc(env(safe-area-inset-top) + 200px);
+  z-index: 7;
+  max-height: 60%;
+  overflow-y: auto;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #55504a;
+  background: rgba(0, 0, 0, 0.88);
+  color: var(--chu);
+  font-size: 13px;
+}
+.ghi-cong p { margin: 6px 0; }
+.ghi-cong p:first-child { display: flex; justify-content: space-between; }
+.ghi-cong a { color: var(--nhan); }
+
 /* Phase 10: dong du doan + dong ho tran, giua tren man xem tran. */
 .tran-dau {
   position: absolute;

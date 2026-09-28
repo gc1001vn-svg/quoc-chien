@@ -1,0 +1,9 @@
+{
+  "_": "Man ghi cong trong game (Phase 12C). CC-BY doi ghi ten tac gia o cho nguoi choi thay duoc. `tests/GhiCong.test.ts` bat moi kit `assets_source/icosa/<id>` trong `tools/me/*.json` phai co mot dong o `cc_by`, va khong dong nao thua. Ban day du: `docs/ASSET_CREDITS.md`.",
+  "cc_by": [
+    { "id": "41Tq_Kf0Tui", "ten": "Tank", "tac_gia": "Nico _", "license": "CC-BY 3.0", "dung_o": "Xe tăng", "link": "https://icosa.gallery/view/41Tq_Kf0Tui" },
+    { "id": "7pfX_iKfJyH", "ten": "Rev war cannon", "tac_gia": "Michael Pretz", "license": "CC-BY 3.0", "dung_o": "Đại bác", "link": "https://icosa.gallery/view/7pfX_iKfJyH" },
+    { "id": "epemCvhKIb0", "ten": "low poly bolt rifle", "tac_gia": "Hell Houndz Productions", "license": "CC-BY 3.0", "dung_o": "Súng trường", "link": "https://icosa.gallery/view/epemCvhKIb0" }
+  ],
+  "cc0": "Kenney · Quaternius · KayKit (Kay Lousberg) · Poly Haven — CC0, cảm ơn các tác giả."
+}
