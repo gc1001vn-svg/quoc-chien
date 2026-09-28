@@ -11,7 +11,7 @@
   "toiDaMotVan": 40,
 
   "_thoiDai": "Sau thoi dai (Phase 8, GAME_SPEC muc 9). `soO` la so o chinh phu lap the chinh sach duoc. `len` la dieu kien len doi KE TIEP: `soCongNghe` la tong so cong nghe da hoc ca van, `soNha` la so cong trinh dang co. `len: null` la chua mo duong len.",
-  "_me": "Ten me atlas cua doi do. Doi doi la doi atlas - TECH_SPEC muc 2: nha atlas cu bang gl.deleteTexture, khong giu lai 'phong khi can'. Tu Phase 8B: doi 1-4 dung `trung_co_2`, doi 5 dung `hien_dai`; tu Phase 12A doi 6 dung `tuong_lai`; tu Phase 12B doi 3-4 dung `can_dai`. Doi mot ten o day la doi mat thanh pho, KHONG phai sua code - `CityScene` doc thang cot nay moi khung. Me moi phai nuong cung so trang atlas, cung `o_px` va cung `heSo` voi me dang chay, khong thi `CityScene` nem loi chu khong ve bay.",
+  "_me": "Ten me atlas cua doi do. Doi doi la doi atlas - TECH_SPEC muc 2: nha atlas cu bang gl.deleteTexture, khong giu lai 'phong khi can'. Tu Phase 8B: doi 1-4 dung `trung_co_2`, doi 5 dung `hien_dai`; tu Phase 12A doi 6 dung `tuong_lai`; tu Phase 12B doi 3-4 dung `can_dai`; tu Phase 12C doi 1 dung `co_dai`. Doi mot ten o day la doi mat thanh pho, KHONG phai sua code - `CityScene` doc thang cot nay moi khung. Me moi phai nuong cung so trang atlas, cung `o_px` va cung `heSo` voi me dang chay, khong thi `CityScene` nem loi chu khong ve bay.",
   "_gioChoDoiThe": "Doi mot the chinh sach xong thi phai cho ngan nay gio game moi duoc doi tiep. Chua co vang nen phi doi the tinh bang thoi gian.",
   "_giayTheLenDoi": "Phase 12C: the len doi giua man tu tat sau ngan nay giay THAT (khong phai gio game) - o 500x mot gio game chi ~7 giay. Cham vao the la tat som.",
   "_len_doi_6": "Phase 12A mo duong doi 5 -> 6: 44 cong nghe (du 40 cua doi 1-5 va 4/8 cua doi 6) va 400 nha. Do 27/09 bang `npm run sim:congnghe -- 400 5`: doi 5 toi o gio 147, thanh pho 532 nha o gio 400.",
@@ -19,7 +19,7 @@
   "gioChoDoiThe": 8,
   "giayTheLenDoi": 6,
   "thoiDai": [
-    { "so": 1, "hien": "Cổ đại", "soO": 2, "me": "trung_co_2", "len": { "soCongNghe": 6, "soNha": 195 } },
+    { "so": 1, "hien": "Cổ đại", "soO": 2, "me": "co_dai", "len": { "soCongNghe": 6, "soNha": 195 } },
     { "so": 2, "hien": "Trung cổ", "soO": 3, "me": "trung_co_2", "len": { "soCongNghe": 13, "soNha": 230 } },
     { "so": 3, "hien": "Súng ống", "soO": 4, "me": "can_dai", "len": { "soCongNghe": 20, "soNha": 270 } },
     { "so": 4, "hien": "Công nghiệp", "soO": 5, "me": "can_dai", "len": { "soCongNghe": 30, "soNha": 330 } },

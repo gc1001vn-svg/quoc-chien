@@ -11,7 +11,7 @@ import { Atlas, coHinh, docBoAtlas } from '../src/render/Atlas';
 import { vatTaiDiem, type Ve } from '../src/render/VeCanh';
 import type { BanDo, OVat } from '../src/sim/city/BanDo';
 
-const ME = ['trung_co_2', 'can_dai', 'hien_dai'];
+const ME = ['co_dai', 'trung_co_2', 'can_dai', 'hien_dai'];
 
 function doc(ten: string): ReturnType<typeof docBoAtlas> {
   return docBoAtlas(JSON.parse(readFileSync(`public/atlas/${ten}.json`, 'utf8')));
