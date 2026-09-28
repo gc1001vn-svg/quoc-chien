@@ -11,6 +11,8 @@ import { describe, expect, it } from 'vitest';
 import canBang from '../data/balance.json';
 
 const NEN = ['o_co', 'o_dat', 'o_duong', 'o_duong_lat', 'o_cat', 'o_da', 'o_ruong'];
+/** Khoi 4 (Phase 12D): ruong, vuon, trai - chu du an bao "nhin chan qua" 28/09. */
+const TRAI = ['ruong', 'vuon_nho', 'trai_lon', 'trai_ga', 'trai_cuu'];
 const NGUOI: string[] = [];
 for (const kieu of ['nam', 'nu']) {
   for (let h = 0; h < 4; h += 1) for (let d = 0; d < 2; d += 1) NGUOI.push(`nguoi_${kieu}_${String(h)}_${String(d)}`);
@@ -41,14 +43,14 @@ describe('len doi thay ro: nen va nguoi doi theo doi', () => {
     const truoc = meCuaDoi[i - 1] as string;
     const sau = meCuaDoi[i] as string;
     const cap = `${String(i)}->${String(i + 1)}`;
-    it(`doi ${cap} (${truoc} -> ${sau}): khong o nen, khong dang nguoi nao y nguyen`, () => {
+    it(`doi ${cap} (${truoc} -> ${sau}): khong o nen, dang nguoi, ruong trai nao y nguyen`, () => {
       if (truoc === sau) {
         expect(CHUNG_ME_CHO_12E).toContain(cap);
         return;
       }
       const a = docMe(truoc);
       const b = docMe(sau);
-      const giong = [...NEN, ...NGUOI].filter((t) => congThuc(a, t) === congThuc(b, t));
+      const giong = [...NEN, ...NGUOI, ...TRAI].filter((t) => congThuc(a, t) === congThuc(b, t));
       expect(giong).toEqual([]);
     });
   }

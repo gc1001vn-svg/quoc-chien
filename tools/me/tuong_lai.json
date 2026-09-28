@@ -818,41 +818,12 @@
         }
       }
     },
-    "ruong": [
-      {
-        "m": "ks:planter",
-        "ti_le": 1.53,
-        "x": -0.7
-      },
-      {
-        "m": "ks:planter",
-        "ti_le": 1.53
-      },
-      {
-        "m": "ks:planter",
-        "ti_le": 1.53,
-        "x": 0.7
-      }
-    ],
-    "vuon_nho": [
-      {
-        "m": "ks:tree-small",
-        "ti_le": 1.53,
-        "x": -0.7,
-        "z": -0.4
-      },
-      {
-        "m": "ks:tree-small",
-        "ti_le": 1.53,
-        "x": 0.5,
-        "z": -0.2
-      },
-      {
-        "m": "ks:tree-small",
-        "ti_le": 1.53,
-        "x": -0.1,
-        "z": 0.6
-      }
-    ]
+    "ruong": [{"phang":1.02,"texture":"assets_source/hoa_tiet/metal_plate.jpg","lap":1,"mau":[0.9,1,1]},
+      {"m":"sk:hangar_roundGlass","ti_le":0.62,"mau_vl":{"metalRed":[0.35,1.35,1.5]}}],
+    "vuon_nho": [{"phang":1.02,"texture":"assets_source/hoa_tiet/grass_concrete_pavement.jpg","lap":1,"mau":[1.1,1.2,1.1]},
+      {"m":"ks:tree-small","ti_le":1.3,"x":-0.6,"z":-0.4},
+      {"m":"ks:tree-small","ti_le":1.3,"x":-0.1,"z":0.5},
+      {"m":"ki:solar-panel-flat","ti_le":1.3,"x":0.5,"z":-0.2},
+      {"m":"ki:detail-tank","ti_le":1.3,"x":0.6,"z":0.6}]
   }
 }

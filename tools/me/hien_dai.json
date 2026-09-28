@@ -4,6 +4,7 @@
   "ghi_chu_cot": "Cot nao la cai gi trong `colormap.png`, do 19/09 bang cach son do tung cot roi nhin: MOI GOI MOT KIEU, dung suy tu goi nay sang goi kia. `ks:building-type-a` (nha mai doc): cot 1 = mai + khung cua + chan tuong, 3 = cua ra vao, 7 = tuong, 11 = kinh. `kc:building-*` (nha mai bang): cot 1 = vien trang tri quanh tung tang + go mai, 3 = mat mai va tang tret, 7 = tuong, 11 = kinh. Nen cung con so 3 ma o `nha_dan` la cai cua con o tam nha pho la mat mai. Mau NHAN khong doi duoc SAC - mai xanh la nhan kieu gi cung ra xanh hay vang, do tam bo nhan khac nhau - nen mau cot 1 deu la `{ \"thay\": … }` (thay han, bo luon anh cot do), con cot 3 giu mau nhan cu vi mat mai cua nha pho khong phai mau xanh.",
   "trang_it_nhat": { "2": 2 },
   "kit": {
+    "iu": {"duong":"assets_source/icosa/0CgBYffMf7j","loai":"glb","gamma":true},
     "ks": {
       "duong": "assets_source/city-kit-suburban/Models/OBJ format",
       "gamma": true
@@ -138,11 +139,10 @@
       "nhu": "coi_xay_k0",
       "khung": { "ki:windmill#blades": { "rx": 80, "tam": [0, 1.8154, -0.0032] } }
     },
-    "ruong": [
-      { "m": "ks:planter", "ti_le": 1.53, "x": -0.7 },
-      { "m": "ks:planter", "ti_le": 1.53 },
-      { "m": "ks:planter", "ti_le": 1.53, "x": 0.7 }
-    ],
+    "ruong": [{"m":"ks:planter","ti_le":1.53,"x":-0.7},
+      {"m":"ks:planter","ti_le":1.53},
+      {"m":"ks:planter","ti_le":1.53,"x":0.7},
+      {"m":"iu:model","ti_le":0.261,"x":0.337,"y":0.001,"z":0.257}],
     "vuon_nho": [
       { "m": "ks:tree-small", "ti_le": 1.53, "x": -0.7, "z": -0.4 },
       { "m": "ks:tree-small", "ti_le": 1.53, "x": 0.5, "z": -0.2 },
