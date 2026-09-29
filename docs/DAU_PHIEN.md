@@ -59,18 +59,23 @@ npm run do:asset ga            # tiếng Việt cũng được, có từ điển
 npm run do:asset hien_dai nha
 ```
 
-Lệnh chạy lần lượt: `KHO_ASSET.md` → `KHO_CHUNG.md` → **kho mục lục chung `kho-game`** →
-`NGUON_MO.md` → **Poly Haven** (CC0, không cần khoá) → **Poly Pizza** (cần khoá). Chưa có
+Lệnh chạy lần lượt: `KHO_ASSET.md` → `KHO_CHUNG.md` → **kho mục lục chung `kho-game`** (mọi
+nguồn, gồm Poly Haven, Poly Pizza, Quaternius) → `NGUON_MO.md`. Chưa có
 `/home/user/kho-game` thì **lệnh tự clone** (sửa 29/09 — 28/09 phiên bỏ bước này vì lệnh chỉ in
 dòng nhắc, kết luận sai "không có gà"). Clone hỏng thì lệnh in `HONG` — khi đó **chưa được kết
-luận "không có"**.
+luận "không có"**. Từ 29/09 hook `nhac_kho` còn tự dò kho-game khi câu anh gõ có từ asset.
 
-- Dò hụt thì thêm từ vào `tools/tu_dien_asset.json`, đừng sửa mã nguồn.
-- Trúng ở kho-game: `node /home/user/kho-game/cong-cu/lay.mjs icosa --loc <từ khoá>`.
+- Dò hụt thì thêm từ vào `/home/user/kho-game/cong-cu/tu_dien.json` (khoá **có dấu**), đừng sửa
+  mã nguồn. Repo này không còn từ điển riêng.
+- Trúng ở kho-game: `node /home/user/kho-game/cong-cu/lay.mjs <nguồn> ...` — icosa · kenney · itch
+  · polyhaven · quaternius · 2d-assets · 3dtextures. `npm run tai:*` gọi sang đó, giữ tên cũ.
+- **Tự làm (vẽ bằng số, không mảnh model nào) phải khai `docs/TU_LAM.md`**: lệnh dò đã chạy +
+  ngày anh duyệt. Thiếu thì `check:credits` đỏ.
 - Trúng ở kho chung (`KHO_CHUNG.md`, file kê nằm trong repo này): model thật ở repo **`tayvuc` —
   Private**, gọi `add_repo` (`access: read`) trước rồi mới clone, rồi
   `npm run kho:lay <gói>`. Kho chung giữ gói **đã lọc** (phần lớn chỉ còn `glTF/`).
-- **Máy nướng đọc được cả ba: `.obj` · `.gltf` · `.glb`** (`tools/nuong_sprite.mjs`). `.fbx` thì chưa.
+- **Máy nướng đọc được cả ba: `.obj` · `.gltf` · `.glb`** (`tools/nuong_sprite.mjs`). `.fbx` thì đổi
+  sang `.glb` trước: `node /home/user/kho-game/cong-cu/mo_hinh.mjs fbx <thư mục>` (giữ clip chuyển động).
 - Tải gói mới từ itch xong chạy `npm run kho`; lấy từ kho chung xong chạy `npm run kho:chung`.
 - Poly Pizza **dò được, tải không được** (Cloudflare chặn, kể cả Chromium) — chủ dự án tải bằng máy
   mình. Chi tiết: `docs/MOI_TRUONG.md`.

@@ -159,7 +159,7 @@ chính Google Poly — phần lớn model nhà trên Poly Pizza gốc từ đó 
 
 ```bash
 npm run tai:icosa house building        # từ khoá tiếng Anh
-npm run tai:icosa nha --tam 8000        # tiếng Việt: dịch qua tools/tu_dien_asset.json
+npm run tai:icosa "gà" --tam 8000       # tiếng Việt: dịch qua từ điển kho-game
 npm run tai:icosa house --thu           # chỉ in ra sẽ tải gì
 ```
 
@@ -168,10 +168,11 @@ license · số tam · link trang) — nguyên liệu cho `docs/ASSET_CREDITS.md
 
 **License: TOÀN BỘ CC-BY, không có CC0 nào.** Đo 788 model nhà: `770 CC-BY 3.0` ·
 `1 CC-BY 4.0` · `17 CC-BY-ND 3.0`. Luật repo nhận CC-BY nhưng **bắt buộc ghi tên từng tác
-giả**; `tai_icosa.mjs` **tự loại ND và SA** — ND cấm tác phẩm phái sinh, mà nướng sprite
-chính là phái sinh.
+giả**; mục lục kho-game **đã loại ND và SA** từ bước quét — ND cấm tác phẩm phái sinh, mà
+nướng sprite chính là phái sinh.
 
-**Bốn bẫy đã đo, đừng "tối ưu" lại** (chi tiết ở đầu `tools/tai_icosa.mjs`):
+**Bốn bẫy đã đo, đừng "tối ưu" lại** (chi tiết ở đầu `kho-game/cong-cu/lay.mjs` — từ 29/09
+`tools/tai_icosa.mjs` chỉ gọi sang đó):
 
 | Bẫy | Dấu hiệu | Cách đúng |
 |---|---|---|
