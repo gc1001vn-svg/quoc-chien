@@ -82,9 +82,9 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 Bảng ruộng/trại 28/09: anh báo "gượng gạo" → thay bằng hướng art bible, không chốt bảng cũ nữa.
 
 1. Đọc tóm tắt Claude gửi trong chat (bản đủ: `docs/ART_BIBLE.md`).
-2. Nhắn bốn chữ: mốc chính **B** hay khác · luật 1 **"tối đa 2 tay vẽ"** ok không · **bước xây** (móng →
-   giàn giáo → xong) có làm không · màu mặc định đời 1–2 ok không.
-3. Tuỳ chọn: gửi 1–2 clip game thời thuộc địa / công nghiệp / hiện đại — đời 3–6 chưa có mốc.
+2. Nhắn năm chữ: mốc hình khối **D (Survivor Island)** ok không · luật 1 **"tối đa 2 tay vẽ"** ok không ·
+   **bước xây** (móng → giàn giáo → xong) có làm không · **nền lót** dưới nhà có làm không · màu mặc định đời 1–2 ok không.
+3. Tuỳ chọn: 1–2 clip game thời hoả mai, thuộc địa (đời 3) hoặc tương lai (đời 6) — hai đời này chưa có mốc.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
