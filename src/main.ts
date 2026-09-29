@@ -16,7 +16,26 @@ import { chayCanhTran } from './render/BattleScene';
 import type { Man } from './render/Man';
 import { dungTheGioi, type TheGioiGame } from './ui/DungTheGioi';
 import { dungGhiCong } from './ui/GhiCong';
+import { registerSW } from 'virtual:pwa-register';
 import './style.css';
+
+// Ban moi tren Pages: iPhone mo lai app tu nen KHONG tai lai trang, nen trang cu chay mai
+// — anh bao 25-26/09 "link Pages khong xai duoc" (van ban 24/09). Truoc 29/09 plugin tu chen
+// `registerSW.js`: chi dang ky, khong hoi ban moi, khong tai lai. Gio moi lan trang HIEN LAI
+// thi hoi service worker; co ban moi thi `autoUpdate` tu tai lai trang. Ban duyet
+// (`--base=./`, `scripts/duyet.mjs`) bo han service worker nen khong dang ky.
+if (import.meta.env.BASE_URL !== './') {
+  registerSW({
+    immediate: true,
+    onRegisteredSW(_duong, dangKy) {
+      if (!dangKy) return;
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState !== 'visible') return;
+        dangKy.update().catch(() => { /* mat mang: lan hien sau hoi lai */ });
+      });
+    },
+  });
+}
 
 const goc: HTMLElement | null = document.getElementById('app');
 if (goc === null) throw new Error('Thieu the #app trong index.html');
