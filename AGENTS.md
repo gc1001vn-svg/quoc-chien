@@ -51,9 +51,9 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 - Commit tiếng Việt **không dấu**, mỗi việc một commit: `feat: them he thong walker`.
 - Asset chỉ nhận **CC0 · CC-BY · MIT**, tự tìm hoặc tải từ nguồn mở. CC-BY-SA và đồ
   chép từ game thương mại: loại.
-- **Dò asset đủ ba bước:** `KHO_ASSET.md` → `KHO_CHUNG.md` → `NGUON_MO.md` → báo chủ dự
-  án quyết. Tự vẽ, tự ghép chỉ sau khi anh quyết.
-  Lệnh, cách `grep`, và bẫy từng bước: `docs/DAU_PHIEN.md` mục F.
+- **Dò asset một lệnh:** `npm run do:asset <từ khoá>` (tự chạy kho-game + ba file kê) →
+  không ra thì báo chủ dự án quyết. Tự vẽ, tự ghép chỉ sau khi anh quyết.
+  Bẫy: `docs/DAU_PHIEN.md` mục F.
 - Thư viện ngoài: đề xuất tên + license + lý do + độ tin (sao, lượt cài, ai làm) + telemetry
   (bật sẵn? gửi gì? tắt sao?), **chờ đồng ý**.
 - **Trước mỗi commit `npm run do`**. Sửa bằng Edit — rẻ token hơn `python`/`sed`.

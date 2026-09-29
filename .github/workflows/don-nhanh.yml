@@ -1,0 +1,43 @@
+name: Don nhanh
+
+# Xoa nhanh `claude/*` DA GOP vao `main` va cu hon 2 ngay. May ao cua Claude khong xoa duoc
+# nhanh remote (`fatal: the remote end hung up unexpectedly`), GitHub MCP khong co lenh xoa,
+# nen chu du an tung bam thung rac tay tren iPhone (18/09 con 6 nhanh, 29/09 lai 39). May
+# chay CI cua GitHub thi xoa duoc. Nhanh CHUA gop giu nguyen — co the con viec do dang.
+# Nhanh moi hon 2 ngay cung giu: phien dang chay van can nhanh cua no.
+
+on:
+  schedule:
+    - cron: '17 20 * * *'   # 03:17 gio Viet Nam moi ngay
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  don:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Xoa nhanh claude/* da gop vao main, cu hon 2 ngay
+        run: |
+          han=$(date -d '2 days ago' +%s)
+          xoa=0
+          giu=0
+          for nhanh in $(git for-each-ref --format='%(refname:strip=3)' refs/remotes/origin/claude/); do
+            ngay=$(git log -1 --format=%ct "origin/$nhanh")
+            if [ "$ngay" -ge "$han" ]; then
+              giu=$((giu + 1))
+              continue
+            fi
+            if ! git merge-base --is-ancestor "origin/$nhanh" origin/main; then
+              echo "giu $nhanh (chua gop vao main)"
+              giu=$((giu + 1))
+              continue
+            fi
+            git push origin --delete "$nhanh" && xoa=$((xoa + 1))
+          done
+          echo "Da xoa $xoa nhanh, giu $giu nhanh"

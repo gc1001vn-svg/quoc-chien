@@ -4,7 +4,6 @@
 AGENTS.md
 CLAUDE.md
 vite.config.ts
-vercel.json
 .claude/settings.json
 .claude/file_khoa.txt
 .github/workflows/

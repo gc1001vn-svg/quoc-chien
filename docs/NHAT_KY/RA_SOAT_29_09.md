@@ -26,5 +26,9 @@ Rà 7 repo + kho + hook + skill + connector, rồi sửa. Mỗi lỗi có lệnh
   qua `virtual:pwa-register`, hỏi bản mới mỗi lần trang hiện lại → XANH. **iPhone thật chưa đo.**
 - **kho-game:** `lay.mjs --id` 0/2 → 2/2 (wayback đứt qua proxy, lùi sang backblaze); cài bộ đồ nghề,
   nối 4 thước (7/7). **ghi-nho:** gỡ luật đá nhau (gộp main, tayvuc, bước A/D/F), 3 quyết định.
-- **Bẫy:** bộ lọc máy ảo chặn trợ lý tự ghi vé file khoá (`[Self-Modification]`) — 6 việc chờ anh,
-  `TIEN_DO.md` mục 3. Commit `87bc2a8` phiên này ghi "hai dòng" sổ, thật là 10 — hook cũ ghi nhầm.
+- **Bẫy:** bộ lọc máy ảo chặn trợ lý tự ghi vé file khoá (`[Self-Modification]`) khi anh chưa nói.
+  Anh gõ "sửa file khoá theo TIEN_DO mục 3" thì ghi vé qua được. Commit `87bc2a8` phiên này ghi
+  "hai dòng" sổ, thật là 10 — hook cũ ghi nhầm.
+- **Lượt 2 (anh duyệt):** `ASSET_CREDITS.md` thêm dòng 11 model Icosa khối 4 · `AGENTS.md` dò asset
+  một lệnh · xoá `vercel.json` · CI chỉ `main` + PR · workflow `Don nhanh` xoá nhánh `claude/*` đã gộp
+  và cũ hơn 2 ngày (03:17 hằng ngày) · `kho-game/CLAUDE.md` gọi `add_repo` trước khi clone.

@@ -15,8 +15,8 @@ Cập nhật: 29/09/2026 (lần 23 — rà soát và sửa bộ đồ nghề, **
   lúc làn sóng. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`.
 - **29/09 anh xem bảng ruộng/trại: "nhìn vẫn gượng gạo quá"** — tạm dừng 12D, chờ lệnh mới (mục 5).
 - 11B (27/09): chơi trọn một vòng, 59 fps mọi màn kể cả 500×.
-- Phiên 29/09 (lần 23): rà soát toàn bộ đồ nghề, sửa hook/công cụ, cắt file này từ 91.599 byte.
-  Chi tiết: `docs/NHAT_KY/RA_SOAT_29_09.md`.
+- Phiên 29/09 (lần 23): rà soát toàn bộ đồ nghề, sửa hook/công cụ, cắt file này từ 91.599 byte;
+  anh duyệt, 6 việc file khoá đã sửa cùng phiên. Chi tiết: `docs/NHAT_KY/RA_SOAT_29_09.md`.
 
 ## 2. Số đo mới nhất
 
@@ -77,23 +77,6 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 2. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần. Dòng chữ nhỏ trên
    cùng phải ghi **28/09 21:41**. Chơi 500× qua vài lần lên đời, nhìn ô ruộng/trại.
 3. Nhắn: **"ok"** hoặc ô nào xấu (vd "trại gà cổ đại") · fps.
-
-### 🟡 Việc 29/09 (lần 23) — cho phép sửa 6 file khoá (máy ảo chặn trợ lý tự ghi vé)
-
-Bộ lọc máy ảo chặn trợ lý tự ghi vé duyệt (`[Self-Modification]`), nên phần sửa file khoá còn treo:
-
-1. `docs/ASSET_CREDITS.md` — thêm một dòng mẻ cho 11 model Icosa khối 4 (bản ghi công đủ đã bù vào
-   `docs/KHO_ICOSA.md` 29/09, trong game đã có ở `data/ghi_cong.json`).
-2. `AGENTS.md` — dòng dò asset đổi thành một lệnh `npm run do:asset` (lệnh tự vào kho-game).
-3. `vercel.json` — xoá (game đưa lên bằng GitHub Pages, file này không ai dùng) và bỏ dòng của nó
-   trong `.claude/file_khoa.txt`.
-4. `.github/workflows/ci.yml` — chỉ chạy trên `main` và PR (hiện mỗi commit chạy CI hai lần).
-5. `.github/workflows/` — thêm việc tự xoá nhánh `claude/*` đã gộp vào `main` (anh từng xoá tay,
-   nay lại 39 nhánh).
-6. `kho-game/CLAUDE.md` — sửa thứ tự mồi đầu phiên: gọi `add_repo` TRƯỚC khi clone `ghi-nho`.
-
-**Anh làm:** mở phiên mới → bấm nút chế độ cạnh ô soạn tin, chọn **Accept edits** → gõ
-**"sửa file khoá theo TIEN_DO mục 3"** → máy hỏi thì bấm cho phép → xong đổi nút về **Auto**.
 
 ## 4. Nợ đang chặn phase kế tiếp
 

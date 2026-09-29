@@ -1,9 +1,12 @@
 name: CI
 
+# Chi `main` + PR. Truoc 29/09 chay moi nhanh: moi commit day ca nhanh `claude/*` lan `main`
+# nen CI chay HAI lan cung mot SHA. Truoc khi commit da co `npm run do` o may ao.
 on:
   push:
-    branches: ['**']
+    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   kiem-tra:

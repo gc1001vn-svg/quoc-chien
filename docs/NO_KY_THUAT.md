@@ -119,6 +119,7 @@
 - Chưa tìm được kho **gigalomania** (SourceForge, `api.github.com/search` bị khoá theo
   phiên). Game đáng đọc nhất về một ván đi suốt nhiều thời kỳ — tìm lại phiên sau.
 - `vercel.json` giữ lại, chưa dùng. Muốn quay về Vercel thì sửa `BASE` về `'/'`.
+  **ĐÃ XOÁ 29/09** (chủ dự án duyệt): game đưa lên bằng Pages. Cần lại thì `git show 87bc2a8:vercel.json`.
 
 ## Lớp chiến dịch — nợ mở ra ở Phase 7 (11/09/2026)
 
