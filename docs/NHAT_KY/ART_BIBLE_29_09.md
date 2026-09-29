@@ -26,3 +26,9 @@ bảng màu đời 1–2, mốc D). Tra 9 game thật: ảnh bìa video YouTube 
 Forge of Empires đo 0,36–0,37, Anno 1701 0,39 — **game thật tối hơn quảng cáo** → luật 2 hạ từ 0,40 xuống 0,36,
 bảng đèn 0,36 · 0,44 · 0,52 · 0,60. Đời 3 (AoE III, Anno 1701), 5 (Forge of Empires, chưa có số), 6 (Forge of
 Empires Tomorrow/Future + chủ đề Eco của Anno 2070) có màu đề xuất. Thêm luật 12 "đọc được ở zoom xa" (Civ VI).
+
+**Lần bốn:** anh "1 ok hết" (màu đời 3–6, bản đồ kiểu giấy → luật 13, đời 6 xanh sạch) và hỏi "sao chỉ có 4" (ô bảng
+đèn) → làm luôn bảng **20 ô** (5 sáng × 4 ấm) bằng chỉnh ảnh chụp, chưa nướng. Thử ba cách nâng sáng trên một ô:
+`gamma` mờ như sương → bỏ; `exposure` giữ bóng đậm → dùng. `tools/do_hinh.mjs` thêm **độ ấm TB** (đỏ − lam); mốc:
+D 0,13–0,20 · FoE 0,16 · A, F 0,23–0,24 · B, G 0,34–0,35 · game 0,19. `scripts/chup_man.mjs` thêm `AN_SU_KIEN=1`
+(ẩn hộp thoại sự kiện, không bấm — bấm thì camera chạy đi). Bảng gửi trong chat, không lên repo.

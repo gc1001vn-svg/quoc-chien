@@ -3,7 +3,8 @@
 > **Đọc trước mọi việc đụng hình:** chọn asset, nướng sprite, đổi đèn, đổi nền, đổi màu.
 > Soạn 29/09 từ **10 clip** quảng cáo game anh gửi (5 lần một, 5 lần hai), cộng 9 game
 > thật tra thêm (mục 7). **Anh chốt 29/09 ("ok làm hết"):** mốc hình khối D · tối đa 2 tay vẽ ·
-> bước xây · nền lót · màu đời 1–2. Mục còn ghi **[anh chốt]** vẫn là đề xuất. Clip là quảng cáo
+> bước xây · nền lót · màu đời 1–2. **Lần hai ("1 ok hết"):** màu đời 3–6 · bản đồ kiểu giấy nét mực ·
+> đời 6 tương lai xanh sạch. Mục còn ghi **[anh chốt]** vẫn là đề xuất. Clip là quảng cáo
 > thương mại, repo công khai →
 > **clip và ảnh cắt từ clip không lên repo**; ở đây chỉ có lời tả và số đo. Clip không lưu lại
 > sau phiên 29/09. Tên game ghi theo chữ trên quảng cáo; quảng cáo không ghi tên thì ghi "không rõ".
@@ -71,8 +72,8 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
    Forge of Empires). Mức cụ thể anh chọn trên bảng đèn (mục 5). **[anh chốt trên bảng đèn]**
 3. **Bão hoà:** cảnh thành phố **≥ 0,37** (cảnh thành phố nhạt nhất trong mốc: D đầu game).
 4. **Màu nhận diện mỗi đời:** nền một tông, **mái một màu riêng** mà đời kề không dùng — như
-   mốc A. **Một chủ đề mỗi đời, không trộn** — như Forge of Empires (mục 7). Đời 1–2 anh chốt
-   29/09; đời 3–6 là đề xuất từ game thật **[anh chốt]**:
+   mốc A. **Một chủ đề mỗi đời, không trộn** — như Forge of Empires (mục 7). Cả sáu đời anh chốt
+   29/09 (đời 3–6 lấy từ game thật):
 
    | Đời | Theo mốc | Nền | Mái / điểm nhấn |
    |---|---|---|---|
@@ -107,9 +108,9 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
 12. **Đọc được ở zoom xa** (Civilization VI, mục 7): người chơi ngắm cả thành phố từ xa → ở zoom nhỏ
     nhất phải nhận ra đời, loại nhà bằng **màu mái và bóng dáng**, không cần chi tiết.
 
-**Đề xuất, chưa là luật — [anh chốt]:** **bản đồ tỉnh và trận theo E**: bản đồ nền giấy nét mực,
-nhạt màu, tách hẳn khỏi thành phố; mỗi phe một khối màu, số quân trên nhãn. Civilization VI làm
-đúng kiểu này cho vùng chưa khám phá (mục 7).
+13. **Bản đồ tỉnh và trận theo E** — anh chốt 29/09: bản đồ nền giấy nét mực, nhạt màu, tách hẳn khỏi
+    thành phố; mỗi phe một khối màu, số quân trên nhãn. Civilization VI làm đúng kiểu này cho vùng
+    chưa khám phá (mục 7). Luật 3 (bão hoà) không áp cho bản đồ.
 
 ## 4. Gói thay đề xuất cho đời 1–2 — cùng một tay vẽ Quaternius, CC0
 
@@ -125,8 +126,14 @@ Dò bằng `node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius` (29
 
 ## 5. Thứ tự làm — mỗi bước một bảng, anh chọn một lần
 
-1. **Bảng đèn:** một cảnh cổ đại × 4 mức, nhắm độ sáng TB **0,36 · 0,44 · 0,52 · 0,60** (từ mức
-   Forge of Empires tới mức quảng cáo sáng nhất); ghi số đo thật dưới từng ô. Đèn hiện ở `tools/lib/trang_nuong.js`: đèn chính `(1.05, 0.99, 0.88) × 0.72`,
+1. **Bảng đèn — xem trước xong 29/09, chờ anh chọn một ô.** 20 ô = 5 mức sáng (hiện tại 0,28 ·
+   0,36 · 0,44 · 0,52 · 0,60) × 4 mức ấm (0,13 mát như D · 0,19 giữ như hiện tại · 0,26 như A, F ·
+   0,34 như B, G). Mã ô: hàng 1–5, cột A–D (1B = hiện tại). **Xem trước bằng chỉnh ảnh chụp, chưa
+   nướng lại:** nhân lượng sáng (`exposure` của ffmpeg — giữ bóng đậm; cách `gamma` làm hình mờ như
+   sương, đã thử và bỏ) + ấm ở vùng sáng, bóng hơi xanh (`colorbalance`). Khung đo: `AN_SU_KIEN=1
+   DIA_CHI=http://127.0.0.1:4173/quoc-chien/ node scripts/chup_man.mjs "?me=co_dai&zoom=0.6" <tên>.png`,
+   cắt `1100:460:450:240` (hiện tại đo ra sáng 0,28 · ấm 0,19). **Phiên sau:** chỉnh đèn máy nướng
+   (dưới đây) tới khi ảnh game thật đo ra đúng sáng, ấm của ô anh chọn, rồi gửi anh ảnh thật so với ô đó. Đèn hiện ở `tools/lib/trang_nuong.js`: đèn chính `(1.05, 0.99, 0.88) × 0.72`,
    đèn nền trời `(0.40, 0.44, 0.52)`, đất `(0.22, 0.20, 0.26)`.
 2. **Bảng nông trại theo G:** bản hiện tại cạnh bản Quaternius (mục 4).
 3. Nướng lại mẻ cổ đại theo luật 1–12; rồi cận đại (7 tay vẽ), hiện đại (bão hoà 0,28).

@@ -77,14 +77,12 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### 🟡 Việc 29/09 (lần 24) — art bible: anh chốt "ok làm hết", còn ba ý nhỏ
+### 🟡 Việc 29/09 (lần 24) — chọn một ô trên bảng đèn
 
-Anh chốt 29/09: mốc hình khối D · tối đa 2 tay vẽ · bước xây · nền lót · màu đời 1–2 (`docs/ART_BIBLE.md`).
-Cùng ngày Claude tra thêm 9 game thật (mục 7 của file đó).
+Art bible anh chốt hết 29/09 (hai lần "ok"), `docs/ART_BIBLE.md`. Bảng đèn 20 ô Claude gửi trong chat 29/09.
 
-1. Nhắn ba chữ: màu đề xuất **đời 3–6** ok không (bảng luật 4) · **bản đồ tỉnh kiểu giấy nét mực** có làm không ·
-   đời 6 lấy **"tương lai xanh sạch"** (cây phủ mái) ok không.
-2. Không cần làm gì thêm: phiên sau Claude làm bảng đèn, gửi ảnh để anh chọn một ô.
+1. Nhìn bảng: hàng 1–5 là độ sáng (hàng 1 = hiện tại), cột A–D là độ ấm (A mát · D ấm như 3Q). Ô 1B là game bây giờ.
+2. Nhắn **mã một ô**, ví dụ "3C". Chưa thích ô nào thì nói hướng: "sáng hơn 5", "ấm giữa C và D".
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -97,7 +95,7 @@ Cùng ngày Claude tra thêm 9 game thật (mục 7 của file đó).
 ## 5. Phiên sau — bảng đèn (art bible mục 5)
 
 **Anh chốt art bible 29/09 ("ok làm hết").** Đừng tự mở 12E. Phiên sau làm đúng `docs/ART_BIBLE.md` mục 5, mỗi bước
-một bảng cho anh chọn một lần: (1) bảng đèn 4 mức 0,36 · 0,44 · 0,52 · 0,60, (2) bảng nông trại Quaternius cạnh bản hiện
+một bảng cho anh chọn một lần: (1) chỉnh đèn máy nướng cho ra đúng sáng, ấm của ô anh chọn trên bảng đèn 20 ô (art bible mục 5), (2) bảng nông trại Quaternius cạnh bản hiện
 tại, (3) nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 
 Nếu anh bảo tiếp 12E:
