@@ -73,6 +73,16 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node $CLAUDE_PROJECT_DIR/scripts/chan_file_khoa.mjs",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "Stop": [
@@ -122,6 +132,7 @@
     "code-review": "user-invocable-only",
     "doubt-driven-development": "user-invocable-only",
     "constraint-driven-development": "user-invocable-only",
-    "code-simplification": "user-invocable-only"
+    "code-simplification": "user-invocable-only",
+    "google-workspace": "off"
   }
 }

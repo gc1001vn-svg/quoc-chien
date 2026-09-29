@@ -300,7 +300,7 @@ function chinh(raw) {
 
   // Tran cua rieng hook nay (SO_KHOI x DAI_KHOI) la tran MEM: doi mot hang so
   // la no phinh. `cat_tran` la tran CHUNG cho moi hook chen ngu canh — lop cuoi,
-  // khong ai sua nham qua duoc. ~4 ky tu/token, so sinh tu lenh chu khong go tay.
+  // khong ai sua nham qua duoc. Token uoc byte/3 (`uoc_tok`), so sinh tu lenh chu khong go tay.
   const { van: ngu_canh, tok, cat } = cat_tran(tho);
 
   ghi_so(`CHEN ${chon.length} khoi\t~${tok} tok${cat ? ' (DA CAT)' : ''}\t${chon.map((x) => x.k.tieu_de).join(' | ')}`);

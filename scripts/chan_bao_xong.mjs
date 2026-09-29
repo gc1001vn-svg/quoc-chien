@@ -44,10 +44,12 @@ const BAO_XONG = 'xong|hoàn thành|hoan thanh|hoàn tất|hoan tat';
 /** Tu chao dong phien. Xem cho dung no o duoi - phai di kem dieu kien DO DAI. */
 const CHAO = 'hẹn phiên sau|hen phien sau|hẹn gặp|hen gap|tạm biệt|tam biet'
   + '|chào anh|chao anh|chúc anh|chuc anh|hẹn anh|hen anh';
-// Cho phep ky tu trang tri Markdown dung truoc: ` * _ ~ # - > va khoang trang.
-const CO_SO_DO = /^[\s>*_`~#-]*(số đo|so do)\s*:/im;
+// "Số đo:" o BAT KY cho nao trong dong, mien truoc no khong phai chu cai. Ban cu doi no
+// dung dau dong: 29/09 "Rà xong. Số đo: 17/17 thước đạt" bi chan nham — so do CO, chi
+// nam giua dong — va chu du an thay mot dong loi vo ly.
+const CO_SO_DO = /(?:^|[^\p{L}])(số đo|so do)\s*:/imu;
 /** Dong de xuat buoc ke, hay khoi viec cuoi phien - mot trong hai la du. */
-const CO_DE_XUAT = /^[\s>*_`~#-]*(đề xuất|de xuat)\s*:|việc của anh bây giờ|viec cua anh bay gio/im;
+const CO_DE_XUAT = /(?:^|[^\p{L}])(đề xuất|de xuat)\s*:|việc của anh bây giờ|viec cua anh bay gio/imu;
 
 let raw = '';
 // Fail-open ca khi CHINH hook hong, khong chi khi du lieu hong. Doan duoi co

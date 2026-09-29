@@ -40,8 +40,9 @@
 // ---------------------------------------------------------------------------
 // Fail-open tuyet doi: moi duong loi trong file nay deu tra ve "cho chay tiep".
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { homedir } from 'node:os';
 
 /** Muc hop le, tu long den chat. */
 export const MUC_HOP_LE = ['nhe', 'thuong', 'chat'];
@@ -177,7 +178,7 @@ export function thoat(ma, chu = {}) {
 
 /**
  * Cat chuoi ngu canh cho vua tran, kem dau de biet la da bi cat.
- * Tra ve `{ van, tok, cat }` — `tok` uoc ~4 ky tu/token.
+ * Tra ve `{ van, tok, cat }` — `tok` uoc bang `uoc_tok` (byte/3).
  */
 export function cat_tran(van, tran = TRAN_NGU_CANH) {
   const s = String(van ?? '');
@@ -203,4 +204,39 @@ export function cat_tran(van, tran = TRAN_NGU_CANH) {
  */
 export function uoc_tok(s) {
   return Math.floor(Buffer.byteLength(String(s ?? ''), 'utf8') / 3);
+}
+
+/**
+ * Skill nap moi phien ma CHUA co khoa trong `skillOverrides`, cung khong nam trong
+ * `.claude/skill_bat.txt` (danh sach CO Y bat). Tra ve ten thu muc skill, da xep.
+ *
+ * Dung chung cho `dau_phien` (dau phien) va `check_hook` (lenh do). Vi sao hai cho: hook
+ * dau phien co the chay TRUOC khi skill tai ve may — do 29/09 no im, chay lai sau vai phut
+ * moi bao `google-workspace`. Lenh do chay sau nen bat chac.
+ *
+ * `skillOverrides` khop theo TEN THU MUC, khong theo `name:` trong frontmatter. Quet ca
+ * `~/.claude/skills/<ten>/` lan `~/.claude/skills/synced/<bucket>/<ten>/`.
+ */
+export function skill_chua_khoa(root = goc(), thu_muc_skill = join(homedir(), '.claude/skills')) {
+  const set = doc_json(join(root, '.claude/settings.json'));
+  if (!set) return [];
+  const khoa = set.skillOverrides ?? {};
+  let bat_co_y = [];
+  try {
+    bat_co_y = readFileSync(join(root, '.claude/skill_bat.txt'), 'utf8')
+      .split('\n').map((l) => l.split('#')[0].trim()).filter(Boolean);
+  } catch { /* khong co file: moi skill khong khoa deu bi bao */ }
+  const ten = new Set();
+  const quet = (thu_muc, sau) => {
+    let ds;
+    try { ds = readdirSync(thu_muc, { withFileTypes: true }); } catch { return; }
+    for (const m of ds) {
+      if (!m.isDirectory()) continue;
+      const con = join(thu_muc, m.name);
+      if (existsSync(join(con, 'SKILL.md'))) ten.add(m.name);
+      else if (sau > 1) quet(con, sau - 1);
+    }
+  };
+  quet(thu_muc_skill, 3);
+  return [...ten].filter((t) => !(t in khoa) && !bat_co_y.includes(t)).sort();
 }

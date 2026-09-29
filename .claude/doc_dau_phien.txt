@@ -1,0 +1,7 @@
+# File doc MOI dau phien va tran token cua tung file (uoc byte/3). Thuoc `check:token` do,
+# `check:nguong` cam noi TONG cac tran. Dung 29/09: TIEN_DO.md tung phinh 91.599 byte
+# (~30.500 token) du co luat "ghi de, khong cong don" — luat chu thi quen, thuoc thi khong.
+# Vuot tran thi CAT (lich su sang docs/NHAT_KY/, chi tiet sang docs/MOI_TRUONG.md), dung noi.
+
+docs/TIEN_DO.md 4500
+docs/DAU_PHIEN.md 3800

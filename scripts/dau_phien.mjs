@@ -13,7 +13,7 @@
 
 import { existsSync, readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
-import { bat, thoat, cat_tran } from './hook_chung.mjs';
+import { bat, thoat, cat_tran, skill_chua_khoa } from './hook_chung.mjs';
 
 const ID = 'phien:dau-phien';
 
@@ -60,26 +60,11 @@ if (existsSync(pSet)) {
     if (n === 0) {
       d.push('skillOverrides TRONG — moi phien phi ~12.500 ky tu. Chay cong-cu/cai_dat.mjs');
     } else {
-      // Skill CO Y de bat liet ke o `.claude/skill_bat.txt` (mot ten mot dong,
-      // `#` la ghi chu). Khong co file do thi moi skill khong khoa deu bi bao.
-      const pBat = '.claude/skill_bat.txt';
-      const batCoY = new Set(
-        existsSync(pBat)
-          ? readFileSync(pBat, 'utf8').split('\n').map((l) => l.split('#')[0].trim()).filter(Boolean)
-          : [],
-      );
-      // Quet CA HAI chO. Ban cu chi quet `synced/*/*/` va bo sot moi thu nam
-      // thang duoi `skills/` — do 18/09: `session-start-hook` nam ngoai `synced/`,
-      // thoat kiem suot, may man la no da co khoa san. Dung skill gia de thu:
-      // tao `~/.claude/skills/skill-la-mat/` thi ban cu IM, ban nay bao.
-      // `-maxdepth 2 -name SKILL.md` bat duoc ca hai kieu long thu muc.
-      const thuMuc = [...new Set(
-        chay('find ~/.claude/skills -mindepth 2 -maxdepth 4 -name SKILL.md 2>/dev/null')
-          .split('\n').filter(Boolean)
-          .map((p) => p.split('/').slice(-2)[0]),
-      )];
-      const sot = thuMuc.filter((t) => !(t in khoa) && !batCoY.has(t));
-      if (sot.length) d.push(`skill CHUA co khoa: ${sot.join(' ')} — tat trong skillOverrides, hoac ghi vao ${pBat} neu co y bat`);
+      // Ham dung chung voi `check_hook` (lenh do): hook nay co the chay truoc khi skill
+      // tai ve may va sot, lenh do chay sau bat lai. Sua o BAN MAU kho — `cai_dat.mjs`
+      // ghi de `skillOverrides` cua repo moi dau phien, sua thang settings.json la mat.
+      const sot = skill_chua_khoa();
+      if (sot.length) d.push(`skill CHUA co khoa: ${sot.join(' ')} — them vao /home/user/ghi-nho/cong-cu/skill_overrides.json roi chay cai_dat.mjs; co y bat thi ghi .claude/skill_bat.txt`);
     }
   } catch { d.push(`${pSet} hong dinh dang`); }
 } else if (existsSync('.git')) {

@@ -59,6 +59,18 @@ const THEO_DOI = [
       return (khoi[1].match(/'[^']+'/g) || []).length;
     },
   },
+  {
+    // Tuy chon (29/09): repo khong co `.claude/doc_dau_phien.txt` thi bo qua muc nay.
+    ten: 'doc_dau_phien.tong',
+    mo_ta: 'tong tran token cac file doc moi dau phien',
+    doc() {
+      const p = '.claude/doc_dau_phien.txt';
+      if (!existsSync(p)) return undefined;
+      return readFileSync(p, 'utf8').split('\n')
+        .map((l) => l.split('#')[0].trim()).filter(Boolean)
+        .reduce((tong, l) => tong + Number(l.split(/\s+/)[1] ?? 0), 0);
+    },
+  },
 ];
 
 /** So mac dinh trong `const NGUONG = Number(process.env.X) || 60;` */
@@ -97,7 +109,7 @@ if (ghi) {
       process.exit(1);
     }
   }
-  const dong = THEO_DOI.map((m) => {
+  const dong = THEO_DOI.filter((m) => m.doc() !== undefined).map((m) => {
     const so = m.doc();
     if (so === null || !Number.isFinite(so)) {
       console.error(`HONG: khong doc duoc gia tri that cua ${m.ten}.`);
@@ -140,6 +152,7 @@ for (const dong of readFileSync(MOC, 'utf8').split('\n')) {
 const qua = [];
 for (const muc of THEO_DOI) {
   const that = muc.doc();
+  if (that === undefined) continue; // muc tuy chon, repo nay khong dung
   const moc = goc.get(muc.ten);
   if (that === null || !Number.isFinite(that)) {
     console.error(`HONG: khong doc duoc gia tri that cua ${muc.ten} — ma nguon da doi hinh dang.`);

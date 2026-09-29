@@ -11,6 +11,7 @@
 
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { skill_chua_khoa } from './hook_chung.mjs';
 
 const goc = process.env.CLAUDE_PROJECT_DIR ?? process.cwd();
 const loi = [];
@@ -104,6 +105,14 @@ if (!existsSync(join(goc, 'scripts/hook_chung.mjs'))) {
 const pIg = join(goc, '.gitignore');
 if (existsSync(pIg) && !readFileSync(pIg, 'utf8').includes('.claude/hook_phien.txt')) {
   loi.push('.gitignore thieu .claude/hook_phien.txt — tat hook mot phien se lot len git');
+}
+
+// 9. Skill nap moi phien ma chua khoa. Hook dau phien co the chay TRUOC khi skill tai ve
+//    may (29/09 sot `google-workspace` ~310 token/phien) — lenh do chay sau, bat chac.
+const sot = skill_chua_khoa(goc);
+if (sot.length) {
+  loi.push(`skill CHUA co khoa: ${sot.join(' ')} — them vao /home/user/ghi-nho/cong-cu/skill_overrides.json `
+    + 'roi chay cai_dat.mjs (co y bat thi ghi .claude/skill_bat.txt)');
 }
 
 for (const c of canh) process.stdout.write(`  nhac: ${c}\n`);

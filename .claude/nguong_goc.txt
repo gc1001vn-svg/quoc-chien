@@ -9,3 +9,7 @@ check_ke_hoach.nguong=60
 check_ke_hoach.mien=2
 
 # 2026-09-20 dung moc dau tien, lay dung so dang chay. Chua noi lan nao.
+
+doc_dau_phien.tong=8300
+
+# 2026-09-29 them muc doc_dau_phien.tong (moi, khong phai noi): tran TIEN_DO 4500 + DAU_PHIEN 3800.

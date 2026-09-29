@@ -74,6 +74,11 @@ describe('chan_bao_xong bat dang bao xong', () => {
   it.each(baoXong)('cho qua khi du ca hai dong: %s', (msg) => {
     expect(chan(duDoi(msg))).toBe(false);
   });
+
+  // 29/09: so do CO nhung nam giua dong -> ban cu chan nham, chu du an thay dong loi.
+  it('cho qua khi "Số đo:" va "Đề xuất:" nam giua dong', () => {
+    expect(chan('Rà xong. Số đo: 17/17 thước đạt. Đề xuất: phiên LỖI kế tiếp.')).toBe(false);
+  });
 });
 
 describe('chan_bao_xong KHONG bat nham', () => {
