@@ -52,8 +52,16 @@ chay "check:cap" "node scripts/check_cap.mjs"
 chay "check:ten" "node scripts/check_ten.mjs"
 chay "check:tran" "node scripts/check_tran.mjs"
 chay "check:san" "node scripts/check_san.mjs"
-bo_qua_neu_thieu "do:luat" '[ -n "${GEMINI_API_KEY:-}" ]' \
-  "node scripts/do_luat.mjs" "thieu GEMINI_API_KEY"
+# `do:luat` do xem luat trong AGENTS.md co doi hanh vi khong — goi Gemini, ~4 phut (29/09:
+# ca `npm run do` 7 phut 13 giay). Chi can khi luat hay bo de DOI so voi main; luat dung yen
+# thi do lai ra dung so cu. Ep chay: DO_LUAT=1 npm run do.
+if [ "${DO_LUAT:-}" = 1 ] || ! git diff --quiet origin/main -- AGENTS.md docs/BO_DE.md 2>/dev/null; then
+  bo_qua_neu_thieu "do:luat" '[ -n "${GEMINI_API_KEY:-}" ]' \
+    "node scripts/do_luat.mjs" "thieu GEMINI_API_KEY"
+else
+  bo_qua_neu_thieu "do:luat" 'false' "true" \
+    "AGENTS.md va docs/BO_DE.md khong doi so voi main (ep chay: DO_LUAT=1)"
+fi
 
 rm -f /tmp/do_$$.log
 if [ "$bo_qua" -gt 0 ]; then

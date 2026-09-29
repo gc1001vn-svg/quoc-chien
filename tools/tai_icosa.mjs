@@ -298,7 +298,17 @@ async function taiAsset(asset, ds) {
  */
 function keKho() {
   if (!existsSync(THU_MUC)) return;
-  const dong = [];
+  // Bang ke GOP DAN, theo id: model tren dia cap nhat dong cua no, model khong co tren dia
+  // giu nguyen dong cu. Ban cu ghi lai CHI tu model tren dia -> 28/09 phien moi tai vai
+  // model la bang 1.692 dong con 17, phai `git checkout` tay.
+  const theoId = new Map();
+  if (existsSync(KE_KHO)) {
+    for (const d of readFileSync(KE_KHO, 'utf8').split('\n')) {
+      const m = /^\| .* \| `([^/`]+)\//.exec(d);
+      if (m) theoId.set(m[1], d);
+    }
+  }
+  let trenDia = 0;
   for (const id of readdirSync(THU_MUC).sort()) {
     const gc = join(THU_MUC, id, 'ghi_cong.json');
     if (!existsSync(gc)) continue;
@@ -307,10 +317,12 @@ function keKho() {
     // Cot `Trang` la BAT BUOC ve phap ly, khong phai trang tri: CC-BY doi ten tac gia va
     // duong dan ve ban goc. Nho no, file nay dung luon lam ban ghi cong, khong phai chep
     // tay 1.671 dong sang `ASSET_CREDITS.md` (file khoa, moi lan sua la mot vong hoi).
-    dong.push(
+    theoId.set(id,
       `| ${g.ten} | \`${id}/${file}\` | ${g.tac_gia} | ${g.license} | ${g.so_tam} | ${g.trang} |`,
     );
+    trenDia++;
   }
+  const dong = [...theoId.keys()].sort().map((id) => theoId.get(id));
   mkdirSync('docs', { recursive: true });
   writeFileSync(
     KE_KHO,
@@ -336,11 +348,11 @@ function keKho() {
       '|---|---|---|---|---:|---|',
       ...dong,
       '',
-      `**${dong.length} model.** Số này là số thật trên đĩa lúc chạy lệnh cuối cùng.`,
+      `**${dong.length} model.** Gộp dần qua mọi lần tải — lần chạy cuối trên đĩa có ${trenDia}.`,
       '',
     ].join('\n'),
   );
-  console.log(`Ke kho: ${dong.length} model -> ${KE_KHO}`);
+  console.log(`Ke kho: ${dong.length} model (${trenDia} tren dia lan nay) -> ${KE_KHO}`);
 }
 
 async function main() {

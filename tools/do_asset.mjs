@@ -190,6 +190,15 @@ for (const b of BUOC_LOCAL) in_(b.ten, doFileKe(b.duong, tu));
 
 // Buoc 1c: kho muc luc chung. Goi lenh cua repo do thay vi chep logic sang day - no doi
 // khi nguon moi duoc nap, chep la lech.
+//
+// Chua clone thi TU clone (repo public, khong can `add_repo`). Ban cu chi in dong nhac:
+// 28/09 phien bo qua dong do, ket luan sai "khong co ga" trong khi kho-game co.
+if (!existsSync(KHO_GAME)) {
+  try {
+    execFileSync('git', ['clone', '-q', '--depth', '1', 'https://github.com/gc1001vn-svg/kho-game',
+      '/home/user/kho-game'], { stdio: 'ignore', timeout: 180000 });
+  } catch { /* clone hong: nhanh `else` duoi bao ro, khong im lang */ }
+}
 if (existsSync(KHO_GAME)) {
   console.log('\n--- 1c. kho-game (muc luc chung, 5 nguon) ---');
   try {
@@ -198,7 +207,8 @@ if (existsSync(KHO_GAME)) {
     console.log(`  hong: ${String(e.message).slice(0, 80)}`);
   }
 } else {
-  console.log('\n--- 1c. kho-game --- CHUA CLONE.'
+  console.log('\n--- 1c. kho-game --- HONG: clone khong duoc. Buoc nay CHUA do thi CHUA duoc'
+    + ' ket luan "khong co model".'
     + '\n  git clone --depth 1 https://github.com/gc1001vn-svg/kho-game /home/user/kho-game');
 }
 

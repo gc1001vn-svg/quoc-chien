@@ -81,11 +81,13 @@ let tong = 0;
 // Giu ca ba so: tong file, ten khac nhau, va ten CO BAN OBJ (may nuong chi doc OBJ).
 const tenKhacNhau = new Set();
 const tenCoObj = new Set();
+const goiQuet = [];
 for (const goi of readdirSync(KHO).sort()) {
   const duongGoi = join(KHO, goi);
   if (!statSync(duongGoi).isDirectory()) continue;
   const nhom = quet(duongGoi);
   if (nhom.length === 0) continue;
+  goiQuet.push(goi);
   dong.push(`## ${goi}`, '');
   for (const n of nhom) {
     tong += n.ten.length;
@@ -96,6 +98,24 @@ for (const goi of readdirSync(KHO).sort()) {
     dong.push(`**\`${n.duong}\`** — ${String(n.ten.length)} model`, '', `\`${n.ten.join('` · `')}\``, '');
   }
 }
+
+// Goi co trong ban cu ma phien nay CHUA tai: GIU NGUYEN doan cu, khong xoa. Kho mat theo
+// container moi phien nen gan nhu khong phien nao tai du. 28/09 `npm run kho` sau
+// `tai:tatca` (khong co icosa) ghi de mat ~6.700 dong ma chot 20% ben duoi khong chan:
+// ~1.700 model Icosa gan het ten "model", nen so ten khac nhau gan nhu khong doi.
+const giu = [];
+if (existsSync(RA)) {
+  const cuDong = readFileSync(RA, 'utf8').split('\n');
+  const het = cuDong.lastIndexOf('---');
+  let ten = null;
+  let doan = [];
+  const chotGoi = () => { if (ten !== null && !goiQuet.includes(ten)) giu.push({ ten, doan }); };
+  for (const d of cuDong.slice(0, het < 0 ? cuDong.length : het)) {
+    if (d.startsWith('## ')) { chotGoi(); ten = d.slice(3).trim(); doan = [d]; } else if (ten !== null) doan.push(d);
+  }
+  chotGoi();
+}
+for (const g of giu) dong.push(...g.doan);
 
 dong.push(
   '---',
@@ -108,14 +128,18 @@ dong.push(
   `(một model xuất ra fbx/gltf/obj thì đếm ba lần) · ${String(tenKhacNhau.size)} tên khác nhau`,
   'kể cả tên chỉ có FBX.',
   '',
+  ...(giu.length
+    ? [`Ba số trên chỉ đếm gói quét phiên này. Giữ nguyên từ bản trước (chưa tải lại): `
+      + `${giu.map((g) => `\`${g.ten}\``).join(' · ')}.`, '']
+    : []),
 );
 
-// Kho mat theo container moi phien. Tai thieu goi roi chay lenh nay la ghi de mat
-// danh muc cu, im lang. Chan lai khi so model tut qua 20% so voi ban dang co.
+// Chot con lai: cung mot goi ma quet ra it hon han ban cu (tai do dang). So chi so duoc
+// khi khong giu goi nao — co goi giu nguyen thi ba so tren chi tinh phan da quet.
 const cu = existsSync(RA)
   ? /\*\*(\d+) model dùng được\*\*|Tổng: \*\*(\d+) model/.exec(readFileSync(RA, 'utf8'))?.slice(1).find(Boolean)
   : null;
-if (cu !== null && cu !== undefined && tenCoObj.size < Number(cu) * 0.8) {
+if (giu.length === 0 && cu !== null && cu !== undefined && tenCoObj.size < Number(cu) * 0.8) {
   console.error(
     `kho: DUNG LAI. Ban cu ${cu} model, quet duoc ${String(tenCoObj.size)} - tut qua 20%.\n` +
     `  Nhieu kha nang assets_source/ chua tai du. Chay "npm run tai:tatca" truoc.\n` +
@@ -127,5 +151,6 @@ if (cu !== null && cu !== undefined && tenCoObj.size < Number(cu) * 0.8) {
 writeFileSync(RA, dong.join('\n'));
 console.log(
   `kho: ${String(tenCoObj.size)} model dung duoc (co OBJ) -> ${RA}` +
-  `   [${String(tong)} luot file, ${String(tenKhacNhau.size)} ten khac nhau]`,
+  `   [${String(tong)} luot file, ${String(tenKhacNhau.size)} ten khac nhau]` +
+  (giu.length ? `   giu nguyen ${String(giu.length)} goi chua tai: ${giu.map((g) => g.ten).join(', ')}` : ''),
 );

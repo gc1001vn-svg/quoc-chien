@@ -37,6 +37,7 @@
 | Church_Pernik | `08NVFYL8JUk/church.glb` | Aleks Milchov | CREATIVE_COMMONS_BY 3.0 | 5330 | https://icosa.gallery/view/08NVFYL8JUk |
 | Victor's house | `092ga0JXZ5H/tinker.glb` | Victor Vicente | CREATIVE_COMMONS_BY 3.0 | 1234 | https://icosa.gallery/view/092ga0JXZ5H |
 | Holocity UI Building | `09OlYUrCAAA/model.glb` | Hayden | CREATIVE_COMMONS_BY 3.0 | 236 | https://icosa.gallery/view/09OlYUrCAAA |
+| Sumerian Ziggurat | `09R_9_0WVVf/` | TinyDerp | CC-BY 3.0 | — | https://icosa.gallery/view/09R_9_0WVVf |
 | Horse red | `0AAmlKxg3D0/scene.glb` | Dasty Daikini | CREATIVE_COMMONS_BY 3.0 | 4948 | https://icosa.gallery/view/0AAmlKxg3D0 |
 | Night city scape | `0ARH--XdX9a/sketch.glb` | Hope Myers | CREATIVE_COMMONS_BY 3.0 | 7844 | https://icosa.gallery/view/0ARH--XdX9a |
 | Front of a house | `0B3uTGqbqGL/model.glb` | Christian Pelaez-Espinosa | CREATIVE_COMMONS_BY 3.0 | 96 | https://icosa.gallery/view/0B3uTGqbqGL |
@@ -44,6 +45,7 @@
 | Floatyhouse | `0Bbul4beDGp/model.glb` | Christopher Costa | CREATIVE_COMMONS_BY 3.0 | 584 | https://icosa.gallery/view/0Bbul4beDGp |
 | BT | Bridge Building | A | `0CMePhJvqIN/Bridge_20Building_20A.glb` | Bonboru Tworie | CREATIVE_COMMONS_BY 3.0 | 590 | https://icosa.gallery/view/0CMePhJvqIN |
 | Church - Fortress Pernik | `0CWvxm5mOSx/church.glb` | Aleks Milchov | CREATIVE_COMMONS_BY 3.0 | 5330 | https://icosa.gallery/view/0CWvxm5mOSx |
+| tractor jordy | `0CgBYffMf7j/` | miss GMD | CC-BY 3.0 | — | https://icosa.gallery/view/0CgBYffMf7j |
 | farmer | `0EnXNpeSTEk/untitled.glb` | Kyle Arthur Gabriel | CREATIVE_COMMONS_BY 3.0 | 2897 | https://icosa.gallery/view/0EnXNpeSTEk |
 | Lighthouse OBJDnglTFUP | `0EsKdOiAUKn/lighthouse.glb` | Robert Mark | CREATIVE_COMMONS_BY 3.0 | 555 | https://icosa.gallery/view/0EsKdOiAUKn |
 | Kitchen | `0FTM8lw8CRn/kitchen.glb` | Алексей Ку | CREATIVE_COMMONS_BY 3.0 | 6836 | https://icosa.gallery/view/0FTM8lw8CRn |
@@ -304,6 +306,7 @@
 | house | `2qh7ck3Vlim/house.gltf` | Sunidhi | CREATIVE_COMMONS_BY 3.0 | 3914 | https://icosa.gallery/view/2qh7ck3Vlim |
 | CyberCity Blue Stage Rev.3 | `2qujuxrQaPp/Blue_20Stage.glb` | BlackSheepA1 | CREATIVE_COMMONS_BY 3.0 | 214 | https://icosa.gallery/view/2qujuxrQaPp |
 | Building | `2rYP5Pntc7y/model.glb` | Thanaphat Kartsungnoen | CREATIVE_COMMONS_BY 3.0 | 2468 | https://icosa.gallery/view/2rYP5Pntc7y |
+| scarecrow guy | `2rqDANUhu7X/` | Joe Scalise | CC-BY 3.0 | — | https://icosa.gallery/view/2rqDANUhu7X |
 | Small castle | `2sZG4XZ5Nf6/model.glb` | Marshall Patton | CREATIVE_COMMONS_BY 3.0 | 4764 | https://icosa.gallery/view/2sZG4XZ5Nf6 |
 | Water Temple | `2tb900VGeR3/temple.glb` | Miguelangelo Rosario | CREATIVE_COMMONS_BY 3.0 | 5198 | https://icosa.gallery/view/2tb900VGeR3 |
 | Home | `2uJ694TQCjJ/model.glb` | Javier Fadul | CREATIVE_COMMONS_BY 3.0 | 2972 | https://icosa.gallery/view/2uJ694TQCjJ |
@@ -359,6 +362,7 @@
 | Sheep matrix | `3LgRRiELXdI/sheep-matrix.glb` | Miguelangelo Rosario | CREATIVE_COMMONS_BY 3.0 | 5192 | https://icosa.gallery/view/3LgRRiELXdI |
 | Simple Building 1 | `3M7y_JbDNbD/model.glb` | Mark Steelman | CREATIVE_COMMONS_BY 3.0 | 156 | https://icosa.gallery/view/3M7y_JbDNbD |
 | Is that a horse? | `3MEW8P0AuBU/horse.glb` | Doron Adler | CREATIVE_COMMONS_BY 3.0 | 4127 | https://icosa.gallery/view/3MEW8P0AuBU |
+| Silo | `3MY8xY_m2Yz/` | Google | CC-BY 3.0 | — | https://icosa.gallery/view/3MY8xY_m2Yz |
 | Storage building | `3MfFkOTn6Ez/model.glb` | Michael Pretz | CREATIVE_COMMONS_BY 3.0 | 3242 | https://icosa.gallery/view/3MfFkOTn6Ez |
 | Future house | `3MgJtCWjRhu/model.glb` | Dr. Isidro Navarro | CREATIVE_COMMONS_BY 3.0 | 519 | https://icosa.gallery/view/3MgJtCWjRhu |
 | pig | `3MgwvrAYolt/model.glb` | Yadvi Maheshwari | CREATIVE_COMMONS_BY 3.0 | 1296 | https://icosa.gallery/view/3MgwvrAYolt |
@@ -429,6 +433,7 @@
 | WAREHOUSE | `4-bU_X27ZUY/model.glb` | Workshop apelab | CREATIVE_COMMONS_BY 3.0 | 1996 | https://icosa.gallery/view/4-bU_X27ZUY |
 | OBJ ch pre lighthouse 30 P | `4-ys85z8Q_x/Lighthouse_20singly.glb` | Robert Mark | CREATIVE_COMMONS_BY 3.0 | 3432 | https://icosa.gallery/view/4-ys85z8Q_x |
 | House Model #2 | `40XFHoqVfaT/59Dwinell.glb` | Brian Dellon | CREATIVE_COMMONS_BY 3.0 | 2064 | https://icosa.gallery/view/40XFHoqVfaT |
+| Tank | `41Tq_Kf0Tui/` | Nico _ | CC-BY 3.0 | — | https://icosa.gallery/view/41Tq_Kf0Tui |
 | Published Duck | `41d-N8vAuoG/duck.glb` | Poly Testing | CREATIVE_COMMONS_BY 3.0 | 1076 | https://icosa.gallery/view/41d-N8vAuoG |
 | Space shuttle head | `42LAD4ycf75/Mk3Cockpit.glb` | Google | CREATIVE_COMMONS_BY 3.0 | 590 | https://icosa.gallery/view/42LAD4ycf75 |
 | OBJglTF up stag lighthouse 19a | `42LuyLNE2d3/lighthouse.gltf` | Robert Mark | CREATIVE_COMMONS_BY 3.0 | 555 | https://icosa.gallery/view/42LuyLNE2d3 |
@@ -666,7 +671,9 @@
 | Pig | `61jO6Kw2GbZ/model.glb` | Workshop apelab | CREATIVE_COMMONS_BY 3.0 | 3168 | https://icosa.gallery/view/61jO6Kw2GbZ |
 | Cow | `62Yhc1pHbpw/model.glb` | Syl | CREATIVE_COMMONS_BY 3.0 | 1528 | https://icosa.gallery/view/62Yhc1pHbpw |
 | Duckling | `666-CBmVQHN/model.glb` | Adam Greenfeld | CREATIVE_COMMONS_BY 3.0 | 896 | https://icosa.gallery/view/666-CBmVQHN |
+| Tractor | `66QMmulceLm/` | Nutpam | CC-BY 3.0 | — | https://icosa.gallery/view/66QMmulceLm |
 | Liquor - Hendrick's Gin | `6783gYMPukq/Hend.glb` | lovedoll | CREATIVE_COMMONS_BY 3.0 | 4416 | https://icosa.gallery/view/6783gYMPukq |
+| watering trough | `690G7-Eal9F/` | Tipatat Chennavasin | CC-BY 3.0 | — | https://icosa.gallery/view/690G7-Eal9F |
 | Nachbarnshaus | `69HEy5m_Ccx/20191121_092553.glb` | manuel ribeiro | CREATIVE_COMMONS_BY 3.0 | 6089 | https://icosa.gallery/view/69HEy5m_Ccx |
 | Lexington Home Project | `69bvvwzfIuA/CEDAR_20ST._20VR_20TRIAL.glb` | Center Line | CREATIVE_COMMONS_BY 3.0 | 6675 | https://icosa.gallery/view/69bvvwzfIuA |
 | house 1 | `6ADl9DCGvGO/model.glb` | Brian Wollocko | CREATIVE_COMMONS_BY 3.0 | 96 | https://icosa.gallery/view/6ADl9DCGvGO |
@@ -683,6 +690,7 @@
 | Building01_furniture_open | `6K8bvFqIUqE/model.glb` | Ambaltose | CREATIVE_COMMONS_BY 3.0 | 2796 | https://icosa.gallery/view/6K8bvFqIUqE |
 | workshop 6 | `6KIOplMPkG3/sketch.glb` | cibo art | CREATIVE_COMMONS_BY 3.0 | 5318 | https://icosa.gallery/view/6KIOplMPkG3 |
 | farm | `6LHXAp1ORxC/sketch.glb` | Rebecca Hildebrand | CREATIVE_COMMONS_BY 3.0 | 2268 | https://icosa.gallery/view/6LHXAp1ORxC |
+| Haystack | `6LeCqyw00RK/` | Google | CC-BY 3.0 | — | https://icosa.gallery/view/6LeCqyw00RK |
 | Kitchen | `6M81L2y9Bc2/model.glb` | Brian Curtain | CREATIVE_COMMONS_BY 3.0 | 412 | https://icosa.gallery/view/6M81L2y9Bc2 |
 | Cowbell | `6M8gKV365Cz/Cowbell.glb` | Google | CREATIVE_COMMONS_BY 3.0 | 246 | https://icosa.gallery/view/6M8gKV365Cz |
 | House_Model | `6N7rrhWw-i4/house_model_03.glb` | Ali Haider | CREATIVE_COMMONS_BY 3.0 | 1963 | https://icosa.gallery/view/6N7rrhWw-i4 |
@@ -860,6 +868,7 @@
 | 2 little shop | `7npZ7HAFOZE/shop.glb` | UNT New Media | CREATIVE_COMMONS_BY 3.0 | 1758 | https://icosa.gallery/view/7npZ7HAFOZE |
 | house in space | `7oQiEvsofIy/tinker.gltf` | Anonymous | CREATIVE_COMMONS_BY 3.0 | 6512 | https://icosa.gallery/view/7oQiEvsofIy |
 | Typical British horse | `7oSP2tQdt3_/sketch.glb` | Nexus Arc | CREATIVE_COMMONS_BY 3.0 | 5136 | https://icosa.gallery/view/7oSP2tQdt3_ |
+| Rev war cannon | `7pfX_iKfJyH/` | Michael Pretz | CC-BY 3.0 | — | https://icosa.gallery/view/7pfX_iKfJyH |
 | Modern House | `7pxWkP9qBnx/MTE-414_203D_20House_20V.5.glb` | Sittichot Cheablam | CREATIVE_COMMONS_BY 3.0 | 4416 | https://icosa.gallery/view/7pxWkP9qBnx |
 | cape Hatteras lighthouse | `7qHBefeVcrg/Cape_Hatteras_Lighthouse.glb` | maddie kelley | CREATIVE_COMMONS_BY 3.0 | 7948 | https://icosa.gallery/view/7qHBefeVcrg |
 | BT | Dreamy City Sky | B | `7qcbo0eAP7u/sketch.gltf` | Bonboru Tworie | CREATIVE_COMMONS_BY 3.0 | 3546 | https://icosa.gallery/view/7qcbo0eAP7u |
@@ -1371,6 +1380,7 @@
 | BlkGoat Head! | `cUh9TlDuRF1/model.glb` | Vice Cooper | CREATIVE_COMMONS_BY 3.0 | 684 | https://icosa.gallery/view/cUh9TlDuRF1 |
 | city | `cVCfVf_xw9z/model.glb` | Alex Hans | CREATIVE_COMMONS_BY 3.0 | 1920 | https://icosa.gallery/view/cVCfVf_xw9z |
 | building | `cVfvi1tlk_A/model.glb` | alberto garcia | CREATIVE_COMMONS_BY 3.0 | 2324 | https://icosa.gallery/view/cVfvi1tlk_A |
+| Colosseum | `cVtCnH0tnHJ/` | Rob Kohr | CC-BY 3.0 | — | https://icosa.gallery/view/cVtCnH0tnHJ |
 | Kitchen Sink Faucet | `cW3fnGvJu2G/model.glb` | Jarlan Perez | CREATIVE_COMMONS_BY 3.0 | 548 | https://icosa.gallery/view/cW3fnGvJu2G |
 | House 17/18 | `cX-9KMs69Vo/tinker.glb` | William Swain | CREATIVE_COMMONS_BY 3.0 | 836 | https://icosa.gallery/view/cX-9KMs69Vo |
 | duckling | `cY7S2C3ZJHQ/model.glb` | Gail Brisson | CREATIVE_COMMONS_BY 3.0 | 1496 | https://icosa.gallery/view/cY7S2C3ZJHQ |
@@ -1570,6 +1580,7 @@
 | House | `eW6I3F6gws3/House_01.glb` | Google | CREATIVE_COMMONS_BY 3.0 | 1440 | https://icosa.gallery/view/eW6I3F6gws3 |
 | Radio tower | `eWEYV9ppUjv/SM_RadioTower.glb` | Google | CREATIVE_COMMONS_BY 3.0 | 1326 | https://icosa.gallery/view/eWEYV9ppUjv |
 | MASHD Holocity Blue | `eWLd6rROrtm/model.glb` | Hayden | CREATIVE_COMMONS_BY 3.0 | 248 | https://icosa.gallery/view/eWLd6rROrtm |
+| Wood Water Trough (Low Poly) | `eWOPxWJkqL3/` | Oliver Herklotz (HerrHerklotz) | CC-BY 3.0 | — | https://icosa.gallery/view/eWOPxWJkqL3 |
 | Blue Electricity Wave Floor | `eWwfKyNh7n2/sketch.glb` | bndkllr2 | CREATIVE_COMMONS_BY 3.0 | 1776 | https://icosa.gallery/view/eWwfKyNh7n2 |
 | Church v2 | `eY8SJrBfgy0/model.glb` | Nick vd Molen | CREATIVE_COMMONS_BY 3.0 | 1636 | https://icosa.gallery/view/eY8SJrBfgy0 |
 | CyberCity Green Stage Rev.1 | `eYzsjIR7Rdv/Green_20Stage.glb` | BlackSheepA1 | CREATIVE_COMMONS_BY 3.0 | 549 | https://icosa.gallery/view/eYzsjIR7Rdv |
@@ -1595,6 +1606,7 @@
 | IT park Software Building | `eokBgA4nwxK/Building1.glb` | Raveendra Babu Aripaka | CREATIVE_COMMONS_BY 3.0 | 486 | https://icosa.gallery/view/eokBgA4nwxK |
 | Castle Mailbox | `epTRRUlM5tM/model.glb` | sirkitree | CREATIVE_COMMONS_BY 3.0 | 3398 | https://icosa.gallery/view/epTRRUlM5tM |
 | diamonfd with electricity | `epaWfnZNbfo/sketch.gltf` | Giovanna Coronado | CREATIVE_COMMONS_BY 3.0 | 3352 | https://icosa.gallery/view/epaWfnZNbfo |
+| low poly bolt rifle | `epemCvhKIb0/` | Hell Houndz Productions | CC-BY 3.0 | — | https://icosa.gallery/view/epemCvhKIb0 |
 | OBJ pr lighthouse2 08 P | `eqgL5SRiR5L/Lighthouse.glb` | Robert Mark | CREATIVE_COMMONS_BY 3.0 | 4684 | https://icosa.gallery/view/eqgL5SRiR5L |
 | 2 small apartment building | `esCOABWD1aH/apartments.glb` | UNT New Media | CREATIVE_COMMONS_BY 3.0 | 2614 | https://icosa.gallery/view/esCOABWD1aH |
 | The MC pig | `esiJZlKE52Z/model.glb` | Nate Vailikit | CREATIVE_COMMONS_BY 3.0 | 1272 | https://icosa.gallery/view/esiJZlKE52Z |
@@ -1697,4 +1709,4 @@
 | castle | `fxDNgN_Mgvb/model.glb` | alondra carmona | CREATIVE_COMMONS_BY 3.0 | 274 | https://icosa.gallery/view/fxDNgN_Mgvb |
 | City block | `fy8r7OQMAXJ/model.glb` | Ivan Eysden | CREATIVE_COMMONS_BY 3.0 | 250 | https://icosa.gallery/view/fy8r7OQMAXJ |
 
-**1679 model.** Số này là số thật trên đĩa lúc chạy lệnh cuối cùng.
+**1691 model.** Gộp dần qua mọi lần tải — 12 dòng bù 29/09 từ `data/ghi_cong.json` (model dùng trong game mà bản kê bị ghi đè làm rơi mất; cột file và số tam để trống).
