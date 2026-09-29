@@ -19,6 +19,8 @@ Cập nhật: 29/09/2026 (lần 23 — rà soát và sửa bộ đồ nghề, **
   Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
 - Phiên 29/09 (lần 23): rà soát toàn bộ đồ nghề, sửa hook/công cụ, cắt file này từ 91.599 byte;
   anh duyệt, 6 việc file khoá đã sửa cùng phiên. Chi tiết: `docs/NHAT_KY/RA_SOAT_29_09.md`.
+- 29/09 (phiên ở kho-game): tải asset gọi một cửa kho-game; tự vẽ bằng số phải khai `docs/TU_LAM.md`
+  (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
 
@@ -92,6 +94,9 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 **29/09 anh dừng: ruộng/trại khối 4 "nhìn vẫn gượng gạo quá", phiên mới anh sẽ đưa lệnh khác.** Đừng tự mở 12E;
 làm đúng lệnh anh đưa. Gượng gạo có thể do ghép model nhiều nguồn khác phong cách, con vật nhỏ, đồ vật rời rạc —
 chưa hỏi cụ thể. Nếu lệnh mới là làm lại khối 4 thì hỏi anh chỗ nào gượng trước khi nướng.
+Ứng viên cùng MỘT tay vẽ (kho-game nạp 29/09, Quaternius CC0): `farmbuildings` (Barn, ChickenCoop, Silo…),
+`ultimatecrops`, và `ultimatefantasyrts` — nhà theo `FirstAge`/`SecondAge` × `Level1-3`, khớp lên đời.
+`node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius`. Đưa anh xem trước khi thay.
 
 Nếu anh bảo tiếp 12E:
 
