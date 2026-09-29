@@ -43,6 +43,13 @@ try {
   if (!san) console.warn('Canh bao: #app van rong sau 20 giay, van chup.');
   // Cho them vai khung hinh de canvas ve xong.
   await new Promise((r) => setTimeout(r, 2500));
+  // `AN_SU_KIEN=1`: an hop thoai su kien dau van (khong bam - bam thi camera chay sang nha vua xay).
+  // Can cho bang den `docs/ART_BIBLE.md` muc 5: hop thoai che nua duoi man, do mau nham.
+  if (process.env.AN_SU_KIEN === '1') {
+    await td.doc(`(() => { const b = [...document.querySelectorAll('button')].filter((x) => x.offsetParent && x.innerText.length > 25);
+      let e = b[0]; while (e && e.parentElement && e.offsetHeight < 150) e = e.parentElement; if (e) e.style.display = 'none'; })()`);
+    await new Promise((r) => setTimeout(r, 1000));
+  }
   const anh = await td.chup();
   mkdirSync(THU_MUC, { recursive: true });
   const duong = join(THU_MUC, tenFile);

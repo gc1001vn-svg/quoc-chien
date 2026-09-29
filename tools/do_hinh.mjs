@@ -2,7 +2,7 @@
 /**
  * Hai phep do cho `docs/ART_BIBLE.md`. Chi in so, khong ve gi.
  *
- *   node tools/do_hinh.mjs mau <anh.png> [rong:cao:x:y]   do sang, bao hoa, 6 mau chinh cua mot canh
+ *   node tools/do_hinh.mjs mau <anh.png> [rong:cao:x:y]   do sang, bao hoa, do am, 6 mau chinh cua mot canh
  *   node tools/do_hinh.mjs tay-ve [me ...]                dem tay ve trong tung me `tools/me/*.json`
  *
  * VI SAO CAN: art bible dat luat bang so ("canh khong toi hon ...", "moi me toi da ... tay
@@ -57,7 +57,9 @@ function doMau(anh, cat) {
   const dem = new Array(K).fill(0);
   cum.forEach((c) => dem[c]++);
   const tb = (f) => diem.reduce((s, d) => s + f(d), 0) / diem.length;
-  console.log(`do sang TB ${tb(doSang).toFixed(2)} · bao hoa TB ${tb(baoHoa).toFixed(2)}`);
+  // Do am: do lech do - lam TB, am la nghieng vang cam, duong cang lon cang am.
+  const doAm = (d) => (d[0] - d[2]) / 255;
+  console.log(`do sang TB ${tb(doSang).toFixed(2)} · bao hoa TB ${tb(baoHoa).toFixed(2)} · do am TB ${tb(doAm).toFixed(2)}`);
   console.log(tam.map((t, j) => ({ t, ti: dem[j] / diem.length }))
     .sort((a, b) => b.ti - a.ti)
     .map(({ t, ti }) => `${hex(t)} ${(ti * 100).toFixed(0)}%`).join(' · '));
