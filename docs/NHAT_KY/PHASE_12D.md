@@ -42,3 +42,4 @@
 - Thêm vào trại: gà ở mọi đời (trung cổ làm lại trại gà), dê + đống rơm cổ đại, chuồng đỏ + xi-lô cận đại. +6 ghi công.
 - **Bẫy:** `kho-game/cong-cu/lay.mjs icosa --id` hỏng 21/21 (URL wayback trong manifest); lấy thẳng bản
   `GLTF2` backblaze qua `api.icosa.gallery` thì được. Chưa sửa (repo khác). Bản duyệt đăng đè, ghi **28/09 21:41**.
+- **29/09 anh xem bảng: "nhìn vẫn gượng gạo quá"** — tạm dừng 12D, phiên mới anh đưa lệnh khác.

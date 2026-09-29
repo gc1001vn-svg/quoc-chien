@@ -3,7 +3,7 @@
 > Đọc cả file, đầu mỗi phiên. Mục 1–5 **ghi đè** mỗi cuối phiên, không cộng dồn.
 > Lịch sử từng phase: `docs/NHAT_KY/PHASE_*.md`. Nợ chưa động tới: `docs/NO_KY_THUAT.md`.
 
-Cập nhật: 28/09/2026 (lần 22 — **Phase 12D xong phần máy: khối 4 ruộng, vườn, trại đổi theo đời; chờ anh chốt bảng + xem iPhone**).
+Cập nhật: 29/09/2026 (lần 22 — **Phase 12D khối 4 lên máy, anh xem bảng: "vẫn gượng gạo", tạm dừng; phiên sau chờ lệnh anh**).
 
 ## 1. Đang ở đâu
 
@@ -639,7 +639,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 28/09 (lần 22) — chốt bảng ruộng/trại + xem trên iPhone
+### 🟡 Việc 28/09 (lần 22) — chốt bảng ruộng/trại: anh xem bảng 29/09, báo **"nhìn vẫn gượng gạo quá"**, tạm dừng — chưa xem iPhone
 
 1. Xem ảnh bảng Claude gửi trong chat: 5 hàng (ruộng · vườn nho · trại lợn · trại gà · trại cừu) × 5 cột đời.
 2. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần. Dòng chữ nhỏ trên
@@ -1230,9 +1230,15 @@ quyền hạn và giới hạn máy ảo.
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
 
 
-## 5. Phiên sau — Phase 12E (mọi công trình còn lại đổi theo đời)
+## 5. Phiên sau — CHỜ LỆNH ANH
 
-1. Bước E: anh chốt bảng ruộng/trại + xem iPhone (mục 3). Anh chê ô nào thì sửa ô đó trước, trong 12D.
+**29/09 anh dừng: ruộng/trại khối 4 "nhìn vẫn gượng gạo quá", phiên mới anh sẽ đưa lệnh khác.** Đừng tự mở 12E;
+làm đúng lệnh anh đưa. Gượng gạo có thể do ghép model nhiều nguồn khác phong cách, con vật nhỏ, đồ vật rời rạc —
+chưa hỏi cụ thể. Nếu lệnh mới là làm lại khối 4 thì hỏi anh chỗ nào gượng trước khi nướng.
+
+Nếu anh bảo tiếp 12E:
+
+1. Bước E: khối 4 anh chưa chốt (mục 3).
 2. 12E theo kế hoạch `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6: mẻ riêng đời 4 "Công nghiệp"
    (bỏ `CHUNG_ME_CHO_12E` trong `tests/DoiTheoDoi.test.ts`), rồi lấp mỏ, lò, cối xay, đồ vật; thước "không sprite công
    trình nào y nguyên giữa hai đời kề".
