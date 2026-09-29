@@ -1,8 +1,10 @@
 # ART BIBLE — QUỐC CHIẾN
 
 > **Đọc trước mọi việc đụng hình:** chọn asset, nướng sprite, đổi đèn, đổi nền, đổi màu.
-> Bản nháp 29/09, soạn từ **10 clip** quảng cáo game anh gửi (5 lần một, 5 lần hai). Mục ghi
-> **[anh chốt]** là đề xuất, chưa phải luật. Clip là quảng cáo thương mại, repo công khai →
+> Soạn 29/09 từ **10 clip** quảng cáo game anh gửi (5 lần một, 5 lần hai), cộng 9 game
+> thật tra thêm (mục 7). **Anh chốt 29/09 ("ok làm hết"):** mốc hình khối D · tối đa 2 tay vẽ ·
+> bước xây · nền lót · màu đời 1–2. Mục còn ghi **[anh chốt]** vẫn là đề xuất. Clip là quảng cáo
+> thương mại, repo công khai →
 > **clip và ảnh cắt từ clip không lên repo**; ở đây chỉ có lời tả và số đo. Clip không lưu lại
 > sau phiên 29/09. Tên game ghi theo chữ trên quảng cáo; quảng cáo không ghi tên thì ghi "không rõ".
 > Luật gốc vẫn ở `TECH_SPEC.md` mục 3: một phong cách cho cả sáu thời đại, cùng camera, cùng
@@ -20,8 +22,8 @@
 | **C · "Viking Rise"** | "Viking Rise: Train Your Dragon" | **Bước xây** | Móng đá → giàn giáo gỗ → nhà xong | Hình gần ảnh chụp |
 | **E · "Last Fiefdom"** | "Last Fiefdom": bản đồ vẽ nét mực trên nền giấy | **Bản đồ, trận** | Mỗi phe một khối màu tương phản (xanh ↔ đỏ). Số quân ghi trên nhãn. Mũi tên lệnh | — |
 
-**Đề xuất:** hình khối theo **D**, ánh sáng theo **B + G**, nông trại theo **G**. Lần một đề
-xuất B làm mốc chính; D gần model đang dùng hơn nên thay. **[anh chốt]**
+**Chốt:** hình khối theo **D**, ánh sáng theo **B + G**, nông trại theo **G**. Lần một đề xuất B
+làm mốc chính; D gần model đang dùng hơn nên thay — anh chốt 29/09.
 
 ## 2. Số đo — mốc so với game (đo 29/09)
 
@@ -64,20 +66,22 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
 ## 3. Luật
 
 1. **Tay vẽ:** mỗi mẻ công trình **tối đa 2 tay vẽ**; mỗi loại công trình (nhà ở · nông trại ·
-   quân sự · công cộng) **chỉ một tay vẽ**; tay thứ hai chỉ dùng cho cây, đá, người. **[anh chốt số 2]**
-2. **Độ sáng:** cảnh thành phố ở zoom 1× có độ sáng TB **≥ 0,40**. **[anh chốt trên bảng đèn — mục 5]**
+   quân sự · công cộng) **chỉ một tay vẽ**; tay thứ hai chỉ dùng cho cây, đá, người. Anh chốt 29/09.
+2. **Độ sáng:** cảnh thành phố ở zoom 1× có độ sáng TB **≥ 0,36** (game thật thấp nhất mục 7:
+   Forge of Empires). Mức cụ thể anh chọn trên bảng đèn (mục 5). **[anh chốt trên bảng đèn]**
 3. **Bão hoà:** cảnh thành phố **≥ 0,37** (cảnh thành phố nhạt nhất trong mốc: D đầu game).
 4. **Màu nhận diện mỗi đời:** nền một tông, **mái một màu riêng** mà đời kề không dùng — như
-   mốc A. Mặc định đề xuất **[anh chốt]**:
+   mốc A. **Một chủ đề mỗi đời, không trộn** — như Forge of Empires (mục 7). Đời 1–2 anh chốt
+   29/09; đời 3–6 là đề xuất từ game thật **[anh chốt]**:
 
    | Đời | Theo mốc | Nền | Mái / điểm nhấn |
    |---|---|---|---|
    | 1 Cổ đại | D đầu game · B Á Đông | cỏ tươi, đất nắng (`#95b372` `#e7be7b`) | lều vải, rơm, gỗ mộc (`#aa8d53`) |
    | 2 Trung cổ | A Trung Hoa, Nhật · D cấp 55 | đất, đường lát (`#d9b98f` `#9b7a4f`) | mái sẫm (`#3c484b`), đỏ son (`#70321b`), tháp đá có cờ |
-   | 3 Súng ống | **chưa có mốc** | — | — |
-   | 4 Công nghiệp | F | đất mỏ, bãi gỗ (`#ecbd7b` `#816448`) | gạch đỏ (`#874c30`), máy hơi nước đỏ, ống khói, đường ray |
-   | 5 Hiện đại | F, **một phần**: nhà cao tầng kính xanh cạnh tháp Eiffel | — | — |
-   | 6 Tương lai | **chưa có mốc** | — | — |
+   | 3 Súng ống | AoE III · Anno 1701 (mục 7) | cỏ xanh đậm, cát bờ biển (`#8a983d` `#d8c49b`), biển ngọc (`#6d99a9`) | pháo đài sao tường trắng xám, mái nâu, tàu buồm, hàng rào gỗ |
+   | 4 Công nghiệp | F · Anno 1800 | đất mỏ, bãi gỗ (`#ecbd7b` `#816448`) | gạch đỏ (`#874c30`), máy hơi nước đỏ, ống khói, đường ray — có bồ hóng nhưng **không tối, không bẩn** |
+   | 5 Hiện đại | F một phần · Forge of Empires đời Modern | — | bê tông, kính xanh, kiểu Mỹ thập niên 50 (Forge of Empires) — **thiếu số đo** |
+   | 6 Tương lai | Forge of Empires đời Tomorrow, Future · Anno 2070 phe Eco | trắng kem (`#b7ad96`) | kính xanh ngọc, **cây phủ mái**, vòm trắng — tương lai "xanh sạch", không gỉ khói |
 
 5. **Cỡ:** cả một gói dùng **một hệ số cỡ**; không phóng to, thu nhỏ riêng từng model cho vừa.
 6. **Đồ vật quanh nhà** lấy **cùng tay vẽ với nhà** (nhà Quaternius → đồ Fantasy Props MegaKit,
@@ -94,14 +98,18 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
    - Hình gần ảnh chụp, hoạ tiết độ phân giải cao, mức chi tiết dựng sẵn kiểu F.
    - Ảnh hay clip game thương mại lên repo.
 
-**Đề xuất từ clip, chưa là luật — [anh chốt từng cái]:**
-- **Bậc nhà và bước xây** (C, D): nhà mới đi qua móng → giàn giáo → xong; bậc cao thì to hơn,
-  đổi vật liệu. Gói Ultimate Fantasy RTS (Quaternius, CC0) có sẵn mỗi nhà ba bậc `Level1–3`.
-- **Nền lót** (B, D, F, G đều có): mỗi công trình, mỗi luống ruộng đứng trên một khoảnh đất/cát
-  sáng hơn cỏ, nhìn là biết đâu là đất đã xây. Nhà đang nướng rời, không đế (`NGUON_MO.md`) →
-  nền lót phải là ô nền riêng, không nướng dính vào nhà.
-- **Bản đồ tỉnh và trận theo E:** bản đồ nền giấy nét mực, nhạt màu, tách hẳn khỏi thành phố; mỗi
-  phe một khối màu, số quân trên nhãn.
+10. **Bậc nhà và bước xây** (C, D) — anh chốt 29/09: nhà mới đi qua móng → giàn giáo → xong; bậc
+    cao thì to hơn, đổi vật liệu. Gói Ultimate Fantasy RTS (Quaternius, CC0) có sẵn mỗi nhà ba bậc
+    `Level1–3`.
+11. **Nền lót** (B, D, F, G đều có) — anh chốt 29/09: mỗi công trình, mỗi luống ruộng đứng trên một
+    khoảnh đất/cát sáng hơn cỏ, nhìn là biết đâu là đất đã xây. Nhà đang nướng rời, không đế
+    (`NGUON_MO.md`) → nền lót là ô nền riêng, không nướng dính vào nhà.
+12. **Đọc được ở zoom xa** (Civilization VI, mục 7): người chơi ngắm cả thành phố từ xa → ở zoom nhỏ
+    nhất phải nhận ra đời, loại nhà bằng **màu mái và bóng dáng**, không cần chi tiết.
+
+**Đề xuất, chưa là luật — [anh chốt]:** **bản đồ tỉnh và trận theo E**: bản đồ nền giấy nét mực,
+nhạt màu, tách hẳn khỏi thành phố; mỗi phe một khối màu, số quân trên nhãn. Civilization VI làm
+đúng kiểu này cho vùng chưa khám phá (mục 7).
 
 ## 4. Gói thay đề xuất cho đời 1–2 — cùng một tay vẽ Quaternius, CC0
 
@@ -117,11 +125,11 @@ Dò bằng `node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius` (29
 
 ## 5. Thứ tự làm — mỗi bước một bảng, anh chọn một lần
 
-1. **Bảng đèn:** một cảnh cổ đại × 4 mức, nhắm độ sáng TB **0,40 · 0,47 · 0,54 · 0,61**; ghi số đo
-   thật dưới từng ô. Đèn hiện ở `tools/lib/trang_nuong.js`: đèn chính `(1.05, 0.99, 0.88) × 0.72`,
+1. **Bảng đèn:** một cảnh cổ đại × 4 mức, nhắm độ sáng TB **0,36 · 0,44 · 0,52 · 0,60** (từ mức
+   Forge of Empires tới mức quảng cáo sáng nhất); ghi số đo thật dưới từng ô. Đèn hiện ở `tools/lib/trang_nuong.js`: đèn chính `(1.05, 0.99, 0.88) × 0.72`,
    đèn nền trời `(0.40, 0.44, 0.52)`, đất `(0.22, 0.20, 0.26)`.
 2. **Bảng nông trại theo G:** bản hiện tại cạnh bản Quaternius (mục 4).
-3. Nướng lại mẻ cổ đại theo luật 1–8; rồi cận đại (7 tay vẽ), hiện đại (bão hoà 0,28).
+3. Nướng lại mẻ cổ đại theo luật 1–12; rồi cận đại (7 tay vẽ), hiện đại (bão hoà 0,28).
 
 ## 6. Đo lại
 
@@ -133,3 +141,36 @@ node tools/do_hinh.mjs tay-ve [mẻ ...]
 
 Ảnh game: `npm run build`, `npx vite preview`, rồi
 `DIA_CHI=http://127.0.0.1:4173/quoc-chien/ node scripts/chup_man.mjs "?me=co_dai" <tên>.png`.
+
+## 7. Học từ game thật (tra 29/09)
+
+Ảnh: bìa video gameplay trên YouTube (`i.ytimg.com/vi/<mã>/maxresdefault.jpg` — máy ảo mở được),
+có thể đã được chỉnh màu; **không lên repo**. Chữ: wiki, phỏng vấn — nguồn cuối mục.
+
+| Game | Học gì | Sáng · bão hoà (ảnh bìa) |
+|---|---|---|
+| **Forge of Empires** — thành phố isometric đi qua hơn 20 đời | Mọi đời **cùng camera, cùng đèn, cùng mức chi tiết** — vẫn là một thành phố. Mỗi đời một chủ đề rõ: Modern theo Mỹ thập niên 50, Contemporary theo Đông Á. Mái đổi theo đời: rơm → ngói cam → đá xám → gạch đỏ → kính → vòm trắng phủ cây | 0,37 · 0,42 (ảnh ghép mọi đời, `1VjuYQpe3hI`) · 0,36 · 0,43 (đời Tomorrow, `SQFHLchfwuo`) |
+| **Rise of Nations** | Nhà đổi hình theo đời **chỉ hai lần** (thời thuốc súng, thời công nghiệp), cộng kiểu kiến trúc theo nước. Thiếu chỗ atlas thì đổi **mái và màu** trước, đổi model sau | — |
+| **DomiNations** | Lên đời = nâng cấp nhà trung tâm; nhà đổi hình theo đời và theo nền văn minh | — |
+| **Civilization VI** | Art director Brian Busatti xem ảnh chụp của người chơi → họ ngắm thế giới **từ xa** → phong cách phải đẹp cả xa lẫn gần (luật 12). Vùng chưa khám phá vẽ như bản đồ giấy cổ, nét mực | — |
+| **Anno 1800** | Công nghiệp có bồ hóng thế kỷ 19 nhưng **không quá tối, không bẩn** — giữ cảm giác thích thú khi ngắm thành phố mình xây | — |
+| **Anno 2070** | Tương lai hai giọng: phe Eco sạch, cong, xanh; phe Tycoon gỉ và khói. Đời 6 lấy **chủ đề** Eco, còn độ bão hoà theo Forge of Empires — ảnh Anno 2070 mờ sương, dưới luật 3 | 0,43 · 0,23 (`U-blbw587dc`) |
+| **Age of Empires III DE** | Đời 3: thuộc địa ven biển, pháo đài, tàu buồm, cỏ xanh đậm | 0,50 · 0,44 (`m4Gdyt6VfHg`) |
+| **Anno 1701** | Đời 3: đảo nhiệt đới, bãi cát, biển ngọc, nhà gỗ mái nâu | 0,39 · 0,78 (`JMEPiy-Hc0s`, ảnh nhỏ 480 px) |
+| **Kingdoms and Castles** | Low-poly gần mốc D: mái đỏ cam nổi trên nền cỏ, ruộng vàng thành ô | — |
+
+**Rút ra:**
+- **Game thật tối hơn quảng cáo:** Forge of Empires 0,36–0,37, Anno 1701 0,39 — dưới mức 0,40 đo từ
+  quảng cáo. Luật 2 hạ xuống 0,36. Game cổ đại (0,28) vẫn tối hơn **mọi** game đã đo.
+- **Không game nào đổi phong cách giữa các đời** — chỉ đổi chủ đề, vật liệu, màu mái.
+
+Nguồn chữ: [Forge of Empires — Modern Era](https://forgeofempires.fandom.com/wiki/Modern_Era) ·
+[Contemporary Era](https://forgeofempires.fandom.com/wiki/Contemporary_Era) ·
+[Rise of Nations — Building Styles](https://riseofnations.fandom.com/wiki/Building_Styles) ·
+[DomiNations — Ages](https://dominations.fandom.com/wiki/Ages) ·
+[Civilization VI — Digital Trends](https://www.digitaltrends.com/gaming/art-civilization-vi/) ·
+[Anno 1800 — Ubisoft News](https://news.ubisoft.com/en-us/article/69SwK8nqv5rDUdEzqbNt6h/create-the-unknown-how-anno-1800-put-a-creative-spin-on-the-industrial-revolution) ·
+[Anno 2070 — Factions](https://anno2070.fandom.com/wiki/Factions)
+
+Lấy ảnh bìa để đo lại: `curl -s -A Mozilla/5.0 "https://www.youtube.com/results?search_query=<từ khoá>"`,
+nhặt `"videoId":"…"`, tải `https://i.ytimg.com/vi/<mã>/maxresdefault.jpg`, rồi `node tools/do_hinh.mjs mau`.
