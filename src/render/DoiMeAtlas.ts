@@ -25,10 +25,10 @@ export interface CauHinhSong {
 /**
  * Me bi ep tu dia chi: `?me=hien_dai`.
  *
- * VI SAO CAN: doi 4 tro di con `len: null` trong `data/balance.json` (chua co cong nghe
- * rieng), va doi 3 doi 270 nha ma thanh pho moi toi 241 - tuc doi 5 CHUA TOI DUOC bang
- * cach choi. Khong co duong ep nay thi me hien dai da nuong xong van khong ai nhin duoc
- * tren may that. No di dung duong `theoDoi` nhu luc len doi, khong phai duong rieng.
+ * VI SAO CAN: tu 12A moi doi deu len duoc bang cach choi (chi doi 6 con `len: null` trong
+ * `data/balance.json`), nhung toi doi 5-6 phai choi hang tram gio game. Duong ep nay cho
+ * xem ngay mot me tren may that. No di dung duong `theoDoi` nhu luc len doi, khong phai
+ * duong rieng.
  */
 export function meEpTuUrl(): string | null {
   return new URLSearchParams(window.location.search).get('me');

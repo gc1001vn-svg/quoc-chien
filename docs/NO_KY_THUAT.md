@@ -400,3 +400,187 @@ chặn nhầm đặc tả gói.
   Actions` · `Settings > Environments > github-pages > Deployment branches` có `main`.
 - Máy ảo **không tự mở được trang thật**. Bù lại: bước cuối của `deploy.yml` chạy trên máy
   CI, gọi thử 4 đường và in mã HTTP ra nhật ký — Claude đọc nhật ký là tự kiểm được.
+
+## Chuyển từ `TIEN_DO.md` mục 4 — 29/09/2026
+
+- **MỚI 28/09 (lần 22, khối 4):** `kho-game/cong-cu/lay.mjs icosa --id` hỏng 21/21 (URL wayback) — lấy tay bản
+  backblaze · vườn nho vẫn chưa có dây nho thật (`Vine` Google thực ra là rong biển) · rào đá cổ đại và rào ván cận đại chỉ hiện 2 cạnh sau · `docs/ASSET_CREDITS.md`
+  (**file khoá**) chưa kê 11 model Icosa mới — trong game đã ghi công (`data/ghi_cong.json`); cần anh cho phép sửa ·
+  `tai_icosa.mjs` ghi đè `KHO_ICOSA.md` (bẫy, chưa sửa: ngoài việc giao).
+- **28/09 (Phase 12D):** ~~khối 4 ruộng, trại~~ xong lần 22 ·
+  đời 3–4 vẫn chung `can_dai` (12E) · ✅ fps lúc giữ hai bộ atlas: anh đo iPhone 28/09 **59**, giữ làn sóng · `do:luat` hỏng cả phiên vì Gemini giới hạn tần suất (bên ngoài).
+
+- **MỚI 28/09, anh báo sau khi xem 12C:** lên đời "có chút biến chuyển nhưng vẫn không rõ, cần rõ hơn hẳn" ·
+  "mọi công trình đều phải thay đổi khi lên đời" · "ruộng, chỗ chăn nuôi nhìn chán quá". Đo: 30/42 · 18/42 ·
+  42/42 · 0/42 · 6/42 công trình y nguyên ở năm lần lên đời; nền và người y nguyên gần hết. Kế hoạch:
+  `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` (12D + 12E), **anh duyệt 28/09**.
+- **28/09 (Phase 12C):** tên đời + thẻ lên đời + mẻ `co_dai` đã lên — chưa đủ, xem dòng trên.
+  Còn: đời 3–4 vẫn chung `can_dai` (lên 3→4 nhà không đổi) · tường ván xanh xám nhà `co_dai` chưa nhuộm được
+  (chưa tìm ra ô màu) · nút "⌂ Về thành phố" đè "⚔ Xem trận" trên màn bản đồ dọc (có từ trước) ·
+  `npm run kho` sau `tai:tatca` ghi đè `KHO_ASSET.md` mất ~6.700 dòng, chốt 20 % không chặn (đã hoàn lại, chưa tra).
+
+- **MỚI 27/09 (Phase 12B):** `sim:van` 6 nước: khoa học **2/5** (trước 3/5), ngoại giao **4/5** — hạt 3
+  mất thủ đô giờ 14 vì Tử Vân giáp thẳng đất ta (bản đồ mới không còn tỉnh đệm hàng trên) · hai nước mới
+  chỉ có đặc tính để HIỆN, chưa ăn vào số · `hex_nuoc` trong mẻ `hex_1` không ai dùng (280×202, báo — chưa
+  xoá) · mẻ `can_dai` giữ cối xay, ruộng, trại, người của trung cổ.
+
+- **MỚI 27/09 (Phase 12A):** thắng khoa học **3/5** (trước 5/5) — đời 6 kéo dài ván tới giờ 265, AI kịp
+  chiếm thủ đô ở 2 hạt giống · đời 6 chưa có lính, thẻ chính sách, người đi đường riêng · mẻ `tuong_lai`
+  giữ cối xay (tuabin gió), đường, cây của mẻ hiện đại · chú thích `DoiMeAtlas.ts` còn ghi "đời 4 trở
+  đi `len: null`" — đã sai từ 12A (chưa sửa: ngoài việc giao).
+
+- **MỚI 27/09 (Phase 11B):** thẻ bất ổn chắn màn nên **không "kệ" được** — nổi loạn chỉ còn xảy ra
+  nếu cả ba lựa chọn đều khoá (không bao giờ, "Đàn áp" không tốn vàng) · sang màn bản đồ thì thành
+  phố dừng nên thế giới cũng dừng (bản đồ = tạm dừng) · kết quả đánh tỉnh chỉ hiện trong bảng tỉnh,
+  không vào nhật ký sự kiện · "Ván mới" là tải lại trang (chưa lưu ván — Phase 13) · nhãn tỉnh vừa
+  chiếm vẫn có thể bị ẩn khi thu nhỏ (`luonHien` tính một lần lúc mở) · **có sẵn từ trước:** trên màn
+  bản đồ dọc 393 px nút "⌂ Về thành phố" và "⚔ Xem trận" đè lên nhau (chụp 27/09).
+
+- **MỚI 26/09 (Phase 11A):** thống trị 2/5 hạt giống (mục 3) · thế giới **chưa tác động ngược**
+  vào thành phố (mất tỉnh, chiến tranh không làm thành phố nghèo đi) · bất ổn chưa tính dân bậc
+  cao (sim chưa có bậc dân) · AI không xây ô tỉnh, kinh tế AI rút gọn theo số tỉnh · quân chưa
+  đi giữa tỉnh theo thời gian (đánh tỉnh kề là tới ngay) · `TheGioi.ts` **299/300 dòng** —
+  thêm gì phải tách trước.
+- **✅ 26/09 (11A): "chưa có AI nước khác" và "chiến dịch chưa nối kinh tế" (chiều thành phố →
+  thế giới) — XONG.** Nguyên văn hai nợ cũ giữ dưới đây.
+- **✅ 26/09: fps 30 là Safari khoá khung lồng tới lần chạm đầu** — bấm ×4 lên 59. Game không
+  lỗi. Đo fps qua bản duyệt: mở bằng Safari, chạm vào game một lần (dòng nhắc trên đầu trang).
+- **MỚI 26/09 (Phase 10B):** chưa có **màn ghi công trong game** — CC-BY (3 model Icosa của
+  `linh_sung`) đòi ghi tên tác giả ở chỗ người chơi thấy (`ASSET_CREDITS.md` mục Icosa) ·
+  mỗi trận chỉ một mẻ, chưa trộn đội cổ với đội súng (hai atlas cùng màn) · xe tăng không có
+  khung giật · đạn là chấm vàng nhỏ · lính súng cầm súng một tay (dáng súng lục của bộ động tác).
+
+- **✅ Phase 8C XONG 19/09 — cối xay quay ở cả hai mẻ.**
+- **✅ Phase 8B XONG 18/09 — mẻ `hien_dai` đã nướng và đã nối vào `ThoiDai`.**
+- **MỚI: mẻ trung cổ 2× hết chỗ trên một trang atlas** (mục 2). Thêm sprite cỡ căn nhà là
+  tràn trang, mà mẻ nào tràn thì **mọi** mẻ phải đệm cho bằng (`trang_it_nhat`). Chưa chặn
+  việc gì, nhưng phase sau thêm công trình thì tính chỗ trước.
+- **✅ `open-code-review`: ĐÃ GỠ 19/09.** Xoá `.opencodereview/`, hai script
+  `soat` / `soat:luat`, và mục I của `DAU_PHIEN.md`. Luật soát về lại đúng một chỗ:
+  `CLAUDE.md` mục Ba luật + `TECH_SPEC.md` mục 1–2. Số đo dưới đây giữ lại để khỏi ai
+  cài lại. Đo trên diff
+  thật của Phase 8C: bắt thêm **0 lỗi** (nó không đọc code — `ocr review`/`ocr scan` vẫn
+  chết vì không có API key). Ba chỗ hỏng: `tools/lib/obj.d.mts` bị loại
+  `unsupported_ext` và `ocr rules check` cho nó rơi về **System built-in** (React, XSS —
+  đúng bộ luật repo này cố ý thay), mà **đúng file đó là chỗ duy nhất hỏng trong phiên**
+  (`TS2554: Expected 1-5 arguments, but got 6`); `tests/**` cũng bị loại `default_path`;
+  và `.opencodereview/rule.json` (10.160 byte) là **bản chép thứ hai** của `TECH_SPEC`
+  mục 1–2 + `CLAUDE.md` mục Ba luật — trái luật kho "mỗi luật đúng một chỗ".
+  Token: phần nó in ra 5.881 byte, mà `git diff --stat` cho cùng danh sách file hết
+  **1.012 byte**; đổi lại tốn thêm 2–3 **lượt gọi**, thứ đắt nhất.
+  Bỏ thì xoá `.opencodereview/`, hai script `soat` / `soat:luat`, và mục I của
+  `DAU_PHIEN.md`.
+- **`npm run kho` chưa chạy lại được từ máy ảo sạch** — `tai:tatca` không kéo
+  `assets_source/icosa` nên bản kê tụt quá 20 % và công cụ tự dừng. `docs/KHO_ASSET.md`
+  vì thế **vẫn còn con số đếm kiểu cũ**; muốn sửa thì phải `npm run tai:icosa` trước.
+- **✅ Đời 5 tới được bằng cách chơi: SỬA XONG 23/09 (Phase 8D).** Nguyên văn nợ cũ:
+- ~~Đời 5 chưa tới được bằng cách chơi.~~ Đời 4 trở đi còn `len: null`
+  trong `data/balance.json` (chưa có công nghệ riêng — `tech.json` mới có ba đời đầu), và
+  đời 3 đòi **270 nhà** mà thành phố mới tới **241**. Tức mẻ hiện đại nướng xong vẫn không
+  hiện ra trong một ván chơi thật. Đường tạm: `?me=hien_dai` ép mẻ. **Mở đường lên đời là
+  việc Phase 9**, đi cùng nợ "thưởng công nghệ chưa đổi được thành phố" ngay dưới.
+- ~~Thưởng công nghệ chưa đổi được thành phố.~~ (hết 23/09 — luật dân kéo về) Trần nhà 398 mà thành phố chỉ tới 241 —
+  trần không phải cái chặn, nhu cầu mới là. Hạ ngưỡng chờ 40→28 cũng vẫn 241.
+  **Đây chính là cái chặn đời 3 → đời 4** (đòi 270 nhà).
+- **Mẻ `hien_dai` còn hai chỗ tạm, chờ chủ dự án xem ảnh rồi quyết** (mục 3):
+  Kenney City Kit **không có xe cộ** nên `xe_keo` đang là `construction-barrier` và
+  `quay_xe` là `dumpster`; người là kiểu đầu to (chibi), khác hẳn người mẻ trung cổ.
+- **Thẻ chính sách chưa đụng được kinh tế** — cố ý, để hiệu ứng tháo ra đúng bằng cái đã
+  lắp vào. Thẻ "+15 % lương thực" của GAME_SPEC mục 7 chờ Phase 9.
+- **Lớp chiến dịch chưa nối vào kinh tế thành phố.** Chưa có phase nào nhận — hỏi anh
+  xếp vào đâu (Phase 9 hay 11) trước khi làm.
+- **Đời 4–5 chưa có thẻ chính sách riêng** (`moThe: []` ở 16 công nghệ mới) và **đời 6
+  chưa có đường lên** (`len: null`, chờ Phase 12).
+- **Chưa có AI nước khác.** Ba nước đối thủ đứng yên.
+- **NỢ CHẶN NẶNG NHẤT ĐÃ HẾT CHẶN — có nguồn thay, chờ anh chốt đóng.** Điều kiện anh đặt
+  ("giữ nợ mở tới khi phiên sau đo xong kho gương Icosa") **đã làm xong 15/09 lần 3**:
+  Icosa tải được thật, **1.671 model · 1.009 MB** trên đĩa, `docGltf()` đọc được ngay.
+  Poly Pizza **vẫn** không tải được và sẽ không bao giờ tải được từ máy ảo (Cloudflare
+  nhận ra IP trung tâm dữ liệu) — nhưng nó không còn chặn việc gì, vì phần lớn model nhà
+  của nó gốc từ Poly, mà Poly thì lấy qua Icosa được. Nguyên văn nợ cũ giữ dưới đây.
+- **Nợ cũ, để đối chiếu: tải model Poly Pizza không được.** `static.poly.pizza` — host của
+  **mọi** đường `Download` — trả `403` với thân `Just a moment...` của **Cloudflare**.
+  Không phải proxy phiên chặn. Đã thử hết bộ header trình duyệt, vẫn `403`.
+  Lái Chromium **nay làm được** (`npm run mo:mang`, mục 1 ở trên) nhưng **vẫn không tải
+  được**: `poly.pizza` kẹt ở `Just a moment...` suốt 60 giây, Cloudflare nhận ra IP trung
+  tâm dữ liệu. Đã thử User-Agent thật, ẩn `navigator.webdriver`, điều hướng thẳng tới
+  `.glb` — 0 file. Bước tiếp theo là bê cookie `cf_clearance` ra ngoài trình duyệt, **cố ý
+  không làm**: đó là né kiểm soát truy cập của bên thứ ba.
+  **Hệ quả: Poly Pizza dò được, không tải được** — muốn model thì chủ dự án tải bằng máy
+  mình. Chi tiết: `docs/DAU_PHIEN.md` mục H.
+  **CHƯA CHỐT** — chủ dự án giữ nợ này mở tới khi phiên sau đo xong kho gương Icosa
+  (mục 3). Đừng ghi là đã đóng.
+  **Đo lại toàn bộ 15/09 (lần 2): y nguyên, đừng mò lại** — `v1.1/download/<id>`,
+  `v1.1/model/<id>/download`, `v1.1/asset/<id>` đều `404 Not Found`; `cdn.` `files.`
+  `assets.poly.pizza` không tồn tại; Chromium có `cf_clearance@.poly.pizza` rồi vẫn kẹt.
+  Đường còn lại là **kho gương Icosa**, chờ allowlist — mục 3.
+- **✅ Nợ bộ đọc glTF: SỬA XONG 16/09.** `start offset of Float32Array should be a
+  multiple of 4` (offset lệch → đọc bằng `DataView`) · GLTF1 lọt vào
+  (`(j.buffers ?? []).map is not a function`) · file phụ 0 byte vẫn bị bỏ qua.
+  Kho Icosa **1.654/1.679 → 1.679/1.679 đọc được**.
+- **✅ Chuồng gà: đã tìm ra 16/09** — `Chicken Coop` 8.888 tam trên Icosa, dò bằng
+  `npm run do:asset ga`. Trước ghi "chưa có `ChickenCoop`".
+- **✅ `trai_ga`: HẾT CHẶN 15/09 (lần 3) — model đã nằm trên đĩa.**
+  `assets_source/icosa/1YE8U35HXsI/Chicken_01.glb` (tác giả Google · CC-BY 3.0 · **648
+  tam** · `docGltf()` đọc được) — đúng model mà Poly Pizza trỏ vào. Kho Icosa còn nhiều
+  dáng gà khác, `grep -io '[a-z0-9_ -]*chicken[a-z0-9_ -]*' docs/KHO_ICOSA.md`.
+  **Còn lại là việc nướng**, không còn việc tìm. Nợ mở 06/09, chặn suốt vì tải.
+  **Chưa có `ChickenCoop`** — chuồng vẫn là thứ phải dò tiếp hoặc giữ cách phân biệt
+  bằng màu nền.
+- **✅ Bản kê asset không đủ tư cách ghi công: SỬA XONG 18/09.** Gốc **không** phải
+  `tools/kho_asset.mjs` của repo này mà là `kho-game/cong-cu/nap_ke_cu.mjs` — bảng regex
+  license ở đó (`/kenney/i`…) dò vào chính đường dẫn gói, mà đường dẫn thật là
+  `assets_source/city-kit-suburban/Models/GLB format`, không chứa chữ "kenney". Nay tra
+  thẳng `ke/kenney.tsv` + `ke/itch.tsv`: thêm cột `tac_gia`, `cach_lay` đúng từng gói, bỏ
+  1.679 dòng Icosa nằm nhầm. **license `?` cả kho 4.497 → 1.562.**
+- **Còn 1.562 dòng license `?` ở `kho-game`, cố ý để nguyên.** 14 gói Quaternius/KayKit
+  không có trong `ke/itch.tsv`; license thật nằm trong file `LICENSE` của từng gói. **Đọc
+  được lúc kho đã tải, tức phiên Phase 8B** — mở ra đối chiếu rồi mới điền, đừng đoán.
+- **Người vác hàng đi tay không** — để Phase 10.
+- **`KHO_ASSET.md` còn con số đếm kiểu cũ** (chỉ tính `.obj`, trong khi máy nướng đọc cả
+  `.gltf` và `.glb`). File **sinh tự động**, sửa tay là sai luật — nó tự đúng ở lần
+  `npm run kho` đầu tiên có đủ kho, tức phiên Phase 8B.
+- **Nhánh `claude/*` chết trên remote.** Máy ảo xoá không được (`HTTP 403`, đo lại 14/09)
+  — chỉ chủ dự án bấm ở trang `branches`. **Đừng chép số nhánh vào đây**, nó đổi mỗi lần
+  anh bấm; đếm bằng lệnh, và `git branch -r --merged origin/main` nói cái nào xoá được:
+
+  ```bash
+  git ls-remote --heads origin | sed 's#.*refs/heads/##'
+  ```
+
+  Một ngoại lệ đáng ghi, vì đọc `--merged` sẽ ra kết luận sai: `caveman-mode-tetfj7` git
+  báo **chưa gộp** nhưng đừng tưởng là việc còn treo — `main` đã có cả Phase 2B và đi xa
+  hơn; nhánh chỉ còn bản công thức mẻ CŨ đã bị thay. Giữ hay xoá đều được.
+- **✅ Hook `chan_bao_xong` lọt dạng `<việc> xong`: SỬA XONG 18/09 (lần 4).**
+  Bản cũ chỉ tính là báo xong khi từ `xong` nằm **đầu dòng** hoặc ngay sau dấu chấm câu,
+  vì `RAC` chỉ nuốt khoảng trắng, ký tự Markdown và chữ số — gặp chữ cái là hỏng khớp.
+  Đo thật năm câu: **ba lọt, hai bắt**. Bỏ neo đầu dòng; cái giữ cho khỏi bắt nhầm là
+  `TIEP` (sau cụm từ phải là dấu câu, hết dòng, hay một từ chốt câu) cộng thêm `NOI_TOI`
+  (đợi · chờ · khi · báo · dạng · kiểu · lúc · chữ) cho `"đợi nướng xong thì gửi"` và
+  `"dạng báo xong"` vẫn lọt lưới.
+  **30 test ở `tests/ChanBaoXong.test.ts`, viết TRƯỚC khi sửa** — chạy ra 10 đỏ rồi mới
+  động vào hook. Bản gốc `ghi-nho/cong-cu/chan_bao_xong.mjs` nay `md5 d8781f8f`.
+- **`tayvuc` lệch bản `chan_bao_xong.mjs`, cố ý.** Ba repo kia đã đồng bộ `md5 d8781f8f`;
+  `tayvuc` dừng hẳn 05/09 nên không tự mở. Mở lại thì chạy
+  `node /home/user/ghi-nho/cong-cu/cai_dat.mjs <repo>` trước hết.
+- **`tayvuc`: `CLAUDE.md` 2.322 token**, vượt ngưỡng chung 1.600. Không cắt vì repo dừng
+  hẳn; đặt ngưỡng tạm 2.400 kèm lý do trong `.claude/nguong_token.txt`, cắt khi mở lại.
+
+- **MỚI 24/09 (Phase 9): quân chưa đi giữa các tỉnh, trận chưa nối vào `ChienDich.ts`.**
+  Phase 9 chỉ có quân đi trên chiến trường 40×40. Cùng nhóm với nợ "chiến dịch chưa nối
+  kinh tế" ở trên — hỏi anh xếp vào phase nào.
+- **MỚI 24/09: cung thủ thuần yếu** — thắng quân hỗn hợp cùng tiền chỉ 7 % (`sim:tran`).
+  Thước chỉ cấm loại quá mạnh (> 65 %), không cấm loại yếu. Xem lại khi Phase 10 xem được trận.
+- **MỚI 24/09: đời 4 và đời 5 chung nhóm `hien_dai`** trong `data/units.json`; chưa có
+  lính đời 1/6 riêng và chưa nối lính với cây công nghệ (`tech.json` chưa mở lính nào).
+
+- **MỚI 25/09 tối: Pages `?tran=1` ra thành phố trên iPhone anh**, bản đồ tỉnh không có nút
+  "⚔ Xem trận" — dù build có nút và Deploy xanh. Nghi bộ nhớ đệm PWA (`sw.js`, `autoUpdate`)
+  giữ bản 24/09. Máy ảo không vào `github.io`. Phiên sau: dựng vòng đo trước (skill
+  `diagnosing-bugs`), ví dụ in số phiên bản lên màn cho anh chụp.
+- **MỚI 25/09 (Phase 10A):** 6 đội súng/hiện đại chưa có hình (Phase 10B) · ngựa to so
+  với người (người cưỡi gắn trong file ngựa nên không chỉnh tỉ lệ riêng được) · giáo cầm
+  ngang khi đi (dáng `Walking_A` của KayKit) · người cưỡi chỉ một dáng ngồi · cung thủ chưa
+  có mũi tên bay · trận mẫu cố định trong `data/dien_tran.json`, chưa nối bản đồ chiến dịch.
+
+Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
