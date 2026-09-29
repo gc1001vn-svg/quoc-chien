@@ -6,14 +6,16 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 29/09/2026 (lần 23 — rà soát và sửa bộ đồ nghề, **không chạm mã game**).
+Cập nhật: 29/09/2026 (lần 24 — art bible bản nháp, **không chạm mã game**).
 
 ## 1. Đang ở đâu
 
 - **Game: Phase 12D xong phần máy (khối 1–4).** Lên đời là màn phủ kín, thành phố đổi dần như
   làn sóng; nền, đường, người, ruộng/trại đổi theo từng đời. Anh đo iPhone 28/09: **59 fps**, cả
   lúc làn sóng. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`.
-- **29/09 anh xem bảng ruộng/trại: "nhìn vẫn gượng gạo quá"** — tạm dừng 12D, chờ lệnh mới (mục 5).
+- **29/09 anh xem bảng ruộng/trại: "nhìn vẫn gượng gạo quá"** — tạm dừng 12D. Cùng ngày anh gửi 5 clip
+  game xây thành, gõ "ok art bible" → **`docs/ART_BIBLE.md` bản nháp** (lần 24), chờ anh chốt (mục 3).
+  Chi tiết: `docs/NHAT_KY/ART_BIBLE_29_09.md`.
 - 11B (27/09): chơi trọn một vòng, 59 fps mọi màn kể cả 500×.
 - **Pages chạy đúng bản mới trên iPhone** — anh xác nhận 29/09 (bản `29/09 11:32`, mở lại vẫn đúng).
   Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
@@ -75,28 +77,28 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### 🟡 Việc 28/09 (lần 22) — chốt bảng ruộng/trại: anh xem bảng 29/09, báo **"nhìn vẫn gượng gạo quá"**, tạm dừng — chưa xem iPhone
+### 🟡 Việc 29/09 (lần 24) — chốt art bible bản nháp
 
-1. Xem ảnh bảng Claude gửi trong chat: 5 hàng (ruộng · vườn nho · trại lợn · trại gà · trại cừu) × 5 cột đời.
-2. Mở bằng **Safari**: https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi — chạm vào game một lần. Dòng chữ nhỏ trên
-   cùng phải ghi **28/09 21:41**. Chơi 500× qua vài lần lên đời, nhìn ô ruộng/trại.
-3. Nhắn: **"ok"** hoặc ô nào xấu (vd "trại gà cổ đại") · fps.
+Bảng ruộng/trại 28/09: anh báo "gượng gạo" → thay bằng hướng art bible, không chốt bảng cũ nữa.
+
+1. Đọc tóm tắt Claude gửi trong chat (bản đủ: `docs/ART_BIBLE.md`).
+2. Nhắn bốn chữ: mốc chính **B** hay khác · luật 1 **"tối đa 2 tay vẽ"** ok không · **bước xây** (móng →
+   giàn giáo → xong) có làm không · màu mặc định đời 1–2 ok không.
+3. Tuỳ chọn: gửi 1–2 clip game thời thuộc địa / công nghiệp / hiện đại — đời 3–6 chưa có mốc.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — chưa rõ chỗ nào; hỏi anh trước khi nướng lại (mục 5).
+- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7; cảnh
+  tối hơn mọi mốc (`docs/ART_BIBLE.md` mục 2). Sửa theo art bible mục 5, sau khi anh chốt.
 - **12E chưa làm:** đời 3–4 chung mẻ `can_dai`; mọi công trình phải đổi khi lên đời (kế hoạch
   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6).
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
 ## 5. Phiên sau — CHỜ LỆNH ANH
 
-**29/09 anh dừng: ruộng/trại khối 4 "nhìn vẫn gượng gạo quá", phiên mới anh sẽ đưa lệnh khác.** Đừng tự mở 12E;
-làm đúng lệnh anh đưa. Gượng gạo có thể do ghép model nhiều nguồn khác phong cách, con vật nhỏ, đồ vật rời rạc —
-chưa hỏi cụ thể. Nếu lệnh mới là làm lại khối 4 thì hỏi anh chỗ nào gượng trước khi nướng.
-Ứng viên cùng MỘT tay vẽ (kho-game nạp 29/09, Quaternius CC0): `farmbuildings` (Barn, ChickenCoop, Silo…),
-`ultimatecrops`, và `ultimatefantasyrts` — nhà theo `FirstAge`/`SecondAge` × `Level1-3`, khớp lên đời.
-`node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius`. Đưa anh xem trước khi thay.
+**Bước E: art bible chờ anh chốt (mục 3).** Đừng tự mở 12E. Anh chốt xong thì làm đúng `docs/ART_BIBLE.md`
+mục 5, mỗi bước một bảng cho anh chọn một lần: (1) bảng đèn 4 mức, (2) bảng nông trại Quaternius cạnh bản hiện
+tại, (3) nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 
 Nếu anh bảo tiếp 12E:
 
