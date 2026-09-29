@@ -20,3 +20,9 @@ dùng nhất → đề xuất thay B làm mốc hình khối), G nông trại (m
 một phần đời 5), E "Last Fiefdom" (bản đồ, trận). 16 cảnh mốc: 14/16 sáng ≥ 0,40; game cổ đại 0,28 tối hơn cả
 16. Luật bão hoà hạ từ ≥ 0,45 xuống ≥ 0,37 (D đầu game 0,37 — mốc chính mà luật cũ loại). Thêm luật nông
 trại theo G, ba đề xuất (bậc nhà và bước xây · nền lót · bản đồ kiểu E). Đời 3 và 6 vẫn chưa có mốc.
+
+**Lần ba (cùng phiên), anh gõ "ok làm hết" + bảo tra thêm game khác:** năm ý chốt thành luật (luật 1, 10, 11,
+bảng màu đời 1–2, mốc D). Tra 9 game thật: ảnh bìa video YouTube (`i.ytimg.com` mở được) + wiki, phỏng vấn.
+Forge of Empires đo 0,36–0,37, Anno 1701 0,39 — **game thật tối hơn quảng cáo** → luật 2 hạ từ 0,40 xuống 0,36,
+bảng đèn 0,36 · 0,44 · 0,52 · 0,60. Đời 3 (AoE III, Anno 1701), 5 (Forge of Empires, chưa có số), 6 (Forge of
+Empires Tomorrow/Future + chủ đề Eco của Anno 2070) có màu đề xuất. Thêm luật 12 "đọc được ở zoom xa" (Civ VI).

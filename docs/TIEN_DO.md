@@ -77,27 +77,27 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### 🟡 Việc 29/09 (lần 24) — chốt art bible bản nháp
+### 🟡 Việc 29/09 (lần 24) — art bible: anh chốt "ok làm hết", còn ba ý nhỏ
 
-Bảng ruộng/trại 28/09: anh báo "gượng gạo" → thay bằng hướng art bible, không chốt bảng cũ nữa.
+Anh chốt 29/09: mốc hình khối D · tối đa 2 tay vẽ · bước xây · nền lót · màu đời 1–2 (`docs/ART_BIBLE.md`).
+Cùng ngày Claude tra thêm 9 game thật (mục 7 của file đó).
 
-1. Đọc tóm tắt Claude gửi trong chat (bản đủ: `docs/ART_BIBLE.md`).
-2. Nhắn năm chữ: mốc hình khối **D (Survivor Island)** ok không · luật 1 **"tối đa 2 tay vẽ"** ok không ·
-   **bước xây** (móng → giàn giáo → xong) có làm không · **nền lót** dưới nhà có làm không · màu mặc định đời 1–2 ok không.
-3. Tuỳ chọn: 1–2 clip game thời hoả mai, thuộc địa (đời 3) hoặc tương lai (đời 6) — hai đời này chưa có mốc.
+1. Nhắn ba chữ: màu đề xuất **đời 3–6** ok không (bảng luật 4) · **bản đồ tỉnh kiểu giấy nét mực** có làm không ·
+   đời 6 lấy **"tương lai xanh sạch"** (cây phủ mái) ok không.
+2. Không cần làm gì thêm: phiên sau Claude làm bảng đèn, gửi ảnh để anh chọn một ô.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
 - **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7; cảnh
-  tối hơn mọi mốc (`docs/ART_BIBLE.md` mục 2). Sửa theo art bible mục 5, sau khi anh chốt.
+  tối hơn mọi mốc (`docs/ART_BIBLE.md` mục 2). Sửa theo art bible mục 5 — anh đã chốt 29/09.
 - **12E chưa làm:** đời 3–4 chung mẻ `can_dai`; mọi công trình phải đổi khi lên đời (kế hoạch
   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6).
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
-## 5. Phiên sau — CHỜ LỆNH ANH
+## 5. Phiên sau — bảng đèn (art bible mục 5)
 
-**Bước E: art bible chờ anh chốt (mục 3).** Đừng tự mở 12E. Anh chốt xong thì làm đúng `docs/ART_BIBLE.md`
-mục 5, mỗi bước một bảng cho anh chọn một lần: (1) bảng đèn 4 mức, (2) bảng nông trại Quaternius cạnh bản hiện
+**Anh chốt art bible 29/09 ("ok làm hết").** Đừng tự mở 12E. Phiên sau làm đúng `docs/ART_BIBLE.md` mục 5, mỗi bước
+một bảng cho anh chọn một lần: (1) bảng đèn 4 mức 0,36 · 0,44 · 0,52 · 0,60, (2) bảng nông trại Quaternius cạnh bản hiện
 tại, (3) nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 
 Nếu anh bảo tiếp 12E:
