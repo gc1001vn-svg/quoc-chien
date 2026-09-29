@@ -68,8 +68,8 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
 
 1. **Tay vẽ:** mỗi mẻ công trình **tối đa 2 tay vẽ**; mỗi loại công trình (nhà ở · nông trại ·
    quân sự · công cộng) **chỉ một tay vẽ**; tay thứ hai chỉ dùng cho cây, đá, người. Anh chốt 29/09.
-2. **Độ sáng:** cảnh thành phố ở zoom 1× có độ sáng TB **≥ 0,36** (game thật thấp nhất mục 7:
-   Forge of Empires). Mức cụ thể anh chọn trên bảng đèn (mục 5). **[anh chốt trên bảng đèn]**
+2. **Độ sáng:** cảnh thành phố có độ sáng TB **≥ 0,36** (game thật thấp nhất mục 7: Forge of Empires).
+   **Đích: ô 4C — sáng 0,52 · ấm 0,26**, đo ở khung bảng đèn (mục 5). Anh giao Claude tự chọn 29/09.
 3. **Bão hoà:** cảnh thành phố **≥ 0,37** (cảnh thành phố nhạt nhất trong mốc: D đầu game).
 4. **Màu nhận diện mỗi đời:** nền một tông, **mái một màu riêng** mà đời kề không dùng — như
    mốc A. **Một chủ đề mỗi đời, không trộn** — như Forge of Empires (mục 7). Cả sáu đời anh chốt
@@ -126,13 +126,17 @@ Dò bằng `node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius` (29
 
 ## 5. Thứ tự làm — mỗi bước một bảng, anh chọn một lần
 
-1. **Bảng đèn — xem trước xong 29/09, chờ anh chọn một ô.** 20 ô = 5 mức sáng (hiện tại 0,28 ·
+1. **Bảng đèn — xong 29/09, chọn ô 4C.** 20 ô = 5 mức sáng (hiện tại 0,28 ·
    0,36 · 0,44 · 0,52 · 0,60) × 4 mức ấm (0,13 mát như D · 0,19 giữ như hiện tại · 0,26 như A, F ·
    0,34 như B, G). Mã ô: hàng 1–5, cột A–D (1B = hiện tại). **Xem trước bằng chỉnh ảnh chụp, chưa
    nướng lại:** nhân lượng sáng (`exposure` của ffmpeg — giữ bóng đậm; cách `gamma` làm hình mờ như
    sương, đã thử và bỏ) + ấm ở vùng sáng, bóng hơi xanh (`colorbalance`). Khung đo: `AN_SU_KIEN=1
    DIA_CHI=http://127.0.0.1:4173/quoc-chien/ node scripts/chup_man.mjs "?me=co_dai&zoom=0.6" <tên>.png`,
-   cắt `1100:460:450:240` (hiện tại đo ra sáng 0,28 · ấm 0,19). **Phiên sau:** chỉnh đèn máy nướng
+   cắt `1100:460:450:240` (hiện tại đo ra sáng 0,28 · ấm 0,19).
+   **Vì sao 4C:** 0,52 nằm giữa dải mốc (0,36–0,66), hàng 5 (0,60) đã cháy sáng mái vàng. Ấm 0,26 nằm giữa
+   D (0,13–0,20, mốc hình khối) và B, G (0,34–0,35, mốc ánh sáng); cột D ấm quá làm cỏ ngả vàng, và cả
+   sáu đời dùng chung một đèn — thử 4C lên đời tương lai: sáng 0,55 · ấm −0,11, trắng sạch, không ngả cam
+   (hiện tại 0,29 · −0,03). Ô 4C trên ảnh = `exposure` +1,01 EV + `colorbalance` −0,044. **Phiên sau:** chỉnh đèn máy nướng
    (dưới đây) tới khi ảnh game thật đo ra đúng sáng, ấm của ô anh chọn, rồi gửi anh ảnh thật so với ô đó. Đèn hiện ở `tools/lib/trang_nuong.js`: đèn chính `(1.05, 0.99, 0.88) × 0.72`,
    đèn nền trời `(0.40, 0.44, 0.52)`, đất `(0.22, 0.20, 0.26)`.
 2. **Bảng nông trại theo G:** bản hiện tại cạnh bản Quaternius (mục 4).

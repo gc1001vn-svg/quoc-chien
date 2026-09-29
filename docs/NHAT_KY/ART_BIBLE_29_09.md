@@ -32,3 +32,6 @@ Empires Tomorrow/Future + chủ đề Eco của Anno 2070) có màu đề xuất
 `gamma` mờ như sương → bỏ; `exposure` giữ bóng đậm → dùng. `tools/do_hinh.mjs` thêm **độ ấm TB** (đỏ − lam); mốc:
 D 0,13–0,20 · FoE 0,16 · A, F 0,23–0,24 · B, G 0,34–0,35 · game 0,19. `scripts/chup_man.mjs` thêm `AN_SU_KIEN=1`
 (ẩn hộp thoại sự kiện, không bấm — bấm thì camera chạy đi). Bảng gửi trong chat, không lên repo.
+
+**Lần năm:** anh "bạn tự chọn" → **4C (sáng 0,52 · ấm 0,26)**. Thử cùng bộ lọc lên đời tương lai: 0,55 · −0,11, trắng sạch
+(hiện tại 0,29 · −0,03) — một đèn cho sáu đời không làm đời tương lai ngả cam. Ảnh so sánh gửi trong chat.

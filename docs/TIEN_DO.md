@@ -77,12 +77,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### 🟡 Việc 29/09 (lần 24) — chọn một ô trên bảng đèn
+### ✅ Việc 29/09 (lần 24) — art bible chốt hết, bảng đèn chọn ô 4C
 
-Art bible anh chốt hết 29/09 (hai lần "ok"), `docs/ART_BIBLE.md`. Bảng đèn 20 ô Claude gửi trong chat 29/09.
-
-1. Nhìn bảng: hàng 1–5 là độ sáng (hàng 1 = hiện tại), cột A–D là độ ấm (A mát · D ấm như 3Q). Ô 1B là game bây giờ.
-2. Nhắn **mã một ô**, ví dụ "3C". Chưa thích ô nào thì nói hướng: "sáng hơn 5", "ấm giữa C và D".
+Anh giao Claude tự chọn ô: **4C — sáng 0,52 · ấm 0,26** (lý do: `docs/ART_BIBLE.md` mục 5). Không còn việc chờ anh.
+Phiên sau có ảnh game thật sau khi chỉnh đèn thì anh xem, nhắn "ok" hoặc chỗ chưa ưng.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -95,7 +93,8 @@ Art bible anh chốt hết 29/09 (hai lần "ok"), `docs/ART_BIBLE.md`. Bảng �
 ## 5. Phiên sau — bảng đèn (art bible mục 5)
 
 **Anh chốt art bible 29/09 ("ok làm hết").** Đừng tự mở 12E. Phiên sau làm đúng `docs/ART_BIBLE.md` mục 5, mỗi bước
-một bảng cho anh chọn một lần: (1) chỉnh đèn máy nướng cho ra đúng sáng, ấm của ô anh chọn trên bảng đèn 20 ô (art bible mục 5), (2) bảng nông trại Quaternius cạnh bản hiện
+một bảng cho anh chọn một lần: (1) chỉnh đèn máy nướng tới khi ảnh game đo ra **sáng 0,52 · ấm 0,26** (ô 4C, art bible mục 5) — ảnh 4C chỉ là chỉnh
+ảnh, đèn thật phải nướng lại cả mẻ rồi đo, (2) bảng nông trại Quaternius cạnh bản hiện
 tại, (3) nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 
 Nếu anh bảo tiếp 12E:
