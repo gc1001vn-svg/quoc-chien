@@ -65,6 +65,7 @@ nguồn, gồm Poly Haven, Poly Pizza, Quaternius) → `NGUON_MO.md`. Chưa có
 dòng nhắc, kết luận sai "không có gà"). Clone hỏng thì lệnh in `HONG` — khi đó **chưa được kết
 luận "không có"**. Từ 29/09 hook `nhac_kho` còn tự dò kho-game khi câu anh gõ có từ asset.
 
+- **Chọn asset, nướng, đổi đèn, đổi màu: theo `docs/ART_BIBLE.md`** — mốc, luật tay vẽ, số đo.
 - Dò hụt thì thêm từ vào `/home/user/kho-game/cong-cu/tu_dien.json` (khoá **có dấu**), đừng sửa
   mã nguồn. Repo này không còn từ điển riêng.
 - Trúng ở kho-game: `node /home/user/kho-game/cong-cu/lay.mjs <nguồn> ...` — icosa · kenney · itch
