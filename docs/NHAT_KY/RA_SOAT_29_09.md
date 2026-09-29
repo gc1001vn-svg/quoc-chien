@@ -32,3 +32,5 @@ Rà 7 repo + kho + hook + skill + connector, rồi sửa. Mỗi lỗi có lệnh
 - **Lượt 2 (anh duyệt):** `ASSET_CREDITS.md` thêm dòng 11 model Icosa khối 4 · `AGENTS.md` dò asset
   một lệnh · xoá `vercel.json` · CI chỉ `main` + PR · workflow `Don nhanh` xoá nhánh `claude/*` đã gộp
   và cũ hơn 2 ngày (03:17 hằng ngày) · `kho-game/CLAUDE.md` gọi `add_repo` trước khi clone.
+- **Anh xác nhận 29/09:** Pages trên iPhone lên đúng bản `29/09 11:32`, mở lại vẫn đúng. DAU_PHIEN
+  mục G đổi lại: đẩy `main` xong thì đưa link Pages (đo fps đúng), bản duyệt chỉ để xem trước.

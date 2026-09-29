@@ -98,8 +98,11 @@ và **thoát mã 1** khi vượt.
 
 **Bản duyệt KHÔNG thay `main`.** Bản thật vẫn là GitHub Pages; `.duyet/` không lên git.
 
-**Việc cho anh xem trên iPhone: LUÔN đưa link bản duyệt**, không đưa link Pages — anh báo
-25/09 và 26/09 link Pages "không xài được" (nợ ở `TIEN_DO.md` mục 4). Đăng đè đúng link cũ
+**Việc cho anh xem trên iPhone:** đã đẩy `main` thì đưa **link Pages**
+https://gc1001vn-svg.github.io/quoc-chien/ — từ 29/09 mở lại app là lên bản mới (sửa service
+worker trong `src/main.ts`, anh xác nhận trên iPhone 29/09); mở thẳng, không qua khung, nên đo
+fps đúng. Chữ số phiên bản cạnh số fps cho anh biết đang xem bản nào.
+**Bản duyệt** khi cần anh xem TRƯỚC khi đẩy `main`: đăng đè đúng link cũ
 `https://claude.ai/artifact/Jit8athcMDURBjv4HFVFpi` (đọc nó trước, rồi `url` + `root: .duyet`);
 muốn mở thẳng màn nào thì sửa `src` của iframe trong `.duyet/xem.html` (vd `?tran=2`).
 **Đo fps qua bản duyệt:** Safari khoá trang lồng khung ở **30 fps tới lần chạm đầu**, app Claude

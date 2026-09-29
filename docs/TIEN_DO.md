@@ -15,6 +15,8 @@ Cập nhật: 29/09/2026 (lần 23 — rà soát và sửa bộ đồ nghề, **
   lúc làn sóng. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`.
 - **29/09 anh xem bảng ruộng/trại: "nhìn vẫn gượng gạo quá"** — tạm dừng 12D, chờ lệnh mới (mục 5).
 - 11B (27/09): chơi trọn một vòng, 59 fps mọi màn kể cả 500×.
+- **Pages chạy đúng bản mới trên iPhone** — anh xác nhận 29/09 (bản `29/09 11:32`, mở lại vẫn đúng).
+  Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
 - Phiên 29/09 (lần 23): rà soát toàn bộ đồ nghề, sửa hook/công cụ, cắt file này từ 91.599 byte;
   anh duyệt, 6 việc file khoá đã sửa cùng phiên. Chi tiết: `docs/NHAT_KY/RA_SOAT_29_09.md`.
 
@@ -81,8 +83,6 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 ## 4. Nợ đang chặn phase kế tiếp
 
 - **Ruộng/trại "gượng gạo"** (anh báo 29/09) — chưa rõ chỗ nào; hỏi anh trước khi nướng lại (mục 5).
-- **Pages giữ bản cũ trên iPhone** (anh báo 25–26/09, nghi bộ nhớ đệm PWA). Đang né: mọi lần cho
-  anh xem đều dùng link bản duyệt (`docs/DAU_PHIEN.md` mục G). Chưa có cách đo trên iPhone.
 - **12E chưa làm:** đời 3–4 chung mẻ `can_dai`; mọi công trình phải đổi khi lên đời (kế hoạch
   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6).
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".

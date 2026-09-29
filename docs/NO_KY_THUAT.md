@@ -579,6 +579,9 @@ chặn nhầm đặc tả gói.
   "⚔ Xem trận" — dù build có nút và Deploy xanh. Nghi bộ nhớ đệm PWA (`sw.js`, `autoUpdate`)
   giữ bản 24/09. Máy ảo không vào `github.io`. Phiên sau: dựng vòng đo trước (skill
   `diagnosing-bugs`), ví dụ in số phiên bản lên màn cho anh chụp.
+  **ĐÃ TRẢ 29/09:** gốc là `registerSW.js` plugin tự chèn — chỉ đăng ký, không hỏi bản mới khi app
+  mở lại, không tải lại. Đăng ký qua `virtual:pwa-register`, hỏi mỗi lần trang hiện lại (vòng đo
+  Chromium đỏ → xanh); anh xác nhận trên iPhone 29/09.
 - **MỚI 25/09 (Phase 10A):** 6 đội súng/hiện đại chưa có hình (Phase 10B) · ngựa to so
   với người (người cưỡi gắn trong file ngựa nên không chỉnh tỉ lệ riêng được) · giáo cầm
   ngang khi đi (dáng `Walking_A` của KayKit) · người cưỡi chỉ một dáng ngồi · cung thủ chưa
