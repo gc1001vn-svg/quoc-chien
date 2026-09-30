@@ -11,7 +11,7 @@ Cập nhật: 30/09/2026 (lần 27 — Thử 2: hiệu ứng trận).
 ## 1. Đang ở đâu
 
 - **30/09 (lần 27): Thử 2 xong phần máy** — màn trận: bụi · tên cắm / khói súng · chớp + tia · cờ trắng + nhạt màu đội vỡ ·
-  cờ bên thắng · khựng khung (trần 200 ms); 2 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chưa đo iPhone** (mục 3).
+  cờ bên thắng · khựng khung (trần 200 ms); 2 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả 3 link (mục 3).
   Đợt 2/3. Chi tiết: `docs/NHAT_KY/THU_2_30_09.md`.
 - **30/09 (lần 26): Thử 1 xong** — hậu kỳ, khói bếp, chim, icon nhà tắc ở màn thành phố; 3 lệnh vẽ;
   `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả có lẫn không hiệu ứng, "nhìn ổn hơn bản gốc". Đợt 1/3 của phần thử hiệu ứng
@@ -94,14 +94,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 30/09 (lần 27) — anh xem Thử 2 trên iPhone
+### ✅ Việc 30/09 (lần 27) — anh xem Thử 2 trên iPhone
 
-Mở bằng Safari, chạm vào game một lần rồi đọc số fps (góc trên, cạnh số phiên bản):
-1. https://gc1001vn-svg.github.io/quoc-chien/?tran=1 — trận cổ, xem hết một trận (hoặc bấm ×4).
-2. https://gc1001vn-svg.github.io/quoc-chien/?tran=2 — trận súng.
-3. https://gc1001vn-svg.github.io/quoc-chien/?tran=2&tat=het — bản gốc để so.
-
-Nhắn lại: fps từng link + nhìn có ổn không. Thử 1 anh đã xác nhận 30/09 (59 fps, "nhìn ổn hơn bản gốc").
+Anh đo bản `30/09 18:53` (`?tran=1`, `?tran=2`, `?tran=2&tat=het`), nhắn nguyên văn: **"Tất cả đều là 59 F PS"** → Thử 2 qua.
+Chờ anh nhắn làm tiếp Thử 3. Thử 1 anh đã xác nhận 30/09 (59 fps).
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -116,7 +112,7 @@ Nhắn lại: fps từng link + nhìn có ổn không. Thử 1 anh đã xác nh�
 
 ## 5. Phiên sau
 
-**Thử 2 chờ anh đo iPhone.** Anh xác nhận và nhắn làm tiếp thì mở phiên mới bằng `create_session` cho **Thử 3 — dễ chơi**
+**Thử 2 anh đã xác nhận (59 fps).** Anh nhắn làm tiếp thì mở phiên mới bằng `create_session` cho **Thử 3 — dễ chơi**
 (bất ổn thấy được trong thành phố · chấm xem trước kiểu Reigns · bảng tách nguồn chính sách), prompt đủ như prompt Thử 2.
 Tụt fps ở trận: giảm `tran.toiDa`, tắt bụi trước (nhiều hạt nhất) → tắt tia (kế hoạch Thử 2 mục 5).
 Ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8.
