@@ -41,8 +41,9 @@ try {
   await td.moTrang(GOC + duongThem);
   const san = await td.choDen("document.querySelector('#app canvas') !== null", 20000);
   if (!san) console.warn('Canh bao: #app van rong sau 20 giay, van chup.');
-  // Cho them vai khung hinh de canvas ve xong.
-  await new Promise((r) => setTimeout(r, 2500));
+  // Cho them vai khung hinh de canvas ve xong. `CHO_MS=30000`: cho lau hon cho khoi, chim
+  // (Thu 1) kip hien - may ao chi 5 fps, hieu ung chay cham theo.
+  await new Promise((r) => setTimeout(r, Number(process.env.CHO_MS ?? 2500)));
   // `AN_SU_KIEN=1`: an hop thoai su kien dau van (khong bam - bam thi camera chay sang nha vua xay).
   // Can cho bang den `docs/ART_BIBLE.md` muc 5: hop thoai che nua duoi man, do mau nham.
   if (process.env.AN_SU_KIEN === '1') {
