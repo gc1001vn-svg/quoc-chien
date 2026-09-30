@@ -588,3 +588,23 @@ chặn nhầm đặc tả gói.
   có mũi tên bay · trận mẫu cố định trong `data/dien_tran.json`, chưa nối bản đồ chiến dịch.
 
 Toàn bộ nợ còn lại: **`docs/NO_KY_THUAT.md`**.
+
+## Tải lại asset để nướng — 30/09/2026
+
+Máy ảo mới không có `assets_source/`; nướng lại đèn phải tải lại. Ba lỗi nằm ở **kho-game**
+(repo khác, chưa sửa — báo anh), một lỗi mạng:
+
+- **`kho-game/cong-cu/lay_itch.mjs` dòng 35 bỏ mất gói ĐẦU TIÊN khi không có `--dich`:**
+  `iDich = -1` nên `i !== iDich + 1` thành `i !== 0`. `npm run tai:itch` (và `tai:tatca`) im lặng
+  bỏ `medieval-village-megakit`, vẫn thoát mã 0. Đi vòng: thêm `--dich assets_source`.
+- **`kho-game/cong-cu/lay.mjs icosa` bỏ file phụ mà vẫn báo lấy được:** `mocThat` trả `null` khi
+  wayback đứt thì file `.bin` bị bỏ qua, model chỉ còn `.gltf` rỗng ruột (`cdMQnl19MB9`, `2rqDANUhu7X`).
+- **Tên file không khớp mẻ nướng:** `lay.mjs` đổi `model_(GLTFupdated).gltf` → `model__GLTFupdated_.gltf`,
+  và chỉ lấy được bản `.gltf` ở backblaze, trong khi `can_dai`, `hien_dai`, `trung_co_2` đòi
+  `model.glb` / `wood_water_trough.glb` (bản wayback cũ).
+- **`web.archive.org` qua proxy máy ảo đứt `ws_closed_mid_exchange`** (như 28–29/09). File `model.bin`
+  có sẵn ở cùng thư mục backblaze: `https://s3.us-east-005.backblazeb2.com/icosa-gallery/poly/<id>/model.bin`.
+
+Đi vòng 30/09: tải `model.bin` từ backblaze, chép `.gltf` sang đúng tên có ngoặc, đóng gói `.glb`
+bằng glTF-Transform (`kho-game/cong-cu/mo_hinh`, MIT). Kiểm: nướng lại ra `co_dai_2x.json`
+**y hệt** bản trên git (cùng khung sprite) — model lấy lại khớp model cũ.
