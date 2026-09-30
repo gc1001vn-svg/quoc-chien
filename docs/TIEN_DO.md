@@ -88,9 +88,8 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
    cạnh số fps phải là ngày **30/09**. Chưa đúng thì vuốt tắt hẳn trang rồi mở lại.
 2. Xem thành phố vài đời, nhắn **"ok đèn"** hoặc chỗ chưa ưng (quá sáng, quá vàng…). Bảng so sánh cũ · ô 4C · mới
    gửi trong chat 30/09.
-3. `docs/TECH_SPEC.md` mục 3 (file khoá) còn tả đèn cũ. Đồng ý cho sửa thì nhắn **"ok sửa TECH_SPEC"**.
-4. Kho `kho-game` có 3 lỗi làm tải asset hỏng (`docs/NO_KY_THUAT.md` mục "Tải lại asset để nướng — 30/09").
-   Muốn sửa thì mở một phiên trên repo `kho-game`, gõ "sửa 3 lỗi tải ghi ở quoc-chien NO_KY_THUAT 30/09".
+3. ✅ Anh cho sửa `docs/TECH_SPEC.md` mục 3 (tả đèn mới) — xong 30/09.
+4. ✅ Anh cho sửa 3 lỗi tải của `kho-game` — xong 30/09 (`docs/NO_KY_THUAT.md` mục "Tải lại asset để nướng — 30/09").
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -108,7 +107,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 **Bước E trước:** anh chưa xác nhận đèn mới trên máy thật (mục 3) thì hỏi anh trước, chưa mở bước 2.
 Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
 Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
-Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B — **đi vòng ba lỗi kho-game**, không thì thiếu gói mà không báo.
+Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B (cả dòng lấy model Icosa theo mã).
 
 Nếu anh bảo tiếp 12E:
 
