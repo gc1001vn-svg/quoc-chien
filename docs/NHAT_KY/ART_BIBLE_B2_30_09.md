@@ -14,4 +14,8 @@ Anh chọn mục 1 ("art bible bước 2–3") cuối phiên Thử 3, bảo làm
 - Hình hiện tại chiếm ~2 ô dù nhà chỉ giữ 1 ô (`o: 1`); bản thử 1 ô đầu tiên trông nhỏ hẳn → phóng 1,7.
 - Chụp bảng: trang HTML cắt sprite thẳng từ hai atlas, cùng tỉ lệ, cùng nền cỏ; Chromium `TrinhDuyet` (máy ảo không có PIL, ffmpeg).
 - Bẫy: bộ kiểm lệnh máy ảo lỗi tạm 6 lần liền giữa phiên → dừng, chờ anh nhắn "tiếp" (tới 10 lần thì lượt tự dừng).
+- **Dò lại kho-game sau khi anh nhắc** (bảng chỉ dùng 4 gói art bible ghi sẵn): gà Quaternius `Chicken` (`ineV9pU5VL`, `Z3RCoCYss4`),
+  `Chick` (`LH96IMq0rE`), `ChickenCoop` (`DM0F8siLam`) — CC0, **chỉ ở Poly Pizza, máy ảo bị chặn** → anh tải bằng máy thật ·
+  `ultimateanimatedanimals` (12 con: bò, lừa, alpaca, ngựa… không dê) · luống `Farm_Dirt_Level1–3` trong `ultimatefantasyrts` ·
+  hoạ tiết Poly Haven `farm_soil`, Farm Furrows. Gà nguồn khác (itch Blocky Chicken, ~60 Icosa) lệch tay vẽ — luật 9 cấm.
 - **Chờ anh chọn** (`TIEN_DO.md` mục 3). Chưa nướng lại mẻ `co_dai` — đó là bước 3, cần kế hoạch và anh duyệt.

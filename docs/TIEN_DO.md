@@ -107,7 +107,8 @@ Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"**
 ### ⏳ Việc 30/09 (lần 29) — anh chọn trên bảng nông trại (art bible bước 2)
 
 Bảng: hình nông trại hiện tại (trái) cạnh bản Quaternius một tay vẽ (phải). Anh trả lời: dùng bản Quaternius cho ruộng, trại lợn,
-trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`.
+trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`. **Anh tạm dừng 30/09** — chưa chọn. Gà Quaternius chỉ ở Poly Pizza
+(máy ảo bị chặn): anh tải `https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
 
 ### ✅ Anh chọn bước kế 30/09: art bible bước 2–3
 
@@ -126,7 +127,7 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 
 ## 5. Phiên sau
 
-**Art bible bước 2: bảng đã gửi, chờ anh chọn (mục 3).** Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
+**Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước.
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
