@@ -77,6 +77,11 @@ export class Governor {
     this.themTranKho += kho;
   }
 
+  /** Tong da noi (the quyet dinh + the chinh sach). Chi de bang tach nguon DOC (Thu 3). */
+  get themTran(): { readonly nha: number; readonly kho: number } {
+    return { nha: this.themTranNha, kho: this.themTranKho };
+  }
+
   /** Nhung viec da lam, moi nhat o cuoi. */
   get daLam(): readonly ViecDaLam[] {
     return this.nhatKy;

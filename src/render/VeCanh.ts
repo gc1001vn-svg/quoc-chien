@@ -14,7 +14,7 @@ import type { Atlas } from './Atlas';
 import type { Gl } from './Gl';
 import type { BanDo, O, OVat } from '../sim/city/BanDo';
 import type { ThanhPho } from '../sim/city/City';
-import type { Walker } from '../sim/city/Walkers';
+import { nguoiBatOn, type NguoiVe } from './HieuUngBatOn';
 // Hieu ung Thu 1 (khoi, chim, icon, hau ky) di qua day: `CityScene` da cham tran 300 dong.
 export { batDauKhungCoHieuUng, ketThucHieuUng } from './HieuUngThanhPho';
 
@@ -203,16 +203,16 @@ export function veLopNen(ve: Ve, banDo: BanDo, vung: VungO): void {
 export function veLopVat(
   ve: Ve, banDo: BanDo, veNha: boolean, tp: ThanhPho | undefined, muc?: Muc,
 ): void {
-  const nguoi: readonly Walker[] = tp === undefined
+  const nguoi: readonly NguoiVe[] = tp === undefined
     ? []
-    : [...tp.doiWalker.danhSach].sort((m, n) => m.a + m.b - (n.a + n.b));
+    : [...tp.doiWalker.danhSach, ...nguoiBatOn(ve, tp)].sort((m, n) => m.a + m.b - (n.a + n.b));
 
   let i = 0;
   if (veNha) {
     for (const v of banDo.vat) {
       const sau: number = v.a + v.b + 2 * (v.o - 1);
-      while (i < nguoi.length && (nguoi[i] as Walker).a + (nguoi[i] as Walker).b <= sau) {
-        const w = nguoi[i] as Walker;
+      while (i < nguoi.length && (nguoi[i] as NguoiVe).a + (nguoi[i] as NguoiVe).b <= sau) {
+        const w = nguoi[i] as NguoiVe;
         datSprite(ve, w.a, w.b, spriteWalker(w));
         i += 1;
       }
@@ -221,7 +221,7 @@ export function veLopVat(
     }
   }
   for (; i < nguoi.length; i += 1) {
-    const w = nguoi[i] as Walker;
+    const w = nguoi[i] as NguoiVe;
     datSprite(ve, w.a, w.b, spriteWalker(w));
   }
 }
@@ -263,7 +263,7 @@ function cheMuc(ve: Ve, a: number, b: number, ten: string, muc: Muc): boolean {
  * Hai dang thay phien nhau theo so buoc da di, nen chan doi ben moi lan sang o moi -
  * khong the thi nguoi truot tren duong nhu keo mot mieng bia.
  */
-function spriteWalker(w: Walker): string {
+function spriteWalker(w: NguoiVe): string {
   const kieu: string = w.kieu === 0 ? 'nam' : 'nu';
   return `nguoi_${kieu}_${String(w.huong)}_${String(w.buoc % 2)}`;
 }

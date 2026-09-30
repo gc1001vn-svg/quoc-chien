@@ -14,6 +14,7 @@ import { soNuocTa } from '../sim/campaign/NoiThanhPho';
 import type { TheQuyetDinh } from './DecisionCard';
 import type { TheGioiGame } from './DungTheGioi';
 import { ThanhTheGioi } from './ThanhTheGioi';
+import { noiBatOn } from '../render/HieuUngBatOn';
 
 export type { TheGioiGame } from './DungTheGioi';
 
@@ -33,6 +34,7 @@ export function noiTheGioi(
     },
   });
   const thanh = new ThanhTheGioi(goc, tg, the.banDo, the.tenDoi);
+  noiBatOn(thanhPho, tg);
   return {
     capNhat: (): void => {
       // Het van thi dung han dong ho - man ket che ca man, chay tiep chi ton pin.

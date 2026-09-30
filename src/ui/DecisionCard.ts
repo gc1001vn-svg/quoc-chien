@@ -8,6 +8,9 @@
  * moi van vai chuc the la vai chuc cum nut mo coi con dinh listener.
  */
 import { TOC_DO_MO_MAN, type DongHo, type TocDo } from '../sim/Clock.ts';
+import type { HauQua } from '../sim/decision/Engine.ts';
+import { docCoTat } from '../render/HieuUngThanhPho';
+import { hangCham } from './ChamXemTruoc.ts';
 
 /**
  * Cai the can de hien: loi van + cac lua chon. `The` cua dong co quyet dinh va the bat on
@@ -18,6 +21,8 @@ interface LuaChonHien {
   readonly loi: string;
   /** Khoa nut (vd khong du vang) - nut van hien de nguoi choi thay lua chon co ton tai. */
   readonly khoa?: boolean;
+  /** Co thi ve hang cham xem truoc (Thu 3). The bat on khong co - giu chu so nhu cu. */
+  readonly hauQua?: HauQua;
 }
 
 export class TheQuyetDinh {
@@ -77,6 +82,9 @@ export class TheQuyetDinh {
     loi.className = 'the-nut-loi';
     loi.textContent = lc.loi;
     nut.append(van, loi);
+    if (lc.hauQua !== undefined && !docCoTat(new URLSearchParams(window.location.search).get('tat')).has('cham')) {
+      nut.appendChild(hangCham(lc.hauQua));
+    }
     nut.addEventListener('click', () => {
       this.dong();
       xong(lc);

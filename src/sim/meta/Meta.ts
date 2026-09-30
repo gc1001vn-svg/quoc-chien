@@ -10,6 +10,7 @@
 import type { ThongKe } from '../city/Cham.ts';
 import type { ThanhPho } from '../city/City.ts';
 import type { Governor } from '../autoplay/Governor.ts';
+import type { Cap } from '../autoplay/Policy.ts';
 import type { SoThanhPho } from '../decision/DieuKien.ts';
 import { apHauQua } from '../decision/HauQua.ts';
 import { layObject, laySoNguyen } from '../city/DocJson.ts';
@@ -85,6 +86,11 @@ export class Meta {
   /** Gia thuc cua mot cong nghe sau khi tru Eureka da dat. */
   gia(c: CongNghe): number {
     return this.eureka.gia(c.id, c.gia);
+  }
+
+  /** Tran thong doc dang chay, phan da noi va so nha - chi de bang tach nguon DOC (Thu 3). */
+  get soTachNguon(): { readonly cap: Cap; readonly them: { readonly nha: number; readonly kho: number }; readonly soNha: number } {
+    return { cap: this.td.cap, them: this.td.themTran, soNha: this.tp.soNha };
   }
 
   /** Diem nghien cuu mot gio game sinh ra, da tinh the chinh sach. */

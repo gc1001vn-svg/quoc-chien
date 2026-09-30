@@ -45,5 +45,28 @@
     "co": { "rong": 22, "cao": 26, "nang": 30, "trang": [0.97, 0.97, 0.93], "ben": { "a": [0.22, 0.42, 0.9], "b": [0.85, 0.2, 0.16] }, "coThang": 1.5, "nayGiay": 0.35, "toiThieuCss": 16 },
     "nhat": { "banKinh": [11, 17], "nang": 14, "mau": [0.9, 0.9, 0.86], "doDac": 0.42 },
     "khung": { "voMs": 90, "ketThucMs": 180, "tranMs": 200 }
+  },
+  "batOn": {
+    "_ghiChu": "Thu 3 (30/09): bao truoc bat on trong thanh pho. Chi LOP VE doc - mo phong khong biet. 'bac' la ti le cua nguong the cho bac 1, bac 2; bac 3 la khi the da mo. 'tanO' do tan dam dong (o luoi), 'giua' chi chon nha trong phan giua khung camera (ti le nua khung), 'mai' dinh mai theo phan doc khung sprite.",
+    "bac": [0.5, 0.8],
+    "nha": ["nha_dan"],
+    "khoiNha": 3,
+    "damNha": 2,
+    "nguoiMoiDam": 10,
+    "tanO": 1.4,
+    "nhipChanGiay": 0.45,
+    "giua": 0.75,
+    "mai": 0.2,
+    "toiDa": 400,
+    "khoi": { "nhipGiay": [0.3, 0.45], "tuoiGiay": [3.5, 5.0], "banKinh": [6, 26], "bayLen": [14, 20], "gio": 5, "mau": [0.1, 0.09, 0.09], "doDac": 0.85 },
+    "lua": { "nhipGiay": [0.015, 0.035], "tuoiGiay": [0.6, 1.0], "banKinh": [6, 18], "bayLen": [22, 34], "tan": 26, "toiThieuCss": 6, "mau": [1.0, 0.7, 0.18], "doDac": 1.0 },
+    "co": { "rong": 18, "cao": 22, "nang": 34, "toiThieuCss": 20, "mau": [0.86, 0.12, 0.1] }
+  },
+  "cham": {
+    "_ghiChu": "Thu 3 (30/09): cham xem truoc tren the quyet dinh. Cham TO khi vuot cac nguong nay: so nha xay, noi tran nha, noi tran kho, |doi nguong| lon nhat.",
+    "nhaTo": 2,
+    "noiNhaTo": 20,
+    "noiKhoTo": 2,
+    "nguongTo": 15
   }
 }

@@ -790,3 +790,21 @@ html, body {
 .man-ket b { font-size: 28px; }
 .man-ket[data-thang='co'] b { color: var(--nhan); }
 .man-ket p { margin: 0; font-size: 15px; }
+
+/* Thu 3 (30/09): cham xem truoc kieu Reigns tren nut the quyet dinh - cham to = doi nhieu. */
+.the-cham { display: flex; gap: 14px; margin-top: 6px; }
+.the-cham-o { position: relative; font-size: 13px; padding-top: 11px; opacity: 0.3; }
+.the-cham-o:not([data-co="0"]) { opacity: 1; }
+.the-cham-o::before {
+  content: ''; position: absolute; top: 4px; left: 50%; transform: translate(-50%, -50%);
+  border-radius: 50%; background: #f3e6c4;
+}
+.the-cham-o[data-co="1"]::before { width: 5px; height: 5px; }
+.the-cham-o[data-co="2"]::before { width: 10px; height: 10px; }
+/* Thu 3: bang tach nguon chinh sach - so dam, nguon xep duoi. */
+.tach-nguon { display: grid; gap: 1px 0; margin: 6px 0; padding: 6px 8px; border-radius: 6px; background: rgba(255, 255, 255, 0.06); font-size: 12px; }
+.tach-nguon span { opacity: 0.75; margin-bottom: 4px; overflow-wrap: anywhere; }
+/* Thu 3: chu bat on tren thanh the gioi doi mau theo bac bao truoc. */
+.bat-on-1 { color: #e8c547; }
+.bat-on-2 { color: #f08a2c; font-weight: 700; }
+.bat-on-3 { color: #ff5a3c; font-weight: 700; }

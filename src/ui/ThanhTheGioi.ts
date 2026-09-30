@@ -9,6 +9,7 @@ import type { BanDoTinh } from '../sim/campaign/BanDoTinh';
 import { dauTuVanHoa } from '../sim/campaign/HanhDong';
 import { hangNgoaiGiao, manKet, thanhTren, type HangNuoc, type Nut } from '../sim/campaign/HienTheGioi';
 import type { TheGioi } from '../sim/campaign/TheGioi';
+import { bacTheGioi } from '../render/HieuUngBatOn';
 
 export class ThanhTheGioi {
   private readonly tg: TheGioi;
@@ -45,11 +46,17 @@ export class ThanhTheGioi {
   /** Goi moi khung. */
   public capNhat(): void {
     const s = thanhTren(this.tg);
-    const chu = `🏛 ${this.tenDoi[s.doi - 1] ?? String(s.doi)} · 💰 ${String(s.vang)} · ⚠ ${String(s.batOn)}/${String(s.nguongThe)} · ⚔ ${String(s.suc)}`
-      + ` · ${String(s.soTinh)} tỉnh · giờ ${String(s.gio)}`;
+    // Chu bat on doi mau theo bac bao truoc (Thu 3) - cung bac voi khoi, dam dong tren thanh pho.
+    const bac = bacTheGioi(this.tg).bac;
+    const phan = [`🏛 ${this.tenDoi[s.doi - 1] ?? String(s.doi)} · 💰 ${String(s.vang)} · `, `⚠ ${String(s.batOn)}/${String(s.nguongThe)}`,
+      ` · ⚔ ${String(s.suc)} · ${String(s.soTinh)} tỉnh · giờ ${String(s.gio)}`] as const;
+    const chu = `${phan.join('')}|${String(bac)}`;
     if (chu !== this.chuCu) {
       this.chuCu = chu;
-      this.dong.textContent = chu;
+      const canh: HTMLSpanElement = document.createElement('span');
+      canh.className = `bat-on-${String(bac)}`;
+      canh.textContent = phan[1];
+      this.dong.replaceChildren(phan[0], canh, phan[2]);
     }
     if (!this.bang.hidden && this.gioBang !== this.tg.gio) this.dungBang();
     if (this.ket.hidden && manKet(this.tg) !== undefined) this.hienKet();

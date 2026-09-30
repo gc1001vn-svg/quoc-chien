@@ -11,6 +11,8 @@
 import type { CongNghe } from '../sim/meta/CongNghe.ts';
 import type { Meta } from '../sim/meta/Meta.ts';
 import type { The } from '../sim/meta/TheChinhSach.ts';
+import { docCoTat } from '../render/HieuUngThanhPho';
+import { khoiTachNguon } from './TachNguon.ts';
 
 type TheChu = 'cong_nghe' | 'chinh_sach';
 
@@ -95,7 +97,7 @@ export class BangMeta {
     const lap: string = m.chinhSach.dangLap.map((t) => t?.id ?? '-').join(',');
     return [
       this.the, this.bao, m.gio, m.thoiDai.doi.so, m.cay.soXong,
-      m.cay.dang?.id ?? '-', m.cay.daDon, m.chinhSach.daMo().length, lap,
+      m.cay.dang?.id ?? '-', m.cay.daDon, m.chinhSach.daMo().length, lap, m.soTachNguon.cap.tranNha, m.soTachNguon.cap.tranKho,
     ].join('|');
   }
 
@@ -211,6 +213,7 @@ export class BangMeta {
       `${String(m.chinhSach.soO)} ô chính phủ: ${lap}`, 'dang',
     ));
     if (cho > 0) this.than.appendChild(this.chu(`Đổi thẻ sau ${String(cho)} giờ nữa.`, 'mo'));
+    if (!docCoTat(new URLSearchParams(window.location.search).get('tat')).has('nguon')) this.than.appendChild(khoiTachNguon(m));
 
     const daMo: The[] = m.chinhSach.daMo();
     if (daMo.length === 0) {
