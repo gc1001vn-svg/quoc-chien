@@ -6,10 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 30/09/2026 (lần 26 — Thử 1: hiệu ứng thành phố).
+Cập nhật: 30/09/2026 (lần 27 — Thử 2: hiệu ứng trận).
 
 ## 1. Đang ở đâu
 
+- **30/09 (lần 27): Thử 2 xong phần máy** — màn trận: bụi · tên cắm / khói súng · chớp + tia · cờ trắng + nhạt màu đội vỡ ·
+  cờ bên thắng · khựng khung (trần 200 ms); 2 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chưa đo iPhone** (mục 3).
+  Đợt 2/3. Chi tiết: `docs/NHAT_KY/THU_2_30_09.md`.
 - **30/09 (lần 26): Thử 1 xong** — hậu kỳ, khói bếp, chim, icon nhà tắc ở màn thành phố; 3 lệnh vẽ;
   `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả có lẫn không hiệu ứng, "nhìn ổn hơn bản gốc". Đợt 1/3 của phần thử hiệu ứng
   (`kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8). Chi tiết: `docs/NHAT_KY/THU_1_30_09.md`.
@@ -29,6 +32,9 @@ Cập nhật: 30/09/2026 (lần 26 — Thử 1: hiệu ứng thành phố).
   (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Thử 2, đo 30/09 (máy ảo, 393×852 DPR 1):** **2 lệnh vẽ** có hiệu ứng, 1 khi `?tat=het` · zoom vừa khít trận màn dọc 0,18× ·
+`npm run do` xanh · `sim:tran`, `sim:van` khác trước đúng cột giây chạy máy.
 
 **Thử 1, đo 30/09 (máy ảo, 393×852):** **3 lệnh vẽ** có hiệu ứng, 2 khi `?tat=hauky` · 0,35×: 3.313 sprite, tilt tắt ·
 máy ảo 5–7 fps cả có lẫn không hiệu ứng (vẽ phần mềm — không phải số iPhone) · test 524/524.
@@ -88,12 +94,14 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ✅ Việc 30/09 (lần 26) — anh xem Thử 1 trên iPhone
+### ⏳ Việc 30/09 (lần 27) — anh xem Thử 2 trên iPhone
 
-Anh đo bản `30/09 17:33`, nhắn nguyên văn: **"Cả 2 đều 59 fps. Nhìn ổn hơn bản gốc. Mọi thứ bình thường"**
-→ có hiệu ứng và `?tat=het` cùng 59 fps; Thử 1 qua. Chờ anh nhắn làm tiếp Thử 2.
+Mở bằng Safari, chạm vào game một lần rồi đọc số fps (góc trên, cạnh số phiên bản):
+1. https://gc1001vn-svg.github.io/quoc-chien/?tran=1 — trận cổ, xem hết một trận (hoặc bấm ×4).
+2. https://gc1001vn-svg.github.io/quoc-chien/?tran=2 — trận súng.
+3. https://gc1001vn-svg.github.io/quoc-chien/?tran=2&tat=het — bản gốc để so.
 
-Đèn (lần 25): anh xem 30/09 — "màu đã ổn hơn nhưng các công trình vẫn nhìn rất là chán" → gốc ở mục 5.
+Nhắn lại: fps từng link + nhìn có ổn không. Thử 1 anh đã xác nhận 30/09 (59 fps, "nhìn ổn hơn bản gốc").
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -108,10 +116,10 @@ Anh đo bản `30/09 17:33`, nhắn nguyên văn: **"Cả 2 đều 59 fps. Nhìn
 
 ## 5. Phiên sau
 
-**Thử 1 anh đã xác nhận (59 fps).** Anh nhắn làm tiếp thì mới làm đợt sau, mỗi đợt một phiên mở bằng `create_session` (prompt đủ
-như prompt Thử 1): **Thử 2 — trận** (5 cảnh BattleScript có tín hiệu hình, khựng khung lúc vỡ trận) → **Thử 3 — dễ
-chơi** (bất ổn thấy được, chấm xem trước kiểu Reigns, bảng tách nguồn chính sách). Tụt fps: tắt tilt → FBO ½ độ
-phân giải → tắt hậu kỳ (kế hoạch Thử 1 mục 5). Ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8.
+**Thử 2 chờ anh đo iPhone.** Anh xác nhận và nhắn làm tiếp thì mở phiên mới bằng `create_session` cho **Thử 3 — dễ chơi**
+(bất ổn thấy được trong thành phố · chấm xem trước kiểu Reigns · bảng tách nguồn chính sách), prompt đủ như prompt Thử 2.
+Tụt fps ở trận: giảm `tran.toiDa`, tắt bụi trước (nhiều hạt nhất) → tắt tia (kế hoạch Thử 2 mục 5).
+Ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8.
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
 trước** có mở bước 2–3 chưa; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
