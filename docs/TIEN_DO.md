@@ -6,15 +6,16 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 29/09/2026 (lần 24 — art bible bản nháp, **không chạm mã game**).
+Cập nhật: 30/09/2026 (lần 25 — đèn máy nướng theo ô 4C, nướng lại 5 mẻ thành phố).
 
 ## 1. Đang ở đâu
 
-- **Game: Phase 12D xong phần máy (khối 1–4).** Lên đời là màn phủ kín, thành phố đổi dần như
-  làn sóng; nền, đường, người, ruộng/trại đổi theo từng đời. Anh đo iPhone 28/09: **59 fps**, cả
-  lúc làn sóng. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`.
-- **29/09 anh xem bảng ruộng/trại: "nhìn vẫn gượng gạo quá"** — tạm dừng 12D. Cùng ngày anh gửi 5 clip
-  game xây thành, gõ "ok art bible" → **`docs/ART_BIBLE.md` bản nháp** (lần 24), chờ anh chốt (mục 3).
+- **30/09: art bible mục 5 bước 1 xong phần máy** — đèn máy nướng sáng lên theo ô 4C anh giao chọn, nướng
+  lại 5 mẻ thành phố. Cổ đại đo **sáng 0,52 · ấm 0,28** (ô 4C 0,52 · 0,26; trước 0,28 · 0,19). **Anh chưa xem
+  trên máy thật** (mục 3). Chi tiết: `docs/NHAT_KY/DEN_30_09.md`.
+- **Game: Phase 12D xong phần máy (khối 1–4)**, anh đo iPhone 28/09: **59 fps**. 12E chưa mở — anh dặn
+  làm art bible trước. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`.
+- 29/09: anh báo ruộng/trại "nhìn vẫn gượng gạo quá" → **`docs/ART_BIBLE.md`**, anh chốt hết cùng ngày.
   Chi tiết: `docs/NHAT_KY/ART_BIBLE_29_09.md`.
 - 11B (27/09): chơi trọn một vòng, 59 fps mọi màn kể cả 500×.
 - **Pages chạy đúng bản mới trên iPhone** — anh xác nhận 29/09 (bản `29/09 11:32`, mở lại vẫn đúng).
@@ -25,6 +26,10 @@ Cập nhật: 29/09/2026 (lần 24 — art bible bản nháp, **không chạm m�
   (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Đèn, đo 30/09:** độ sáng, bão hoà, độ ấm cũ → mới của cả 5 đời ở `docs/ART_BIBLE.md` mục 5 (**đừng chép
+về đây**). Luật 2 (sáng ≥ 0,36) đạt 5/5 đời, trước 0/5. 10 file `.json` atlas y hệt trước — cùng số trang, cùng
+chỗ sprite, chỉ ảnh đổi màu.
 
 **Phase 12D, đo 28/09:** 4 mẻ nướng lại, mỗi mẻ 2× **76 sprite · 2 trang** (trang 0: `co_dai` 88,7 % · `can_dai`
 83,2 % · `hien_dai` 77,3 % · `tuong_lai` 65,7 %), ~2,5 phút mỗi mẻ. Làn sóng: giữ 2 + 2 trang = 4 (trần), **1 lệnh vẽ**,
@@ -77,25 +82,33 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ✅ Việc 29/09 (lần 24) — art bible chốt hết, bảng đèn chọn ô 4C
+### ⏳ Việc 30/09 (lần 25) — xem đèn mới trên iPhone
 
-Anh giao Claude tự chọn ô: **4C — sáng 0,52 · ấm 0,26** (lý do: `docs/ART_BIBLE.md` mục 5). Không còn việc chờ anh.
-Phiên sau có ảnh game thật sau khi chỉnh đèn thì anh xem, nhắn "ok" hoặc chỗ chưa ưng.
+1. Mở **Safari** (không mở trong app Claude), vào https://gc1001vn-svg.github.io/quoc-chien/ — chữ số phiên bản
+   cạnh số fps phải là ngày **30/09**. Chưa đúng thì vuốt tắt hẳn trang rồi mở lại.
+2. Xem thành phố vài đời, nhắn **"ok đèn"** hoặc chỗ chưa ưng (quá sáng, quá vàng…). Bảng so sánh cũ · ô 4C · mới
+   gửi trong chat 30/09.
+3. `docs/TECH_SPEC.md` mục 3 (file khoá) còn tả đèn cũ. Đồng ý cho sửa thì nhắn **"ok sửa TECH_SPEC"**.
+4. Kho `kho-game` có 3 lỗi làm tải asset hỏng (`docs/NO_KY_THUAT.md` mục "Tải lại asset để nướng — 30/09").
+   Muốn sửa thì mở một phiên trên repo `kho-game`, gõ "sửa 3 lỗi tải ghi ở quoc-chien NO_KY_THUAT 30/09".
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7; cảnh
-  tối hơn mọi mốc (`docs/ART_BIBLE.md` mục 2). Sửa theo art bible mục 5 — anh đã chốt 29/09.
+- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7
+  (`docs/ART_BIBLE.md` mục 2). Độ tối đã sửa 30/09; tay vẽ còn — art bible mục 5 bước 2, 3.
+- **Luật 3 (bão hoà ≥ 0,37) còn trượt:** hiện đại 0,30, tương lai 0,35 — art bible mục 5 bước 3.
+- **Mẻ lính `linh_co`, `linh_sung` và bản đồ `hex_1` còn đèn cũ** — màn trận, bản đồ dùng atlas riêng nên không lệch
+  trong cùng một màn; gói lính nằm ở kho `tayvuc`.
 - **12E chưa làm:** đời 3–4 chung mẻ `can_dai`; mọi công trình phải đổi khi lên đời (kế hoạch
   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6).
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
-## 5. Phiên sau — bảng đèn (art bible mục 5)
+## 5. Phiên sau — bảng nông trại (art bible mục 5 bước 2)
 
-**Anh chốt art bible 29/09 ("ok làm hết").** Đừng tự mở 12E. Phiên sau làm đúng `docs/ART_BIBLE.md` mục 5, mỗi bước
-một bảng cho anh chọn một lần: (1) chỉnh đèn máy nướng tới khi ảnh game đo ra **sáng 0,52 · ấm 0,26** (ô 4C, art bible mục 5) — ảnh 4C chỉ là chỉnh
-ảnh, đèn thật phải nướng lại cả mẻ rồi đo, (2) bảng nông trại Quaternius cạnh bản hiện
-tại, (3) nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
+**Bước E trước:** anh chưa xác nhận đèn mới trên máy thật (mục 3) thì hỏi anh trước, chưa mở bước 2.
+Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
+Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
+Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B — **đi vòng ba lỗi kho-game**, không thì thiếu gói mà không báo.
 
 Nếu anh bảo tiếp 12E:
 

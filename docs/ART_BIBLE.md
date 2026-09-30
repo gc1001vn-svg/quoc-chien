@@ -136,9 +136,14 @@ Dò bằng `node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius` (29
    **Vì sao 4C:** 0,52 nằm giữa dải mốc (0,36–0,66), hàng 5 (0,60) đã cháy sáng mái vàng. Ấm 0,26 nằm giữa
    D (0,13–0,20, mốc hình khối) và B, G (0,34–0,35, mốc ánh sáng); cột D ấm quá làm cỏ ngả vàng, và cả
    sáu đời dùng chung một đèn — thử 4C lên đời tương lai: sáng 0,55 · ấm −0,11, trắng sạch, không ngả cam
-   (hiện tại 0,29 · −0,03). Ô 4C trên ảnh = `exposure` +1,01 EV + `colorbalance` −0,044. **Phiên sau:** chỉnh đèn máy nướng
-   (dưới đây) tới khi ảnh game thật đo ra đúng sáng, ấm của ô anh chọn, rồi gửi anh ảnh thật so với ô đó. Đèn hiện ở `tools/lib/trang_nuong.js`: đèn chính `(1.05, 0.99, 0.88) × 0.72`,
-   đèn nền trời `(0.40, 0.44, 0.52)`, đất `(0.22, 0.20, 0.26)`.
+   (hiện tại 0,29 · −0,03). Ô 4C trên ảnh = `exposure` +1,01 EV + `colorbalance` −0,044.
+   **Đèn thật chỉnh 30/09, nướng lại 5 mẻ thành phố** (`tools/lib/trang_nuong.js`): độ phơi ×2,0 nhân đều đèn
+   chính và đèn nền · vùng sáng bớt ngả ấm `(1.08, 1.02, 0.90)` → `(1.03, 1.00, 0.96)` · cân trắng cuối `(0.92, 1.0, 1.08)` ·
+   bão hoà giữ 1,30. Đo trên khung trên, cũ → mới (sáng · bão hoà · ấm): cổ đại 0,28 · 0,52 · 0,19 → **0,52 · 0,47 · 0,28** ·
+   trung cổ 2 0,28 · 0,39 · 0,13 → 0,53 · 0,37 · 0,18 · cận đại 0,23 · 0,43 · 0,11 → 0,44 · 0,41 · 0,16 · hiện đại
+   0,31 · 0,28 · 0,05 → 0,59 · 0,30 · 0,08 · tương lai 0,29 · 0,36 · −0,03 → 0,55 · 0,35 · −0,07. Luật 2 đạt cả 5 đời;
+   luật 3 còn trượt hiện đại, tương lai (bước 3). Đổi màu đèn chính gần như không kéo được độ ấm; hạ bão hoà xuống
+   1,15 thì kéo được nhưng trung cổ 2 tụt 0,35 — 14 mức đã thử: `docs/NHAT_KY/DEN_30_09.md`.
 2. **Bảng nông trại theo G:** bản hiện tại cạnh bản Quaternius (mục 4).
 3. Nướng lại mẻ cổ đại theo luật 1–12; rồi cận đại (7 tay vẽ), hiện đại (bão hoà 0,28).
 
