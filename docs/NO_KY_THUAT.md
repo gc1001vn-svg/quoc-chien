@@ -608,3 +608,10 @@ Máy ảo mới không có `assets_source/`; nướng lại đèn phải tải l
 Đi vòng 30/09: tải `model.bin` từ backblaze, chép `.gltf` sang đúng tên có ngoặc, đóng gói `.glb`
 bằng glTF-Transform (`kho-game/cong-cu/mo_hinh`, MIT). Kiểm: nướng lại ra `co_dai_2x.json`
 **y hệt** bản trên git (cùng khung sprite) — model lấy lại khớp model cũ.
+
+**ĐÃ TRẢ 30/09 (cùng ngày, anh gõ "làm 3 và 4"):** sửa gốc ở kho-game — `lay_itch.mjs` chỉ bỏ giá trị của
+`--dich` khi có `--dich`; `lay.mjs` đưa lại bước `layTheoGltf` (đọc `buffers`/`images` trong `.gltf`, tải file
+phụ từ cùng thư mục backblaze — bước này có trong `tools/tai_icosa.mjs` cũ, bản gộp 29/09 đánh rơi). Tên file:
+kho-game giữ luật đổi ký tự lạ thành `_` (bộ tải cũ cũng vậy, `linh_sung` đã dùng tên đó) → **sửa công thức 4 mẻ**
+`co_dai` `trung_co_2` `can_dai` `hien_dai` sang `model__GLTFupdated_` / `loai: gltf`. Kiểm: xoá 14 model, tải lại
+bằng kho-game → 14/14, 0 hỏng; nướng lại 4 mẻ từ đó → atlas y hệt bản đã commit. Không còn phải đi vòng.

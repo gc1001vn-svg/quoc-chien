@@ -1,6 +1,6 @@
 # Hash cua cac cap file lan cuoi NGUOI doc lai ca hai va thay khop.
 # Ghi lai bang: node scripts/check_cap.mjs --ghi
 docs/GAME_SPEC.md e05ddc7fbd76
-docs/TECH_SPEC.md 95bff9a6748c
+docs/TECH_SPEC.md d40ad4b0f694
 AGENTS.md db4ce8d3e04e
-docs/DAU_PHIEN.md 53d696c239f3
+docs/DAU_PHIEN.md 33c5c50ddfc8

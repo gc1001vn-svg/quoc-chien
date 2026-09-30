@@ -6,7 +6,7 @@
     "ia": {"duong":"assets_source/icosa/1YE8U35HXsI","loai":"gltf","gamma":true},
     "ih": {"duong":"assets_source/icosa/8Unya0rw9tR","loai":"gltf","gamma":true},
     "iy": {"duong":"assets_source/icosa/6LeCqyw00RK","loai":"gltf","gamma":true},
-    "ib": {"duong":"assets_source/icosa/2rqDANUhu7X","loai":"glb","gamma":true},
+    "ib": {"duong":"assets_source/icosa/2rqDANUhu7X","loai":"gltf","gamma":true},
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
       "anh": "mtl",
@@ -627,7 +627,7 @@
     },
     "ruong": [{"m":"kk:farm_plot","ti_le":1.35},
       {"m":"kk:farm_wheat","ti_le":1.2},
-      {"m":"ib:model","ti_le":0.4449,"x":-0.049,"y":-0.67,"z":-0.221,"mau":[0.95,0.8,0.55]}],
+      {"m":"ib:model__GLTFupdated_","ti_le":0.4449,"x":-0.049,"y":-0.67,"z":-0.221,"mau":[0.95,0.8,0.55]}],
     "vuon_nho": [
       {
         "phang": 1.02,

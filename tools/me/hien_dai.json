@@ -6,7 +6,7 @@
   "kit": {
     "ia": {"duong":"assets_source/icosa/1YE8U35HXsI","loai":"gltf","gamma":true},
     "ih": {"duong":"assets_source/icosa/8Unya0rw9tR","loai":"gltf","gamma":true},
-    "iu": {"duong":"assets_source/icosa/0CgBYffMf7j","loai":"glb","gamma":true},
+    "iu": {"duong":"assets_source/icosa/0CgBYffMf7j","loai":"gltf","gamma":true},
     "ks": {
       "duong": "assets_source/city-kit-suburban/Models/OBJ format",
       "gamma": true
@@ -147,7 +147,7 @@
     "ruong": [{"m":"ks:planter","ti_le":1.53,"x":-0.7},
       {"m":"ks:planter","ti_le":1.53},
       {"m":"ks:planter","ti_le":1.53,"x":0.7},
-      {"m":"iu:model","ti_le":0.2611,"x":0.337,"y":0.001,"z":0.257}],
+      {"m":"iu:model__GLTFupdated_","ti_le":0.2611,"x":0.337,"y":0.001,"z":0.257}],
     "vuon_nho": [
       { "m": "ks:tree-small", "ti_le": 1.53, "x": -0.7, "z": -0.4 },
       { "m": "ks:tree-small", "ti_le": 1.53, "x": 0.5, "z": -0.2 },

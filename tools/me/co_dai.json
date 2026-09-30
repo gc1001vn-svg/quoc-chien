@@ -994,7 +994,7 @@
     ],
     "nha_bia": [
       {
-        "m": "ig:model_(GLTFupdated)",
+        "m": "ig:model__GLTFupdated_",
         "ti_le": 3.2,
         "x": -1.02,
         "y": -2.18,
@@ -1195,7 +1195,7 @@
     ],
     "lo_nung": [
       {
-        "m": "iz:model_(GLTFupdated)",
+        "m": "iz:model__GLTFupdated_",
         "ti_le": 1.1,
         "x": -0.47,
         "y": -0.73,
@@ -1528,7 +1528,7 @@
     ],
     "trai_linh": [
       {
-        "m": "ic:model_(GLTFupdated)",
+        "m": "ic:model__GLTFupdated_",
         "ti_le": 0.9,
         "x": -0.27,
         "y": -1.14,

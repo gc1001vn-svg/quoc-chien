@@ -21,7 +21,7 @@ không phải `cat` `settings.json` nữa.
 |---|---|---|
 | `npm ci` | hook đầu phiên báo `CHUA npm ci` | 29/09 máy ảo mở ra đã có `node_modules` — đừng cài lại khi không cần |
 | `npm run do` | **luôn luôn**, trước khi động vào code và trước mỗi commit | số thước lệnh tự in, đừng chép vào đây |
-| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | 1,1 GB (đo 30/09, kể cả 14 model Icosa của 5 mẻ thành phố), 9 gói itch + 9 gói Kenney + 23 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối. **Bỏ sót gói itch đầu tiên, Icosa phải đi vòng:** `NO_KY_THUAT.md` mục "Tải lại asset để nướng — 30/09" |
+| `npm run tai:tatca` | chỉ khi phiên có **nướng sprite** | 1,1 GB (đo 30/09, kể cả 14 model Icosa của 5 mẻ thành phố), 9 gói itch + 9 gói Kenney + 23 hoạ tiết Poly Haven, chạy `npm run kho` ở cuối. Model Icosa của mẻ lấy riêng theo mã: `node /home/user/kho-game/cong-cu/lay.mjs icosa --id <mã…> --dich assets_source` (mã: `grep -o 'icosa/[^"]*' tools/me/<mẻ>.json`) |
 
 **Cỡ kho chỉ ghi ở đúng dòng trên** — `tests/TaiLieu.test.ts` giữ luật này.
 
