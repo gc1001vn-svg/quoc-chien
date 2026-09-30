@@ -6,7 +6,7 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 30/09/2026 (lần 28 — Thử 3: dễ chơi).
+Cập nhật: 30/09/2026 (lần 29 — art bible bước 2: bảng nông trại).
 
 ## 1. Đang ở đâu
 
@@ -104,6 +104,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"** → Thử 3 qua.
 
+### ⏳ Việc 30/09 (lần 29) — anh chọn trên bảng nông trại (art bible bước 2)
+
+Bảng: hình nông trại hiện tại (trái) cạnh bản Quaternius một tay vẽ (phải). Anh trả lời: dùng bản Quaternius cho ruộng, trại lợn,
+trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`.
+
 ### ✅ Anh chọn bước kế 30/09: art bible bước 2–3
 
 Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
@@ -121,7 +126,7 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 
 ## 5. Phiên sau
 
-**Phiên kế: art bible bước 2–3** (anh chọn 30/09). 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
+**Art bible bước 2: bảng đã gửi, chờ anh chọn (mục 3).** Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước.
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
