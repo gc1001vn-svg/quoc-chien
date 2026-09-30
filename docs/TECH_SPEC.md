@@ -187,6 +187,10 @@ Hai cái bẫy khi trộn gói của hai tác giả, đã sập rồi mới bi�
 ăn sáng đất ấm) + viền lạnh mỏng ở rìa, rồi kéo bão hoà lên 1,30. Đèn nền phải để **tối**;
 sáng quá thì mọi thứ bạc ra xám xịt như nhau.
 
+**Sửa 30/09 theo ô 4C của art bible** (`docs/ART_BIBLE.md` mục 5): nhân **độ phơi ×2** đều cả đèn chính
+lẫn đèn nền — tỉ lệ giữ nguyên nên câu "đèn nền để tối" vẫn đúng — và thêm **cân trắng hơi lạnh** ở cuối
+`(0.92, 1.0, 1.08)`. Trước đó cảnh đo ra độ sáng 0,28, tối hơn cả 16 cảnh game mốc.
+
 Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối cảnh 2:1):
 
 - **Bóng đổ nướng sẵn** — một hình elip mềm trên mặt đất, lệch theo hướng đèn, to dần
@@ -195,7 +199,8 @@ Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối
 - **Tối chân** — càng gần mặt đất càng tối (`0.62 + 0.38 * smoothstep(0, 0.55, y)`).
   Thiếu cái này thì khối nhìn như dán lên nền chứ không đứng trên đất.
 - **Nâng tông** — vùng sáng ngả ấm, vùng tối ngả lạnh. Cùng một màu mà tách hai đầu ra
-  thì hình khối nổi hẳn, không cần thêm đa giác nào.
+  thì hình khối nổi hẳn, không cần thêm đa giác nào. Từ 30/09 vùng sáng chỉ ngả ấm **nhẹ**
+  `(1.03, 1.00, 0.96)`: phơi ×2 thì gần hết cảnh rơi vào vùng sáng, giữ mức cũ là cả thành phố vàng cam.
 
 ### Mẻ đang chạy — `trung_co_2`, Quaternius, đo 07/09
 
