@@ -4,7 +4,7 @@
  * CHI DOC mo phong: `ThuNha.nhipTac()` / `nhipDoi()` va danh sach nha. Khong ghi gi nguoc
  * lai - `sim:van`, `sim:tran` phai ra y nhu truoc (luat Thu 1, `docs/ke-hoach/2026-09-30-*`).
  *
- * Tat tung thu bang `?tat=`: `hauky` · `tilt` · `khoi` · `chim` · `icon` · `het` (moi thu),
+ * Tat tung thu bang `?tat=`: `hauky` · `tilt` · `khoi` · `chim` · `icon` · `het` (moi thu, ca man tran),
  * nhieu cai cach nhau dau phay. Nut "Hieu ung" cua `Perf` tat ca lop luc dang choi.
  *
  * Lenh ve: canh 1 + lo hat 1 + hau ky 1 = 3, trong tran 4 (TECH_SPEC muc 2).
@@ -23,7 +23,7 @@ const SO = soTho;
 /** Cac thu dang TAT theo `?tat=`. */
 export function docCoTat(chuoi: string | null): ReadonlySet<string> {
   const tat = new Set((chuoi ?? '').split(',').map((s) => s.trim()).filter((s) => s !== ''));
-  if (tat.has('het')) for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon']) tat.add(t);
+  if (tat.has('het')) for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon', 'bui', 'chop', 'co', 'nhat', 'khung']) tat.add(t);
   return tat;
 }
 

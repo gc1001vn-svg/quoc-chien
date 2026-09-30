@@ -37,6 +37,9 @@ export interface MuiTen {
   readonly b: number;
   readonly cao: number;
   readonly ten: string;
+  /** Giay da bay, giay con bay - lop hieu ung doc de biet luc dan roi nong, luc cam dat. */
+  readonly tuoi: number;
+  readonly con: number;
 }
 
 export type DangLinh = 'di' | 'danh' | 'trung' | 'chet';
@@ -47,6 +50,9 @@ export interface LinhVe {
   readonly b: number;
   readonly ten: string;
   readonly ben: Phe;
+  /** Chi so doi trong ben va dang dang ve - lop hieu ung doc (bui, chop, nhat mau doi vo). */
+  readonly doi: number;
+  readonly dang: DangLinh;
 }
 
 /**

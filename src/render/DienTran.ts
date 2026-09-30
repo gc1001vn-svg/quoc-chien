@@ -136,7 +136,7 @@ export class DienTran {
           if (l.giayChet <= giay) {
             // Hai khung chet: nga xuong roi nam han.
             const k: number = giay - l.giayChet < 1 / this.ch.khung_moi_giay ? 0 : soKhung('chet') - 1;
-            xac.push({ a: l.aChet, b: l.bChet, ben, ten: `${id}_chet_h${String(l.huongChet)}_k${String(k)}` });
+            xac.push({ a: l.aChet, b: l.bChet, ben, doi, dang: 'chet', ten: `${id}_chet_h${String(l.huongChet)}_k${String(k)}` });
             continue;
           }
           const o = oDoiHinh(l.chiSo, n, this.ch.cot_toi_da, this.khoang(ben, doi));
@@ -161,7 +161,7 @@ export class DienTran {
             b += (gb - b) * hang.w;
           }
           thu += 1;
-          song.push({ a, b, ben, ten: `${id}_${d}_h${String(huong)}_k${String(k)}` });
+          song.push({ a, b, ben, doi, dang: d, ten: `${id}_${d}_h${String(huong)}_k${String(k)}` });
         }
       });
     }
@@ -219,6 +219,8 @@ export class DienTran {
         b: tam.b + db * f,
         cao: 4 * (this.ch.do_vong ?? 0.22) * Math.hypot(da, db) * f * (1 - f),
         ten: `${this.ch.ten_dan ?? 'mui_ten'}_h${String(Math.max(0, h))}`,
+        tuoi: giay - ban,
+        con: F - (giay - ban),
       });
     }
     return ra;

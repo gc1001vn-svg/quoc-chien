@@ -20,6 +20,8 @@ import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './At
 import { Camera } from './Camera';
 import { DienTran, type CauHinhDien, type LinhVe, type MuiTen } from './DienTran';
 import { Gl } from './Gl';
+import { VeHieuUngTran } from './HieuUngTran';
+import { docCoTat } from './HieuUngThanhPho';
 import { neoX, neoY } from './IsoMath';
 import { datSprite } from './VeBanDo';
 import type { Ve } from './VeCanh';
@@ -75,6 +77,8 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
   const cauHinh: CauHinhDien = { ...dienTho, ...m.ban, ...(m.ten_dan === undefined ? {} : { ten_dan: m.ten_dan }) };
   const tamDoi = new Map<string, number>([...duLieu.doi].map(([id, l]) => [id, l.tam]));
   const dien = new DienTran(kq, vao, cauHinh, tamDoi);
+  // Thu 2: tin hieu hinh cho 5 canh + khung khung. `?tat=` tat tung thu (`HieuUngTran.ts`).
+  const hieu = new VeHieuUngTran(gl, kichBan, docCoTat(new URLSearchParams(window.location.search).get('tat')), cauHinh.ten_dan);
 
   const canh: number = duLieu.chienTruong;
   const cam: Camera = new Camera(atlas.heSo(), canh + 1, atlas.oPx(), dienTho.zoom.min, dienTho.zoom.max, dienTho.zoom.dau);
@@ -139,7 +143,9 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
     perf.danhDau(now);
     const dt: number = truoc === 0 ? 0 : Math.min((now - truoc) / 1000, 0.25);
     truoc = now;
-    giay = Math.min(giay + dt * tocDo, kq.giayKetThuc + 3);
+    const hieuUng: boolean = perf.dangBat('hieuUng');
+    const giayTruoc: number = giay;
+    giay = Math.min(hieuUng ? hieu.hieu.buoc(giay, dt * tocDo, dt * 1000) : giay + dt * tocDo, kq.giayKetThuc + 3);
 
     const k = cam.khung();
     const ve: Ve = {
@@ -169,10 +175,11 @@ export async function chayCanhTran(goc: HTMLElement): Promise<void> {
     }
     if (perf.dangBat('nguoi')) for (const l of linh) datSprite(ve, neoX(l.a, l.b, oPx), neoY(l.a, l.b, oPx), l.ten);
     // Mui ten ve sau cung, nang len theo do cao: mot o cao chieu len man bang `CAO_O * oPx`.
-    const hieuUng: boolean = perf.dangBat('hieuUng');
     const muiTen: MuiTen[] = hieuUng ? dien.muiTenLuc(giay) : [];
     for (const m of muiTen) datSprite(ve, neoX(m.a, m.b, oPx), neoY(m.a, m.b, oPx) - m.cao * CAO_O * oPx, m.ten);
-    const lenhVe: number = gl.ketThucKhung();
+    const lenhVe: number = gl.ketThucKhung() + (hieuUng
+      ? hieu.ve({ camX: ve.camX, camY: ve.camY, tiLe: ve.tiLe, rongDev: ve.rongDev, caoDev: ve.caoDev, oPx, dpr: gl.tiLeDiemAnh() }, linh, muiTen, giay, dt, Math.max(0, giay - giayTruoc))
+      : 0);
 
     const xong: boolean = giay >= kq.giayKetThuc;
     dau.hidden = !hieuUng;

@@ -6,14 +6,14 @@
  * 128x64 ve tu hai SVG game-icons.net (CC-BY 3.0, `docs/ASSET_CREDITS.md`).
  *
  * Kieu hinh (so nguyen cua `kieu`): 0 tron mem · 2 chim (phan le = do vo canh) · 4 bong
- * bong nen icon · 6 icon kho day · 7 icon thieu hang.
+ * bong nen icon · 6 icon kho day · 7 icon thieu hang · 8 co (phan le = pha phap phoi; Thu 2, man tran).
  */
 import khoDaySvg from './icon/kho_day.svg?raw';
 import thieuHangSvg from './icon/thieu_hang.svg?raw';
 import { dungChuongTrinh } from './HauKy';
 import type { Gl } from './Gl';
 
-export const HINH = { tron: 0, chim: 2, bong: 4, khoDay: 6, thieuHang: 7 } as const;
+export const HINH = { tron: 0, chim: 2, bong: 4, khoDay: 6, thieuHang: 7, co: 8 } as const;
 
 /** Don vi texture rieng cua anh icon (atlas 0..3, hau ky 6). */
 const DON_VI = 7;
@@ -45,6 +45,15 @@ void main() {
   else if (k < 2.5) { float y = -abs(v_uv.x) * (0.15 + 0.9 * f) + 0.3 * f;
     a = smoothstep(0.24, 0.07, abs(v_uv.y - y)) * smoothstep(1.0, 0.8, abs(v_uv.x)); }
   else if (k < 4.5) { a = smoothstep(1.0, 0.9, d); rgb = mix(rgb, vec3(0.97, 0.93, 0.82), smoothstep(0.78, 0.9, d)); }
+  else if (k > 7.5) {
+    // Co: can o mep trai, la co tren nua, gon song lan ra phia ngoai.
+    float s = sin(v_uv.x * 5.0 - f * 6.2832), y = v_uv.y - s * 0.1 * (v_uv.x + 0.8);
+    float can = 1.0 - smoothstep(0.05, 0.09, abs(v_uv.x + 0.84));
+    float la = step(-0.8, v_uv.x) * (1.0 - smoothstep(0.88, 0.95, v_uv.x))
+      * smoothstep(-0.97, -0.9, y) * (1.0 - smoothstep(-0.2, -0.13, y));
+    a = max(can, la);
+    rgb = can > la ? vec3(0.28, 0.2, 0.12) : rgb * (0.86 + 0.14 * s);
+  }
   else {
     vec2 t = vec2((v_uv.x * 0.5 + 0.5) * 0.5 + (k > 6.5 ? 0.5 : 0.0), v_uv.y * 0.5 + 0.5);
     gl_FragColor = texture2D(u_icon, t) * v_mau.a;

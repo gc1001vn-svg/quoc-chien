@@ -31,3 +31,4 @@ Vì sao: 10/09 cối xay gió ghép tay năm lượt nướng khi KayKit có s�
 | `linh_sung:dan_h6` | như trên | có từ trước 29/09 | trước 29/09 |
 | `linh_sung:dan_h7` | như trên | có từ trước 29/09 | trước 29/09 |
 | `hieu_ung:khoi_chim` | khói bếp, chim + bóng chim sinh bằng shader (`src/render/Hat.ts`), không ảnh, không vào atlas — chép từ bảng thử anh xem | `npm run do:asset khoi` · `node cong-cu/do.mjs bird` (30/09) | 30/09 (duyệt kế hoạch Thử 1) |
+| `hieu_ung:tran` | cờ trắng / cờ bên thắng, bụi, khói súng, chớp + tia ở màn trận — sinh bằng shader (`src/render/Hat.ts` kiểu 8, `HieuUngTran.ts`), không ảnh, không vào atlas | `npm run do:asset cờ` (30/09: chỉ có `Banner_1/2` model 3D, phải nướng vào atlas lính) | 30/09 (anh duyệt kế hoạch Thử 2) |
