@@ -6,10 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 30/09/2026 (lần 25 — đèn máy nướng theo ô 4C, nướng lại 5 mẻ thành phố).
+Cập nhật: 30/09/2026 (lần 26 — Thử 1: hiệu ứng thành phố).
 
 ## 1. Đang ở đâu
 
+- **30/09 (lần 26): Thử 1 xong phần máy** — hậu kỳ, khói bếp, chim, icon nhà tắc ở màn thành phố; 3 lệnh vẽ;
+  `sim:van`/`sim:tran` y như trước. **Anh chưa đo fps iPhone** (mục 3). Đợt 1/3 của phần thử hiệu ứng
+  (`kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8). Chi tiết: `docs/NHAT_KY/THU_1_30_09.md`.
 - **30/09: art bible mục 5 bước 1 xong phần máy** — đèn máy nướng sáng lên theo ô 4C anh giao chọn, nướng
   lại 5 mẻ thành phố. Cổ đại đo **sáng 0,52 · ấm 0,28** (ô 4C 0,52 · 0,26; trước 0,28 · 0,19). **Anh chưa xem
   trên máy thật** (mục 3). Chi tiết: `docs/NHAT_KY/DEN_30_09.md`.
@@ -26,6 +29,9 @@ Cập nhật: 30/09/2026 (lần 25 — đèn máy nướng theo ô 4C, nướng 
   (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Thử 1, đo 30/09 (máy ảo, 393×852):** **3 lệnh vẽ** có hiệu ứng, 2 khi `?tat=hauky` · 0,35×: 3.313 sprite, tilt tắt ·
+máy ảo 5–7 fps cả có lẫn không hiệu ứng (vẽ phần mềm — không phải số iPhone) · test 524/524.
 
 **Đèn, đo 30/09:** độ sáng, bão hoà, độ ấm cũ → mới của cả 5 đời ở `docs/ART_BIBLE.md` mục 5 (**đừng chép
 về đây**). Luật 2 (sáng ≥ 0,36) đạt 5/5 đời, trước 0/5. 10 file `.json` atlas y hệt trước — cùng số trang, cùng
@@ -82,12 +88,14 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ✅ Việc 30/09 (lần 25) — anh xem đèn mới trên iPhone
+### Việc 30/09 (lần 26) — anh xem Thử 1 trên iPhone
 
-1–2. Anh xem bản 30/09, nhắn nguyên văn: **"Màu đã ổn hơn nhưng các công trình vẫn nhìn rất là chán. Tạm thời
-   dừng ở đây."** → đèn coi như qua; việc còn lại là **hình công trình** (mục 5).
-3. ✅ Anh cho sửa `docs/TECH_SPEC.md` mục 3 (tả đèn mới) — xong 30/09.
-4. ✅ Anh cho sửa 3 lỗi tải của `kho-game` — xong 30/09 (`docs/NO_KY_THUAT.md` mục "Tải lại asset để nướng — 30/09").
+1. Mở https://gc1001vn-svg.github.io/quoc-chien/ bằng Safari, đợi nhãn trên cùng ra số phiên bản mới, chạm vào game
+   một lần, chờ 10 giây, đọc số **fps** (số đầu tiên trên nhãn).
+2. Mở https://gc1001vn-svg.github.io/quoc-chien/?tat=het (bản không hiệu ứng), đọc fps như bước 1.
+3. Nhắn: hai số fps + đẹp hơn / không + thứ nào thừa (khói, chim, nhoè, mây, icon).
+
+Đèn (lần 25): anh xem 30/09 — "màu đã ổn hơn nhưng các công trình vẫn nhìn rất là chán" → gốc ở mục 5.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -100,9 +108,14 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
   `docs/ke-hoach/2026-09-28-phase-12d-len-doi-ro-rang.md` mục 5–6).
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
-## 5. Phiên sau — bảng nông trại (art bible mục 5 bước 2)
+## 5. Phiên sau
 
-**Anh chê 30/09: "các công trình vẫn nhìn rất là chán"** (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
+**Anh xác nhận Thử 1 trên iPhone rồi** mới làm đợt sau, mỗi đợt một phiên mở bằng `create_session` (prompt đủ
+như prompt Thử 1): **Thử 2 — trận** (5 cảnh BattleScript có tín hiệu hình, khựng khung lúc vỡ trận) → **Thử 3 — dễ
+chơi** (bất ổn thấy được, chấm xem trước kiểu Reigns, bảng tách nguồn chính sách). Tụt fps: tắt tilt → FBO ½ độ
+phân giải → tắt hậu kỳ (kế hoạch Thử 1 mục 5). Ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8.
+
+**Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
 trước** có mở bước 2–3 chưa; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
 Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B (cả dòng lấy model Icosa theo mã).
