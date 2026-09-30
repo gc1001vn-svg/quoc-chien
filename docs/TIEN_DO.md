@@ -6,10 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 30/09/2026 (lần 27 — Thử 2: hiệu ứng trận).
+Cập nhật: 30/09/2026 (lần 28 — Thử 3: dễ chơi).
 
 ## 1. Đang ở đâu
 
+- **30/09 (lần 28): Thử 3 xong phần máy** — bất ổn báo trước trong thành phố (khói đen → đám đông + cờ đỏ → lửa), chấm xem trước
+  kiểu Reigns trên thẻ quyết định, bảng tách nguồn chính sách; 3 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chưa chơi thử** (mục 3).
+  Đợt 3/3 — đợt cuối. Chi tiết: `docs/NHAT_KY/THU_3_30_09.md`.
 - **30/09 (lần 27): Thử 2 xong phần máy** — màn trận: bụi · tên cắm / khói súng · chớp + tia · cờ trắng + nhạt màu đội vỡ ·
   cờ bên thắng · khựng khung (trần 200 ms); 2 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả 3 link (mục 3).
   Đợt 2/3. Chi tiết: `docs/NHAT_KY/THU_2_30_09.md`.
@@ -32,6 +35,9 @@ Cập nhật: 30/09/2026 (lần 27 — Thử 2: hiệu ứng trận).
   (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Thử 3, đo 30/09 (máy ảo, 393×852 DPR 1):** **3 lệnh vẽ** có hiệu ứng, 1 khi `?tat=het` · test mới 10/10 (`tests/DeChoi.test.ts`) ·
+`npm run do` 16/16 · `sim:van`, `sim:tran` khác trước đúng cột giây chạy máy.
 
 **Thử 2, đo 30/09 (máy ảo, 393×852 DPR 1):** **2 lệnh vẽ** có hiệu ứng, 1 khi `?tat=het` · zoom vừa khít trận màn dọc 0,18× ·
 `npm run do` xanh · `sim:tran`, `sim:van` khác trước đúng cột giây chạy máy.
@@ -94,10 +100,13 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ✅ Việc 30/09 (lần 27) — anh xem Thử 2 trên iPhone
+### ⏳ Việc 30/09 (lần 28) — anh chơi thử Thử 3 trên iPhone
 
-Anh đo bản `30/09 18:53` (`?tran=1`, `?tran=2`, `?tran=2&tat=het`), nhắn nguyên văn: **"Tất cả đều là 59 F PS"** → Thử 2 qua.
-Chờ anh nhắn làm tiếp Thử 3. Thử 1 anh đã xác nhận 30/09 (59 fps).
+Mở https://gc1001vn-svg.github.io/quoc-chien/ (xem số phiên bản cạnh fps), chơi tới khi dân bất ổn:
+1. Thấy khói đen / đám đông / cờ đỏ **trước** khi thẻ bất ổn ra không? Có hiểu vì sao thẻ ra không?
+2. Thẻ quyết định: hàng 🏠 📦 ⚙ có chấm to/nhỏ — đọc có hiểu không?
+3. Bấm 🔬 → Chính sách: bảng "mỗi con số cộng từ đâu" có rõ không?
+4. Đo fps: bản thường và `?tat=het`. Xem nhanh 3 bậc: `?batOn=25` · `?batOn=35` · `?batOn=45` (chỉ đè số để xem hình).
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -112,10 +121,9 @@ Chờ anh nhắn làm tiếp Thử 3. Thử 1 anh đã xác nhận 30/09 (59 fps
 
 ## 5. Phiên sau
 
-**Thử 2 anh đã xác nhận (59 fps).** Anh nhắn làm tiếp thì mở phiên mới bằng `create_session` cho **Thử 3 — dễ chơi**
-(bất ổn thấy được trong thành phố · chấm xem trước kiểu Reigns · bảng tách nguồn chính sách), prompt đủ như prompt Thử 2.
-Tụt fps ở trận: giảm `tran.toiDa`, tắt bụi trước (nhiều hạt nhất) → tắt tia (kế hoạch Thử 2 mục 5).
-Ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8.
+**Thử 3 chờ anh xác nhận trên iPhone (mục 3).** Anh xác nhận rồi: ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8
+(`add_repo` kho-game `access: push`). Tụt fps: bớt `batOn.nguoiMoiDam`, `batOn.lua` trước. Đây là đợt cuối phần thử —
+**hỏi anh bước kế**: art bible bước 2–3 · 12E · hậu kỳ cho màn trận. Đừng tự mở.
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
 trước** có mở bước 2–3 chưa; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
