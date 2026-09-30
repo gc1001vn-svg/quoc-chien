@@ -10,8 +10,8 @@ Cập nhật: 30/09/2026 (lần 26 — Thử 1: hiệu ứng thành phố).
 
 ## 1. Đang ở đâu
 
-- **30/09 (lần 26): Thử 1 xong phần máy** — hậu kỳ, khói bếp, chim, icon nhà tắc ở màn thành phố; 3 lệnh vẽ;
-  `sim:van`/`sim:tran` y như trước. **Anh chưa đo fps iPhone** (mục 3). Đợt 1/3 của phần thử hiệu ứng
+- **30/09 (lần 26): Thử 1 xong** — hậu kỳ, khói bếp, chim, icon nhà tắc ở màn thành phố; 3 lệnh vẽ;
+  `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả có lẫn không hiệu ứng, "nhìn ổn hơn bản gốc". Đợt 1/3 của phần thử hiệu ứng
   (`kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8). Chi tiết: `docs/NHAT_KY/THU_1_30_09.md`.
 - **30/09: art bible mục 5 bước 1 xong phần máy** — đèn máy nướng sáng lên theo ô 4C anh giao chọn, nướng
   lại 5 mẻ thành phố. Cổ đại đo **sáng 0,52 · ấm 0,28** (ô 4C 0,52 · 0,26; trước 0,28 · 0,19). **Anh chưa xem
@@ -88,12 +88,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### Việc 30/09 (lần 26) — anh xem Thử 1 trên iPhone
+### ✅ Việc 30/09 (lần 26) — anh xem Thử 1 trên iPhone
 
-1. Mở https://gc1001vn-svg.github.io/quoc-chien/ bằng Safari, đợi nhãn trên cùng ra số phiên bản mới, chạm vào game
-   một lần, chờ 10 giây, đọc số **fps** (số đầu tiên trên nhãn).
-2. Mở https://gc1001vn-svg.github.io/quoc-chien/?tat=het (bản không hiệu ứng), đọc fps như bước 1.
-3. Nhắn: hai số fps + đẹp hơn / không + thứ nào thừa (khói, chim, nhoè, mây, icon).
+Anh đo bản `30/09 17:33`, nhắn nguyên văn: **"Cả 2 đều 59 fps. Nhìn ổn hơn bản gốc. Mọi thứ bình thường"**
+→ có hiệu ứng và `?tat=het` cùng 59 fps; Thử 1 qua. Chờ anh nhắn làm tiếp Thử 2.
 
 Đèn (lần 25): anh xem 30/09 — "màu đã ổn hơn nhưng các công trình vẫn nhìn rất là chán" → gốc ở mục 5.
 
@@ -110,7 +108,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 5. Phiên sau
 
-**Anh xác nhận Thử 1 trên iPhone rồi** mới làm đợt sau, mỗi đợt một phiên mở bằng `create_session` (prompt đủ
+**Thử 1 anh đã xác nhận (59 fps).** Anh nhắn làm tiếp thì mới làm đợt sau, mỗi đợt một phiên mở bằng `create_session` (prompt đủ
 như prompt Thử 1): **Thử 2 — trận** (5 cảnh BattleScript có tín hiệu hình, khựng khung lúc vỡ trận) → **Thử 3 — dễ
 chơi** (bất ổn thấy được, chấm xem trước kiểu Reigns, bảng tách nguồn chính sách). Tụt fps: tắt tilt → FBO ½ độ
 phân giải → tắt hậu kỳ (kế hoạch Thử 1 mục 5). Ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8.
