@@ -120,12 +120,20 @@ void main() {
   // anh do, van ra vien den - dung benh cu.
   if (coAnh > 0.5 && t.a < 0.5) discard;
   vec3 c = vMau * mix(vec3(1.0), t.rgb, coAnh);
-  vec3 ra = c * (denChinh + denNen) * chan + vien * vec3(0.75, 0.85, 1.0);
+  // Do phoi x2,0 nhan DEU ca den chinh lan den nen: sang len ma giu nguyen ti le sang/toi,
+  // bong van dam. Chot 30/09 theo o 4C cua bang den (docs/ART_BIBLE.md muc 5): anh game
+  // do ra sang 0,52 - truoc day 0,28, toi hon ca 16 canh moc.
+  vec3 ra = c * (denChinh + denNen) * 2.0 * chan + vien * vec3(0.75, 0.85, 1.0);
   // Nang tong: vung sang nga am, vung toi nga lanh. Cung mot mau ma tach hai dau ra thi
-  // hinh khoi noi han len, khong can them da giac nao.
-  ra = mix(ra * vec3(0.92, 0.96, 1.10), ra * vec3(1.08, 1.02, 0.90), smoothstep(0.15, 0.75, dot(ra, vec3(0.299, 0.587, 0.114))));
+  // hinh khoi noi han len, khong can them da giac nao. Vung sang chi nga NHE: phoi x2 thi
+  // gan het canh roi vao vung sang, giu muc cu (1.08, 0.90) la ca thanh pho vang cam.
+  ra = mix(ra * vec3(0.92, 0.96, 1.10), ra * vec3(1.03, 1.00, 0.96), smoothstep(0.15, 0.75, dot(ra, vec3(0.299, 0.587, 0.114))));
   float xam = dot(ra, vec3(0.299, 0.587, 0.114));
-  gl_FragColor = vec4(clamp(mix(vec3(xam), ra, 1.30), 0.0, 1.0), 1.0);
+  // Can trang hoi lanh o cuoi: sang len thi do lech do - lam cung phong theo, do am ra 0,39
+  // thay vi 0,26 cua o 4C. Doi mau den chinh thi gan nhu khong keo duoc (thu 30/09: 0,39 ->
+  // 0,38) vi kenh do da chay sang o 15% diem anh. Ha bao hoa xuong 1,15 cung keo duoc nhung
+  // lam me trung_co_2 truot luat bao hoa >= 0,37 cua art bible (0,35) - nen giu 1,30.
+  gl_FragColor = vec4(clamp(mix(vec3(xam), ra, 1.30), 0.0, 1.0) * vec3(0.92, 1.0, 1.08), 1.0);
 }`;
 
 // Bong do: mot hinh elip mem tren mat dat, ve TRUOC vat. Khong dung hinh chieu that cua
