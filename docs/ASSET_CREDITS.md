@@ -208,6 +208,16 @@ phép chiếu ba phương** — hoạ tiết chỉ còn dùng để **tự sinh 
 Tải về `assets_source/hoa_tiet/`, không lên git. Poly Haven ghi rõ toàn bộ kho là CC0:
 <https://polyhaven.com/license>. CC0 không bắt buộc ghi công — vẫn ghi, theo luật dự án.
 
+## Icon hiệu ứng — `src/render/icon/` (Thử 1, 30/09/2026)
+
+SVG nằm trong mã (`src/render/icon/`, nhúng vào gói JS), trình duyệt tự vẽ ra một ảnh nhỏ lúc mở màn thành phố; không vào atlas.
+game-icons.net là **CC-BY 3.0 — bắt buộc ghi tác giả**: <https://creativecommons.org/licenses/by/3.0/>.
+
+| File | Dùng cho | Nguồn | Tác giả | License | Ngày thêm |
+|---|---|---|---|---|---|
+| `src/render/icon/kho_day.svg` | icon "kho đầy" trên mái nhà tắc | <https://game-icons.net/1x1/delapouite/cardboard-box.html> | Delapouite | CC-BY 3.0 | 30/09/2026 |
+| `src/render/icon/thieu_hang.svg` | icon "thiếu hàng vào" | <https://game-icons.net/1x1/delapouite/empty-wood-bucket.html> | Delapouite | CC-BY 3.0 | 30/09/2026 |
+
 ## Chưa tính vào bảng này
 
 - `public/icons/*.png` — biểu tượng PWA, tự sinh bằng `python3` lúc dựng Phase 0, không

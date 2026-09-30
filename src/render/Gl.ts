@@ -228,6 +228,20 @@ export class Gl {
     this.soSprite = 0;
   }
 
+  /** Ngu canh WebGL, cho lop hieu ung (`HauKy`, `Hat`) ve chung. Xong thi goi `khoiPhuc`. */
+  public ctx(): WebGLRenderingContext { return this.gl; }
+
+  /** Tra lai chuong trinh, buffer, thuoc tinh, cach tron cua bo nay sau khi lop hieu ung ve xong. */
+  public khoiPhuc(): void {
+    this.gl.activeTexture(this.gl.TEXTURE0);
+    this.gl.useProgram(this.layChuongTrinh(this.dangDung).ct);
+    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.buffer);
+    this.noiThuocTinh(VI_TRI_THUOC_TINH.a_pos, 2, 0);
+    this.noiThuocTinh(VI_TRI_THUOC_TINH.a_uv, 2, 8);
+    this.noiThuocTinh(VI_TRI_THUOC_TINH.a_trang, 1, 16);
+    this.gl.blendFunc(this.gl.ONE, this.gl.ONE_MINUS_SRC_ALPHA);
+  }
+
   /** Chuong trinh shader cho `soTrang` trang - dung lan dau thi dich va gan sampler. */
   private layChuongTrinh(soTrang: number): { ct: WebGLProgram; res: WebGLUniformLocation } {
     const co = this.chuongTrinh.get(soTrang);

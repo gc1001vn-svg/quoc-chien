@@ -1,0 +1,38 @@
+{
+  "_ghiChu": "Thu 1 (30/09): hieu ung man thanh pho. Chi LOP VE doc file nay - khong so nao o day cham vao mo phong. Don vi 'the gioi' la diem anh atlas truoc khi nhan zoom.",
+  "hauKy": {
+    "mau": 1.0,
+    "vienToi": 0.36,
+    "may": 0.35,
+    "mayCo": 520,
+    "mayTroi": [9, 4],
+    "tilt": 0.9,
+    "tiltTuZoom": 0.35,
+    "tiltDuZoom": 1.0
+  },
+  "khoi": {
+    "nha": ["nha_dan"],
+    "_ongKhoi": "Dinh ong khoi, phan [ngang, doc] cua khung sprite, do tren anh chup 30/09 me co_dai. Sprite chua do thi khong co khoi.",
+    "ongKhoi": { "nha_dan": [0.43, 0.05] },
+    "tiLeNhaCoKhoi": 0.5,
+    "nhipGiay": [0.35, 0.5],
+    "tuoiGiay": [4.0, 5.5],
+    "banKinh": [4, 20],
+    "bayLen": [12, 18],
+    "gio": 5,
+    "doDac": 0.8,
+    "toiDa": 1500
+  },
+  "chim": {
+    "henGiay": [7, 12],
+    "soMoiDan": [4, 7],
+    "tocDo": 42,
+    "co": 9,
+    "bongLech": [55, 110],
+    "tuoiGiay": 40
+  },
+  "icon": {
+    "sauNhip": 50,
+    "banKinhCss": 11
+  }
+}

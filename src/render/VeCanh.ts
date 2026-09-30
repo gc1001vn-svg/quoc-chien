@@ -15,6 +15,8 @@ import type { Gl } from './Gl';
 import type { BanDo, O, OVat } from '../sim/city/BanDo';
 import type { ThanhPho } from '../sim/city/City';
 import type { Walker } from '../sim/city/Walkers';
+// Hieu ung Thu 1 (khoi, chim, icon, hau ky) di qua day: `CityScene` da cham tran 300 dong.
+export { batDauKhungCoHieuUng, ketThucHieuUng } from './HieuUngThanhPho';
 
 /** Moi thu can de ve mot khung hinh, gom lai cho khoi truyen tam bien. */
 export interface Ve {

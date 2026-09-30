@@ -37,7 +37,7 @@ import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { DoiMeAtlas } from './DoiMeAtlas';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
-import { doMuc, veLopNen, veLopVat, type Muc, type Song, type Ve } from './VeCanh';
+import { batDauKhungCoHieuUng, doMuc, ketThucHieuUng, veLopNen, veLopVat, type Muc, type Song, type Ve } from './VeCanh';
 import { noiChamChon } from './ChamChon';
 import { oBanDau } from './ThamSoCanh';
 import type { BanDo, CauHinhBanDo, O } from '../sim/city/BanDo';
@@ -228,7 +228,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
       ghim.ve((muc.hop.x0 + muc.hop.x1) / 2 / dpr, muc.hop.y0 / dpr, rongCss, caoCss);
     }
 
-    gl.batDauKhung();
+    batDauKhungCoHieuUng(gl, perf.dangBat('hieuUng'));
     if (perf.dangBat('nen')) veLopNen(ve, banDo, vung);
     veLopVat(
       ve, banDo,
@@ -236,7 +236,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
       perf.dangBat('nguoi') && cam.zoom() >= ZOOM_HIEN_WALKER ? thanhPho : undefined,
       muc,
     );
-    const lenhVe: number = gl.ketThucKhung();
+    const lenhVe: number = gl.ketThucKhung() + ketThucHieuUng(ve, thanhPho, cam.zoom(), now);
 
     const canhBao: string = ve.dem > CAU_HINH.tranSprite ? ' ⚠ VƯỢT TRẦN' : '';
     // So phien ban in ngay day: chu du an chup man gui la biet dang xem ban nao, khong
