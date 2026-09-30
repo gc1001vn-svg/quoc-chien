@@ -104,7 +104,9 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"** → Thử 3 qua.
 
-### ⏳ Anh chọn bước kế (mục 5)
+### ✅ Anh chọn bước kế 30/09: art bible bước 2–3
+
+Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -119,11 +121,10 @@ Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"**
 
 ## 5. Phiên sau
 
-**Phần thử xong cả 3 đợt (anh xác nhận 59 fps).** Chờ anh chọn bước kế: **art bible bước 2–3** · **12E** · **hậu kỳ cho
-màn trận**. Đừng tự mở. Tụt fps về sau: bớt `batOn.nguoiMoiDam`, `batOn.lua` trước.
+**Phiên kế: art bible bước 2–3** (anh chọn 30/09). 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
+`batOn.nguoiMoiDam`, `batOn.lua` trước.
 
-**Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
-trước** có mở bước 2–3 chưa; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
+**Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
 Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B (cả dòng lấy model Icosa theo mã).
 
