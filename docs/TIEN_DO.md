@@ -11,8 +11,8 @@ Cập nhật: 30/09/2026 (lần 28 — Thử 3: dễ chơi).
 ## 1. Đang ở đâu
 
 - **30/09 (lần 28): Thử 3 xong phần máy** — bất ổn báo trước trong thành phố (khói đen → đám đông + cờ đỏ → lửa), chấm xem trước
-  kiểu Reigns trên thẻ quyết định, bảng tách nguồn chính sách; 3 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chưa chơi thử** (mục 3).
-  Đợt 3/3 — đợt cuối. Chi tiết: `docs/NHAT_KY/THU_3_30_09.md`.
+  kiểu Reigns trên thẻ quyết định, bảng tách nguồn chính sách; 3 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chơi thử iPhone: 59 fps, "mọi thứ ok"** (mục 3).
+  Đợt 3/3 — **cả 3 đợt thử xong**, kết quả đã ghi `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8. Chi tiết: `docs/NHAT_KY/THU_3_30_09.md`.
 - **30/09 (lần 27): Thử 2 xong phần máy** — màn trận: bụi · tên cắm / khói súng · chớp + tia · cờ trắng + nhạt màu đội vỡ ·
   cờ bên thắng · khựng khung (trần 200 ms); 2 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả 3 link (mục 3).
   Đợt 2/3. Chi tiết: `docs/NHAT_KY/THU_2_30_09.md`.
@@ -100,13 +100,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 30/09 (lần 28) — anh chơi thử Thử 3 trên iPhone
+### ✅ Việc 30/09 (lần 28) — anh chơi thử Thử 3 trên iPhone
 
-Mở https://gc1001vn-svg.github.io/quoc-chien/ (xem số phiên bản cạnh fps), chơi tới khi dân bất ổn:
-1. Thấy khói đen / đám đông / cờ đỏ **trước** khi thẻ bất ổn ra không? Có hiểu vì sao thẻ ra không?
-2. Thẻ quyết định: hàng 🏠 📦 ⚙ có chấm to/nhỏ — đọc có hiểu không?
-3. Bấm 🔬 → Chính sách: bảng "mỗi con số cộng từ đâu" có rõ không?
-4. Đo fps: bản thường và `?tat=het`. Xem nhanh 3 bậc: `?batOn=25` · `?batOn=35` · `?batOn=45` (chỉ đè số để xem hình).
+Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"** → Thử 3 qua.
+
+### ⏳ Anh chọn bước kế (mục 5)
 
 ## 4. Nợ đang chặn phase kế tiếp
 
@@ -121,9 +119,8 @@ Mở https://gc1001vn-svg.github.io/quoc-chien/ (xem số phiên bản cạnh fp
 
 ## 5. Phiên sau
 
-**Thử 3 chờ anh xác nhận trên iPhone (mục 3).** Anh xác nhận rồi: ghi kết quả về `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8
-(`add_repo` kho-game `access: push`). Tụt fps: bớt `batOn.nguoiMoiDam`, `batOn.lua` trước. Đây là đợt cuối phần thử —
-**hỏi anh bước kế**: art bible bước 2–3 · 12E · hậu kỳ cho màn trận. Đừng tự mở.
+**Phần thử xong cả 3 đợt (anh xác nhận 59 fps).** Chờ anh chọn bước kế: **art bible bước 2–3** · **12E** · **hậu kỳ cho
+màn trận**. Đừng tự mở. Tụt fps về sau: bớt `batOn.nguoiMoiDam`, `batOn.lua` trước.
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
 trước** có mở bước 2–3 chưa; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
