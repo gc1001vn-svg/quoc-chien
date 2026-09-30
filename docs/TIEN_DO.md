@@ -82,12 +82,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 30/09 (lần 25) — xem đèn mới trên iPhone
+### ✅ Việc 30/09 (lần 25) — anh xem đèn mới trên iPhone
 
-1. Mở **Safari** (không mở trong app Claude), vào https://gc1001vn-svg.github.io/quoc-chien/ — chữ số phiên bản
-   cạnh số fps phải là ngày **30/09**. Chưa đúng thì vuốt tắt hẳn trang rồi mở lại.
-2. Xem thành phố vài đời, nhắn **"ok đèn"** hoặc chỗ chưa ưng (quá sáng, quá vàng…). Bảng so sánh cũ · ô 4C · mới
-   gửi trong chat 30/09.
+1–2. Anh xem bản 30/09, nhắn nguyên văn: **"Màu đã ổn hơn nhưng các công trình vẫn nhìn rất là chán. Tạm thời
+   dừng ở đây."** → đèn coi như qua; việc còn lại là **hình công trình** (mục 5).
 3. ✅ Anh cho sửa `docs/TECH_SPEC.md` mục 3 (tả đèn mới) — xong 30/09.
 4. ✅ Anh cho sửa 3 lỗi tải của `kho-game` — xong 30/09 (`docs/NO_KY_THUAT.md` mục "Tải lại asset để nướng — 30/09").
 
@@ -104,8 +102,8 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 5. Phiên sau — bảng nông trại (art bible mục 5 bước 2)
 
-**Bước E trước:** anh chưa xác nhận đèn mới trên máy thật (mục 3) thì hỏi anh trước, chưa mở bước 2.
-Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
+**Anh chê 30/09: "các công trình vẫn nhìn rất là chán"** (màu thì ổn hơn). Anh bảo tạm dừng — phiên sau **hỏi anh
+trước** có mở bước 2–3 chưa; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
 Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B (cả dòng lấy model Icosa theo mã).
 
