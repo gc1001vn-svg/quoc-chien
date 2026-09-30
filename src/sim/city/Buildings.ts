@@ -158,6 +158,12 @@ export class ThuNha {
   private conLai = 0;
   private dangLam = false;
   private dem: number;
+  /**
+   * So nhip LIEN TIEP nha san xuat dung vi kho rieng day / vi thieu hang vao. Chi de lop
+   * ve DOC (icon tren mai, Thu 1) - khong nhanh nao cua mo phong doc lai hai so nay.
+   */
+  private tacLienTiep = 0;
+  private doiLienTiep = 0;
 
   // Khai kieu roi gan trong than ham, khong dung `constructor(readonly def: ...)`:
   // Node boc kieu TypeScript khong nuot duoc loi viet tat do (ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX).
@@ -169,6 +175,11 @@ export class ThuNha {
     this.tranRieng = tranRieng;
     this.dem = lechPha % def.nhip;
   }
+
+  /** So nhip lien tiep dung vi kho rieng day. */
+  nhipTac(): number { return this.tacLienTiep; }
+  /** So nhip lien tiep dung vi thieu hang vao. */
+  nhipDoi(): number { return this.doiLienTiep; }
 
   /** Ton kho rieng cua mot mon. */
   co(hang: string): number {
@@ -238,10 +249,12 @@ export class ThuNha {
     if (!this.dangLam) {
       const thieu = this.def.vao.find((m) => this.co(m.hang) < m.so);
       if (thieu !== undefined) {
+        this.doiLienTiep += 1;
         bd.doi(this.def.ten, thieu.hang);
         this.xinThieu(giao, thieu.hang);
         return;
       }
+      this.doiLienTiep = 0;
       for (const m of this.def.vao) bd.dungHet(m.hang, this.bot(m.hang, m.so));
       this.dangLam = true;
       this.conLai = this.def.nhip;
@@ -255,10 +268,12 @@ export class ThuNha {
     // roi ket lai se lam mat hang, va lam bang so noi doi.
     const day = this.def.ra.find((m) => this.co(m.hang) + m.so > this.tranRieng);
     if (day !== undefined) {
+      this.tacLienTiep += 1;
       bd.tac(this.def.ten, day.hang);
       this.guiDi(giao);
       return;
     }
+    this.tacLienTiep = 0;
     for (const m of this.def.ra) bd.lamRa(m.hang, this.them(m.hang, m.so));
     this.dangLam = false;
     bd.meXong(this.def.ten);

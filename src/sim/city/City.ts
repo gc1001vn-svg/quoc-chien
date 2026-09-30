@@ -219,6 +219,7 @@ export class ThanhPho implements BoDem, Giao {
 
   /** Vi tri moi nha loai `ten`. `render/` keo camera toi tung cai. */
   viTriNha(ten: string): O[] { return this.nhaThat.filter((n) => n.def.ten === ten).map((n) => n.oNha); }
+  dsNhaThat(): readonly ThuNha[] { return this.nhaThat; } // chi de lop ve DOC (khoi, icon nha tac)
   /** Tong so nha co that trong thanh pho. */
   get soNha(): number {
     return this.nhaThat.length;
