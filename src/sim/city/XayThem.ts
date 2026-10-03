@@ -21,11 +21,22 @@ import { ThuNha } from './Buildings.ts';
  *
  * Ghi o vao `daChiem` luon: tu Phase 6B nha kinh te cung hien ra man hinh, khong danh dau
  * thi mot cai nha se moc dung len chong thung hang cua kho.
+ *
+ * Kho xay them luc dang choi thi o cheo co the da co nha hay xe keo (luat TP10, do 03/10: kho
+ * thu 9 de len `xe_keo` o (81,81)). Thu bon o cheo theo thu tu co dinh, lay o dau tien con
+ * trong va trong ban do; ca bon deu ban thi kho van chay, chi khong co thung hang.
  */
 export function veKho(banDo: BanDo, o: O): void {
   if (banDo.spriteKho === '') return;
-  banDo.daChiem.add((o.a + 1) * banDo.canh + (o.b + 1));
-  chenVat(banDo, { a: o.a + 1, b: o.b + 1, ten: banDo.spriteKho, o: 1 });
+  for (const [da, db] of [[1, 1], [-1, 1], [1, -1], [-1, -1]] as const) {
+    const a: number = o.a + da;
+    const b: number = o.b + db;
+    if (a < 0 || b < 0 || a >= banDo.canh || b >= banDo.canh) continue;
+    if (banDo.daChiem.has(a * banDo.canh + b)) continue;
+    banDo.daChiem.add(a * banDo.canh + b);
+    chenVat(banDo, { a, b, ten: banDo.spriteKho, o: 1 });
+    return;
+  }
 }
 
 /**

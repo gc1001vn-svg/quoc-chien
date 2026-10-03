@@ -18,7 +18,7 @@
 - [TP07] Người vác xuất phát từ đúng cổng nhà mình, mỗi bước đi một ô nên không bao giờ cách cổng xa hơn số bước đã đi, chỉ đi tới kho có thật, không quá số bước tối đa, và trong ván thường không ai phải bỏ cuộc giữa đường.
 - [TP08] Bộ đếm người đi lấy và người đi giao luôn khớp số người thật đang trên đường, và không vượt trần của từng việc cũng như trần tổng số người vác.
 - [TP09] Mỗi cờ 'đang có người đi lấy món này' của một nhà ứng với đúng một người vác đang đi lấy món đó cho nhà đó, và ngược lại; không cờ nào mồ côi, không món nào có hai người cùng đi lấy.
-- [TP10] (chưa bật) Trên bản đồ mỗi ô chứa nhiều nhất một vật (cây, nhà, thùng hàng đánh dấu kho), không vật nào nằm trên đường hay ngoài bản đồ, và nhà nào cũng có hình đúng chỗ của nó, kể cả sau khi xây thêm nhà và kho.
+- [TP10] Trên bản đồ mỗi ô chứa nhiều nhất một vật (cây, nhà, thùng hàng đánh dấu kho), không vật nào nằm trên đường hay ngoài bản đồ, và nhà nào cũng có hình đúng chỗ của nó, kể cả sau khi xây thêm nhà và kho.
 - [TP11] Danh sách vật trên bản đồ luôn xếp đúng thứ tự trước sau để vẽ, kể cả sau khi xây thêm nhà và kho.
 - [TP12] Hạt giống nào cũng dựng được thành phố, và nhà nào cũng nằm sát đường, đúng khu quy hoạch, không trên viền khu, không trùng hay kề sát nhà khác, mỗi khối phố nhiều nhất một tiện ích, cổng là ô đường ngay cạnh nhà trong bản đồ.
 - [TP13] Kho nào cũng nằm ở một ngã tư trong bản đồ, và không có hai kho trùng chỗ.

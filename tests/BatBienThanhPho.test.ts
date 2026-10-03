@@ -289,6 +289,7 @@ describe('luat bat bien thanh pho', () => {
   it('[TP07] nguoi vac di tung buoc tu cong nha toi kho co that, khong ai bo cuoc', () => { kiemLuat('TP07'); });
   it('[TP08] bo dem nguoi vac khop thuc te va duoi tran', () => { kiemLuat('TP08'); });
   it('[TP09] co dang lay khop dung mot nguoi di lay', () => { kiemLuat('TP09'); });
+  it('[TP10] mot o mot vat, ke ca sau khi xay them', () => { kiemLuat('TP10'); });
   it('[TP11] vat tren ban do luon xep theo do sau', () => { kiemLuat('TP11'); });
   it('[TP12] nha dung quy hoach, cong tren duong', () => { kiemLuat('TP12'); });
   it('[TP13] kho nao cung la nga tu rieng trong ban do', () => { kiemLuat('TP13'); });
