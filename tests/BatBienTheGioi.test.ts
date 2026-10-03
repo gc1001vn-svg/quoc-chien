@@ -288,6 +288,7 @@ describe('luat bat bien lop the gioi', () => {
   it('[TG04] so vang khop tung dong: moi lan bam doi dung theo nut, moi gio = dau gio + thue + buon - tien mua quan - tien AI dam phan', () => { kiemMa('TG04'); });
   it('[TG06] quan chi sinh khi mua trong gio: bam nut khong them quan, khong vuot tran theo so tinh, doi moi mua duoc o thoi dai, trung lap khong dong hon bo dau', () => { kiemMa('TG06'); });
   it('[TG07] van con choi thi chi so bat on trong [0, nguong sup); cham nguong sup thi ket van ngay gio do', () => { kiemMa('TG07'); });
+  it('[TG08] the bat on mo khi va chi khi chi so bat on o hoac tren nguong the', () => { kiemMa('TG08'); });
   it('[TG09] nut man the gioi noi that: sang khi va chi khi bam an, khoa thi khong doi gi va ly do dung, de doa thang khop that', () => { kiemMa('TG09'); });
   it('[TG10] dang chien thi khong buon; quan he trong [-100, 100], trang thai va quan he doi xung', () => { kiemMa('TG10'); });
   it('[TG11] ket van dung ly do, dung gio, chi mot lan, man ket noi dung nhu vay; van da ket thi gio troi khong doi gi', () => { kiemMa('TG11'); });

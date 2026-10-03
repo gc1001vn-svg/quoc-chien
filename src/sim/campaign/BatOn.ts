@@ -38,9 +38,14 @@ export class BatOn {
     return this.diem;
   }
 
-  /** The bat on dang mo, cho nguoi choi chon. */
+  /**
+   * The bat on dang mo, cho nguoi choi chon.
+   *
+   * Phai CON tren nguong: noi loan tru diem nhung giu `coThe`, nen khong xet lai thi the van
+   * hien du chi so da xuong duoi nguong (luat TG08, do 03/10: 8 lan / 3.115 gio, chi so 31,5 < 40).
+   */
   get theMo(): boolean {
-    return this.coThe;
+    return this.coThe && this.diem >= this.so.nguongThe;
   }
 
   /** So gio con giam thue (sau lua chon "giam thue"). Dang giam thi thu vang tu nha giam. */
@@ -90,7 +95,7 @@ export class BatOn {
    * `undefined` khi khong co the dang mo hay khoa sai.
    */
   public chon(id: string): LuaChonBatOn | undefined {
-    if (!this.coThe) return undefined;
+    if (!this.theMo) return undefined;
     const lc: LuaChonBatOn | undefined = this.so.luaChon.find((l) => l.id === id);
     if (lc === undefined) return undefined;
     this.diem = Math.max(0, this.diem + lc.batOn);
