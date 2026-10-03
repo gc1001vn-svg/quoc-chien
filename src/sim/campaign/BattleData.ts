@@ -108,12 +108,18 @@ function kiemSo(ten: string, v: unknown, min: number, boMin: boolean, nguyen = f
 function kiemTran(t: CauHinhTran): void {
   kiemSo('battle: chien_truong', t.chien_truong, 0, true);
   kiemSo('battle: hang_xuat_phat', t.hang_xuat_phat, 0, false);
+  // Hang xuat phat ngoai san thi quan dung ngoai chien truong ngay giay 0 (luat TR12).
+  if (t.hang_xuat_phat > t.chien_truong) {
+    throw new Error(`battle: hang_xuat_phat = ${String(t.hang_xuat_phat)}: phai <= chien_truong ${String(t.chien_truong)}`);
+  }
   kiemSo('battle: nhip_giay', t.nhip_giay, 0, true);
   kiemSo('battle: tran_giay', t.tran_giay, 0, true);
   kiemSo('battle: giay_mau_vet', t.giay_mau_vet, 0, true);
   kiemSo('battle: nguong_vo', t.nguong_vo, 0, false);
   if (t.nguong_vo >= 1) throw new Error(`battle: nguong_vo = ${String(t.nguong_vo)}: phai < 1`);
   kiemSo('battle: nhieu', t.nhieu, 0, false);
+  // nhieu > 1 thi he so `1 + nhieu(2r - 1)` co the am - don danh thanh hoi mau (luat TR11).
+  if (t.nhieu > 1) throw new Error(`battle: nhieu = ${String(t.nhieu)}: phai <= 1`);
   kiemSo('battle: he_so_tuong', t.he_so_tuong, 0, false);
   kiemSo('battle: tuong_toi_da', t.tuong_toi_da, 0, false, true);
   kiemSo('battle: do_doc', t.do_doc, 0, true);

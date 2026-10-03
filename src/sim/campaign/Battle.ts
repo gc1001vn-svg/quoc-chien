@@ -126,7 +126,9 @@ function ganNhat(d: DoiTran, ds: readonly DoiTran[]): DoiTran | undefined {
 export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number): KetQuaTran {
   const dh: DiaHinhTran = kiemDauVao(vao, duLieu);
   const rng = new Rng(hatGiong);
-  const dt: number = duLieu.nhipGiay;
+  // `dt` doi o nhip cuoi: tran_giay khong chia het nhip_giay thi nhip cuoi bi cat ngan (luat TR13).
+  let dt: number;
+  let soNhip = 0;
   const ds: DoiTran[] = [
     ...xepBen(vao.a, 'a', duLieu.hangXuatPhat, duLieu),
     ...xepBen(vao.b, 'b', duLieu.chienTruong - duLieu.hangXuatPhat, duLieu),
@@ -148,7 +150,12 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
   ghiVet();
 
   while (giay < duLieu.tranGiay && conDoi('a') && conDoi('b')) {
-    giay += dt;
+    // Giay tinh tu SO NHIP, khong cong don `giay += dt`: cong don thi tran chay lo mot nhip
+    // qua tran_giay khi nhip_giay khong chia het (do 03/10, nhip_giay 0,3).
+    soNhip += 1;
+    const giayMoi: number = Math.min(soNhip * duLieu.nhipGiay, duLieu.tranGiay);
+    dt = giayMoi - giay;
+    giay = giayMoi;
     const nhan = new Map<DoiTran, number>();
     // Moi doi quyet dinh theo vi tri DAU nhip, roi moi cung di - doi dung truoc trong
     // danh sach khong duoc loi (do 24/09: di ngay tai cho thi tran guong ben a thua 100 %).

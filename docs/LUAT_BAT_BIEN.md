@@ -37,9 +37,9 @@
 - [TR08] Mua quân: số vàng tiêu ra đúng bằng giá các đội thật sự được thêm vào quân — không trả tiền cho đội vừa mua đã bị giải ngũ ngay.
 - [TR09] Mua quân chỉ mua loại đội đang mua được (đúng nhóm của loại mới nhất đã mở, không loại nào chưa tới thời đại), không vượt trần số đội, luôn xếp đội mạnh trước, vàng còn lại nằm trong khoảng 0 đến ngân sách, và không sửa danh sách quân cũ đưa vào.
 - [TR10] Đánh chiếm một tỉnh: mỗi bên mất số đội đúng theo tỉ lệ lính chết (làm tròn, không quá số đội đã đưa vào), bên thua mất ít nhất một đội kể cả khi hết giờ chưa ai chết, bên thắng chiến dịch đúng là bên thắng trận, tỉnh trống thì thắng trắng không mất gì, không có quân thì không thắng, và % thắng luôn trong 0–100% và khớp kết quả khi không cần đánh.
-- [TR11] (chưa bật) Mọi mức nhiễu mà bộ đọc battle.json chấp nhận thì các luật trận (TR02–TR07) vẫn đúng — nhiễu không bao giờ biến đòn đánh thành hồi máu.
-- [TR12] (chưa bật) Mọi hàng xuất phát mà bộ đọc battle.json chấp nhận thì các luật trận vẫn đúng — quân luôn đứng trong chiến trường ngay từ giây 0.
-- [TR13] (chưa bật) Mọi nhịp, độ dài trận và các thông số khác mà bộ đọc battle.json chấp nhận thì các luật trận vẫn đúng — trận dừng đúng giây hết giờ, không nhịp nào chạy lố.
+- [TR11] Mọi mức nhiễu mà bộ đọc battle.json chấp nhận thì các luật trận (TR02–TR07) vẫn đúng — nhiễu không bao giờ biến đòn đánh thành hồi máu.
+- [TR12] Mọi hàng xuất phát mà bộ đọc battle.json chấp nhận thì các luật trận vẫn đúng — quân luôn đứng trong chiến trường ngay từ giây 0.
+- [TR13] Mọi nhịp, độ dài trận và các thông số khác mà bộ đọc battle.json chấp nhận thì các luật trận vẫn đúng — trận dừng đúng giây hết giờ, không nhịp nào chạy lố.
 
 ## Lớp thế giới — `tests/BatBienTheGioi.test.ts`
 

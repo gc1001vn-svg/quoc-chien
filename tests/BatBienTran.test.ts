@@ -292,4 +292,7 @@ describe('luat bat bien tran danh', () => {
   it('[TR08] mua quan: vang tieu dung bang gia cac doi that su duoc them', () => { kiemMa('TR08'); });
   it('[TR09] mua quan: chi mua doi dung thoi dai dung nhom, khong vuot tran, xep manh truoc, khong sua quan cu', () => { kiemMa('TR09'); });
   it('[TR10] danh chiem tinh: mat doi theo ti le linh chet, ben thua mat it nhat mot doi, tinh trong thang trang, khop tran', () => { kiemMa('TR10'); });
+  it('[TR11] moi muc nhieu bo doc battle.json nhan thi luat tran van dung', () => { kiemMa('TR11'); });
+  it('[TR12] moi hang xuat phat bo doc battle.json nhan thi luat tran van dung', () => { kiemMa('TR12'); });
+  it('[TR13] moi nhip, do dai tran va thong so khac bo doc battle.json nhan thi luat tran van dung', () => { kiemMa('TR13'); });
 });
