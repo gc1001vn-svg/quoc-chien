@@ -8,9 +8,9 @@
  * them khoa Gemini - tat ca deu chi duoc di qua BIEN MOI TRUONG. Thuoc nay la cai bat khi
  * ai do quen.
  *
- * CHI quet file GIT DANG THEO DOI (`git ls-files`). File trong may ma khong len git thi
- * khong phai viec cua thuoc nay: `.duyet/`, `assets_source/`, `.claude/so_lenh.log` deu
- * nam ngoai git va deu co the chua khoa mot cach chinh dang.
+ * CHI quet file SE LEN GIT: dang theo doi, cong file moi chua `git add` ma `.gitignore` khong
+ * loai. File bi ignore thi khong phai viec cua thuoc nay: `.duyet/`, `assets_source/`,
+ * `.claude/so_lenh.log` deu bi ignore va deu co the chua khoa mot cach chinh dang.
  *
  * Chay: `node scripts/check_khoa.mjs`
  */
@@ -48,7 +48,9 @@ const TRAN_BYTE = 2_000_000;
 const dinh = [];
 let daQuet = 0;
 
-const danhSach = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+// Ca file MOI chua `git add` (khong bi .gitignore loai): khong thi file vua them lot thuoc toi luc
+// commit - do 03/10, check:san xanh truoc commit roi do tren main.
+const danhSach = execFileSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
   .split('\0')
   .filter((t) => t !== '');
 
@@ -74,7 +76,7 @@ for (const duong of danhSach) {
 }
 
 if (dinh.length > 0) {
-  console.error(`check:khoa HONG - ${String(dinh.length)} cho co hinh dang khoa API trong file da len git:`);
+  console.error(`check:khoa HONG - ${String(dinh.length)} cho co hinh dang khoa API trong file se len git:`);
   for (const d of dinh) console.error(`  - ${d}`);
   console.error('');
   console.error('Repo nay Public. Khoa chi duoc di qua BIEN MOI TRUONG, khong bao gio vao git.');
@@ -82,4 +84,4 @@ if (dinh.length > 0) {
   process.exit(1);
 }
 
-console.log(`check:khoa OK - quet ${String(daQuet)} file theo doi boi git, khong thay khoa nao.`);
+console.log(`check:khoa OK - quet ${String(daQuet)} file se len git (dang theo doi + moi chua add), khong thay khoa nao.`);

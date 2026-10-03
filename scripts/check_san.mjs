@@ -16,7 +16,7 @@
 // `tools/`, `tests/`. Day la LUOI DUNG TRUOC, khong phai don dep — bat duoc dau
 // dau tien ngay khi no vao, chu khong doi den luc co mot nam dau roi moi cat.
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 
@@ -60,9 +60,11 @@ export const MAU = [
 
 /** Quet repo. Tach ra ham de `import` duoc MAU ma khong chay ca thuoc. */
 function do_repo() {
-  const files = execFileSync('git', ['ls-files'], { encoding: 'utf8' })
+  // Ca file MOI chua `git add` (khong bi .gitignore loai): khong thi file vua them lot thuoc toi luc
+  // commit - do 03/10, check:san xanh truoc commit roi do tren main.
+  const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' })
     .split('\n')
-    .filter((p) => p && DUOI.test(p) && !BO_QUA.has(p) && !p.startsWith('node_modules/'));
+    .filter((p) => p && existsSync(p) && DUOI.test(p) && !BO_QUA.has(p) && !p.startsWith('node_modules/'));
 
   const dinh = [];
   for (const p of files) {

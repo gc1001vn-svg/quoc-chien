@@ -55,9 +55,11 @@ const bao = (ten, chiTiet) => hong.push(`${ten}: ${chiTiet}`);
   const t = tranTuSpec('Mỗi file', /≤\s*([\d.]+)\s*dòng/);
   if (t.loi) bao('dong moi .ts', t.loi);
   else {
-    const files = execFileSync('git', ['ls-files', '*.ts'], { encoding: 'utf8' })
+    // Ca file MOI chua `git add` (khong bi .gitignore loai): khong thi file vua them lot thuoc toi luc
+    // commit - do 03/10, check:san xanh truoc commit roi do tren main.
+    const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '*.ts'], { encoding: 'utf8' })
       .split('\n')
-      .filter(Boolean);
+      .filter((p) => p && existsSync(p));
     const vuot = files
       .map((p) => ({ p, n: readFileSync(p, 'utf8').split('\n').length - 1 }))
       .filter((f) => f.n > t.so);
