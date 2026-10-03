@@ -54,7 +54,8 @@
     "check:san": "node scripts/check_san.mjs",
     "do:luat": "node scripts/do_luat.mjs",
     "ai:goi": "node scripts/ai_goi.mjs",
-    "sim:van": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_van.ts"
+    "sim:van": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_van.ts",
+    "luat:sau": "LUAT_SAU=1 vitest run tests/BatBien"
   },
   "repository": {
     "type": "git",

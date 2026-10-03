@@ -62,6 +62,15 @@ else
   bo_qua_neu_thieu "do:luat" 'false' "true" \
     "AGENTS.md va docs/BO_DE.md khong doi so voi main (ep chay: DO_LUAT=1)"
 fi
+# `luat:sau` chay luat bat bien qua >= 50 hat giong, van dai (vai phut); `npm test` o tren chi
+# chay ban ngan. Chi can khi ma mo phong hay du lieu DOI so voi main. Ep chay: DO_LUAT_SAU=1
+# (khong dung LUAT_SAU - bien do lam ca `npm test` chay ban sau). docs/LUAT_BAT_BIEN.md.
+if [ "${DO_LUAT_SAU:-}" = 1 ] || ! git diff --quiet origin/main -- src/sim data 2>/dev/null; then
+  chay "luat:sau" "npm run luat:sau"
+else
+  bo_qua_neu_thieu "luat:sau" 'false' "true" \
+    "src/sim/ va data/ khong doi so voi main (ep chay: DO_LUAT_SAU=1)"
+fi
 
 rm -f /tmp/do_$$.log
 if [ "$bo_qua" -gt 0 ]; then

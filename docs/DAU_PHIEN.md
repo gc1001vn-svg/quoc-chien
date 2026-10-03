@@ -150,3 +150,4 @@ Luật soát ở `AGENTS.md` mục "Ba luật cứng" và `docs/TECH_SPEC.md` m�
 | `do:luat` | đo xem luật trong `AGENTS.md` có thật sự đổi hành vi không | sửa **lời luật**, đừng sửa bộ đề cho vừa câu trả lời. Bộ đề: `docs/BO_DE.md` |
 | `check:tran` | trần hiệu năng `TECH_SPEC.md` mục 2 phải có máy đọc | **cắt cho vừa trần**. Số đọc thẳng từ bảng đó |
 | `check:san` | cấm tắt kiểm tại chỗ (`@ts-ignore`, `eslint-disable`), tắt test (`it.skip`, `describe.only`), để hàm rỗng | sửa gốc. Nuốt lỗi có chủ đích thì viết lý do vào trong ngoặc: `catch { /* vì sao bỏ qua */ }` |
+| `luat:sau` | luật bất biến `docs/LUAT_BAT_BIEN.md` qua ≥ 50 hạt giống, ván dài — chỉ chạy khi `src/sim/` hay `data/` khác `main` (`npm test` chạy bản ngắn) | **sửa mã** cho đúng luật. Luật sai thật thì sửa câu luật + test, ghi lý do vào nhật ký — không nới cho xanh |
