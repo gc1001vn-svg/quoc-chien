@@ -7,7 +7,7 @@
  * hai ben khop ma, khong phai chu phai nho. Ke hoach: `docs/ke-hoach/2026-10-03-luat-bat-bien.md`.
  *
  * Luat chua bat (vd cho chu du an duyet sua loi) ghi `(chưa bật)` tren dong cua no trong
- * docs va KHONG co test. Cam `it.skip` (thuoc `check:san`), nen day la cach duy nhat.
+ * docs va KHONG co test. Tat test tai cho bi thuoc `check:san` cam, nen day la cach duy nhat.
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
