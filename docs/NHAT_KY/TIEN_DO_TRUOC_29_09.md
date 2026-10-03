@@ -809,3 +809,36 @@ https://github.com/gc1001vn-svg/quoc-chien/branches
 **Nếu anh đã chuyển kho `ghi-nho` sang Public: chuyển về Private.** Kho chứa cách làm việc,
 quyền hạn và giới hạn máy ảo.
 
+## Số đo chuyển từ `TIEN_DO.md` mục 2 — 03/10/2026
+
+Cắt cho `TIEN_DO.md` về dưới trần token (`check:token`). Số mới hơn của 12A: `TIEN_DO.md` mục 3 (03/10).
+
+**Phase 12A, đo 27/09:** `sim:congnghe -- 320 6`: đời 5 giờ 147, **đời 6 giờ 249**, 48/48 công nghệ,
+451 nhà ở giờ 320. `sim:van`: khoa học **3/5** (trước 5/5, thắng ở giờ 265 thay vì 190), thống trị 2/5,
+văn hoá / ngoại giao / bỏ mặc 5/5 — ĐẠT. Mẻ `tuong_lai_2x`: 76 sprite, 2 trang (trang 0 đầy 65,7 %).
+
+**Phase 11B, đo 27/09:** Chromium máy ảo 393 px, 500×: **~7,5 s thật mỗi giờ game** (lý thuyết 7,2 s);
+chạy lâu cùng lúc `npm run do` thì tụt còn ~22 s/giờ (máy ảo vẽ bằng phần mềm — không phải số iPhone).
+Hàng 9 nút tốc độ trên màn 393 px: rộng 314 px, mép trái 69 px (trước khi thu nhỏ: 415 px, lọt −31 px).
+`sim:van` sau khi tách `TheGioi`: y nguyên (thống trị 2/5, ba kiểu kia 5/5, bỏ mặc thua 5/5).
+
+**Phase 11A, đo 26/09 tối:** `sim:van` — vết thành phố thật 300 giờ mất **389 s** (lưu
+`.cache/sim_van/`, lần sau đọc lại); mỗi ván thế giới **0,01–0,13 s**. Giờ thắng ở hạt giống
+gốc: ngoại giao **72** · văn hoá **167** · thống trị **171** · khoa học **190**; bỏ mặc sụp đổ
+giờ **111**. Đúng kiểu trên 5 hạt giống: thống trị 2/5, ba kiểu kia 5/5, bỏ mặc thua 5/5.
+Thành phố (không đổi): đời 5 ở giờ ~150, 449 nhà ở giờ 300.
+
+**Phase 10B, đo 26/09 trưa:** atlas `linh_sung` 412 sprite — 1× 20,1 %; 2× **một trang 76,0 %**
+(GPU 16,8 MB). Trước khi cắt khung: 524 sprite, 2× hai trang, anh đo **30 fps** suốt trận. Màn trận súng chụp máy ảo: **322 sprite ·
+1 lệnh vẽ**. Trận mẫu súng 48,5 giây, 54 lính mỗi bên. Nướng `linh_sung` cả hai cỡ ~7 phút.
+
+**Phase 10A, đo 25/09:** atlas `linh_co` 260 sprite — 2× lấp **68,6 %** một trang, 1× 17,9 %
+(`node tools/nuong_sprite.mjs linh_co` in lại). Màn trận chụp trong máy ảo: **344 sprite ·
+1 lệnh vẽ**. `kiem:cheo` HEAD: **402/402 test**, `sim:tran` lệch 2,24 · 85,2 % trong khung ·
+Brier 0,075. Nướng mẻ lính mất ~2 phút 15 giây mỗi cỡ.
+
+**Atlas, đo 19/09 (Phase 8C):** thêm hai khung cối xay vào mỗi mẻ. `trung_co_2` 2× từ
+84,4 % **một** trang lên **hai** trang (85,8 % + 4,5 %, GPU 33,6 MB / trần 67,1 MB);
+`hien_dai` 2× lấp **77,3 %** một trang thật + một trang **rỗng 1×1** đệm cho khớp số
+trang. Cả hai 1× vẫn một trang. **Đừng chép số này đi đâu** —
+`node tools/nuong_sprite.mjs <mẻ> 2` in lại.

@@ -615,3 +615,23 @@ phụ từ cùng thư mục backblaze — bước này có trong `tools/tai_icos
 kho-game giữ luật đổi ký tự lạ thành `_` (bộ tải cũ cũng vậy, `linh_sung` đã dùng tên đó) → **sửa công thức 4 mẻ**
 `co_dai` `trung_co_2` `can_dai` `hien_dai` sang `model__GLTFupdated_` / `loai: gltf`. Kiểm: xoá 14 model, tải lại
 bằng kho-game → 14/14, 0 hỏng; nướng lại 4 mẻ từ đó → atlas y hệt bản đã commit. Không còn phải đi vòng.
+
+## Luật bất biến — 03/10/2026
+
+Luật đo ra, **chưa sửa — chờ anh quyết** (chi tiết `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`):
+
+- **Hai lỗi đổi nhịp game** — người vác đi ra ngoài bản đồ (TP06, TP14) · kho riêng phình mãi (TP04). Mã đã sửa ở nhánh
+  `claude/gracious-curie-pm0flr`; ba luật ghi `(chưa bật)` trong `docs/LUAT_BAT_BIEN.md` tới khi gộp. Bảng số: `TIEN_DO.md` mục 3.
+- **Trận: đi theo hàng phụ thuộc thứ tự danh sách** (`Battle.ts:180`): `daCham` bật GIỮA vòng lặp, nên ở nhịp vừa chạm
+  địch đội đứng sau đội đánh đầu tiên đã đi tốc độ riêng, đội đứng trước vẫn đi tốc độ hàng — trái comment `Battle.ts:153`.
+  Phá "giữ hàng tính theo trạng thái đầu nhịp" ở 1.445/2.000 trận. Sửa là đổi kết quả trận, `sim:tran` đổi.
+- **AI xin hoà không bao giờ được nhận** (`AiNuoc.ts:25` với `TheGioi.ts:187`): AI xin khi tỉ lệ sức < 0,7, nhưng bị từ chối khi
+  bên kia ≥ 1,3 × sức mình; 1 / 0,7 ≈ 1,43 > 1,3 → chỉ nhận được khi cả hai bên 0 quân. Số nằm trong data.
+- **% thắng dự đoán lệch tỉ lệ thắng thật** — `GAME_SPEC.md` mục 6 hứa không lệch. Luật thống kê (|dự đoán − tỉ lệ thắng
+  qua 200 trận| ≤ ngưỡng) chưa bật: thêm một đội đôi khi làm tỉ lệ thắng THẬT tụt hơn 20 điểm (cả bên đi theo đội chậm nhất).
+
+Lặt vặt, đo được 03/10:
+
+- Hết giờ mà hai bên bằng phần máu thì ai thắng — không luật nào kiểm được vì `KetQuaTran` không lộ phần máu.
+- `sim:congnghe` ra 38 kho / trần 37 (cả mã gốc, bản đồ 4242): lựa chọn thẻ `HauQua.xayKho` không xét trần, chỉ thống
+  đốc xét (luật CN12). Chưa rõ có phải ý thiết kế.

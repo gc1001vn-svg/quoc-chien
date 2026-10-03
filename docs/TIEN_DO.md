@@ -6,9 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 30/09/2026 (lần 29 — art bible bước 2: bảng nông trại).
+Cập nhật: 03/10/2026 (lần 30 — luật bất biến).
 
 ## 1. Đang ở đâu
+
+- **03/10 (lần 30): luật bất biến** — 56 luật "game không bao giờ được phá" (`docs/LUAT_BAT_BIEN.md`), máy kiểm qua nhiều hạt
+  giống; 53 đã bật. Bắt được 5 lỗi thật + 3 lỗi nằm im: đã sửa và đẩy 4 (thùng kho đè vật, thẻ bất ổn, mua quân, bộ đọc trận),
+  **2 lỗi đổi nhịp game chờ anh** (mục 3). Chi tiết: `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`.
 
 - **30/09 (lần 28): Thử 3 xong phần máy** — bất ổn báo trước trong thành phố (khói đen → đám đông + cờ đỏ → lửa), chấm xem trước
   kiểu Reigns trên thẻ quyết định, bảng tách nguồn chính sách; 3 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chơi thử iPhone: 59 fps, "mọi thứ ok"** (mục 3).
@@ -36,6 +40,10 @@ Cập nhật: 30/09/2026 (lần 29 — art bible bước 2: bảng nông trại)
 
 ## 2. Số đo mới nhất
 
+**Luật bất biến, đo 03/10 (máy ảo 4 nhân):** test 543 → 599, `npm test` 35,6 → 38,1 s · `npm run luat:sau` 56/56 xanh trong
+**564 s** (phần lớn `BatBienThanhPho`) — `do.sh` chỉ gọi khi `src/sim/` hay `data/` khác `main` · hơn 150 lỗi giả, luật nào
+cũng có lỗi giả làm nó đỏ.
+
 **Thử 3, đo 30/09 (máy ảo, 393×852 DPR 1):** **3 lệnh vẽ** có hiệu ứng, 1 khi `?tat=het` · test mới 10/10 (`tests/DeChoi.test.ts`) ·
 `npm run do` 16/16 · `sim:van`, `sim:tran` khác trước đúng cột giây chạy máy.
 
@@ -52,36 +60,6 @@ chỗ sprite, chỉ ảnh đổi màu.
 **Phase 12D, đo 28/09:** 4 mẻ nướng lại, mỗi mẻ 2× **76 sprite · 2 trang** (trang 0: `co_dai` 88,7 % · `can_dai`
 83,2 % · `hien_dai` 77,3 % · `tuong_lai` 65,7 %), ~2,5 phút mỗi mẻ. Làn sóng: giữ 2 + 2 trang = 4 (trần), **1 lệnh vẽ**,
 máy ảo ~30 fps (phần mềm, không phải số iPhone). `DoiTheoDoi`: 0 ô nền / 0 dáng người y nguyên ở 4 cặp đời khác mẻ.
-
-**Phase 12A, đo 27/09:** `sim:congnghe -- 320 6`: đời 5 giờ 147, **đời 6 giờ 249**, 48/48 công nghệ,
-451 nhà ở giờ 320. `sim:van`: khoa học **3/5** (trước 5/5, thắng ở giờ 265 thay vì 190), thống trị 2/5,
-văn hoá / ngoại giao / bỏ mặc 5/5 — ĐẠT. Mẻ `tuong_lai_2x`: 76 sprite, 2 trang (trang 0 đầy 65,7 %).
-
-**Phase 11B, đo 27/09:** Chromium máy ảo 393 px, 500×: **~7,5 s thật mỗi giờ game** (lý thuyết 7,2 s);
-chạy lâu cùng lúc `npm run do` thì tụt còn ~22 s/giờ (máy ảo vẽ bằng phần mềm — không phải số iPhone).
-Hàng 9 nút tốc độ trên màn 393 px: rộng 314 px, mép trái 69 px (trước khi thu nhỏ: 415 px, lọt −31 px).
-`sim:van` sau khi tách `TheGioi`: y nguyên (thống trị 2/5, ba kiểu kia 5/5, bỏ mặc thua 5/5).
-
-**Phase 11A, đo 26/09 tối:** `sim:van` — vết thành phố thật 300 giờ mất **389 s** (lưu
-`.cache/sim_van/`, lần sau đọc lại); mỗi ván thế giới **0,01–0,13 s**. Giờ thắng ở hạt giống
-gốc: ngoại giao **72** · văn hoá **167** · thống trị **171** · khoa học **190**; bỏ mặc sụp đổ
-giờ **111**. Đúng kiểu trên 5 hạt giống: thống trị 2/5, ba kiểu kia 5/5, bỏ mặc thua 5/5.
-Thành phố (không đổi): đời 5 ở giờ ~150, 449 nhà ở giờ 300.
-
-**Phase 10B, đo 26/09 trưa:** atlas `linh_sung` 412 sprite — 1× 20,1 %; 2× **một trang 76,0 %**
-(GPU 16,8 MB). Trước khi cắt khung: 524 sprite, 2× hai trang, anh đo **30 fps** suốt trận. Màn trận súng chụp máy ảo: **322 sprite ·
-1 lệnh vẽ**. Trận mẫu súng 48,5 giây, 54 lính mỗi bên. Nướng `linh_sung` cả hai cỡ ~7 phút.
-
-**Phase 10A, đo 25/09:** atlas `linh_co` 260 sprite — 2× lấp **68,6 %** một trang, 1× 17,9 %
-(`node tools/nuong_sprite.mjs linh_co` in lại). Màn trận chụp trong máy ảo: **344 sprite ·
-1 lệnh vẽ**. `kiem:cheo` HEAD: **402/402 test**, `sim:tran` lệch 2,24 · 85,2 % trong khung ·
-Brier 0,075. Nướng mẻ lính mất ~2 phút 15 giây mỗi cỡ.
-
-**Atlas, đo 19/09 (Phase 8C):** thêm hai khung cối xay vào mỗi mẻ. `trung_co_2` 2× từ
-84,4 % **một** trang lên **hai** trang (85,8 % + 4,5 %, GPU 33,6 MB / trần 67,1 MB);
-`hien_dai` 2× lấp **77,3 %** một trang thật + một trang **rỗng 1×1** đệm cho khớp số
-trang. Cả hai 1× vẫn một trang. **Đừng chép số này đi đâu** —
-`node tools/nuong_sprite.mjs <mẻ> 2` in lại.
 
 **Mẻ trung cổ 2× coi như HẾT CHỖ.** Đo 19/09: tổng diện tích sprite 90,2 % một trang, mà
 84,4 % là mức cuối còn xếp vừa — thêm **một** sprite cỡ căn nhà là tràn trang. Mẻ mới hay
@@ -100,6 +78,20 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### ⏳ Việc 03/10 (lần 30) — anh chọn cách xử lý 2 lỗi đổi nhịp game
+
+Sửa thì đúng thiết kế nhưng game chậm hơn. Giờ lên đời 6, `sim:congnghe -- 320 6`, ba bản đồ (gốc · hạt 777 · hạt 4242):
+
+| | Đời 6 ở giờ | Nhà giờ 320 | Kho | Đỉnh người vác |
+|---|---|---|---|---|
+| Hiện tại (`main`) | 249 · 261 · 281 | 451 · 445 · 433 | 37–38 | 657–675 |
+| + sửa người vác ra ngoài bản đồ | 276 · 285 · 291 | 439 · 433 · 420 | 38 | 655–741 |
+| + sửa kho riêng phình mãi | **không tới trong 320 giờ** (đời 5 ở 184 · 205 · 202) | 395 · 377 · 377 | 6 | 142–215 |
+
+`sim:van` (một bản đồ, 5 hạt): thống trị 3/5 → 1/5, ba kiểu kia y nguyên. Mã sửa ở nhánh `claude/gracious-curie-pm0flr`.
+**A** đẩy hết rồi phiên sau chỉnh số cân bằng · **B** chỉnh số cân bằng trước, đẩy một lần khi đời 6 về lại ~giờ 250–280 ·
+**C** chỉ đẩy sửa người vác (đời 6 vẫn tới), giữ kho riêng.
+
 ### ✅ Việc 30/09 (lần 28) — anh chơi thử Thử 3 trên iPhone
 
 Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"** → Thử 3 qua.
@@ -116,6 +108,9 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 
 ## 4. Nợ đang chặn phase kế tiếp
 
+- **Hai lỗi đổi nhịp game** (luật TP04, TP06, TP14 `(chưa bật)`) — chờ anh, mục 3. Ba việc luật đo ra mà chưa sửa (trận đi theo
+  hàng phụ thuộc thứ tự, AI xin hoà không bao giờ được nhận, % dự đoán lệch): `docs/NO_KY_THUAT.md` mục "Luật bất biến".
+
 - **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7
   (`docs/ART_BIBLE.md` mục 2). Độ tối đã sửa 30/09; tay vẽ còn — art bible mục 5 bước 2, 3.
 - **Luật 3 (bão hoà ≥ 0,37) còn trượt:** hiện đại 0,30, tương lai 0,35 — art bible mục 5 bước 3.
@@ -126,6 +121,10 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
 ## 5. Phiên sau
+
+**Luật bất biến — anh chọn A/B/C ở mục 3 trước.** A, C: `git fetch origin claude/gracious-curie-pm0flr` rồi gộp (C: chỉ
+commit người vác); nhánh đã bật sẵn luật. B: chỉnh số `data/` trước, đo `sim:congnghe -- 320 6` trên ba bản đồ như bảng.
+Sửa `src/sim/city` thì `sim:van -- --lam-lai` (vết thành phố lưu theo băm `data/`, không theo mã).
 
 **Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước.
