@@ -133,6 +133,7 @@
     "doubt-driven-development": "user-invocable-only",
     "constraint-driven-development": "user-invocable-only",
     "code-simplification": "user-invocable-only",
-    "google-workspace": "off"
+    "google-workspace": "off",
+    "docs": "off"
   }
 }
