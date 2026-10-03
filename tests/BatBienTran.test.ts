@@ -289,6 +289,7 @@ describe('luat bat bien tran danh', () => {
   it('[TR05] ket qua, vet va kich ban ke cung mot chuyen, ben vo het khong thang, khong lui gio', () => { kiemMa('TR05'); });
   it('[TR06] co ben vo het thi tran dung ngay nhip do', () => { kiemMa('TR06'); });
   it('[TR07] % thang du doan trong 0-100, doi ben ra phan bu, tuong gioi hon va dia hinh khong lam nguoc', () => { kiemMa('TR07'); });
+  it('[TR08] mua quan: vang tieu dung bang gia cac doi that su duoc them', () => { kiemMa('TR08'); });
   it('[TR09] mua quan: chi mua doi dung thoi dai dung nhom, khong vuot tran, xep manh truoc, khong sua quan cu', () => { kiemMa('TR09'); });
   it('[TR10] danh chiem tinh: mat doi theo ti le linh chet, ben thua mat it nhat mot doi, tinh trong thang trang, khop tran', () => { kiemMa('TR10'); });
 });

@@ -49,6 +49,10 @@ function sucDoi(id: string, duLieu: DuLieuTran): number {
  * Quan tra ve LUON xep manh truoc: ra tran lay dau danh sach, mat doi cung cat tu dau.
  * Day tran thi giai ngu doi yeu nhat de mua doi moi manh hon - khong thi len thoi sung
  * van om giao thu tu thoi co. Tra ve quan moi va so vang CHUA TIEU cua ngan sach.
+ *
+ * Khong giai ngu doi thuoc LOAI vua mua trong chinh lan goi nay: doi cung loai nhu nhau, nen
+ * mua mot bo_binh roi giai ngu mot bo_binh cu cung la tra tien cho doi khong vao quan (luat
+ * TR08/TG05, do 03/10: tieu 165 vang, nhan doi gia 90).
  */
 export function muaQuan(
   quan: readonly string[], nganSach: number, dsMua: readonly LoaiDoi[], toiDa: number, dem: number,
@@ -57,15 +61,20 @@ export function muaQuan(
   const moi: string[] = [...quan].sort((a, b) => sucDoi(b, duLieu) - sucDoi(a, duLieu));
   let con: number = nganSach;
   let d: number = dem;
+  const loaiVuaMua = new Set<string>();
   while (dsMua.length > 0) {
     const l = dsMua[d % dsMua.length] as LoaiDoi;
     if (l.gia > con) break;
     if (moi.length >= toiDa) {
-      const yeuNhat: string | undefined = moi[moi.length - 1];
+      // Doi yeu nhat KHONG thuoc loai vua mua (quan xep manh truoc nen tim tu cuoi).
+      let i: number = moi.length - 1;
+      while (i >= 0 && loaiVuaMua.has(moi[i] as string)) i -= 1;
+      const yeuNhat: string | undefined = moi[i];
       if (yeuNhat === undefined || sucDoi(yeuNhat, duLieu) >= sucDoi(l.id, duLieu)) break;
-      moi.pop();
+      moi.splice(i, 1);
     }
     con -= l.gia;
+    loaiVuaMua.add(l.id);
     moi.push(l.id);
     moi.sort((a, b) => sucDoi(b, duLieu) - sucDoi(a, duLieu));
     d += 1;
