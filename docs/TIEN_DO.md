@@ -6,10 +6,12 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 04/10/2026 (lần 34 — nhận ra game từ ảnh anh gửi).
+Cập nhật: 04/10/2026 (lần 35 — đồ nghề: máy soi giao diện, clip, sửa 3 lỗi giao diện).
 
 ## 1. Đang ở đâu
 
+- **04/10 (lần 35): đồ nghề** — `soi:giao-dien` vào `npm run do`, bắt và sửa 3 lỗi giao diện khổ iPhone (nút chồng nút màn
+  dọc, lựa chọn thứ ba khuất màn ngang); `npm run quay` ra clip MP4; sửa hạn chờ CDP. `docs/NHAT_KY/DO_NGHE_04_10.md`.
 - **04/10 (lần 34): nhận ra game từ ảnh** — Kỷ Nguyên Băng Hà: 3Q, chỉ có trên điện thoại, không chơi thử được. Video lối chơi
   thật không có lúa lớn dần, không có thời kỳ; clip quảng cáo không khớp game. Anh chọn cách 2 → Claude chơi thật 2 game web
   cùng kiểu: Medieval Farms (cây lớn 5 hình, phá rừng mở đất), Castle Builders (thợ xây từng viên, giàn giáo). Anh chê đồ hoạ
@@ -32,6 +34,8 @@ Cập nhật: 04/10/2026 (lần 34 — nhận ra game từ ảnh anh gửi).
 - Rà soát đồ nghề 29/09: `docs/NHAT_KY/RA_SOAT_29_09.md` · tải asset một cửa kho-game: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Đồ nghề 04/10 (lần 35):** `npm run do` 192 → **76 s** · `khoi:dong` 121 → 4,5 s · `soi:giao-dien` 0 lỗi, ~20 s.
 
 **Sửa 3 lỗi trận, đo 04/10 (máy ảo):** 150 cặp đội hình × 200 trận — lệch |% báo − thắng thật| lớn nhất 97,7 → 5,5 điểm ·
 `sim:tran` lệch TB 2,24 → 0,84, Brier 0,075 → 0,009 · `sim:van` (5 hạt) thống trị 3/5 · khoa học 2/5 → **5/5** · văn hoá 5/5 ·
@@ -60,6 +64,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Việc 04/10 (lần 35) — xem 3 chỗ giao diện đã sửa, quyết 2 hàm chết
+
+Trên iPhone (link Pages): cầm **dọc** mở Bản đồ tỉnh, rồi Xem trận — nút góc phải không còn chồng nhau; cầm **ngang** ở thành
+phố — thẻ quyết định hiện đủ ba lựa chọn một hàng. Hai hàm không ai gọi (`datMotNha`, `xaVien`, ~25 dòng): xoá hay giữ?
 
 ### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
 

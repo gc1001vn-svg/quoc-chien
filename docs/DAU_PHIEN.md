@@ -104,6 +104,7 @@ và **thoát mã 1** khi vượt.
 
 **Bản duyệt KHÔNG thay `main`.** Bản thật vẫn là GitHub Pages; `.duyet/` không lên git.
 
+**Chuyển động** (trận, hiệu ứng, hoạt cảnh): `npm run quay -- "?tran=1" "×4"` → clip MP4, gửi bằng `SendUserFile`.
 **Việc cho anh xem trên iPhone:** đã đẩy `main` thì đưa **link Pages**
 https://gc1001vn-svg.github.io/quoc-chien/ — từ 29/09 mở lại app là lên bản mới (sửa service
 worker trong `src/main.ts`, anh xác nhận trên iPhone 29/09); mở thẳng, không qua khung, nên đo
