@@ -51,10 +51,10 @@ function sinhBen(r: Rng, d: DuLieuTran): Ben {
 }
 const dongBang = <T>(x: T): T => { if (typeof x === 'object' && x !== null) for (const v of Object.values(x) as unknown[]) dongBang(v); return Object.freeze(x); };
 
-/** TR02, TR03: mot doi qua tung khung vet. */
+/** TR02, TR03, TR14: mot doi qua tung khung vet. */
 function kiemDoi(vao: DauVaoTran, kq: KetQuaTran, d: DuLieuTran, p: Phe, i: number, g: Ghi): void {
   const id = vao[p].doi[i] ?? '';
-  const [l, dh, w] = [loai(d, id), diaHinhCua(d, vao.diaHinh), d.chienTruong];
+  const [l, dh, w, hang, gCham] = [loai(d, id), diaHinhCua(d, vao.diaHinh), d.chienTruong, Math.min(...vao[p].doi.map((x) => loai(d, x).tocDo)), Math.min(d.tranGiay + 1, ...kq.suKien.filter((s) => s.ben === p && s.loai === 'danh').map((s) => s.giay))]; // TR14: gCham = nhip ben p danh lan dau, hang = toc doi cham nhat
   const sk = (t: string): number[] => kq.suKien.filter((s) => s.ben === p && s.doi === i && s.loai === t).map((s) => s.giay);
   const [[gVo = Infinity, ...voThem], [gDanh = Infinity, ...danhThem]] = [sk('vo'), sk('danh')];
   if (voThem.length + danhThem.length > 0) g('TR02', `doi ${p}${String(i)}: vo hoac danh lan dau hon mot lan`);
@@ -73,9 +73,9 @@ function kiemDoi(vao: DauVaoTran, kq: KetQuaTran, d: DuLieuTran, p: Phe, i: numb
     if (tk === undefined || t === undefined) return;
     if (o.conSong > t.conSong) g('TR02', `${tai}: song lai ${String(t.conSong)} -> ${String(o.conSong)} linh`);
     if (t.vo && (o.x !== t.x || o.y !== t.y || o.conSong !== t.conSong)) g('TR02', `${tai}: da vo ma van di hoac mat linh`);
-    const [buoc, tran] = [Math.hypot(o.x - t.x, o.y - t.y), l.tocDo * dh.tocDo * (k.giay - tk.giay)];
+    const [buoc, tran, tranHang] = [Math.hypot(o.x - t.x, o.y - t.y), l.tocDo * dh.tocDo * (k.giay - tk.giay), dh.tocDo * (hang * (Math.min(k.giay, gCham) - Math.min(tk.giay, gCham)) + l.tocDo * (Math.max(k.giay, gCham) - Math.max(tk.giay, gCham)))];
     // Dung sai tuong doi: buoc lon nhat do duoc = tran x 1.00000000000002 (sai so dau phay dong).
-    if (buoc > tran * (1 + 1e-9)) g('TR03', `${tai}: di ${String(buoc)} o > tran ${String(tran)} o`);
+    if (buoc > tran * (1 + 1e-9)) g('TR03', `${tai}: di ${String(buoc)} o > tran ${String(tran)} o`); else if (buoc > tranHang * (1 + 1e-9)) g('TR14', `${tai}: di ${String(buoc)} o > ${String(tranHang)} o, ben cham dich o giay ${String(gCham)}, toc hang ${String(hang)}`);
     if (d.giayMauVet <= d.nhipGiay && o.dangDanh && buoc !== 0) g('TR03', `${tai}: vua danh vua di ${String(buoc)} o`);
   });
 }
@@ -295,4 +295,5 @@ describe('luat bat bien tran danh', () => {
   it('[TR11] moi muc nhieu bo doc battle.json nhan thi luat tran van dung', () => { kiemMa('TR11'); });
   it('[TR12] moi hang xuat phat bo doc battle.json nhan thi luat tran van dung', () => { kiemMa('TR12'); });
   it('[TR13] moi nhip, do dai tran va thong so khac bo doc battle.json nhan thi luat tran van dung', () => { kiemMa('TR13'); });
+  it('[TR14] giu hang tinh theo trang thai dau nhip: toi het nhip cham dich ca ben di theo doi cham nhat', () => { kiemMa('TR14'); });
 });

@@ -160,6 +160,9 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
     // Moi doi quyet dinh theo vi tri DAU nhip, roi moi cung di - doi dung truoc trong
     // danh sach khong duoc loi (do 24/09: di ngay tai cho thi tran guong ben a thua 100 %).
     const di: [DoiTran, number, number][] = [];
+    // Giu hang cung tinh theo trang thai DAU nhip: doc `daCham` ngay trong vong thi nhip vua cham
+    // dich doi dung sau doi danh dau tien di toc rieng, doi dung truoc van di toc hang (luat TR14).
+    const chamDau: Record<Phe, boolean> = { ...daCham };
     for (const d of ds) {
       d.dangDanh = false;
       if (d.vo) continue;
@@ -170,7 +173,7 @@ export function tinhTran(vao: DauVaoTran, duLieu: DuLieuTran, hatGiong: number):
       // thi doi dung mai o do ma khong danh (do 24/09: 4/6 doi ky binh dung im ca tran).
       if (kc > d.loai.tam + 1e-6) {
         // Di toi, dung lai dung mep tam - khong vuot qua dich.
-        const toc: number = daCham[d.ben] ? d.loai.tocDo : tocHang[d.ben];
+        const toc: number = chamDau[d.ben] ? d.loai.tocDo : tocHang[d.ben];
         const buoc: number = Math.min(toc * dh.tocDo * dt, kc - d.loai.tam);
         di.push([d, ((e.x - d.x) / kc) * buoc, ((e.y - d.y) / kc) * buoc]);
         continue;

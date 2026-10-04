@@ -40,6 +40,7 @@
 - [TR11] Mọi mức nhiễu mà bộ đọc battle.json chấp nhận thì các luật trận (TR02–TR07) vẫn đúng — nhiễu không bao giờ biến đòn đánh thành hồi máu.
 - [TR12] Mọi hàng xuất phát mà bộ đọc battle.json chấp nhận thì các luật trận vẫn đúng — quân luôn đứng trong chiến trường ngay từ giây 0.
 - [TR13] Mọi nhịp, độ dài trận và các thông số khác mà bộ đọc battle.json chấp nhận thì các luật trận vẫn đúng — trận dừng đúng giây hết giờ, không nhịp nào chạy lố.
+- [TR14] Giữ hàng tính theo trạng thái đầu nhịp: tới hết nhịp mà bên mình có đội đánh đầu tiên, mọi đội của bên đó đi không nhanh hơn đội chậm nhất bên mình (đã nhân hệ số địa hình) — đội đứng đâu trong danh sách cũng vậy; chỉ từ nhịp sau mới đi tốc độ riêng.
 
 ## Lớp thế giới — `tests/BatBienTheGioi.test.ts`
 
