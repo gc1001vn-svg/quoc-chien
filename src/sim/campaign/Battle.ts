@@ -111,12 +111,28 @@ function xepBen(ben: Ben, phe: Phe, x: number, duLieu: DuLieuTran): DoiTran[] {
 function ganNhat(d: DoiTran, ds: readonly DoiTran[]): DoiTran | undefined {
   let tot: DoiTran | undefined;
   let kc = Infinity;
+  let kc2 = Infinity;
   for (const e of ds) {
     if (e.ben === d.ben || e.vo) continue;
-    const k: number = Math.hypot(e.x - d.x, e.y - d.y);
-    if (k < kc) {
-      kc = k;
+    // So binh phuong khoang cach truoc: lech ro thi khoi goi `Math.hypot` (cham, chiem phan lon thoi
+    // gian tran - do 04/10). Sat nut thi so bang hypot nhu cu: doi hinh doi xung hay co hai dich cach
+    // bang nhau, so binh phuong thi doi cach chon doi dung truoc (TR04 do ra 04/10).
+    const dx: number = e.x - d.x;
+    const dy: number = e.y - d.y;
+    const k2: number = dx * dx + dy * dy;
+    if (k2 > kc2 * (1 + 1e-9)) continue;
+    if (k2 < kc2 * (1 - 1e-9)) {
       tot = e;
+      kc2 = k2;
+      kc = NaN; // hypot cua doi nay chi tinh khi gap doi sat nut
+      continue;
+    }
+    if (tot !== undefined && Number.isNaN(kc)) kc = Math.hypot(tot.x - d.x, tot.y - d.y);
+    const k: number = Math.hypot(dx, dy);
+    if (k < kc) {
+      tot = e;
+      kc2 = k2;
+      kc = k;
     }
   }
   return tot;
