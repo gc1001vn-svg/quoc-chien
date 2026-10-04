@@ -421,3 +421,21 @@ nó nhận ra IP trung tâm dữ liệu. Đã thử thêm: User-Agent thật tha
 
 ---
 
+
+## Playwright MCP — Claude lái trình duyệt chơi thử game, app (anh duyệt 04/10)
+
+`.mcp.json` → `scripts/mcp_trinh_duyet.mjs`: nạp CA (`mo_mang_chromium.mjs`) rồi `npx -y @playwright/mcp@0.0.83`
+(Apache-2.0, Microsoft; kéo Playwright 1.64 **alpha** — đổi bản thì đo lại). Chỉ nạp ở **phiên mở mới**, một repo.
+Đo A (script tự viết) với B (cái này) và lý do chọn: kho `ghi-nho`,
+`quyet-dinh/2026-10-04-do-a-b-playwright-mcp-hon-script-tu-viet.md`.
+
+- Công cụ hay dùng: `browser_navigate` · `browser_take_screenshot` (ảnh về thẳng) · `browser_mouse_click_xy`
+  (bấm toạ độ, game vẽ canvas) · `browser_press_key` · `browser_click` (bấm theo tên, game/app DOM) ·
+  `browser_run_code_unsafe` (gộp nhiều bước một lượt) · `browser_evaluate` · `browser_console_messages`.
+- Ảnh, nhật ký tự sinh rơi vào `anh_chup/trinh_duyet/` (không lên git).
+- `tools/lib/moc_am_thanh.js` chạy trước mã game: nhật ký tiếng `window.__am` + vá thiếu AAC. Chromium máy ảo
+  **không giải mã AAC, H.264** (MP3, OGG được) — Unity gặp AAC là `alert()` đứng trang. Video MP4 trong game vẫn
+  không phát. Google Chrome đủ bộ giải mã nhưng `dl.google.com` bị chặn.
+- Đo 04/10, 4 game nhập vai itch.io: RPG Maker 14,7 khung/s · Pokémon Overlord 13,7 · Dungeons & Dynasties (DOM)
+  60 · Stoneheart Archive (Unity 3D) **4,0** — 3D chạy được nhưng chỉ đủ nhìn, không đủ chơi hành động.
+- Trình duyệt tự gọi `android.clients.google.com`, `redirector.gvt1.com` — proxy chặn, không gì ra ngoài.

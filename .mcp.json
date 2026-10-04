@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "trinh-duyet": {
+      "command": "node",
+      "args": ["scripts/mcp_trinh_duyet.mjs"]
+    }
+  }
+}

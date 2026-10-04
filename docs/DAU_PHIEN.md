@@ -125,6 +125,8 @@ trang mở được). **Cấm `--ignore-certificate-errors*`.** Bị chặn thì
 (`[Auto-Mode Bypass]`): nhờ chủ dự án đổi nút chế độ cạnh ô soạn tin sang `Accept edits`,
 chạy lại, xong đổi về `Auto`. Lịch sử gỡ lỗi này: `docs/MOI_TRUONG.md`.
 
+**Chơi thử game, app: công cụ `browser_*`** (Playwright MCP, `.mcp.json`, tự gọi `mo:mang`). `docs/MOI_TRUONG.md` mục cuối.
+
 ## I. Soát code — không dùng công cụ ngoài
 
 `alibaba/open-code-review` gỡ 19/09 (bắt thêm 0 lỗi trên diff thật). Dùng thứ đã có:
