@@ -439,3 +439,7 @@ nó nhận ra IP trung tâm dữ liệu. Đã thử thêm: User-Agent thật tha
 - Đo 04/10, 4 game nhập vai itch.io: RPG Maker 14,7 khung/s · Pokémon Overlord 13,7 · Dungeons & Dynasties (DOM)
   60 · Stoneheart Archive (Unity 3D) **4,0** — 3D chạy được nhưng chỉ đủ nhìn, không đủ chơi hành động.
 - Trình duyệt tự gọi `android.clients.google.com`, `redirector.gvt1.com` — proxy chặn, không gì ra ngoài.
+- Đo 04/10 (lần 34): **trang danh sách itch.io (`itch.io/games/...`) bị Cloudflare chặn** (403 "Just a moment"); trang
+  game `<tác giả>.itch.io/<game>` và `html-classic.itch.zone` thì mở được → dò bằng `WebSearch`, mở thẳng `src` iframe.
+  `browser_run_code_unsafe` trần **60 s** mỗi lần gọi và không có `require`/`process` (không ghi file được, chỉ
+  `page.screenshot`). Game ở host riêng (vd `cityidle.com`) thường bị proxy chặn.

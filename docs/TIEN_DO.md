@@ -11,7 +11,9 @@ Cập nhật: 04/10/2026 (lần 34 — nhận ra game từ ảnh anh gửi).
 ## 1. Đang ở đâu
 
 - **04/10 (lần 34): nhận ra game từ ảnh** — Kỷ Nguyên Băng Hà: 3Q, chỉ có trên điện thoại, không chơi thử được. Video lối chơi
-  thật không có lúa lớn dần, không có thời kỳ; clip quảng cáo không khớp game. Không đổi game. `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md`.
+  thật không có lúa lớn dần, không có thời kỳ; clip quảng cáo không khớp game. Anh chọn cách 2 → Claude chơi thật 2 game web
+  cùng kiểu: Medieval Farms (cây lớn 5 hình, phá rừng mở đất), Castle Builders (thợ xây từng viên, giàn giáo). Không đổi game.
+  `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md`.
 - **04/10 (lần 33): cài Playwright MCP** (anh chọn B) — Claude tự chơi thử game/app web. Không đổi game. Thử 4 game nhập vai: chạy
   cả Unity 3D (4 khung/s). Chi tiết: `docs/NHAT_KY/TRINH_DUYET_04_10.md` · cách dùng: `docs/MOI_TRUONG.md` mục cuối.
 - **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
@@ -72,8 +74,9 @@ trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi 
 
 ### ⏳ Việc 04/10 (lần 34) — anh có muốn thêm lúa lớn dần, xây từng bước vào Quốc Chiến không
 
-Hai thứ anh khen ở quảng cáo Kỷ Nguyên Băng Hà mà Quốc Chiến chưa có (lên thời kỳ thì đã có từ 12D). Anh trả lời có/không;
-có thì phiên sau lập kế hoạch, tính chỗ atlas trước (mẻ cổ đại gần hết chỗ, mục 2).
+Hai thứ anh khen ở quảng cáo Kỷ Nguyên Băng Hà mà Quốc Chiến chưa có (lên thời kỳ thì đã có từ 12D). Mẫu đã chơi thật,
+ảnh đã gửi: Medieval Farms (lúa) · Castle Builders (xây). Anh trả lời có/không; có thì phiên sau lập kế hoạch, tính chỗ
+atlas trước (mẻ cổ đại gần hết chỗ, mục 2).
 
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 

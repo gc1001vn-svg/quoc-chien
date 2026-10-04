@@ -19,3 +19,20 @@ quảng cáo dựng riêng (nhiều khả năng bằng AI), chưa kiểm đượ
 dần hay công trình xây từng bước (`ruong_lua` chỉ là công trình trong chuỗi `data/chains.json`). Hỏi anh có muốn thêm.
 
 **Không đổi mã game.** Công cụ `browser_*` hiện ở phiên mới (`ToolSearch` nạp được) — điều lần 33 chưa kiểm.
+
+## Phần 2 — anh chọn cách 2: chơi thật game web cùng kiểu (itch.io)
+
+**Dò (WebSearch, trang danh sách itch.io bị Cloudflare chặn):** City Idle (thời đồ đồng → mặt trăng) — game nằm ở
+`cityidle.com`, proxy chặn (403). Bronze Age, Dawn of Tribe — chỉ bản tải máy tính. **Chơi được 2 game:**
+
+**Medieval Farms** (GuiGhost, Lime.js, `html-classic.itch.zone/html/3527367`): ô đất bấm lần 1 cày, lần 2 gieo (trừ tiền
+hạt). Mỗi cây 5 hình: cày → `grow1` → `grow2` (còn 62,5 % thời gian) → `grow3` (≤ 10 s cuối) → chín → héo nếu bỏ lâu
+(đọc mã game). 1 ngày game = 2 s; cà chua 30 ngày ≈ 60 s, cà rốt 50 ngày ≈ 100 s — ảnh chụp khớp cỡ đó. Chín thì vòng xanh
+quanh ô. Phá rừng mở thêm đất: 50 búa + đếm ngược 60 s, bụi bay, rìu chặt, xong ra mảnh ruộng mới. Cày đất có lúc rơi
+đồ ngẫu nhiên (cuộn giấy). Búa tự tăng nhờ lò rèn (+3 mỗi nhịp).
+
+**Castle Builders** (Robin, `html-classic.itch.zone/html/4420646`): vẽ hình nhà → bản vẽ gạch mờ → bấm xây → thợ đi bộ vào
+mỏ đá, vào rừng, vác từng viên về đặt; ~20 s viên đầu, ~100 s dựng giàn giáo gỗ có thang để xây cao. Nhìn ngang 2D.
+
+**Bài học cho Quốc Chiến (chưa làm, chờ anh):** lúa lớn dần = 3–4 hình theo % thời gian + vòng báo chín; xây từng bước
+= bản vẽ mờ → đặt từng khối → giàn giáo → xong. Ảnh: `anh_chup/trinh_duyet/mf_*.jpg`, `cb_*.jpg` (không lên git).
