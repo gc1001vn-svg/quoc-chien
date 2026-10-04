@@ -43,6 +43,7 @@
     "check:token": "node scripts/check_token.mjs",
     "check:kehoach": "node scripts/check_ke_hoach.mjs",
     "khoi:dong": "node scripts/khoi_dong.mjs",
+    "soi:giao-dien": "node scripts/soi_giao_dien.mjs",
     "duyet": "node scripts/duyet.mjs",
     "do:asset": "node tools/do_asset.mjs",
     "tai:icosa": "node tools/tai_icosa.mjs",
