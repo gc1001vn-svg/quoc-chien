@@ -188,9 +188,8 @@ export class ThanhPho implements BoDem, Giao {
 
   xinGiao(nha: ThuNha, hang: string, so: number): boolean {
     if (this.doiWalker.soViec('giao') >= this.cauHinh.tranGiao) return false;
-    // Hang len vai nguoi NGAY luc phat, khong de lai trong nha: de lai thi no vua nam
-    // trong kho rieng vua nam tren duong, dem hai lan.
-    const mang: number = nha.bot(hang, Math.min(so, this.cauHinh.moiChuyen));
+    // Hang len vai NGAY luc phat (de lai trong nha thi dem hai lan), da giu cho trong kho chung.
+    const mang: number = this.kho.giu(hang, nha.bot(hang, Math.min(so, this.cauHinh.moiChuyen, this.kho.conCho(hang))));
     if (mang === 0) return false;
     this.doiWalker.phat(nha.chiSo, nha.cong, 'giao', hang, mang);
     return true;
@@ -198,7 +197,7 @@ export class ThanhPho implements BoDem, Giao {
 
   /** Nguoi toi kho chung: tra hang xuong hoac nhan hang len. */
   private oKho = (w: Walker): void => {
-    if (w.viec === 'giao') w.so -= this.kho.them(w.hang, w.so);
+    if (w.viec === 'giao') w.so -= this.kho.nhanGiao(w.hang, w.so);
     else w.so = this.kho.bot(w.hang, this.cauHinh.moiChuyen);
   };
 
@@ -206,6 +205,7 @@ export class ThanhPho implements BoDem, Giao {
   private veNha = (w: Walker): void => {
     const nha: ThuNha | undefined = this.nhaThat[w.nha];
     if (nha === undefined) return;
+    if (w.viec === 'giao' && !w.daToiKho) this.kho.giu(w.hang, -w.so); // bo cuoc giua duong: tra cho
     if (w.so > 0) nha.nhan(w.hang, w.so);
     nha.dangLay.delete(w.hang);
   };

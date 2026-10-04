@@ -12,7 +12,7 @@
 - [TP01] Hàng không tự sinh ra cũng không tự biến mất: cuối mỗi giờ, tổng hàng trong kho chung, trong các nhà và trên vai người vác luôn bằng lúc mở ván cộng phần làm ra và quà của nhà mới xây, trừ phần đã dùng và phần hỏng, kể cả khi người vác bỏ cuộc giữa đường.
 - [TP02] Không chỗ nào chứa số hàng âm hay số lẻ, kho chung không bao giờ vượt sức chứa, và một người vác không bao giờ mang quá một chuyến.
 - [TP03] Ở ván chơi bình thường, từ giờ thứ hai trở đi, giờ nào mọi loại nhà cũng chạy xong ít nhất một mẻ và mọi mặt hàng đều vừa được làm ra vừa được dùng tới, dù bản đồ nào và xây thêm kiểu gì.
-- [TP04] (chưa bật) Ở ván chơi bình thường, kho riêng của một nhà chỉ được vượt sức chứa nhiều nhất một chuyến vác: kho chung đầy thì nhà phải ngừng làm, không được ôm hàng mãi.
+- [TP04] Ở ván chơi bình thường, kho riêng của một nhà chỉ được vượt sức chứa nhiều nhất một chuyến vác: kho chung đầy thì nhà phải ngừng làm, không được ôm hàng mãi.
 - [TP05] Bảng số mỗi giờ nói thật: số hàng làm ra đúng bằng số mẻ xong nhân sản lượng khai trong dữ liệu, hàng không hỏng thì không mất món nào vì hỏng, và số nhà từng loại đúng như ngoài bản đồ.
 - [TP06] Người vác lúc nào cũng đứng trên một ô đường nằm trong bản đồ.
 - [TP07] Người vác xuất phát từ đúng cổng nhà mình, mỗi bước đi một ô nên không bao giờ cách cổng xa hơn số bước đã đi, chỉ đi tới kho có thật, không quá số bước tối đa, và trong ván thường không ai phải bỏ cuộc giữa đường.

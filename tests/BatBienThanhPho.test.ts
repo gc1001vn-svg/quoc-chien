@@ -284,6 +284,7 @@ describe('luat bat bien thanh pho', () => {
   it('[TP01] hang khong tu sinh tu mat', () => { kiemLuat('TP01'); expect(boCuocEp, 'ban ep bo cuoc phai co nguoi bo cuoc that').toBeGreaterThan(0); });
   it('[TP02] khong cho nao am, kho chung khong vuot tran, nguoi vac khong qua mot chuyen', () => { kiemLuat('TP02'); });
   it('[TP03] tu gio thu hai khong loai nha nao, mat hang nao ket', () => { kiemLuat('TP03'); });
+  it('[TP04] kho rieng vuot tran nhieu nhat mot chuyen', () => { kiemLuat('TP04'); });
   it('[TP05] bang so moi gio noi that', () => { kiemLuat('TP05'); });
   it('[TP06] nguoi vac luon dung tren duong trong ban do', () => { kiemLuat('TP06'); });
   it('[TP07] nguoi vac di tung buoc tu cong nha toi kho co that, khong ai bo cuoc', () => { kiemLuat('TP07'); });
