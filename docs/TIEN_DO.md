@@ -76,8 +76,9 @@ trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
 Anh chốt 04/10: không chỉ lúa và xây nhà, mọi thứ đều từng bước; mẫu phải đồ hoạ tương đương (Viking Rise, Happy Citizens —
-**đừng lấy game đồ hoạ thấp làm mẫu nữa**). Danh sách việc + mẫu: `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 3.
-Anh chọn làm gì trước (hoặc để Claude đề xuất thứ tự); phiên sau lập kế hoạch, tính chỗ atlas trước (mục 2).
+**đừng lấy game đồ hoạ thấp làm mẫu nữa**). Mẫu: `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 3. **Kế hoạch đã viết:**
+`docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — anh trả lời 3 câu (nhà đang xây có chạy luôn không · thứ tự 6 bước ·
+giàn giáo vẽ bằng hạt) rồi duyệt.
 
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
@@ -106,7 +107,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: lập kế hoạch "mọi thứ từng bước" (mục 3)** — Plan Mode, anh duyệt rồi mới làm; tính chỗ atlas, fps trước.
+**Kế hoạch "mọi thứ từng bước" ĐÃ VIẾT, CHỜ ANH DUYỆT:** `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — 6 bước, mỗi
+bước một phiên; anh trả lời 3 câu ở mục "Anh chọn" rồi mới làm bước 1. Chưa duyệt thì không sửa mã.
 Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Vẫn chờ anh chơi thử bản 04/10. Anh mở lại art bible thì làm bảng 2 (dưới).
 
 **Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. Tụt fps về sau: bớt
