@@ -142,6 +142,11 @@ export function docTheGioi(tho: unknown, thoThang: unknown, loaiDoi: ReadonlySet
   for (const id of quanTrungLap) {
     if (!loaiDoi.has(id)) throw new LoiDuLieu(`${d}.quan.quan_trung_lap`, `khong co loai doi "${id}"`);
   }
+  // AI xin hoa khi yeu hon `ti_le_xin_hoa`, ben kia tu choi khi manh hon tu `ti_le_tuyen_chien` lan: tich hai so <= 1
+  // thi khong lan xin nao duoc nhan (luat TG14, do 03/10: 0,7 x 1,3 = 0,91).
+  if (so(ai, 'ti_le_xin_hoa', `${d}.ai`) * so(ai, 'ti_le_tuyen_chien', `${d}.ai`) <= 1) {
+    throw new LoiDuLieu(`${d}.ai.ti_le_xin_hoa`, 'phai lon hon 1 / ti_le_tuyen_chien, khong thi AI xin hoa luon bi tu choi');
+  }
 
   const doiAi: number[] = layMang(g['doi_ai_theo_gio'], `${d}.doi_ai_theo_gio`).map((x, i) =>
     laySoNguyen(x, `${d}.doi_ai_theo_gio[${String(i)}]`, 0),

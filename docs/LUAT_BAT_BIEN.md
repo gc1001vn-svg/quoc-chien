@@ -57,6 +57,7 @@
 - [TG11] Ván kết thúc đúng lý do (mất thủ đô, sụp đổ, thống trị, khoa học, văn hoá, ngoại giao, hết giờ), đúng giờ kết và chỉ một lần, và màn kết ghi đúng thắng hay không thắng cùng giờ kết đó; sụp đổ chỉ khi bất ổn chạm ngưỡng sụp hoặc tới lúc nổi loạn mà không còn tỉnh nào ngoài thủ đô để mất; ván đã kết thì giờ có trôi tiếp thế giới cũng không đổi gì.
 - [TG12] Nước AI chỉ tuyên chiến với láng giềng còn sống, chưa chiến, không phải đồng minh, quan hệ dưới ngưỡng và mạnh hơn đủ tỉ lệ; chỉ xin đàm phán khi đang chiến mà yếu hơn; chỉ ra lệnh đánh khi hết giờ nghỉ, còn quân, tỉnh giáp đất, đang chiến với chủ tỉnh (hoặc tỉnh trung lập) và dự đoán thắng đủ cao.
 - [TG13] Cùng hạt giống và cùng chuỗi nút bấm thì hai thế giới chạy song song luôn có đúng một trạng thái và một nhật ký.
+- [TG14] AI đang chiến mà yếu hơn xin đàm phán thì có lúc được nhận: qua các ván, ít nhất một lần AI xin hoà thành — ngưỡng xin hoà và ngưỡng bên kia từ chối không được chặn nhau (bộ đọc the_gioi.json từ chối cặp số chặn nhau).
 
 ## Công nghệ, thẻ, thống đốc, đồng hồ — `tests/BatBienMeta.test.ts`
 

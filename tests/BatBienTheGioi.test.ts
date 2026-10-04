@@ -99,7 +99,7 @@ function choiVan(hat: number, dai: boolean): void {
   tg.damPhan = (a, b) => {
     luotAi(tg.ngoaiGiao.trangThai(a, b) === 'chien_tranh' && tiLe(a, b) < d.ai.tiLeXinHoa, `AI ${a} dam phan ${b} khi khong dang chien hoac khong yeu hon (ti le suc ${String(tiLe(a, b))})`);
     const ok = goc.damPhan(a, b);
-    if (dangGio && ok) dpAi.set(a, (dpAi.get(a) ?? 0) + 1);
+    if (dangGio && ok) { dpAi.set(a, (dpAi.get(a) ?? 0) + 1); if (sucQuan(tg.nuoc(b).quan, tran) > 0) dem('TG14'); } // TG14: hai ben cung 0 quan thi luon nhan, khong tinh
     return ok;
   };
   tg.tuyenChien = (a, b) => {
@@ -280,7 +280,7 @@ describe('luat bat bien lop the gioi', () => {
   beforeAll(() => {
     for (let hat = 1; hat <= SO_HAT; hat++) choiVan(hat, false);
     for (const hat of HAT_DAI) choiVan(hat, true);
-    for (const ma of ['TG02', 'TG05', 'TG08', 'TG11', 'TG12']) if ((gap.get(ma) ?? 0) === 0) ghi(ma, 'khong gap tinh huong nao luat nay can - luat thanh rong');
+    for (const ma of ['TG02', 'TG05', 'TG08', 'TG11', 'TG12', 'TG14']) if ((gap.get(ma) ?? 0) === 0) ghi(ma, ma === 'TG14' ? 'qua moi van khong lan AI xin hoa nao duoc nhan - nguong xin hoa va nguong tu choi chan nhau' : 'khong gap tinh huong nao luat nay can - luat thanh rong');
   }, SAU ? 900_000 : 30_000);
   it('[TG01] moi tinh thuoc trung lap hoac mot nuoc con song; nuoc song giu thu do goc, nuoc mat khong con tinh, quan, khong song lai', () => { kiemMa('TG01'); });
   it('[TG02] tinh chi doi chu khi bi lang gieng dang chien danh chiem, thac thu do, hay noi loan (the bi ke du gio) mot tinh khong phai thu do; danh xong phai nghi du gio', () => { kiemMa('TG02'); });
@@ -295,4 +295,5 @@ describe('luat bat bien lop the gioi', () => {
   it('[TG11] ket van dung ly do, dung gio, chi mot lan, man ket noi dung nhu vay; van da ket thi gio troi khong doi gi', () => { kiemMa('TG11'); });
   it('[TG12] AI chi tuyen chien, dam phan, danh khi du dieu kien cua no', () => { kiemMa('TG12'); });
   it('[TG13] cung hat giong, cung chuoi bam thi hai the gioi chay song song y het nhau', () => { kiemMa('TG13'); });
+  it('[TG14] AI dang chien ma yeu hon xin hoa thi co luc duoc nhan', () => { kiemMa('TG14'); });
 });

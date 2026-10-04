@@ -40,13 +40,13 @@
     "bau": { "gio_moi_lan": 24, "doi_toi_thieu": 4, "quan_he_bau": 50 }
   },
 
-  "_ai": "AI nuoc khac theo luat, khong hoc. Tuyen chien khi manh hon ti_le_tuyen_chien lan va quan he duoi quan_he_tuyen_chien, moi gio mot lan tung xac suat xac_suat_tuyen_chien. Tan cong khi du doan thang (Battle.duDoan) tu xac_suat_tan_cong. Dang chien ma yeu hon ti_le_xin_hoa thi dam phan.",
+  "_ai": "AI nuoc khac theo luat, khong hoc. Tuyen chien khi manh hon ti_le_tuyen_chien lan va quan he duoi quan_he_tuyen_chien, moi gio mot lan tung xac suat xac_suat_tuyen_chien. Tan cong khi du doan thang (Battle.duDoan) tu xac_suat_tan_cong. Dang chien ma yeu hon ti_le_xin_hoa thi dam phan; ben kia manh hon tu ti_le_tuyen_chien lan thi tu choi, nen ti_le_xin_hoa phai lon hon 1 / ti_le_tuyen_chien.",
   "ai": {
     "ti_le_tuyen_chien": 1.3,
     "quan_he_tuyen_chien": 20,
     "xac_suat_tuyen_chien": 0.02,
     "xac_suat_tan_cong": 0.6,
-    "ti_le_xin_hoa": 0.7
+    "ti_le_xin_hoa": 0.9
   },
 
   "_van_hoa": "Anh huong van hoa cong don moi gio. Nguoi choi: nha + cong nghe da xong + tinh; dau tu vang thi doi thang ra anh huong (nut tren man doi `vang_moi_lan_dau_tu` vang moi lan bam). AI: tinh + thoi dai.",

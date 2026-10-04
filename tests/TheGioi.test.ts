@@ -34,6 +34,12 @@ describe('docTheGioi', () => {
     tho.quan.quan_trung_lap = ['khong_co'];
     expect(() => docTheGioi(tho, doc('victory.json'), new Set(tran.doi.keys()))).toThrow(/quan_trung_lap/);
   });
+
+  it('tu choi nguong xin hoa ma ben kia luon tu choi (luat TG14)', () => {
+    const tho = doc('the_gioi.json') as { ai: { ti_le_xin_hoa: number } };
+    tho.ai.ti_le_xin_hoa = 0.7; // so cu: 0,7 x ti_le_tuyen_chien 1,3 < 1
+    expect(() => docTheGioi(tho, doc('victory.json'), new Set(tran.doi.keys()))).toThrow(/ti_le_xin_hoa/);
+  });
 });
 
 describe('NgoaiGiao', () => {
