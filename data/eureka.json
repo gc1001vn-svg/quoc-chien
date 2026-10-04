@@ -4,7 +4,7 @@
   "_giam": "Giam bao nhieu PHAN TRAM gia cong nghe. 40 la gan dung con so Civ VI. Moi Eureka chi an MOT lan, ca khi dieu kien dung lai lan nua.",
   "_do_that_11_09": "DA DO, khong doan. Ban dau moc dat theo `ton` (ton kho) va ca 19 moc deu sang ngay gio 1. Do lai 120 gio thi ro vi sao: thanh pho demo mo man da co san 188 cong trinh, nen gan nhu mat hang nao cung CHAM TRAN tu gio dau (lua_mi 1600/1600, go_tho 400/400...). `ton` khong phai tin hieu - no la tran kho.",
   "_do_lan_hai": "Do tiep `lamRa` (san luong moi gio) thi cung gan dinh ngay gio 1, vi thanh pho da xay du. Chi vai mat hang CO tang that khi thong doc xay them, do duoc trong 120 gio: muoi 1422->2128 · thep 537->802 · ca muoi 1256->1774 · gom 994->1292 · bot 4220->4670 · vai 1136->1281 · ao da 1445->1504 · banh mi 3774->3874 · ruou 3614->3692. Nhung mat hang khac (da xay, voi, giap, vu khi, than, quang) DUNG YEN - dat moc vao do la dat mot dieu kien khong bao gio dung.",
-  "_nen_moc_dat_the_nay": "Moc chi dat vao thu CO TANG: `lamRa` cua chin mat hang tren, `soNha` (188 -> 241 trong 120 gio), va `soKho`. Vai moc doi 3 co tinh dat cao hon 120 gio - van dai hon the moi toi, dung y: khong phai Eureka nao cung nhat duoc trong mot van ngan.",
+  "_nen_moc_dat_the_nay": "Moc chi dat vao thu CO TANG: `lamRa` cua chin mat hang tren, `soNha` (188 -> 241 trong 120 gio), va `soKho`. Vai moc doi 3 co tinh dat cao hon 120 gio - van dai hon the moi toi, dung y: khong phai Eureka nao cung nhat duoc trong mot van ngan. 04/10: `soKho` HET tang - sua loi kho rieng phinh mai thi dinh nguoi vac 657 -> 231-271, thong doc khong xay kho nao (dung o 6), bon moc 9/14/18/22 kho chet. Doi sang `soNha` 200/210/240/270: no cung gio ban cu (gio 4/20/44/68), so Eureka ca van 19/17/19 nhu cu 19/18/18.",
   "giam": 40,
   "eureka": [
     {
@@ -59,8 +59,8 @@
     },
     {
       "congNghe": "kien_truc_vom",
-      "hien": "Thành phố có 9 kho",
-      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 9 }
+      "hien": "Thành phố có 200 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 200 }
     },
     {
       "congNghe": "nong_cu_sat",
@@ -74,8 +74,8 @@
     },
     {
       "congNghe": "in_an",
-      "hien": "Thành phố có 14 kho",
-      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 14 }
+      "hien": "Thành phố có 210 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 210 }
     },
     {
       "congNghe": "thuoc_sung",
@@ -94,8 +94,8 @@
     },
     {
       "congNghe": "ke_toan_kep",
-      "hien": "Thành phố có 18 kho",
-      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 18 }
+      "hien": "Thành phố có 240 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 240 }
     },
     {
       "congNghe": "hai_do",
@@ -104,8 +104,8 @@
     },
     {
       "congNghe": "dong_co_hoi_nuoc",
-      "hien": "Thành phố có 22 kho",
-      "dieuKien": { "do": "soKho", "phep": ">=", "gia": 22 }
+      "hien": "Thành phố có 270 công trình",
+      "dieuKien": { "do": "soNha", "phep": ">=", "gia": 270 }
     },
     {
       "congNghe": "xe_goong",
