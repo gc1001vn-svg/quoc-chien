@@ -25,6 +25,10 @@
 - [TP14] Từ bất kỳ ô đường nào tới bất kỳ ô đường nào, người vác luôn tới nơi: mỗi bước một ô, không rời đường, không ra khỏi bản đồ, và không đi vòng quá quãng thẳng cộng hai lần đoạn ra tới ngã tư gần nhất.
 - [TP15] Cùng hạt giống và cùng các lựa chọn thì thành phố diễn ra y hệt đến từng món hàng và từng người vác; đổi hạt giống thì ra thành phố khác.
 
+## Xây nhà từng bước — `tests/BatBienXay.test.ts`
+
+- [TP16] Nhà và kho xây thêm lúc đang chơi ghi đúng nhịp khởi công (nhịp lúc xây, không ở tương lai), không nằm trên đường, nhà được tính và chạy ngay từ nhịp xây (đang xây vẫn sản xuất), và hiện đủ hình đúng `thoiLuongNhip` nhịp sau khởi công — chưa tới thì chưa đủ; dừng hay tua thì cùng một nhịp vẫn ra cùng một hình.
+
 ## Trận đánh và mua quân — `tests/BatBienTran.test.ts`
 
 - [TR01] Cùng đội hình, cùng hạt giống thì trận diễn ra y hệt (kết quả, kịch bản, con số dự đoán), dù trước đó máy đã đánh bao nhiêu trận khác, theo thứ tự nào; tính trận không được sửa đội hình đưa vào, và đội hình bị khoá cứng vẫn tính được, ra y hệt.
