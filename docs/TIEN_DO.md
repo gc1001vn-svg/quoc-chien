@@ -93,6 +93,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 ## 5. Phiên sau
 
 **Đầu phiên mở mới:** kiểm công cụ `browser_*` (Playwright MCP) có hiện không — `ToolSearch` "browser". Không thì xem `claude mcp list`.
+**Việc anh hẹn (04/10):** anh gửi một ảnh game → nhận ra game (nhìn ảnh + `WebSearch`) → tìm bản chơi web (itch.io mở sẵn;
+trang khác có thể bị chặn) → chơi thử bằng `browser_*`, gửi bảng ảnh + ghi chú. Game chỉ có trên PC/điện thoại: nói rõ, xem video qua Gemini.
 
 **PHIÊN SAU: chờ anh chơi thử bản 04/10 (mục 3).** Chưa có việc máy nào đang dở. Anh mở lại art bible thì làm bảng 2 (dưới).
 
