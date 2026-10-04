@@ -167,6 +167,13 @@ html, body {
 }
 .the-nut-van { display: block; font-size: 14px; font-weight: 700; }
 .the-nut-loi { display: block; font-size: 12px; opacity: 0.72; margin-top: 3px; }
+/* Man ngang thap (iPhone nam ngang cao 402 px): nua man chi ~185 px, xep doc thi lua chon thu
+   ba khuat han duoi day the, nguoi choi khong biet con lua chon - may soi bat 04/10. Xep
+   ngang thanh mot hang: be ngang thua, ba lua chon cung hien. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .the-nut { flex-direction: row; align-items: stretch; }
+  .the-nut button { flex: 1 1 0; min-width: 0; }
+}
 
 .su-kien {
   position: absolute;
@@ -689,6 +696,13 @@ html, body {
   .nut-doi-man, .cong-trinh, .bang-meta {
     top: calc(env(safe-area-inset-top) + 92px);
   }
+  /* Cot nut phai buoc 42 px (70 / 112 / 154) tut CA COT theo nut dau, khong thi "Xem tran"
+     o 112 px chong 11 px len "Ve thanh pho" o 92 px - may soi bat 04/10 (`soi:giao-dien`). */
+  .nut-xem-tran { top: calc(env(safe-area-inset-top) + 134px); }
+  .nut-ghi-cong { top: calc(env(safe-area-inset-top) + 176px); }
+  /* Dong du doan tran giua tren man doc rong toi 92 % nen dung vao cot nut phai: ha xuong
+     duoi cot (nut cuoi cua man tran la "Tran co/sung" o 134 px, cao ~30 px). */
+  .tran-dau { top: calc(env(safe-area-inset-top) + 176px); }
 }
 
 /*
