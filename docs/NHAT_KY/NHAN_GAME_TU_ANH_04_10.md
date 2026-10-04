@@ -52,3 +52,13 @@ ngược 3–15 s → hiện ngay. Sống động nhờ: dân xuống xe buýt, 
 **Rút ra:** game đẹp cũng chỉ 3–4 bước + hiệu ứng (giàn giáo dùng chung, ánh sáng, bụi), không liền mạch. Quốc Chiến đã
 có: lên đời, người vác (`src/render/VeCanh.ts`), hệ hạt khói/lửa. Chưa có: xây theo bước, lúa lớn dần, cây/mỏ cạn dần,
 sương mù mở đất, ngày/đêm. Mỗi bước thêm hình → tốn atlas (mẻ cổ đại gần hết chỗ) — phải tính trước.
+
+## Phần 4 — anh gửi thêm Survivor Island (3 clip quảng cáo, 4,6–7,1 s)
+
+**Survivor Island-Idle Game** (Longames / MOBIBRAIN, 19 triệu lượt tải). Quảng cáo chia đôi màn: trên là trại mới chơi
+(lều, lửa trại, nhà xây dở nền đá + tường gỗ nửa chừng, cầu tàu gỗ), dưới là cùng chỗ ở cấp 19–72 (làng gỗ, xưởng gỗ
+"Woods+6", bến cảng có tháp, đánh nhau). Gemini xem video thật `t4lqLq4wBUo` (nạp 26.401 token video): **khớp quảng cáo**
+— game duy nhất trong 4 game. Xây ~2 s: khung gỗ dở + giàn giáo + bụi + búa → xong. Nâng cấp: vòng tiến độ xanh → loé
+trắng → nhà to hơn, nhiều gỗ xếp quanh. Đêm (04:05): màn tối xanh, lửa trại toả vòng sáng, dân vào lều, "Zzz". Sương mù
+tan theo vòng tròn khi đốt lửa trại. Khói ống khói nhà ăn. Cây chặt không đổ, số gỗ bay về kho. Không có: vòng sáng vàng
+(chỉ ở quảng cáo), lều tự hoá nhà gỗ (đó là so cấp). **Thành mẫu chính của kế hoạch** `2026-10-04-moi-thu-tung-buoc.md`.

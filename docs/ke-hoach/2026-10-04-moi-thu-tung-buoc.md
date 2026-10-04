@@ -1,8 +1,11 @@
 # Mọi thứ diễn ra từng bước — 04/10/2026 · ANH DUYỆT 04/10
 
 Anh chốt 04/10 (lần 34): không chỉ lúa và xây nhà — mọi thứ trong thành phố phải hiện ra dần, đồ hoạ tầm Viking Rise /
-Happy Citizens. Mẫu đã xem (video lối chơi thật qua Gemini): `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 2–3.
+Happy Citizens. Mẫu đã xem (video lối chơi thật qua Gemini): `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 2–4.
 Bài học mẫu: game đẹp cũng chỉ **3–4 bước + hiệu ứng** (móng → giàn giáo, thợ gõ, bụi → loé sáng → xong), không liền mạch.
+**Mẫu sát nhất: Survivor Island** (anh gửi 04/10; video thật khớp quảng cáo, hoạt hình 3D góc xéo): xây **~2 s** — khung gỗ
+dở + giàn giáo + bụi + búa gõ → xong; nâng cấp: vòng tiến độ → loé trắng → nhà to hơn; đêm: màn tối xanh, lửa trại toả
+vòng sáng, dân vào lều "Zzz"; sương mù tan theo vòng quanh lửa trại; khói ống khói; số tài nguyên bay lên.
 
 ## Hiện trạng (đo 04/10)
 - Nhà thống đốc xây thêm hiện ra **ngay** (`src/sim/city/XayThem.ts` → `datNha`). Ruộng một hình. Không ngày/đêm.
@@ -22,7 +25,8 @@ Bài học mẫu: game đẹp cũng chỉ **3–4 bước + hiệu ứng** (món
 ## Việc — mỗi bước một phiên, mỗi phiên anh xem iPhone rồi mới sang bước sau
 1. **Xây nhà từng bước** (thành phố): nhà mới → vạch móng → mọc dần từ dưới lên + giàn giáo + bụi + người đứng gõ →
    loé sáng → xong. Áp cho cả kho xây thêm. Luật mới TP: "nhà đang xây không chặn đường, xong đúng giờ".
-2. **Ngày/đêm + dân về nhà:** ánh sáng theo giờ game (`Clock`, hậu kỳ), đêm có đèn/lửa (hạt), ít người đi đường hơn.
+2. **Ngày/đêm + dân về nhà:** ánh sáng theo giờ game (`Clock`, hậu kỳ), đêm có đèn/lửa (hạt), ít người đi đường hơn,
+   nhà dân "Zzz" (mẫu Survivor Island).
 3. **Ruộng lúa lớn dần** theo mẻ sản xuất: cày → mạ → lúa xanh → lúa vàng → gặt (tint + cắt). **Làm SAU khi anh chọn
    bảng nông trại** (art bible bước 2, `TIEN_DO.md` mục 3) — làm trước thì phải nướng hai lần.
 4. **Khai thác cạn dần:** mỏ, rừng, trại quanh thành thưa dần theo kho; hết thì đổi hình. Dò trước có vẽ cây/mỏ không.
@@ -31,7 +35,7 @@ Bài học mẫu: game đẹp cũng chỉ **3–4 bước + hiệu ứng** (món
 
 ## Anh đã chọn (04/10, nguyên văn: "1 chạy luôn. Nhưng nhà xây cho nhanh 1 tí. 2 như theo đề xuất. 3 đồng ý")
 - **Câu 1 — chạy luôn:** nhà đang xây vẫn sản xuất, chỉ đổi hình, không đổi cân bằng. **Xây nhanh** — ngắn hơn mẫu
-  (Viking Rise 3–18 s): mặc định vài giây nhìn thấy ở tốc độ thường, số trong `data/tung_buoc.json`, anh chỉnh được.
+  (Viking Rise 3–18 s): mặc định ~2 s như Survivor Island ở tốc độ thường, số trong `data/tung_buoc.json`, anh chỉnh được.
 - **Câu 2 — thứ tự 1 → 6** như mục "Việc".
 - **Câu 3 — giàn giáo vẽ bằng hạt** (que gỗ, không tốn chỗ ảnh).
 
