@@ -620,7 +620,7 @@ bằng kho-game → 14/14, 0 hỏng; nướng lại 4 mẻ từ đó → atlas y
 
 Luật đo ra, **chưa sửa — chờ anh quyết** (chi tiết `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`):
 
-- **Hai lỗi đổi nhịp game** — người vác đi ra ngoài bản đồ (TP06, TP14) · kho riêng phình mãi (TP04). Mã đã sửa ở nhánh
+- **Hai lỗi đổi nhịp game** — người vác đi ra ngoài bản đồ (TP06, TP14) · kho riêng phình mãi (TP04). **Anh chọn B 04/10:** chỉnh cân bằng trước rồi đẩy một lần. Mã đã sửa ở nhánh
   `claude/gracious-curie-pm0flr`; ba luật ghi `(chưa bật)` trong `docs/LUAT_BAT_BIEN.md` tới khi gộp. Bảng số: `TIEN_DO.md` mục 3.
 - **Trận: đi theo hàng phụ thuộc thứ tự danh sách** (`Battle.ts:180`): `daCham` bật GIỮA vòng lặp, nên ở nhịp vừa chạm
   địch đội đứng sau đội đánh đầu tiên đã đi tốc độ riêng, đội đứng trước vẫn đi tốc độ hàng — trái comment `Battle.ts:153`.
