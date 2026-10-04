@@ -96,10 +96,15 @@ export interface SoWalker {
  * Mot buoc tren luoi duong, tu (a,b) toi (da,db). Tra ve o ke tiep.
  *
  * Khong bao gio quay dau vo ich: uu tien truc dang di duoc, het truc thi ve nga tu.
+ *
+ * `canh` la co ban do: con duong gan nhat phai NAM TRONG ban do. Lam tron tran thi o sat mep
+ * (vd a = 92..95 tren ban do 96, c = 8) bi day ra con duong a = 96 khong ton tai, va nguoi
+ * vac men theo no ngoai ban do (luat TP06, do 03/10: lan dau o nhip 117).
  */
-export function buocKeTiep(tu: O, toi: O, c: number): O {
+export function buocKeTiep(tu: O, toi: O, c: number, canh = Infinity): O {
   const { a, b } = tu;
-  const ganC = (x: number): number => Math.round(x / c) * c;
+  const duongCuoi: number = Math.floor((canh - 1) / c) * c;
+  const ganC = (x: number): number => Math.min(Math.round(x / c) * c, duongCuoi);
 
   // Dich luon nam tren mot con duong: hoac cot (`b % c === 0`), hoac hang (`a % c === 0`).
   // Phai vao dung con duong DO truoc roi moi di doc theo no - di sai truc truoc la ket:
@@ -151,14 +156,16 @@ export class DoiWalker {
   private readonly duongCach: number;
   private readonly nhipMoiBuoc: number;
   private readonly buocToiDa: number;
+  private readonly canh: number;
 
   // Gan trong than ham chu khong `constructor(private readonly kho: O)`: Node boc kieu
   // TypeScript khong nuot duoc loi viet tat do (CLAUDE.md luat 1).
-  constructor(kho: O, duongCach: number, nhipMoiBuoc: number, buocToiDa: number) {
+  constructor(kho: O, duongCach: number, nhipMoiBuoc: number, buocToiDa: number, canh = Infinity) {
     this.khoDs = [kho];
     this.duongCach = duongCach;
     this.nhipMoiBuoc = nhipMoiBuoc;
     this.buocToiDa = buocToiDa;
+    this.canh = canh;
   }
 
   /** Bao nhieu kho dang co. */
@@ -270,7 +277,7 @@ export class DoiWalker {
         continue;
       }
 
-      const buoc: O = buocKeTiep(w, dich, this.duongCach);
+      const buoc: O = buocKeTiep(w, dich, this.duongCach, this.canh);
       if ((buoc.a === w.a && buoc.b === w.b) || w.buoc >= this.buocToiDa) {
         // Ket cung hoac di qua lau: tra hang ve nha ngay, dung de hang bien mat.
         veNha(w);

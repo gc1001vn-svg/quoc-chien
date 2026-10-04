@@ -57,6 +57,8 @@ export function docHang(tho: unknown): DinhNghiaHang[] {
 export class Kho {
   private readonly so = new Map<string, number>();
   private readonly tran = new Map<string, number>();
+  /** So hang dang tren duong toi kho, da giu cho truoc (xem `conCho`). */
+  private readonly daGiu = new Map<string, number>();
 
   constructor(dsHang: readonly DinhNghiaHang[]) {
     for (const h of dsHang) {
@@ -87,6 +89,29 @@ export class Kho {
   /** Con du cho cho `so` mon nua khong. */
   duCho(ten: string, so: number): boolean {
     return this.co(ten) + so <= this.tranCua(ten);
+  }
+
+  /**
+   * Con bao nhieu cho, da tru phan GIU cho nguoi dang mang hang toi. Khong am.
+   *
+   * Nguoi giao phai giu cho truoc khi di (`giu`): khong giu thi kho day luc nguoi toi, phan thua
+   * theo nguoi ve nha va kho rieng cua nha phinh mai (luat TP04, do 03/10: tran 72, mot nha om
+   * 1.126 mon), nguoi vac cho hang di roi cho ve nguyen.
+   */
+  conCho(ten: string): number {
+    return Math.max(0, this.tranCua(ten) - this.co(ten) - (this.daGiu.get(ten) ?? 0));
+  }
+
+  /** Giu `so` cho cho hang dang tren duong toi (`so` am = tra cho). Tra ve `so` de goi long nhau. */
+  giu(ten: string, so: number): number {
+    this.daGiu.set(ten, (this.daGiu.get(ten) ?? 0) + so);
+    return so;
+  }
+
+  /** Nguoi giao toi kho: tra cho da giu roi bo hang vao. Tra ve so bo vao duoc, nhu `them`. */
+  nhanGiao(ten: string, so: number): number {
+    this.giu(ten, -so);
+    return this.them(ten, so);
   }
 
   /** Con du `so` mon de lay ra khong. */

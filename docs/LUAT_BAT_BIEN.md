@@ -12,9 +12,9 @@
 - [TP01] Hàng không tự sinh ra cũng không tự biến mất: cuối mỗi giờ, tổng hàng trong kho chung, trong các nhà và trên vai người vác luôn bằng lúc mở ván cộng phần làm ra và quà của nhà mới xây, trừ phần đã dùng và phần hỏng, kể cả khi người vác bỏ cuộc giữa đường.
 - [TP02] Không chỗ nào chứa số hàng âm hay số lẻ, kho chung không bao giờ vượt sức chứa, và một người vác không bao giờ mang quá một chuyến.
 - [TP03] Ở ván chơi bình thường, từ giờ thứ hai trở đi, giờ nào mọi loại nhà cũng chạy xong ít nhất một mẻ và mọi mặt hàng đều vừa được làm ra vừa được dùng tới, dù bản đồ nào và xây thêm kiểu gì.
-- [TP04] (chưa bật) Ở ván chơi bình thường, kho riêng của một nhà chỉ được vượt sức chứa nhiều nhất một chuyến vác: kho chung đầy thì nhà phải ngừng làm, không được ôm hàng mãi.
+- [TP04] Ở ván chơi bình thường, kho riêng của một nhà chỉ được vượt sức chứa nhiều nhất một chuyến vác: kho chung đầy thì nhà phải ngừng làm, không được ôm hàng mãi.
 - [TP05] Bảng số mỗi giờ nói thật: số hàng làm ra đúng bằng số mẻ xong nhân sản lượng khai trong dữ liệu, hàng không hỏng thì không mất món nào vì hỏng, và số nhà từng loại đúng như ngoài bản đồ.
-- [TP06] (chưa bật) Người vác lúc nào cũng đứng trên một ô đường nằm trong bản đồ.
+- [TP06] Người vác lúc nào cũng đứng trên một ô đường nằm trong bản đồ.
 - [TP07] Người vác xuất phát từ đúng cổng nhà mình, mỗi bước đi một ô nên không bao giờ cách cổng xa hơn số bước đã đi, chỉ đi tới kho có thật, không quá số bước tối đa, và trong ván thường không ai phải bỏ cuộc giữa đường.
 - [TP08] Bộ đếm người đi lấy và người đi giao luôn khớp số người thật đang trên đường, và không vượt trần của từng việc cũng như trần tổng số người vác.
 - [TP09] Mỗi cờ 'đang có người đi lấy món này' của một nhà ứng với đúng một người vác đang đi lấy món đó cho nhà đó, và ngược lại; không cờ nào mồ côi, không món nào có hai người cùng đi lấy.
@@ -22,7 +22,7 @@
 - [TP11] Danh sách vật trên bản đồ luôn xếp đúng thứ tự trước sau để vẽ, kể cả sau khi xây thêm nhà và kho.
 - [TP12] Hạt giống nào cũng dựng được thành phố, và nhà nào cũng nằm sát đường, đúng khu quy hoạch, không trên viền khu, không trùng hay kề sát nhà khác, mỗi khối phố nhiều nhất một tiện ích, cổng là ô đường ngay cạnh nhà trong bản đồ.
 - [TP13] Kho nào cũng nằm ở một ngã tư trong bản đồ, và không có hai kho trùng chỗ.
-- [TP14] (chưa bật) Từ bất kỳ ô đường nào tới bất kỳ ô đường nào, người vác luôn tới nơi: mỗi bước một ô, không rời đường, không ra khỏi bản đồ, và không đi vòng quá quãng thẳng cộng hai lần đoạn ra tới ngã tư gần nhất.
+- [TP14] Từ bất kỳ ô đường nào tới bất kỳ ô đường nào, người vác luôn tới nơi: mỗi bước một ô, không rời đường, không ra khỏi bản đồ, và không đi vòng quá quãng thẳng cộng hai lần đoạn ra tới ngã tư gần nhất.
 - [TP15] Cùng hạt giống và cùng các lựa chọn thì thành phố diễn ra y hệt đến từng món hàng và từng người vác; đổi hạt giống thì ra thành phố khác.
 
 ## Trận đánh và mua quân — `tests/BatBienTran.test.ts`

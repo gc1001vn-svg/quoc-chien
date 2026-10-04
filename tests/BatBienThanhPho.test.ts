@@ -18,7 +18,6 @@ import chuoi from '../data/chains.json';
 import banDo from '../data/thanh_pho_demo.json';
 import walker from '../data/walkers.json';
 import policy from '../data/policy.json';
-
 // --- Tham so thu, KHONG phai so can bang. ---
 const SAU = process.env.LUAT_SAU === '1';
 const TS = SAU
@@ -285,7 +284,9 @@ describe('luat bat bien thanh pho', () => {
   it('[TP01] hang khong tu sinh tu mat', () => { kiemLuat('TP01'); expect(boCuocEp, 'ban ep bo cuoc phai co nguoi bo cuoc that').toBeGreaterThan(0); });
   it('[TP02] khong cho nao am, kho chung khong vuot tran, nguoi vac khong qua mot chuyen', () => { kiemLuat('TP02'); });
   it('[TP03] tu gio thu hai khong loai nha nao, mat hang nao ket', () => { kiemLuat('TP03'); });
+  it('[TP04] kho rieng vuot tran nhieu nhat mot chuyen', () => { kiemLuat('TP04'); });
   it('[TP05] bang so moi gio noi that', () => { kiemLuat('TP05'); });
+  it('[TP06] nguoi vac luon dung tren duong trong ban do', () => { kiemLuat('TP06'); });
   it('[TP07] nguoi vac di tung buoc tu cong nha toi kho co that, khong ai bo cuoc', () => { kiemLuat('TP07'); });
   it('[TP08] bo dem nguoi vac khop thuc te va duoi tran', () => { kiemLuat('TP08'); });
   it('[TP09] co dang lay khop dung mot nguoi di lay', () => { kiemLuat('TP09'); });
@@ -293,5 +294,6 @@ describe('luat bat bien thanh pho', () => {
   it('[TP11] vat tren ban do luon xep theo do sau', () => { kiemLuat('TP11'); });
   it('[TP12] nha dung quy hoach, cong tren duong', () => { kiemLuat('TP12'); });
   it('[TP13] kho nao cung la nga tu rieng trong ban do', () => { kiemLuat('TP13'); });
+  it('[TP14] duong nao cung toi noi, khong ra khoi ban do', () => { kiemLuat('TP14'); });
   it('[TP15] cung hat giong cung lua chon thi thanh pho y het', () => { kiemLuat('TP15'); });
 });
