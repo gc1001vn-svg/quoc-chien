@@ -40,9 +40,10 @@ export interface DuLieuTran {
   readonly nguongVo: number;
   readonly nhieu: number;
   readonly heSoTuong: number;
-  readonly doDoc: number;
-  readonly heSoTam: number;
-  readonly muPhongThu: number;
+  /** `duDoan` chay that bay nhieu tran (hat 1..n) roi dem ti le thang. */
+  readonly soTranDuDoan: number;
+  /** Tran dau ma cung mot ben thang het thi `duDoan` dung som, ra 0 hoac 1. */
+  readonly soTranDungSom: number;
   readonly tuongToiDa: number;
   /** He so nhan sat thuong cua `dan` len `giap`. */
   heSo(giap: string, dan: string): number;
@@ -87,9 +88,8 @@ interface CauHinhTran {
   readonly nguong_vo: number;
   readonly nhieu: number;
   readonly he_so_tuong: number;
-  readonly do_doc: number;
-  readonly he_so_tam: number;
-  readonly mu_phong_thu: number;
+  readonly so_tran_du_doan: number;
+  readonly so_tran_dung_som: number;
   readonly tuong_toi_da: number;
   readonly dia_hinh: Readonly<Record<string, { readonly toc_do: number; readonly phong_thu: number }>>;
 }
@@ -122,9 +122,11 @@ function kiemTran(t: CauHinhTran): void {
   if (t.nhieu > 1) throw new Error(`battle: nhieu = ${String(t.nhieu)}: phai <= 1`);
   kiemSo('battle: he_so_tuong', t.he_so_tuong, 0, false);
   kiemSo('battle: tuong_toi_da', t.tuong_toi_da, 0, false, true);
-  kiemSo('battle: do_doc', t.do_doc, 0, true);
-  kiemSo('battle: he_so_tam', t.he_so_tam, 0, false);
-  kiemSo('battle: mu_phong_thu', t.mu_phong_thu, 0, false);
+  kiemSo('battle: so_tran_du_doan', t.so_tran_du_doan, 0, true, true);
+  kiemSo('battle: so_tran_dung_som', t.so_tran_dung_som, 0, true, true);
+  if (t.so_tran_dung_som > t.so_tran_du_doan) {
+    throw new Error(`battle: so_tran_dung_som = ${String(t.so_tran_dung_som)}: phai <= so_tran_du_doan ${String(t.so_tran_du_doan)}`);
+  }
   for (const [k, v] of Object.entries(t.dia_hinh)) {
     kiemSo(`battle: dia_hinh ${k} toc_do`, v.toc_do, 0, true);
     kiemSo(`battle: dia_hinh ${k} phong_thu`, v.phong_thu, 0, true);
@@ -172,9 +174,8 @@ export function docDuLieuTran(bangTho: unknown, doiTho: unknown, tranTho: unknow
     nguongVo: t.nguong_vo,
     nhieu: t.nhieu,
     heSoTuong: t.he_so_tuong,
-    doDoc: t.do_doc,
-    heSoTam: t.he_so_tam,
-    muPhongThu: t.mu_phong_thu,
+    soTranDuDoan: t.so_tran_du_doan,
+    soTranDungSom: t.so_tran_dung_som,
     tuongToiDa: t.tuong_toi_da,
     heSo: (giap: string, dan: string): number => bang.dan[dan]?.[bang.giap.indexOf(giap)] ?? 0,
   };

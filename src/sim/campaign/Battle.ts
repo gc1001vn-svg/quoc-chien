@@ -5,8 +5,8 @@
  * thang toi doi dich gan nhat, vao tam thi danh. Sat thuong tra bang giap x dan kieu OpenRA
  * (`data/armor_table.json`). Mau tut duoi nguong thi doi vo, rut khoi tran.
  *
- * `duDoan` tinh % thang KHONG chay tran - so hien ra truoc tran. `npm run sim:tran` do xem
- * so do co khop ti le thang that khong (KE_HOACH muc 3, Phase 9).
+ * `duDoan` ra % thang hien truoc tran bang cach chay that `soTranDuDoan` tran. `npm run sim:tran`
+ * do xem so do co khop ti le thang that khong (KE_HOACH muc 3, Phase 9).
  */
 import { Rng } from '../../core/Rng.ts';
 import { kiemDauVao, loai, type Ben, type DauVaoTran, type DiaHinhTran, type DuLieuTran, type LoaiDoi } from './BattleData.ts';
@@ -55,32 +55,37 @@ export interface KetQuaTran {
 }
 
 
-/** Suc manh mot ben theo luat binh phuong Lanchester: sat thuong hieu dung x tong mau. */
-function sucManh(ben: Ben, dich: Ben, dichGiuDat: boolean, dh: DiaHinhTran, duLieu: DuLieuTran): number {
-  const loaiDich: LoaiDoi[] = dich.doi.map((id) => loai(duLieu, id));
-  const mauDich: number = loaiDich.reduce((s, l) => s + l.linh * l.mau, 0);
-  let satThuong = 0;
-  let mau = 0;
-  for (const id of ben.doi) {
-    const l: LoaiDoi = loai(duLieu, id);
-    // He so giap x dan trung binh, trong so theo phan mau cua tung doi dich.
-    const heSo: number = loaiDich.reduce((s, v) => s + ((v.linh * v.mau) / mauDich) * duLieu.heSo(v.giap, l.dan), 0);
-    satThuong += l.linh * l.satThuong * heSo * (1 + duLieu.heSoTam * l.tam);
-    mau += l.linh * l.mau;
-  }
-  const tuong: number = 1 + ben.tuong * duLieu.heSoTuong;
-  // Dia hinh nang tay hon luat binh phuong: di cham thi ben ban xa duoc ban lau hon truoc khi
-  // giap mat. Mu `muPhongThu` do bang `sim:tran` (24/09), khong suy tu ly thuyet.
-  return satThuong * tuong * (dichGiuDat ? dh.phongThu ** duLieu.muPhongThu : 1) * mau;
-}
+/** Tran nho bao nhieu cap doi hinh da du doan - qua thi xoa het, nho lai tu dau. */
+const TRAN_BO_NHO = 4096;
+const boNhoDuDoan = new WeakMap<DuLieuTran, Map<string, number>>();
 
-/** Xac suat ben `a` thang, trong [0, 1]. Khong chay tran, khong dung so ngau nhien. */
+/**
+ * Xac suat ben `a` thang, trong [0, 1]: ti le thang cua CHINH `tinhTran` qua `soTranDuDoan` hat
+ * giong 1..n, dung som khi `soTranDungSom` tran dau cung mot ben thang (GAME_SPEC muc 6 - con so du doan khong lech cai nguoi choi xem). Cong thuc Lanchester
+ * cu lech toi 97,7 diem o tung cap doi hinh (do 04/10, luat TR15). Ket qua nho theo doi hinh: AI hoi
+ * lai cung mot cap moi gio. Ham thuan - nho hay khong cung ra mot so (luat TR01).
+ */
 export function duDoan(vao: DauVaoTran, duLieu: DuLieuTran): number {
-  const dh: DiaHinhTran = kiemDauVao(vao, duLieu);
-  const sucA: number = sucManh(vao.a, vao.b, true, dh, duLieu);
-  const sucB: number = sucManh(vao.b, vao.a, false, dh, duLieu);
-  if (sucA <= 0) return 0;
-  return 1 / (1 + (sucB / sucA) ** duLieu.doDoc);
+  kiemDauVao(vao, duLieu);
+  let boNho: Map<string, number> | undefined = boNhoDuDoan.get(duLieu);
+  if (boNho === undefined) {
+    boNho = new Map();
+    boNhoDuDoan.set(duLieu, boNho);
+  }
+  const khoa: string = JSON.stringify([vao.a.doi, vao.a.tuong, vao.b.doi, vao.b.tuong, vao.diaHinh]);
+  const co: number | undefined = boNho.get(khoa);
+  if (co !== undefined) return co;
+  let [thang, soTran] = [0, 0];
+  for (let hat = 1; hat <= duLieu.soTranDuDoan; hat += 1) {
+    if (tinhTran(vao, duLieu, hat).thang === 'a') thang += 1;
+    soTran = hat;
+    // Tran gan nhu chac ket qua thi dung som: `soTranDungSom` tran dau cung mot ben thang het.
+    if (hat === duLieu.soTranDungSom && (thang === 0 || thang === hat)) break;
+  }
+  const p: number = thang / soTran;
+  if (boNho.size >= TRAN_BO_NHO) boNho.clear();
+  boNho.set(khoa, p);
+  return p;
 }
 
 interface DoiTran {

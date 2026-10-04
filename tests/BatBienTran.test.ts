@@ -54,7 +54,8 @@ const dongBang = <T>(x: T): T => { if (typeof x === 'object' && x !== null) for 
 /** TR02, TR03, TR14: mot doi qua tung khung vet. */
 function kiemDoi(vao: DauVaoTran, kq: KetQuaTran, d: DuLieuTran, p: Phe, i: number, g: Ghi): void {
   const id = vao[p].doi[i] ?? '';
-  const [l, dh, w, hang, gCham] = [loai(d, id), diaHinhCua(d, vao.diaHinh), d.chienTruong, Math.min(...vao[p].doi.map((x) => loai(d, x).tocDo)), Math.min(d.tranGiay + 1, ...kq.suKien.filter((s) => s.ben === p && s.loai === 'danh').map((s) => s.giay))]; // TR14: gCham = nhip ben p danh lan dau, hang = toc doi cham nhat
+  // TR14: toi het nhip ben p danh lan dau (gCham) ca ben di theo doi cham nhat (hang); chua ai danh thi gCham qua het gio.
+  const [l, dh, w, hang, gCham] = [loai(d, id), diaHinhCua(d, vao.diaHinh), d.chienTruong, Math.min(...vao[p].doi.map((x) => loai(d, x).tocDo)), Math.min(d.tranGiay + 1, ...kq.suKien.filter((s) => s.ben === p && s.loai === 'danh').map((s) => s.giay))];
   const sk = (t: string): number[] => kq.suKien.filter((s) => s.ben === p && s.doi === i && s.loai === t).map((s) => s.giay);
   const [[gVo = Infinity, ...voThem], [gDanh = Infinity, ...danhThem]] = [sk('vo'), sk('danh')];
   if (voThem.length + danhThem.length > 0) g('TR02', `doi ${p}${String(i)}: vo hoac danh lan dau hon mot lan`);
@@ -75,7 +76,8 @@ function kiemDoi(vao: DauVaoTran, kq: KetQuaTran, d: DuLieuTran, p: Phe, i: numb
     if (t.vo && (o.x !== t.x || o.y !== t.y || o.conSong !== t.conSong)) g('TR02', `${tai}: da vo ma van di hoac mat linh`);
     const [buoc, tran, tranHang] = [Math.hypot(o.x - t.x, o.y - t.y), l.tocDo * dh.tocDo * (k.giay - tk.giay), dh.tocDo * (hang * (Math.min(k.giay, gCham) - Math.min(tk.giay, gCham)) + l.tocDo * (Math.max(k.giay, gCham) - Math.max(tk.giay, gCham)))];
     // Dung sai tuong doi: buoc lon nhat do duoc = tran x 1.00000000000002 (sai so dau phay dong).
-    if (buoc > tran * (1 + 1e-9)) g('TR03', `${tai}: di ${String(buoc)} o > tran ${String(tran)} o`); else if (buoc > tranHang * (1 + 1e-9)) g('TR14', `${tai}: di ${String(buoc)} o > ${String(tranHang)} o, ben cham dich o giay ${String(gCham)}, toc hang ${String(hang)}`);
+    if (buoc > tran * (1 + 1e-9)) g('TR03', `${tai}: di ${String(buoc)} o > tran ${String(tran)} o`);
+    if (buoc > tranHang * (1 + 1e-9)) g('TR14', `${tai}: di ${String(buoc)} o > ${String(tranHang)} o, ben cham dich o giay ${String(gCham)}, toc hang ${String(hang)}`);
     if (d.giayMauVet <= d.nhipGiay && o.dangDanh && buoc !== 0) g('TR03', `${tai}: vua danh vua di ${String(buoc)} o`);
   });
 }
@@ -132,39 +134,13 @@ function kiemTran(vao: DauVaoTran, kq: KetQuaTran, kb: readonly Canh[], d: DuLie
   if ((voHet.a || voHet.b) && gVo !== ket) g('TR06', `ben vo het o giay ${String(gVo)} ma tran dung o giay ${String(ket)}`);
 }
 
-/** TR07: con so % thang hien truoc tran. */
-function kiemDuDoan(vao: DauVaoTran, d: DuLieuTran, g: Ghi): void {
-  const p = (v: DauVaoTran): number => duDoan(v, d);
-  const p0 = p(vao);
-  if (!(p0 >= 0 && p0 <= 1)) g('TR07', `du doan ${String(p0)} ngoai [0, 1]`);
-  const heSoDh = (k: string): number => diaHinhCua(d, k).phongThu ** d.muPhongThu;
-  const dsDh = [...d.diaHinh.keys()].sort((x, y) => heSoDh(y) - heSoDh(x));
-  const trungLap = dsDh.find((k) => heSoDh(k) === 1);
-  // Doi ben ra phan bu khi it nhat mot ben gay duoc sat thuong; ca hai cung 0 thi du doan 0 ca hai chieu,
-  // khop tinhTran (hoa thi ben giu dat thang). Dia hinh trung lap chon theo he so phong thu, khong theo ten.
-  const coSat = (ben: Ben, dich: Ben): boolean => ben.doi.some((id) => loai(d, id).satThuong > 0 && dich.doi.some((e) => d.heSo(loai(d, e).giap, loai(d, id).dan) > 0));
-  if (trungLap !== undefined && (coSat(vao.a, vao.b) || coSat(vao.b, vao.a))) {
-    const tong = p({ ...vao, diaHinh: trungLap }) + p({ a: vao.b, b: vao.a, diaHinh: trungLap });
-    if (Math.abs(tong - 1) > 1e-9) g('TR07', `doi ben tren ${trungLap}: hai chieu cong lai ${String(tong)}, khong phai 1`);
-  }
-  for (let t = 0; t < d.tuongToiDa; t++) {
-    const [a0, a1] = [t, t + 1].map((x) => p({ ...vao, a: { ...vao.a, tuong: x } }));
-    const [b0, b1] = [t, t + 1].map((x) => p({ ...vao, b: { ...vao.b, tuong: x } }));
-    if ((a1 ?? 0) < (a0 ?? 0) - 1e-9) g('TR07', `tuong ben a ${String(t)} -> ${String(t + 1)}: % thang tut ${String(a0)} -> ${String(a1)}`);
-    if ((b1 ?? 0) > (b0 ?? 0) + 1e-9) g('TR07', `tuong ben b ${String(t)} -> ${String(t + 1)}: % thang ben a tang ${String(b0)} -> ${String(b1)}`);
-  }
-  for (const [j, k] of dsDh.entries()) {
-    const truoc = dsDh[j - 1];
-    if (truoc !== undefined && p({ ...vao, diaHinh: k }) > p({ ...vao, diaHinh: truoc }) + 1e-9) g('TR07', `dia hinh ${k} phong thu manh hon ${truoc} ma ben danh toi de thang hon`);
-  }
-}
 // Bo doc tu choi = ngoai mien, khong luat nao phai giu.
 const thuDoc = (tran: unknown): DuLieuTran | undefined => { try { return docDuLieuTran(bangTho, doiTho, tran); } catch { return undefined; } };
-/** Tinh mot tran, kiem TR02-TR07 tren chinh tran do; tra ve ket qua va kich ban. */
-const kiemMot = (vao: DauVaoTran, d: DuLieuTran, hatTran: number, g: Ghi): [KetQuaTran, Canh[]] => { const kq = tinhTran(vao, d, hatTran); const kb = sinhKichBan(kq, vao, d); kiemTran(vao, kq, kb, d, g); kiemDuDoan(vao, d, g); return [kq, kb]; };
+/** Tinh mot tran, kiem TR02-TR06, TR14 tren chinh tran do; tra ve ket qua va kich ban. */
+const kiemMot = (vao: DauVaoTran, d: DuLieuTran, hatTran: number, g: Ghi): [KetQuaTran, Canh[]] => { const kq = tinhTran(vao, d, hatTran); const kb = sinhKichBan(kq, vao, d); kiemTran(vao, kq, kb, d, g); return [kq, kb]; };
 
 /**
- * TR11-TR13: battle.json bien ngau nhien; bo doc nhan so nao thi TR02-TR07 phai dung voi so do. TR11 chi bien `nhieu`, TR12
+ * TR11-TR13: battle.json bien ngau nhien; bo doc nhan so nao thi TR02-TR06, TR14 phai dung voi so do. TR11 chi bien `nhieu`, TR12
  * chi bien `hang_xuat_phat`, TR13 bien moi so con lai (nhan he so ngau nhien quanh so that) - moi luat do khi dung mot cho
  * trong bo doc hay vong lap tran bi ho. Moi luat mot day so rieng: sua loi luat nay khong doi mau thu cua luat kia.
  */
@@ -178,7 +154,7 @@ function kiemMien(hat: number): void {
     ['TR12', r12, { hang_xuat_phat: 2 * t.chien_truong * r12.so() }],
     ['TR13', r, {
       chien_truong: ct, hang_xuat_phat: ct * r.so(), nhip_giay: nhip, tran_giay: lech(t.tran_giay), giay_mau_vet: r.so() < 0.5 ? nhip : lech(t.giay_mau_vet),
-      nguong_vo: lech(t.nguong_vo), nhieu: r.so(), he_so_tuong: lech(t.he_so_tuong), tuong_toi_da: Math.round(lech(t.tuong_toi_da)), do_doc: lech(t.do_doc), mu_phong_thu: lech(t.mu_phong_thu),
+      nguong_vo: lech(t.nguong_vo), nhieu: r.so(), he_so_tuong: lech(t.he_so_tuong), tuong_toi_da: Math.round(lech(t.tuong_toi_da)),
       dia_hinh: Object.fromEntries(Object.entries(t.dia_hinh).map(([k, v]) => [k, { toc_do: lech(v.toc_do), phong_thu: v.phong_thu === 1 ? 1 : lech(v.phong_thu) }])),
     }],
   ];
@@ -259,7 +235,7 @@ const kiemMa = (ma: string): void => { const v = viPham.get(ma); expect(v?.vd ??
 describe('luat bat bien tran danh', () => {
   beforeAll(async () => {
     const dauCua = new Map<number, string>();
-    if (TRUNG_LAP === undefined) for (const ma of ['TR05', 'TR07']) ghi(ma, 'data khong co dia hinh phong_thu = 1 - tran guong va ve doi ben thanh rong');
+    if (TRUNG_LAP === undefined) ghi('TR05', 'data khong co dia hinh phong_thu = 1 - tran guong thanh rong');
     for (let hat = 1; hat <= SO_HAT; hat++) {
       const r = rngCua(hat, 1);
       const [vao, hatTran] = [sinhVao(r, du), r.nguyen(2 ** 31)];
@@ -288,7 +264,6 @@ describe('luat bat bien tran danh', () => {
   it('[TR04] doi danh khi va chi khi dich gan nhat trong tam, mat linh chi khi bi danh', () => { kiemMa('TR04'); });
   it('[TR05] ket qua, vet va kich ban ke cung mot chuyen, ben vo het khong thang, khong lui gio', () => { kiemMa('TR05'); });
   it('[TR06] co ben vo het thi tran dung ngay nhip do', () => { kiemMa('TR06'); });
-  it('[TR07] % thang du doan trong 0-100, doi ben ra phan bu, tuong gioi hon va dia hinh khong lam nguoc', () => { kiemMa('TR07'); });
   it('[TR08] mua quan: vang tieu dung bang gia cac doi that su duoc them', () => { kiemMa('TR08'); });
   it('[TR09] mua quan: chi mua doi dung thoi dai dung nhom, khong vuot tran, xep manh truoc, khong sua quan cu', () => { kiemMa('TR09'); });
   it('[TR10] danh chiem tinh: mat doi theo ti le linh chet, ben thua mat it nhat mot doi, tinh trong thang trang, khop tran', () => { kiemMa('TR10'); });

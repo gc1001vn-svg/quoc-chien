@@ -158,7 +158,7 @@ function choiVan(hat: number, dai: boolean): void {
     if (ban2 !== undefined) LAM[x.k](ban2, x);
     if (sang !== undefined && sang !== (x.k === 'tanCong' ? kq === '' : kq === true)) g('TG09', `nut sang = ${String(sang)} ma hanh dong tra ${String(kq)}`);
     if (sang === false && anh(tg) !== anh0) g('TG09', 'nut khoa ma bam van doi the gioi');
-    if (tcH !== undefined && typeof kq === 'string' && (tcH.nut.duoc ? !(tcH.xacSuat > 0 && tcH.xacSuat <= 1) : tcH.nut.lyDo !== LY_DO[kq])) g('TG09', `nut tan cong "${tcH.nut.lyDo}" xac suat ${String(tcH.xacSuat)}, ly do that "${kq}"`);
+    if (tcH !== undefined && typeof kq === 'string' && (tcH.nut.duoc ? !(tcH.xacSuat >= 0 && tcH.xacSuat <= 1) : tcH.nut.lyDo !== LY_DO[kq])) g('TG09', `nut tan cong "${tcH.nut.lyDo}" xac suat ${String(tcH.xacSuat)}, ly do that "${kq}"`);
     if (x.k === 'deDoa' && (h?.nutDeDoa.duoc !== true || h.deDoaThang !== kq)) g('TG09', `nut de doa ${String(h?.nutDeDoa.duoc)}, chu thang ${String(h?.deDoaThang)}, that ${String(kq)}`);
     if (x.k === 'tuyenChien' && h?.nutTuyenChien.duoc === true && tg.ngoaiGiao.trangThai(ta, x.n) !== 'chien_tranh') g('TG09', 'nut tuyen chien sang, bam xong chua chien');
     const nop = Math.min(truoc.get(x.n)?.vang ?? NaN, d.ngoaiGiao.deDoa.congNap);

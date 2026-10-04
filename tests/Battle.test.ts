@@ -61,14 +61,16 @@ describe('tinhTran', () => {
     }
   });
 
-  it('du doan doi xung: doi ben thi phan tram doi nhau', () => {
-    const nguoc: DauVaoTran = { a: CAN.b, b: CAN.a, diaHinh: 'dong_bang' };
-    expect(duDoan(CAN, duLieu) + duDoan(nguoc, duLieu)).toBeCloseTo(1, 6);
+  it('du doan la ti le thang cua chinh tran do qua bo hat du doan', () => {
+    let thang = 0;
+    for (let hat = 1; hat <= duLieu.soTranDuDoan; hat += 1) if (tinhTran(CAN, duLieu, hat).thang === 'a') thang += 1;
+    expect(duDoan(CAN, duLieu)).toBe(thang / duLieu.soTranDuDoan);
   });
 
   it('dia hinh phong thu nghieng ve ben giu dat (ben b)', () => {
-    const nui: DauVaoTran = { ...CAN, diaHinh: 'nui' };
-    expect(duDoan(nui, duLieu)).toBeLessThan(duDoan(CAN, duLieu));
+    // CAN thi ben a thua sach o moi dia hinh (do 04/10: 0 %), nen dung chieu nguoc: dong bang ben a thang 97 %.
+    const nguoc: DauVaoTran = { a: CAN.b, b: CAN.a, diaHinh: 'dong_bang' };
+    expect(duDoan({ ...nguoc, diaHinh: 'nui' }, duLieu)).toBeLessThan(duDoan(nguoc, duLieu));
   });
 
   it('tuong gioi hon nghieng du doan', () => {
