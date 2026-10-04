@@ -115,6 +115,9 @@ export class TrinhDuyet {
     const chua = this.cho.get(doc.id);
     if (chua === undefined) return;
     this.cho.delete(doc.id);
+    // Tra loi roi thi huy han cho: han con treo thi Node doi no het (120 s) moi thoat —
+    // do 04/10: `khoi:dong` 121 s, `chup_man` 124 s, viec that chi ~5 s.
+    clearTimeout(chua.han);
     if (doc.error !== undefined) chua.hong(new Error(doc.error.message));
     else chua.ok(doc.result);
   }
@@ -131,10 +134,10 @@ export class TrinhDuyet {
     if (this.phien !== null && !lenh.startsWith('Target.')) goiTin.sessionId = this.phien;
     this.ws.send(JSON.stringify(goiTin));
     return new Promise((ok, hong) => {
-      this.cho.set(id, { ok, hong });
-      setTimeout(() => {
+      const han = setTimeout(() => {
         if (this.cho.delete(id)) hong(new Error(`Qua han khi goi ${lenh}`));
       }, 120000);
+      this.cho.set(id, { ok, hong, han });
     });
   }
 
