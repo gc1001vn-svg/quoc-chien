@@ -624,13 +624,15 @@ Luật đo ra, **chưa sửa — chờ anh quyết** (chi tiết `docs/NHAT_KY/L
   (`docs/NHAT_KY/CAN_BANG_04_10.md`). Mở ra nợ mới: **thẻ khẩn "Đường đông nghịt" (`dinh` ≥ 600) và luật thống đốc xây kho
   (`nguongDinh` 600) không bao giờ chạm nữa** — đỉnh người vác nay 231–271, kho đứng ở 6. Hạ `nguongDinh` 180 thì đời 6
   lại không tới (kho chiếm lượt thống đốc). Chờ anh: thành phố còn cần kho mới không.
-- **Trận: đi theo hàng phụ thuộc thứ tự danh sách** (`Battle.ts:180`): `daCham` bật GIỮA vòng lặp, nên ở nhịp vừa chạm
+- ~~**Trận: đi theo hàng phụ thuộc thứ tự danh sách**~~ — **sửa 04/10** (TR14, `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`). Gốc `Battle.ts:180`: `daCham` bật GIỮA vòng lặp, nên ở nhịp vừa chạm
   địch đội đứng sau đội đánh đầu tiên đã đi tốc độ riêng, đội đứng trước vẫn đi tốc độ hàng — trái comment `Battle.ts:153`.
   Phá "giữ hàng tính theo trạng thái đầu nhịp" ở 1.445/2.000 trận. Sửa là đổi kết quả trận, `sim:tran` đổi.
-- **AI xin hoà không bao giờ được nhận** (`AiNuoc.ts:25` với `TheGioi.ts:187`): AI xin khi tỉ lệ sức < 0,7, nhưng bị từ chối khi
+- ~~**AI xin hoà không bao giờ được nhận**~~ — **sửa 04/10** (TG14, `ti_le_xin_hoa` 0,9). Gốc `AiNuoc.ts:25` với `TheGioi.ts:187`: AI xin khi tỉ lệ sức < 0,7, nhưng bị từ chối khi
   bên kia ≥ 1,3 × sức mình; 1 / 0,7 ≈ 1,43 > 1,3 → chỉ nhận được khi cả hai bên 0 quân. Số nằm trong data.
-- **% thắng dự đoán lệch tỉ lệ thắng thật** — `GAME_SPEC.md` mục 6 hứa không lệch. Luật thống kê (|dự đoán − tỉ lệ thắng
+- ~~**% thắng dự đoán lệch tỉ lệ thắng thật**~~ — **sửa 04/10** (TR15, chạy thật 32 trận). Gốc: `GAME_SPEC.md` mục 6 hứa không lệch. Luật thống kê (|dự đoán − tỉ lệ thắng
   qua 200 trận| ≤ ngưỡng) chưa bật: thêm một đội đôi khi làm tỉ lệ thắng THẬT tụt hơn 20 điểm (cả bên đi theo đội chậm nhất).
+- **Một giờ thế giới chậm nhất 25 ms trên máy ảo** (trước 3,6 ms; 7/3.913 giờ > 16 ms) — giá của % thắng chạy thật. Anh
+  thấy giật khi giờ trôi nhanh thì: bớt `so_tran_dung_som`, hay để AI chỉ tính % tỉnh đáng đánh nhất (đổi cách AI chọn).
 
 Lặt vặt, đo được 03/10:
 

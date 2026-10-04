@@ -6,66 +6,36 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 04/10/2026 (lần 31 — cân bằng sau 2 bản sửa đổi nhịp).
+Cập nhật: 04/10/2026 (lần 32 — sửa 3 lỗi trận).
 
 ## 1. Đang ở đâu
 
-- **04/10 (lần 31): gộp 2 bản sửa đổi nhịp (lựa chọn B)** — người vác ra ngoài bản đồ, kho riêng phình mãi; bật đủ **56/56 luật
-  bất biến**. Chỉnh số: `gioNoDu` 3 → 2, 4 Eureka mốc kho → mốc số nhà. Đời 6 về giờ 260 · 272 · 263. **Anh chưa chơi thử** (mục 3).
-  Chi tiết: `docs/NHAT_KY/CAN_BANG_04_10.md`.
-- **03/10 (lần 30): luật bất biến** — 56 luật "game không bao giờ được phá" (`docs/LUAT_BAT_BIEN.md`), máy kiểm qua nhiều hạt
-  giống. Bắt 5 lỗi thật + 3 lỗi nằm im: sửa 4 ngay, 2 lỗi đổi nhịp gộp 04/10. Chi tiết: `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`.
-
-- **30/09 (lần 28): Thử 3 xong phần máy** — bất ổn báo trước trong thành phố (khói đen → đám đông + cờ đỏ → lửa), chấm xem trước
-  kiểu Reigns trên thẻ quyết định, bảng tách nguồn chính sách; 3 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chơi thử iPhone: 59 fps, "mọi thứ ok"** (mục 3).
-  Đợt 3/3 — **cả 3 đợt thử xong**, kết quả đã ghi `kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8. Chi tiết: `docs/NHAT_KY/THU_3_30_09.md`.
-- **30/09 (lần 27): Thử 2 xong phần máy** — màn trận: bụi · tên cắm / khói súng · chớp + tia · cờ trắng + nhạt màu đội vỡ ·
-  cờ bên thắng · khựng khung (trần 200 ms); 2 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả 3 link (mục 3).
-  Đợt 2/3. Chi tiết: `docs/NHAT_KY/THU_2_30_09.md`.
-- **30/09 (lần 26): Thử 1 xong** — hậu kỳ, khói bếp, chim, icon nhà tắc ở màn thành phố; 3 lệnh vẽ;
-  `sim:van`/`sim:tran` y như trước. **Anh đo iPhone: 59 fps** cả có lẫn không hiệu ứng, "nhìn ổn hơn bản gốc". Đợt 1/3 của phần thử hiệu ứng
-  (`kho-game/docs/KY_NANG_TRANG_THAI.md` mục 8). Chi tiết: `docs/NHAT_KY/THU_1_30_09.md`.
-- **30/09: art bible mục 5 bước 1 xong phần máy** — đèn máy nướng sáng lên theo ô 4C anh giao chọn, nướng
-  lại 5 mẻ thành phố. Cổ đại đo **sáng 0,52 · ấm 0,28** (ô 4C 0,52 · 0,26; trước 0,28 · 0,19). **Anh chưa xem
-  trên máy thật** (mục 3). Chi tiết: `docs/NHAT_KY/DEN_30_09.md`.
-- **Game: Phase 12D xong phần máy (khối 1–4)**, anh đo iPhone 28/09: **59 fps**. 12E chưa mở — anh dặn
-  làm art bible trước. Chi tiết: `docs/NHAT_KY/PHASE_12D.md`.
-- 29/09: anh báo ruộng/trại "nhìn vẫn gượng gạo quá" → **`docs/ART_BIBLE.md`**, anh chốt hết cùng ngày.
-  Chi tiết: `docs/NHAT_KY/ART_BIBLE_29_09.md`.
-- 11B (27/09): chơi trọn một vòng, 59 fps mọi màn kể cả 500×.
-- **Pages chạy đúng bản mới trên iPhone** — anh xác nhận 29/09 (bản `29/09 11:32`, mở lại vẫn đúng).
-  Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
-- Phiên 29/09 (lần 23): rà soát toàn bộ đồ nghề, sửa hook/công cụ, cắt file này từ 91.599 byte;
-  anh duyệt, 6 việc file khoá đã sửa cùng phiên. Chi tiết: `docs/NHAT_KY/RA_SOAT_29_09.md`.
-- 29/09 (phiên ở kho-game): tải asset gọi một cửa kho-game; tự vẽ bằng số phải khai `docs/TU_LAM.md`
-  (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
+- **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
+  nhận (TG14, `ti_le_xin_hoa` 0,9) · % thắng báo trước lệch tới 97,7 điểm → nay chạy thật 32 trận, lệch lớn nhất 5,5 (TR15).
+  Đã đẩy `main`. **Anh chưa chơi thử** (mục 3). Chi tiết: `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
+- **04/10 (lần 31): gộp 2 bản sửa đổi nhịp (lựa chọn B)** — người vác ra ngoài bản đồ, kho riêng phình mãi. `gioNoDu` 3 → 2,
+  4 Eureka mốc kho → mốc số nhà. Đời 6 về giờ 260 · 272 · 263. Chi tiết: `docs/NHAT_KY/CAN_BANG_04_10.md`.
+- **03/10 (lần 30): luật bất biến** — điều "game không bao giờ được phá" (`docs/LUAT_BAT_BIEN.md`), máy kiểm qua nhiều hạt
+  giống. Chi tiết: `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`.
+- **30/09 (lần 26–28): Thử 1–3 hiệu ứng xong**, anh đo iPhone 59 fps cả ba, "mọi thứ ok". Chi tiết: `docs/NHAT_KY/THU_{1,2,3}_30_09.md`.
+- **30/09: art bible mục 5 bước 1 (đèn)** xong phần máy, anh chưa xem máy thật. Chi tiết: `docs/NHAT_KY/DEN_30_09.md`.
+- **Game: Phase 12D xong**, anh đo iPhone 28/09: 59 fps. 12E chưa mở — anh dặn làm art bible trước. `docs/NHAT_KY/PHASE_12D.md`.
+- 29/09: anh báo ruộng/trại "gượng gạo" → **`docs/ART_BIBLE.md`**, anh chốt hết. `docs/NHAT_KY/ART_BIBLE_29_09.md`.
+- **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 29/09). Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
+- Rà soát đồ nghề 29/09: `docs/NHAT_KY/RA_SOAT_29_09.md` · tải asset một cửa kho-game: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
 
-**Cân bằng, đo 04/10** (`sim:congnghe -- 320 6`, bản đồ gốc · 777 · 4242): đời 6 giờ **260 · 272 · 263** (trước sửa 248 · 265 · 281) ·
-nhà giờ 320: 436 · 426 · 436 · kho 6 (trước 37–38) · Eureka 19 · 17 · 19 · đỉnh người vác 231–271 (trước 652–663).
-`sim:van` (5 hạt): thống trị 3/5 (như trước sửa) · khoa học 2/5 (trước 3/5) · văn hoá 5/5 · ngoại giao 4/5. Bảng đủ: `docs/NHAT_KY/CAN_BANG_04_10.md`.
+**Sửa 3 lỗi trận, đo 04/10 (máy ảo):** 150 cặp đội hình × 200 trận — lệch |% báo − thắng thật| lớn nhất 97,7 → 5,5 điểm ·
+`sim:tran` lệch TB 2,24 → 0,84, Brier 0,075 → 0,009 · `sim:van` (5 hạt) thống trị 3/5 · khoa học 2/5 → **5/5** · văn hoá 5/5 ·
+ngoại giao 4/5 → 5/5 · một giờ thế giới max 3,6 → **25 ms** (7/3.913 giờ > 16 ms) · trận 10v10 0,75 → 0,45 ms · `npm test` 19,9 s ·
+`luat:sau` 301 s · test 606. Bảng đủ: nhật ký lần 32.
 
-**Luật bất biến, đo 03/10 (máy ảo 4 nhân):** test 543 → 599, `npm test` 35,6 → 38,1 s · `npm run luat:sau` 56/56 xanh trong
-**564 s** (phần lớn `BatBienThanhPho`) — `do.sh` chỉ gọi khi `src/sim/` hay `data/` khác `main` · hơn 150 lỗi giả, luật nào
-cũng có lỗi giả làm nó đỏ.
+**Cân bằng, đo 04/10** (`sim:congnghe -- 320 6`, bản đồ gốc · 777 · 4242): đời 6 giờ **260 · 272 · 263** · nhà giờ 320:
+436 · 426 · 436 · kho 6 · Eureka 19 · 17 · 19 · đỉnh người vác 231–271. Bảng đủ: `docs/NHAT_KY/CAN_BANG_04_10.md`.
 
-**Thử 3, đo 30/09 (máy ảo, 393×852 DPR 1):** **3 lệnh vẽ** có hiệu ứng, 1 khi `?tat=het` · test mới 10/10 (`tests/DeChoi.test.ts`) ·
-`npm run do` 16/16 · `sim:van`, `sim:tran` khác trước đúng cột giây chạy máy.
-
-**Thử 2, đo 30/09 (máy ảo, 393×852 DPR 1):** **2 lệnh vẽ** có hiệu ứng, 1 khi `?tat=het` · zoom vừa khít trận màn dọc 0,18× ·
-`npm run do` xanh · `sim:tran`, `sim:van` khác trước đúng cột giây chạy máy.
-
-**Thử 1, đo 30/09 (máy ảo, 393×852):** **3 lệnh vẽ** có hiệu ứng, 2 khi `?tat=hauky` · 0,35×: 3.313 sprite, tilt tắt ·
-máy ảo 5–7 fps cả có lẫn không hiệu ứng (vẽ phần mềm — không phải số iPhone) · test 524/524.
-
-**Đèn, đo 30/09:** độ sáng, bão hoà, độ ấm cũ → mới của cả 5 đời ở `docs/ART_BIBLE.md` mục 5 (**đừng chép
-về đây**). Luật 2 (sáng ≥ 0,36) đạt 5/5 đời, trước 0/5. 10 file `.json` atlas y hệt trước — cùng số trang, cùng
-chỗ sprite, chỉ ảnh đổi màu.
-
-**Phase 12D, đo 28/09:** 4 mẻ nướng lại, mỗi mẻ 2× **76 sprite · 2 trang** (trang 0: `co_dai` 88,7 % · `can_dai`
-83,2 % · `hien_dai` 77,3 % · `tuong_lai` 65,7 %), ~2,5 phút mỗi mẻ. Làn sóng: giữ 2 + 2 trang = 4 (trần), **1 lệnh vẽ**,
-máy ảo ~30 fps (phần mềm, không phải số iPhone). `DoiTheoDoi`: 0 ô nền / 0 dáng người y nguyên ở 4 cặp đời khác mẻ.
+**Thử 1–3, đo 30/09 (393×852):** 2–3 lệnh vẽ có hiệu ứng, 1 khi `?tat=het`. **Đèn 30/09:** số cũ → mới ở `docs/ART_BIBLE.md`
+mục 5 (**đừng chép về đây**). **12D, 28/09:** mỗi mẻ 2× 76 sprite · 2 trang; giữ 2 + 2 trang = 4 (trần), 1 lệnh vẽ.
 
 **Mẻ trung cổ 2× coi như HẾT CHỖ.** Đo 19/09: tổng diện tích sprite 90,2 % một trang, mà
 84,4 % là mức cuối còn xếp vừa — thêm **một** sprite cỡ căn nhà là tràn trang. Mẻ mới hay
@@ -84,16 +54,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 04/10 (lần 31) — anh chơi thử bản cân bằng mới
+### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
 
-Link Pages: https://gc1001vn-svg.github.io/quoc-chien/ (bản 04/10 trở đi — nhãn cạnh số fps). Đổi ở nhịp, không đổi hình: thành phố thêm nhà dân dày hơn,
-không xây kho mới nữa. Anh báo: fps, và nhịp lên đời có ổn không.
-
-### ✅ Việc 03/10 (lần 30) — 2 lỗi đổi nhịp game: anh chọn **B** (04/10) → làm xong 04/10 (mục 1)
-
-### ✅ Việc 30/09 (lần 28) — anh chơi thử Thử 3 trên iPhone
-
-Bản `30/09 20:08`, anh nhắn nguyên văn: **"Fps vẫn 59. Mọi thứ ok"** → Thử 3 qua.
+Link Pages: https://gc1001vn-svg.github.io/quoc-chien/ (nhãn cạnh số fps ghi ngày giờ bản). Đổi ở nhịp và trận, không đổi hình:
+thành phố thêm nhà dân dày hơn, không xây kho mới; % thắng trên nút Tấn công nay là số thật (có thể ra 0 % khi thua chắc);
+nước AI yếu hơn chút có thể tự xin hoà. Anh báo: fps, nhịp lên đời ổn không, có giật lúc giờ trôi nhanh không.
 
 ### ⏳ Việc 30/09 (lần 29) — anh chọn trên bảng nông trại (art bible bước 2)
 
@@ -101,16 +66,19 @@ Bảng: hình nông trại hiện tại (trái) cạnh bản Quaternius một ta
 trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`. **Anh tạm dừng 30/09** — chưa chọn. Gà Quaternius chỉ ở Poly Pizza
 (máy ảo bị chặn): anh tải `https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
 
-### ✅ Anh chọn bước kế 30/09: art bible bước 2–3
+### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
-Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
+Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
+
+### ✅ Đã xong: 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
+
+Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa** (cần ≥ 600 người vác, nay đỉnh 231–271) —
-  chờ anh: thành phố còn cần kho mới không. Ba việc luật đo ra mà chưa sửa (trận đi theo hàng phụ thuộc thứ tự, AI xin hoà
-  không bao giờ được nhận, % dự đoán lệch). Cả hai: `docs/NO_KY_THUAT.md` mục "Luật bất biến".
-
+- **Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa** — chờ anh (mục 3).
+- **Một giờ thế giới chậm nhất 25 ms trên máy ảo** (trước 3,6 ms) — giá của % thắng chạy thật; anh báo giật thì cắt
+  (`docs/NO_KY_THUAT.md` mục "Luật bất biến"). Hết giờ mà hai bên bằng phần máu: chưa luật nào kiểm.
 - **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7
   (`docs/ART_BIBLE.md` mục 2). Độ tối đã sửa 30/09; tay vẽ còn — art bible mục 5 bước 2, 3.
 - **Luật 3 (bão hoà ≥ 0,37) còn trượt:** hiện đại 0,30, tương lai 0,35 — art bible mục 5 bước 3.
@@ -124,8 +92,8 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 
 **PHIÊN SAU: chờ anh chơi thử bản 04/10 (mục 3).** Chưa có việc máy nào đang dở. Anh mở lại art bible thì làm bảng 2 (dưới).
 
-**Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
-`batOn.nguoiMoiDam`, `batOn.lua` trước.
+**Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. Tụt fps về sau: bớt
+`batOn.nguoiMoiDam`, `batOn.lua` trước; giật lúc giờ trôi: bớt `so_tran_dung_som` (`data/battle.json`).
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
 Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
