@@ -6,10 +6,12 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 04/10/2026 (lần 32 — sửa 3 lỗi trận).
+Cập nhật: 04/10/2026 (lần 33 — Claude lái trình duyệt chơi thử game).
 
 ## 1. Đang ở đâu
 
+- **04/10 (lần 33): cài Playwright MCP** (anh chọn B) — Claude tự chơi thử game/app web. Không đổi game. Thử 4 game nhập vai: chạy
+  cả Unity 3D (4 khung/s). Chi tiết: `docs/NHAT_KY/TRINH_DUYET_04_10.md` · cách dùng: `docs/MOI_TRUONG.md` mục cuối.
 - **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
   nhận (TG14, `ti_le_xin_hoa` 0,9) · % thắng báo trước lệch tới 97,7 điểm → nay chạy thật 32 trận, lệch lớn nhất 5,5 (TR15).
   Đã đẩy `main`. **Anh chưa chơi thử** (mục 3). Chi tiết: `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
@@ -89,6 +91,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
 ## 5. Phiên sau
+
+**Đầu phiên mở mới:** kiểm công cụ `browser_*` (Playwright MCP) có hiện không — `ToolSearch` "browser". Không thì xem `claude mcp list`.
 
 **PHIÊN SAU: chờ anh chơi thử bản 04/10 (mục 3).** Chưa có việc máy nào đang dở. Anh mở lại art bible thì làm bảng 2 (dưới).
 
