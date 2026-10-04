@@ -6,13 +6,15 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 03/10/2026 (lần 30 — luật bất biến).
+Cập nhật: 04/10/2026 (lần 31 — cân bằng sau 2 bản sửa đổi nhịp).
 
 ## 1. Đang ở đâu
 
+- **04/10 (lần 31): gộp 2 bản sửa đổi nhịp (lựa chọn B)** — người vác ra ngoài bản đồ, kho riêng phình mãi; bật đủ **56/56 luật
+  bất biến**. Chỉnh số: `gioNoDu` 3 → 2, 4 Eureka mốc kho → mốc số nhà. Đời 6 về giờ 260 · 272 · 263. **Anh chưa chơi thử** (mục 3).
+  Chi tiết: `docs/NHAT_KY/CAN_BANG_04_10.md`.
 - **03/10 (lần 30): luật bất biến** — 56 luật "game không bao giờ được phá" (`docs/LUAT_BAT_BIEN.md`), máy kiểm qua nhiều hạt
-  giống; 53 đã bật. Bắt được 5 lỗi thật + 3 lỗi nằm im: đã sửa và đẩy 4 (thùng kho đè vật, thẻ bất ổn, mua quân, bộ đọc trận),
-  **2 lỗi đổi nhịp game: anh chọn B (04/10)** — chỉnh cân bằng trước, đẩy một lần (mục 5). Chi tiết: `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`.
+  giống. Bắt 5 lỗi thật + 3 lỗi nằm im: sửa 4 ngay, 2 lỗi đổi nhịp gộp 04/10. Chi tiết: `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`.
 
 - **30/09 (lần 28): Thử 3 xong phần máy** — bất ổn báo trước trong thành phố (khói đen → đám đông + cờ đỏ → lửa), chấm xem trước
   kiểu Reigns trên thẻ quyết định, bảng tách nguồn chính sách; 3 lệnh vẽ; `sim:van`/`sim:tran` y như trước. **Anh chơi thử iPhone: 59 fps, "mọi thứ ok"** (mục 3).
@@ -39,6 +41,10 @@ Cập nhật: 03/10/2026 (lần 30 — luật bất biến).
   (`check:credits` giữ). Chi tiết: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Cân bằng, đo 04/10** (`sim:congnghe -- 320 6`, bản đồ gốc · 777 · 4242): đời 6 giờ **260 · 272 · 263** (trước sửa 248 · 265 · 281) ·
+nhà giờ 320: 436 · 426 · 436 · kho 6 (trước 37–38) · Eureka 19 · 17 · 19 · đỉnh người vác 231–271 (trước 652–663).
+`sim:van` (5 hạt): thống trị 3/5 (như trước sửa) · khoa học 2/5 (trước 3/5) · văn hoá 5/5 · ngoại giao 4/5. Bảng đủ: `docs/NHAT_KY/CAN_BANG_04_10.md`.
 
 **Luật bất biến, đo 03/10 (máy ảo 4 nhân):** test 543 → 599, `npm test` 35,6 → 38,1 s · `npm run luat:sau` 56/56 xanh trong
 **564 s** (phần lớn `BatBienThanhPho`) — `do.sh` chỉ gọi khi `src/sim/` hay `data/` khác `main` · hơn 150 lỗi giả, luật nào
@@ -78,19 +84,12 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ✅ Việc 03/10 (lần 30) — 2 lỗi đổi nhịp game: anh chọn **B** (04/10)
+### ⏳ Việc 04/10 (lần 31) — anh chơi thử bản cân bằng mới
 
-Sửa thì đúng thiết kế nhưng game chậm hơn. Giờ lên đời 6, `sim:congnghe -- 320 6`, ba bản đồ (gốc · hạt 777 · hạt 4242):
+Link Pages: https://gc1001vn-svg.github.io/quoc-chien/ (bản 04/10 trở đi — nhãn cạnh số fps). Đổi ở nhịp, không đổi hình: thành phố thêm nhà dân dày hơn,
+không xây kho mới nữa. Anh báo: fps, và nhịp lên đời có ổn không.
 
-| | Đời 6 ở giờ | Nhà giờ 320 | Kho | Đỉnh người vác |
-|---|---|---|---|---|
-| Hiện tại (`main`) | 249 · 261 · 281 | 451 · 445 · 433 | 37–38 | 657–675 |
-| + sửa người vác ra ngoài bản đồ | 276 · 285 · 291 | 439 · 433 · 420 | 38 | 655–741 |
-| + sửa kho riêng phình mãi | **không tới trong 320 giờ** (đời 5 ở 184 · 205 · 202) | 395 · 377 · 377 | 6 | 142–215 |
-
-`sim:van` (một bản đồ, 5 hạt): thống trị 3/5 → 1/5, ba kiểu kia y nguyên. Mã sửa ở nhánh `claude/gracious-curie-pm0flr`.
-**A** đẩy hết rồi phiên sau chỉnh số cân bằng · **B** chỉnh số cân bằng trước, đẩy một lần khi đời 6 về lại ~giờ 250–280 ·
-**C** chỉ đẩy sửa người vác (đời 6 vẫn tới), giữ kho riêng. → Anh nhắn 04/10: **"qua phiên mới chọn B"**.
+### ✅ Việc 03/10 (lần 30) — 2 lỗi đổi nhịp game: anh chọn **B** (04/10) → làm xong 04/10 (mục 1)
 
 ### ✅ Việc 30/09 (lần 28) — anh chơi thử Thử 3 trên iPhone
 
@@ -108,8 +107,9 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 
 ## 4. Nợ đang chặn phase kế tiếp
 
-- **Hai lỗi đổi nhịp game** (luật TP04, TP06, TP14 `(chưa bật)`) — anh chọn B: phiên sau chỉnh cân bằng rồi mới gộp (mục 5). Ba việc luật đo ra mà chưa sửa (trận đi theo
-  hàng phụ thuộc thứ tự, AI xin hoà không bao giờ được nhận, % dự đoán lệch): `docs/NO_KY_THUAT.md` mục "Luật bất biến".
+- **Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa** (cần ≥ 600 người vác, nay đỉnh 231–271) —
+  chờ anh: thành phố còn cần kho mới không. Ba việc luật đo ra mà chưa sửa (trận đi theo hàng phụ thuộc thứ tự, AI xin hoà
+  không bao giờ được nhận, % dự đoán lệch). Cả hai: `docs/NO_KY_THUAT.md` mục "Luật bất biến".
 
 - **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7
   (`docs/ART_BIBLE.md` mục 2). Độ tối đã sửa 30/09; tay vẽ còn — art bible mục 5 bước 2, 3.
@@ -122,11 +122,7 @@ Anh nhắn: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và h�
 
 ## 5. Phiên sau
 
-**PHIÊN SAU: chỉnh cân bằng cho 2 bản sửa đổi nhịp — anh đã chọn B (04/10), không hỏi lại.** `git fetch origin
-claude/gracious-curie-pm0flr` rồi gộp vào bản làm (nhánh đã bật sẵn 3 luật), **chưa đẩy `main`**. Chỉnh số `data/` cho đời 6 về
-~giờ 250–280 trên cả ba bản đồ của bảng mục 3 (`sim:congnghe -- 320 6`; bản đồ 777, 4242: đổi `hatGiong` trong `thanh_pho_demo.json`
-và `hatGiongDatNha` = hạt + 1 trong `walkers.json`, làm ở bản chép), so `sim:van -- --lam-lai` với thống trị 3/5 hiện tại.
-Kế hoạch trình anh trước khi đổi số. Xong mới đẩy `main` một lần; nhánh tự xoá sau khi gộp (workflow `Don nhanh`).
+**PHIÊN SAU: chờ anh chơi thử bản 04/10 (mục 3).** Chưa có việc máy nào đang dở. Anh mở lại art bible thì làm bảng 2 (dưới).
 
 **Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. 12E, hậu kỳ màn trận: anh bảo để đấy. Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước.

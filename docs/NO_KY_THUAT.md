@@ -620,8 +620,10 @@ bằng kho-game → 14/14, 0 hỏng; nướng lại 4 mẻ từ đó → atlas y
 
 Luật đo ra, **chưa sửa — chờ anh quyết** (chi tiết `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`):
 
-- **Hai lỗi đổi nhịp game** — người vác đi ra ngoài bản đồ (TP06, TP14) · kho riêng phình mãi (TP04). **Anh chọn B 04/10:** chỉnh cân bằng trước rồi đẩy một lần. Mã đã sửa ở nhánh
-  `claude/gracious-curie-pm0flr`; ba luật ghi `(chưa bật)` trong `docs/LUAT_BAT_BIEN.md` tới khi gộp. Bảng số: `TIEN_DO.md` mục 3.
+- ~~Hai lỗi đổi nhịp game~~ (TP04, TP06, TP14) — **gộp 04/10** kèm `gioNoDu` 3 → 2 và 4 Eureka kho → nhà
+  (`docs/NHAT_KY/CAN_BANG_04_10.md`). Mở ra nợ mới: **thẻ khẩn "Đường đông nghịt" (`dinh` ≥ 600) và luật thống đốc xây kho
+  (`nguongDinh` 600) không bao giờ chạm nữa** — đỉnh người vác nay 231–271, kho đứng ở 6. Hạ `nguongDinh` 180 thì đời 6
+  lại không tới (kho chiếm lượt thống đốc). Chờ anh: thành phố còn cần kho mới không.
 - **Trận: đi theo hàng phụ thuộc thứ tự danh sách** (`Battle.ts:180`): `daCham` bật GIỮA vòng lặp, nên ở nhịp vừa chạm
   địch đội đứng sau đội đánh đầu tiên đã đi tốc độ riêng, đội đứng trước vẫn đi tốc độ hàng — trái comment `Battle.ts:153`.
   Phá "giữ hàng tính theo trạng thái đầu nhịp" ở 1.445/2.000 trận. Sửa là đổi kết quả trận, `sim:tran` đổi.
