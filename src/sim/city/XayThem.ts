@@ -25,8 +25,10 @@ import { ThuNha } from './Buildings.ts';
  * Kho xay them luc dang choi thi o cheo co the da co nha hay xe keo (luat TP10, do 03/10: kho
  * thu 9 de len `xe_keo` o (81,81)). Thu bon o cheo theo thu tu co dinh, lay o dau tien con
  * trong va trong ban do; ca bon deu ban thi kho van chay, chi khong co thung hang.
+ *
+ * `nhipXay` co gia tri la kho xay them luc dang chay: thung hang mang nhip khoi cong (`OVat.nhipXay`).
  */
-export function veKho(banDo: BanDo, o: O): void {
+export function veKho(banDo: BanDo, o: O, nhipXay?: number): void {
   if (banDo.spriteKho === '') return;
   for (const [da, db] of [[1, 1], [-1, 1], [1, -1], [-1, -1]] as const) {
     const a: number = o.a + da;
@@ -34,7 +36,7 @@ export function veKho(banDo: BanDo, o: O): void {
     if (a < 0 || b < 0 || a >= banDo.canh || b >= banDo.canh) continue;
     if (banDo.daChiem.has(a * banDo.canh + b)) continue;
     banDo.daChiem.add(a * banDo.canh + b);
-    chenVat(banDo, { a, b, ten: banDo.spriteKho, o: 1 });
+    chenVat(banDo, { a, b, ten: banDo.spriteKho, o: 1, ...(nhipXay === undefined ? {} : { nhipXay }) });
     return;
   }
 }
@@ -102,10 +104,13 @@ export function choKhoMoi(banDo: BanDo, cu: readonly O[], qh?: QuyHoach): O | un
  * Dat sprite ngay tai day chu khong de nguoi goi lam: day la nha thong doc xay luc dang
  * chay, tuc dung cai nguoi choi vua bam tren the quyet dinh. Quen chen thi bam "xay hai
  * coi xay" xong tren man khong co gi moc len - dung cai loi ma Phase 6B di chua.
+ *
+ * `nhipXay` la nhip dong ho luc xay, ghi vao sprite (`OVat.nhipXay`) cho lop ve cho nha moc dan.
+ * Nha van chay ngay tu nhip nay - chu du an chon "chay luon, chi doi hinh" (04/10).
  */
 export function dungNha(
   def: DinhNghiaNha, chiSo: number, banDo: BanDo, rng: Rng,
-  tranRieng: number, moiChuyen: number, quyHoach: QuyHoach, soDat: SoDat,
+  tranRieng: number, moiChuyen: number, quyHoach: QuyHoach, soDat: SoDat, nhipXay: number,
 ): ThuNha | undefined {
   // Nha thong doc xay cung phai vao dung khu quy hoach, khong thi mo may lai roi rac.
   const o: O | undefined = datNha(banDo, rng, quyHoach, def, soDat);
@@ -114,6 +119,6 @@ export function dungNha(
     def, chiSo, chiSo % def.nhip, o, congRaDuong(o, banDo.duongCach), tranRieng,
   );
   for (const m of def.vao) nha.nhan(m.hang, moiChuyen);
-  chenVat(banDo, { a: o.a, b: o.b, ten: def.sprite, o: 1 });
+  chenVat(banDo, { a: o.a, b: o.b, ten: def.sprite, o: 1, nhipXay });
   return nha;
 }

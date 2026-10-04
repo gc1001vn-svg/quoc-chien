@@ -139,7 +139,7 @@ export class ThanhPho implements BoDem, Giao {
     if (def === undefined) return false;
     const nha: ThuNha | undefined = dungNha(
       def, this.nhaThat.length, this.banDo, this.rngDat,
-      this.cauHinh.tranRieng, this.cauHinh.moiChuyen, this.quyHoach, this.soDat,
+      this.cauHinh.tranRieng, this.cauHinh.moiChuyen, this.quyHoach, this.soDat, this.dongHo.soNhip,
     );
     if (nha === undefined) return false;
     this.nhaThat.push(nha);
@@ -153,7 +153,7 @@ export class ThanhPho implements BoDem, Giao {
     const tot: O | undefined = choKhoMoi(this.banDo, this.doiWalker.danhSachKho, this.quyHoach);
     if (tot === undefined) return false;
     this.doiWalker.themKho(tot);
-    veKho(this.banDo, tot);
+    veKho(this.banDo, tot, this.dongHo.soNhip);
     this.oVuaDung = { a: tot.a + 1, b: tot.b + 1 };
     return true;
   }

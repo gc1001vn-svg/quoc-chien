@@ -18,6 +18,11 @@ export interface OVat {
   readonly ten: string;
   /** Canh khoi o ma vat the chiem, tinh tu (a,b) di ra. 1 la mot o. */
   readonly o: number;
+  /**
+   * Nhip khoi cong - chi nha, kho xay them luc dang chay (Buoc 1 "xay nha tung buoc", 04/10).
+   * Sim chi GHI, khong doc lai: lop ve doc de cho nha moc dan (`render/TungBuoc.ts`).
+   */
+  readonly nhipXay?: number;
 }
 
 /** Mot o tren luoi. */
