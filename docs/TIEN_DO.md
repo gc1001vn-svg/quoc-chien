@@ -6,10 +6,12 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 04/10/2026 (lần 33 — Claude lái trình duyệt chơi thử game).
+Cập nhật: 04/10/2026 (lần 34 — nhận ra game từ ảnh anh gửi).
 
 ## 1. Đang ở đâu
 
+- **04/10 (lần 34): nhận ra game từ ảnh** — Kỷ Nguyên Băng Hà: 3Q, chỉ có trên điện thoại, không chơi thử được. Video lối chơi
+  thật không có lúa lớn dần, không có thời kỳ; clip quảng cáo không khớp game. Không đổi game. `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md`.
 - **04/10 (lần 33): cài Playwright MCP** (anh chọn B) — Claude tự chơi thử game/app web. Không đổi game. Thử 4 game nhập vai: chạy
   cả Unity 3D (4 khung/s). Chi tiết: `docs/NHAT_KY/TRINH_DUYET_04_10.md` · cách dùng: `docs/MOI_TRUONG.md` mục cuối.
 - **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
@@ -68,6 +70,11 @@ Bảng: hình nông trại hiện tại (trái) cạnh bản Quaternius một ta
 trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`. **Anh tạm dừng 30/09** — chưa chọn. Gà Quaternius chỉ ở Poly Pizza
 (máy ảo bị chặn): anh tải `https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
 
+### ⏳ Việc 04/10 (lần 34) — anh có muốn thêm lúa lớn dần, xây từng bước vào Quốc Chiến không
+
+Hai thứ anh khen ở quảng cáo Kỷ Nguyên Băng Hà mà Quốc Chiến chưa có (lên thời kỳ thì đã có từ 12D). Anh trả lời có/không;
+có thì phiên sau lập kế hoạch, tính chỗ atlas trước (mẻ cổ đại gần hết chỗ, mục 2).
+
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
@@ -92,9 +99,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 
 ## 5. Phiên sau
 
-**Đầu phiên mở mới:** kiểm công cụ `browser_*` (Playwright MCP) có hiện không — `ToolSearch` "browser". Không thì xem `claude mcp list`.
-**Việc anh hẹn (04/10):** anh gửi một ảnh game → nhận ra game (nhìn ảnh + `WebSearch`) → tìm bản chơi web (itch.io mở sẵn;
-trang khác có thể bị chặn) → chơi thử bằng `browser_*`, gửi bảng ảnh + ghi chú. Game chỉ có trên PC/điện thoại: nói rõ, xem video qua Gemini.
+**Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
+mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
 **PHIÊN SAU: chờ anh chơi thử bản 04/10 (mục 3).** Chưa có việc máy nào đang dở. Anh mở lại art bible thì làm bảng 2 (dưới).
 
