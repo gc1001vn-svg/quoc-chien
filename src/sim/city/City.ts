@@ -126,7 +126,7 @@ export class ThanhPho implements BoDem, Giao {
     const c: number = this.banDo.duongCach;
     const giua: number = Math.round(this.banDo.canh / 2 / c) * c;
     this.doiWalker = new DoiWalker(
-      { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa,
+      { a: giua, b: giua }, c, this.cauHinh.nhipMoiBuoc, this.cauHinh.buocToiDa, this.banDo.canh,
     );
     veKho(this.banDo, { a: giua, b: giua });
     // `soKhoDau` kho: mot kho cho gan hai tram nha thi duong qua dai.
