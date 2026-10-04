@@ -42,6 +42,12 @@ export class TrinhDuyet {
     // Su kien trang tu bao ve (khong co `id`). Chi giu ba loai dang dung, giu het
     // thi mot trang noi nhieu la day bo nho ma khong ai doc.
     this.suKien = [];
+    /**
+     * Ham nhan MOI su kien luc no toi (vd `Page.screencastFrame` cua `quay_clip.mjs`, phai
+     * tra loi ngay thi Chromium moi gui khung tiep). Khong dat thi bo qua.
+     * @type {((ten: string, tham: any) => void) | null}
+     */
+    this.nghe = null;
     this.ws = null;
     this.phien = null;
     this.tienTrinh = null;
@@ -109,6 +115,7 @@ export class TrinhDuyet {
   nhanTin(tin) {
     const doc = JSON.parse(tin);
     if (doc.id === undefined) {
+      this.nghe?.(doc.method, doc.params);
       if (GIU_SU_KIEN.has(doc.method)) this.suKien.push({ ten: doc.method, tham: doc.params });
       return;
     }

@@ -31,6 +31,7 @@
     "check:khoa": "node scripts/check_khoa.mjs",
     "check:credits": "node scripts/check_credits.mjs",
     "chup:man": "node scripts/chup_man.mjs",
+    "quay": "node scripts/quay_clip.mjs",
     "sim:thu": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_thu.ts",
     "sim:bando": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_ban_do.ts",
     "sim:congnghe": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/sim_cong_nghe.ts",
