@@ -1,4 +1,4 @@
-# Mọi thứ diễn ra từng bước — 04/10/2026 · CHỜ ANH DUYỆT
+# Mọi thứ diễn ra từng bước — 04/10/2026 · ANH DUYỆT 04/10
 
 Anh chốt 04/10 (lần 34): không chỉ lúa và xây nhà — mọi thứ trong thành phố phải hiện ra dần, đồ hoạ tầm Viking Rise /
 Happy Citizens. Mẫu đã xem (video lối chơi thật qua Gemini): `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 2–3.
@@ -29,12 +29,11 @@ Bài học mẫu: game đẹp cũng chỉ **3–4 bước + hiệu ứng** (món
 5. **Bản đồ chiến dịch:** công trình tỉnh đã có `dangXay`/`conLai` trong sim (`ChienDich.ts`) → vẽ giàn giáo theo lượt.
 6. **Mở đất / sương mù** — để cuối, chỉ làm nếu anh còn muốn sau bước 1–5.
 
-## Anh chọn trước khi làm bước 1
-- **Câu 1:** nhà đang xây có **chạy luôn** (chỉ là hình — không đổi cân bằng, rẻ) hay **phải xây xong mới chạy** (đổi
-  luật game: đời 6 lùi giờ, phải cân lại `sim:congnghe`)? Đề xuất: chỉ hình trước, đổi luật sau nếu anh muốn.
-- **Câu 2:** thứ tự 1 → 6 như trên, hay anh muốn đổi?
-- **Câu 3:** giàn giáo vẽ bằng hạt (que gỗ, không tốn chỗ ảnh) — đồng ý? Muốn giàn giáo là hình thật (model từ
-  `do:asset`) thì phải bớt hình khác hoặc nới trần trang — anh quyết.
+## Anh đã chọn (04/10, nguyên văn: "1 chạy luôn. Nhưng nhà xây cho nhanh 1 tí. 2 như theo đề xuất. 3 đồng ý")
+- **Câu 1 — chạy luôn:** nhà đang xây vẫn sản xuất, chỉ đổi hình, không đổi cân bằng. **Xây nhanh** — ngắn hơn mẫu
+  (Viking Rise 3–18 s): mặc định vài giây nhìn thấy ở tốc độ thường, số trong `data/tung_buoc.json`, anh chỉnh được.
+- **Câu 2 — thứ tự 1 → 6** như mục "Việc".
+- **Câu 3 — giàn giáo vẽ bằng hạt** (que gỗ, không tốn chỗ ảnh).
 
 ## Đo
 - Mỗi commit `npm run do` (gồm `check:tran`, `luat:sau` khi đụng `src/sim/`). Mỗi bước: `npm run chup:man` gửi bảng ảnh
