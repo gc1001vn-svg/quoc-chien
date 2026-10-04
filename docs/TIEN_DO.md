@@ -6,34 +6,32 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 04/10/2026 (lần 35 — đồ nghề: máy soi giao diện, clip, sửa 3 lỗi giao diện).
+Cập nhật: 04/10/2026 (lần 36 — Bước 1 "xây nhà từng bước").
 
 ## 1. Đang ở đâu
 
+- **04/10 (lần 36): Bước 1 "xây nhà từng bước"** (kế hoạch anh duyệt 04/10) — nhà, kho thống đốc xây thêm hiện dần: vạch móng →
+  mọc từ dưới lên + giàn giáo que gỗ + bụi + thợ gõ → loé sáng → xong, ~2 s ở 10×. Chỉ đổi hình, nhà đang xây vẫn sản xuất.
+  Luật mới TP16. Đã đẩy `main`. `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`.
 - **04/10 (lần 35): đồ nghề** — `soi:giao-dien` vào `npm run do`, bắt và sửa 3 lỗi giao diện khổ iPhone (nút chồng nút màn
   dọc, lựa chọn thứ ba khuất màn ngang); `npm run quay` ra clip MP4; sửa hạn chờ CDP. `docs/NHAT_KY/DO_NGHE_04_10.md`.
-- **04/10 (lần 34): nhận ra game từ ảnh** — Kỷ Nguyên Băng Hà: 3Q, chỉ có trên điện thoại, không chơi thử được. Video lối chơi
-  thật không có lúa lớn dần, không có thời kỳ; clip quảng cáo không khớp game. Anh chọn cách 2 → Claude chơi thật 2 game web
-  cùng kiểu: Medieval Farms (cây lớn 5 hình, phá rừng mở đất), Castle Builders (thợ xây từng viên, giàn giáo). Anh chê đồ hoạ
-  kém → xem video lối chơi thật Viking Rise, Happy Citizens qua Gemini. Không đổi game.
-  `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md`.
-- **04/10 (lần 33): cài Playwright MCP** (anh chọn B) — Claude tự chơi thử game/app web. Không đổi game. Thử 4 game nhập vai: chạy
-  cả Unity 3D (4 khung/s). Chi tiết: `docs/NHAT_KY/TRINH_DUYET_04_10.md` · cách dùng: `docs/MOI_TRUONG.md` mục cuối.
+- **Đã xong, chi tiết ở `docs/NHAT_KY/`:** lần 34 nhận game từ ảnh, mẫu đồ hoạ Viking Rise / Happy Citizens
+  (`NHAN_GAME_TU_ANH_04_10.md`) · lần 33 Playwright MCP, Claude tự chơi thử game web (`TRINH_DUYET_04_10.md`).
 - **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
   nhận (TG14, `ti_le_xin_hoa` 0,9) · % thắng báo trước lệch tới 97,7 điểm → nay chạy thật 32 trận, lệch lớn nhất 5,5 (TR15).
   Đã đẩy `main`. **Anh chưa chơi thử** (mục 3). Chi tiết: `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
 - **04/10 (lần 31): gộp 2 bản sửa đổi nhịp (lựa chọn B)** — người vác ra ngoài bản đồ, kho riêng phình mãi. `gioNoDu` 3 → 2,
   4 Eureka mốc kho → mốc số nhà. Đời 6 về giờ 260 · 272 · 263. Chi tiết: `docs/NHAT_KY/CAN_BANG_04_10.md`.
-- **03/10 (lần 30): luật bất biến** — điều "game không bao giờ được phá" (`docs/LUAT_BAT_BIEN.md`), máy kiểm qua nhiều hạt
-  giống. Chi tiết: `docs/NHAT_KY/LUAT_BAT_BIEN_03_10.md`.
+- **03/10 (lần 30): luật bất biến** (`docs/LUAT_BAT_BIEN.md`) · 29/09 art bible, rà soát đồ nghề, kho-game: nhật ký cùng tên ngày.
 - **30/09 (lần 26–28): Thử 1–3 hiệu ứng xong**, anh đo iPhone 59 fps cả ba, "mọi thứ ok". Chi tiết: `docs/NHAT_KY/THU_{1,2,3}_30_09.md`.
 - **30/09: art bible mục 5 bước 1 (đèn)** xong phần máy, anh chưa xem máy thật. Chi tiết: `docs/NHAT_KY/DEN_30_09.md`.
 - **Game: Phase 12D xong**, anh đo iPhone 28/09: 59 fps. 12E chưa mở — anh dặn làm art bible trước. `docs/NHAT_KY/PHASE_12D.md`.
-- 29/09: anh báo ruộng/trại "gượng gạo" → **`docs/ART_BIBLE.md`**, anh chốt hết. `docs/NHAT_KY/ART_BIBLE_29_09.md`.
 - **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 29/09). Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
-- Rà soát đồ nghề 29/09: `docs/NHAT_KY/RA_SOAT_29_09.md` · tải asset một cửa kho-game: `docs/NHAT_KY/KHO_GAME_29_09.md`.
 
 ## 2. Số đo mới nhất
+
+**Bước 1, đo 04/10 (máy ảo):** lệnh vẽ thành phố vẫn 3 · `sim:thu`, `sim:van` y hệt trước (mô phỏng chỉ ghi thêm nhịp khởi công)
+· test 606 → 613 · TP16 bản sâu 50 hạt 19 s. Fps iPhone: chưa đo.
 
 **Đồ nghề 04/10 (lần 35):** `npm run do` 192 → **76 s** · `khoi:dong` 121 → 4,5 s · `soi:giao-dien` 0 lỗi, ~20 s.
 
@@ -65,6 +63,12 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
+### ⏳ Việc 04/10 (lần 36) — xem nhà mọc dần trên iPhone, đo fps
+
+Mở thẳng (thống đốc xây ngay một nhà dân, camera bay tới): https://gc1001vn-svg.github.io/quoc-chien/?xay=nha_dan — xem 2 giây
+đầu. Xem lặp lại cho kỹ: https://gc1001vn-svg.github.io/quoc-chien/?xay=nha_dan&xayTien=lap . Anh báo: fps (≥ 58); giàn giáo,
+loé sáng có ưng không; có thấy que gỗ đè lên nhà/cây đứng trước không. Chơi thường thì nhà mới mọc dần mỗi khi thống đốc xây.
+
 ### ⏳ Việc 04/10 (lần 35) — xem 3 chỗ giao diện đã sửa, quyết 2 hàm chết
 
 Trên iPhone (link Pages): cầm **dọc** mở Bản đồ tỉnh, rồi Xem trận — nút góc phải không còn chồng nhau; cầm **ngang** ở thành
@@ -88,7 +92,7 @@ trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi 
 Anh chốt 04/10: không chỉ lúa và xây nhà, mọi thứ đều từng bước; mẫu phải đồ hoạ tương đương (Viking Rise, Happy Citizens —
 **đừng lấy game đồ hoạ thấp làm mẫu nữa**). Mẫu: `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 3. **Anh duyệt kế hoạch 04/10:**
 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — chạy luôn nhưng xây nhanh · thứ tự 1 → 6 · giàn giáo vẽ bằng hạt.
-Chưa làm bước nào.
+Bước 1 xong 04/10 (lần 36, chờ anh xem iPhone — việc trên cùng mục này); bước 2–6 chưa làm.
 
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
@@ -117,9 +121,10 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU (khi anh mở lại việc này): làm BƯỚC 1 "xây nhà từng bước"** theo kế hoạch ANH ĐÃ DUYỆT 04/10
-`docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — chạy luôn (chỉ đổi hình), xây nhanh, giàn giáo vẽ bằng hạt.
-Anh nói 04/10 sẽ mở phiên mới làm **việc khác trước** — đừng tự đề xuất bước 1 khi anh giao việc khác.
+**PHIÊN SAU: anh xem bước 1 trên iPhone (mục 3, việc lần 36) rồi mới làm BƯỚC 2 "ngày/đêm + dân về nhà"** theo kế hoạch ANH ĐÃ
+DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md`. Anh chê
+bước 1 thì sửa trong phiên đó trước (số ở `data/tung_buoc.json`; chụp `?xay=nha_dan&xayTien=0.45`, quay `xayTien=lap` —
+`docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`). Bước 3 (lúa lớn dần) chờ anh chọn bảng nông trại.
 Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Vẫn chờ anh chơi thử bản 04/10. Anh mở lại art bible thì làm bảng 2 (dưới).
 
 **Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. Tụt fps về sau: bớt
