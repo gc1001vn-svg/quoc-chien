@@ -39,7 +39,7 @@ import { DoiMeAtlas } from './DoiMeAtlas';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { batDauKhungCoHieuUng, doMuc, ketThucHieuUng, veLopNen, veLopVat, type Muc, type Song, type Ve } from './VeCanh';
 import { noiChamChon } from './ChamChon';
-import { oBanDau } from './ThamSoCanh';
+import { oBanDau, xayThu } from './ThamSoCanh';
 import type { BanDo, CauHinhBanDo, O } from '../sim/city/BanDo';
 import { ThanhPho } from '../sim/city/City';
 import { DongHo } from '../sim/Clock';
@@ -141,7 +141,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
     cam.datTam(neoX(o.a, o.b, atlas.oPx()), neoY(o.a, o.b, atlas.oPx()) - lech);
     ghim.dat(o, hien);
   };
-  const oDau = oBanDau();
+  const oDau = xayThu(thanhPho) ?? oBanDau();
   if (oDau !== undefined) bayToi(oDau, 'đây');
 
   // Sim chay 10 Hz, doc lap voi vong ve 60 fps (TECH_SPEC muc 2). PHAI di qua `DongHo`:
@@ -214,7 +214,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
       tiLe: gl.tiLeDiemAnh() * cam.cssTrenWorld(),
       camX: 0, camY: 0, dem: 0,
       // Cong trinh nhieu khung (coi xay) chon khung theo day: dung hinh thi canh dung theo.
-      khung: nhipKe.soNhip,
+      khung: nhipKe.soNhip, nhipSim: thanhPho.dongHo.soNhip,
       ...(song === undefined ? {} : { song }),
     };
     ve.camX = camX;

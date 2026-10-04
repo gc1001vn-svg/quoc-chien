@@ -6,14 +6,15 @@
  * 128x64 ve tu hai SVG game-icons.net (CC-BY 3.0, `docs/ASSET_CREDITS.md`).
  *
  * Kieu hinh (so nguyen cua `kieu`): 0 tron mem · 2 chim (phan le = do vo canh) · 4 bong
- * bong nen icon · 6 icon kho day · 7 icon thieu hang · 8 co (phan le = pha phap phoi; Thu 2, man tran).
+ * bong nen icon · 6 icon kho day · 7 icon thieu hang · 8 co (phan le = pha phap phoi; Thu 2, man tran)
+ * · 9 que go (Buoc 1 xay nha, 04/10: gian giao, vach mong - ve bang `themQue`, xoay theo huong que).
  */
 import khoDaySvg from './icon/kho_day.svg?raw';
 import thieuHangSvg from './icon/thieu_hang.svg?raw';
 import { dungChuongTrinh } from './HauKy';
 import type { Gl } from './Gl';
 
-export const HINH = { tron: 0, chim: 2, bong: 4, khoDay: 6, thieuHang: 7, co: 8 } as const;
+export const HINH = { tron: 0, chim: 2, bong: 4, khoDay: 6, thieuHang: 7, co: 8, que: 9 } as const;
 
 /** Don vi texture rieng cua anh icon (atlas 0..3, hau ky 6). */
 const DON_VI = 7;
@@ -45,6 +46,11 @@ void main() {
   else if (k < 2.5) { float y = -abs(v_uv.x) * (0.15 + 0.9 * f) + 0.3 * f;
     a = smoothstep(0.24, 0.07, abs(v_uv.y - y)) * smoothstep(1.0, 0.8, abs(v_uv.x)); }
   else if (k < 4.5) { a = smoothstep(1.0, 0.9, d); rgb = mix(rgb, vec3(0.97, 0.93, 0.82), smoothstep(0.78, 0.9, d)); }
+  else if (k > 8.5) {
+    // Que go: v_uv.y chay ngang be day que, mep mem; nua tren sang hon chut cho ra khoi go.
+    a = smoothstep(1.0, 0.55, abs(v_uv.y));
+    rgb *= 0.88 + 0.12 * v_uv.y;
+  }
   else if (k > 7.5) {
     // Co: can o mep trai, la co tren nua, gon song lan ra phia ngoai.
     float s = sin(v_uv.x * 5.0 - f * 6.2832), y = v_uv.y - s * 0.1 * (v_uv.x + 0.8);
@@ -111,6 +117,29 @@ export class Hat {
     for (const [u, v] of GOC) {
       d[o++] = x + u * rx; d[o++] = y + v * ry; d[o++] = u; d[o++] = v;
       d[o++] = r; d[o++] = g; d[o++] = b; d[o++] = a; d[o++] = kieu;
+    }
+    this.n += 1;
+  }
+
+  /**
+   * Them mot que thang tu `(x0,y0)` toi `(x1,y1)`, day `day` diem anh khung ve - hinh chu nhat
+   * xoay theo huong que (kieu 9). `them` chi ve hop thang dung nen khong ve duoc van cheo iso.
+   */
+  public themQue(
+    x0: number, y0: number, x1: number, y1: number, day: number,
+    r: number, g: number, b: number, a: number,
+  ): void {
+    const dai = Math.hypot(x1 - x0, y1 - y0);
+    if (this.n >= this.toiDa || a <= 0.003 || dai < 0.5) return;
+    // Nua chieu dai doc que (u) va nua be day vuong goc voi que (v).
+    const [ux, uy] = [(x1 - x0) / 2, (y1 - y0) / 2];
+    const [vx, vy] = [(-(y1 - y0) / dai) * day / 2, ((x1 - x0) / dai) * day / 2];
+    const [mx, my] = [(x0 + x1) / 2, (y0 + y1) / 2];
+    let o = this.n * 6 * F;
+    const d = this.dem;
+    for (const [u, v] of GOC) {
+      d[o++] = mx + u * ux + v * vx; d[o++] = my + u * uy + v * vy; d[o++] = u; d[o++] = v;
+      d[o++] = r; d[o++] = g; d[o++] = b; d[o++] = a; d[o++] = HINH.que;
     }
     this.n += 1;
   }

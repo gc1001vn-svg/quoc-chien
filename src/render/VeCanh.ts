@@ -15,6 +15,8 @@ import type { Gl } from './Gl';
 import type { BanDo, O, OVat } from '../sim/city/BanDo';
 import type { ThanhPho } from '../sim/city/City';
 import { nguoiBatOn, type NguoiVe } from './HieuUngBatOn';
+import { catSprite, nguoiXay, phanXay } from './HieuUngXay';
+import type { TienDo } from './TungBuoc';
 // Hieu ung Thu 1 (khoi, chim, icon, hau ky) di qua day: `CityScene` da cham tran 300 dong.
 export { batDauKhungCoHieuUng, ketThucHieuUng } from './HieuUngThanhPho';
 
@@ -37,6 +39,8 @@ export interface Ve {
    * phai dung theo, va chay nhanh 3x thi no phai quay nhanh 3x. Luat da ghi o `CityScene`.
    */
   readonly khung: number;
+  /** Nhip cua chinh `ThanhPho.dongHo` - nha dang xay moc theo day (Buoc 1, `HieuUngXay.ts`). */
+  readonly nhipSim?: number;
   /** Dang doi me dan (Phase 12D): o ngoai lan song ve bang bo atlas cu. */
   readonly song?: Song;
 }
@@ -205,7 +209,7 @@ export function veLopVat(
 ): void {
   const nguoi: readonly NguoiVe[] = tp === undefined
     ? []
-    : [...tp.doiWalker.danhSach, ...nguoiBatOn(ve, tp)].sort((m, n) => m.a + m.b - (n.a + n.b));
+    : [...tp.doiWalker.danhSach, ...nguoiBatOn(ve, tp), ...nguoiXay(ve, banDo)].sort((m, n) => m.a + m.b - (n.a + n.b));
 
   let i = 0;
   if (veNha) {
@@ -217,7 +221,7 @@ export function veLopVat(
         i += 1;
       }
       if (muc !== undefined && sau > muc.sau && cheMuc(ve, v.a, v.b, v.ten, muc)) continue;
-      datSprite(ve, v.a, v.b, v.ten);
+      datSprite(ve, v.a, v.b, v.ten, phanXay(ve, v));
     }
   }
   for (; i < nguoi.length; i += 1) {
@@ -274,16 +278,18 @@ function spriteWalker(w: NguoiVe): string {
  * Loai o day chu khong o cho khac vi toa do man hinh dang sao cung phai tinh - phep so
  * sanh them gan nhu khong ton gi, ma cat duoc mot nua so sprite.
  */
-function datSprite(ve: Ve, a: number, b: number, tenGoc: string): void {
+function datSprite(ve: Ve, a: number, b: number, tenGoc: string, xay?: TienDo): void {
   const nguon: Nguon = chonNguon(ve, a, b, tenGoc);
   const hop: Hop | undefined = hopSprite(ve, a, b, tenGoc, nguon);
-  if (hop === undefined) return;
+  if (hop === undefined || xay?.giaiDoan === 'mong') return;
   if (hop.x1 < 0 || hop.x0 > ve.rongDev || hop.y1 < 0 || hop.y0 > ve.caoDev) return;
   const s = nguon.atlas.o(tenKhung(ve, nguon.atlas, tenGoc));
   const [u0, v0, u1, v1] = nguon.atlas.uv(s);
+  // Nha dang xay (Buoc 1, 04/10): cat phan chua moc, loe thi chop sang nhu song doi me.
+  const [y0, vc] = xay === undefined ? [hop.y0, v0] : catSprite(ve, xay, hop.y0, hop.y1, s.oy, v0, v1);
   ve.gl.them(
-    s.trang + nguon.lech + nguon.sang,
-    hop.x0, hop.y0, hop.x1 - hop.x0, hop.y1 - hop.y0, u0, v0, u1, v1,
+    s.trang + nguon.lech + Math.max(nguon.sang, xay?.sang ?? 0),
+    hop.x0, y0, hop.x1 - hop.x0, hop.y1 - y0, u0, vc, u1, v1,
   );
   ve.dem += 1;
 }

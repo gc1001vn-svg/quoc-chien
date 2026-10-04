@@ -4,7 +4,7 @@
  * CHI DOC mo phong: `ThuNha.nhipTac()` / `nhipDoi()` va danh sach nha. Khong ghi gi nguoc
  * lai - `sim:van`, `sim:tran` phai ra y nhu truoc (luat Thu 1, `docs/ke-hoach/2026-09-30-*`).
  *
- * Tat tung thu bang `?tat=`: `hauky` · `tilt` · `khoi` · `chim` · `icon` · `batOn` · `het` (moi thu, ca man tran),
+ * Tat tung thu bang `?tat=`: `hauky` · `tilt` · `khoi` · `chim` · `icon` · `batOn` · `xay` · `het` (moi thu, ca man tran),
  * nhieu cai cach nhau dau phay. Nut "Hieu ung" cua `Perf` tat ca lop luc dang choi.
  *
  * Lenh ve: canh 1 + lo hat 1 + hau ky 1 = 3, trong tran 4 (TECH_SPEC muc 2).
@@ -12,6 +12,8 @@
 import soTho from '../../data/hieu_ung.json';
 import { HauKy } from './HauKy';
 import { VeBatOn } from './HieuUngBatOn';
+import { VeXay } from './HieuUngXay';
+import { SO_XAY } from './TungBuoc';
 import { HINH, Hat } from './Hat';
 import { neoX, neoY } from './IsoMath';
 import type { Gl } from './Gl';
@@ -24,7 +26,7 @@ const SO = soTho;
 /** Cac thu dang TAT theo `?tat=`. */
 export function docCoTat(chuoi: string | null): ReadonlySet<string> {
   const tat = new Set((chuoi ?? '').split(',').map((s) => s.trim()).filter((s) => s !== ''));
-  if (tat.has('het')) for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon', 'bui', 'chop', 'co', 'nhat', 'khung', 'batOn', 'cham', 'nguon']) tat.add(t);
+  if (tat.has('het')) for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon', 'bui', 'chop', 'co', 'nhat', 'khung', 'batOn', 'cham', 'nguon', 'xay']) tat.add(t);
   return tat;
 }
 
@@ -67,6 +69,7 @@ class HieuUng {
   private readonly don = new Map<number, number>();
   private readonly chim: Chim[] = [];
   private readonly batOn = new VeBatOn();
+  private readonly xay = new VeXay();
   private henChim = 2;
   private giay = 0;
   private truoc = 0;
@@ -76,7 +79,7 @@ class HieuUng {
     this.gl = gl;
     this.tat = docCoTat(new URLSearchParams(window.location.search).get('tat'));
     this.hauKy = this.tat.has('hauky') ? undefined : new HauKy(gl, SO.hauKy);
-    this.hat = new Hat(gl, SO.khoi.toiDa + SO.batOn.toiDa + 400);
+    this.hat = new Hat(gl, SO.khoi.toiDa + SO.batOn.toiDa + SO_XAY.toiDaHat + 400);
   }
 
   batDau(bat: boolean): void {
@@ -98,6 +101,7 @@ class HieuUng {
     const nha = tp.dsNhaThat();
     if (!this.tat.has('chim')) this.chayChim(dt, bien, dx, dy, ve.tiLe, dpr);
     if (!this.tat.has('khoi')) this.chayKhoi(dt, nha, ve, bien, dx, dy);
+    if (!this.tat.has('xay')) this.xay.chay(this.hat, ve, tp.banDo, dt, dpr);
     this.batOn.chay(this.hat, ve, tp, dt, this.giay, dpr);
     if (!this.tat.has('icon')) this.veIcon(nha, ve, dpr);
     let lenh = this.hat.xa();
