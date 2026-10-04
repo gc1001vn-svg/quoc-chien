@@ -12,7 +12,8 @@ Cập nhật: 04/10/2026 (lần 34 — nhận ra game từ ảnh anh gửi).
 
 - **04/10 (lần 34): nhận ra game từ ảnh** — Kỷ Nguyên Băng Hà: 3Q, chỉ có trên điện thoại, không chơi thử được. Video lối chơi
   thật không có lúa lớn dần, không có thời kỳ; clip quảng cáo không khớp game. Anh chọn cách 2 → Claude chơi thật 2 game web
-  cùng kiểu: Medieval Farms (cây lớn 5 hình, phá rừng mở đất), Castle Builders (thợ xây từng viên, giàn giáo). Không đổi game.
+  cùng kiểu: Medieval Farms (cây lớn 5 hình, phá rừng mở đất), Castle Builders (thợ xây từng viên, giàn giáo). Anh chê đồ hoạ
+  kém → xem video lối chơi thật Viking Rise, Happy Citizens qua Gemini. Không đổi game.
   `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md`.
 - **04/10 (lần 33): cài Playwright MCP** (anh chọn B) — Claude tự chơi thử game/app web. Không đổi game. Thử 4 game nhập vai: chạy
   cả Unity 3D (4 khung/s). Chi tiết: `docs/NHAT_KY/TRINH_DUYET_04_10.md` · cách dùng: `docs/MOI_TRUONG.md` mục cuối.
@@ -72,11 +73,11 @@ Bảng: hình nông trại hiện tại (trái) cạnh bản Quaternius một ta
 trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`. **Anh tạm dừng 30/09** — chưa chọn. Gà Quaternius chỉ ở Poly Pizza
 (máy ảo bị chặn): anh tải `https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
 
-### ⏳ Việc 04/10 (lần 34) — anh có muốn thêm lúa lớn dần, xây từng bước vào Quốc Chiến không
+### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
-Hai thứ anh khen ở quảng cáo Kỷ Nguyên Băng Hà mà Quốc Chiến chưa có (lên thời kỳ thì đã có từ 12D). Mẫu đã chơi thật,
-ảnh đã gửi: Medieval Farms (lúa) · Castle Builders (xây). Anh trả lời có/không; có thì phiên sau lập kế hoạch, tính chỗ
-atlas trước (mẻ cổ đại gần hết chỗ, mục 2).
+Anh chốt 04/10: không chỉ lúa và xây nhà, mọi thứ đều từng bước; mẫu phải đồ hoạ tương đương (Viking Rise, Happy Citizens —
+**đừng lấy game đồ hoạ thấp làm mẫu nữa**). Danh sách việc + mẫu: `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 3.
+Anh chọn làm gì trước (hoặc để Claude đề xuất thứ tự); phiên sau lập kế hoạch, tính chỗ atlas trước (mục 2).
 
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
@@ -105,7 +106,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: chờ anh chơi thử bản 04/10 (mục 3).** Chưa có việc máy nào đang dở. Anh mở lại art bible thì làm bảng 2 (dưới).
+**PHIÊN SAU: lập kế hoạch "mọi thứ từng bước" (mục 3)** — Plan Mode, anh duyệt rồi mới làm; tính chỗ atlas, fps trước.
+Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Vẫn chờ anh chơi thử bản 04/10. Anh mở lại art bible thì làm bảng 2 (dưới).
 
 **Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước; giật lúc giờ trôi: bớt `so_tran_dung_som` (`data/battle.json`).

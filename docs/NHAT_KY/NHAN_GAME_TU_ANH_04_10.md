@@ -36,3 +36,19 @@ mỏ đá, vào rừng, vác từng viên về đặt; ~20 s viên đầu, ~100 
 
 **Bài học cho Quốc Chiến (chưa làm, chờ anh):** lúa lớn dần = 3–4 hình theo % thời gian + vòng báo chín; xây từng bước
 = bản vẽ mờ → đặt từng khối → giàn giáo → xong. Ảnh: `anh_chup/trinh_duyet/mf_*.jpg`, `cb_*.jpg` (không lên git).
+
+## Phần 3 — anh chê đồ hoạ 2 game trên kém; gửi thêm Happy Citizens (ảnh) + Viking Rise (quay màn hình 7 s)
+
+Anh muốn **mọi thứ** trong Quốc Chiến diễn ra từng bước, mẫu phải đồ hoạ tương đương — xem video, không cần chơi được.
+Gemini xem 5 phút đầu video lối chơi thật (nạp video thật: 24.001 và 27.301 token):
+
+**Viking Rise** (IGG, `sj3iPa7-qj4`): 3D tả thực, góc xéo. Xây: vòng móng trên đất → khung gỗ/giàn giáo, thợ gõ búa, tia
+lửa, bụi, thanh tiến độ → cột sáng vàng → nhà xong (3–18 s). Thợ vác khúc gỗ trên vai, ôm giỏ quả về kho. Bụi quả thưa
+dần rồi mất; cây bị chặt giữ nguyên rồi biến mất (không đổ). Mở đất: sương mù, thợ chặt bụi, sương tan (~5 s). Đêm:
+lửa trại, đuốc, lính tuần; hươu chạy, chim bay. Quảng cáo anh quay (rừng → hàng rào → móng → khung) chưa kiểm là phim dựng.
+**Happy Citizens** (LifeSim, `OpzP7hfgg24`): 2D hoạt hình, chi tiết trung bình — kém xa ảnh quảng cáo. Xây: mây khói + đếm
+ngược 3–15 s → hiện ngay. Sống động nhờ: dân xuống xe buýt, đi bộ về đúng nhà, ngủ, đi làm; xe chạy; đồng hồ ngày/đêm, đèn đường.
+
+**Rút ra:** game đẹp cũng chỉ 3–4 bước + hiệu ứng (giàn giáo dùng chung, ánh sáng, bụi), không liền mạch. Quốc Chiến đã
+có: lên đời, người vác (`src/render/VeCanh.ts`), hệ hạt khói/lửa. Chưa có: xây theo bước, lúa lớn dần, cây/mỏ cạn dần,
+sương mù mở đất, ngày/đêm. Mỗi bước thêm hình → tốn atlas (mẻ cổ đại gần hết chỗ) — phải tính trước.
