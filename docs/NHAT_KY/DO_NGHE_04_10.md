@@ -23,3 +23,6 @@ Anh giao 04/10: "Kiếm lại từng cái đo thực tế. Hữu ích thì làm 
   người gọi cuối bỏ 10/09). Đo bằng máy thay `/ponytail-audit`: không script mồ côi, 0 thư viện chạy thật.
 - **Agent con theo model** (3 agent nhỏ, chạy lần lượt): khởi động 41–52 nghìn token mỗi agent bất kể model; theo bảng giá
   ước Opus ~$0,40 · Sonnet ~$0,21 · Haiku ~$0,09. Sonnet đọc cache cùng giá Opus ($0,20/triệu). Ghi kho.
+- **Bổ sung cùng ngày — làm SAI đối tượng:** anh hỏi học từ 29 nguồn để *Claude* làm tốt hơn, Claude đem ý đi sửa game.
+  Anh chỉnh. Làm lại đúng việc ở kho `ghi-nho` (`quyet-dinh/2026-10-04-hoc-cho-do-nghe-dot-5.md`). Phát hiện kèm:
+  phiên hai repo không nạp hook của repo → vá `scripts/hook_*.mjs` (commit `5c995c5`), sửa `AGENTS.md` lọt mã 0 → chặn mã 2.
