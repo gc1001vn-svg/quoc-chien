@@ -16,7 +16,6 @@ Kho **Private** → phiên mới chưa có credential cho nó. Làm đúng thứ
 1. Chưa có `/home/user/ghi-nho` → gọi tool **`add_repo`** trước
    (`owner: gc1001vn-svg` · `repo: ghi-nho` · **`access: read`** là đủ), rồi
    `git clone --depth 1 https://github.com/gc1001vn-svg/ghi-nho /home/user/ghi-nho`.
-   **Không gọi `register_repo_root`** — nạp thừa `CLAUDE.md` của kho, thêm một hộp thoại.
 2. Có rồi → `git -C /home/user/ghi-nho pull -q`.
 3. `cat /home/user/ghi-nho/{so-thich,du-an,trang-thai}.md`
 
@@ -26,7 +25,7 @@ mất 3 lượt gọi (đo 20/09). Hỏng tiếp thì **đổi cách hỏi** r�
 (mất một phiên 12/09 vì thử lại y hệt, một phiên khác vì `head -120`).
 
 Rồi chạy `docs/DAU_PHIEN.md` — lệnh và bẫy riêng repo này.
-**Bảy bước đầu phiên · cách trả lời · luật báo "xong" · sở thích chủ dự án: ĐỀU Ở KHO.**
+**Bảy bước đầu phiên · luật báo "xong": Ở KHO. Cách trả lời · sở thích: cài đặt cá nhân.**
 
 **Mỗi phiên một phase.** **TIẾP** = phase kế · **ĐỔI…** = sửa trong phase này ·
 **LỖI** = sửa lỗi trước hết, theo skill `diagnosing-bugs`: có lệnh bắt đỏ đúng lỗi rồi
@@ -49,8 +48,8 @@ in khối `=== VIỆC CỦA ANH BÂY GIỜ ===`.
 
 - Comment tiếng Việt; tên biến, tên hàm tiếng Anh.
 - Commit tiếng Việt **không dấu**, mỗi việc một commit: `feat: them he thong walker`.
-- Asset chỉ nhận **CC0 · CC-BY · MIT**, tự tìm hoặc tải từ nguồn mở. CC-BY-SA và đồ
-  chép từ game thương mại: loại.
+- Asset chỉ nhận **CC0 · CC-BY · MIT** (font thêm OFL), tự tìm hoặc tải từ nguồn mở.
+  SA, ND, NC, GPL và đồ chép từ game thương mại: loại — luật 3 của `kho-game/CLAUDE.md`.
 - **Dò asset một lệnh:** `npm run do:asset <từ khoá>` (tự chạy kho-game + ba file kê) →
   không ra thì báo chủ dự án quyết. Tự vẽ, tự ghép chỉ sau khi anh quyết.
   Bẫy: `docs/DAU_PHIEN.md` mục F.
