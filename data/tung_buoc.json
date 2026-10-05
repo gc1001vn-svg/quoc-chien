@@ -25,5 +25,26 @@
   "go": { "nhipGiay": 0.32, "soMat": [2, 4], "tocDo": [25, 55], "tuoiGiay": [0.3, 0.5], "co": 1.8, "toiThieuCss": 1.5, "trongLuc": 160, "cao": 0.35, "mau": [0.9, 0.74, 0.46] },
   "loe": { "banKinh": [20, 90], "mau": [1.0, 0.95, 0.78], "doDac": 0.55 },
   "_tho": "Tho dung o o duong truoc cong, lui vao phia nha phan 'lui' cua mot o.",
-  "tho": { "lui": 0.45 }
+  "tho": { "lui": 0.45 },
+  "_ngayDem": "Buoc 2 ngay/dem (05/10, ke hoach docs/ke-hoach/2026-10-05-buoc-2-ngay-dem.md). Chi LOP VE doc - sim khong doi. chuKyNhip: mot ngay = 36.000 nhip = 1 gio game (anh chon 05/10) = 6 phut that o 10x mo man. gioDauChuKy: gio trong ngay luc so nhip chia het cho chuKyNhip - mo man (nhip 36.000) va moi the quyet dinh (dau moi gio game) roi vao gio nay. chieuToi [bat dau toi, toi han], rangSang [bat dau sang, sang han]: gio trong ngay 0..24. mauChieu: mau nhan luc giua hoang hon/binh minh. mauDem: mau nhan luc toi han (khoi diem: bang thu 30/09). tiLeAnNguoi: phan nguoi vac giau khi toi han; heSoNguoiVe: nguoi dang ve nha giau theo ti le nay nhan heSo (giau sau cung). nguongChim, nguongMay: qua muc toi nay thi khong tha chim, tat bong may hau ky. chuKyLapGiay: ?gio=lap chay mot ngay trong so giay that nay (quay clip). toiDaHat: so o rieng trong lo Hat cho den, lua, Zzz.",
+  "ngayDem": {
+    "chuKyNhip": 36000,
+    "gioDauChuKy": 8,
+    "chieuToi": [18, 20],
+    "rangSang": [5, 7],
+    "mauChieu": [1.0, 0.82, 0.66],
+    "mauDem": [0.25, 0.31, 0.53],
+    "tiLeAnNguoi": 0.6,
+    "heSoNguoiVe": 0.5,
+    "nguongChim": 0.3,
+    "nguongMay": 0.5,
+    "chuKyLapGiay": 12,
+    "toiDaHat": 400,
+    "_den": "Den cua so nha dan: tiLe nha co den (bam chi so), toiDa trong khung camera. viTri: phan cua khung sprite [ngang, doc] tu goc trai tren. banKinh: quang sang, phan cua mot o. loi: dom sang giua, phan cua mot o. nhapNhay: bien do nhap nhay.",
+    "den": { "tiLe": 0.7, "toiDa": 60, "viTri": [0.5, 0.74], "banKinh": 0.5, "mau": [1.0, 0.6, 0.28], "doDac": 0.5, "loi": 0.05, "mauLoi": [1.0, 0.84, 0.5], "toiThieuCss": 1.2, "nhapNhay": 0.12 },
+    "_lua": "Lua trai o nga tu moi kho. banKinh: quang sang, phan cua mot o. loi: ngon lua, phan cua mot o. tan: tan lua bay len - nhipGiay giua hai tan, tuoiGiay, bayLen (don vi the gioi/giay), co (don vi the gioi). Vat dung truoc che loi lua qua cheToiDa (cung so buoc 1) thi chi con quang.",
+    "lua": { "banKinh": 1.6, "mau": [1.0, 0.55, 0.22], "doDac": 0.75, "loi": 0.16, "mauLoi": [1.0, 0.72, 0.3], "mauTam": [1.0, 0.93, 0.62], "tan": { "nhipGiay": 0.12, "tuoiGiay": [0.6, 1.1], "bayLen": [14, 26], "co": 1.4, "toiThieuCss": 1.2, "mau": [1.0, 0.7, 0.3] } },
+    "_zzz": "Zzz tren nha dan da xay xong: tiLe nha co Zzz (bam chi so), hien khi do toi qua nguong. Moi chu Z ve bang 3 que. chuKyGiay: mot chu Z bay het mot vong. co: nua canh chu Z luc moi ra (don vi the gioi), toiThieuCss. bay [ngang, len] trong mot vong (don vi the gioi).",
+    "zzz": { "tiLe": 0.35, "nguong": 0.6, "toiDa": 14, "chuKyGiay": 2.4, "co": 3.5, "toiThieuCss": 2.5, "bay": [10, 24], "mau": [0.93, 0.96, 1.0], "day": 1.1 }
+  }
 }
