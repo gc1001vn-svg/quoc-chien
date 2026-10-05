@@ -299,7 +299,7 @@ Ngưỡng trong `data/victory.json`. Thua: mất thủ đô, hoặc bất ổn l
 
 - **Nội dung nguyên gốc.** Không sao chép tên công nghệ đặc chế, tên đơn vị, tên địa
   danh, cốt truyện, bố cục bản đồ từ game thương mại. Tên lịch sử có thật thì dùng được.
-- **Asset chỉ CC0 / CC-BY / MIT**, ghi nguồn vào `docs/ASSET_CREDITS.md` **ngay lúc thêm**.
+- **Asset chỉ CC0 / CC-BY / MIT** (font thêm OFL), ghi nguồn vào `docs/ASSET_CREDITS.md` **ngay lúc thêm**.
   CC-BY-**SA** không dùng được vì lây license sang cả dự án.
 - **Repo GPL/AGPL chỉ đọc học kiến trúc, không copy-paste code.**
 - **Mọi số cân bằng nằm trong `data/*.json`**, cấm hardcode trong `.ts`.

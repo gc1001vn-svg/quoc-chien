@@ -218,7 +218,7 @@ Thêm 06/09 sau khi so với game thương mại (Million Lords — cùng phối
 | Lệnh vẽ | 1 | 2 | 4 |
 
 Bản 2× tràn sang trang thứ hai một phần vì **cách xếp kệ bỏ phí**: tổng diện tích sprite
-là **0,867 trang**, xếp khít thì vừa. Nợ này ghi ở `docs/TIEN_DO.md`; chưa đáng đổi thuật
+là **0,867 trang**, xếp khít thì vừa. Nợ này ghi ở `docs/NO_KY_THUAT.md`; chưa đáng đổi thuật
 toán vì còn cách trần 4 trang khá xa, và mẻ Kenney trước cũng đã chạy 2 trang ở 2×.
 
 **Cắt theo kênh alpha — sửa 07/09.** Trước đó `gl_FragColor` đặt cứng `alpha = 1.0`, tức
@@ -366,7 +366,7 @@ Nên nướng **trung cổ trước**, rồi hiện đại, tương lai, cuối 
 - `assets_source/` — gói tải về nguyên vẹn, **không lên máy chủ**
 - `public/assets/` — chỉ atlas đã nướng mà game thật sự dùng
 
-**Danh mục kho: `docs/KHO_ASSET.md`** — tên thật của cả 1.855 model, sinh bằng `npm run kho`.
+**Danh mục kho: `docs/KHO_ASSET.md`** — tên thật của mọi model, sinh bằng `npm run kho`.
 **Dò ở đó trước khi ghép bất cứ sprite nào.** Bảng gói ngay trên đây ghi "KayKit Medieval
 Builder: … xưởng gỗ, mỏ, cối xay" từ 06/09, nhưng ghi chung chung nên không grep được —
 ngày 10/09 vẫn ngồi ghép cối xay gió bằng tay năm lượt trong khi `mill` + `mill_blades`
@@ -497,10 +497,11 @@ Mọi thư viện khác: đề xuất tên + license + lý do, **chờ chủ d�
 
 ## 10. Lệnh
 
-**Trước khi commit luôn chạy đủ:**
+**Trước khi commit luôn chạy:**
 ```
-npm run lint && npm run typecheck && npm test && npm run build
+npm run do
 ```
+(`scripts/do.sh` — gồm lint, typecheck, test, build và các thước `check:*`.)
 
 | Lệnh | Việc |
 |---|---|

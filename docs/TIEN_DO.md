@@ -6,10 +6,12 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 05/10/2026 (lần 37 — art bible bước 2, bảng nông trại 2).
+Cập nhật: 05/10/2026 (lần 38 — sửa 4 file docs lệch theo rà xung đột 05/10).
 
 ## 1. Đang ở đâu
 
+- **05/10 (lần 38): sửa 4 file docs lệch** (`MOI_TRUONG`, `NO_KY_THUAT`, `TECH_SPEC`, `GAME_SPEC` — hai file sau anh đồng ý).
+  Không đổi game. `docs/NHAT_KY/SUA_DOCS_05_10.md`.
 - **05/10 (lần 37): bảng nông trại 2, bảng gà, bảng thú đã gửi; anh chọn "lúa lớn dần", gà G1 + G2; còn chờ** (mục 3). Không đổi
   game. Drive hết hạn mức → lấy Quaternius qua itch, OpenGameArt. `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`.
 - **04/10 (lần 36): Bước 1 "xây nhà từng bước"** (kế hoạch anh duyệt 04/10) — nhà, kho thống đốc xây thêm hiện dần: vạch móng →

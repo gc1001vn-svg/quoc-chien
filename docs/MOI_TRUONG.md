@@ -212,8 +212,8 @@ account, dài 53 ký tự — đo trên khoá thật 19/09). Chỉ bắt mẫu `
 **Chỗ đúng để cất khoá: ô `Environment variables`** — chốt 20/09 sau khi đo, vì SDK và mọi
 tool của repo đọc `process.env`. Ô `API credentials` giấu được chuỗi nhưng **proxy không
 chèn header** khi chưa khai host (đo 20/09) và để `process.env` rỗng → tool chết lúc khởi
-tạo. **Lý do đầy đủ, bảng so hai ô, tên biến chuẩn: `docs/TIEN_DO.md` mục 3** — một chỗ
-duy nhất, đừng chép về đây.
+tạo. **Lý do đầy đủ, bảng so hai ô, tên biến chuẩn: mục "Đặt khoá vào môi trường" ở đầu file
+này** — một chỗ duy nhất, đừng chép về đây.
 
 > **Hai lần sai cùng một thói quen.** 17/09 ghi *không có* mục `API credentials` (mô tả
 > giao diện qua lời kể). 19/09 ghi nó *là chỗ đúng* (chưa đo cách dùng). Hộp thoại
@@ -233,13 +233,13 @@ duy nhất, đừng chép về đây.
 | 18 host còn lại | `000` — allowlist môi trường chặn |
 
 **Đo lại 20/09: `api.deepseek.com` → `401`, `api.x.ai` → `421`** — chủ dự án đã mở hai host
-đó, không còn `000`. Bảng đo đủ 18 host: `docs/TIEN_DO.md` mục 3.
+đó, không còn `000`. Bảng đo đủ 18 host: mục "Ô Allowed domains GHI ĐÈ" ở đầu file này.
 
 `000` (đo 19/09) gồm `api.openai.com` · `openrouter.ai` · `api.groq.com` ·
 `api.mistral.ai` · `api.moonshot.ai` · `api.together.xyz` · `api.cerebras.ai`
 · `dashscope.aliyuncs.com` · `huggingface.co` … Muốn mở thêm thì xin vào ô
-**Allowed domains** — nhớ ô đó **ghi đè**, phải dán lại danh sách đầy đủ ở
-`docs/TIEN_DO.md` mục 3.
+**Allowed domains** — nhớ ô đó **ghi đè**, phải dán lại danh sách đầy đủ ở kho
+`ghi-nho`, `cong-cu/allowed-domains.txt`.
 
 **Đừng lấy token đăng nhập của Claude Code đắp vào `api.anthropic.com`** — sai mục đích
 cấp quyền. Muốn dùng host đó phải là khoá API anh tự mua.
@@ -298,6 +298,10 @@ Khoá API đã có (chủ dự án lấy 15/09). **Không bao giờ vào git** �
 > proxy gắn header sau khi request rời máy ảo. **Không có mục đó.** Hộp thoại chỉ gồm
 > `Name` · `Network access` · `Allowed domains` · `Environment variables`. Chủ dự án mở ra
 > xem mới lộ. Bài học: **đừng mô tả giao diện mình chưa nhìn thấy.**
+>
+> **Khối trên sai — sửa 19/09: CÓ mục `API credentials`** (ảnh chụp của chủ dự án), nhưng
+> proxy không chèn header khi chưa khai host (đo 20/09). Chỗ đúng vẫn là
+> `Environment variables`: mục "Đặt khoá vào môi trường" ở đầu file này.
 >
 > Trang đó tự cảnh báo: *"These are visible to anyone using this environment — don't add
 > secrets or credentials."* Môi trường riêng thì rủi ro thấp; chia cho người khác thì xoay

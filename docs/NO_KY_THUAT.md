@@ -100,8 +100,10 @@
   `vite.config.ts`. Trước đó service worker cũ phục vụ atlas cũ với code mới: sprite người
   không có trong atlas, `datSprite` bỏ qua im lặng, không ai hiện trên đường. Chủ dự án
   phải xoá dữ liệu trang 2-3 lần mới thấy.
-- `session-start-hook` trong `settings.json` khai sai tên bên trong (`startup-hook-skill`)
-  nên nhiều khả năng không khớp với skill nào. Vô hại, chưa sửa.
+- ~~`session-start-hook` trong `settings.json` khai sai tên bên trong (`startup-hook-skill`)
+  nên nhiều khả năng không khớp với skill nào.~~ — **KHÔNG PHẢI NỢ (05/10).** `skillOverrides`
+  khớp theo tên thư mục (`~/.claude/skills/session-start-hook/`), không theo `name:` —
+  kho `ghi-nho`, `quyet-dinh/2026-10-05-skilloverrides-khop-ten-thu-muc.md`.
 - ~~**Không kéo được kho `ghi-nho` từ máy ảo**~~ — **ĐÃ TRẢ 07/09.** `git clone` thẳng vẫn
   hỏi mật khẩu, nhưng gọi `add_repo` (owner `gc1001vn-svg`, repo `ghi-nho`, access `push`)
   rồi clone lại thì được. Đúng cách skill `ghi-nho` mô tả — phiên trước gọi hụt.
