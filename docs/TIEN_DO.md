@@ -10,8 +10,8 @@ Cập nhật: 05/10/2026 (lần 37 — art bible bước 2, bảng nông trại 
 
 ## 1. Đang ở đâu
 
-- **05/10 (lần 37): bảng nông trại 2 đã gửi, chờ anh chọn mã ô** (mục 3). Không đổi game. Drive hết hạn mức → lấy Quaternius qua
-  itch, OpenGameArt; lợn, cừu trong game vốn đã là Quaternius. `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`.
+- **05/10 (lần 37): bảng nông trại 2 + bảng gà đã gửi; anh duyệt "lúa lớn dần", còn chờ mã ô** (mục 3). Không đổi game. Drive hết
+  hạn mức → lấy Quaternius qua itch, OpenGameArt; lợn, cừu trong game vốn đã là Quaternius. `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`.
 - **04/10 (lần 36): Bước 1 "xây nhà từng bước"** (kế hoạch anh duyệt 04/10) — nhà, kho thống đốc xây thêm hiện dần: vạch móng →
   mọc từ dưới lên + giàn giáo que gỗ + bụi + thợ gõ → loé sáng → xong, ~2 s ở 10×. Chỉ đổi hình, nhà đang xây vẫn sản xuất.
   Luật mới TP16. Đã đẩy `main`. `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`.
@@ -76,10 +76,10 @@ nước AI yếu hơn chút có thể tự xin hoà. Anh báo: fps, nhịp lên 
 
 ### ⏳ Việc 05/10 (lần 37) — anh chọn trên bảng nông trại 2 (art bible bước 2)
 
-Bảng 23 ô gửi trong chat 05/10 (cột A = hình hiện tại). Anh trả lời bằng mã ô: (1) ruộng: 1A giữ · 1B–1E? (2) lúa lớn dần hàng 2
-có dùng cho bước 3 không? (3) trại lợn 3B, cừu 3D thay bản hiện tại không? (4) trại gà: 4B chuồng không có gà, hay giữ 4A?
-Bò 4C, ngựa 4D chưa có trong game — chỉ để anh xem. Gà Quaternius chỉ ở Poly Pizza (máy ảo bị chặn): anh tải
-`https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
+Bảng 23 ô + bảng gà 10 ô gửi trong chat 05/10 (cột A = hình hiện tại). **Anh duyệt hàng 2 "lúa lớn dần".** Còn chờ mã ô:
+(1) ruộng: 1A giữ · 1B–1E? (2) trại lợn 3B, cừu 3D thay bản hiện tại không? (3) gà: G1–G10 (G10 duy nhất cùng tay vẽ
+Quaternius), chuồng 4B hay giữ 4A? Bò 4C, ngựa 4D chưa có trong game — chỉ để anh xem. Gà Quaternius thật chỉ ở Poly Pizza
+(máy ảo bị chặn): anh tải `https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 

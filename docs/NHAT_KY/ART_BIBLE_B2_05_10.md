@@ -20,3 +20,16 @@ rồi xoá, không file nào vào git ngoài nhật ký này. Bảng 1 (30/09): 
   `Wheat_3` (738 đỉnh/thân) là vỡ. Ruộng dày ở bước 3 phải tính đỉnh trước. `khoi:dong` đỏ một lần đầu phiên (Chromium chưa mở
   cổng sau 10 s lúc máy ảo vừa lên), chạy lại xanh 4,3 s.
 - **Chờ anh chọn mã ô** (`TIEN_DO.md` mục 3). Chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai`, anh duyệt rồi mới nướng.
+
+## Thêm cùng ngày — bảng gà (anh nhắc "kho-game có 3, 4 con gà")
+
+- **Anh nói đúng**, bảng 2 bỏ sót: kho-game có ~25 gà thật trên Icosa (CC-BY), 2 gói itch, 2 gà Quaternius trên Poly Pizza (máy ảo
+  403), 1 gà Quaternius trong kho chung `tayvuc` (`ultimate-monsters/Blob/Chicken.gltf`, clone thưa đúng một thư mục). Lý do bỏ
+  30/09 ("lệch tay vẽ, luật 9") không được đưa lên bảng cho anh tự xem — lần này đưa.
+- **Bảng gà 10 ô**, cùng chuồng 4B, cùng cao `0.2` ô (×1,7), phóng 1,5×: G1 Hen, G2 Chicken (Google, game đang dùng) · G3 Daria
+  Karpenko · G4 Anya Liu (ra cục xanh) · G5 Maf'j Alvarez · G6 gà trống Neil Nathanson (trục Z, `rx -90`) · G7 lnx00 (khối vuông) ·
+  G8 Michael Fuchs (không ra gà) · G9 Styloo (itch, thiếu `chicken_color.png` nên ra trắng; gói không có file LICENSE) ·
+  G10 Quaternius quái Blob — **con duy nhất cùng tay vẽ Quaternius lấy được ngay**, đọc ra gà (mào đỏ).
+- Mã Icosa: `8Unya0rw9tR 1YE8U35HXsI 5KdUjunuCeL 5b7e4BlUw8D 87XZ2kDlAhh 9f4AUFRblz4 cH9RfVlDQuO ceevYBgv96V`. Model Icosa
+  mỗi con một gốc toạ độ, một cỡ: hệ số và độ bù tính từ hộp bao (`docGltf`), không gõ tay.
+- **Anh duyệt hàng 2 "lúa lớn dần"** (05/10: "lúa đang lớn dần ok đấy") — dùng cho bước 3 kế hoạch "mọi thứ từng bước".
