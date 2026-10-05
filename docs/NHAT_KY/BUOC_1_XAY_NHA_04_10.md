@@ -18,3 +18,6 @@ bản 04/10). Kế hoạch mẹ: `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md`
   `luat:sau` TP16 bản sâu 50 hạt 19 s. Fps iPhone: chưa đo — việc của anh.
 - **Còn mở:** que vẽ sau mọi sprite nên đè lên vật đứng trước — đã chặn khi vật trước trùm ≥ 25 % hộp giàn giáo; anh thấy
   lỗi thì báo. Thợ chỉ đổi chân, không có hình vung búa.
+- **05/10, anh đo iPhone: 60 fps** (bản 05/10 01:26). Lần mở đầu cả hai link hiện "29/09": service worker phát bản cũ trong
+  máy trong lúc tải ~20 MB bản mới (precache 45 file, 19,5 MB). Thử trên máy ảo (Chromium, máy chủ giả Pages max-age=600,
+  đổi bản A → B): giây đầu bản cũ, 5 s sau tự tải lại sang bản mới — cơ chế đúng. Anh để yên ~1 phút thì lên. Không sửa mã.

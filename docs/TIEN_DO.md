@@ -26,12 +26,13 @@ Cập nhật: 04/10/2026 (lần 36 — Bước 1 "xây nhà từng bước").
 - **30/09 (lần 26–28): Thử 1–3 hiệu ứng xong**, anh đo iPhone 59 fps cả ba, "mọi thứ ok". Chi tiết: `docs/NHAT_KY/THU_{1,2,3}_30_09.md`.
 - **30/09: art bible mục 5 bước 1 (đèn)** xong phần máy, anh chưa xem máy thật. Chi tiết: `docs/NHAT_KY/DEN_30_09.md`.
 - **Game: Phase 12D xong**, anh đo iPhone 28/09: 59 fps. 12E chưa mở — anh dặn làm art bible trước. `docs/NHAT_KY/PHASE_12D.md`.
-- **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 29/09). Cho anh xem: link Pages sau khi đẩy `main` (`docs/DAU_PHIEN.md` mục G).
+- **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 05/10). Mở lần đầu sau nhiều ngày thấy bản cũ trong lúc tải ~20 MB
+  bản mới — dặn anh để yên ~1 phút. Cách cho anh xem: `docs/DAU_PHIEN.md` mục G.
 
 ## 2. Số đo mới nhất
 
 **Bước 1, đo 04/10 (máy ảo):** lệnh vẽ thành phố vẫn 3 · `sim:thu`, `sim:van` y hệt trước (mô phỏng chỉ ghi thêm nhịp khởi công)
-· test 606 → 613 · TP16 bản sâu 50 hạt 19 s. Fps iPhone: chưa đo.
+· test 606 → 613 · TP16 bản sâu 50 hạt 19 s. **iPhone 60 fps** (anh đo 05/10, bản 05/10 01:26).
 
 **Đồ nghề 04/10 (lần 35):** `npm run do` 192 → **76 s** · `khoi:dong` 121 → 4,5 s · `soi:giao-dien` 0 lỗi, ~20 s.
 
@@ -43,8 +44,7 @@ ngoại giao 4/5 → 5/5 · một giờ thế giới max 3,6 → **25 ms** (7/3.
 **Cân bằng, đo 04/10** (`sim:congnghe -- 320 6`, bản đồ gốc · 777 · 4242): đời 6 giờ **260 · 272 · 263** · nhà giờ 320:
 436 · 426 · 436 · kho 6 · Eureka 19 · 17 · 19 · đỉnh người vác 231–271. Bảng đủ: `docs/NHAT_KY/CAN_BANG_04_10.md`.
 
-**Thử 1–3, đo 30/09 (393×852):** 2–3 lệnh vẽ có hiệu ứng, 1 khi `?tat=het`. **Đèn 30/09:** số cũ → mới ở `docs/ART_BIBLE.md`
-mục 5 (**đừng chép về đây**). **12D, 28/09:** mỗi mẻ 2× 76 sprite · 2 trang; giữ 2 + 2 trang = 4 (trần), 1 lệnh vẽ.
+**Đèn 30/09:** số cũ → mới ở `docs/ART_BIBLE.md` mục 5 (**đừng chép về đây**). Thử 1–3, 12D: nhật ký cùng tên.
 
 **Mẻ trung cổ 2× coi như HẾT CHỖ.** Đo 19/09: tổng diện tích sprite 90,2 % một trang, mà
 84,4 % là mức cuối còn xếp vừa — thêm **một** sprite cỡ căn nhà là tràn trang. Mẻ mới hay
@@ -63,10 +63,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 04/10 (lần 36) — xem nhà mọc dần trên iPhone, đo fps
+### ⏳ Việc 04/10 (lần 36) — anh đo iPhone 05/10: 60 fps; còn chờ ý anh về hình
 
 Mở thẳng (thống đốc xây ngay một nhà dân, camera bay tới): https://gc1001vn-svg.github.io/quoc-chien/?xay=nha_dan — xem 2 giây
-đầu. Xem lặp lại cho kỹ: https://gc1001vn-svg.github.io/quoc-chien/?xay=nha_dan&xayTien=lap . Anh báo: fps (≥ 58); giàn giáo,
+đầu. Xem lặp lại cho kỹ: https://gc1001vn-svg.github.io/quoc-chien/?xay=nha_dan&xayTien=lap . Anh báo: giàn giáo,
 loé sáng có ưng không; có thấy que gỗ đè lên nhà/cây đứng trước không. Chơi thường thì nhà mới mọc dần mỗi khi thống đốc xây.
 
 ### ⏳ Việc 04/10 (lần 35) — xem 3 chỗ giao diện đã sửa, quyết 2 hàm chết
