@@ -80,30 +80,6 @@ export function congRaDuong(o: O, duongCach: number): O {
   return da <= db ? { a: gan(o.a), b: o.b } : { a: o.a, b: gan(o.b) };
 }
 
-/**
- * Boc mot o trong sat duong cho MOT nha, va danh dau da chiem.
- *
- * Tach rieng vi Phase 5: thong doc xay them nha luc dang chay, phai dat duoc nha moi
- * bang dung luat luc mo van - o trong, sat duong, khong de len nha cu. `daChiem` do
- * nguoi goi giu, nen goi lai nhieu lan van khong dat trung cho.
- *
- * Tra ve `undefined` khi boc `BOC_TOI_DA` lan lien tiep khong ra o nao: ban do da chat.
- */
-export function datMotNha(banDo: BanDo, daChiem: Set<number>, rng: Rng): O | undefined {
-  const c: number = banDo.duongCach;
-  for (let lan = 0; lan < BOC_TOI_DA; lan += 1) {
-    const a: number = rng.nguyen(banDo.canh);
-    const b: number = rng.nguyen(banDo.canh);
-    // Sat duong nghia la ke duong nhung khong nam tren duong.
-    if (laDuong({ a, b }, c)) continue;
-    if (a % c !== 1 && b % c !== 1 && a % c !== c - 1 && b % c !== c - 1) continue;
-    if (daChiem.has(a * banDo.canh + b)) continue;
-    daChiem.add(a * banDo.canh + b);
-    return { a, b };
-  }
-  return undefined;
-}
-
 /** Khuon cua `data/thanh_pho_demo.json`. */
 export interface CauHinhBanDo {
   /** Ten me atlas, vi du `trung_co_2`. */

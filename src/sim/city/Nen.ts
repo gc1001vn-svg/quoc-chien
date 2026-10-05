@@ -18,7 +18,7 @@
 import type { Rng } from '../../core/Rng.ts';
 import type { OVat } from './BanDo.ts';
 import type { QuyHoach, Vanh } from './QuyHoach.ts';
-import { laVien, vanhCuaO, xaTam } from './QuyHoach.ts';
+import { laVien, vanhCuaO } from './QuyHoach.ts';
 import type { O } from './BanDo.ts';
 
 /** Cu bao nhieu o vien thi dat mot vat danh dau. Thua thi rac, thieu thi khong thay vien. */
@@ -120,18 +120,6 @@ export function cuaThanh(qh: QuyHoach): O[] {
     }
   }
   return ra;
-}
-
-/** O nay cach duong vien gan nhat bao nhieu o. */
-export function xaVien(qh: QuyHoach, a: number, b: number): number {
-  const d: number = xaTam(qh, a, b);
-  const cuoi: number = (qh.vanh[qh.vanh.length - 1] as Vanh).den;
-  let gan = Infinity;
-  for (const v of qh.vanh) {
-    if (v.den >= cuoi) continue;
-    gan = Math.min(gan, Math.abs(d - v.den));
-  }
-  return gan;
 }
 
 /**

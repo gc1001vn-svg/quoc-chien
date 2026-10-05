@@ -63,10 +63,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 04/10 (lần 35) — xem 3 chỗ giao diện đã sửa, quyết 2 hàm chết
+### ⏳ Việc 04/10 (lần 35) — xem 3 chỗ giao diện đã sửa
 
 Trên iPhone (link Pages): cầm **dọc** mở Bản đồ tỉnh, rồi Xem trận — nút góc phải không còn chồng nhau; cầm **ngang** ở thành
-phố — thẻ quyết định hiện đủ ba lựa chọn một hàng. Hai hàm không ai gọi (`datMotNha`, `xaVien`, ~25 dòng): xoá hay giữ?
+phố — thẻ quyết định hiện đủ ba lựa chọn một hàng. Hai hàm không ai gọi `datMotNha`, `xaVien`: anh bảo xoá, đã xoá 05/10.
 Lần 35 làm khi anh **chưa giao** (anh hỏi học cho đồ nghề, Claude hiểu thành game): anh nói "gỡ" thì hoàn 5 commit `6de9727..5202fe5`.
 
 ### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
