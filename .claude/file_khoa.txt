@@ -1,5 +1,5 @@
 # File phai hoi chu du an truoc khi sua. Dong ket thuc bang "/" la khoa ca thu muc.
-# Luat nay o CLAUDE.md muc "Hoi chu du an truoc khi dung vao".
+# Luat nay o AGENTS.md muc "Quy uoc", dong "File khoa". Ve, so: hook chan_file_khoa.
 
 AGENTS.md
 CLAUDE.md
