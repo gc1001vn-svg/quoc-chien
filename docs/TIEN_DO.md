@@ -63,12 +63,6 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 04/10 (lần 35) — xem 3 chỗ giao diện đã sửa
-
-Trên iPhone (link Pages): cầm **dọc** mở Bản đồ tỉnh, rồi Xem trận — nút góc phải không còn chồng nhau; cầm **ngang** ở thành
-phố — thẻ quyết định hiện đủ ba lựa chọn một hàng. Hai hàm không ai gọi `datMotNha`, `xaVien`: anh bảo xoá, đã xoá 05/10.
-Lần 35 làm khi anh **chưa giao** (anh hỏi học cho đồ nghề, Claude hiểu thành game): anh nói "gỡ" thì hoàn 5 commit `6de9727..5202fe5`.
-
 ### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
 
 Link Pages: https://gc1001vn-svg.github.io/quoc-chien/ (nhãn cạnh số fps ghi ngày giờ bản). Đổi ở nhịp và trận, không đổi hình:
@@ -92,7 +86,7 @@ Bước 1 xong, anh duyệt 05/10 (60 fps, "ưng", không thấy que đè); bư�
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
 
-### ✅ Đã xong: bước 1 xây nhà từng bước, anh duyệt 05/10 · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
+### ✅ Đã xong: bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
 Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
@@ -115,7 +109,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: làm BƯỚC 2 "ngày/đêm + dân về nhà"** (bước 1 anh duyệt 05/10) theo kế hoạch ANH ĐÃ
+**PHIÊN SAU (anh chọn 05/10): ART BIBLE BƯỚC 2 — NÔNG TRẠI**, làm bảng 2 theo đoạn "Art bible bước 2" ngay dưới. Sau đó
+mới tới BƯỚC 2 "ngày/đêm + dân về nhà" (bước 1 anh duyệt 05/10) theo kế hoạch ANH ĐÃ
 DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md`. Cách chụp, quay hiệu ứng theo nhịp: như bước 1
 (`?xay=nha_dan&xayTien=0.45`, `xayTien=lap` — `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`). Anh luôn mở bằng trình duyệt web
 (Safari), không mở trong app Claude. Bước 3 (lúa lớn dần) chờ anh chọn bảng nông trại.
