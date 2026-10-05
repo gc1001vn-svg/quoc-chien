@@ -6,10 +6,12 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 04/10/2026 (lần 36 — Bước 1 "xây nhà từng bước").
+Cập nhật: 05/10/2026 (lần 37 — art bible bước 2, bảng nông trại 2).
 
 ## 1. Đang ở đâu
 
+- **05/10 (lần 37): bảng nông trại 2 đã gửi, chờ anh chọn mã ô** (mục 3). Không đổi game. Drive hết hạn mức → lấy Quaternius qua
+  itch, OpenGameArt; lợn, cừu trong game vốn đã là Quaternius. `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`.
 - **04/10 (lần 36): Bước 1 "xây nhà từng bước"** (kế hoạch anh duyệt 04/10) — nhà, kho thống đốc xây thêm hiện dần: vạch móng →
   mọc từ dưới lên + giàn giáo que gỗ + bụi + thợ gõ → loé sáng → xong, ~2 s ở 10×. Chỉ đổi hình, nhà đang xây vẫn sản xuất.
   Luật mới TP16. Đã đẩy `main`. `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`.
@@ -30,6 +32,9 @@ Cập nhật: 04/10/2026 (lần 36 — Bước 1 "xây nhà từng bước").
   bản mới — dặn anh để yên ~1 phút. Cách cho anh xem: `docs/DAU_PHIEN.md` mục G.
 
 ## 2. Số đo mới nhất
+
+**Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
+0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).
 
 **Bước 1, đo 04/10 (máy ảo):** lệnh vẽ thành phố vẫn 3 · `sim:thu`, `sim:van` y hệt trước (mô phỏng chỉ ghi thêm nhịp khởi công)
 · test 606 → 613 · TP16 bản sâu 50 hạt 19 s. **iPhone 60 fps** (anh đo 05/10, bản 05/10 01:26).
@@ -69,11 +74,12 @@ Link Pages: https://gc1001vn-svg.github.io/quoc-chien/ (nhãn cạnh số fps gh
 thành phố thêm nhà dân dày hơn, không xây kho mới; % thắng trên nút Tấn công nay là số thật (có thể ra 0 % khi thua chắc);
 nước AI yếu hơn chút có thể tự xin hoà. Anh báo: fps, nhịp lên đời ổn không, có giật lúc giờ trôi nhanh không.
 
-### ⏳ Việc 30/09 (lần 29) — anh chọn trên bảng nông trại (art bible bước 2)
+### ⏳ Việc 05/10 (lần 37) — anh chọn trên bảng nông trại 2 (art bible bước 2)
 
-Bảng: hình nông trại hiện tại (trái) cạnh bản Quaternius một tay vẽ (phải). Anh trả lời: dùng bản Quaternius cho ruộng, trại lợn,
-trại cừu? Gà thì sao (gà Quaternius ra cục, không đọc ra gà)? Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_30_09.md`. **Anh tạm dừng 30/09** — chưa chọn. Gà Quaternius chỉ ở Poly Pizza
-(máy ảo bị chặn): anh tải `https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
+Bảng 23 ô gửi trong chat 05/10 (cột A = hình hiện tại). Anh trả lời bằng mã ô: (1) ruộng: 1A giữ · 1B–1E? (2) lúa lớn dần hàng 2
+có dùng cho bước 3 không? (3) trại lợn 3B, cừu 3D thay bản hiện tại không? (4) trại gà: 4B chuồng không có gà, hay giữ 4A?
+Bò 4C, ngựa 4D chưa có trong game — chỉ để anh xem. Gà Quaternius chỉ ở Poly Pizza (máy ảo bị chặn): anh tải
+`https://poly.pizza/m/ineV9pU5VL` + `https://poly.pizza/m/LH96IMq0rE` bằng máy thật (GLB), hoặc bỏ qua.
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
@@ -109,17 +115,18 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU (anh chọn 05/10): ART BIBLE BƯỚC 2 — NÔNG TRẠI**, làm bảng 2 theo đoạn "Art bible bước 2" ngay dưới. Sau đó
-mới tới BƯỚC 2 "ngày/đêm + dân về nhà" (bước 1 anh duyệt 05/10) theo kế hoạch ANH ĐÃ
-DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md`. Cách chụp, quay hiệu ứng theo nhịp: như bước 1
+**PHIÊN SAU: anh chọn bảng nông trại 2 rồi → art bible bước 3** (kế hoạch nướng lại mẻ `co_dai`, anh duyệt rồi mới nướng;
+nguồn tải, hệ số, bẫy ~120 nghìn đỉnh: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`). Chưa chọn thì làm BƯỚC 2 "ngày/đêm + dân về nhà"
+(bước 1 anh duyệt 05/10) theo kế hoạch ANH ĐÃ DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md`. Cách chụp, quay hiệu ứng theo nhịp: như bước 1
 (`?xay=nha_dan&xayTien=0.45`, `xayTien=lap` — `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`). Anh luôn mở bằng trình duyệt web
 (Safari), không mở trong app Claude. Bước 3 (lúa lớn dần) chờ anh chọn bảng nông trại.
 Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Vẫn chờ anh chơi thử bản 04/10. Anh mở lại art bible thì làm bảng 2 (dưới).
 
-**Art bible bước 2: bảng 1 đã gửi, anh tạm dừng 30/09, chưa chọn (mục 3).** Mở lại thì làm bảng 2 trước: luống `Farm_Dirt` Quaternius · luống hoạ tiết `farm_soil` · trại bò/lừa (`ultimateanimatedanimals`) · gà Quaternius nếu anh gửi file. Anh chọn xong → bước 3: kế hoạch nướng lại mẻ `co_dai` (hệ số cỡ ở nhật ký), anh duyệt rồi mới nướng. Tụt fps về sau: bớt
+**Art bible bước 2: bảng 2 đã gửi 05/10, chờ anh chọn (mục 3).** `Farm_Dirt`, lừa chưa lấy được (Drive hết hạn mức) — thử lại
+`node /home/user/kho-game/cong-cu/lay.mjs quaternius ultimatefantasyrts --chi obj --dich assets_source`, xem file có phải HTML không. Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước; giật lúc giờ trôi: bớt `so_tran_dung_som` (`data/battle.json`).
 
-**Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E. Bước 2: bảng nông trại Quaternius (art bible mục 4) cạnh bản hiện tại, một bảng anh chọn một lần.
+**Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E.
 Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
 Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B (cả dòng lấy model Icosa theo mã).
 

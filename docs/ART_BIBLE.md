@@ -124,6 +124,11 @@ Dò bằng `node /home/user/kho-game/cong-cu/do.mjs farm --nguon quaternius` (29
 | `ultimatefantasyrts` | Houses, Farm, Market, Temple, Barracks, TownCenter… theo `FirstAge`/`SecondAge` × `Level1–3`; có `Farm_Dirt_Level1–3` làm luống |
 | `cutemonsters` | Có một con `Chicken` — kiểu hoạt hình, **phải nướng thử mới biết có hợp không** |
 
+**Lấy ở đâu (05/10):** cả năm gói trên mặc định tải từ Google Drive — 05/10 Drive báo hết hạn mức mọi file. Đường thay:
+`farmbuildings` = itch `quaternius/lowpoly-farm-buildings` · `farmanimal` = itch `quaternius/lowpoly-animated-animals` (**game đã
+dùng** cho lợn, cừu) · cây = OpenGameArt `lowpoly-crops-pack` (bản 01/2020 của `ultimatecrops`). `ultimatefantasyrts`,
+`ultimateanimatedanimals`, `cutemonsters` chỉ có trên Drive. Chi tiết: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`.
+
 ## 5. Thứ tự làm — mỗi bước một bảng, anh chọn một lần
 
 1. **Bảng đèn — xong 29/09, chọn ô 4C.** 20 ô = 5 mức sáng (hiện tại 0,28 ·
