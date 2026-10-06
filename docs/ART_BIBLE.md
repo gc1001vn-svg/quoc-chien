@@ -71,6 +71,8 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
 2. **Độ sáng:** cảnh thành phố có độ sáng TB **≥ 0,36** (game thật thấp nhất mục 7: Forge of Empires).
    **Đích: ô 4C — sáng 0,52 · ấm 0,26**, đo ở khung bảng đèn (mục 5). Anh giao Claude tự chọn 29/09.
 3. **Bão hoà:** cảnh thành phố **≥ 0,37** (cảnh thành phố nhạt nhất trong mốc: D đầu game).
+   **Luật 2–3 chỉ đo ảnh BAN NGÀY** (anh chốt 05/10, bước 2 ngày/đêm): đêm cố ý tối. Khung đo thêm `&gio=12`
+   hoặc `&tat=dem`; hai ảnh này phải ra cùng số (đo 05/10: 0,48 · 0,56 · 0,32 cả hai).
 4. **Màu nhận diện mỗi đời:** nền một tông, **mái một màu riêng** mà đời kề không dùng — như
    mốc A. **Một chủ đề mỗi đời, không trộn** — như Forge of Empires (mục 7). Cả sáu đời anh chốt
    29/09 (đời 3–6 lấy từ game thật):
