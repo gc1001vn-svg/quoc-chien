@@ -228,7 +228,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
       ghim.ve((muc.hop.x0 + muc.hop.x1) / 2 / dpr, muc.hop.y0 / dpr, rongCss, caoCss);
     }
 
-    batDauKhungCoHieuUng(gl, perf.dangBat('hieuUng'));
+    batDauKhungCoHieuUng(gl, perf.dangBat('hieuUng'), ve);
     if (perf.dangBat('nen')) veLopNen(ve, banDo, vung);
     veLopVat(
       ve, banDo,

@@ -63,7 +63,7 @@ describe('co ?tat=', () => {
   it('tat tung thu, nhieu thu cach dau phay, het = moi thu', () => {
     expect([...docCoTat(null)]).toEqual([]);
     expect(docCoTat('khoi,chim')).toEqual(new Set(['khoi', 'chim']));
-    for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon']) expect(docCoTat('het').has(t)).toBe(true);
+    for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon', 'dem', 'den', 'zzz']) expect(docCoTat('het').has(t)).toBe(true);
   });
 });
 

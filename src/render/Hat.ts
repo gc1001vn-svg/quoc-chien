@@ -7,14 +7,20 @@
  *
  * Kieu hinh (so nguyen cua `kieu`): 0 tron mem · 2 chim (phan le = do vo canh) · 4 bong
  * bong nen icon · 6 icon kho day · 7 icon thieu hang · 8 co (phan le = pha phap phoi; Thu 2, man tran)
- * · 9 que go (Buoc 1 xay nha, 04/10: gian giao, vach mong - ve bang `themQue`, xoay theo huong que).
+ * · 9 que go (Buoc 1 xay nha, 04/10: gian giao, vach mong - ve bang `themQue`, xoay theo huong que)
+ * · 10 quang cong sang (Buoc 2 ngay/dem, 05/10: den, lua trai).
+ *
+ * Ngay/dem: moi hat nhan `u_toi` nhu sprite (`datToi`), tru icon, bong bong nen icon, quang sang, va
+ * tron/que co phan le >= 0,25 (`GIU_SANG`: loi lua, dom den, chu Zzz - phai sang giua dem).
  */
 import khoDaySvg from './icon/kho_day.svg?raw';
 import thieuHangSvg from './icon/thieu_hang.svg?raw';
 import { dungChuongTrinh } from './HauKy';
 import type { Gl } from './Gl';
 
-export const HINH = { tron: 0, chim: 2, bong: 4, khoDay: 6, thieuHang: 7, co: 8, que: 9 } as const;
+export const HINH = { tron: 0, chim: 2, bong: 4, khoDay: 6, thieuHang: 7, co: 8, que: 9, sang: 10 } as const;
+/** Cong vao kieu `tron`/`que`: hat khong toi theo dem. */
+export const GIU_SANG = 0.5;
 
 /** Don vi texture rieng cua anh icon (atlas 0..3, hau ky 6). */
 const DON_VI = 7;
@@ -38,18 +44,27 @@ void main() {
 const MA_MANH = `
 precision mediump float;
 uniform sampler2D u_icon;
+uniform vec3 u_toi;
 varying vec2 v_uv; varying vec4 v_mau; varying float v_kieu;
 void main() {
-  float k = floor(v_kieu + 0.001), f = v_kieu - k, d = length(v_uv), a;
+  float k = floor(v_kieu + 0.001), f = v_kieu - k, d = length(v_uv), a, giu = 0.0;
   vec3 rgb = v_mau.rgb;
-  if (k < 0.5) { a = smoothstep(1.0, 0.15, d); a *= a; }
+  if (k < 0.5) { a = smoothstep(1.0, 0.15, d); a *= a; giu = step(0.25, f); }
   else if (k < 2.5) { float y = -abs(v_uv.x) * (0.15 + 0.9 * f) + 0.3 * f;
     a = smoothstep(0.24, 0.07, abs(v_uv.y - y)) * smoothstep(1.0, 0.8, abs(v_uv.x)); }
-  else if (k < 4.5) { a = smoothstep(1.0, 0.9, d); rgb = mix(rgb, vec3(0.97, 0.93, 0.82), smoothstep(0.78, 0.9, d)); }
+  else if (k < 4.5) { a = smoothstep(1.0, 0.9, d); rgb = mix(rgb, vec3(0.97, 0.93, 0.82), smoothstep(0.78, 0.9, d)); giu = 1.0; }
+  else if (k > 9.5) {
+    // Quang sang: alpha ra 0 - duoi cach tron nhan san (ONE, ONE_MINUS_SRC_ALPHA) la CONG thuan,
+    // cung lo, khong doi cach tron, khong them lenh ve. Khong nhan toi: no la anh sang.
+    a = smoothstep(1.0, 0.0, d); a *= a;
+    gl_FragColor = vec4(rgb * v_mau.a * a, 0.0);
+    return;
+  }
   else if (k > 8.5) {
     // Que go: v_uv.y chay ngang be day que, mep mem; nua tren sang hon chut cho ra khoi go.
     a = smoothstep(1.0, 0.55, abs(v_uv.y));
     rgb *= 0.88 + 0.12 * v_uv.y;
+    giu = step(0.25, f);
   }
   else if (k > 7.5) {
     // Co: can o mep trai, la co tren nua, gon song lan ra phia ngoai.
@@ -65,7 +80,7 @@ void main() {
     gl_FragColor = texture2D(u_icon, t) * v_mau.a;
     return;
   }
-  gl_FragColor = vec4(rgb * v_mau.a * a, v_mau.a * a);
+  gl_FragColor = vec4(rgb * mix(vec3(1.0) - u_toi, vec3(1.0), giu) * v_mau.a * a, v_mau.a * a);
 }`;
 
 export class Hat {
@@ -76,6 +91,8 @@ export class Hat {
   private readonly dem: Float32Array;
   private readonly toiDa: number;
   private readonly res: WebGLUniformLocation | null;
+  private readonly toiNoi: WebGLUniformLocation | null;
+  private toi: readonly [number, number, number] = [0, 0, 0];
   private n = 0;
 
   constructor(gl: Gl, toiDa: number) {
@@ -85,6 +102,7 @@ export class Hat {
     this.dem = new Float32Array(toiDa * 6 * F);
     this.ct = dungChuongTrinh(g, MA_DINH, MA_MANH, ['a_pos', 'a_uv', 'a_mau', 'a_kieu']);
     this.res = g.getUniformLocation(this.ct, 'u_res');
+    this.toiNoi = g.getUniformLocation(this.ct, 'u_toi');
     const buf = g.createBuffer();
     const anh = g.createTexture();
     if (buf === null || anh === null) throw new Error('Hat: khong xin duoc tai nguyen GPU');
@@ -104,6 +122,11 @@ export class Hat {
     ] as const) g.texParameteri(g.TEXTURE_2D, k, v);
     gl.khoiPhuc();
     void this.napIcon(gl);
+  }
+
+  /** Phan bot di cua tung kenh cho lo ke tiep (ngay/dem, `NgayDem.ts`); 0 = giu nguyen. */
+  public datToi(r: number, g: number, b: number): void {
+    this.toi = [r, g, b];
   }
 
   /** Them mot hinh, toa do diem anh khung ve. `r`,`g`,`b` 0..1; `a` do dac. */
@@ -127,7 +150,7 @@ export class Hat {
    */
   public themQue(
     x0: number, y0: number, x1: number, y1: number, day: number,
-    r: number, g: number, b: number, a: number,
+    r: number, g: number, b: number, a: number, kieu: number = HINH.que,
   ): void {
     const dai = Math.hypot(x1 - x0, y1 - y0);
     if (this.n >= this.toiDa || a <= 0.003 || dai < 0.5) return;
@@ -139,7 +162,7 @@ export class Hat {
     const d = this.dem;
     for (const [u, v] of GOC) {
       d[o++] = mx + u * ux + v * vx; d[o++] = my + u * uy + v * vy; d[o++] = u; d[o++] = v;
-      d[o++] = r; d[o++] = g; d[o++] = b; d[o++] = a; d[o++] = HINH.que;
+      d[o++] = r; d[o++] = g; d[o++] = b; d[o++] = a; d[o++] = kieu;
     }
     this.n += 1;
   }
@@ -151,6 +174,7 @@ export class Hat {
     const cv = g.canvas as HTMLCanvasElement;
     g.useProgram(this.ct);
     g.uniform2f(this.res, cv.width, cv.height);
+    g.uniform3f(this.toiNoi, this.toi[0], this.toi[1], this.toi[2]);
     g.activeTexture(g.TEXTURE0 + DON_VI);
     g.bindTexture(g.TEXTURE_2D, this.anh);
     g.bindBuffer(g.ARRAY_BUFFER, this.buf);

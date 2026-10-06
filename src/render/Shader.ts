@@ -57,6 +57,9 @@ precision mediump float;
 ${khai}
 varying vec2 v_uv;
 varying float v_trang;
+// Ngay/dem (Buoc 2, NgayDem.ts): phan bot di cua tung kenh. Chua dat thi GLSL cho 0 = giu nguyen -
+// ban do tinh, man tran, bench dung chung shader nay ma khong phai biet gi.
+uniform vec3 u_toi;
 vec4 layMau() {
 ${chon}
   return texture2D(${tenUniformTrang(so - 1)}, v_uv);
@@ -68,6 +71,7 @@ void main() {
   // nen cac phep so < i.5 o tren van chon dung trang. Cong 0,02 truoc floor: noi suy
   // tra 0,9999 thay vi 1 thi khong bi doc thanh chop sang gan het.
   float sang = max(v_trang - floor(v_trang + 0.02), 0.0);
-  gl_FragColor = vec4(c.rgb + c.a * sang * 2.0, c.a);
+  // Nhan toi TRUOC khi cong chop sang: loe xay nha, loe doi me van sang ro giua dem.
+  gl_FragColor = vec4(c.rgb * (1.0 - u_toi) + c.a * sang * 2.0, c.a);
 }`;
 }

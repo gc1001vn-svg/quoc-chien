@@ -216,24 +216,36 @@ export class VeXay {
   private biChe(ve: Ve, banDo: BanDo, v: OVat, hop: Hop4): boolean {
     const cu = this.che.get(v);
     if (cu !== undefined) return cu;
-    const sauV = v.a + v.b + 2 * (v.o - 1);
-    const oPx = ve.atlas.oPx();
-    const dienTich = (hop.x1 - hop.x0) * (hop.y1 - hop.y0);
-    let co = false;
-    // `banDo.vat` xep theo truc sau tang dan: di tu cuoi ve, gap vat o sau hon thi dung.
-    for (let i = banDo.vat.length - 1; i >= 0 && !co; i -= 1) {
-      const w = banDo.vat[i] as OVat;
-      if (w.a + w.b + 2 * (w.o - 1) <= sauV) break;
-      const ten = ve.atlas.co(w.ten) ? w.ten : `${w.ten}_k0`;
-      if (!ve.atlas.co(ten)) continue;
-      const s = ve.atlas.o(ten);
-      const x0 = neoX(w.a, w.b, oPx) - s.ox;
-      const y0 = neoY(w.a, w.b, oPx) - s.oy;
-      const rong = Math.min(hop.x1, x0 + s.w) - Math.max(hop.x0, x0);
-      const cao = Math.min(hop.y1, y0 + s.h) - Math.max(hop.y0, y0);
-      co = rong > 0 && cao > 0 && rong * cao >= SO.cheToiDa * dienTich;
-    }
+    const co = biCheBoi(ve, banDo, v.a + v.b + 2 * (v.o - 1), hop, SO.cheToiDa);
     this.che.set(v, co);
     return co;
   }
+}
+
+/**
+ * Co vat nao dung truoc truc sau `sauV` trum len hop `hop` (toa do the gioi) tu `nguong` dien tich tro
+ * len khong. Dung chung cho que gian giao (tren) va den, lua trai ban dem (`HieuUngDem.ts`).
+ *
+ * `theoThan`: do vat che bang THAN that - ngang theo o nen (`o` o), doc tu dinh sprite toi mep truoc o nen -
+ * thay vi ca khung sprite. Khung nha dan gom ca bong do trong suot ben phai: do theo khung thi ngon lua giua
+ * nga tu trong tron van bi tinh la "bi che" (do 05/10). Que gian giao (buoc 1, anh da duyet) giu cach cu.
+ */
+export function biCheBoi(ve: Ve, banDo: BanDo, sauV: number, hop: Hop4, nguong: number, theoThan = false): boolean {
+  const oPx = ve.atlas.oPx();
+  const dienTich = (hop.x1 - hop.x0) * (hop.y1 - hop.y0);
+  // `banDo.vat` xep theo truc sau tang dan: di tu cuoi ve, gap vat o sau hon thi dung.
+  for (let i = banDo.vat.length - 1; i >= 0; i -= 1) {
+    const w = banDo.vat[i] as OVat;
+    if (w.a + w.b + 2 * (w.o - 1) <= sauV) break;
+    const ten = ve.atlas.co(w.ten) ? w.ten : `${w.ten}_k0`;
+    if (!ve.atlas.co(ten)) continue;
+    const s = ve.atlas.o(ten);
+    const [nx, ny] = [neoX(w.a, w.b, oPx), neoY(w.a, w.b, oPx)];
+    const [x0, x1] = theoThan ? [nx - (w.o * oPx) / 2, nx + (w.o * oPx) / 2] : [nx - s.ox, nx - s.ox + s.w];
+    const [y0, y1] = [ny - s.oy, theoThan ? ny + ((2 * w.o - 1) * oPx) / 4 : ny - s.oy + s.h];
+    const rong = Math.min(hop.x1, x1) - Math.max(hop.x0, x0);
+    const cao = Math.min(hop.y1, y1) - Math.max(hop.y0, y0);
+    if (rong > 0 && cao > 0 && rong * cao >= nguong * dienTich) return true;
+  }
+  return false;
 }

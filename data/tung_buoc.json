@@ -40,11 +40,13 @@
     "nguongMay": 0.5,
     "chuKyLapGiay": 12,
     "toiDaHat": 400,
-    "_den": "Den cua so nha dan: tiLe nha co den (bam chi so), toiDa trong khung camera. viTri: phan cua khung sprite [ngang, doc] tu goc trai tren. banKinh: quang sang, phan cua mot o. loi: dom sang giua, phan cua mot o. nhapNhay: bien do nhap nhay.",
-    "den": { "tiLe": 0.7, "toiDa": 60, "viTri": [0.5, 0.74], "banKinh": 0.5, "mau": [1.0, 0.6, 0.28], "doDac": 0.5, "loi": 0.05, "mauLoi": [1.0, 0.84, 0.5], "toiThieuCss": 1.2, "nhapNhay": 0.12 },
-    "_lua": "Lua trai o nga tu moi kho. banKinh: quang sang, phan cua mot o. loi: ngon lua, phan cua mot o. tan: tan lua bay len - nhipGiay giua hai tan, tuoiGiay, bayLen (don vi the gioi/giay), co (don vi the gioi). Vat dung truoc che loi lua qua cheToiDa (cung so buoc 1) thi chi con quang.",
-    "lua": { "banKinh": 1.6, "mau": [1.0, 0.55, 0.22], "doDac": 0.75, "loi": 0.16, "mauLoi": [1.0, 0.72, 0.3], "mauTam": [1.0, 0.93, 0.62], "tan": { "nhipGiay": 0.12, "tuoiGiay": [0.6, 1.1], "bayLen": [14, 26], "co": 1.4, "toiThieuCss": 1.2, "mau": [1.0, 0.7, 0.3] } },
-    "_zzz": "Zzz tren nha dan da xay xong: tiLe nha co Zzz (bam chi so), hien khi do toi qua nguong. Moi chu Z ve bang 3 que. chuKyGiay: mot chu Z bay het mot vong. co: nua canh chu Z luc moi ra (don vi the gioi), toiThieuCss. bay [ngang, len] trong mot vong (don vi the gioi).",
-    "zzz": { "tiLe": 0.35, "nguong": 0.6, "toiDa": 14, "chuKyGiay": 2.4, "co": 3.5, "toiThieuCss": 2.5, "bay": [10, 24], "mau": [0.93, 0.96, 1.0], "day": 1.1 }
+    "_nha": "Ten sprite nha dan: noi thap den cua so va ngu (Zzz).",
+    "nha": ["nha_dan"],
+    "_den": "Den cua so nha dan: tiLe nha con thap den (bam vi tri o), nha tat den thi ngu - co Zzz. toiDa nha trong khung camera. viTri: cac diem sang, phan cua khung sprite [ngang, doc] tu goc trai tren - do 05/10 tren nha_dan ca 5 doi, hai diem nay deu roi vao cua so/cua ra vao/tuong truoc. banKinh: quang sang, phan cua mot o. loi: dom sang giua, phan cua mot o. nhapNhay: bien do nhap nhay.",
+    "den": { "tiLe": 0.65, "toiDa": 40, "viTri": [[0.12, 0.52], [0.22, 0.6]], "banKinh": 0.35, "mau": [1.0, 0.6, 0.28], "doDac": 0.7, "loi": 0.05, "mauLoi": [1.0, 0.84, 0.5], "toiThieuCss": 1.2, "nhapNhay": 0.12 },
+    "_lua": "Lua trai o nga tu moi kho. oThu: cac cho dat thu [da, db] (tinh bang o, so le duoc) quanh nga tu, lay cho DAU TIEN ma loi lua khong bi vat dung truoc che (thung hang cua kho, mai nha); cho nao cung bi che thi dat cho dau, chi con quang. banKinh: quang sang tren mat dat, phan cua mot o. loi: ngon lua, phan cua mot o (toiThieuCss khi thu nho). quangLoi: quang quanh ngon lua, banKinh tinh theo loi. cui: hai khuc cui bat cheo, dai/day tinh theo loi. tan: tan lua bay len - nhipGiay giua hai tan, toiDa cung luc, tuoiGiay, bayLen va ngang (don vi the gioi/giay), co (don vi the gioi). Vat dung truoc che loi lua qua cheToiDa (cung so buoc 1) thi chi con quang.",
+    "lua": { "oThu": [[-0.35, -0.35], [0, 0], [0.35, -0.35], [-0.35, 0.35]], "banKinh": 1.6, "mau": [1.0, 0.55, 0.22], "doDac": 0.55, "loi": 0.2, "toiThieuCss": 2, "mauLoi": [1.0, 0.72, 0.3], "mauTam": [1.0, 0.93, 0.62], "nhapNhay": 0.15, "quangLoi": { "banKinh": 3, "doDac": 0.35 }, "cui": { "dai": 0.9, "day": 0.3, "mau": [0.5, 0.29, 0.13] }, "tan": { "nhipGiay": 0.12, "toiDa": 80, "tuoiGiay": [0.6, 1.1], "bayLen": [14, 26], "ngang": 8, "co": 1.4, "toiThieuCss": 1.2, "mau": [1.0, 0.7, 0.3] } },
+    "_zzz": "Zzz tren nha dan da xay xong ma tat den, hien khi do toi qua nguong. Moi chu Z ve bang 3 que. viTri: diem bay ra, phan cua khung sprite. chuKyGiay: mot chu Z bay het mot vong. co: nua canh chu Z luc moi ra (don vi the gioi), toiThieuCss. bay [ngang, len] trong mot vong (don vi the gioi).",
+    "zzz": { "viTri": [0.32, 0.12], "nguong": 0.6, "toiDa": 14, "chuKyGiay": 2.4, "co": 9, "toiThieuCss": 4, "bay": [18, 52], "mau": [0.93, 0.96, 1.0], "day": 2.4 }
   }
 }

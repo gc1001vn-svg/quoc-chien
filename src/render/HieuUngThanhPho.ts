@@ -4,7 +4,7 @@
  * CHI DOC mo phong: `ThuNha.nhipTac()` / `nhipDoi()` va danh sach nha. Khong ghi gi nguoc
  * lai - `sim:van`, `sim:tran` phai ra y nhu truoc (luat Thu 1, `docs/ke-hoach/2026-09-30-*`).
  *
- * Tat tung thu bang `?tat=`: `hauky` · `tilt` · `khoi` · `chim` · `icon` · `batOn` · `xay` · `het` (moi thu, ca man tran),
+ * Tat tung thu bang `?tat=`: `hauky` · `tilt` · `khoi` · `chim` · `icon` · `batOn` · `xay` · `dem` · `den` · `zzz` · `het` (moi thu, ca man tran),
  * nhieu cai cach nhau dau phay. Nut "Hieu ung" cua `Perf` tat ca lop luc dang choi.
  *
  * Lenh ve: canh 1 + lo hat 1 + hau ky 1 = 3, trong tran 4 (TECH_SPEC muc 2).
@@ -13,6 +13,8 @@ import soTho from '../../data/hieu_ung.json';
 import { HauKy } from './HauKy';
 import { VeBatOn } from './HieuUngBatOn';
 import { VeXay } from './HieuUngXay';
+import { VeDem, datToiSprite, trangThaiKhung } from './HieuUngDem';
+import { BAN_NGAY, SO_DEM } from './NgayDem';
 import { SO_XAY } from './TungBuoc';
 import { HINH, Hat } from './Hat';
 import { neoX, neoY } from './IsoMath';
@@ -26,7 +28,7 @@ const SO = soTho;
 /** Cac thu dang TAT theo `?tat=`. */
 export function docCoTat(chuoi: string | null): ReadonlySet<string> {
   const tat = new Set((chuoi ?? '').split(',').map((s) => s.trim()).filter((s) => s !== ''));
-  if (tat.has('het')) for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon', 'bui', 'chop', 'co', 'nhat', 'khung', 'batOn', 'cham', 'nguon', 'xay']) tat.add(t);
+  if (tat.has('het')) for (const t of ['hauky', 'tilt', 'khoi', 'chim', 'icon', 'bui', 'chop', 'co', 'nhat', 'khung', 'batOn', 'cham', 'nguon', 'xay', 'dem', 'den', 'zzz']) tat.add(t);
   return tat;
 }
 
@@ -70,6 +72,7 @@ class HieuUng {
   private readonly chim: Chim[] = [];
   private readonly batOn = new VeBatOn();
   private readonly xay = new VeXay();
+  private readonly dem = new VeDem();
   private henChim = 2;
   private giay = 0;
   private truoc = 0;
@@ -79,11 +82,15 @@ class HieuUng {
     this.gl = gl;
     this.tat = docCoTat(new URLSearchParams(window.location.search).get('tat'));
     this.hauKy = this.tat.has('hauky') ? undefined : new HauKy(gl, SO.hauKy);
-    this.hat = new Hat(gl, SO.khoi.toiDa + SO.batOn.toiDa + SO_XAY.toiDaHat + 400);
+    this.hat = new Hat(gl, SO.khoi.toiDa + SO.batOn.toiDa + SO_XAY.toiDaHat + SO_DEM.toiDaHat + 400);
   }
 
-  batDau(bat: boolean): void {
+  batDau(bat: boolean, ve?: Ve): void {
     this.bat = bat;
+    // Ngay/dem dat TRUOC moi sprite cua khung (Buoc 2). Nut "Hieu ung" tat thi ve ban ngay nhu cu.
+    const toi = bat && ve !== undefined ? trangThaiKhung(ve.nhipSim) : BAN_NGAY;
+    if (ve !== undefined) ve.toi = toi;
+    datToiSprite(this.gl, toi);
     if (bat) this.hauKy?.batDau();
     this.gl.batDauKhung();
   }
@@ -99,15 +106,19 @@ class HieuUng {
     const dx = (x: number): number => (x - ve.camX) * ve.tiLe + ve.rongDev / 2;
     const dy = (y: number): number => (y - ve.camY) * ve.tiLe + ve.caoDev / 2;
     const nha = tp.dsNhaThat();
-    if (!this.tat.has('chim')) this.chayChim(dt, bien, dx, dy, ve.tiLe, dpr);
+    const toi = ve.toi ?? BAN_NGAY;
+    this.hat.datToi(1 - toi.mau[0], 1 - toi.mau[1], 1 - toi.mau[2]);
+    // Dem khong tha chim (dan cu bay het), chim dang bay thi bay not.
+    if (!this.tat.has('chim')) this.chayChim(toi.dem < SO_DEM.nguongChim, dt, bien, dx, dy, ve.tiLe, dpr);
     if (!this.tat.has('khoi')) this.chayKhoi(dt, nha, ve, bien, dx, dy);
     if (!this.tat.has('xay')) this.xay.chay(this.hat, ve, tp.banDo, dt, dpr);
     this.batOn.chay(this.hat, ve, tp, dt, this.giay, dpr);
+    if (!this.tat.has('dem')) this.dem.chay(this.hat, ve, tp, dt, this.giay, dpr);
     if (!this.tat.has('icon')) this.veIcon(nha, ve, dpr);
     let lenh = this.hat.xa();
     if (this.hauKy !== undefined) {
       lenh += this.hauKy.ketThuc({
-        camX: ve.camX, camY: ve.camY, tiLe: ve.tiLe, giay: this.giay, may: true,
+        camX: ve.camX, camY: ve.camY, tiLe: ve.tiLe, giay: this.giay, may: toi.dem < SO_DEM.nguongMay,
         tilt: this.tat.has('tilt') ? 0 : tiltTheoZoom(zoom),
       });
     }
@@ -168,11 +179,11 @@ class HieuUng {
   }
 
   private chayChim(
-    dt: number, b: Bien, dx: (x: number) => number, dy: (y: number) => number, tiLe: number, dpr: number,
+    tha: boolean, dt: number, b: Bien, dx: (x: number) => number, dy: (y: number) => number, tiLe: number, dpr: number,
   ): void {
     const c = SO.chim;
     this.henChim -= dt;
-    if (this.henChim <= 0) {
+    if (tha && this.henChim <= 0) {
       this.henChim = ngau(c.henGiay);
       const y0 = b.y0 + (0.2 + Math.random() * 0.7) * (b.y1 - b.y0);
       const so = Math.round(ngau(c.soMoiDan));
@@ -235,8 +246,8 @@ const cua = (gl: Gl): HieuUng => {
  * Mo khung hinh: co hau ky thi ve canh vao FBO, roi `gl.batDauKhung()`. Thay cho loi goi
  * `gl.batDauKhung()` o `CityScene` - mot dong, vi file do da cham tran 300 dong.
  */
-export function batDauKhungCoHieuUng(gl: Gl, bat: boolean): void {
-  cua(gl).batDau(bat);
+export function batDauKhungCoHieuUng(gl: Gl, bat: boolean, ve?: Ve): void {
+  cua(gl).batDau(bat, ve);
 }
 
 /** Ve hat, icon, hau ky sau `gl.ketThucKhung()`. Tra ve so lenh ve them. */

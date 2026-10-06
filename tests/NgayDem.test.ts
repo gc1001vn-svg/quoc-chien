@@ -3,6 +3,7 @@
  * `sim:thu`, `sim:van` ra y het; o day chi giu hinh dang cua ngay va phep giau nguoi vac.
  */
 import { describe, expect, it } from 'vitest';
+import { maManh } from '../src/render/Shader.ts';
 import {
   BAN_NGAY, SO_DEM, bamNguoi, docGio, doToi, gioTrongNgay, mauNhan, nguoiTrongDem, theoGio, theoNhip,
 } from '../src/render/NgayDem.ts';
@@ -62,6 +63,16 @@ describe('NgayDem - theo nhip', () => {
   it('giua hoang hon am hon ca ban ngay lan toi han (kenh do troi hon kenh lam)', () => {
     const [r, , b] = mauNhan(0.5);
     expect(r).toBeGreaterThan(b);
+  });
+});
+
+describe('NgayDem - shader sprite', () => {
+  it('moi so trang deu co u_toi; nhan toi truoc khi cong chop sang (loe xay, loe doi me sang ro giua dem)', () => {
+    for (let so = 1; so <= 4; so += 1) {
+      const ma = maManh(so);
+      expect(ma).toContain('uniform vec3 u_toi;');
+      expect(ma).toContain('c.rgb * (1.0 - u_toi) + c.a * sang * 2.0');
+    }
   });
 });
 

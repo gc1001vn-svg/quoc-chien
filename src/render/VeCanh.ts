@@ -17,6 +17,7 @@ import type { ThanhPho } from '../sim/city/City';
 import { nguoiBatOn, type NguoiVe } from './HieuUngBatOn';
 import { catSprite, nguoiXay, phanXay } from './HieuUngXay';
 import type { TienDo } from './TungBuoc';
+import { nguoiTrongDem, type TrangThaiDem } from './NgayDem';
 // Hieu ung Thu 1 (khoi, chim, icon, hau ky) di qua day: `CityScene` da cham tran 300 dong.
 export { batDauKhungCoHieuUng, ketThucHieuUng } from './HieuUngThanhPho';
 
@@ -43,6 +44,8 @@ export interface Ve {
   readonly nhipSim?: number;
   /** Dang doi me dan (Phase 12D): o ngoai lan song ve bang bo atlas cu. */
   readonly song?: Song;
+  /** Ngay/dem khung nay (Buoc 2), `HieuUngDem.ts` dat luc mo khung. Khong co la ban ngay. */
+  toi?: TrangThaiDem;
 }
 
 /**
@@ -209,7 +212,7 @@ export function veLopVat(
 ): void {
   const nguoi: readonly NguoiVe[] = tp === undefined
     ? []
-    : [...tp.doiWalker.danhSach, ...nguoiBatOn(ve, tp), ...nguoiXay(ve, banDo)].sort((m, n) => m.a + m.b - (n.a + n.b));
+    : [...nguoiTrongDem(tp.doiWalker.danhSach, ve.toi?.dem ?? 0), ...nguoiBatOn(ve, tp), ...nguoiXay(ve, banDo)].sort((m, n) => m.a + m.b - (n.a + n.b));
 
   let i = 0;
   if (veNha) {
