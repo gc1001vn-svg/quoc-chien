@@ -25,5 +25,10 @@ ban ngày · giấu bớt người khi vẽ). Kế hoạch mẹ `2026-10-04-moi-
 **Số:** khung đo art bible `?me=co_dai&zoom=0.6`: bản `main` cũ · `?gio=12` · `?tat=dem` cùng ra sáng 0,48 · bão hoà 0,56 ·
 ấm 0,32 (ban ngày không đổi; số 30/09 0,52 là bản đồ cũ hơn) · HUD "3 lệnh vẽ" mọi ảnh đêm · `sim:thu` y hệt trừ dòng giây ·
 `sim:van` 5 hạt × 5 kiểu thắng y hệt bản cũ mọi cột trừ cột giây chạy · test 613 → 625 · Fps iPhone: chưa đo — việc của anh.
+**Soát độc lập 06/10** (4 agent; agent phản biện và góc "trường hợp biên" chết vì hết hạn mức tuần — Claude tự kiểm lại
+từng lỗi và tự soát biên): 4 lỗi thật, đã sửa — cờ đỏ (kiểu 8) và lửa của bất ổn bị tối gần đen ban đêm, trái kế hoạch
+"mang tin thì giữ sáng" → giữ sáng (ảnh `?gio=23&batOn=999`) · đèn/Zzz cắt suất theo thứ tự xa→gần nên đông nhà thì chỉ
+nửa trên màn có đèn → chọn theo băm như `chonNha` · lô hạt thiếu ~26 chỗ ở trần tính được → `toiDaHat` 400 → 450.
+Người trong đám đông bất ổn là sprite nên vẫn tối như mọi người — cờ và lửa đủ báo.
 **Còn mở:** đời hiện đại ban đêm xanh đậm hơn các đời khác (một bộ màu cho cả 6 đời) — anh xem rồi quyết. Vùng ruộng/xưởng
 không có đèn (chỉ nhà dân).
