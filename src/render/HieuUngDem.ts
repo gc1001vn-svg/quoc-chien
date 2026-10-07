@@ -83,6 +83,13 @@ function trenMan(ve: Ve, wx: number, wy: number, le: number): Diem | undefined {
 /** Bam o cua nha: nha nao thap den, nha nao ngu - on dinh giua cac khung va giua cac dem. */
 const bamNha = (v: OVat): number => bam(v.a * 131 + v.b + 1);
 
+/**
+ * `k` nha qua `giu` co bam nho nhat - suat chia deu ca man, khong don len hang xa nhu khi cat theo thu tu
+ * `banDo.vat` (xep xa toi gan). Cung cach `HieuUngBatOn.chonNha`.
+ */
+const chonNha = (nha: readonly OVat[], giu: (v: OVat) => boolean, k: number): OVat[] =>
+  nha.filter(giu).sort((m, n) => bamNha(m) - bamNha(n)).slice(0, k);
+
 /** Den, lua, Zzz. Mot ban cho moi `HieuUng`. */
 export class VeDem {
   private readonly tan: Tan[] = [];
@@ -130,13 +137,8 @@ export class VeDem {
     const oPx = ve.atlas.oPx();
     const R = d.banKinh * oPx * ve.tiLe;
     const r = Math.max(d.loi * oPx * ve.tiLe, d.toiThieuCss * dpr);
-    let so = 0;
-    for (const v of nha) {
+    for (const v of chonNha(nha, (n) => bamNha(n) < d.tiLe && this.diem(ve, n, [0.5, 0.5], R * 4) !== undefined, d.toiDa)) {
       const h = bamNha(v);
-      if (h >= d.tiLe) continue;
-      if (this.diem(ve, v, [0.5, 0.5], R * 4) === undefined) continue;
-      if (so >= d.toiDa) break;
-      so += 1;
       const nhay = 1 - d.nhapNhay * (0.5 + 0.5 * Math.sin(giay * (2 + h * 3) + h * 40));
       for (const [i, vt] of d.viTri.entries()) {
         const p = this.diem(ve, v, vt, R);
@@ -227,14 +229,11 @@ export class VeDem {
     const hien = Math.min(1, (dem - z.nguong) / (1 - z.nguong));
     const day = Math.max(z.day * ve.tiLe, 1.2 * dpr);
     const [bx, by] = [(z.bay[0] ?? 0) * ve.tiLe, (z.bay[1] ?? 0) * ve.tiLe];
-    let so = 0;
-    for (const v of nha) {
+    const le = by + 20 * dpr;
+    for (const v of chonNha(nha, (n) => bamNha(n) >= SO.den.tiLe && this.diem(ve, n, z.viTri, le) !== undefined, z.toiDa)) {
       const h = bamNha(v);
-      if (h < SO.den.tiLe) continue;
-      const p = this.diem(ve, v, z.viTri, by + 20 * dpr);
+      const p = this.diem(ve, v, z.viTri, le);
       if (p === undefined) continue;
-      if (so >= z.toiDa) break;
-      so += 1;
       for (let j = 0; j < 3; j += 1) {
         const u = (giay / z.chuKyGiay + h * 7 + j / 3) % 1;
         const s = Math.max(z.co * ve.tiLe, z.toiThieuCss * dpr) * (0.6 + 0.8 * u);

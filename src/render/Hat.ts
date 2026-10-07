@@ -10,8 +10,8 @@
  * · 9 que go (Buoc 1 xay nha, 04/10: gian giao, vach mong - ve bang `themQue`, xoay theo huong que)
  * · 10 quang cong sang (Buoc 2 ngay/dem, 05/10: den, lua trai).
  *
- * Ngay/dem: moi hat nhan `u_toi` nhu sprite (`datToi`), tru icon, bong bong nen icon, quang sang, va
- * tron/que co phan le >= 0,25 (`GIU_SANG`: loi lua, dom den, chu Zzz - phai sang giua dem).
+ * Ngay/dem: moi hat nhan `u_toi` nhu sprite (`datToi`), tru icon, bong bong nen icon, co (bao bat on), quang
+ * sang, va tron/que co phan le >= 0,25 (`GIU_SANG`: loi lua, lua bat on, dom den, chu Zzz - phai sang giua dem).
  */
 import khoDaySvg from './icon/kho_day.svg?raw';
 import thieuHangSvg from './icon/thieu_hang.svg?raw';
@@ -74,6 +74,7 @@ void main() {
       * smoothstep(-0.97, -0.9, y) * (1.0 - smoothstep(-0.2, -0.13, y));
     a = max(can, la);
     rgb = can > la ? vec3(0.28, 0.2, 0.12) : rgb * (0.86 + 0.14 * s);
+    giu = 1.0;
   }
   else {
     vec2 t = vec2((v_uv.x * 0.5 + 0.5) * 0.5 + (k > 6.5 ? 0.5 : 0.0), v_uv.y * 0.5 + 0.5);

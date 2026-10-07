@@ -39,7 +39,7 @@
     "nguongChim": 0.3,
     "nguongMay": 0.5,
     "chuKyLapGiay": 12,
-    "toiDaHat": 400,
+    "toiDaHat": 450,
     "_nha": "Ten sprite nha dan: noi thap den cua so va ngu (Zzz).",
     "nha": ["nha_dan"],
     "_den": "Den cua so nha dan: tiLe nha con thap den (bam vi tri o), nha tat den thi ngu - co Zzz. toiDa nha trong khung camera. viTri: cac diem sang, phan cua khung sprite [ngang, doc] tu goc trai tren - do 05/10 tren nha_dan ca 5 doi, hai diem nay deu roi vao cua so/cua ra vao/tuong truoc. banKinh: quang sang, phan cua mot o. loi: dom sang giua, phan cua mot o. nhapNhay: bien do nhap nhay.",

@@ -12,7 +12,7 @@
  * `?tat=batOn` tat het. `?batOn=<so>` chi de so LOP VE doc (chup anh), mo phong khong biet.
  */
 import soTho from '../../data/hieu_ung.json';
-import { HINH, type Hat } from './Hat';
+import { GIU_SANG, HINH, type Hat } from './Hat';
 import { neoX, neoY } from './IsoMath';
 import { docCoTat } from './HieuUngThanhPho';
 import type { Ve } from './VeCanh';
@@ -186,7 +186,7 @@ export class VeBatOn {
       if (h.lua) {
         const r = Math.max(((l.banKinh[1] ?? 8) * (1 - t) + (l.banKinh[0] ?? 3) * t) * ve.tiLe, l.toiThieuCss * dpr * (1 - t));
         const m = l.mau;
-        hat.them(dx(h.x), dy(h.y), r, r * 1.3, m[0] ?? 1, (m[1] ?? 0.5) * (1 - 0.6 * t), m[2] ?? 0.1, Math.min(1, t / 0.1) * (1 - t) * l.doDac, HINH.tron);
+        hat.them(dx(h.x), dy(h.y), r, r * 1.3, m[0] ?? 1, (m[1] ?? 0.5) * (1 - 0.6 * t), m[2] ?? 0.1, Math.min(1, t / 0.1) * (1 - t) * l.doDac, HINH.tron + GIU_SANG);
       } else {
         const r = ((k.banKinh[0] ?? 4) + ((k.banKinh[1] ?? 20) - (k.banKinh[0] ?? 4)) * (1 - (1 - t) * (1 - t))) * ve.tiLe;
         const m = k.mau;
