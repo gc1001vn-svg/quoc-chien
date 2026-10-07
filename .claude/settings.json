@@ -135,6 +135,10 @@
     "code-simplification": "user-invocable-only",
     "google-workspace": "off",
     "docs": "off",
-    "plugin-authoring": "off"
+    "plugin-authoring": "off",
+    "built-in-browser": "off",
+    "chrome-browser": "off",
+    "computer-use": "off",
+    "deep-research": "off"
   }
 }
