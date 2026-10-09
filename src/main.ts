@@ -13,7 +13,7 @@ import { chayCanhThanhPho } from './render/CityScene';
 import { chayCanhBanDo } from './render/MapScene';
 import { chayDoSprite } from './bench/DoSprite';
 import { chayCanhTran } from './render/BattleScene';
-import type { Man } from './render/Man';
+import type { Man, TrangThaiMan } from './render/Man';
 import { dungTheGioi, type TheGioiGame } from './ui/DungTheGioi';
 import { dungGhiCong } from './ui/GhiCong';
 import { registerSW } from 'virtual:pwa-register';
@@ -51,15 +51,30 @@ cho.className = 'dang-nap';
 cho.textContent = 'Đang nạp atlas…';
 goc.appendChild(cho);
 
+// Cho may chup (`chup_man`, `quay`, `browser_*`): `#app[data-da-ve]` khi khung dau da len man thay
+// cho cho cung 2,5 giay, va `window.__qc.trangThai()` doc man dang hien bang chu. Chi doc, khong doi gi.
+let manHien: Man | undefined;
+declare global { interface Window { __qc?: { trangThai(): TrangThaiMan } } }
+window.__qc = {
+  trangThai: (): TrangThaiMan => ({
+    man: laTrangDo ? 'do-sprite' : laTran ? 'tran' : 'ban-do',
+    daVe: goc.dataset['daVe'] ?? '',
+    ...manHien?.trangThai?.(),
+  }),
+};
+
 const chay: Promise<void> = laTrangDo ? chayDoSprite(goc) : laTran ? moManTran(goc) : moHaiMan(goc);
 chay.then(
   () => {
     cho.remove();
+    // Man nao cung xin khung ve dau TRUOC khi tra ve, nen khung nay chay sau lan ve dau; khung thu hai la luc no da len man.
+    requestAnimationFrame(() => requestAnimationFrame(() => { goc.dataset['daVe'] = '1'; }));
     if (laTrangDo) return;
   },
   (loi: unknown) => {
     cho.className = 'nap-hong';
     cho.textContent = `Không nạp được: ${loi instanceof Error ? loi.message : String(loi)}`;
+    goc.dataset['daVe'] = 'hong';
   },
 );
 
@@ -78,6 +93,7 @@ async function moHaiMan(boc: HTMLElement): Promise<void> {
   const sang = (toi: Man, roi: Man): void => {
     roi.an();
     toi.hien();
+    manHien = toi;
   };
   nut(oThanhPho, 'nut-doi-man', '🗺 Bản đồ tỉnh', () => { sang(manBanDo, manThanhPho); });
   nut(oBanDo, 'nut-doi-man', '⌂ Về thành phố', () => { sang(manThanhPho, manBanDo); });
@@ -85,8 +101,8 @@ async function moHaiMan(boc: HTMLElement): Promise<void> {
   nut(oBanDo, 'nut-xem-tran', '⚔ Xem trận', () => { window.location.search = '?tran=1'; });
   nut(oBanDo, 'nut-ghi-cong', 'ⓘ Ghi công', dungGhiCong(oBanDo));
 
-  if (thamSo.get('man') === 'ban-do') manBanDo.hien();
-  else manThanhPho.hien();
+  manHien = thamSo.get('man') === 'ban-do' ? manBanDo : manThanhPho;
+  manHien.hien();
 }
 
 /** Man xem tran (Phase 10), kem nut quay ve thanh pho. */

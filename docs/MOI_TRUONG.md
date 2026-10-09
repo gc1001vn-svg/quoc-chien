@@ -437,6 +437,9 @@ nó nhận ra IP trung tâm dữ liệu. Đã thử thêm: User-Agent thật tha
   (bấm toạ độ, game vẽ canvas) · `browser_press_key` · `browser_click` (bấm theo tên, game/app DOM) ·
   `browser_run_code_unsafe` (gộp nhiều bước một lượt) · `browser_evaluate` · `browser_console_messages`.
 - Ảnh, nhật ký tự sinh rơi vào `anh_chup/trinh_duyet/` (không lên git).
+- **Game này tự báo đã vẽ, tự in trạng thái** (09/10): chờ `#app[data-da-ve]` (`"1"`, nạp hỏng là `"hong"`) thay vì
+  chờ cứng; `browser_evaluate` `window.__qc.trangThai()` ra `{man, gio, doToi, nhaDangXay, nguoiVac, sprite…}` — đối
+  chiếu với ảnh. `chup:man`, `quay` tự chờ cờ và in dòng `Trang thai:`.
 - `tools/lib/moc_am_thanh.js` chạy trước mã game: nhật ký tiếng `window.__am` + vá thiếu AAC. Chromium máy ảo
   **không giải mã AAC, H.264** (MP3, OGG được) — Unity gặp AAC là `alert()` đứng trang. Video MP4 trong game vẫn
   không phát. Google Chrome đủ bộ giải mã nhưng `dl.google.com` bị chặn.

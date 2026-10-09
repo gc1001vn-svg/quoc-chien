@@ -12,4 +12,8 @@ export interface Man {
   hien(): void;
   /** An man va DUNG vong ve - khong dung thi may ao/iPhone ve ca hai man mot luc. */
   an(): void;
+  /** Man dang ve gi, bang chu - cho may chup doc (`window.__qc.trangThai()`, `src/main.ts`). Chi doc. */
+  trangThai?(): TrangThaiMan;
 }
+
+export type TrangThaiMan = Readonly<Record<string, string | number | boolean>>;

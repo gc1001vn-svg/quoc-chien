@@ -32,14 +32,14 @@ import { TheLenDoi } from '../ui/TheLenDoi';
 import { Perf } from '../core/Perf';
 import { PHIEN_BAN } from '../PhienBan';
 import { Atlas, coTheoDpr, napTrangLenGpu, taiBoAtlas, type BoAtlas } from './Atlas';
-import type { Man } from './Man';
+import type { Man, TrangThaiMan } from './Man';
 import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { DoiMeAtlas } from './DoiMeAtlas';
 import { neoX, neoY, vungONhinThay, type VungO } from './IsoMath';
 import { batDauKhungCoHieuUng, doMuc, ketThucHieuUng, veLopNen, veLopVat, type Muc, type Song, type Ve } from './VeCanh';
 import { noiChamChon } from './ChamChon';
-import { oBanDau, xayThu } from './ThamSoCanh';
+import { oBanDau, trangThaiThanhPho, xayThu, zoomBanDau } from './ThamSoCanh';
 import type { BanDo, CauHinhBanDo, O } from '../sim/city/BanDo';
 import { ThanhPho } from '../sim/city/City';
 import { DongHo } from '../sim/Clock';
@@ -101,7 +101,7 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
   const banDo: BanDo = thanhPho.banDo;
   const cam: Camera = new Camera(
     atlas.heSo(), CAU_HINH.canh, atlas.oPx(),
-    CAU_HINH.zoomMin, CAU_HINH.zoomMax, zoomBanDau(),
+    CAU_HINH.zoomMin, CAU_HINH.zoomMax, zoomBanDau(CAU_HINH.zoomDau),
   );
   cam.noiVao(canvas);
   const ghim: Ghim = new Ghim(goc);
@@ -263,19 +263,8 @@ export async function chayCanhThanhPho(goc: HTMLElement, theGioi: TheGioiGame): 
       dangChay = false;
       goc.hidden = true;
     },
+    trangThai: (): TrangThaiMan => trangThaiThanhPho(veCuoi, thanhPho, meta.thoiDai.doi.hien, cam.zoom(), theUi.hien),
   };
-}
-
-/**
- * Zoom mo man, lay tu `?zoom=` neu co.
- *
- * Co tham so nay de may ao chup duoc anh o dung muc thu phong muon kiem, khong phai gia
- * bo cham hai ngon. Khong co thi lay so trong JSON.
- */
-function zoomBanDau(): number {
-  const tho: string | null = new URLSearchParams(window.location.search).get('zoom');
-  const z: number = tho === null ? Number.NaN : Number(tho);
-  return Number.isFinite(z) && z > 0 ? z : CAU_HINH.zoomDau;
 }
 
 /**

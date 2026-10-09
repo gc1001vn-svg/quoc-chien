@@ -39,11 +39,11 @@ try {
   await td.mo();
   await td.datManHinh(RONG, CAO, DPR);
   await td.moTrang(GOC + duongThem);
-  const san = await td.choDen("document.querySelector('#app canvas') !== null", 20000);
-  if (!san) console.warn('Canh bao: #app van rong sau 20 giay, van chup.');
-  // Cho them vai khung hinh de canvas ve xong. `CHO_MS=30000`: cho lau hon cho khoi, chim
-  // (Thu 1) kip hien - may ao chi 5 fps, hieu ung chay cham theo.
-  await new Promise((r) => setTimeout(r, Number(process.env.CHO_MS ?? 2500)));
+  // Game tu gan `data-da-ve` khi khung dau da len man (`src/main.ts`) - thay cho cho cung 2,5 giay.
+  const san = await td.choDen("document.querySelector('#app[data-da-ve]') !== null", 20000);
+  if (!san) console.warn('Canh bao: game chua ve xong khung dau sau 20 giay, van chup.');
+  // `CHO_MS=30000`: cho THEM cho khoi, chim (Thu 1) kip hien - may ao chi 5 fps, hieu ung chay cham theo.
+  await new Promise((r) => setTimeout(r, Number(process.env.CHO_MS ?? 0)));
   // `AN_SU_KIEN=1`: an hop thoai su kien dau van (khong bam - bam thi camera chay sang nha vua xay).
   // Can cho bang den `docs/ART_BIBLE.md` muc 5: hop thoai che nua duoi man, do mau nham.
   if (process.env.AN_SU_KIEN === '1') {
@@ -56,6 +56,8 @@ try {
   const duong = join(THU_MUC, tenFile);
   writeFileSync(duong, anh);
   console.log(`Da chup: ${duong} (${anh.length} byte, ${RONG}x${CAO} @${DPR}x)`);
+  // Man dang ve gi, bang chu: doi chieu voi anh de bat "man hinh khac mo phong".
+  console.log(`Trang thai: ${JSON.stringify(await td.doc('window.__qc?.trangThai()'))}`);
 } finally {
   await td.dong();
 }

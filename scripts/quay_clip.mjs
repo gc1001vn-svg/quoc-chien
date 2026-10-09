@@ -62,8 +62,8 @@ try {
   await td.mo();
   await td.datManHinh(RONG, CAO, 1);
   await td.moTrang(diaChi);
-  const xong = await td.choDen("document.querySelector('#app canvas') !== null && document.querySelector('.dang-nap') === null", 30000);
-  if (!xong) throw new Error('game chua nap xong sau 30 giay');
+  const xong = await td.choDen("document.querySelector('#app[data-da-ve]') !== null", 30000);
+  if (!xong) throw new Error('game chua ve xong khung dau sau 30 giay');
   // The quyet dinh dau van che nua duoi man: bam lua chon dau nhu nguoi choi that.
   await td.doc("document.querySelector('.the-quyet-dinh:not([hidden]) .the-nut button:not([disabled])')?.click()");
   if (nutTocDo) {
@@ -73,6 +73,7 @@ try {
   await td.goi('Page.startScreencast', { format: 'jpeg', quality: 70, maxWidth: RONG, maxHeight: CAO, everyNthFrame: 1 });
   await nghi(GIAY * 1000);
   await td.goi('Page.stopScreencast');
+  console.log(`Trang thai cuoi clip: ${JSON.stringify(await td.doc('window.__qc?.trangThai()'))}`);
 } finally {
   await td.dong();
   mayChu.kill();
