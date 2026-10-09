@@ -10,8 +10,8 @@ Cập nhật: 09/10/2026 (lần 41 — đồ nghề đợt 7, không đổi các
 
 ## 1. Đang ở đâu
 
-- **09/10 (lần 41): đồ nghề đợt 7** — món 3, 4, 2 xong, món 1 chờ vé (mục 3). **Mã ở nhánh `claude/upbeat-brown-ma61w8`, CHƯA gộp
-  `main`** — anh xem rồi mới gộp. Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
+- **09/10 (lần 41): đồ nghề đợt 7** — đủ 4 món, anh cho gộp `main` (09/10). Món 1 = workflow `anh-ios.yml` (mục 5).
+  Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
@@ -63,11 +63,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 09/10 (lần 41) — anh xem đợt 7, mở vé món 1
+### ⏳ Việc 09/10 (lần 41) — lỗi người chấm bắt được
 
-Món 1 (ảnh Safari iPhone giả lập) cần vé file khoá, chế độ Auto chặn ghi vé: anh đổi nút chế độ cạnh ô soạn tin sang
-`Accept edits`, nhắn "ghi vé anh-ios", xong đổi về `Auto`. Ba món kia anh nói "gộp" là gộp `main`. Người chấm bắt được một lỗi
-thật: iPhone dọc, hàng nút tốc độ hiện mờ xuyên thẻ quyết định thứ ba — sửa không?
+iPhone dọc, hàng nút tốc độ hiện mờ xuyên thẻ quyết định thứ ba — sửa không? Ghi vé file khoá, đẩy `main`: chế độ Auto chặn,
+anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
 ### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
 
@@ -117,8 +116,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 
 ## 5. Phiên sau
 
-**PHIÊN SAU, có vé món 1:** chép `scripts/anh_ios.yml` vào `.github/workflows/anh-ios.yml`, bấm chạy bằng `actions_run_trigger`,
-`git fetch origin anh-ios` xem ảnh — lần đầu là phép thử (WebGL giả lập có thể đen). Ảnh gửi anh qua người chấm `docs/THANG_CHAM_HINH.md`.
+**Ảnh Safari iPhone giả lập:** `actions_run_trigger` `anh-ios.yml` (`inputs.duong` vd `?gio=23`), chờ xong, `git fetch origin anh-ios`
+xem ảnh + `trang_thai.txt`. Lần chạy đầu: nhật ký lần 41. Ảnh gửi anh qua người chấm `docs/THANG_CHAM_HINH.md`.
 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.

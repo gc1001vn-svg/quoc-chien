@@ -22,3 +22,5 @@ Kế hoạch anh duyệt 09/10 (cả 4 món, thứ tự 3 → 1 → 4 → 2): kh
 - **Món 2 — người chấm độc lập:** `docs/THANG_CHAM_HINH.md`, 4 tiêu chí bằng lời anh. Dựng lại 5 ảnh từ commit cũ anh đã phán,
   Haiku chấm mù: **khớp 4/5**; lệch duy nhất là lỗi thật anh bỏ qua (nút tốc độ hiện mờ xuyên thẻ thứ ba, còn ở bản 09/10).
   Bài học: ảnh phải chứa phần đổi; ghi "ánh sáng" chứ đừng ghi "đèn".
+- **Bổ sung 09/10 (sau khi anh đổi chế độ sang `Accept edits`):** anh nhắn "ghi vé anh-ios, rồi gộp main" → ghi vé, tạo
+  `.github/workflows/anh-ios.yml` (y bản mẫu, bản mẫu `scripts/anh_ios.yml` xoá), gộp `main`.

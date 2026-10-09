@@ -1,4 +1,3 @@
-# BAN MAU — chua chay. Chep vao .github/workflows/anh-ios.yml khi anh mo ve file khoa (thu muc khoa, AGENTS.md).
 name: Anh iOS
 
 # Chup game trong Safari cua iPhone GIA LAP, tren may Mac cua GitHub (repo Public: mien phi). Claude bam
