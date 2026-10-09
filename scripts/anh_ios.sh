@@ -30,6 +30,11 @@ d = ([x for x in ds if x["name"] == ten] or ds)[-1]
 print(d["udid"], d["name"])' "$MAY")
 xcrun simctl boot "$UDID" 2>/dev/null || true   # da bat san thi bao loi — bo qua
 xcrun simctl bootstatus "$UDID" -b
+# Safari mo lan dau hien bang goi y che noi dung (anh 09/10), simctl khong bam duoc nut dong: mo nhap mot
+# lan cho no hien, tat Safari, roi moi mo game. shortcut: chua chac bang khong hien lai, hong thi can cong cu bam (idb).
+xcrun simctl openurl "$UDID" "http://127.0.0.1:4173/"
+sleep 15
+xcrun simctl terminate "$UDID" com.apple.mobilesafari || true
 
 case "$DUONG" in *\?*) URL="http://127.0.0.1:4173/quoc-chien/${DUONG}&kiem=1" ;;
                   *) URL="http://127.0.0.1:4173/quoc-chien/${DUONG}?kiem=1" ;; esac
