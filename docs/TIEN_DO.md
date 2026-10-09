@@ -6,9 +6,11 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 06/10/2026 (lần 39 — Bước 2 "ngày/đêm + dân về nhà").
+Cập nhật: 09/10/2026 (lần 40 — tra nâng cấp đồ nghề, không đổi game).
 
 ## 1. Đang ở đâu
+
+- **09/10 (lần 40): không đổi game** — tra nâng cấp đồ nghề, 4 món chờ anh chọn ở kho `ghi-nho`. `docs/NHAT_KY/DO_NGHE_09_10.md`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
@@ -24,8 +26,7 @@ Cập nhật: 06/10/2026 (lần 39 — Bước 2 "ngày/đêm + dân về nhà")
 - **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
   nhận (TG14, `ti_le_xin_hoa` 0,9) · % thắng báo trước lệch tới 97,7 điểm → nay chạy thật 32 trận, lệch lớn nhất 5,5 (TR15).
   Đã đẩy `main`. **Anh chưa chơi thử** (mục 3). Chi tiết: `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
-- **Cũ hơn (nhật ký cùng tên):** lần 31 đổi nhịp lựa chọn B, đời 6 giờ 260 · 272 · 263 (`CAN_BANG_04_10.md`) · lần 30 luật bất biến
-  · lần 26–28 Thử 1–3 hiệu ứng, iPhone 59 fps (`THU_{1,2,3}_30_09.md`) · 30/09 đèn art bible (`DEN_30_09.md`).
+- **Cũ hơn:** `ls docs/NHAT_KY/` — tên file theo việc + ngày (lần 31 `CAN_BANG_04_10.md`, lần 26–28 `THU_*_30_09.md`).
 - **Game: Phase 12D xong**, anh đo iPhone 28/09: 59 fps. 12E chưa mở — anh dặn làm art bible trước. `docs/NHAT_KY/PHASE_12D.md`.
 - **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 05/10). Mở lần đầu sau nhiều ngày thấy bản cũ trong lúc tải ~20 MB
   bản mới — dặn anh để yên ~1 phút. Cách cho anh xem: `docs/DAU_PHIEN.md` mục G.
