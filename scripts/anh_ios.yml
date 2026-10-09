@@ -1,0 +1,62 @@
+# BAN MAU — chua chay. Chep vao .github/workflows/anh-ios.yml khi anh mo ve file khoa (thu muc khoa, AGENTS.md).
+name: Anh iOS
+
+# Chup game trong Safari cua iPhone GIA LAP, tren may Mac cua GitHub (repo Public: mien phi). Claude bam
+# chay qua GitHub MCP; anh day len nhanh `anh-ios` (ghi de moi lan, khong vao `main`), may ao
+# `git fetch origin anh-ios` ve xem. Fps trong gia lap la cua GPU Mac — fps that van doi anh do.
+# Viec chay nam o `scripts/anh_ios.sh` (ngoai thu muc khoa). Ke hoach: kho ghi-nho
+# `docs/ke-hoach/2026-10-09-nang-cap-dot-7.md` mon 1 — anh duyet 09/10.
+
+on:
+  workflow_dispatch:
+    inputs:
+      duong:
+        description: 'Duong dan them, vd ?gio=23 hay ?tran=1'
+        required: false
+        default: ''
+      may:
+        description: 'Ten iPhone gia lap (khong co thi lay iPhone ban iOS moi nhat)'
+        required: false
+        default: 'iPhone 16 Pro'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: anh-ios
+  cancel-in-progress: false
+
+jobs:
+  chup:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      # Dau vao di qua bien moi truong, khong chen thang vao lenh: ai bam chay cung khong chen lenh duoc.
+      - name: Chup trong Safari iOS gia lap
+        env:
+          DUONG: ${{ inputs.duong }}
+          MAY: ${{ inputs.may }}
+        run: bash scripts/anh_ios.sh "$DUONG" "$MAY"
+
+      # Mot commit mo coi, day de: nhanh chi giu anh moi nhat, repo khong phinh theo so lan chup.
+      - name: Day anh len nhanh anh-ios
+        if: always()
+        run: |
+          cd anh_ios
+          git init -q -b anh-ios
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "anh ios tu ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:anh-ios
