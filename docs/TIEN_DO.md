@@ -63,10 +63,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Việc 09/10 (lần 41) — lỗi người chấm bắt được
-
-iPhone dọc, hàng nút tốc độ hiện mờ xuyên thẻ quyết định thứ ba — sửa không? Ghi vé file khoá, đẩy `main`: chế độ Auto chặn,
-anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
+**Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
 ### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
 

@@ -26,3 +26,5 @@ Kế hoạch anh duyệt 09/10 (cả 4 món, thứ tự 3 → 1 → 4 → 2): kh
   `.github/workflows/anh-ios.yml` (y bản mẫu, bản mẫu `scripts/anh_ios.yml` xoá), gộp `main`.
 - **Chạy thật lần đầu 09/10 11:37 (run 37924853555):** ~10 phút tới lúc có ảnh. Runner không có iPhone 16 Pro → tự lấy iPhone 17
   (iOS 26). WebGL vẽ được, game báo `daVe:"1"`, 405 sprite, 59 fps (GPU Mac). Vướng: bảng gợi ý lần đầu của Safari che thẻ quyết định.
+- **Anh bảo "làm luôn" 09/10:** (1) thẻ quyết định nền đặc (`rgba 0,95` → `rgb`) — hết lộ nút tốc độ; (2) `anh_ios.sh` mở nháp
+  Safari 15 s rồi tắt, mới mở game — chạy lại trên nhánh: bảng gợi ý **không hiện nữa**, thẻ sạch. Còn: thanh Safari che nửa thẻ thứ ba (kéo được).
