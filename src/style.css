@@ -144,7 +144,8 @@ html, body {
   max-height: 46%;
   overflow-y: auto;
   padding: 14px 16px calc(env(safe-area-inset-bottom) + 14px);
-  background: rgba(8, 7, 6, 0.95);
+  /* Nen DAC: 0,95 thi chu hang nut toc do ngay duoi (z-index 4) lo mo xuyen the - nguoi cham bat 09/10. */
+  background: rgb(8, 7, 6);
   border-top: 1px solid #55504a;
 }
 .the-van {
