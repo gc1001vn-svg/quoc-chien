@@ -24,3 +24,5 @@ Kế hoạch anh duyệt 09/10 (cả 4 món, thứ tự 3 → 1 → 4 → 2): kh
   Bài học: ảnh phải chứa phần đổi; ghi "ánh sáng" chứ đừng ghi "đèn".
 - **Bổ sung 09/10 (sau khi anh đổi chế độ sang `Accept edits`):** anh nhắn "ghi vé anh-ios, rồi gộp main" → ghi vé, tạo
   `.github/workflows/anh-ios.yml` (y bản mẫu, bản mẫu `scripts/anh_ios.yml` xoá), gộp `main`.
+- **Chạy thật lần đầu 09/10 11:37 (run 37924853555):** ~10 phút tới lúc có ảnh. Runner không có iPhone 16 Pro → tự lấy iPhone 17
+  (iOS 26). WebGL vẽ được, game báo `daVe:"1"`, 405 sprite, 59 fps (GPU Mac). Vướng: bảng gợi ý lần đầu của Safari che thẻ quyết định.
