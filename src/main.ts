@@ -63,18 +63,27 @@ window.__qc = {
   }),
 };
 
+// `?kiem=1` (anh iOS, `.github/workflows/anh-ios.yml`): Safari gia lap khong cho may doc trang, nen bao
+// ca co lan trang thai ve may chu bang mot GET - may chu ghi so dong nay roi moi chup.
+const baoDaVe = (co: string): void => {
+  goc.dataset['daVe'] = co;
+  if (thamSo.get('kiem') !== '1') return;
+  void fetch(`./__da-ve?${encodeURIComponent(JSON.stringify(window.__qc?.trangThai()))}`)
+    .catch(() => { /* chi la tin bao cho may chup, mat thi may chup tu het han */ });
+};
+
 const chay: Promise<void> = laTrangDo ? chayDoSprite(goc) : laTran ? moManTran(goc) : moHaiMan(goc);
 chay.then(
   () => {
     cho.remove();
     // Man nao cung xin khung ve dau TRUOC khi tra ve, nen khung nay chay sau lan ve dau; khung thu hai la luc no da len man.
-    requestAnimationFrame(() => requestAnimationFrame(() => { goc.dataset['daVe'] = '1'; }));
+    requestAnimationFrame(() => requestAnimationFrame(() => { baoDaVe('1'); }));
     if (laTrangDo) return;
   },
   (loi: unknown) => {
     cho.className = 'nap-hong';
     cho.textContent = `Không nạp được: ${loi instanceof Error ? loi.message : String(loi)}`;
-    goc.dataset['daVe'] = 'hong';
+    baoDaVe('hong');
   },
 );
 
