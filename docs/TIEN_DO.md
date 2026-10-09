@@ -6,11 +6,12 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 09/10/2026 (lần 40 — tra nâng cấp đồ nghề, không đổi game).
+Cập nhật: 09/10/2026 (lần 41 — đồ nghề đợt 7, không đổi cách chơi).
 
 ## 1. Đang ở đâu
 
-- **09/10 (lần 40): không đổi game** — tra nâng cấp đồ nghề; anh chọn cả 4 món, làm phiên sau (kế hoạch ở kho `ghi-nho`). `docs/NHAT_KY/DO_NGHE_09_10.md`.
+- **09/10 (lần 41): đồ nghề đợt 7** — món 3, 4, 2 xong, món 1 chờ vé (mục 3). **Mã ở nhánh `claude/upbeat-brown-ma61w8`, CHƯA gộp
+  `main`** — anh xem rồi mới gộp. Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
@@ -23,9 +24,7 @@ Cập nhật: 09/10/2026 (lần 40 — tra nâng cấp đồ nghề, không đ�
   Luật mới TP16. Đã đẩy `main`. `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`.
 - **Đã xong, chi tiết ở `docs/NHAT_KY/`:** lần 38 sửa 4 file docs lệch (`SUA_DOCS_05_10.md`) · lần 35 đồ nghề `soi:giao-dien`,
   `npm run quay` (`DO_NGHE_04_10.md`) · lần 34 nhận game từ ảnh (`NHAN_GAME_TU_ANH_04_10.md`) · lần 33 Playwright MCP.
-- **04/10 (lần 32): sửa 3 lỗi trận luật bất biến đo ra 03/10** — đi hàng lệch lúc chạm địch (TR14) · AI xin hoà không bao giờ được
-  nhận (TG14, `ti_le_xin_hoa` 0,9) · % thắng báo trước lệch tới 97,7 điểm → nay chạy thật 32 trận, lệch lớn nhất 5,5 (TR15).
-  Đã đẩy `main`. **Anh chưa chơi thử** (mục 3). Chi tiết: `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
+- **04/10 (lần 32): sửa 3 lỗi trận** (TR14, TG14, TR15) — đã đẩy `main`. **Anh chưa chơi thử** (mục 3). `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
 - **Cũ hơn:** `ls docs/NHAT_KY/` — tên file theo việc + ngày (lần 31 `CAN_BANG_04_10.md`, lần 26–28 `THU_*_30_09.md`).
 - **Game: Phase 12D xong**, anh đo iPhone 28/09: 59 fps. 12E chưa mở — anh dặn làm art bible trước. `docs/NHAT_KY/PHASE_12D.md`.
 - **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 05/10). Mở lần đầu sau nhiều ngày thấy bản cũ trong lúc tải ~20 MB
@@ -42,15 +41,8 @@ Cập nhật: 09/10/2026 (lần 40 — tra nâng cấp đồ nghề, không đ�
 **Bước 1, đo 04/10 (máy ảo):** lệnh vẽ thành phố vẫn 3 · `sim:thu`, `sim:van` y hệt trước (mô phỏng chỉ ghi thêm nhịp khởi công)
 · test 606 → 613 · TP16 bản sâu 50 hạt 19 s. **iPhone 60 fps** (anh đo 05/10, bản 05/10 01:26).
 
-**Đồ nghề 04/10 (lần 35):** `npm run do` 192 → **76 s** · `khoi:dong` 121 → 4,5 s · `soi:giao-dien` 0 lỗi, ~20 s.
-
-**Sửa 3 lỗi trận, đo 04/10 (máy ảo):** 150 cặp đội hình × 200 trận — lệch |% báo − thắng thật| lớn nhất 97,7 → 5,5 điểm ·
-`sim:tran` lệch TB 2,24 → 0,84, Brier 0,075 → 0,009 · `sim:van` (5 hạt) thống trị 3/5 · khoa học 2/5 → **5/5** · văn hoá 5/5 ·
-ngoại giao 4/5 → 5/5 · một giờ thế giới max 3,6 → **25 ms** (7/3.913 giờ > 16 ms) · trận 10v10 0,75 → 0,45 ms · `npm test` 19,9 s ·
-`luat:sau` 301 s · test 606. Bảng đủ: nhật ký lần 32.
-
-**Cân bằng, đo 04/10** (`sim:congnghe -- 320 6`, bản đồ gốc · 777 · 4242): đời 6 giờ **260 · 272 · 263** · nhà giờ 320:
-436 · 426 · 436 · kho 6 · Eureka 19 · 17 · 19 · đỉnh người vác 231–271. Bảng đủ: `docs/NHAT_KY/CAN_BANG_04_10.md`.
+**Đồ nghề đợt 7, đo 09/10 (máy ảo):** `chup:man` 5,3–5,8 → **3,5–3,7 s/ảnh**, ảnh y hệt · người chấm Haiku khớp anh **4/5** ảnh cũ
+(`docs/THANG_CHAM_HINH.md`) · knip: **0 hàm chết** trong `src/` · Stryker 4 thư mục nhỏ **61 %** (cận dưới, nhật ký). Lần 35, 32: nhật ký cùng tên.
 
 **Đèn 30/09:** số cũ → mới ở `docs/ART_BIBLE.md` mục 5 (**đừng chép về đây**). Thử 1–3, 12D: nhật ký cùng tên.
 
@@ -70,6 +62,12 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Việc 09/10 (lần 41) — anh xem đợt 7, mở vé món 1
+
+Món 1 (ảnh Safari iPhone giả lập) cần vé file khoá, chế độ Auto chặn ghi vé: anh đổi nút chế độ cạnh ô soạn tin sang
+`Accept edits`, nhắn "ghi vé anh-ios", xong đổi về `Auto`. Ba món kia anh nói "gộp" là gộp `main`. Người chấm bắt được một lỗi
+thật: iPhone dọc, hàng nút tốc độ hiện mờ xuyên thẻ quyết định thứ ba — sửa không?
 
 ### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
 
@@ -118,6 +116,9 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 - Danh sách đủ (24–28/09, nguyên văn): `docs/NO_KY_THUAT.md` mục "Chuyển từ TIEN_DO.md mục 4".
 
 ## 5. Phiên sau
+
+**PHIÊN SAU, có vé món 1:** chép `scripts/anh_ios.yml` vào `.github/workflows/anh-ios.yml`, bấm chạy bằng `actions_run_trigger`,
+`git fetch origin anh-ios` xem ảnh — lần đầu là phép thử (WebGL giả lập có thể đen). Ảnh gửi anh qua người chấm `docs/THANG_CHAM_HINH.md`.
 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
