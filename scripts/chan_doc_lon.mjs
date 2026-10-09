@@ -80,7 +80,7 @@ process.stdin.on('end', () => {
       'roi `Read` voi `offset`/`limit`.\n' +
       '  2. Can tra loi mot cau ve ca file (dau vao to, dau ra nho): ' +
       `\`node /home/user/ghi-nho/cong-cu/hoi_gemini.mjs "<cau hoi>" ${duong}\`. ` +
-      'Repo private no tu chan; log loi thi dung — dung `grep` lay nguyen van.\n' +
+      'Repo private (ca ban sao, tool-results) no tu chan theo ten; log loi thi dung — dung `grep`.\n' +
       '  3. Phai doc het (vd sap sua ca file): `Read` tung doan voi `offset`/`limit`.\n' +
       'Muon tat lop nhac nay trong phien thi ghi `chan_doc_lon` vao `.claude/hook_phien.txt`.',
   });

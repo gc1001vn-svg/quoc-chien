@@ -3,14 +3,8 @@
 // Di cung chan_bao_xong.mjs — so nay la bang chung, khong phai loi Claude noi.
 // Y tuong lay tu AlethiaQuizForge/no-hallucination (MIT), code viet lai tu dau.
 //
-// Cai vao mot du an:
-//   1. Chep file nay vao <du-an>/scripts/ghi_so_lenh.mjs
-//   2. Them vao <du-an>/.claude/settings.json:
-//      "PostToolUse": [{ "hooks": [
-//        { "type": "command",
-//          "command": "node $CLAUDE_PROJECT_DIR/scripts/ghi_so_lenh.mjs",
-//          "timeout": 10 } ] }]
-//   3. Them ".claude/so_lenh.log" vao .gitignore
+// Cai vao mot du an: `node /home/user/ghi-nho/cong-cu/cai_dat.mjs <du-an>` — chep tay rieng
+// file nay se hong (`ERR_MODULE_NOT_FOUND`, can `hook_chung.mjs`).
 //
 // Fail-open, khong bao gio chan gi: hook nay chi ghi.
 

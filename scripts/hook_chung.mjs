@@ -34,7 +34,7 @@
 //
 // stderr y het. Tran dung 146.176 byte, khong phu thuoc ben doc nhanh hay cham.
 // Harness doc phai JSON cut giua chung thi coi ca hook la HONG -> chan luon tool
-// call. Hook lon nhat hien gio moi 973 byte (0,7% tran) nen day la BAO HIEM,
+// call. Hook lon nhat do 07/10 ~1,4 KB (~1% tran) nen day la BAO HIEM,
 // chua phai loi dang chay. Chep tu ECC de khoi phai gap lai.
 //
 // ---------------------------------------------------------------------------
@@ -278,7 +278,7 @@ export const BAN_MAU_KHOA = process.env.GC_BAN_MAU_KHOA || '/home/user/ghi-nho/c
  *
  * VI SAO: 13/09 chu du an doi "tat skill khong lien quan phai TU CHAY", ban cu chi BAO —
  * 02/10 skill `docs` lot, tro ly dung lai hoi. Chu du an chot 02/10: hook tu ghi `off`.
- * Muon bat: go dong do khoi ban mau, hoac ghi ten vao `.claude/skill_bat.txt`.
+ * Muon bat: ghi ten vao `.claude/skill_bat.txt` (go khoi ban mau KHONG du — `cai_dat` lay khoa lai tu repo).
  * Ban mau chi ghi khi kho ghi-nho co tren may; ghi xong con phai commit kho.
  */
 export function tu_tat_skill_moi(root = goc(), thu_muc_skill = join(homedir(), '.claude/skills')) {
@@ -289,7 +289,7 @@ export function tu_tat_skill_moi(root = goc(), thu_muc_skill = join(homedir(), '
     if (!obj) return;
     const khoa = lay(obj);
     let doi = false;
-    for (const t of sot) if (!(t in khoa)) { khoa[t] = 'off'; doi = true; }
+    for (const t of sot) if (!(t in khoa)) { khoa[t] = 'user-invocable-only'; doi = true; }
     if (doi) writeFileSync(p, `${JSON.stringify(obj, null, 2)}\n`);
   };
   if (existsSync(BAN_MAU_KHOA)) ghi_off(BAN_MAU_KHOA, (m) => m);

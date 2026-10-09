@@ -54,7 +54,7 @@ if (existsSync('requirements.txt')) {
 // Khoa cu KHONG tu phu skill moi. Anthropic them mot skill dung san, hoac chu du
 // an tai len skill moi, la no lot vao ngu canh moi phien ma khong ai bao.
 // Doan duoi bat duoc phan skill DONG BO (co file tren dia). Skill dung san thi
-// khong co file — phan do van phai do A/B, xem `so-thich.md`.
+// khong co file — phan do van phai do A/B, xem `cong-cu/luat-chi-tiet.md` muc skill.
 const pSet = '.claude/settings.json';
 if (existsSync(pSet)) {
   try {
@@ -64,11 +64,11 @@ if (existsSync(pSet)) {
       d.push('skillOverrides TRONG — moi phien phi ~12.500 ky tu. Chay cong-cu/cai_dat.mjs');
     } else {
       // Ham dung chung voi `check_hook` (lenh do): hook nay co the chay truoc khi skill
-      // tai ve may va sot, lenh do chay sau bat lai. TU GHI `off` (chot 02/10) vao ca ban
+      // tai ve may va sot, lenh do chay sau bat lai. TU GHI `user-invocable-only` (chot 07/10, thay `off` 02/10) vao ca ban
       // mau kho lan settings.json cua repo — `cai_dat.mjs` ghi de repo theo ban mau.
       try {
         const tat = tu_tat_skill_moi();
-        if (tat.length) d.push(`da TU TAT skill moi (off): ${tat.join(' ')} — bao chu du an mot dong, commit ghi-nho; muon bat thi go khoi cong-cu/skill_overrides.json hoac ghi .claude/skill_bat.txt`);
+        if (tat.length) d.push(`da TU KHOA skill moi (goi tay): ${tat.join(' ')} — bao chu du an mot dong, commit ghi-nho; muon bat thi ghi .claude/skill_bat.txt`);
       } catch {
         const sot = skill_chua_khoa();
         if (sot.length) d.push(`skill CHUA co khoa, tu tat HONG: ${sot.join(' ')} — them tay vao /home/user/ghi-nho/cong-cu/skill_overrides.json roi chay cai_dat.mjs`);

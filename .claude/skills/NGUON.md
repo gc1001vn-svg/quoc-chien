@@ -121,7 +121,7 @@ cho) · `PHASE_2B.md` "bon lan sua moi ra" · `PHASE_2B_2.md` ba vong chinh mau 
 
 **Mo o che do MAC DINH (model tu goi), khac ba cai tren** — ghi o `.claude/skill_bat.txt` moi repo (`cai_dat` tu them, 05/10). Khoa `user-invocable-only`
 thi model khong goi duoc; chu du an go "LOI" chu khong go `/diagnosing-bugs`. Chi phi:
-dong `description:` **170 byte ~ 45 token/phien**; than 8.529 byte (~2.100 token) chi
+dong `description:` **170 byte ~ 45 token/phien**; than 8.478 byte (~2.100 token) chi
 vao khi goi. Mo ta tieng Anh ("broken/failing") chua chac bat chu "LOI" tieng Viet,
 nen dong **LOI** cua `quoc-chien/CLAUDE.md` tro thang sang skill (chu du an duyet
 23/09; cau `loi-chan-doan` trong `docs/BO_DE.md` do no). Repo khac muon chac: them

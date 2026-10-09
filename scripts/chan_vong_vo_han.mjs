@@ -20,7 +20,7 @@
 // LUAT: vong lap phai co MOT trong hai thu —
 //   1. `timeout <giay>` boc ngoai, hoac
 //   2. so vong dem duoc (`for i in $(seq 1 N)`, `for i in {1..N}`).
-// Khong co thi chan, va bao ra hai cach thay the re hon.
+// Khong co thi chan, va bao ra ba cach thay the re hon.
 //
 // KHONG CHAN DUOC GI: shell co nhieu cach viet vong lap ma doc chuoi khong bat
 // het (`xargs`, script roi, `watch`, de quy). Day la cai NHAC bat duoc dung cai
@@ -37,6 +37,9 @@ const VONG_HO = [
   /\buntil\s+/,
   /\bwhile\s+\[/,
   /\bwhile\s+\[\[/,
+  // Ra 07/10: cung khuon `until` gay treo 40 phut, viet nguoc lai.
+  /\bwhile\s+!/,
+  /\bwhile\s+(curl|wget|test|git|grep|pgrep|nc)\b/,
 ];
 
 /** Co tran thi cho qua. */

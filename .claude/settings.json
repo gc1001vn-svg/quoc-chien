@@ -140,5 +140,9 @@
     "chrome-browser": "off",
     "computer-use": "off",
     "deep-research": "off"
+  },
+  "enabledPlugins": {
+    "cowork-plugin-management@synced": false,
+    "small-business@synced": false
   }
 }

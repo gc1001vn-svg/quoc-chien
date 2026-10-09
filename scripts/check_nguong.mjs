@@ -71,7 +71,35 @@ const THEO_DOI = [
         .reduce((tong, l) => tong + Number(l.split(/\s+/)[1] ?? 0), 0);
     },
   },
+  // Ra 07/10: tran byte ba file kho va thuoc `quyet-dinh/` noi duoc ma khong ai do. Tuy chon.
+  ...['so-thich.md', 'du-an.md', 'trang-thai.md'].map((f) => ({
+    ten: `check_kho.${f}`,
+    mo_ta: `tran byte ${f}`,
+    doc() {
+      if (!existsSync('scripts/check_kho.mjs')) return undefined;
+      const k = readFileSync('scripts/check_kho.mjs', 'utf8').match(new RegExp(`'${f.replace('.', '\\.')}':\\s*(\\d+)`));
+      return k ? Number(k[1]) : null;
+    },
+  })),
+  {
+    ten: 'check_quyet_dinh.nguong',
+    mo_ta: 'so dong toi da file quyet-dinh moi',
+    doc: () => (existsSync('scripts/check_quyet_dinh.mjs') ? doSoMacDinh('scripts/check_quyet_dinh.mjs') : undefined),
+  },
+  {
+    // Moc ngay doi ra so YYYYMMDD: doi moc ve sau = mien them file = noi.
+    ten: 'check_quyet_dinh.moc',
+    mo_ta: 'ngay bat dau soi (mien file truoc ngay nay)',
+    doc() {
+      if (!existsSync('scripts/check_quyet_dinh.mjs')) return undefined;
+      const k = readFileSync('scripts/check_quyet_dinh.mjs', 'utf8').match(/const MOC = '(\d{4})-(\d{2})-(\d{2})'/);
+      return k ? Number(k.slice(1).join('')) : null;
+    },
+  },
 ];
+// Bien moi truong `NGUONG_*` noi nguong ma khong sua file nao — thuoc nay khong thay. Bao luon.
+const loEnv = Object.keys(process.env).filter((k) => /^NGUONG_/.test(k));
+if (loEnv.length) { console.error(`HONG: bien moi truong noi nguong: ${loEnv.join(' ')}`); process.exit(1); }
 
 /** So mac dinh trong `const NGUONG = Number(process.env.X) || 60;` */
 function doSoMacDinh(duongDan) {
@@ -167,7 +195,7 @@ for (const muc of THEO_DOI) {
   if (that > moc) qua.push({ ...muc, that, moc });
 }
 
-console.log(`${MOC}: ${THEO_DOI.length} so duoc theo doi`);
+console.log(`${MOC}: ${THEO_DOI.filter((m) => m.doc() !== undefined).length} so duoc theo doi`);
 
 if (qua.length) {
   console.error(

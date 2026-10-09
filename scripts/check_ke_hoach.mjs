@@ -32,7 +32,7 @@ if (!existsSync(THU_MUC)) {
 const qua = [];
 let n = 0;
 for (const ten of readdirSync(THU_MUC).filter((t) => t.endsWith('.md')).sort()) {
-  const dong = readFileSync(join(THU_MUC, ten), 'utf8').split('\n').length;
+  const dong = readFileSync(join(THU_MUC, ten), 'utf8').replace(/\n$/, '').split('\n').length;
   const mien = MIEN.has(ten);
   n += 1;
   console.log(`  ${String(dong).padStart(4)} dong  ${ten}${mien ? '  (mien, viet truoc khi co thuoc)' : ''}`);

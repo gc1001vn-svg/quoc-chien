@@ -3,7 +3,7 @@
 //
 //   node scripts/check_hook.mjs
 //
-// Sau luat duoi day deu tung lam hong that mot lan, o day hoac o ECC. Bat bang
+// Cac luat duoi day deu tung lam hong that mot lan, o day hoac o ECC. Bat bang
 // MAY, vi bon cai dau chi ton tai duoi dang chu — va chu thi phien sau khong doc.
 //
 // Nguon luat 1-3: affaan-m/ecc `docs/hook-bug-workarounds.md` + `#2222`.

@@ -310,7 +310,7 @@ function khoi_ngu_canh(vao) {
  * Ghi JSON ra stdout roi thoat — CHO CHU RA HET moi thoat.
  *
  * `process.stdout.write(s); process.exit(0)` cat mat phan tren 146.176 byte
- * (do 18/09, xem `hook_chung.mjs`). Hook nay moi ~973 byte nen chua dinh, nhung
+ * (do 18/09, xem `hook_chung.mjs`). Hook nay ~0,9–1,4 KB (do 07/10) nen chua dinh, nhung
  * no la hook duy nhat o day dung stdout lam duong CHINH — JSON cut giua chung
  * thi harness coi ca hook la hong va nuot luon luot go.
  */

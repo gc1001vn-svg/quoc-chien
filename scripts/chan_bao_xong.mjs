@@ -13,13 +13,8 @@
 // CUOI PHIEN, nen xong viec giua phien thi khong ai bat.
 // Khong co buoc ke that thi ghi "De xuat: khong co - <ly do>".
 //
-// Cai vao mot du an:
-//   1. Chep file nay vao <du-an>/scripts/chan_bao_xong.mjs
-//   2. Them vao <du-an>/.claude/settings.json:
-//      "Stop": [{ "hooks": [
-//        { "type": "command",
-//          "command": "node $CLAUDE_PROJECT_DIR/scripts/chan_bao_xong.mjs",
-//          "timeout": 10 } ] }]
+// Cai vao mot du an: `node /home/user/ghi-nho/cong-cu/cai_dat.mjs <du-an>` — chep tay rieng
+// file nay se hong (`ERR_MODULE_NOT_FOUND`, can `hook_chung.mjs`).
 //
 // Fail-open: doc loi hoac du lieu hong thi cho qua, khong lam treo phien.
 // Ly do: quyet-dinh/2026-09-05-chua-do-duoc-thi-khong-sua.md
