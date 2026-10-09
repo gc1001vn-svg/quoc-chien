@@ -10,7 +10,7 @@ Cập nhật: 09/10/2026 (lần 40 — tra nâng cấp đồ nghề, không đ�
 
 ## 1. Đang ở đâu
 
-- **09/10 (lần 40): không đổi game** — tra nâng cấp đồ nghề, 4 món chờ anh chọn ở kho `ghi-nho`. `docs/NHAT_KY/DO_NGHE_09_10.md`.
+- **09/10 (lần 40): không đổi game** — tra nâng cấp đồ nghề; anh chọn cả 4 món, làm phiên sau (kế hoạch ở kho `ghi-nho`). `docs/NHAT_KY/DO_NGHE_09_10.md`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
