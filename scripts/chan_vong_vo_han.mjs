@@ -95,6 +95,18 @@ process.stdin.on('end', () => {
   if (!tho_lenh) process.exit(0);
   const lenh = boHeredoc(tho_lenh);
 
+  // `pkill -f <mau>` khop luon dong lenh Bash dang chay no (mau nam nguyen chu trong do) -> giet chinh shell,
+  // ma 144: 2 lan mat luot chay nen 09/10 (`pkill -f "stryker"`). Mau co `[` (`"[s]tryker"`) hay bien (`$P`) thi khong tu khop.
+  const k = /\bpkill\b[^|;&\n]*?\s-\w*f\w*\s+(?:"([^"]+)"|'([^']+)'|([^\s;|&)]+))/.exec(lenh);
+  const mau = k ? (k[1] ?? k[2] ?? k[3] ?? '') : '';
+  if (mau && !/[[$]/.test(mau)) {
+    const an = `"[${mau[0]}]${mau.slice(1)}"`;
+    return thoat(2, {
+      loi: `\`pkill -f ${mau}\` khop luon dong lenh nay nen giet chinh shell (ma 144, 2 lan 09/10). ` +
+        `Viet \`pkill -f ${an}\` hoac \`kill $(pgrep -f ${an})\`.`,
+    });
+  }
+
   const coVong = VONG_HO.some((r) => r.test(lenh));
   if (!coVong) process.exit(0);
   if (!CO_CHO.some((r) => r.test(lenh))) process.exit(0);
