@@ -6,17 +6,16 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 10/10/2026 (lần 44 — anh trả lời 3 việc chờ; kế hoạch art bible bước 3, anh chọn B; không đổi game).
+Cập nhật: 10/10/2026 (lần 45 — nướng lại mẻ cổ đại về 3 tay vẽ, phương án B; đã gộp `main`).
 
 ## 1. Đang ở đâu
 
-- **10/10 (lần 44): anh trả lời 3 việc chờ** — 59 fps cả ba (đêm `?gio=23`, bản 04/10 lúc giờ trôi nhanh); bảng nông trại
-  giao Claude chọn: ruộng 1E · lợn, cừu Q · luật 1 thêm "gà". → **Kế hoạch art bible bước 3 + bảng ảnh: anh chọn B** (giữ nhà
-  KayKit, 3 tay vẽ)
-  (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`). Drive tải lại được. `docs/NHAT_KY/ART_BIBLE_B3_KE_HOACH_10_10.md`.
-- **10/10 (lần 42, 43): đồ nghề đợt 9, 10** — đã gộp `main`. `docs/NHAT_KY/DO_NGHE_DOT_{9,10}_10_10.md`.
-- **09/10 (lần 41): đồ nghề đợt 7** — đủ 4 món, anh cho gộp `main` (09/10). Món 1 = workflow `anh-ios.yml` (mục 5).
-  Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
+- **10/10 (lần 45): art bible bước 3 XONG phần máy** — mẻ `co_dai` 6 → **3 tay vẽ**: KayKit mọi công trình (đền, tháp, đấu
+  trường Icosa → quán thùng, trại lính, lò KayKit nhuộm rơm) · Quaternius ruộng (luống + lúa, nền lót màu phẳng), trại (rào,
+  chuồng, lợn, cừu) · Google chỉ gà. Thêm `ruong_trong`, `ruong_lua_1..3` cho bước "lúa lớn dần". Chờ anh xem + đo iPhone
+  (mục 3). `docs/NHAT_KY/ART_BIBLE_B3_NUONG_10_10.md`.
+- **10/10 (lần 44): anh chọn B** (kế hoạch `docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`) · 3 việc chờ 59 fps.
+  `docs/NHAT_KY/ART_BIBLE_B3_KE_HOACH_10_10.md` · lần 41–43 đồ nghề đợt 7, 9, 10: `docs/NHAT_KY/DO_NGHE_DOT_*`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
@@ -40,8 +39,8 @@ Cập nhật: 10/10/2026 (lần 44 — anh trả lời 3 việc chờ; kế ho�
 **Bước 2, đo 06/10 (máy ảo):** khung đo art bible — bản cũ · `?gio=12` · `?tat=dem` cùng 0,48 · 0,56 · 0,32 · lệnh vẽ vẫn 3 ·
 `sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. **Fps iPhone 59** (anh lướt 10/10, cả đêm `?gio=23`).
 
-**Bảng thử art bible bước 3, đo 10/10:** 22 hình Ultimate Fantasy RTS, hệ số 2,2 → 70,4 % một trang 2×. Ước cả mẻ 76 hình:
-2,2 → 145 % · 1,8 → 105 % · 1,6 → 88 % trang 2× (1× ≤ 36 %). Mẻ `co_dai` hiện 87,4 % trang 2×, trang 2 rỗng 1×1.
+**Art bible bước 3, đo 10/10 (máy ảo):** `tay-ve co_dai` 6 → **3** · khung đo 0,48 · 0,56 trước = sau · 3 lệnh vẽ · `sim:thu`,
+`sim:van` y hệt (trừ giây) · atlas 2× 87,4 % + trang 2 3,8 % (trước: trang 2 rỗng 1×1), 1× 23,3 %. Chi tiết `ART_BIBLE.md` mục 5.
 
 **Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
 0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).
@@ -73,10 +72,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
-### ✅ Kế hoạch art bible bước 3 — anh chọn B, đồng ý sửa `ASSET_CREDITS.md` (10/10)
+### ⏳ Mẻ cổ đại mới (10/10, lần 45) — anh xem ảnh, mở Pages trên iPhone đo fps (đích ≥ 58)
 
-B: giữ nhà KayKit, luật 1 nới lên 3 tay vẽ. Anh nhắn 10/10 "Đồng ý sửa ASSET_CREDITS" → phiên nướng ghi vé
-`.claude/da_duyet.txt` cho `docs/ASSET_CREDITS.md`, sửa đúng dòng mẻ cổ đại (vé một lần).
+Bảng trước/sau + ảnh thành phố đã gửi. Chê công trình nào thì giữ lại đúng công trình đó, ghi là ngoại lệ (kế hoạch, "Giả sử
+B hỏng"). Vẫn thấy gượng thì gốc là cây, người Quaternius cạnh nhà KayKit — đổi sang KayKit là phiên khác.
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
@@ -98,8 +97,8 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 - **Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa** — chờ anh (mục 3).
 - **Một giờ thế giới chậm nhất 25 ms trên máy ảo** (trước 3,6 ms) — giá của % thắng chạy thật; anh báo giật thì cắt
   (`docs/NO_KY_THUAT.md` mục "Luật bất biến"). Hết giờ mà hai bên bằng phần máu: chưa luật nào kiểm.
-- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — gốc đo được: mẻ cổ đại ghép **6 tay vẽ**, cận đại 7
-  (`docs/ART_BIBLE.md` mục 2). Độ tối đã sửa 30/09; tay vẽ còn — art bible mục 5 bước 2, 3.
+- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — cổ đại 6 → 3 tay vẽ (10/10, chờ anh xem); cận đại còn **7**
+  (`docs/ART_BIBLE.md` mục 2, mục 5 bước 3).
 - **Luật 3 (bão hoà ≥ 0,37) còn trượt:** hiện đại 0,30, tương lai 0,35 — art bible mục 5 bước 3.
 - **Mẻ lính `linh_co`, `linh_sung` và bản đồ `hex_1` còn đèn cũ** — màn trận, bản đồ dùng atlas riêng nên không lệch
   trong cùng một màn; gói lính nằm ở kho `tayvuc`.
@@ -116,19 +115,18 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: nướng mẻ cổ đại theo phương án B anh chọn 10/10** (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`);
-anh đã đồng ý sửa `ASSET_CREDITS.md` dòng mẻ cổ đại (mục 3). Anh bảo làm việc khác thì BƯỚC 4 "khai thác cạn dần" theo kế
-hoạch ANH ĐÃ DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` (bước 3 lúa lớn dần làm SAU khi nướng lại mẻ).
-Drive tải lại được 10/10 (`lay.mjs quaternius ultimatefantasyrts` đủ 128 OBJ, kiểm file không phải HTML). Bẫy ~120 nghìn đỉnh
+**PHIÊN SAU: anh đã xem mẻ cổ đại (mục 3) thì BƯỚC 3 "lúa lớn dần"** theo kế hoạch ANH ĐÃ DUYỆT 04/10
+`docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — hình đã nướng sẵn: `ruong_trong`, `ruong_lua_1..3`. **Bẫy:** Level 1–3 của
+RTS là luống gieo dần ⅓ → ⅔ → đủ, cùng chiều cao — không phải cây lớn; cần "mạ, lúa xanh" thì nhuộm `mau` (nhật ký lần 45).
+Bẫy ~120 nghìn đỉnh
 một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,
 `?gio=23`, `?gio=lap` (`docs/NHAT_KY/BUOC_{1,2}_*.md`); `npm run quay` tự bấm thẻ đầu ván nên dùng `zoom=0.6`. Anh luôn mở bằng
 trình duyệt web (Safari), không mở trong app Claude.
 Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước; giật lúc giờ trôi: bớt `so_tran_dung_som` (`data/battle.json`).
 
-**Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E.
-Bước 3: nướng lại mẻ cổ đại ≤ 2 tay vẽ — tính chỗ atlas trước. Đo bằng `node tools/do_hinh.mjs` (cần ffmpeg).
-Nướng thì tải asset theo `docs/DAU_PHIEN.md` mục B (cả dòng lấy model Icosa theo mã).
+**Art bible bước 3 còn lại:** cận đại (7 tay vẽ), hiện đại (bão hoà 0,30) — anh mở 30/09, cổ đại xong 10/10. Đừng tự mở 12E.
+Nướng: tải theo `docs/DAU_PHIEN.md` mục B; Ultimate Fantasy RTS lấy qua `lay.mjs quaternius` (~25 phút, kiểm file HTML giả).
 
 Nếu anh bảo tiếp 12E:
 
