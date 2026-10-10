@@ -70,6 +70,9 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
    quân sự · công cộng) **chỉ một tay vẽ**; tay thứ hai chỉ dùng cho cây, đá, người. Anh chốt 29/09.
    **Thêm 10/10** (anh giao Claude chọn): tay thứ hai được vẽ **gà** — anh chọn gà G1 + G2 (Google) mà Quaternius không
    có gà dùng được. Không mở cho thú khác: lợn, cừu giữ Quaternius (`farmanimal`, game đang dùng).
+   **Nới 10/10** (anh chọn phương án B, art bible bước 3): mỗi mẻ **tối đa 3 tay vẽ** — anh giữ nhà KayKit nhiều màu thay vì
+   đổi hết sang Quaternius mộc. Mẻ cổ đại: KayKit mọi công trình · Quaternius nông trại, cây, đá, người · Google chỉ gà.
+   Vẫn giữ: mỗi loại công trình một tay vẽ, luật 9 không trộn màu bệt với hoạ tiết trong một loại.
 2. **Độ sáng:** cảnh thành phố có độ sáng TB **≥ 0,36** (game thật thấp nhất mục 7: Forge of Empires).
    **Đích: ô 4C — sáng 0,52 · ấm 0,26**, đo ở khung bảng đèn (mục 5). Anh giao Claude tự chọn 29/09.
 3. **Bão hoà:** cảnh thành phố **≥ 0,37** (cảnh thành phố nhạt nhất trong mốc: D đầu game).
