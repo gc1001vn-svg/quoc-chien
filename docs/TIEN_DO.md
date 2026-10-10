@@ -73,10 +73,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
-### ⏳ Việc 10/10 (lần 44) — anh xác nhận câu 2 kế hoạch art bible bước 3
+### ✅ Kế hoạch art bible bước 3 — anh chọn B, đồng ý sửa `ASSET_CREDITS.md` (10/10)
 
-Anh nhắn 10/10 "Chọn B. Số 2": **B đã chốt** (giữ nhà KayKit, luật 1 nới lên 3 tay vẽ). "Số 2" chưa rõ — câu 2 là
-"đồng ý sửa `docs/ASSET_CREDITS.md` (file khoá) dòng mẻ cổ đại không?". **Chưa có "đồng ý" rõ thì chưa ghi vé.**
+B: giữ nhà KayKit, luật 1 nới lên 3 tay vẽ. Anh nhắn 10/10 "Đồng ý sửa ASSET_CREDITS" → phiên nướng ghi vé
+`.claude/da_duyet.txt` cho `docs/ASSET_CREDITS.md`, sửa đúng dòng mẻ cổ đại (vé một lần).
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
@@ -117,7 +117,7 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
 **PHIÊN SAU: nướng mẻ cổ đại theo phương án B anh chọn 10/10** (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`);
-sửa `ASSET_CREDITS.md` chỉ sau khi anh nói rõ "đồng ý" (mục 3). Anh bảo làm việc khác thì BƯỚC 4 "khai thác cạn dần" theo kế
+anh đã đồng ý sửa `ASSET_CREDITS.md` dòng mẻ cổ đại (mục 3). Anh bảo làm việc khác thì BƯỚC 4 "khai thác cạn dần" theo kế
 hoạch ANH ĐÃ DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` (bước 3 lúa lớn dần làm SAU khi nướng lại mẻ).
 Drive tải lại được 10/10 (`lay.mjs quaternius ultimatefantasyrts` đủ 128 OBJ, kiểm file không phải HTML). Bẫy ~120 nghìn đỉnh
 một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,

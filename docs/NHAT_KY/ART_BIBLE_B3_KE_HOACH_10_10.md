@@ -22,3 +22,4 @@ nướng tạm rồi xoá, không file nào vào git ngoài docs.
 - `docs/ASSET_CREDITS.md` dòng `co_dai_2x_1.png` ghi "trang trống" — dùng thật trang 2 là dòng đó sai → file khoá, cần anh.
 - **Anh chọn B** (10/10: "Chọn B. Số 2") — giữ nhà KayKit, luật 1 nới lên 3 tay vẽ (`ART_BIBLE.md`). Kế hoạch viết lại theo B.
   "Số 2" chưa rõ có phải "đồng ý sửa `ASSET_CREDITS.md`" không → hỏi lại, chưa ghi vé file khoá.
+- **Anh đồng ý sửa `ASSET_CREDITS.md`** (10/10: "Đồng ý sửa ASSET_CREDITS") — vé ghi ở phiên nướng, lúc sửa thật.

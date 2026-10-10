@@ -29,7 +29,7 @@ trình**, nên được; nếu anh vẫn thấy gượng thì gốc nằm ở đ
 4. **Nông trại một tay Quaternius màu phẳng:** ruộng 1E = `Farm_Dirt` + hình mới `ruong_lua_1..3` (lúa 3 bậc), `ruong_trong`
    (chưa vẽ vào game) · trại lợn, cừu: rào + chuồng `farmbuildings`, thú `farmanimal` (bỏ rào đá, lều KayKit, dê Google) ·
    trại gà: `ChickenCoop` + gà G1 + G2. Hệ số mỗi gói một số (luật 5): RTS ≈ 1,3 cho luống bằng cỡ ruộng bây giờ (278 px).
-5. `data/ghi_cong.json` gỡ 5 model Icosa thôi dùng · `docs/ASSET_CREDITS.md` dòng mẻ cổ đại (**file khoá — chờ anh**).
+5. `data/ghi_cong.json` gỡ 5 model Icosa thôi dùng · `docs/ASSET_CREDITS.md` dòng mẻ cổ đại (file khoá — **anh đồng ý 10/10**, ghi vé lúc sửa).
 6. `ART_BIBLE.md` mục 2, 5 số đo mới · nhật ký · `TIEN_DO.md`.
 
 ## Đo
@@ -47,4 +47,4 @@ trình**, nên được; nếu anh vẫn thấy gượng thì gốc nằm ở đ
 
 Lùi bằng: `git revert` commit nướng (atlas + `co_dai.json` cùng một commit); mẻ cũ còn nguyên trong git.
 KHÔNG làm: đời 2–6 · cây, người sang KayKit · code "lúa lớn dần" (kế hoạch mẹ bước 3, phiên sau) · bò, ngựa, vịt.
-Cần anh trả lời: "Số 2" anh nhắn 10/10 có phải là **đồng ý sửa `docs/ASSET_CREDITS.md`** không?
+Cần anh trả lời: không có (10/10 anh chọn B, đồng ý sửa `docs/ASSET_CREDITS.md`).
