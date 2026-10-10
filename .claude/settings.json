@@ -144,5 +144,25 @@
   "enabledPlugins": {
     "cowork-plugin-management@synced": false,
     "small-business@synced": false
-  }
+  },
+  "deniedMcpServers": [
+    {
+      "serverName": "plugin:data:bigquery"
+    },
+    {
+      "serverName": "plugin:data:hex"
+    },
+    {
+      "serverName": "plugin:data:amplitude"
+    },
+    {
+      "serverName": "plugin:data:amplitude-eu"
+    },
+    {
+      "serverName": "plugin:data:atlassian"
+    },
+    {
+      "serverName": "plugin:data:definite"
+    }
+  ]
 }

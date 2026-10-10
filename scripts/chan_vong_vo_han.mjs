@@ -107,6 +107,16 @@ process.stdin.on('end', () => {
     });
   }
 
+  // Viec nen (`run_in_background`) va agent con TU BAO khi xong; ngu cho chung la phi luot. 10/10 (dot 9 mon 1):
+  // 4 lan/gio, vong cho agent con chay tiep 85 s sau khi bao cao da ve. Vong cho may chu len (`sleep 1`) khong dinh.
+  const ngu = /^\s*sleep\s+(\d+)/.exec(lenh);
+  if ((ngu && Number(ngu[1]) >= 30) || (/\bsleep\b/.test(lenh) && /\/tasks\/\S*\.output\b/.test(lenh))) {
+    return thoat(2, {
+      loi: 'Dung ngu cho viec nen, agent con: chung tu bao khi xong — ket thuc luot ma cho (10/10 vong cho thua 85 s). ' +
+        'Cho CI: `bash /home/user/ghi-nho/cong-cu/cho_ci.sh` chay nen.',
+    });
+  }
+
   const coVong = VONG_HO.some((r) => r.test(lenh));
   if (!coVong) process.exit(0);
   if (!CO_CHO.some((r) => r.test(lenh))) process.exit(0);
