@@ -59,6 +59,9 @@ window.__qc = {
   trangThai: (): TrangThaiMan => ({
     man: laTrangDo ? 'do-sprite' : laTran ? 'tran' : 'ban-do',
     daVe: goc.dataset['daVe'] ?? '',
+    // Khung game cao bao nhieu so voi cua so - lech la thanh trinh duyet dang che day (Safari iOS 26).
+    caoApp: goc.clientHeight,
+    caoCuaSo: window.innerHeight,
     ...manHien?.trangThai?.(),
   }),
 };
