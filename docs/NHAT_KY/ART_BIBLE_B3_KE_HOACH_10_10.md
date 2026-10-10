@@ -20,3 +20,5 @@ nướng tạm rồi xoá, không file nào vào git ngoài docs.
   shader đọc 4 trang một lệnh vẽ) · "mái tường cùng màu khó nhìn ở khung nhỏ" đúng một nửa → thêm ảnh zoom xa nhất vào
   phần đo · "hitbox lệch logic" không áp (sim tính theo ô, không theo hình).
 - `docs/ASSET_CREDITS.md` dòng `co_dai_2x_1.png` ghi "trang trống" — dùng thật trang 2 là dòng đó sai → file khoá, cần anh.
+- **Anh chọn B** (10/10: "Chọn B. Số 2") — giữ nhà KayKit, luật 1 nới lên 3 tay vẽ (`ART_BIBLE.md`). Kế hoạch viết lại theo B.
+  "Số 2" chưa rõ có phải "đồng ý sửa `ASSET_CREDITS.md`" không → hỏi lại, chưa ghi vé file khoá.

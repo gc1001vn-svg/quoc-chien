@@ -6,12 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 10/10/2026 (lần 44 — anh trả lời 3 việc chờ; kế hoạch art bible bước 3 chờ duyệt, không đổi game).
+Cập nhật: 10/10/2026 (lần 44 — anh trả lời 3 việc chờ; kế hoạch art bible bước 3, anh chọn B; không đổi game).
 
 ## 1. Đang ở đâu
 
 - **10/10 (lần 44): anh trả lời 3 việc chờ** — 59 fps cả ba (đêm `?gio=23`, bản 04/10 lúc giờ trôi nhanh); bảng nông trại
-  giao Claude chọn: ruộng 1E · lợn, cừu Q · luật 1 thêm "gà". → **Kế hoạch art bible bước 3 + bảng ảnh, CHỜ ANH DUYỆT**
+  giao Claude chọn: ruộng 1E · lợn, cừu Q · luật 1 thêm "gà". → **Kế hoạch art bible bước 3 + bảng ảnh: anh chọn B** (giữ nhà
+  KayKit, 3 tay vẽ)
   (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`). Drive tải lại được. `docs/NHAT_KY/ART_BIBLE_B3_KE_HOACH_10_10.md`.
 - **10/10 (lần 42, 43): đồ nghề đợt 9, 10** — đã gộp `main`. `docs/NHAT_KY/DO_NGHE_DOT_{9,10}_10_10.md`.
 - **09/10 (lần 41): đồ nghề đợt 7** — đủ 4 món, anh cho gộp `main` (09/10). Món 1 = workflow `anh-ios.yml` (mục 5).
@@ -72,11 +73,10 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
-### ⏳ Việc 10/10 (lần 44) — anh duyệt kế hoạch art bible bước 3
+### ⏳ Việc 10/10 (lần 44) — anh xác nhận câu 2 kế hoạch art bible bước 3
 
-Kế hoạch `docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md` + bảng ảnh gửi trong chat 10/10 (hiện tại ↔ Quaternius RTS,
-cùng tỉ lệ). Anh trả lời: (1) hướng A (mộc một màu gỗ, đúng luật 2 tay vẽ) hay B (giữ nhà KayKit, nới luật 1 lên 3 tay)?
-(2) đồng ý sửa `docs/ASSET_CREDITS.md` (file khoá) dòng mẻ cổ đại không?
+Anh nhắn 10/10 "Chọn B. Số 2": **B đã chốt** (giữ nhà KayKit, luật 1 nới lên 3 tay vẽ). "Số 2" chưa rõ — câu 2 là
+"đồng ý sửa `docs/ASSET_CREDITS.md` (file khoá) dòng mẻ cổ đại không?". **Chưa có "đồng ý" rõ thì chưa ghi vé.**
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
@@ -116,8 +116,8 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: anh duyệt kế hoạch art bible bước 3 thì nướng đúng theo nó** (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`);
-anh chọn B hay sửa gì thì sửa kế hoạch, trình lại. Anh chưa trả lời mà bảo làm việc khác thì BƯỚC 4 "khai thác cạn dần" theo kế
+**PHIÊN SAU: nướng mẻ cổ đại theo phương án B anh chọn 10/10** (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`);
+sửa `ASSET_CREDITS.md` chỉ sau khi anh nói rõ "đồng ý" (mục 3). Anh bảo làm việc khác thì BƯỚC 4 "khai thác cạn dần" theo kế
 hoạch ANH ĐÃ DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` (bước 3 lúa lớn dần làm SAU khi nướng lại mẻ).
 Drive tải lại được 10/10 (`lay.mjs quaternius ultimatefantasyrts` đủ 128 OBJ, kiểm file không phải HTML). Bẫy ~120 nghìn đỉnh
 một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,
