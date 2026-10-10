@@ -68,6 +68,8 @@ Icosa mỗi con một kiểu. Mốc nào trong 10 clip cũng **một phong cách
 
 1. **Tay vẽ:** mỗi mẻ công trình **tối đa 2 tay vẽ**; mỗi loại công trình (nhà ở · nông trại ·
    quân sự · công cộng) **chỉ một tay vẽ**; tay thứ hai chỉ dùng cho cây, đá, người. Anh chốt 29/09.
+   **Thêm 10/10** (anh giao Claude chọn): tay thứ hai được vẽ **gà** — anh chọn gà G1 + G2 (Google) mà Quaternius không
+   có gà dùng được. Không mở cho thú khác: lợn, cừu giữ Quaternius (`farmanimal`, game đang dùng).
 2. **Độ sáng:** cảnh thành phố có độ sáng TB **≥ 0,36** (game thật thấp nhất mục 7: Forge of Empires).
    **Đích: ô 4C — sáng 0,52 · ấm 0,26**, đo ở khung bảng đèn (mục 5). Anh giao Claude tự chọn 29/09.
 3. **Bão hoà:** cảnh thành phố **≥ 0,37** (cảnh thành phố nhạt nhất trong mốc: D đầu game).
