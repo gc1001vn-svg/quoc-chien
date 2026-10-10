@@ -32,9 +32,6 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
-  /* Safari iOS 26: thanh dia chi noi che 99 px day trang (anh iOS 09/10), the, nut toc do khuat duoi no.
-     svh = chieu cao luc thanh trinh duyet dang hien. Trinh duyet cu khong biet svh thi giu 100 %. */
-  height: 100svh;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
            env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
@@ -171,6 +168,11 @@ html, body {
 }
 .the-nut-van { display: block; font-size: 14px; font-weight: 700; }
 .the-nut-loi { display: block; font-size: 12px; opacity: 0.72; margin-top: 3px; }
+/* Man doc: Safari iPhone 17 chi con 714 px nhin thay, ba lua chon can 396 px (do 10/10) - 46 % la 327 px,
+   lua chon thu ba bi cat. Anh bao "don the len cao hon" 10/10. The chi cao vua noi dung, 62 % la tran. */
+@media (orientation: portrait) {
+  .the-quyet-dinh { max-height: 62%; }
+}
 /* Man ngang thap (iPhone nam ngang cao 402 px): nua man chi ~185 px, xep doc thi lua chon thu
    ba khuat han duoi day the, nguoi choi khong biet con lua chon - may soi bat 04/10. Xep
    ngang thanh mot hang: be ngang thua, ba lua chon cung hien. */
