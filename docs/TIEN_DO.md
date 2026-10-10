@@ -6,10 +6,11 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 09/10/2026 (lần 41 — đồ nghề đợt 7, không đổi cách chơi).
+Cập nhật: 10/10/2026 (lần 42 — đồ nghề đợt 9, không đổi cách chơi).
 
 ## 1. Đang ở đâu
 
+- **10/10 (lần 42): đồ nghề đợt 9** — 3 món, đã gộp `main` `3251e69`. `docs/NHAT_KY/DO_NGHE_DOT_9_10_10.md`.
 - **09/10 (lần 41): đồ nghề đợt 7** — đủ 4 món, anh cho gộp `main` (09/10). Món 1 = workflow `anh-ios.yml` (mục 5).
   Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
 
@@ -113,8 +114,9 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 
 ## 5. Phiên sau
 
-**Ảnh Safari iPhone giả lập:** `actions_run_trigger` `anh-ios.yml` (`inputs.duong` vd `?gio=23`), chờ xong, `git fetch origin anh-ios`
-xem ảnh + `trang_thai.txt`. Lần chạy đầu: nhật ký lần 41. Ảnh gửi anh qua người chấm `docs/THANG_CHAM_HINH.md`.
+**Ảnh Safari iPhone giả lập:** cùng một lượt: chạy nền `CHO_SAU=$(date -u +%FT%TZ) bash /home/user/ghi-nho/cong-cu/cho_ci.sh
+gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` (`inputs.duong` vd `?gio=23`); báo xong thì
+`git fetch origin anh-ios`, `git show FETCH_HEAD:trang_thai.txt` (ảnh: `FETCH_HEAD:ios.png`). Thiếu `CHO_SAU` là đọc nhầm CI cũ. Lần chạy đầu: nhật ký lần 41. Ảnh gửi anh qua người chấm `docs/THANG_CHAM_HINH.md`.
 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
