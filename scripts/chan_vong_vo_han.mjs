@@ -107,6 +107,27 @@ process.stdin.on('end', () => {
     });
   }
 
+  // Ma cua ong `a | tail` la ma cua `tail`: `do.sh | tail -1 && git push` day kho khi thuoc dang do (10/10, dot 9).
+  // Cung loi: `a | tail; ma=$?`. Chi tinh khi cuoi ong la lenh loc, xem — `printf … | node hook; ma=$?` lay dung ma can.
+  // Co `pipefail` thi cho qua. Ruot chuoi nhay khong tinh — `-m "a | b"` khong phai ong.
+  if (!/\bpipefail\b/.test(lenh)) {
+    const khung = lenh.replace(/'[^']*'/g, "''").replace(/"[^"]*"/g, (s) => s.replace(/[|;&\n]/g, ' '));
+    const loc = (p) => p.includes('|') && /^\s*(tail|head|tee|cat|grep|egrep|sed|awk|cut|sort|uniq|wc|tr)\b/.test(p.split('|').pop());
+    const doan = khung.split(/;|\n|\|\|/);
+    const nuot = doan.some((d, i) => {
+      const phan = d.split('&&');
+      const j = phan.findIndex((p) => /\bgit\b.*\b(push|commit)\b/.test(p));
+      return (j > 0 && phan.slice(0, j).some(loc)) || (d.includes('$?') && i > 0 && loc(doan[i - 1].split('&&').pop()));
+    });
+    if (nuot) {
+      return thoat(2, {
+        loi: 'Ong `|` lay ma cua lenh CUOI (`tail`, `grep`), nen `&& git push` / `$?` sau no khong biet lenh dau do — ' +
+          '10/10 day kho khi `do.sh` dang do. Ghi ra file: `<lenh do> > f 2>&1; ma=$?; tail -3 f; ' +
+          '[ $ma -eq 0 ] && git push`, hoac them `set -o pipefail;` dau lenh.',
+      });
+    }
+  }
+
   // Viec nen (`run_in_background`) va agent con TU BAO khi xong; ngu cho chung la phi luot. 10/10 (dot 9 mon 1):
   // 4 lan/gio, vong cho agent con chay tiep 85 s sau khi bao cao da ve. Vong cho may chu len (`sleep 1`) khong dinh.
   const ngu = /^\s*sleep\s+(\d+)/.exec(lenh);

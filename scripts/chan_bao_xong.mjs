@@ -94,7 +94,10 @@ process.stdin.on('end', () => {
     .replace(/["\u201C\u201D][^"\u201C\u201D\n]*["\u201C\u201D]/g, ' ')
     .replace(/['\u2018\u2019][^'\u2018\u2019\n]*['\u2018\u2019]/g, ' ')
     .replace(new RegExp(`(${PHU_DINH})\\s+(${BAO_XONG})`, 'g'), ' ')
-    .replace(new RegExp(`(${NOI_TOI})\\s+(${BAO_XONG})`, 'g'), ' ');
+    .replace(new RegExp(`(${NOI_TOI})\\s+(${BAO_XONG})`, 'g'), ' ')
+    // "Đang chờ `npm run do` và agent chạy xong": cho/doi cach chu xong vai tu, cung ve cau — chan nham 2 lan cung
+    // kieu (dot 8, 9). "Đã chờ CI chạy xong" la bao xong that, van tinh; qua dau phay cung van tinh.
+    .replace(new RegExp(`(?<!đã\\s)(chờ|đợi)[^.!?,;:\\n]{0,60}?(${BAO_XONG})`, 'gu'), ' ');
   // Cum tu nam O GIUA dong cung tinh - "Buoc 1 va 2 xong, da gop main" la bao xong that,
   // ma ban truoc bo qua vi doi no dung dau dong hay ngay sau dau cham cau. Do 18/09:
   // dang `<viec> xong` la dang bao xong HAY DUNG NHAT, ma lot sach.
