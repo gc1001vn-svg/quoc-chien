@@ -32,7 +32,8 @@ xcrun simctl boot "$UDID" 2>/dev/null || true   # da bat san thi bao loi — bo 
 xcrun simctl bootstatus "$UDID" -b
 # Safari mo lan dau hien bang goi y che noi dung (anh 09/10), simctl khong bam duoc nut dong: mo nhap mot
 # lan cho no hien, tat Safari, roi moi mo game. shortcut: chua chac bang khong hien lai, hong thi can cong cu bam (idb).
-xcrun simctl openurl "$UDID" "http://127.0.0.1:4173/"
+# May vua bat, man hinh chinh chua dung xong thi openurl qua han 28 s (run 38022434453) - lan nhap hong cung khong sao.
+xcrun simctl openurl "$UDID" "http://127.0.0.1:4173/" || true
 sleep 15
 xcrun simctl terminate "$UDID" com.apple.mobilesafari || true
 
