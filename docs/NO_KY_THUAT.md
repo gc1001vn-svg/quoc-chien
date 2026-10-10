@@ -641,3 +641,8 @@ Lặt vặt, đo được 03/10:
 - Hết giờ mà hai bên bằng phần máu thì ai thắng — không luật nào kiểm được vì `KetQuaTran` không lộ phần máu.
 - `sim:congnghe` ra 38 kho / trần 37 (cả mã gốc, bản đồ 4242): lựa chọn thẻ `HauQua.xayKho` không xét trần, chỉ thống
   đốc xét (luật CN12). Chưa rõ có phải ý thiết kế.
+
+## Người chấm hình bắt được — 10/10/2026 (đồ nghề đợt 8, chỉ ghi, chưa ai duyệt sửa)
+
+- Màn trận `?tran=1`: bảng nhật ký góc dưới trái đè lên lính; nền trận một mảng xanh phẳng. Bắt hai lần (ảnh 25/09 và 30/09),
+  `docs/THANG_CHAM_HINH.md` mục "Độ khớp với anh".

@@ -61,4 +61,17 @@ Chấm lại ảnh dựng từ bản cũ anh đã phán (build lại đúng comm
 | Giao diện iPhone dọc (`81fa24d`, 04/10) | "ok" | SỬA TRƯỚC — nút tốc độ hiện mờ xuyên thẻ thứ ba | ✗ — lỗi **có thật**, còn ở bản 09/10 |
 
 Đọc ra: Haiku đủ tin cho kết GỬI / SỬA TRƯỚC; lý do từng dòng vẫn phải kiểm lại bằng mắt. Khắt hơn anh ở lỗi giao diện nhỏ.
-Chưa đo: ảnh khen nhiều hơn (mới 2/5), ảnh iPhone thật từ `anh-ios` (món 1, chờ vé).
+
+**Đo thêm 10/10 (đồ nghề đợt 8 món 3) — 3 bản anh NHẬN, 1 ảnh Safari iOS.** Nhật ký chỉ có một lời khen về hình ("Ưng rồi");
+ba bản dưới anh xác nhận 59 fps / "Mọi thứ ok", không nhận xét hình. 6 lượt công cụ · ~86 nghìn token · 5 phút.
+
+| Ảnh (commit) | Anh | Người chấm | Lý do trượt, kiểm lại bằng mắt |
+|---|---|---|---|
+| Thử 1 hiệu ứng thành phố (`afe1efd`, 30/09) | nhận | SỬA TRƯỚC — không thấy chim | đúng: khung không có chim — **lỗi chụp**, không phải lỗi người chấm |
+| Thử 2 hiệu ứng trận `?tran=1` (`6553107`, 30/09) | nhận | SỬA TRƯỚC — nhật ký đè lính, nền phẳng | đúng (cùng lỗi ảnh trận 25/09) |
+| Thử 3 chấm xem trước, dọc (`b2d2611`, 30/09) | "Mọi thứ ok" | SỬA TRƯỚC — nút tốc độ lộ xuyên thẻ | đúng (lỗi thật, sửa 09/10) |
+| Safari iPhone 17, thẻ dồn lên (`2ae9a7f`, 10/10) | chưa xem | GỬI | — |
+
+**Gộp 8 ảnh có lời anh:** bắt đủ **3/3** ảnh anh chê · cho qua **1/5** ảnh anh khen/nhận — 4 lần chặn còn lại lý do đều có thật
+(1 lần do ảnh không chứa phần đổi). Đọc ra: người chấm **không để lọt thứ anh chê**, nhưng **khắt hơn anh** ở lỗi giao diện nhỏ,
+trận. Chưa thấy lần nào chê oan.
