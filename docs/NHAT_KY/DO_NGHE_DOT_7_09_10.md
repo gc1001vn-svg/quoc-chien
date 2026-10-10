@@ -28,3 +28,6 @@ Kế hoạch anh duyệt 09/10 (cả 4 món, thứ tự 3 → 1 → 4 → 2): kh
   (iOS 26). WebGL vẽ được, game báo `daVe:"1"`, 405 sprite, 59 fps (GPU Mac). Vướng: bảng gợi ý lần đầu của Safari che thẻ quyết định.
 - **Anh bảo "làm luôn" 09/10:** (1) thẻ quyết định nền đặc (`rgba 0,95` → `rgb`) — hết lộ nút tốc độ; (2) `anh_ios.sh` mở nháp
   Safari 15 s rồi tắt, mới mở game — chạy lại trên nhánh: bảng gợi ý **không hiện nữa**, thẻ sạch. Còn: thanh Safari che nửa thẻ thứ ba (kéo được).
+- **10/10, anh "dồn thẻ lên cao hơn":** đo trên ảnh iOS — khung game 714 = cửa sổ 714 (`caoApp`, `caoCuaSo` thêm vào trạng thái),
+  không phải thanh Safari che; thẻ hụt vì trần 46 % = 327 px mà ba lựa chọn cần 396. Màn dọc trần 62 %, thẻ cao vừa nội dung → đủ ba.
+  Đoán đầu (`100svh`) sai, đã gỡ. Mở nháp Safari quá hạn 28 s một lần (máy vừa bật) → thử lại tới 4 lần.
