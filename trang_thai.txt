@@ -1,0 +1,3 @@
+May: iPhone 17
+URL: http://127.0.0.1:4173/quoc-chien/?me=co_dai&zoom=0.6&gio=12&o=47,4&kiem=1
+Game bao: {"man":"thanh-pho","daVe":"1","caoApp":714,"caoCuaSo":714,"gio":12,"doToi":0,"doi":"Cổ đại","soNha":188,"nhaDangXay":0,"nguoiVac":42,"nhipSim":36000,"sprite":623,"zoom":0.6,"theMo":true}
