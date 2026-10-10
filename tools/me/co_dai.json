@@ -7,8 +7,6 @@
   "kit": {
     "ia": {"duong":"assets_source/icosa/1YE8U35HXsI","loai":"gltf","gamma":true},
     "ih": {"duong":"assets_source/icosa/8Unya0rw9tR","loai":"gltf","gamma":true},
-    "iy": {"duong":"assets_source/icosa/6LeCqyw00RK","loai":"gltf","gamma":true},
-    "ie": {"duong":"assets_source/icosa/bNYS7ETDNCt","loai":"gltf","gamma":true},
     "qv": {
       "duong": "assets_source/medieval-village-megakit/Medieval Village MegaKit[Standard]/OBJ",
       "anh": "mtl",
@@ -95,21 +93,8 @@
       "thu_muc_anh": ".",
       "gamma": true
     },
-    "ig": {
-      "duong": "assets_source/icosa/cdMQnl19MB9",
-      "loai": "gltf",
-      "gamma": true
-    },
-    "iz": {
-      "duong": "assets_source/icosa/09R_9_0WVVf",
-      "loai": "gltf",
-      "gamma": true
-    },
-    "ic": {
-      "duong": "assets_source/icosa/cVtCnH0tnHJ",
-      "loai": "gltf",
-      "gamma": true
-    }
+    "rf": {"duong":"assets_source/ultimatefantasyrts/OBJ","anh":false,"gamma":true},
+    "fb": {"duong":"assets_source/farmbuildings/OBJ","anh":false,"gamma":true}
   },
   "ghi_chu_dang": "Bang dang cho model co xuong. Ten xuong -> ba goc xoay (do) quanh truc rieng cua xuong do. Model goc nam o tu the chu T, khong kem cu dong nao, nen dang di bo phai tu dat: ha hai tay xuong (xoay quanh z), buoc mot chan ra truoc (xoay quanh x). Dang thu hai chi la ban guong cua dang nay - xem `guong` trong tung manh.",
   "dang": {
@@ -585,14 +570,7 @@
         }
       }
     },
-    "ruong": [{"m":"kk:farm_plot","ti_le":1.35,"mau":[1.1,1,0.85]},
-      {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":-0.3,"z":-0.2,"mau":[1.5,1.25,0.6]},
-      {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":0.05,"z":-0.3,"mau":[1.5,1.25,0.6]},
-      {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":0.3,"z":0.05,"mau":[1.5,1.25,0.6]},
-      {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":-0.15,"z":0.2,"mau":[1.5,1.25,0.6]},
-      {"m":"qn:Grass_Wispy_Tall","ti_le":0.28,"x":0.15,"z":0.32,"mau":[1.5,1.25,0.6]},
-      {"m":"qp:Vase_4","ti_le":0.55,"x":-0.36,"z":0.34},
-      {"m":"iy:HayStack","ti_le":0.03451,"x":0.235,"y":0,"z":0.303}],
+    "ruong": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level3_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}],
     "vuon_nho": [{"phang":1.02,"texture":"assets_source/hoa_tiet/brown_mud_dry.jpg","lap":1,"mau":[1.1,0.95,0.72]},
       {"m":"qv:Prop_Vine9","ti_le":0.32,"y":0.05,"x":-0.1,"z":-0.3},
       {"m":"qv:Prop_Vine9","ti_le":0.32,"y":0.05,"x":-0.1,"z":0},
@@ -738,40 +716,7 @@
         "ry": 50
       }
     ],
-    "mo_dat_set": [
-      {
-        "m": "khw:mountain_C",
-        "ti_le": 0.8,
-        "x": 0.22,
-        "z": -0.22,
-        "mau": [
-          1.36,
-          0.84,
-          0.52
-        ]
-      },
-      {
-        "m": "kk:mine",
-        "ti_le": 1.15,
-        "mau": [
-          1.36,
-          0.84,
-          0.52
-        ]
-      },
-      {
-        "m": "qp:Pot_1",
-        "ti_le": 0.6,
-        "x": -0.32,
-        "z": 0.36
-      },
-      {
-        "m": "qp:Vase_2",
-        "ti_le": 0.6,
-        "x": -0.12,
-        "z": 0.44
-      }
-    ],
+    "mo_dat_set": [{"m":"khw:mountain_C","ti_le":0.8,"x":0.22,"z":-0.22,"mau":[1.36,0.84,0.52]},{"m":"kk:mine","ti_le":1.15,"mau":[1.36,0.84,0.52]},{"m":"khp:bucket_empty","ti_le":1.8,"x":-0.32,"z":0.36},{"m":"khp:crate_B_small","ti_le":1.5,"x":-0.12,"z":0.44}],
     "mo_da_voi": [
       {
         "m": "kk:mountain",
@@ -800,41 +745,7 @@
         "z": 0.36
       }
     ],
-    "mo_quang": [
-      {
-        "m": "khw:rock_single_D",
-        "ti_le": 2,
-        "x": 0.3,
-        "z": -0.28,
-        "mau": [
-          0.8,
-          0.92,
-          1.34
-        ]
-      },
-      {
-        "m": "kk:mine",
-        "ti_le": 1.15,
-        "mau": [
-          0.8,
-          0.92,
-          1.34
-        ]
-      },
-      {
-        "m": "khp:crate_open",
-        "ti_le": 1.8,
-        "x": -0.32,
-        "z": 0.34
-      },
-      {
-        "m": "qp:Pickaxe_Bronze",
-        "ti_le": 0.6,
-        "x": 0.28,
-        "z": 0.32,
-        "ry": 40
-      }
-    ],
+    "mo_quang": [{"m":"khw:rock_single_D","ti_le":2,"x":0.3,"z":-0.28,"mau":[0.8,0.92,1.34]},{"m":"kk:mine","ti_le":1.15,"mau":[0.8,0.92,1.34]},{"m":"khp:crate_open","ti_le":1.8,"x":-0.32,"z":0.34},{"m":"khp:sack","ti_le":2.6,"x":0.28,"z":0.32,"ry":40}],
     "xuong_cua": [
       {
         "m": "kh:building_lumbermill_red",
@@ -992,15 +903,7 @@
         "z": 0.44
       }
     ],
-    "nha_bia": [
-      {
-        "m": "ig:model__GLTFupdated_",
-        "ti_le": 3.2,
-        "x": -1.02,
-        "y": -2.18,
-        "z": -3.25
-      }
-    ],
+    "nha_bia": [{"m":"kh:building_tavern_red","ti_le":1.6,"mau_cot":{"1,0":{"thay":[0.8,0.66,0.36]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}}],
     "xuong_vu_khi": [
       {
         "m": "kh:building_archeryrange_red",
@@ -1078,232 +981,12 @@
         "z": 0.34
       }
     ],
-    "xuong_thuoc": [
-      {
-        "m": "kh:building_home_A_red",
-        "ti_le": 1.9,
-        "mau_cot": {
-          "1,0": {
-            "thay": [
-              0.8,
-              0.66,
-              0.36
-            ]
-          },
-          "2,3": {
-            "thay": [
-              0.55,
-              0.42,
-              0.3
-            ]
-          },
-          "1,3": {
-            "thay": [
-              0.86,
-              0.76,
-              0.58
-            ]
-          }
-        }
-      },
-      {
-        "m": "qp:Cauldron",
-        "ti_le": 0.5,
-        "x": -0.34,
-        "z": 0.34
-      },
-      {
-        "m": "khp:bucket_water",
-        "ti_le": 1.8,
-        "x": -0.14,
-        "z": 0.44
-      },
-      {
-        "m": "qv:Prop_WoodenFence_Single",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": 0.44,
-        "mau": [
-          1.3,
-          1.26,
-          1.2
-        ]
-      }
-    ],
-    "lo_ren": [
-      {
-        "m": "kh:building_blacksmith_red",
-        "ti_le": 1.35,
-        "mau_cot": {
-          "1,0": {
-            "thay": [
-              0.8,
-              0.66,
-              0.36
-            ]
-          },
-          "2,3": {
-            "thay": [
-              0.55,
-              0.42,
-              0.3
-            ]
-          },
-          "1,3": {
-            "thay": [
-              0.86,
-              0.76,
-              0.58
-            ]
-          }
-        }
-      },
-      {
-        "m": "qp:Anvil_Log",
-        "ti_le": 0.5,
-        "x": -0.34,
-        "z": 0.34,
-        "mau": [
-          1.2,
-          1.16,
-          1.12
-        ]
-      }
-    ],
-    "lo_thep": [
-      {
-        "m": "kk:watchtower",
-        "ti_le": 1.15,
-        "mau": [
-          0.68,
-          0.7,
-          0.8
-        ]
-      },
-      {
-        "m": "khp:crate_A_big",
-        "ti_le": 1.5,
-        "x": -0.34,
-        "z": 0.34
-      },
-      {
-        "m": "qp:Anvil",
-        "ti_le": 0.5,
-        "x": 0.3,
-        "z": 0.34
-      }
-    ],
-    "lo_nung": [
-      {
-        "m": "iz:model__GLTFupdated_",
-        "ti_le": 1.1,
-        "x": -0.47,
-        "y": -0.73,
-        "z": 0.13
-      }
-    ],
-    "lo_mo": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Door_Flat",
-        "ti_le": 0.5,
-        "ry": 0,
-        "z": 0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 180,
-        "z": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": -0.5
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
-        "ti_le": 0.5,
-        "ry": 270,
-        "x": 0.5
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.5,
-        "y": 1.5
-      },
-      {
-        "m": "qv:Roof_2x4_RoundTile",
-        "ti_le": 0.5,
-        "ry": 90,
-        "y": 1.56,
-        "thay_mau": true,
-        "mau": [
-          0.55,
-          0.26,
-          0.23
-        ]
-      },
-      {
-        "m": "qv:Prop_Chimney",
-        "ti_le": 0.44,
-        "x": 0.56,
-        "z": 0.3,
-        "y": 1.7
-      },
-      {
-        "m": "qv:Prop_Chimney2",
-        "ti_le": 0.4,
-        "x": 0.56,
-        "z": -0.24,
-        "y": 1.7
-      },
-      {
-        "m": "qp:Anvil_Log",
-        "ti_le": 0.5,
-        "x": 0.3,
-        "z": 0.38,
-        "mau": [
-          1.2,
-          1.16,
-          1.12
-        ]
-      },
-      {
-        "m": "qp:Cage_Small",
-        "ti_le": 0.62,
-        "x": -0.32,
-        "z": 0.36
-      },
-      {
-        "m": "qp:Bucket_Metal",
-        "ti_le": 0.6,
-        "x": -0.12,
-        "z": 0.44
-      }
-    ],
-    "lo_banh": [
-      {
-        "m": "kk:market",
-        "ti_le": 1.25
-      },
-      {
-        "m": "khp:sack",
-        "ti_le": 2.6,
-        "x": -0.3,
-        "z": 0.4
-      },
-      {
-        "m": "qp:FarmCrate_Empty",
-        "ti_le": 0.6,
-        "x": 0.32,
-        "z": 0.34
-      }
-    ],
+    "xuong_thuoc": [{"m":"kh:building_home_A_red","ti_le":1.9,"mau_cot":{"1,0":{"thay":[0.8,0.66,0.36]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}},{"m":"khp:barrel","ti_le":1.8,"x":-0.34,"z":0.34},{"m":"khp:bucket_water","ti_le":1.8,"x":-0.14,"z":0.44},{"m":"khp:crate_long_C","ti_le":1.5,"ry":90,"x":0.44}],
+    "lo_ren": [{"m":"kh:building_blacksmith_red","ti_le":1.35,"mau_cot":{"1,0":{"thay":[0.8,0.66,0.36]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}},{"m":"khp:crate_A_small","ti_le":1.8,"x":-0.34,"z":0.34}],
+    "lo_thep": [{"m":"kk:watchtower","ti_le":1.15,"mau":[0.68,0.7,0.8]},{"m":"khp:crate_A_big","ti_le":1.5,"x":-0.34,"z":0.34},{"m":"khp:crate_B_big","ti_le":1.5,"x":0.3,"z":0.34}],
+    "lo_nung": [{"m":"kh:building_blacksmith_red","ti_le":1.35,"mau_cot":{"1,0":{"thay":[0.5,0.38,0.28]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}},{"m":"khp:wheelbarrow","ti_le":1.5,"x":-0.32,"z":0.36,"ry":30}],
+    "lo_mo": [{"m":"kh:building_home_A_red","ti_le":1.9,"mau_cot":{"1,0":{"thay":[0.62,0.38,0.27]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}},"ry":90},{"m":"khp:barrel","ti_le":1.8,"x":-0.32,"z":0.36},{"m":"khp:crate_open","ti_le":1.8,"x":-0.12,"z":0.44}],
+    "lo_banh": [{"m":"kk:market","ti_le":1.25},{"m":"khp:sack","ti_le":2.6,"x":-0.3,"z":0.4},{"m":"khp:crate_long_B","ti_le":1.5,"x":0.32,"z":0.34}],
     "lo_uop": [
       {
         "m": "khn:building_stage_C",
@@ -1322,83 +1005,7 @@
         "z": 0.44
       }
     ],
-    "lo_gom": [
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.39
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Door_Round",
-        "ti_le": 0.39,
-        "ry": 0,
-        "z": 0.39
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.39,
-        "ry": 180,
-        "z": -0.39
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Window_Wide_Flat",
-        "ti_le": 0.39,
-        "ry": 90,
-        "x": -0.39
-      },
-      {
-        "m": "qv:Wall_UnevenBrick_Straight",
-        "ti_le": 0.39,
-        "ry": 270,
-        "x": 0.39
-      },
-      {
-        "m": "qv:Floor_Brick",
-        "ti_le": 0.39,
-        "y": 1.17
-      },
-      {
-        "m": "qv:Roof_2x4_RoundTile",
-        "ti_le": 0.39,
-        "ry": 90,
-        "y": 1.2168,
-        "thay_mau": true,
-        "mau": [
-          0.52,
-          0.31,
-          0.23
-        ]
-      },
-      {
-        "m": "qv:Prop_Chimney",
-        "ti_le": 0.312,
-        "x": 0.4368,
-        "z": 0.0624,
-        "y": 1.326
-      },
-      {
-        "m": "qp:Cauldron",
-        "ti_le": 0.351,
-        "x": -0.2808,
-        "z": 0.2808,
-        "mau": [
-          1.2,
-          1.18,
-          1.15
-        ]
-      },
-      {
-        "m": "qp:Vase_4",
-        "ti_le": 0.6,
-        "x": -0.32,
-        "z": 0.36
-      },
-      {
-        "m": "qp:Pot_1",
-        "ti_le": 0.6,
-        "x": -0.12,
-        "z": 0.44
-      }
-    ],
+    "lo_gom": [{"m":"kh:building_tower_A_red","ti_le":1.3,"mau_cot":{"1,0":{"thay":[0.72,0.48,0.32]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}},{"m":"kh:building_tower_A_red_building_tower_A_top_red","ti_le":1.3,"mau_cot":{"1,0":{"thay":[0.72,0.48,0.32]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}},{"m":"khp:bucket_empty","ti_le":1.8,"x":-0.32,"z":0.36},{"m":"khp:crate_B_small","ti_le":1.5,"x":-0.12,"z":0.44}],
     "lo_voi": [
       {
         "m": "kh:building_tower_B_red",
@@ -1471,32 +1078,9 @@
         "z": 0.36
       }
     ],
-    "trai_lon": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[0.78,0.66,0.44]},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"z":-0.46},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":-0.46},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":0.46},
-      {"m":"khp:tent","ti_le":1.1,"x":0.28,"z":-0.3},
-      {"m":"av:Pig","ti_le":0.09,"x":-0.22,"z":-0.1,"ry":25,"mau":[1.15,1.02,0.98]},
-      {"m":"av:Pig","ti_le":0.085,"x":0.15,"z":0.2,"ry":-60,"mau":[1.15,1.02,0.98]},
-      {"m":"av:Pig","ti_le":0.08,"x":-0.12,"z":0.3,"ry":110,"mau":[1.15,1.02,0.98]}],
-    "trai_ga": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[1.05,1,0.6]},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"z":-0.46},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":-0.46},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":0.46},
-      {"m":"khp:tent","ti_le":1,"x":0.28,"z":-0.3},
-      {"m":"qp:Pot_1","ti_le":0.6,"x":-0.32,"z":-0.3},
-      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.145,"y":0.125,"z":0.063,"ry":20},
-      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":0.088,"y":0.125,"z":0.257,"ry":-60},
-      {"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.241,"y":0.125,"z":0.289,"ry":140},
-      {"m":"ia:Chicken_01","ti_le":0.001195,"x":0.246,"y":-0.002,"z":0.051,"ry":200}],
-    "trai_cuu": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[0.9,1,0.75]},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"z":-0.46},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":-0.46},
-      {"m":"khn:fence_stone_straight","ti_le":0.55,"ry":90,"x":0.46},
-      {"m":"khp:tent","ti_le":1.1,"x":0.28,"z":-0.3},
-      {"m":"av:Sheep","ti_le":0.11,"x":-0.22,"z":-0.1,"ry":35,"mau":[1.25,1.2,1.02]},
-      {"m":"av:Sheep","ti_le":0.1,"x":0.15,"z":0.22,"ry":-55,"mau":[1.25,1.2,1.02]},
-      {"m":"ie:Mesh_Goat","ti_le":0.001481,"x":0.1,"y":0.118,"z":0.36,"ry":150}],
+    "trai_lon": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[0.78,0.66,0.44]},{"m":"fb:Fence","ti_le":0.155,"z":-0.46},{"m":"fb:Fence","ti_le":0.155,"ry":90,"x":-0.46},{"m":"fb:Fence","ti_le":0.155,"ry":90,"x":0.46},{"m":"fb:OpenBarn","ti_le":0.155,"x":0.2,"z":-0.22,"mau_vl":{"RoofBlack":[2.54,2.1,1.14]}},{"m":"av:Pig","ti_le":0.06,"x":-0.26,"z":-0.08,"ry":25,"mau":[1.15,1.02,0.98]},{"m":"av:Pig","ti_le":0.06,"x":0.18,"z":0.3,"ry":-60,"mau":[1.15,1.02,0.98]},{"m":"av:Pig","ti_le":0.06,"x":-0.16,"z":0.3,"ry":110,"mau":[1.15,1.02,0.98]}],
+    "trai_ga": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[1.05,1,0.6]},{"m":"fb:Fence","ti_le":0.155,"z":-0.46},{"m":"fb:Fence","ti_le":0.155,"ry":90,"x":-0.46},{"m":"fb:Fence","ti_le":0.155,"ry":90,"x":0.46},{"m":"fb:ChickenCoop","ti_le":0.155,"x":0.24,"z":-0.24,"mau_vl":{"RoofBlack":[2.54,2.1,1.14]}},{"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.145,"y":0.125,"z":0.063,"ry":20},{"m":"ih:Mesh_Hen","ti_le":0.003221,"x":0.088,"y":0.125,"z":0.257,"ry":-60},{"m":"ih:Mesh_Hen","ti_le":0.003221,"x":-0.241,"y":0.125,"z":0.289,"ry":140},{"m":"ia:Chicken_01","ti_le":0.001195,"x":0.246,"y":-0.002,"z":0.051,"ry":200}],
+    "trai_cuu": [{"phang":1.02,"texture":"assets_source/hoa_tiet/leafy_grass.jpg","lap":1,"mau":[0.9,1,0.75]},{"m":"fb:Fence","ti_le":0.155,"z":-0.46},{"m":"fb:Fence","ti_le":0.155,"ry":90,"x":-0.46},{"m":"fb:Fence","ti_le":0.155,"ry":90,"x":0.46},{"m":"fb:OpenBarn","ti_le":0.155,"x":0.2,"z":-0.22,"mau_vl":{"RoofBlack":[2.54,2.1,1.14],"LightRed":[1.08,1.67,1.27],"DarkRed":[1.03,1.6,1.29]}},{"m":"av:Sheep","ti_le":0.06,"x":-0.26,"z":-0.08,"ry":35,"mau":[1.25,1.2,1.02]},{"m":"av:Sheep","ti_le":0.06,"x":0.18,"z":0.3,"ry":-55,"mau":[1.25,1.2,1.02]},{"m":"av:Sheep","ti_le":0.06,"x":-0.12,"z":0.32,"ry":150,"mau":[1.25,1.2,1.02]}],
     "nha_dan": [
       {
         "m": "kh:building_home_B_red",
@@ -1526,51 +1110,9 @@
         }
       }
     ],
-    "trai_linh": [
-      {
-        "m": "ic:model__GLTFupdated_",
-        "ti_le": 0.9,
-        "x": -0.27,
-        "y": -1.14,
-        "z": 0.62
-      }
-    ],
-    "cong_truong": [
-      {
-        "m": "khn:building_scaffolding",
-        "ti_le": 1.35
-      },
-      {
-        "m": "qv:Prop_Brick2",
-        "ti_le": 1,
-        "x": -0.3,
-        "z": 0.36
-      },
-      {
-        "m": "khp:pallet",
-        "ti_le": 1.6,
-        "x": 0.3,
-        "z": 0.32
-      }
-    ],
-    "nha_chai": [
-      {
-        "m": "kk:house",
-        "ti_le": 1.2
-      },
-      {
-        "m": "khp:barrel",
-        "ti_le": 1.8,
-        "x": -0.34,
-        "z": 0.34
-      },
-      {
-        "m": "qv:Prop_WoodenFence_Single",
-        "ti_le": 0.5,
-        "ry": 90,
-        "x": 0.44
-      }
-    ],
+    "trai_linh": [{"m":"kh:building_barracks_red","ti_le":1.2,"mau_cot":{"1,0":{"thay":[0.8,0.66,0.36]},"2,3":{"thay":[0.55,0.42,0.3]},"1,3":{"thay":[0.86,0.76,0.58]}}}],
+    "cong_truong": [{"m":"khn:building_scaffolding","ti_le":1.35},{"m":"khp:resource_stone","ti_le":1.5,"x":-0.3,"z":0.36},{"m":"khp:pallet","ti_le":1.6,"x":0.3,"z":0.32}],
+    "nha_chai": [{"m":"kk:house","ti_le":1.2},{"m":"khp:barrel","ti_le":1.8,"x":-0.34,"z":0.34},{"m":"khp:bucket_water","ti_le":1.8,"ry":90,"x":0.44}],
     "trai_go": [
       {
         "m": "kk:forest",
@@ -1593,6 +1135,10 @@
         "x": 0.3,
         "z": 0.3
       }
-    ]
+    ],
+    "ruong_trong": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]}],
+    "ruong_lua_1": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level1_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}],
+    "ruong_lua_2": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level2_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}],
+    "ruong_lua_3": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level3_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}]
   }
 }

@@ -75,7 +75,7 @@ function tacGia(thuMuc, maIcosa, bangIcosa) {
     return 'Icosa: ' + (m ? m[1].trim() : '?');
   }
   if (/^kaykit/.test(thuMuc)) return 'KayKit';
-  if (/megakit|^universal-(base-characters|animation-library)$|^modular-character-outfits|^lowpoly-animated-animals$|^medieval-weapons$|^animals$/.test(thuMuc)) return 'Quaternius';
+  if (/megakit|^universal-(base-characters|animation-library)$|^modular-character-outfits|^lowpoly-animated-animals$|^medieval-weapons$|^animals$|^ultimatefantasyrts$|^farmbuildings$|^farmanimal$/.test(thuMuc)) return 'Quaternius';
   if (/-kit$|^city-kit-|^mini-characters$|^modular-buildings$/.test(thuMuc)) return 'Kenney';
   return '? ' + thuMuc;
 }
