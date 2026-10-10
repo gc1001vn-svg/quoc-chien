@@ -6,11 +6,11 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 10/10/2026 (lần 42 — đồ nghề đợt 9, không đổi cách chơi).
+Cập nhật: 10/10/2026 (lần 43 — đồ nghề đợt 10, không đổi cách chơi).
 
 ## 1. Đang ở đâu
 
-- **10/10 (lần 42): đồ nghề đợt 9** — 3 món, đã gộp `main` `3251e69`. `docs/NHAT_KY/DO_NGHE_DOT_9_10_10.md`.
+- **10/10 (lần 42, 43): đồ nghề đợt 9, 10** — đã gộp `main`. `docs/NHAT_KY/DO_NGHE_DOT_{9,10}_10_10.md`.
 - **09/10 (lần 41): đồ nghề đợt 7** — đủ 4 món, anh cho gộp `main` (09/10). Món 1 = workflow `anh-ios.yml` (mục 5).
   Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
 
