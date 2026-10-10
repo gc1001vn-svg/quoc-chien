@@ -6,26 +6,29 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 10/10/2026 (lần 43 — đồ nghề đợt 10, không đổi cách chơi).
+Cập nhật: 10/10/2026 (lần 44 — anh trả lời 3 việc chờ; kế hoạch art bible bước 3 chờ duyệt, không đổi game).
 
 ## 1. Đang ở đâu
 
+- **10/10 (lần 44): anh trả lời 3 việc chờ** — 59 fps cả ba (đêm `?gio=23`, bản 04/10 lúc giờ trôi nhanh); bảng nông trại
+  giao Claude chọn: ruộng 1E · lợn, cừu Q · luật 1 thêm "gà". → **Kế hoạch art bible bước 3 + bảng ảnh, CHỜ ANH DUYỆT**
+  (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`). Drive tải lại được. `docs/NHAT_KY/ART_BIBLE_B3_KE_HOACH_10_10.md`.
 - **10/10 (lần 42, 43): đồ nghề đợt 9, 10** — đã gộp `main`. `docs/NHAT_KY/DO_NGHE_DOT_{9,10}_10_10.md`.
 - **09/10 (lần 41): đồ nghề đợt 7** — đủ 4 món, anh cho gộp `main` (09/10). Món 1 = workflow `anh-ios.yml` (mục 5).
   Lần 40 chỉ tra. `docs/NHAT_KY/DO_NGHE_DOT_7_09_10.md`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
-  (sim không đổi) → bình minh. Ban ngày y hệt bản cũ. `?tat=dem` tắt. **Anh chưa xem iPhone** (mục 3).
+  (sim không đổi) → bình minh. Ban ngày y hệt bản cũ. `?tat=dem` tắt. Anh xem 10/10: 59 fps, độ tối giữ nguyên.
   `docs/NHAT_KY/BUOC_2_NGAY_DEM_06_10.md`.
-- **05/10 (lần 37): bảng nông trại 2, bảng gà, bảng thú đã gửi; anh chọn "lúa lớn dần", gà G1 + G2; còn chờ** (mục 3). Không đổi
+- **05/10 (lần 37): bảng nông trại 2, bảng gà, bảng thú đã gửi; anh chọn "lúa lớn dần", gà G1 + G2; phần còn lại Claude chọn 10/10**. Không đổi
   game. Drive hết hạn mức → lấy Quaternius qua itch, OpenGameArt. `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`.
 - **04/10 (lần 36): Bước 1 "xây nhà từng bước"** (kế hoạch anh duyệt 04/10) — nhà, kho thống đốc xây thêm hiện dần: vạch móng →
   mọc từ dưới lên + giàn giáo que gỗ + bụi + thợ gõ → loé sáng → xong, ~2 s ở 10×. Chỉ đổi hình, nhà đang xây vẫn sản xuất.
   Luật mới TP16. Đã đẩy `main`. `docs/NHAT_KY/BUOC_1_XAY_NHA_04_10.md`.
 - **Đã xong, chi tiết ở `docs/NHAT_KY/`:** lần 38 sửa 4 file docs lệch (`SUA_DOCS_05_10.md`) · lần 35 đồ nghề `soi:giao-dien`,
   `npm run quay` (`DO_NGHE_04_10.md`) · lần 34 nhận game từ ảnh (`NHAN_GAME_TU_ANH_04_10.md`) · lần 33 Playwright MCP.
-- **04/10 (lần 32): sửa 3 lỗi trận** (TR14, TG14, TR15) — đã đẩy `main`. **Anh chưa chơi thử** (mục 3). `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
+- **04/10 (lần 32): sửa 3 lỗi trận** (TR14, TG14, TR15) — đã đẩy `main`. Anh thử 10/10: 59 fps. `docs/NHAT_KY/SUA_3_LOI_TRAN_04_10.md`.
 - **Cũ hơn:** `ls docs/NHAT_KY/` — tên file theo việc + ngày (lần 31 `CAN_BANG_04_10.md`, lần 26–28 `THU_*_30_09.md`).
 - **Game: Phase 12D xong**, anh đo iPhone 28/09: 59 fps. 12E chưa mở — anh dặn làm art bible trước. `docs/NHAT_KY/PHASE_12D.md`.
 - **Pages chạy đúng bản mới trên iPhone** (anh xác nhận 05/10). Mở lần đầu sau nhiều ngày thấy bản cũ trong lúc tải ~20 MB
@@ -34,7 +37,10 @@ Cập nhật: 10/10/2026 (lần 43 — đồ nghề đợt 10, không đổi cá
 ## 2. Số đo mới nhất
 
 **Bước 2, đo 06/10 (máy ảo):** khung đo art bible — bản cũ · `?gio=12` · `?tat=dem` cùng 0,48 · 0,56 · 0,32 · lệnh vẽ vẫn 3 ·
-`sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. Fps iPhone: chưa đo.
+`sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. **Fps iPhone 59** (anh lướt 10/10, cả đêm `?gio=23`).
+
+**Bảng thử art bible bước 3, đo 10/10:** 22 hình Ultimate Fantasy RTS, hệ số 2,2 → 70,4 % một trang 2×. Ước cả mẻ 76 hình:
+2,2 → 145 % · 1,8 → 105 % · 1,6 → 88 % trang 2× (1× ≤ 36 %). Mẻ `co_dai` hiện 87,4 % trang 2×, trang 2 rỗng 1×1.
 
 **Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
 0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).
@@ -66,22 +72,11 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
-### ⏳ Việc 04/10 (lần 31 + 32) — anh chơi thử bản mới
+### ⏳ Việc 10/10 (lần 44) — anh duyệt kế hoạch art bible bước 3
 
-Link Pages: https://gc1001vn-svg.github.io/quoc-chien/ (nhãn cạnh số fps ghi ngày giờ bản). Đổi ở nhịp và trận, không đổi hình:
-thành phố thêm nhà dân dày hơn, không xây kho mới; % thắng trên nút Tấn công nay là số thật (có thể ra 0 % khi thua chắc);
-nước AI yếu hơn chút có thể tự xin hoà. Anh báo: fps, nhịp lên đời ổn không, có giật lúc giờ trôi nhanh không.
-
-### ⏳ Việc 06/10 (lần 39) — anh xem ngày/đêm trên iPhone
-
-Link Pages (https://gc1001vn-svg.github.io/quoc-chien/), để yên ~6 phút ở 10× là qua một ngày; xem nhanh đêm: thêm `?gio=23`
-vào cuối link (`?gio=lap` một ngày trong 12 giây). Anh báo: fps ban đêm, tối quá/nhạt quá, đời hiện đại có xanh quá không.
-
-### ⏳ Việc 05/10 (lần 37) — anh chọn trên bảng nông trại 2 (art bible bước 2)
-
-Bảng 23 ô + bảng gà + bảng 31 chuồng thú gửi trong chat 05/10. **Anh đã chọn: hàng 2 "lúa lớn dần" · gà G1 + G2.** Còn chờ mã ô:
-(1) ruộng: 1A giữ · 1B–1E? (2) lợn, cừu, thú khác: bộ Google `Mesh_` (M, cùng bộ gà G1) · `_01` (S) · Quaternius (Q) · lẻ (K)?
-(3) chọn thú Google thì luật 1 art bible thêm "thú" vào tay vẽ thứ hai — đồng ý không? Bò, ngựa, vịt… chưa có trong game.
+Kế hoạch `docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md` + bảng ảnh gửi trong chat 10/10 (hiện tại ↔ Quaternius RTS,
+cùng tỉ lệ). Anh trả lời: (1) hướng A (mộc một màu gỗ, đúng luật 2 tay vẽ) hay B (giữ nhà KayKit, nới luật 1 lên 3 tay)?
+(2) đồng ý sửa `docs/ASSET_CREDITS.md` (file khoá) dòng mẻ cổ đại không?
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
@@ -94,7 +89,7 @@ Bước 1 xong, anh duyệt 05/10 (60 fps, "ưng", không thấy que đè); bư�
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
 
-### ✅ Đã xong: bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
+### ✅ Đã xong: 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
 Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
@@ -121,16 +116,14 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: anh chọn bảng nông trại 2 rồi → art bible bước 3** (kế hoạch nướng lại mẻ `co_dai`, anh duyệt rồi mới nướng;
-nguồn tải, hệ số, bẫy ~120 nghìn đỉnh: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`). **Bước 2 xong 06/10 — anh xem iPhone trước**
-(mục 3) rồi mới sang bước kế: chưa chọn bảng nông trại thì BƯỚC 4 "khai thác cạn dần" theo kế hoạch ANH ĐÃ DUYỆT 04/10
-`docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` (bước 3 lúa lớn dần chờ bảng nông trại). Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,
+**PHIÊN SAU: anh duyệt kế hoạch art bible bước 3 thì nướng đúng theo nó** (`docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`);
+anh chọn B hay sửa gì thì sửa kế hoạch, trình lại. Anh chưa trả lời mà bảo làm việc khác thì BƯỚC 4 "khai thác cạn dần" theo kế
+hoạch ANH ĐÃ DUYỆT 04/10 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` (bước 3 lúa lớn dần làm SAU khi nướng lại mẻ).
+Drive tải lại được 10/10 (`lay.mjs quaternius ultimatefantasyrts` đủ 128 OBJ, kiểm file không phải HTML). Bẫy ~120 nghìn đỉnh
+một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,
 `?gio=23`, `?gio=lap` (`docs/NHAT_KY/BUOC_{1,2}_*.md`); `npm run quay` tự bấm thẻ đầu ván nên dùng `zoom=0.6`. Anh luôn mở bằng
 trình duyệt web (Safari), không mở trong app Claude.
-Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Vẫn chờ anh chơi thử bản 04/10. Anh mở lại art bible thì làm bảng 2 (dưới).
-
-**Art bible bước 2: bảng 2 đã gửi 05/10, chờ anh chọn (mục 3).** `Farm_Dirt`, lừa chưa lấy được (Drive hết hạn mức) — thử lại
-`node /home/user/kho-game/cong-cu/lay.mjs quaternius ultimatefantasyrts --chi obj --dich assets_source`, xem file có phải HTML không. Tụt fps về sau: bớt
+Mẫu xem bằng video YouTube qua Gemini (game đồ hoạ tương đương, không cần chơi được). Tụt fps về sau: bớt
 `batOn.nguoiMoiDam`, `batOn.lua` trước; giật lúc giờ trôi: bớt `so_tran_dung_som` (`data/battle.json`).
 
 **Art bible bước 2–3** — anh chê 30/09: "các công trình vẫn nhìn rất là chán" (màu thì ổn hơn). **Anh đã mở 30/09** — không cần hỏi lại; gốc đã đo là mẻ ghép 6–7 tay vẽ (art bible mục 2). Đừng tự mở 12E.
