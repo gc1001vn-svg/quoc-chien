@@ -570,7 +570,7 @@
         }
       }
     },
-    "ruong": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level3_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}],
+    "ruong": [{"phang":1.02,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":0.57,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level3_Wheat","ti_le":0.57,"mau":[2,1.7,0.8]}],
     "vuon_nho": [{"phang":1.02,"texture":"assets_source/hoa_tiet/brown_mud_dry.jpg","lap":1,"mau":[1.1,0.95,0.72]},
       {"m":"qv:Prop_Vine9","ti_le":0.32,"y":0.05,"x":-0.1,"z":-0.3},
       {"m":"qv:Prop_Vine9","ti_le":0.32,"y":0.05,"x":-0.1,"z":0},
@@ -1136,9 +1136,9 @@
         "z": 0.3
       }
     ],
-    "ruong_trong": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]}],
-    "ruong_lua_1": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level1_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}],
-    "ruong_lua_2": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level2_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}],
-    "ruong_lua_3": [{"phang":2.1,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":1.3,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level3_Wheat","ti_le":1.3,"mau":[2,1.7,0.8]}]
+    "ruong_trong": [{"phang":1.02,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":0.57,"mau":[1.4,1.2,1]}],
+    "ruong_lua_1": [{"phang":1.02,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":0.57,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level1_Wheat","ti_le":0.57,"mau":[2,1.7,0.8]}],
+    "ruong_lua_2": [{"phang":1.02,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":0.57,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level2_Wheat","ti_le":0.57,"mau":[2,1.7,0.8]}],
+    "ruong_lua_3": [{"phang":1.02,"mau":[0.62,0.47,0.3]},{"m":"rf:Farm_Dirt_Level1","ti_le":0.57,"mau":[1.4,1.2,1]},{"m":"rf:Farm_FirstAge_Level3_Wheat","ti_le":0.57,"mau":[2,1.7,0.8]}]
   }
 }

@@ -40,7 +40,7 @@ Cập nhật: 10/10/2026 (lần 45 — nướng lại mẻ cổ đại về 3 ta
 `sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. **Fps iPhone 59** (anh lướt 10/10, cả đêm `?gio=23`).
 
 **Art bible bước 3, đo 10/10 (máy ảo):** `tay-ve co_dai` 6 → **3** · khung đo 0,48 · 0,56 trước = sau · 3 lệnh vẽ · `sim:thu`,
-`sim:van` y hệt (trừ giây) · atlas 2× 87,4 % + trang 2 3,8 % (trước: trang 2 rỗng 1×1), 1× 23,3 %. Chi tiết `ART_BIBLE.md` mục 5.
+`sim:van` y hệt (trừ giây) · atlas 2× 86,3 % + trang 2 0,6 % (trước: trang 2 rỗng 1×1), 1× 22,2 %. 11/10 ruộng thu vừa 1 ô (anh báo lúa tràn ra đường). Chi tiết `ART_BIBLE.md` mục 5.
 
 **Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
 0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).

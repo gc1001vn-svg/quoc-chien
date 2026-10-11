@@ -159,8 +159,9 @@ dùng** cho lợn, cừu) · cây = OpenGameArt `lowpoly-crops-pack` (bản 01/2
    1,15 thì kéo được nhưng trung cổ 2 tụt 0,35 — 14 mức đã thử: `docs/NHAT_KY/DEN_30_09.md`.
 2. **Bảng nông trại theo G:** bản hiện tại cạnh bản Quaternius (mục 4).
 3. Nướng lại mẻ cổ đại theo luật 1–12; rồi cận đại (7 tay vẽ), hiện đại (bão hoà 0,28).
-   **Cổ đại xong 10/10 (phương án B):** 3 tay vẽ · 80 hình (thêm `ruong_trong`, `ruong_lua_1..3`) · trang 2× 87,4 % +
-   trang 2 3,8 %, 1× 23,3 % · hệ số mỗi gói: Ultimate Fantasy RTS 1,3 · Farm Buildings 0,155 · thú 0,06. Khung đo mục 5
+   **Cổ đại xong 10/10 (phương án B):** 3 tay vẽ · 80 hình (thêm `ruong_trong`, `ruong_lua_1..3`) · trang 2× 86,3 % +
+   trang 2 0,6 %, 1× 22,2 % · hệ số mỗi gói: Ultimate Fantasy RTS 0,57 · Farm Buildings 0,155 · thú 0,06 — **ruộng, trại vừa
+   đúng 1 ô** vì nhà kinh tế chiếm 1 ô (`chenVat` `o: 1`); RTS 1,3 bằng cỡ ruộng cũ thì luống tràn lên đường (anh báo 11/10). Khung đo mục 5
    bước 1 (`&gio=12`): sáng 0,48 · bão hoà 0,56 trước và sau (khung là khu nhà dân, không chứa hình đổi); khu sản xuất
    `&o=47,22` 0,47 · 0,65 và nông nghiệp `&o=47,4` 0,36 · 0,57 cũng y nguyên. Ruộng thêm nền lót đất màu phẳng (luật 11):
    luống Quaternius sẫm, không lót thì chìm vào ô `o_ruong`. Nhật ký: `docs/NHAT_KY/ART_BIBLE_B3_NUONG_10_10.md`.

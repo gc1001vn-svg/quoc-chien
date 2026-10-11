@@ -19,3 +19,6 @@ repo này sau khi anh nhắn "Đồng ý" (Auto chặn `add_repo` push lần đ�
 - **Đo:** `tay-ve co_dai` 6 → 3 · khung đo 0,48 · 0,56 trước = sau · 3 lệnh vẽ · `sim:thu`, `sim:van` y hệt (chỉ khác giây) ·
   atlas 2× tràn sang trang 2 (3,8 %) như ước — dòng `ASSET_CREDITS.md` sửa bằng vé (anh đồng ý 10/10).
 - **Chưa:** anh xem ảnh, đo iPhone ≥ 58 fps; ảnh Safari giả lập `anh-ios.yml`.
+- **11/10, anh báo "lúa tràn ra ngoài với cột gỗ":** nhà kinh tế chiếm **1 ô** (`chenVat` `o: 1`), ruộng RTS 1,3 rộng ~2 ô nên
+  luống lấn lên đường, hàng rào trang trí ô bên vẽ đè giữa ruộng. Ruộng cũ cũng ~2 ô nhưng có rào bao nên không lộ. Sửa: RTS
+  1,3 → 0,57, nền lót 2,1 → 1,02 — vừa 1 ô như trại. Atlas 2× 86,3 % + trang 2 0,6 %.
