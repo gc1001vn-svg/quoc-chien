@@ -74,7 +74,8 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ### ⏳ Mẻ cổ đại mới (10/10, lần 45) — anh xem ảnh, mở Pages trên iPhone đo fps (đích ≥ 58)
 
-Bảng trước/sau + ảnh thành phố đã gửi. Chê công trình nào thì giữ lại đúng công trình đó, ghi là ngoại lệ (kế hoạch, "Giả sử
+**11/10 anh chọn: ruộng chiếm 2×2 ô** (ruộng 1 ô nhỏ, "Ko thấy ruộng"; ~2 ô trên 1 ô thì lấn đường) — mục 5.
+Xem ruộng: `?xay=ruong_lua&xayTien=1&zoom=1` (`?o=47,4` rơi mép bản đồ, thẻ che). Chê công trình nào thì giữ lại đúng công trình đó, ghi là ngoại lệ (kế hoạch, "Giả sử
 B hỏng"). Vẫn thấy gượng thì gốc là cây, người Quaternius cạnh nhà KayKit — đổi sang KayKit là phiên khác.
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
@@ -115,7 +116,10 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: anh đã xem mẻ cổ đại (mục 3) thì BƯỚC 3 "lúa lớn dần"** theo kế hoạch ANH ĐÃ DUYỆT 04/10
+**PHIÊN SAU: ruộng 2×2 ô (anh chọn 11/10)** — lập kế hoạch, anh duyệt rồi làm. Nhà kinh tế giờ chiếm 1 ô (`dungNha`,
+`City.ts` `chenVat` `o: 1`); cần `o` cho `ruong_lua` trong `data/buildings.json` · `datNha` tìm khối 2×2 trống sát đường ·
+`daChiem` đủ 4 ô · cửa ra đường · nướng lại ruộng RTS ~1,1, nền lót 2,02. Mô phỏng sẽ đổi (`sim:van`, `luat:sau`).
+**Sau đó BƯỚC 3 "lúa lớn dần"** theo kế hoạch ANH ĐÃ DUYỆT 04/10
 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — hình đã nướng sẵn: `ruong_trong`, `ruong_lua_1..3`. **Bẫy:** Level 1–3 của
 RTS là luống gieo dần ⅓ → ⅔ → đủ, cùng chiều cao — không phải cây lớn; cần "mạ, lúa xanh" thì nhuộm `mau` (nhật ký lần 45).
 Bẫy ~120 nghìn đỉnh
