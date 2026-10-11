@@ -28,6 +28,7 @@
       "ten": "ruong_lua",
       "hien": "Ruộng lúa",
       "sprite": "ruong",
+      "o": 2,
       "khu": "nong_nghiep",
       "kieu": "san_xuat",
       "so": 10,

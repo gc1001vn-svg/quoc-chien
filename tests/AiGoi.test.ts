@@ -68,8 +68,8 @@ describe('ai_goi — loc khai bao', () => {
   it('caller cua doi deu la cho goi method that', () => {
     const kq = timCaller(program, 'doi');
     expect(kq.cho.map((c) => `${c.file}:${String(c.dong)}`)).toEqual([
-      'src/sim/city/Buildings.ts:235',
-      'src/sim/city/Buildings.ts:253',
+      'src/sim/city/Buildings.ts:238',
+      'src/sim/city/Buildings.ts:256',
       'src/render/DoiMeAtlas.ts:92',
     ]);
   });

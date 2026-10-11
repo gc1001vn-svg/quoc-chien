@@ -16,7 +16,7 @@ const giao = { xinLay: () => false, xinGiao: () => false } as unknown as Giao;
 
 function nha(vao: DinhNghiaNha['vao'], kieu: DinhNghiaNha['kieu'] = 'san_xuat'): ThuNha {
   const def: DinhNghiaNha = {
-    ten: 'thu', hien: 'Thử', sprite: 'thu', khu: 'san_xuat', cachNhau: 1, motKhoi: false,
+    ten: 'thu', hien: 'Thử', sprite: 'thu', khu: 'san_xuat', cachNhau: 1, motKhoi: false, o: 1,
     kieu, so: 1, nhip: 1, vao, ra: [{ hang: 'banh', so: 1 }],
   };
   return new ThuNha(def, 0, 0, { a: 0, b: 0 }, { a: 0, b: 1 }, 2);

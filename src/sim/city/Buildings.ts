@@ -34,6 +34,8 @@ export interface DinhNghiaNha {
   readonly cachNhau: number;
   /** Tien ich: moi khoi pho 8x8 mot cai, dat gan giua khoi (ped shed). */
   readonly motKhoi: boolean;
+  /** Canh khoi o nha chiem, neo o o sau (a, b nho nhat) - ruong 2x2 tu 11/10. Khong khai thi 1. */
+  readonly o: number;
   readonly kieu: KieuNha;
   readonly so: number;
   readonly nhip: number;
@@ -127,6 +129,7 @@ export function docNha(tho: unknown): DinhNghiaNha[] {
       khu: docKhu(o['khu'], `${duong}.khu`),
       cachNhau: laySoNguyen(o['cachNhau'], `${duong}.cachNhau`),
       motKhoi: o['motKhoi'] === true,
+      o: o['o'] === undefined ? 1 : laySoNguyen(o['o'], `${duong}.o`),
       kieu,
       so: laySoNguyen(o['so'], `${duong}.so`),
       nhip: laySoNguyen(o['nhip'], `${duong}.nhip`),
