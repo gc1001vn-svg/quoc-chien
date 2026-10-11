@@ -646,3 +646,9 @@ Lặt vặt, đo được 03/10:
 
 - Màn trận `?tran=1`: bảng nhật ký góc dưới trái đè lên lính; nền trận một mảng xanh phẳng. Bắt hai lần (ảnh 25/09 và 30/09),
   `docs/THANG_CHAM_HINH.md` mục "Độ khớp với anh".
+
+## Đồ nghề nướng, mô phỏng — 11/10/2026 (ruộng 2×2, chỉ ghi)
+
+- `sim:van` băm cache theo `data/` thôi: đổi `src/sim/` phải tự xoá `.cache/sim_van/`, không thì đọc lại vết cũ.
+- `npm run kho` khi thiếu gói `fantasy-town-kit` vẫn xoá ~6.700 dòng `docs/KHO_ASSET.md` (dù in "giữ nguyên 1 gói chưa tải").
+- `lay.mjs icosa --id` (kho-game) ưu tiên `.glb`, mẻ khai `.gltf` → `ENOENT` lúc nướng; 3 model phải tải tay bản glTF 2.0.

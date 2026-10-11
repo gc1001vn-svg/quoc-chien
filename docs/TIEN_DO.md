@@ -6,16 +6,14 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 10/10/2026 (lần 45 — nướng lại mẻ cổ đại về 3 tay vẽ, phương án B; đã gộp `main`).
+Cập nhật: 11/10/2026 (lần 46 — ruộng chiếm 2×2 ô, kế hoạch anh duyệt 11/10; đã gộp `main`).
 
 ## 1. Đang ở đâu
 
-- **10/10 (lần 45): art bible bước 3 XONG phần máy** — mẻ `co_dai` 6 → **3 tay vẽ**: KayKit mọi công trình (đền, tháp, đấu
-  trường Icosa → quán thùng, trại lính, lò KayKit nhuộm rơm) · Quaternius ruộng (luống + lúa, nền lót màu phẳng), trại (rào,
-  chuồng, lợn, cừu) · Google chỉ gà. Thêm `ruong_trong`, `ruong_lua_1..3` cho bước "lúa lớn dần". Chờ anh xem + đo iPhone
-  (mục 3). `docs/NHAT_KY/ART_BIBLE_B3_NUONG_10_10.md`.
-- **10/10 (lần 44): anh chọn B** (kế hoạch `docs/ke-hoach/2026-10-10-art-bible-buoc-3-co-dai.md`) · 3 việc chờ 59 fps.
-  `docs/NHAT_KY/ART_BIBLE_B3_KE_HOACH_10_10.md` · lần 41–43 đồ nghề đợt 7, 9, 10: `docs/NHAT_KY/DO_NGHE_DOT_*`.
+- **11/10 (lần 46): ruộng chiếm 2×2 ô XONG phần máy** — `"o": 2` trong `data/`, đặt nhà xét cả khối (TP10, TP12 xét cả
+  khối), ruộng 5 mẻ lệch +0,5 ô về tâm khối, cổ đại to gấp đôi. Chờ anh xem ảnh + đo iPhone (mục 3). `docs/NHAT_KY/RUONG_2X2_11_10.md`.
+- **10/10 (lần 44–45): art bible bước 3 XONG phần máy** — mẻ `co_dai` 6 → **3 tay vẽ** (KayKit công trình · Quaternius ruộng,
+  trại · Google gà), thêm `ruong_trong`, `ruong_lua_1..3`. `docs/NHAT_KY/ART_BIBLE_B3_NUONG_10_10.md` · lần 41–43: `DO_NGHE_DOT_*`.
 
 - **06/10 (lần 39): Bước 2 "ngày/đêm + dân về nhà"** (kế hoạch anh duyệt 05/10) — một ngày = 1 giờ game (6 phút ở 10×):
   chiều tà ấm → đêm tối xanh, đèn cửa sổ nhà dân, lửa trại ở ngã tư kho, "Zzz" trên nhà tắt đèn, giấu 60 % người vác khi vẽ
@@ -40,7 +38,10 @@ Cập nhật: 10/10/2026 (lần 45 — nướng lại mẻ cổ đại về 3 ta
 `sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. **Fps iPhone 59** (anh lướt 10/10, cả đêm `?gio=23`).
 
 **Art bible bước 3, đo 10/10 (máy ảo):** `tay-ve co_dai` 6 → **3** · khung đo 0,48 · 0,56 trước = sau · 3 lệnh vẽ · `sim:thu`,
-`sim:van` y hệt (trừ giây) · atlas 2× 86,3 % + trang 2 0,6 % (trước: trang 2 rỗng 1×1), 1× 22,2 %. 11/10 ruộng thu vừa 1 ô (anh báo lúa tràn ra đường). Chi tiết `ART_BIBLE.md` mục 5.
+`sim:van` y hệt (trừ giây) · atlas 2× 86,3 % + trang 2 0,6 % (trước: trang 2 rỗng 1×1), 1× 22,2 %. Chi tiết `ART_BIBLE.md` mục 5.
+
+**Ruộng 2×2, đo 11/10 (máy ảo):** luật bất biến 50 hạt xanh · test 625 → 626 · `sim:van` DAT nhưng đổi: `khoa_hoc` **5/5 → 4/5**
+(hạt 20260926 mất thủ đô), `ngoai_giao` thắng giờ 72 → 96 · atlas cổ đại 2× 86,7 % + trang 2 3,5 %, 1× 23,0 %; 4 mẻ khác chỉ `ruong` đổi.
 
 **Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
 0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).
@@ -72,9 +73,9 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
-### ⏳ Mẻ cổ đại mới (10/10, lần 45) — anh xem ảnh, mở Pages trên iPhone đo fps (đích ≥ 58)
+### ⏳ Ruộng 2×2 ô (11/10, lần 46) + mẻ cổ đại mới — anh xem ảnh, mở Pages trên iPhone đo fps (đích ≥ 58)
 
-**11/10 anh chọn: ruộng chiếm 2×2 ô** (ruộng 1 ô nhỏ, "Ko thấy ruộng"; ~2 ô trên 1 ô thì lấn đường) — mục 5.
+**Anh quyết:** nhà xếp lại làm `sim:van` `khoa_hoc` 5/5 → 4/5 (mục 2) — giữ, hay hạ `cachNhau` ruộng (8, số cân bằng)?
 Xem ruộng: `?xay=ruong_lua&xayTien=1&zoom=1` (`?o=47,4` rơi mép bản đồ, thẻ che). Chê công trình nào thì giữ lại đúng công trình đó, ghi là ngoại lệ (kế hoạch, "Giả sử
 B hỏng"). Vẫn thấy gượng thì gốc là cây, người Quaternius cạnh nhà KayKit — đổi sang KayKit là phiên khác.
 
@@ -116,9 +117,7 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: ruộng 2×2 ô theo kế hoạch ANH ĐÃ DUYỆT 11/10** `docs/ke-hoach/2026-10-11-ruong-2x2.md` — làm luôn,
-không hỏi lại: dữ liệu `o: 2` → mô phỏng xét cả khối → nướng lại ruộng 5 mẻ lệch +0,5 ô (tâm khối). Mô phỏng sẽ đổi.
-**Sau đó BƯỚC 3 "lúa lớn dần"** theo kế hoạch ANH ĐÃ DUYỆT 04/10
+**PHIÊN SAU: BƯỚC 3 "lúa lớn dần"** (ruộng 2×2 xong 11/10, `sim:van` có cache — đổi `src/sim/` thì xoá `.cache/sim_van/`) theo kế hoạch ANH ĐÃ DUYỆT 04/10
 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — hình đã nướng sẵn: `ruong_trong`, `ruong_lua_1..3`. **Bẫy:** Level 1–3 của
 RTS là luống gieo dần ⅓ → ⅔ → đủ, cùng chiều cao — không phải cây lớn; cần "mạ, lúa xanh" thì nhuộm `mau` (nhật ký lần 45).
 Bẫy ~120 nghìn đỉnh
