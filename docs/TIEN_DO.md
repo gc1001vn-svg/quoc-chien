@@ -116,9 +116,8 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: ruộng 2×2 ô (anh chọn 11/10)** — lập kế hoạch, anh duyệt rồi làm. Nhà kinh tế giờ chiếm 1 ô (`dungNha`,
-`City.ts` `chenVat` `o: 1`); cần `o` cho `ruong_lua` trong `data/buildings.json` · `datNha` tìm khối 2×2 trống sát đường ·
-`daChiem` đủ 4 ô · cửa ra đường · nướng lại ruộng RTS ~1,1, nền lót 2,02. Mô phỏng sẽ đổi (`sim:van`, `luat:sau`).
+**PHIÊN SAU: ruộng 2×2 ô theo kế hoạch ANH ĐÃ DUYỆT 11/10** `docs/ke-hoach/2026-10-11-ruong-2x2.md` — làm luôn,
+không hỏi lại: dữ liệu `o: 2` → mô phỏng xét cả khối → nướng lại ruộng 5 mẻ lệch +0,5 ô (tâm khối). Mô phỏng sẽ đổi.
 **Sau đó BƯỚC 3 "lúa lớn dần"** theo kế hoạch ANH ĐÃ DUYỆT 04/10
 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — hình đã nướng sẵn: `ruong_trong`, `ruong_lua_1..3`. **Bẫy:** Level 1–3 của
 RTS là luống gieo dần ⅓ → ⅔ → đủ, cùng chiều cao — không phải cây lớn; cần "mạ, lúa xanh" thì nhuộm `mau` (nhật ký lần 45).
