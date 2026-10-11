@@ -215,11 +215,11 @@
         }
       }
     },
-    "ruong": [{"m":"kk:farm_plot","ti_le":1.35},
-      {"m":"it:model__GLTFupdated_","ti_le":0.7293,"x":-0.722,"y":-0.582,"z":-0.717},
-      {"m":"is:CHAHIN_SILO","ti_le":0.02947,"x":-0.34,"y":0.225,"z":-0.34},
-      {"m":"qp:FarmCrate_Carrot","ti_le":0.6,"x":-0.3,"z":-0.05},
-      {"m":"qp:FarmCrate_Apple","ti_le":0.6,"x":-0.05,"z":-0.32}],
+    "ruong": [{"m":"kk:farm_plot","ti_le":1.35,"x":0.5,"z":0.5},
+      {"m":"it:model__GLTFupdated_","ti_le":0.7293,"x":-0.222,"y":-0.582,"z":-0.217},
+      {"m":"is:CHAHIN_SILO","ti_le":0.02947,"x":0.16,"y":0.225,"z":0.16},
+      {"m":"qp:FarmCrate_Carrot","ti_le":0.6,"x":0.2,"z":0.45},
+      {"m":"qp:FarmCrate_Apple","ti_le":0.6,"x":0.45,"z":0.18}],
     "vuon_nho": [{"phang":1.02,"texture":"assets_source/hoa_tiet/brown_mud.jpg","lap":1,"mau":[1.05,0.95,0.8]},
       {"m":"khn:fence_wood_straight","ti_le":0.5,"z":-0.34,"mau":[1.45,1.4,1.35]},
       {"m":"khn:fence_wood_straight","ti_le":0.5,"z":0.1,"mau":[1.45,1.4,1.35]},
