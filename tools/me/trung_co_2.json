@@ -625,9 +625,9 @@
       "nhu": "coi_xay_k0",
       "khung": { "kk:mill_blades": { "rz": 60, "tam": [0, 1.2678, 0] } }
     },
-    "ruong": [{"m":"kk:farm_plot","ti_le":1.35},
-      {"m":"kk:farm_wheat","ti_le":1.2},
-      {"m":"ib:model__GLTFupdated_","ti_le":0.4449,"x":-0.049,"y":-0.67,"z":-0.221,"mau":[0.95,0.8,0.55]}],
+    "ruong": [{"m":"kk:farm_plot","ti_le":1.35,"x":0.5,"z":0.5},
+      {"m":"kk:farm_wheat","ti_le":1.2,"x":0.5,"z":0.5},
+      {"m":"ib:model__GLTFupdated_","ti_le":0.4449,"x":0.451,"y":-0.67,"z":0.279,"mau":[0.95,0.8,0.55]}],
     "vuon_nho": [
       {
         "phang": 1.02,
