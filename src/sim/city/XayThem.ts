@@ -119,6 +119,6 @@ export function dungNha(
     def, chiSo, chiSo % def.nhip, o, congRaDuong(o, banDo.duongCach), tranRieng,
   );
   for (const m of def.vao) nha.nhan(m.hang, moiChuyen);
-  chenVat(banDo, { a: o.a, b: o.b, ten: def.sprite, o: 1, nhipXay });
+  chenVat(banDo, { a: o.a, b: o.b, ten: def.sprite, o: def.o, nhipXay });
   return nha;
 }

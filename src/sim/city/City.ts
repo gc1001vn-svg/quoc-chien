@@ -116,7 +116,7 @@ export class ThanhPho implements BoDem, Giao {
         // Mo van voi mot chuyen hang san trong nha, khong thi ca thanh pho dung im cho
         // nguoi dau tien di bo tu kho ve.
         for (const m of def.vao) nha.nhan(m.hang, this.cauHinh.moiChuyen);
-        chenVat(this.banDo, { a: o.a, b: o.b, ten: def.sprite, o: 1 });
+        chenVat(this.banDo, { a: o.a, b: o.b, ten: def.sprite, o: def.o });
         this.nhaThat.push(nha);
         k += 1;
       }

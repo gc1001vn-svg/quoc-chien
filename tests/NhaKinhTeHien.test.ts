@@ -12,7 +12,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { docNha } from '../src/sim/city/Buildings.ts';
-import { sinhBanDo, type OVat } from '../src/sim/city/BanDo.ts';
+import { laDuong, sinhBanDo, type OVat } from '../src/sim/city/BanDo.ts';
 import { ThanhPho } from '../src/sim/city/City.ts';
 import hang from '../data/wares.json';
 import nha from '../data/buildings.json';
@@ -94,6 +94,21 @@ describe('nha kinh te hien ra ban do', () => {
         expect(daCo.has(o), `o ${String(o)} co hai vat the, "${v.ten}" dam vao cai truoc`)
           .toBe(false);
         daCo.add(o);
+      }
+    }
+  });
+
+  // Xay them luc dang chay: TP10, TP12 (`BatBienThanhPho`) xet ca khoi sau moi lan xay.
+  it('ruong lua chiem du 2x2 o, khong o nao la duong (11/10)', () => {
+    const tp: ThanhPho = taoThanhPho();
+    const { canh, duongCach } = tp.banDo;
+    const ruong: OVat[] = tp.banDo.vat.filter((v) => v.ten === 'ruong');
+    expect(ruong.length).toBe(tp.viTriNha('ruong_lua').length);
+    for (const v of ruong) {
+      expect(v.o).toBe(2);
+      for (const o of oPhuLen(v, canh)) {
+        expect(laDuong({ a: Math.floor(o / canh), b: o % canh }, duongCach), `ruong (${String(v.a)},${String(v.b)}) de len duong`).toBe(false);
+        expect(tp.banDo.daChiem.has(o)).toBe(true);
       }
     }
   });

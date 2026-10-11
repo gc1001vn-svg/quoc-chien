@@ -132,6 +132,7 @@ export function cuaThanh(qh: QuyHoach): O[] {
  * CHI DAT VAO RUOT KHOI PHO, tuc nhung o KHONG sat duong. Do dung la nhung o ma `datNha`
  * khong bao gio dung toi (nha phai bam duong de nguoi vac hang di toi), nen lap bao nhieu
  * cung khong tranh cho voi cong trinh - khong lo tai canh "vanh chat, khong dat noi nha".
+ * Tru o xa duong cua khoi 2x2 (ruong, 11/10): `datDuoc` xet ca khoi nen chi ne, khong de len.
  *
  * Moi vanh mot bo vat rieng: long thanh co ghe va hoa, cong nghiep co da va thung, nong
  * nghiep co co cao va hang rao. Day van la "thematic continuity" cua Lynch - nhin chat vat

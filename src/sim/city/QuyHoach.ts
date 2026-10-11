@@ -155,6 +155,8 @@ export interface YeuCauDat {
   readonly cachNhau: number;
   /** Tien ich: moi khoi pho 8x8 chi duoc mot cai, va dat cang gan giua khoi cang tot. */
   readonly motKhoi: boolean;
+  /** Canh khoi o nha chiem, neo o o sau (a, b nho nhat). */
+  readonly o: number;
 }
 
 /** So sach cho ca luot dat nha: da dat cai nao o dau, khoi pho nao da co tien ich. */
@@ -176,16 +178,24 @@ function khoiCuaO(qh: QuyHoach, a: number, b: number): number {
   return Math.floor(a / qh.duongCach) * soKhoi + Math.floor(b / qh.duongCach);
 }
 
-/** O nay dat duoc nha khong: dung khu, sat duong, khong tren duong, khong tren vien. */
-function datDuoc(banDo: BanDo, qh: QuyHoach, khu: TenKhu, a: number, b: number): boolean {
+/**
+ * Khoi `o x o` neo o (a,b) dat duoc nha khong: o neo sat duong; CA khoi dung khu, khong
+ * tren duong, khong tren vien, con trong. Khoi 2x2 neo sat duong thi moc ra xa duong (11/10).
+ */
+function datDuoc(banDo: BanDo, qh: QuyHoach, khu: TenKhu, a: number, b: number, o: number): boolean {
   const c: number = qh.duongCach;
-  if (a < 1 || b < 1 || a >= qh.canh - 1 || b >= qh.canh - 1) return false;
-  if (a % c === 0 || b % c === 0) return false;
   // Sat duong: nha bam duong moi ra thanh pho, va nguoi vac hang di tren duong.
   if (a % c !== 1 && b % c !== 1 && a % c !== c - 1 && b % c !== c - 1) return false;
-  if (laVien(qh, a, b)) return false;
-  if (khuCuaO(qh, a, b) !== khu) return false;
-  return !banDo.daChiem.has(a * qh.canh + b);
+  for (let x = a; x < a + o; x += 1) {
+    for (let y = b; y < b + o; y += 1) {
+      if (x < 1 || y < 1 || x >= qh.canh - 1 || y >= qh.canh - 1) return false;
+      if (x % c === 0 || y % c === 0) return false;
+      if (laVien(qh, x, y)) return false;
+      if (khuCuaO(qh, x, y) !== khu) return false;
+      if (banDo.daChiem.has(x * qh.canh + y)) return false;
+    }
+  }
+  return true;
 }
 
 /** Cach xa moi nha cung loai it nhat `can` o chua. */
@@ -199,17 +209,17 @@ function duXa(so: SoDat, ten: string, a: number, b: number, can: number): boolea
 }
 
 /**
- * Danh dau o da dung, KE CA bon o ke.
+ * Danh dau ca khoi `o x o` da dung, KE CA cac o ke bon canh khoi (khong ke goc cheo).
  *
  * Nha ke sat nhau thi mai chong mai, ca day thanh mot khoi - chu du an goi dung ten la
  * "don cuc". Chua o ke ra thi giua hai nha luon co mot o co hay mot loi di.
  */
-function chiemVaChuaLe(banDo: BanDo, canh: number, a: number, b: number): void {
-  banDo.daChiem.add(a * canh + b);
-  for (const [da, db] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
-    const x: number = a + (da as number);
-    const y: number = b + (db as number);
-    if (x >= 0 && y >= 0 && x < canh && y < canh) banDo.daChiem.add(x * canh + y);
+function chiemVaChuaLe(banDo: BanDo, canh: number, a: number, b: number, o: number): void {
+  for (let x = a - 1; x <= a + o; x += 1) {
+    for (let y = b - 1; y <= b + o; y += 1) {
+      if ((x < a || x >= a + o) && (y < b || y >= b + o)) continue;
+      if (x >= 0 && y >= 0 && x < canh && y < canh) banDo.daChiem.add(x * canh + y);
+    }
   }
 }
 
@@ -220,7 +230,7 @@ function bocThuong(
   for (let lan = 0; lan < BOC_TOI_DA; lan += 1) {
     const a: number = rng.nguyen(qh.canh);
     const b: number = rng.nguyen(qh.canh);
-    if (!datDuoc(banDo, qh, yc.khu, a, b)) continue;
+    if (!datDuoc(banDo, qh, yc.khu, a, b, yc.o)) continue;
     if (!duXa(so, yc.ten, a, b, can)) continue;
     return { a, b };
   }
@@ -249,7 +259,7 @@ function bocTienIch(
     let gan = Infinity;
     for (let a = Math.floor(a0 / c) * c; a < Math.floor(a0 / c) * c + c; a += 1) {
       for (let b = Math.floor(b0 / c) * c; b < Math.floor(b0 / c) * c + c; b += 1) {
-        if (!datDuoc(banDo, qh, yc.khu, a, b)) continue;
+        if (!datDuoc(banDo, qh, yc.khu, a, b, yc.o)) continue;
         if (!duXa(so, yc.ten, a, b, can)) continue;
         const xa: number = Math.abs(a - ga) + Math.abs(b - gb);
         if (xa < gan) { gan = xa; tot = { a, b }; }
@@ -282,7 +292,7 @@ export function datNha(
     const da: O[] = so.theoLoai.get(yc.ten) ?? [];
     da.push(o);
     so.theoLoai.set(yc.ten, da);
-    chiemVaChuaLe(banDo, qh.canh, o.a, o.b);
+    chiemVaChuaLe(banDo, qh.canh, o.a, o.b, yc.o);
     return o;
   }
   return undefined;

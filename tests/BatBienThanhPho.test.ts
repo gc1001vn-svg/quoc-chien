@@ -100,17 +100,17 @@ function kiemBanDo(tp: ThanhPho, goc: number, luc: string): void {
   const [oNha, khoi, daCo] = [new Map<number, number>(), new Set<number>(), new Set<number>()];
   tp.dsNhaThat().forEach((n, i) => {
     const { oNha: { a, b }, cong: g, def } = n;
-    const kh = Math.floor(a / C) * Math.ceil(CANH / C) + Math.floor(b / C);
+    const [kh, khoiO] = [Math.floor(a / C) * Math.ceil(CANH / C) + Math.floor(b / C), Array.from({ length: def.o * def.o }, (_, k0): O => ({ a: a + Math.floor(k0 / def.o), b: b + (k0 % def.o) }))]; // ruong 2x2: xet ca khoi
     const sai = [
       n.chiSo !== i ? `chiSo ${S(n.chiSo)} != vi tri ${S(i)}` : '',
-      a < 1 || b < 1 || a > CANH - 2 || b > CANH - 2 || laDuong(n.oNha, C) || (!satDuong(a) && !satDuong(b)) ? 'sat mep, tren duong hoac khong sat duong' : '',
-      laVienTu(a, b) || khuTu(a, b) !== def.khu ? `o khu ${khuTu(a, b)}, vien ${S(laVienTu(a, b))}, phai la ${def.khu}` : '',
-      ...[a * CANH + b, (a - 1) * CANH + b, a * CANH + b - 1].map((k) => (oNha.has(k) ? `trung/ke nha #${S(oNha.get(k))}` : '')),
+      (!satDuong(a) && !satDuong(b)) || khoiO.some((x) => x.a < 1 || x.b < 1 || x.a > CANH - 2 || x.b > CANH - 2 || laDuong(x, C)) ? 'sat mep, tren duong hoac khong sat duong' : '',
+      ...khoiO.map((x) => (laVienTu(x.a, x.b) || khuTu(x.a, x.b) !== def.khu ? `o ${oChu(x)} khu ${khuTu(x.a, x.b)}, vien ${S(laVienTu(x.a, x.b))}, phai la ${def.khu}` : '')),
+      ...khoiO.flatMap((x) => [x.a * CANH + x.b, (x.a - 1) * CANH + x.b, x.a * CANH + x.b - 1]).map((k) => (oNha.has(k) ? `trung/ke nha #${S(oNha.get(k))}` : '')),
       def.motKhoi && khoi.has(kh) ? 'khoi pho da co tien ich' : '',
       !laDuong(g, C) || ngoai(g) || Math.abs(g.a - a) + Math.abs(g.b - b) !== 1 ? `cong ${oChu(g)} khong phai o duong sat nha` : '',
     ].filter((x) => x !== '');
     if (sai.length > 0) ghi('TP12', () => `${luc}: nha ${def.ten}#${S(i)} o ${oChu(n.oNha)}: ${sai.join('; ')}`);
-    oNha.set(a * CANH + b, i);
+    for (const x of khoiO) oNha.set(x.a * CANH + x.b, i);
     if (def.motKhoi) khoi.add(kh);
   });
   // Trung o, ke tren, ke trai: xet trong vong tren (voi nha dung truoc); ke duoi, ke phai: vong nay.
