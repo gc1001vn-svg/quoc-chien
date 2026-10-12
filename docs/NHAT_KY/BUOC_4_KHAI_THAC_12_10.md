@@ -20,3 +20,4 @@ Anh chọn: chỉ đổi hình · một vòng ~30 s ở 10× · dùng lại hìn
 - **Sơ suất:** đẩy `main` 03e2f53 khi thước `test` HỎNG — đọc "17/18 thước đạt · 1 bỏ qua" tưởng là xanh (18 = 17 đạt + 1
   hỏng; bỏ qua không tính vào mẫu). `tests/AiGoi.test.ts` ghim số dòng nơi gọi `doi` trong `Buildings.ts`, thêm 4 dòng
   là lệch. Sửa ở d65239d, CI 03e2f53 đỏ ~3 phút, Pages vẫn lên (Deploy không chạy test). Đọc dòng `HONG`, đừng đọc tổng.
+- **Anh đo 12/10:** 59 fps, "ok".
