@@ -75,7 +75,7 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ### ⏳ Ruộng 2×2 ô (11/10, lần 46) + mẻ cổ đại mới — anh xem ảnh, mở Pages trên iPhone đo fps (đích ≥ 58)
 
-**Anh quyết:** nhà xếp lại làm `sim:van` `khoa_hoc` 5/5 → 4/5 (mục 2) — giữ, hay hạ `cachNhau` ruộng (8, số cân bằng)?
+**Anh chốt 12/10: giữ số cân bằng** (`cachNhau` ruộng 8) dù nhà xếp lại làm `sim:van` `khoa_hoc` 5/5 → 4/5 (mục 2).
 Xem ruộng: `?xay=ruong_lua&xayTien=1&zoom=1` (`?o=47,4` rơi mép bản đồ, thẻ che). Chê công trình nào thì giữ lại đúng công trình đó, ghi là ngoại lệ (kế hoạch, "Giả sử
 B hỏng"). Vẫn thấy gượng thì gốc là cây, người Quaternius cạnh nhà KayKit — đổi sang KayKit là phiên khác.
 
