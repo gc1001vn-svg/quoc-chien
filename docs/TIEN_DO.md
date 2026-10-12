@@ -11,7 +11,7 @@ Cập nhật: 11/10/2026 (lần 46 — ruộng chiếm 2×2 ô, kế hoạch anh
 ## 1. Đang ở đâu
 
 - **11/10 (lần 46): ruộng chiếm 2×2 ô XONG phần máy** — `"o": 2` trong `data/`, đặt nhà xét cả khối (TP10, TP12 xét cả
-  khối), ruộng 5 mẻ lệch +0,5 ô về tâm khối, cổ đại to gấp đôi. Chờ anh xem ảnh + đo iPhone (mục 3). `docs/NHAT_KY/RUONG_2X2_11_10.md`.
+  khối), ruộng 5 mẻ lệch +0,5 ô về tâm khối, cổ đại to gấp đôi. Anh đo 12/10: **59 fps**, "ruộng ok". `docs/NHAT_KY/RUONG_2X2_11_10.md`.
 - **10/10 (lần 44–45): art bible bước 3 XONG phần máy** — mẻ `co_dai` 6 → **3 tay vẽ** (KayKit công trình · Quaternius ruộng,
   trại · Google gà), thêm `ruong_trong`, `ruong_lua_1..3`. `docs/NHAT_KY/ART_BIBLE_B3_NUONG_10_10.md` · lần 41–43: `DO_NGHE_DOT_*`.
 
@@ -41,7 +41,7 @@ Cập nhật: 11/10/2026 (lần 46 — ruộng chiếm 2×2 ô, kế hoạch anh
 `sim:van` y hệt (trừ giây) · atlas 2× 86,3 % + trang 2 0,6 % (trước: trang 2 rỗng 1×1), 1× 22,2 %. Chi tiết `ART_BIBLE.md` mục 5.
 
 **Ruộng 2×2, đo 11/10 (máy ảo):** luật bất biến 50 hạt xanh · test 625 → 626 · `sim:van` DAT nhưng đổi: `khoa_hoc` **5/5 → 4/5**
-(hạt 20260926 mất thủ đô), `ngoai_giao` thắng giờ 72 → 96 · atlas cổ đại 2× 86,7 % + trang 2 3,5 %, 1× 23,0 %; 4 mẻ khác chỉ `ruong` đổi.
+(hạt 20260926 mất thủ đô), `ngoai_giao` thắng giờ 72 → 96 · atlas cổ đại 2× 86,7 % + trang 2 3,5 %, 1× 23,0 %; 4 mẻ khác chỉ `ruong` đổi. **iPhone 59 fps** (anh 12/10).
 
 **Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
 0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).
@@ -73,12 +73,6 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
-### ⏳ Ruộng 2×2 ô (11/10, lần 46) + mẻ cổ đại mới — anh xem ảnh, mở Pages trên iPhone đo fps (đích ≥ 58)
-
-**Anh chốt 12/10: giữ số cân bằng** (`cachNhau` ruộng 8) dù nhà xếp lại làm `sim:van` `khoa_hoc` 5/5 → 4/5 (mục 2).
-Xem ruộng: `?xay=ruong_lua&xayTien=1&zoom=1` (`?o=47,4` rơi mép bản đồ, thẻ che). Chê công trình nào thì giữ lại đúng công trình đó, ghi là ngoại lệ (kế hoạch, "Giả sử
-B hỏng"). Vẫn thấy gượng thì gốc là cây, người Quaternius cạnh nhà KayKit — đổi sang KayKit là phiên khác.
-
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
 
 Anh chốt 04/10: không chỉ lúa và xây nhà, mọi thứ đều từng bước; mẫu phải đồ hoạ tương đương (Viking Rise, Happy Citizens —
@@ -90,7 +84,7 @@ Bước 1 xong, anh duyệt 05/10 (60 fps, "ưng", không thấy que đè); bư�
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
 
-### ✅ Đã xong: 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
+### ✅ Đã xong: ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
 Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
@@ -99,7 +93,7 @@ Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E v
 - **Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa** — chờ anh (mục 3).
 - **Một giờ thế giới chậm nhất 25 ms trên máy ảo** (trước 3,6 ms) — giá của % thắng chạy thật; anh báo giật thì cắt
   (`docs/NO_KY_THUAT.md` mục "Luật bất biến"). Hết giờ mà hai bên bằng phần máu: chưa luật nào kiểm.
-- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — cổ đại 6 → 3 tay vẽ (10/10, chờ anh xem); cận đại còn **7**
+- **Ruộng/trại "gượng gạo"** (anh báo 29/09) — cổ đại 6 → 3 tay vẽ (anh ok 12/10); cận đại còn **7**
   (`docs/ART_BIBLE.md` mục 2, mục 5 bước 3).
 - **Luật 3 (bão hoà ≥ 0,37) còn trượt:** hiện đại 0,30, tương lai 0,35 — art bible mục 5 bước 3.
 - **Mẻ lính `linh_co`, `linh_sung` và bản đồ `hex_1` còn đèn cũ** — màn trận, bản đồ dùng atlas riêng nên không lệch
