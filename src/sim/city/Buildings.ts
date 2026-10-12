@@ -167,6 +167,8 @@ export class ThuNha {
    */
   private tacLienTiep = 0;
   private doiLienTiep = 0;
+  /** So nhip THAT SU lam me tu dau van (khong tinh luc tac, luc doi hang). Chi lop ve doc - Buoc 4 khai thac. */
+  private nhipLam = 0;
 
   // Khai kieu roi gan trong than ham, khong dung `constructor(readonly def: ...)`:
   // Node boc kieu TypeScript khong nuot duoc loi viet tat do (ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX).
@@ -183,6 +185,8 @@ export class ThuNha {
   nhipTac(): number { return this.tacLienTiep; }
   /** So nhip lien tiep dung vi thieu hang vao. */
   nhipDoi(): number { return this.doiLienTiep; }
+  /** So nhip that su lam me tu dau van. */
+  nhipDaLam(): number { return this.nhipLam; }
 
   /** Ton kho rieng cua mot mon. */
   co(hang: string): number {
@@ -264,6 +268,7 @@ export class ThuNha {
       return;
     }
 
+    if (this.conLai > 0) this.nhipLam += 1;
     this.conLai -= 1;
     if (this.conLai > 0) return;
 

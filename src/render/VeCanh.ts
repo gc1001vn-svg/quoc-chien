@@ -15,10 +15,10 @@ import type { Gl } from './Gl';
 import type { BanDo, O, OVat } from '../sim/city/BanDo';
 import type { ThanhPho } from '../sim/city/City';
 import { nguoiBatOn, type NguoiVe } from './HieuUngBatOn';
-import { catSprite, nguoiXay, phanXay } from './HieuUngXay';
+import { catSprite, nguoiXay } from './HieuUngXay';
 import type { TienDo } from './TungBuoc';
 import { nguoiTrongDem, type TrangThaiDem } from './NgayDem';
-import { spriteVat } from './LuaLon';
+import { spriteVe, vatVe, xayVe } from './KhaiThac';
 // Hieu ung Thu 1 (khoi, chim, icon, hau ky) di qua day: `CityScene` da cham tran 300 dong.
 export { batDauKhungCoHieuUng, ketThucHieuUng } from './HieuUngThanhPho';
 
@@ -217,7 +217,7 @@ export function veLopVat(
 
   let i = 0;
   if (veNha) {
-    for (const v of banDo.vat) {
+    for (const v of vatVe(banDo, tp)) {
       const sau: number = v.a + v.b + 2 * (v.o - 1);
       while (i < nguoi.length && (nguoi[i] as NguoiVe).a + (nguoi[i] as NguoiVe).b <= sau) {
         const w = nguoi[i] as NguoiVe;
@@ -225,7 +225,7 @@ export function veLopVat(
         i += 1;
       }
       if (muc !== undefined && sau > muc.sau && cheMuc(ve, v.a, v.b, v.ten, muc)) continue;
-      datSprite(ve, v.a, v.b, spriteVat(ve, v, tp), phanXay(ve, v));
+      datSprite(ve, v.a, v.b, spriteVe(ve, v, tp), xayVe(ve, v));
     }
   }
   for (; i < nguoi.length; i += 1) {

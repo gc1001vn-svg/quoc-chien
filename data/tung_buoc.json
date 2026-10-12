@@ -42,6 +42,18 @@
     "gatTu": 0.86,
     "spriteTac": "ruong_lua_3"
   },
+  "_khaiThac": "Buoc 4 khai thac can dan (12/10, ke hoach docs/ke-hoach/2026-10-12-buoc-4-khai-thac-can-dan.md). Chi LOP VE doc - sim chi dem nhip nha THAT SU lam (ThuNha.nhipDaLam). Quanh moi nha co sprite trong bai.nha ve toi da toiDa vat bai.hinh tren o trong PHIA SAU hoac ngang nha (da + db <= 0, khong che nha), cach nha toi da banKinh o, khong duong, khong ai chiem. chuKyNhip: mot vong tinh bang nhip nha that su lam (anh chon ~30 s o 10x mo man = 3.000 nhip) - kho day, thieu hang thi bai dung. Moi nha lech pha theo bam o. [0, chatDen): chat lan luot tung vat - dang chat thi ve bai.chang, chat xong thi mat; [chatDen, trongDen): bai trong; [trongDen, 1): moc lai tu duoi len. Thong doc xay len o nao thi vat o do mat.",
+  "khaiThac": {
+    "chuKyNhip": 3000,
+    "chatDen": 0.7,
+    "trongDen": 0.8,
+    "banKinh": 2,
+    "toiDa": 4,
+    "bai": [
+      { "nha": ["trai_go"], "hinh": ["cay_thong", "cay_soi", "cay_soi_2"], "chang": "cay_kho" },
+      { "nha": ["mo_muoi", "mo_dat_set", "mo_than", "mo_da_voi", "mo_da", "mo_quang"], "hinh": ["da_lon"], "chang": "da_nho" }
+    ]
+  },
   "_ngayDem": "Buoc 2 ngay/dem (05/10, ke hoach docs/ke-hoach/2026-10-05-buoc-2-ngay-dem.md). Chi LOP VE doc - sim khong doi. chuKyNhip: mot ngay = 36.000 nhip = 1 gio game (anh chon 05/10) = 6 phut that o 10x mo man. gioDauChuKy: gio trong ngay luc so nhip chia het cho chuKyNhip - mo man (nhip 36.000) va moi the quyet dinh (dau moi gio game) roi vao gio nay. chieuToi [bat dau toi, toi han], rangSang [bat dau sang, sang han]: gio trong ngay 0..24. mauChieu: mau nhan luc giua hoang hon/binh minh. mauDem: mau nhan luc toi han (khoi diem: bang thu 30/09). tiLeAnNguoi: phan nguoi vac giau khi toi han; heSoNguoiVe: nguoi dang ve nha giau theo ti le nay nhan heSo (giau sau cung). nguongChim, nguongMay: qua muc toi nay thi khong tha chim, tat bong may hau ky. chuKyLapGiay: ?gio=lap chay mot ngay trong so giay that nay (quay clip). toiDaHat: so o rieng trong lo Hat cho den, lua, Zzz.",
   "ngayDem": {
     "chuKyNhip": 36000,
