@@ -6,7 +6,10 @@
  * cho khoang 500-800 muc, xep lai moi khung khong dang ke so voi vai tram walker cua
  * `VeCanh.ts` da xep san.
  */
+import soTho from '../../data/tung_buoc.json';
 import { hexX, hexY, truocSau } from './HexIso';
+import { docCoTat } from './HieuUngThanhPho';
+import { catTren } from './TungBuoc';
 import type { Ve } from './VeCanh';
 import type { BanDoTinh, OTinh, Tinh } from '../sim/campaign/BanDoTinh';
 import type { ChienDich, CongTrinh } from '../sim/campaign/ChienDich';
@@ -17,10 +20,31 @@ interface Muc {
   readonly x: number;
   readonly y: number;
   readonly ten: string;
+  /** Phan nha da moc (Buoc 5); khong co la ve tron. */
+  readonly hien?: number;
+  /** Do chop sang luc vua xay xong. */
+  readonly sang?: number;
 }
 
 /** Co hieu dat lech sang phai bao nhieu phan mot o nen, de khong lut vao mai thanh. */
 const CO_LECH_X = 0.75;
+
+/** Phan cong trinh tinh da moc: `luot` luot, con `conLai`, luot dang chay da qua `phanLuot` (0..1). */
+export function phanDaXay(luot: number, conLai: number, phanLuot: number): number {
+  return Math.min(1, Math.max(0, (luot - conLai + phanLuot) / luot));
+}
+
+/** Do chop sang `giay` giay that sau khi xay xong: tu `sangLoe` giam dan ve 0 trong `loeGiay`. */
+export function sangXong(giay: number): number {
+  const loe: number = soTho.xayTinh.loeGiay;
+  return giay < 0 || giay >= loe ? 0 : soTho.sangLoe * (1 - giay / loe);
+}
+
+let tat: boolean | undefined;
+const tatXay = (): boolean => (tat ??= docCoTat(new URLSearchParams(window.location.search).get('tat')).has('xayTinh'));
+/** O dang xay o khung truoc, va luc (ms) thay no xay xong - de loe sang. Chi lop ve giu, sim khong biet. */
+const dangXayTruoc = new Set<string>();
+const xongLuc = new Map<string, number>();
 
 /**
  * Ve ca ban do.
@@ -28,8 +52,9 @@ const CO_LECH_X = 0.75;
  * @param oChon O dang duoc soi (`<tinhId>#<oXay>`), chuoi rong la khong soi gi. O duoc soi
  *              ve them mot manh dat trong ben duoi cho de nhin ra.
  */
-export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: string): void {
+export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: string, phanLuot: number): void {
   const oPx: number = ve.atlas.oPx();
+  const bayGio: number = performance.now();
   const muc: Muc[] = [];
 
   for (const t of banDo.tinh) {
@@ -42,7 +67,9 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
       if (o.vat !== '') muc.push({ sau: sau + 0.01, x, y, ten: o.vat });
 
       const tren: string = tenTren(t, o, i, cd, oChon);
-      if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren });
+      if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren, sang: sangO(t, o, cd, bayGio) });
+      const moc = tatXay() ? undefined : nhaDangMoc(t, o, cd, phanLuot);
+      if (moc !== undefined) muc.push({ sau: sau + 0.015, x, y, ...moc });
       if (i === 0 && cd.mau(t.id) !== '') {
         muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${cd.mau(t.id)}` });
       }
@@ -50,7 +77,32 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
   }
 
   muc.sort((a: Muc, b: Muc): number => a.sau - b.sau);
-  for (const m of muc) datSprite(ve, m.x, m.y, m.ten);
+  for (const m of muc) datSprite(ve, m.x, m.y, m.ten, m.hien, m.sang);
+}
+
+/** Nha dang moc duoi gian giao cua o dang xay (Buoc 5): sprite nha mau phe, cat theo phan da xay. */
+function nhaDangMoc(t: Tinh, o: OTinh, cd: ChienDich, phanLuot: number): { ten: string; hien: number } | undefined {
+  if (o.oXay < 0 || cd.mau(t.id) === '') return undefined;
+  const tt = cd.oCua(t.id, o.oXay);
+  const c: CongTrinh | undefined = cd.xayDuocGi(t.id).find((x) => x.id === tt.dangXay);
+  return c === undefined ? undefined : { ten: `${c.sprite}_${cd.mau(t.id)}`, hien: phanDaXay(c.luot, tt.conLai, phanLuot) };
+}
+
+/** Do loe cua o xay: thay o vua het `dangXay` ma co `congTrinh` thi ghi luc xong, sang giam dan theo giay that. */
+function sangO(t: Tinh, o: OTinh, cd: ChienDich, bayGio: number): number {
+  if (o.oXay < 0 || tatXay()) return 0;
+  const k = `${t.id}#${String(o.oXay)}`;
+  const tt = cd.oCua(t.id, o.oXay);
+  if (tt.dangXay !== '') {
+    dangXayTruoc.add(k);
+    return 0;
+  }
+  if (dangXayTruoc.delete(k) && tt.congTrinh !== '') xongLuc.set(k, bayGio);
+  const luc: number | undefined = xongLuc.get(k);
+  if (luc === undefined) return 0;
+  const sang: number = sangXong((bayGio - luc) / 1000);
+  if (sang === 0) xongLuc.delete(k);
+  return sang;
 }
 
 /**
@@ -83,7 +135,7 @@ function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): st
 }
 
 /** Xep mot sprite vao lo, neo tai toa do the gioi `(x, y)`. Ngoai man thi bo qua. */
-export function datSprite(ve: Ve, x: number, y: number, ten: string): void {
+export function datSprite(ve: Ve, x: number, y: number, ten: string, hien?: number, sang = 0): void {
   if (!ve.atlas.co(ten)) return;
   const s = ve.atlas.o(ten);
   const x0: number = (x - s.ox - ve.camX) * ve.tiLe + ve.rongDev / 2;
@@ -92,6 +144,9 @@ export function datSprite(ve: Ve, x: number, y: number, ten: string): void {
   const cao: number = s.h * ve.tiLe;
   if (x0 + rong < 0 || x0 > ve.rongDev || y0 + cao < 0 || y0 > ve.caoDev) return;
   const [u0, v0, u1, v1] = ve.atlas.uv(s);
-  ve.gl.them(s.trang, x0, y0, rong, cao, u0, v0, u1, v1);
+  // Nha tinh dang xay (Buoc 5): cat phan chua moc nhu nha thanh pho buoc 1; sang < 0,5 cong vao trang (Shader.ts).
+  const [yc, vc] = hien === undefined
+    ? [y0, v0] : catTren(hien, y0, y0 + cao, y0 + (s.oy - soTho.giuDay * ve.atlas.oPx()) * ve.tiLe, v0, v1);
+  ve.gl.them(s.trang + sang, x0, yc, rong, y0 + cao - yc, u0, vc, u1, v1);
   ve.dem += 1;
 }

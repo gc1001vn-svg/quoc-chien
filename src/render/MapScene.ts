@@ -174,7 +174,7 @@ export async function chayCanhBanDo(goc: HTMLElement, theGioi: TheGioiGame): Pro
     };
 
     gl.batDauKhung();
-    veBanDoTinh(ve, banDo, cd, oChon);
+    veBanDoTinh(ve, banDo, cd, oChon, donLuot / CAU_HINH.giay_moi_luot);
     const lenhVe: number = gl.ketThucKhung();
 
     // Nhan ten tinh la the DOM nen dat theo CSS px, khong theo diem anh khung ve.
