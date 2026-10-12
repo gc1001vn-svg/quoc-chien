@@ -54,8 +54,8 @@
       { "nha": ["mo_muoi", "mo_dat_set", "mo_than", "mo_da_voi", "mo_da", "mo_quang"], "hinh": ["da_lon"], "chang": "da_nho" }
     ]
   },
-  "_xayTinh": "Buoc 5 ban do tinh xay theo luot (12/10, ke hoach docs/ke-hoach/2026-10-12-buoc-5-xay-tinh-theo-luot.md). Chi LOP VE doc - sim khong doi. O dang xay ve nha cat tu duoi len theo (luot - conLai + phan luot dang chay) / luot, gian giao de len; muc giu day (giuDay) va do sang loe (sangLoe) dung chung so buoc 1 o tren. loeGiay: o vua xay xong chop sang trong so giay THAT nay, giam dan ve 0.",
-  "xayTinh": { "loeGiay": 0.5 },
+  "_xayTinh": "Buoc 5 ban do tinh xay theo luot (12/10, ke hoach docs/ke-hoach/2026-10-12-buoc-5-xay-tinh-theo-luot.md). Chi LOP VE doc - sim khong doi. O dang xay ve nha cat tu duoi len theo (luot - conLai + phan luot dang chay) / luot tren manh dat, moc tu chan nha (diem neo sprite); do sang loe (sangLoe) dung chung so buoc 1 o tren. loeGiay: o vua xay xong chop sang trong so giay THAT nay, giam dan ve 0. Anh chon 12/10: bo gian giao (dang xay chi con manh dat, nha moc tren do); sangChon: o dang chon sang len chung nay thay cho gian giao (shader nhan duoi 0,5).",
+  "xayTinh": { "loeGiay": 0.5, "sangChon": 0.2 },
   "_ngayDem":"Buoc 2 ngay/dem (05/10, ke hoach docs/ke-hoach/2026-10-05-buoc-2-ngay-dem.md). Chi LOP VE doc - sim khong doi. chuKyNhip: mot ngay = 36.000 nhip = 1 gio game (anh chon 05/10) = 6 phut that o 10x mo man. gioDauChuKy: gio trong ngay luc so nhip chia het cho chuKyNhip - mo man (nhip 36.000) va moi the quyet dinh (dau moi gio game) roi vao gio nay. chieuToi [bat dau toi, toi han], rangSang [bat dau sang, sang han]: gio trong ngay 0..24. mauChieu: mau nhan luc giua hoang hon/binh minh. mauDem: mau nhan luc toi han (khoi diem: bang thu 30/09). tiLeAnNguoi: phan nguoi vac giau khi toi han; heSoNguoiVe: nguoi dang ve nha giau theo ti le nay nhan heSo (giau sau cung). nguongChim, nguongMay: qua muc toi nay thi khong tha chim, tat bong may hau ky. chuKyLapGiay: ?gio=lap chay mot ngay trong so giay that nay (quay clip). toiDaHat: so o rieng trong lo Hat cho den, lua, Zzz.",
   "ngayDem": {
     "chuKyNhip": 36000,

@@ -67,9 +67,10 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
       if (o.vat !== '') muc.push({ sau: sau + 0.01, x, y, ten: o.vat });
 
       const tren: string = tenTren(t, o, i, cd, oChon);
-      if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren, sang: sangO(t, o, cd, bayGio) });
+      // O dang chon sang len thay cho gian giao (anh chon 12/10); `?tat=xayTinh` giu gian giao nhu cu.
+      const chon: number = !tatXay() && o.oXay >= 0 && oChon === `${t.id}#${String(o.oXay)}` ? soTho.xayTinh.sangChon : 0;
+      if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren, sang: Math.max(sangO(t, o, cd, bayGio), chon) });
       const moc = tatXay() ? undefined : nhaDangMoc(t, o, cd, phanLuot);
-      // Nha de TRUOC gian giao: lang, cho nho hon gian giao, ve sau no thi bi che kin toi luc xong (anh bao 12/10).
       if (moc !== undefined) muc.push({ sau: sau + 0.025, x, y, ...moc });
       if (i === 0 && cd.mau(t.id) !== '') {
         muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${cd.mau(t.id)}` });
@@ -81,7 +82,7 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
   for (const m of muc) datSprite(ve, m.x, m.y, m.ten, m.hien, m.sang);
 }
 
-/** Nha dang moc truoc gian giao cua o dang xay (Buoc 5): sprite nha mau phe, cat theo phan da xay. */
+/** Nha dang moc tren manh dat cua o dang xay (Buoc 5): sprite nha mau phe, cat theo phan da xay. */
 function nhaDangMoc(t: Tinh, o: OTinh, cd: ChienDich, phanLuot: number): { ten: string; hien: number } | undefined {
   if (o.oXay < 0 || cd.mau(t.id) === '') return undefined;
   const tt = cd.oCua(t.id, o.oXay);
@@ -110,7 +111,7 @@ function sangO(t: Tinh, o: OTinh, cd: ChienDich, bayGio: number): number {
  * Sprite dat TREN mot o hex, ngoai lop nen va vat dia hinh.
  *
  * O thu phu (i = 0): thu do la toa thanh, tinh thuong la nha lon, tinh trung lap la ruong.
- * O xay dung: trong thi la manh dat, dang xay la gian giao, xay xong la cong trinh mang
+ * O xay dung: trong hay dang xay thi la manh dat (Buoc 5; `?tat=xayTinh` la gian giao), xay xong la cong trinh mang
  * mau phe. Tinh trung lap chua co phe nen o xay cua no luon la manh dat - goi KayKit
  * khong co nha mau trung lap, chi co tuong, cau, gian giao va ruong.
  */
@@ -123,7 +124,8 @@ function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): st
   if (o.oXay < 0) return '';
 
   const tt = cd.oCua(t.id, o.oXay);
-  if (tt.dangXay !== '') return 'gian_giao';
+  // Dang xay chi con manh dat, nha moc tren do (`nhaDangMoc`) - gian giao KayKit nhin nhu nha la (anh bao 12/10).
+  if (tt.dangXay !== '') return tatXay() ? 'gian_giao' : 'dat_trong';
   if (tt.congTrinh !== '') {
     const c: CongTrinh | undefined = cd.xayDuocGi(t.id).find((x) => x.id === tt.congTrinh);
     if (c === undefined || mau === '') return 'dat_trong';
@@ -132,7 +134,7 @@ function tenTren(t: Tinh, o: OTinh, i: number, cd: ChienDich, oChon: string): st
   // O trong: chi ve manh dat o tinh CUA MINH. Ve het 185 o xay cua ca ban do thi ca vung
   // thanh mot mang nau, khong con nhin ra dau la dat minh xay duoc - da chup thu 11/09.
   if (cd.chu(t.id) !== cd.nuocCuaTa()) return '';
-  return oChon === `${t.id}#${String(o.oXay)}` ? 'gian_giao' : 'dat_trong';
+  return oChon === `${t.id}#${String(o.oXay)}` && tatXay() ? 'gian_giao' : 'dat_trong';
 }
 
 /** Xep mot sprite vao lo, neo tai toa do the gioi `(x, y)`. Ngoai man thi bo qua. */
@@ -147,7 +149,7 @@ export function datSprite(ve: Ve, x: number, y: number, ten: string, hien?: numb
   const [u0, v0, u1, v1] = ve.atlas.uv(s);
   // Nha tinh dang xay (Buoc 5): cat phan chua moc nhu nha thanh pho buoc 1; sang < 0,5 cong vao trang (Shader.ts).
   const [yc, vc] = hien === undefined
-    ? [y0, v0] : catTren(hien, y0, y0 + cao, y0 + (s.oy - soTho.giuDay * ve.atlas.oPx()) * ve.tiLe, v0, v1);
+    ? [y0, v0] : catTren(hien, y0, y0 + cao, y0 + s.oy * ve.tiLe, v0, v1); // moc tu chan nha (diem neo): o luc giac to, giuDay giu gan het nha
   ve.gl.them(s.trang + sang, x0, yc, rong, y0 + cao - yc, u0, vc, u1, v1);
   ve.dem += 1;
 }
