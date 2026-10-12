@@ -6,7 +6,7 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 12/10/2026 (lần 49 — bước 5 bản đồ tỉnh xây theo lượt, kế hoạch anh duyệt 12/10; đã gộp `main`; 2 hình lúa xanh bước 3 vẫn chưa nướng).
+Cập nhật: 12/10/2026 (lần 49 — bước 5 bản đồ tỉnh xây theo lượt, anh đo 60 fps, "ok"; đã gộp `main`; 2 hình lúa xanh bước 3 vẫn chưa nướng).
 
 ## 1. Đang ở đâu
 
@@ -43,7 +43,7 @@ Cập nhật: 12/10/2026 (lần 49 — bước 5 bản đồ tỉnh xây theo l�
 
 ## 2. Số đo mới nhất
 
-**Bước 5, đo 12/10 (máy ảo):** `npm run do` xanh · test +2 · lệnh vẽ bản đồ vẫn 1. **Chưa đo iPhone.**
+**Bước 5, đo 12/10 (máy ảo):** `npm run do` xanh · test +2 · lệnh vẽ bản đồ vẫn 1. **iPhone 60 fps** (anh 12/10).
 
 **Bước 4, đo 12/10 (máy ảo):** `npm run do` xanh (gồm `luat:sau`) · test +4 · `sim:van` y hệt `main` trừ cột giây · 60 vật trên
 16 nhà · lệnh vẽ vẫn 3. **iPhone 59 fps** (anh 12/10).
@@ -79,15 +79,13 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 Anh chốt 04/10: không chỉ lúa và xây nhà, mọi thứ đều từng bước; mẫu phải đồ hoạ tương đương (Viking Rise, Happy Citizens —
 **đừng lấy game đồ hoạ thấp làm mẫu nữa**). Mẫu: `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 3. **Anh duyệt kế hoạch 04/10:**
 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — chạy luôn nhưng xây nhanh · thứ tự 1 → 6 · giàn giáo vẽ bằng hạt.
-Bước 1–4 anh duyệt (59–60 fps); bước 5 chờ anh xem; bước 6 (mở đất, sương mù) để cuối, chỉ làm nếu anh còn muốn.
+Bước 1–5 anh duyệt (59–60 fps); bước 6 (mở đất, sương mù) để cuối, chỉ làm nếu anh còn muốn.
 
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
 
-### ⏳ Bước 5 — anh mở bản đồ tỉnh (nút "Bản đồ tỉnh"), bấm một ô xây ở tỉnh mình, chọn công trình, xem nó mọc; báo fps (≥ 58) và "ok"/chỗ chê
-
-### ✅ Đã xong: bước 4 khai thác cạn dần (59 fps, "ok" — 12/10) · bước 3 lúa lớn dần phần mã (59 fps, "ruộng ok" — 12/10) · ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
+### ✅ Đã xong: bước 5 xây tỉnh theo lượt (60 fps, "ok" — 12/10) · bước 4 khai thác cạn dần (59 fps, "ok" — 12/10) · bước 3 lúa lớn dần phần mã (59 fps, "ruộng ok" — 12/10) · ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
 Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
@@ -116,7 +114,7 @@ mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi b�
 
 **PHIÊN SAU: NƯỚNG 2 HÌNH XANH bước 3** (nhật ký lần 47): `lay.mjs quaternius ultimatefantasyrts --chi obj` — kiểm
 4 file `Farm_Dirt_Level1`, `Farm_FirstAge_Level{1,2,3}_Wheat` không phải HTML (`head -c 20`), rồi `node tools/nuong_sprite.mjs co_dai`,
-chụp `?o=91,27&zoom=1.6&luaTien=0.2` / `0.45`, chỉnh `mau` nếu xỉn. Drive vẫn chặn → báo anh. Anh ok bước 5 thì hỏi anh có muốn bước 6 (mở đất, sương mù — kế hoạch 04/10 ghi "chỉ làm nếu anh còn muốn"). Chụp bước 5:
+chụp `?o=91,27&zoom=1.6&luaTien=0.2` / `0.45`, chỉnh `mau` nếu xỉn. Drive vẫn chặn → báo anh. Bước 5 anh ok 12/10 → hỏi anh có muốn bước 6 (mở đất, sương mù — kế hoạch 04/10 ghi "chỉ làm nếu anh còn muốn"). Chụp bước 5:
  mở `?man=ban-do&tinh=1`, bấm nút "5 lượt", cuộn để phóng to, chụp mỗi 1,5 s (nhật ký lần 49).
 Bẫy ~120 nghìn đỉnh
 một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,

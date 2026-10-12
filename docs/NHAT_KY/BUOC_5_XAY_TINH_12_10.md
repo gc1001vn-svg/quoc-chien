@@ -22,3 +22,4 @@ Anh chọn: mượt theo giây · loé sáng ~0,5 s · không bụi, không que 
   giáo** lúc xây (chỉ còn mảnh đất, nhà mọc trên đó) · **ô đang chọn sáng lên** (`xayTinh.sangChon` 0,2) thay giàn giáo.
   Nhà mọc từ điểm neo (chân nhà), không dùng `giuDay`: ô lục giác to nên `giuDay` giữ gần hết nhà, 0,3 s đã thấy đủ.
   `?tat=xayTinh` vẫn về giàn giáo như cũ. Ảnh: `anh_chup/lang2_bang.png` (ô chọn), `lang3_bang.png` (làng mọc).
+- **Anh đo 12/10 (bản bỏ giàn giáo):** 60 fps, "ok".
