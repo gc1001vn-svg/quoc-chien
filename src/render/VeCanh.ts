@@ -18,6 +18,7 @@ import { nguoiBatOn, type NguoiVe } from './HieuUngBatOn';
 import { catSprite, nguoiXay, phanXay } from './HieuUngXay';
 import type { TienDo } from './TungBuoc';
 import { nguoiTrongDem, type TrangThaiDem } from './NgayDem';
+import { spriteVat } from './LuaLon';
 // Hieu ung Thu 1 (khoi, chim, icon, hau ky) di qua day: `CityScene` da cham tran 300 dong.
 export { batDauKhungCoHieuUng, ketThucHieuUng } from './HieuUngThanhPho';
 
@@ -224,7 +225,7 @@ export function veLopVat(
         i += 1;
       }
       if (muc !== undefined && sau > muc.sau && cheMuc(ve, v.a, v.b, v.ten, muc)) continue;
-      datSprite(ve, v.a, v.b, v.ten, phanXay(ve, v));
+      datSprite(ve, v.a, v.b, spriteVat(ve, v, tp), phanXay(ve, v));
     }
   }
   for (; i < nguoi.length; i += 1) {

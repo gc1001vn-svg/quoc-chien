@@ -26,6 +26,22 @@
   "loe": { "banKinh": [20, 90], "mau": [1.0, 0.95, 0.78], "doDac": 0.55 },
   "_tho": "Tho dung o o duong truoc cong, lui vao phia nha phan 'lui' cua mot o.",
   "tho": { "lui": 0.45 },
+  "_lua": "Buoc 3 lua lon dan (12/10, ke hoach docs/ke-hoach/2026-10-12-buoc-3-lua-lon-dan.md). Chi LOP VE doc - sim khong doi. sprite: ten ruong trong ban do. chuKyNhip: mot mua (anh chon ~20 s o 10x mo man = 2.000 nhip). Moi ruong lech pha theo bam o. giaiDoan: tu phan truoc toi phan 'den' cua mua ve sprite nay - cay, ma, lua xanh, lua vang, gat (vang du -> 2/3 -> 1/3 -> trong). gatTu, spriteTac: tu phan gatTu (bat dau gat) ma kho rieng day (nhipTac > 0) thi giu spriteTac - lua chin dung cho gat. Chi ap luc gat: do 12/10 moi ruong bat/tat tac 30-135 lan mot gio game, ap ca mua thi ruong nhay hinh vai giay mot lan. Atlas thieu sprite nao trong day thi ve 'sprite' nhu cu (me khac co dai).",
+  "lua": {
+    "sprite": "ruong",
+    "chuKyNhip": 2000,
+    "giaiDoan": [
+      { "den": 0.12, "sprite": "ruong_trong" },
+      { "den": 0.32, "sprite": "ruong_ma" },
+      { "den": 0.58, "sprite": "ruong_lua_xanh" },
+      { "den": 0.86, "sprite": "ruong_lua_3" },
+      { "den": 0.91, "sprite": "ruong_lua_2" },
+      { "den": 0.96, "sprite": "ruong_lua_1" },
+      { "den": 1, "sprite": "ruong_trong" }
+    ],
+    "gatTu": 0.86,
+    "spriteTac": "ruong_lua_3"
+  },
   "_ngayDem": "Buoc 2 ngay/dem (05/10, ke hoach docs/ke-hoach/2026-10-05-buoc-2-ngay-dem.md). Chi LOP VE doc - sim khong doi. chuKyNhip: mot ngay = 36.000 nhip = 1 gio game (anh chon 05/10) = 6 phut that o 10x mo man. gioDauChuKy: gio trong ngay luc so nhip chia het cho chuKyNhip - mo man (nhip 36.000) va moi the quyet dinh (dau moi gio game) roi vao gio nay. chieuToi [bat dau toi, toi han], rangSang [bat dau sang, sang han]: gio trong ngay 0..24. mauChieu: mau nhan luc giua hoang hon/binh minh. mauDem: mau nhan luc toi han (khoi diem: bang thu 30/09). tiLeAnNguoi: phan nguoi vac giau khi toi han; heSoNguoiVe: nguoi dang ve nha giau theo ti le nay nhan heSo (giau sau cung). nguongChim, nguongMay: qua muc toi nay thi khong tha chim, tat bong may hau ky. chuKyLapGiay: ?gio=lap chay mot ngay trong so giay that nay (quay clip). toiDaHat: so o rieng trong lo Hat cho den, lua, Zzz.",
   "ngayDem": {
     "chuKyNhip": 36000,
