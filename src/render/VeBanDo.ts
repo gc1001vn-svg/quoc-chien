@@ -69,7 +69,8 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
       const tren: string = tenTren(t, o, i, cd, oChon);
       if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren, sang: sangO(t, o, cd, bayGio) });
       const moc = tatXay() ? undefined : nhaDangMoc(t, o, cd, phanLuot);
-      if (moc !== undefined) muc.push({ sau: sau + 0.015, x, y, ...moc });
+      // Nha de TRUOC gian giao: lang, cho nho hon gian giao, ve sau no thi bi che kin toi luc xong (anh bao 12/10).
+      if (moc !== undefined) muc.push({ sau: sau + 0.025, x, y, ...moc });
       if (i === 0 && cd.mau(t.id) !== '') {
         muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${cd.mau(t.id)}` });
       }
@@ -80,7 +81,7 @@ export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: stri
   for (const m of muc) datSprite(ve, m.x, m.y, m.ten, m.hien, m.sang);
 }
 
-/** Nha dang moc duoi gian giao cua o dang xay (Buoc 5): sprite nha mau phe, cat theo phan da xay. */
+/** Nha dang moc truoc gian giao cua o dang xay (Buoc 5): sprite nha mau phe, cat theo phan da xay. */
 function nhaDangMoc(t: Tinh, o: OTinh, cd: ChienDich, phanLuot: number): { ten: string; hien: number } | undefined {
   if (o.oXay < 0 || cd.mau(t.id) === '') return undefined;
   const tt = cd.oCua(t.id, o.oXay);
