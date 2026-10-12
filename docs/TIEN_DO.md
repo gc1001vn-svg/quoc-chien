@@ -6,10 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 11/10/2026 (lần 46 — ruộng chiếm 2×2 ô, kế hoạch anh duyệt 11/10; đã gộp `main`).
+Cập nhật: 12/10/2026 (lần 47 — bước 3 lúa lớn dần, kế hoạch anh duyệt 12/10; đã gộp `main`, CHƯA nướng 2 hình xanh).
 
 ## 1. Đang ở đâu
 
+- **12/10 (lần 47): bước 3 "lúa lớn dần" XONG PHẦN MÃ** — mùa ~20 s ở 10×: cày → mạ → lúa xanh → vàng → gặt; kho đầy thì
+  giữ lúa vàng lúc gặt. **Chưa nướng `ruong_ma`, `ruong_lua_xanh`** (Drive hết hạn mức) → giờ hiện cày → vàng → gặt.
+  `docs/NHAT_KY/BUOC_3_LUA_LON_DAN_12_10.md`.
 - **11/10 (lần 46): ruộng chiếm 2×2 ô XONG phần máy** — `"o": 2` trong `data/`, đặt nhà xét cả khối (TP10, TP12 xét cả
   khối), ruộng 5 mẻ lệch +0,5 ô về tâm khối, cổ đại to gấp đôi. Anh đo 12/10: **59 fps**, "ruộng ok". `docs/NHAT_KY/RUONG_2X2_11_10.md`.
 - **10/10 (lần 44–45): art bible bước 3 XONG phần máy** — mẻ `co_dai` 6 → **3 tay vẽ** (KayKit công trình · Quaternius ruộng,
@@ -33,6 +36,8 @@ Cập nhật: 11/10/2026 (lần 46 — ruộng chiếm 2×2 ô, kế hoạch anh
   bản mới — dặn anh để yên ~1 phút. Cách cho anh xem: `docs/DAU_PHIEN.md` mục G.
 
 ## 2. Số đo mới nhất
+
+**Bước 3, đo 12/10 (máy ảo):** `npm run do` xanh · test +6 · ruộng bật/tắt tắc 31–135 lần một giờ game (tắc 13–79 %).
 
 **Bước 2, đo 06/10 (máy ảo):** khung đo art bible — bản cũ · `?gio=12` · `?tat=dem` cùng 0,48 · 0,56 · 0,32 · lệnh vẽ vẫn 3 ·
 `sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. **Fps iPhone 59** (anh lướt 10/10, cả đêm `?gio=23`).
@@ -70,6 +75,8 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 
 ## 3. Việc của chủ dự án
+
+### ⏳ Bước 3 lúa lớn dần (12/10): mở Pages bằng Safari, xem ruộng đổi chặng, đo fps ≥ 58
 
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
@@ -111,9 +118,9 @@ gc1001vn-svg/quoc-chien origin/main 1500` + `actions_run_trigger` `anh-ios.yml` 
 **Anh gửi ảnh game nữa thì làm như lần 34:** nhận ra (nhìn ảnh + `WebSearch`) → có bản web thì chơi bằng `browser_*` (hiện ở phiên
 mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi bảng ảnh + ghi chú.
 
-**PHIÊN SAU: BƯỚC 3 "lúa lớn dần"** (ruộng 2×2 xong 11/10, `sim:van` có cache — đổi `src/sim/` thì xoá `.cache/sim_van/`) theo kế hoạch ANH ĐÃ DUYỆT 04/10
-`docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — hình đã nướng sẵn: `ruong_trong`, `ruong_lua_1..3`. **Bẫy:** Level 1–3 của
-RTS là luống gieo dần ⅓ → ⅔ → đủ, cùng chiều cao — không phải cây lớn; cần "mạ, lúa xanh" thì nhuộm `mau` (nhật ký lần 45).
+**PHIÊN SAU: NƯỚNG 2 HÌNH XANH bước 3** (nhật ký lần 47): `lay.mjs quaternius ultimatefantasyrts --chi obj` — kiểm
+4 file `Farm_Dirt_Level1`, `Farm_FirstAge_Level{1,2,3}_Wheat` không phải HTML (`head -c 20`), rồi `node tools/nuong_sprite.mjs co_dai`,
+chụp `?o=91,27&zoom=1.6&luaTien=0.2` / `0.45`, chỉnh `mau` nếu xỉn. Drive vẫn chặn → báo anh. Xong thì bước 4 (kế hoạch 04/10).
 Bẫy ~120 nghìn đỉnh
 một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,
 `?gio=23`, `?gio=lap` (`docs/NHAT_KY/BUOC_{1,2}_*.md`); `npm run quay` tự bấm thẻ đầu ván nên dùng `zoom=0.6`. Anh luôn mở bằng
