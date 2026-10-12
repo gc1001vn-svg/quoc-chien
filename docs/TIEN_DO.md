@@ -6,10 +6,13 @@
 > Lịch sử trước 29/09: `docs/NHAT_KY/TIEN_DO_TRUOC_29_09.md` · nợ chưa chặn: `docs/NO_KY_THUAT.md`
 > · khoá, host mạng, quyết định về môi trường: `docs/MOI_TRUONG.md`.
 
-Cập nhật: 12/10/2026 (lần 47 — bước 3 lúa lớn dần, kế hoạch anh duyệt 12/10; đã gộp `main`, CHƯA nướng 2 hình xanh).
+Cập nhật: 12/10/2026 (lần 48 — bước 4 khai thác cạn dần, kế hoạch anh duyệt 12/10; đã gộp `main`; 2 hình lúa xanh bước 3 vẫn chưa nướng).
 
 ## 1. Đang ở đâu
 
+- **12/10 (lần 48): bước 4 "khai thác cạn dần" XONG phần máy** — quanh trại gỗ/mỏ có bãi 2–4 cây/đá (hình sẵn có, 0 hình mới)
+  thưa dần theo nhịp nhà thật sự làm (kho đầy thì đứng): cây → cây khô → mất, đá lớn → đá nhỏ → mất, trống, mọc lại; vòng
+  ~30 s ở 10×. Chỉ đổi hình. `?tat=khaiThac`. `docs/NHAT_KY/BUOC_4_KHAI_THAC_12_10.md`.
 - **12/10 (lần 47): bước 3 "lúa lớn dần" XONG PHẦN MÃ** — mùa ~20 s ở 10×: cày → mạ → lúa xanh → vàng → gặt; kho đầy thì
   giữ lúa vàng lúc gặt. **Chưa nướng `ruong_ma`, `ruong_lua_xanh`** (Drive hết hạn mức) → giờ hiện cày → vàng → gặt.
   `docs/NHAT_KY/BUOC_3_LUA_LON_DAN_12_10.md`.
@@ -37,6 +40,9 @@ Cập nhật: 12/10/2026 (lần 47 — bước 3 lúa lớn dần, kế hoạch 
 
 ## 2. Số đo mới nhất
 
+**Bước 4, đo 12/10 (máy ảo):** `npm run do` xanh (gồm `luat:sau`) · test +4 · `sim:van` y hệt `main` trừ cột giây · 60 vật trên
+16 nhà · lệnh vẽ vẫn 3. **Chưa đo iPhone.**
+
 **Bước 3, đo 12/10 (máy ảo):** **iPhone 59 fps** (anh 12/10) · `npm run do` xanh · test +6 · ruộng bật/tắt tắc 31–135 lần một giờ game (tắc 13–79 %).
 
 **Bước 2, đo 06/10 (máy ảo):** khung đo art bible — bản cũ · `?gio=12` · `?tat=dem` cùng 0,48 · 0,56 · 0,32 · lệnh vẽ vẫn 3 ·
@@ -47,12 +53,6 @@ Cập nhật: 12/10/2026 (lần 47 — bước 3 lúa lớn dần, kế hoạch 
 
 **Ruộng 2×2, đo 11/10 (máy ảo):** luật bất biến 50 hạt xanh · test 625 → 626 · `sim:van` DAT nhưng đổi: `khoa_hoc` **5/5 → 4/5**
 (hạt 20260926 mất thủ đô), `ngoai_giao` thắng giờ 72 → 96 · atlas cổ đại 2× 86,7 % + trang 2 3,5 %, 1× 23,0 %; 4 mẻ khác chỉ `ruong` đổi. **iPhone 59 fps** (anh 12/10).
-
-**Bảng nông trại 2, đo 05/10 (chỉ điểm ảnh sprite):** sáng · bão hoà — ruộng 0,54 · 0,61 → 0,35–0,44 · 0,56–0,66; trại lợn
-0,59 · 0,36 → 0,40 · 0,40; trại cừu 0,63 · 0,35 → 0,50 · 0,53. Bản mới tối hơn vì đất sẫm (mốc G).
-
-**Bước 1, đo 04/10 (máy ảo):** lệnh vẽ thành phố vẫn 3 · `sim:thu`, `sim:van` y hệt trước (mô phỏng chỉ ghi thêm nhịp khởi công)
-· test 606 → 613 · TP16 bản sâu 50 hạt 19 s. **iPhone 60 fps** (anh đo 05/10, bản 05/10 01:26).
 
 **Đồ nghề đợt 7, đo 09/10 (máy ảo):** `chup:man` 5,3–5,8 → **3,5–3,7 s/ảnh**, ảnh y hệt · người chấm Haiku khớp anh **4/5** ảnh cũ
 (`docs/THANG_CHAM_HINH.md`) · knip: **0 hàm chết** trong `src/` · Stryker 4 thư mục nhỏ **61 %** (cận dưới, nhật ký). Lần 35, 32: nhật ký cùng tên.
@@ -83,11 +83,13 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 Anh chốt 04/10: không chỉ lúa và xây nhà, mọi thứ đều từng bước; mẫu phải đồ hoạ tương đương (Viking Rise, Happy Citizens —
 **đừng lấy game đồ hoạ thấp làm mẫu nữa**). Mẫu: `docs/NHAT_KY/NHAN_GAME_TU_ANH_04_10.md` phần 3. **Anh duyệt kế hoạch 04/10:**
 `docs/ke-hoach/2026-10-04-moi-thu-tung-buoc.md` — chạy luôn nhưng xây nhanh · thứ tự 1 → 6 · giàn giáo vẽ bằng hạt.
-Bước 1 xong, anh duyệt 05/10 (60 fps, "ưng", không thấy que đè); bước 2–6 chưa làm.
+Bước 1–3 anh duyệt (59–60 fps); bước 4 chờ anh xem; bước 5–6 chưa làm.
 
 ### ⏳ Thành phố còn cần kho mới không — anh bảo "để sau" (04/10)
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
+
+### ⏳ Bước 4 khai thác cạn dần — anh mở link Pages, xem quanh trại gỗ/mỏ, báo fps (≥ 58) và "ok"/chỗ chê
 
 ### ✅ Đã xong: bước 3 lúa lớn dần phần mã (59 fps, "ruộng ok" — 12/10) · ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
@@ -118,7 +120,8 @@ mới, kiểm 04/10) → không có thì xem video YouTube qua Gemini, gửi b�
 
 **PHIÊN SAU: NƯỚNG 2 HÌNH XANH bước 3** (nhật ký lần 47): `lay.mjs quaternius ultimatefantasyrts --chi obj` — kiểm
 4 file `Farm_Dirt_Level1`, `Farm_FirstAge_Level{1,2,3}_Wheat` không phải HTML (`head -c 20`), rồi `node tools/nuong_sprite.mjs co_dai`,
-chụp `?o=91,27&zoom=1.6&luaTien=0.2` / `0.45`, chỉnh `mau` nếu xỉn. Drive vẫn chặn → báo anh. Xong thì bước 4 (kế hoạch 04/10).
+chụp `?o=91,27&zoom=1.6&luaTien=0.2` / `0.45`, chỉnh `mau` nếu xỉn. Drive vẫn chặn → báo anh. Anh ok bước 4 thì bước 5 (kế hoạch 04/10:
+ bản đồ chiến dịch vẽ giàn giáo theo lượt). Chụp bước 4: `CAO=760` + `?o=89,44&zoom=1.8&khaiThacTien=<0..1>` (mỏ `?o=14,47`).
 Bẫy ~120 nghìn đỉnh
 một hình: `docs/NHAT_KY/ART_BIBLE_B2_05_10.md`. Chụp, quay theo nhịp: `?xay=nha_dan&xayTien=0.45`,
 `?gio=23`, `?gio=lap` (`docs/NHAT_KY/BUOC_{1,2}_*.md`); `npm run quay` tự bấm thẻ đầu ván nên dùng `zoom=0.6`. Anh luôn mở bằng
