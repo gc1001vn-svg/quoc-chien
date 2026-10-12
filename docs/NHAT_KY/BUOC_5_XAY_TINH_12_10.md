@@ -13,3 +13,8 @@ Anh chọn: mượt theo giây · loé sáng ~0,5 s · không bụi, không que 
 - **Nhìn thấy:** trại lính to hơn giàn giáo nên phần thấy mọc là mái nhô lên khỏi giàn giáo; đường cắt ngang thẳng như
   nhà thành phố bước 1. Loé rõ ở khung xong.
 - **Chưa:** anh đo iPhone ≥ 58 fps.
+- **Anh đo 12/10: 60 fps, nhưng hỏi "sao tự nhiên có cái hình kia trước"** — lỗi: nhà vẽ SAU giàn giáo, làng/chợ nhỏ hơn
+  giàn giáo nên bị che kín tới lúc xong (chỉ trại lính to mới lộ mái). Đo giữa lúc xây làng (5 s): bản lỗi lộ 601 điểm
+  ảnh nhà so với `?tat=xayTinh`, bản sửa (nhà đè trước giàn giáo) 4.421. Giàn giáo còn là dấu "ô đang chọn" (có từ
+  Phase 7) nên hiện ngay khi chạm ô trống, trước khi chọn công trình. Bẫy: script chụp gửi mã vào trang thì biến Node
+  (`process.env`) phải nội suy `${…}`, không thì nút không bấm mà hai ảnh vẫn "giống nhau" — trông như bắt được lỗi.

@@ -11,7 +11,7 @@ Cập nhật: 12/10/2026 (lần 49 — bước 5 bản đồ tỉnh xây theo l�
 ## 1. Đang ở đâu
 
 - **12/10 (lần 49): bước 5 "bản đồ tỉnh xây theo lượt" XONG phần máy** — công trình tỉnh đang xây mọc dần từ dưới lên
-  trong giàn giáo, mượt theo giây tới hết lượt cuối, xong loé sáng 0,5 s. Chỉ đổi hình. `?tat=xayTinh`.
+  trong giàn giáo, mượt theo giây tới hết lượt cuối, xong loé sáng 0,5 s. Chỉ đổi hình. `?tat=xayTinh`. Sửa 12/10: nhà nhỏ bị giàn giáo che (anh báo).
   `docs/NHAT_KY/BUOC_5_XAY_TINH_12_10.md`.
 - **12/10 (lần 48): bước 4 "khai thác cạn dần" XONG phần máy** — quanh trại gỗ/mỏ có bãi 2–4 cây/đá (hình sẵn có, 0 hình mới)
   thưa dần theo nhịp nhà thật sự làm (kho đầy thì đứng): cây → cây khô → mất, đá lớn → đá nhỏ → mất, trống, mọc lại; vòng
