@@ -17,3 +17,6 @@ Anh chọn: chỉ đổi hình · một vòng ~30 s ở 10× · dùng lại hìn
 - **Nhìn thấy:** `cay_kho` cao, sẫm hơn cây xanh nên lúc "đang chặt" nổi bật; lúc mọc lại cây bị cắt ngang thân
   (giống nhà mọc bước 1). Đá trang trí sẵn có vẫn nằm cạnh mỏ lúc bãi trống.
 - **Chưa:** anh đo iPhone ≥ 58 fps. Hai hình lúa xanh bước 3 vẫn chưa nướng.
+- **Sơ suất:** đẩy `main` 03e2f53 khi thước `test` HỎNG — đọc "17/18 thước đạt · 1 bỏ qua" tưởng là xanh (18 = 17 đạt + 1
+  hỏng; bỏ qua không tính vào mẫu). `tests/AiGoi.test.ts` ghim số dòng nơi gọi `doi` trong `Buildings.ts`, thêm 4 dòng
+  là lệch. Sửa ở d65239d, CI 03e2f53 đỏ ~3 phút, Pages vẫn lên (Deploy không chạy test). Đọc dòng `HONG`, đừng đọc tổng.
