@@ -18,3 +18,7 @@ Anh chọn: mượt theo giây · loé sáng ~0,5 s · không bụi, không que 
   ảnh nhà so với `?tat=xayTinh`, bản sửa (nhà đè trước giàn giáo) 4.421. Giàn giáo còn là dấu "ô đang chọn" (có từ
   Phase 7) nên hiện ngay khi chạm ô trống, trước khi chọn công trình. Bẫy: script chụp gửi mã vào trang thì biến Node
   (`process.env`) phải nội suy `${…}`, không thì nút không bấm mà hai ảnh vẫn "giống nhau" — trông như bắt được lỗi.
+- **Anh xem lại 12/10: "vẫn thế"** — nhà đã đè trước, nhưng khung gỗ KayKit (hai mái vàng) nhìn như nhà lạ. Anh chọn: **bỏ giàn
+  giáo** lúc xây (chỉ còn mảnh đất, nhà mọc trên đó) · **ô đang chọn sáng lên** (`xayTinh.sangChon` 0,2) thay giàn giáo.
+  Nhà mọc từ điểm neo (chân nhà), không dùng `giuDay`: ô lục giác to nên `giuDay` giữ gần hết nhà, 0,3 s đã thấy đủ.
+  `?tat=xayTinh` vẫn về giàn giáo như cũ. Ảnh: `anh_chup/lang2_bang.png` (ô chọn), `lang3_bang.png` (làng mọc).
