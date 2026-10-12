@@ -15,3 +15,4 @@ Kế hoạch anh duyệt 12/10: `docs/ke-hoach/2026-10-12-buoc-3-lua-lon-dan.md`
 - **Đo:** `npm run do` xanh (gồm `luat:sau` vì `data/` đổi) · test +6 (`tests/LuaLon.test.ts`) · lệnh vẽ vẫn 2 trên ảnh.
   Ảnh 4 chặng: `anh_chup/lua_bang.png` (không lên git).
 - **Chưa:** nướng khi Drive mở lại; anh đo iPhone ≥ 58 fps.
+- **Anh đo 12/10:** 59 fps, "ruộng ok" (bản chưa có 2 hình xanh).

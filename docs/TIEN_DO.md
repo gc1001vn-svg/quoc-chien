@@ -37,7 +37,7 @@ Cập nhật: 12/10/2026 (lần 47 — bước 3 lúa lớn dần, kế hoạch 
 
 ## 2. Số đo mới nhất
 
-**Bước 3, đo 12/10 (máy ảo):** `npm run do` xanh · test +6 · ruộng bật/tắt tắc 31–135 lần một giờ game (tắc 13–79 %).
+**Bước 3, đo 12/10 (máy ảo):** **iPhone 59 fps** (anh 12/10) · `npm run do` xanh · test +6 · ruộng bật/tắt tắc 31–135 lần một giờ game (tắc 13–79 %).
 
 **Bước 2, đo 06/10 (máy ảo):** khung đo art bible — bản cũ · `?gio=12` · `?tat=dem` cùng 0,48 · 0,56 · 0,32 · lệnh vẽ vẫn 3 ·
 `sim:thu`, `sim:van` y hệt (trừ giây chạy) · test 613 → 625. **Fps iPhone 59** (anh lướt 10/10, cả đêm `?gio=23`).
@@ -76,8 +76,6 @@ bốn lần**. Trần 5.000 của dự án **dư ít nhất 3,6 lần**.
 
 ## 3. Việc của chủ dự án
 
-### ⏳ Bước 3 lúa lớn dần (12/10): mở Pages bằng Safari, xem ruộng đổi chặng, đo fps ≥ 58
-
 **Ghi vé file khoá, đẩy `main`:** chế độ Auto chặn — anh đổi nút chế độ cạnh ô soạn tin sang `Accept edits` thì làm được (09/10).
 
 ### ⏳ Việc 04/10 (lần 34) — anh muốn MỌI THỨ diễn ra từng bước; chọn thứ tự làm
@@ -91,7 +89,7 @@ Bước 1 xong, anh duyệt 05/10 (60 fps, "ưng", không thấy que đè); bư�
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
 
-### ✅ Đã xong: ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
+### ✅ Đã xong: bước 3 lúa lớn dần phần mã (59 fps, "ruộng ok" — 12/10) · ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
 Anh nhắn 30/09: "Làm bước 1 thôi. Hai bức kia để đấy" — **12E và hậu kỳ màn trận để đấy, đừng đề xuất lại** tới khi anh mở.
 
