@@ -30,7 +30,7 @@ import { Camera } from './Camera';
 import { Gl } from './Gl';
 import { hexTaiDiem, hexX, hexY } from './HexIso';
 import type { Man } from './Man';
-import { veBanDoTinh } from './VeBanDo';
+import { conSuong, veBanDoTinh } from './VeBanDo';
 import type { Ve } from './VeCanh';
 
 const CAU_HINH: CauHinhBanDoTinh = tinhTho;
@@ -182,7 +182,8 @@ export async function chayCanhBanDo(goc: HTMLElement, theGioi: TheGioiGame): Pro
     nhan.theoChu((id) => cd.mau(id), (id) => cd.chu(id) === cd.nuocCuaTa());
     thanhTG.capNhat();
     nhan.ve(
-      (t: Tinh) => ({
+      // Tinh duoi suong (Buoc 6): day nhan ra ngoai khung thi `NhanTinh` tu an.
+      (t: Tinh) => (conSuong(t.id) ? { x: -1e4, y: -1e4 } : {
         x: (hexX(t.tam, atlas.oPx()) - ve.camX) * ti + rongCss / 2,
         y: (hexY(t.tam, atlas.oPx()) - ve.camY) * ti + caoCss / 2,
       }),

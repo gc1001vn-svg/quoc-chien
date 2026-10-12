@@ -11,7 +11,7 @@ import { hexX, hexY, truocSau } from './HexIso';
 import { docCoTat } from './HieuUngThanhPho';
 import { catTren } from './TungBuoc';
 import type { Ve } from './VeCanh';
-import type { BanDoTinh, OTinh, Tinh } from '../sim/campaign/BanDoTinh';
+import { tinhKe, type BanDoTinh, type OTinh, type Tinh } from '../sim/campaign/BanDoTinh';
 import type { ChienDich, CongTrinh } from '../sim/campaign/ChienDich';
 
 /** Mot muc cho ve trong khung nay. */
@@ -21,7 +21,7 @@ interface Muc {
   readonly y: number;
   readonly ten: string;
   /** Phan nha da moc (Buoc 5); khong co la ve tron. */
-  readonly hien?: number;
+  readonly hien?: number | undefined;
   /** Do chop sang luc vua xay xong. */
   readonly sang?: number;
 }
@@ -46,6 +46,43 @@ const tatXay = (): boolean => (tat ??= docCoTat(new URLSearchParams(window.locat
 const dangXayTruoc = new Set<string>();
 const xongLuc = new Map<string, number>();
 
+/** Tinh nhin thay (Buoc 6): tinh cua `ta` va tinh giap chung. Con lai nam duoi suong. */
+export function tinhThay(
+  dsTinh: readonly string[], chu: (id: string) => string, ta: string, ke: ReadonlyMap<string, ReadonlySet<string>>,
+): Set<string> {
+  const ra = new Set<string>();
+  for (const id of dsTinh) {
+    if (chu(id) !== ta) continue;
+    ra.add(id);
+    for (const k of ke.get(id) ?? []) ra.add(k);
+  }
+  return ra;
+}
+
+/** Phan suong da tan (0 = con suong, 1 = ro) sau `giay` giay that ke tu luc tinh vao tam nhin. */
+export function phanTan(giay: number): number {
+  return Math.min(1, Math.max(0, giay / soTho.suong.tanGiay));
+}
+
+let tatSuongUrl: boolean | undefined;
+const tatSuong = (): boolean => (tatSuongUrl ??= docCoTat(new URLSearchParams(window.location.search).get('tat')).has('suong'));
+let keCua: { banDo: BanDoTinh; ke: ReadonlyMap<string, ReadonlySet<string>> } | undefined;
+/** Luc (ms) tinh vao tam nhin; -Infinity la nhin thay tu khung dau - khong tan dan. */
+const thayLuc = new Map<string, number>();
+/** Tinh con nguyen suong o khung vua ve - de `MapScene` giau ten tinh. */
+const duoiSuong = new Set<string>();
+export const conSuong = (tinhId: string): boolean => duoiSuong.has(tinhId);
+
+/** Phan tan suong cua tinh `id` khung nay; ghi luc tinh moi vao tam nhin de tan dan. */
+function tanCua(id: string, thayDuoc: boolean, bayGio: number, khungDau: boolean): number {
+  if (!thayDuoc) {
+    thayLuc.delete(id);
+    return 0;
+  }
+  if (!thayLuc.has(id)) thayLuc.set(id, khungDau ? -Infinity : bayGio);
+  return phanTan((bayGio - (thayLuc.get(id) ?? bayGio)) / 1000);
+}
+
 /**
  * Ve ca ban do.
  *
@@ -55,25 +92,35 @@ const xongLuc = new Map<string, number>();
 export function veBanDoTinh(ve: Ve, banDo: BanDoTinh, cd: ChienDich, oChon: string, phanLuot: number): void {
   const oPx: number = ve.atlas.oPx();
   const bayGio: number = performance.now();
+  if (keCua?.banDo !== banDo) keCua = { banDo, ke: tinhKe(banDo) };
+  const khungDau: boolean = thayLuc.size === 0;
+  const thay: Set<string> | undefined = tatSuong()
+    ? undefined : tinhThay(banDo.tinh.map((t) => t.id), (id) => cd.chu(id), cd.nuocCuaTa(), keCua.ke);
+  duoiSuong.clear();
   const muc: Muc[] = [];
 
   for (const t of banDo.tinh) {
+    // Suong (Buoc 6): duoi suong chi ve nen nhat mau; vua vao tam nhin thi nen sam dan, vat moc len tu chan.
+    const tan: number = thay === undefined ? 1 : tanCua(t.id, thay.has(t.id), bayGio, khungDau);
+    if (tan === 0) duoiSuong.add(t.id);
+    const hienTan: number | undefined = tan < 1 ? tan : undefined;
     for (let i = 0; i < t.o.length; i += 1) {
       const o: OTinh = t.o[i] as OTinh;
       const x: number = hexX(o.hex, oPx);
       const y: number = hexY(o.hex, oPx);
       const sau: number = truocSau(o.hex);
-      muc.push({ sau, x, y, ten: o.nen });
-      if (o.vat !== '') muc.push({ sau: sau + 0.01, x, y, ten: o.vat });
+      muc.push({ sau, x, y, ten: tan === 0 ? soTho.suong.nen : o.nen, sang: soTho.suong.sang * (1 - tan) });
+      if (tan === 0) continue;
+      if (o.vat !== '') muc.push({ sau: sau + 0.01, x, y, ten: o.vat, hien: hienTan });
 
       const tren: string = tenTren(t, o, i, cd, oChon);
       // O dang chon sang len thay cho gian giao (anh chon 12/10); `?tat=xayTinh` giu gian giao nhu cu.
       const chon: number = !tatXay() && o.oXay >= 0 && oChon === `${t.id}#${String(o.oXay)}` ? soTho.xayTinh.sangChon : 0;
-      if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren, sang: Math.max(sangO(t, o, cd, bayGio), chon) });
-      const moc = tatXay() ? undefined : nhaDangMoc(t, o, cd, phanLuot);
+      if (tren !== '') muc.push({ sau: sau + 0.02, x, y, ten: tren, hien: hienTan, sang: Math.max(sangO(t, o, cd, bayGio), chon) });
+      const moc = tatXay() || tan < 1 ? undefined : nhaDangMoc(t, o, cd, phanLuot);
       if (moc !== undefined) muc.push({ sau: sau + 0.025, x, y, ...moc });
       if (i === 0 && cd.mau(t.id) !== '') {
-        muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${cd.mau(t.id)}` });
+        muc.push({ sau: sau + 0.03, x: x + oPx * CO_LECH_X, y, ten: `co_${cd.mau(t.id)}`, hien: hienTan });
       }
     }
   }
