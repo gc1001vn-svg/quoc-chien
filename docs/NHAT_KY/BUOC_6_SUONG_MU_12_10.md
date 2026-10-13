@@ -12,3 +12,4 @@ Kế hoạch anh duyệt 12/10: `docs/ke-hoach/2026-10-12-buoc-6-suong-mu.md`. A
 - **Đo:** `npm run do` xanh · test +2 (`tests/XayTinh.test.ts`) · lệnh vẽ vẫn 1, 299 sprite (không sương 361).
   Ảnh: `anh_chup/suong_co.png`, `suong_tat.png`.
 - **Chưa kiểm bằng ảnh:** lúc tan khi chiếm tỉnh (chỉ test số). Bấm ô dưới sương vẫn mở bảng tỉnh. Anh chưa đo iPhone.
+- **Anh đo 12/10:** 60 fps. Chưa xem sương tan: đầu ván "hết quân" — quân mua bằng vàng mỗi giờ game (`TheGioi.gioTiep`), giờ 0 chưa có. Dặn anh qua giờ 1 rồi đánh tỉnh trung lập giáp ranh (Cửu Khê).

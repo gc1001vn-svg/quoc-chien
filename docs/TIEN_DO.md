@@ -45,7 +45,7 @@ Cập nhật: 12/10/2026 (lần 50 — bước 6 sương mù bản đồ tỉnh,
 
 ## 2. Số đo mới nhất
 
-**Bước 6, đo 12/10 (máy ảo):** `npm run do` xanh · test +2 · lệnh vẽ vẫn 1. **Chưa đo iPhone.**
+**Bước 6, đo 12/10 (máy ảo):** `npm run do` xanh · test +2 · lệnh vẽ vẫn 1. **iPhone 60 fps** (anh 12/10).
 
 **Bước 5, đo 12/10 (máy ảo):** `npm run do` xanh · test +2 · lệnh vẽ bản đồ vẫn 1. **iPhone 60 fps** (anh 12/10).
 
@@ -84,7 +84,7 @@ Bước 1–5 anh duyệt (59–60 fps); bước 6 sương mù chờ anh xem —
 
 Thẻ khẩn "Đường đông nghịt" và luật thống đốc xây kho không bao giờ chạm nữa (`docs/NO_KY_THUAT.md` mục "Luật bất biến").
 
-### ⏳ Bước 6 — anh mở "Bản đồ tỉnh", xem sương phủ; chiếm được tỉnh thì xem sương tan; báo fps và "ok"/chỗ chê
+### ⏳ Bước 6 — 60 fps; còn xem sương tan: qua giờ game 1 (mới có quân) rồi đánh tỉnh trung lập giáp ranh, báo "ok"
 
 ### ✅ Đã xong: bước 5 xây tỉnh theo lượt (60 fps, "ok" — 12/10) · bước 4 khai thác cạn dần (59 fps, "ok" — 12/10) · bước 3 lúa lớn dần phần mã (59 fps, "ruộng ok" — 12/10) · ruộng 2×2 + mẻ cổ đại mới (59 fps, "ruộng ok", giữ số cân bằng — 12/10) · 3 việc chờ (59 fps cả ba, bảng nông trại Claude chọn — 10/10) · bước 1 xây nhà từng bước, anh duyệt 05/10 · giao diện lần 35 "ok" + xoá 2 hàm chết (05/10) · 2 lỗi đổi nhịp anh chọn B (04/10) · Thử 3 "Fps vẫn 59. Mọi thứ ok" (30/09) · 3 lỗi trận anh duyệt (04/10)
 
